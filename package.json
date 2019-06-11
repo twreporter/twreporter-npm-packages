@@ -1,0 +1,30 @@
+{
+  "name": "twreporter-npm-packages",
+  "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
+  "author": "twreporter <developer@twreporter.org>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "make dev",
+    "test": "echo \"No test implemented yet.\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,css,md,html,htm}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
