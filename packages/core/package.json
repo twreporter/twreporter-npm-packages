@@ -1,0 +1,12 @@
+{
+  "name": "@twreporter/core",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
+  "author": "twreporter <developer@twreporter.org>",
+  "license": "MIT",
+  "scripts": {
+    "build": "make build",
+    "dev": "make dev"
+  }
+}
