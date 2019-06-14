@@ -2,9 +2,9 @@ import { connect } from 'react-redux'
 import { getSignInHref } from '@twreporter/core/lib/utils/sign-in-href'
 import Bookmarks from './bookmarks'
 import Confirmation from '../confirmation'
+import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import More from '../more'
-import predefinedPropTypes from './constants/prop-types'
 import PropTypes from 'prop-types'
 import React from 'react'
 import RedirectToSignIn from './redirect-to-sign-in'
@@ -202,7 +202,7 @@ class BookmarkList extends React.Component {
 
 BookmarkList.propTypes = {
   // Props below are provided by redux
-  bookmarks: PropTypes.arrayOf(predefinedPropTypes.bookmark).isRequired,
+  bookmarks: PropTypes.arrayOf(corePropTypes.bookmark).isRequired,
   total: PropTypes.number.isRequired,
   getMultipleBookmarks: PropTypes.func.isRequired,
   deleteSingleBookmark: PropTypes.func.isRequired,

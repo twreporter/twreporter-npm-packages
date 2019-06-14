@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import BookmarkIcon from './assets/bookmark.svg'
+import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import CustomizedLink from './customized-link'
 import ImgWrapper from './image-wrapper'
 import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedPropTypes from './constants/prop-types'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -221,7 +221,7 @@ const RemoveBookMarkBtn = styled.div`
 
 export default class Bookmark extends React.PureComponent {
   static propTypes = {
-    bookmark: predefinedPropTypes.bookmark.isRequired,
+    bookmark: corePropTypes.bookmark.isRequired,
     handleDelete: PropTypes.func.isRequired,
   }
 
