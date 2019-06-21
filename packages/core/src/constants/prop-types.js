@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import releaseBranchConsts from './release-branch'
 
 const bookmark = PropTypes.shape({
   id: PropTypes.number,
@@ -14,6 +15,15 @@ const bookmark = PropTypes.shape({
   thumbnail: PropTypes.string,
 })
 
+const releaseBranch = PropTypes.oneOf([
+  releaseBranchConsts.master,
+  releaseBranchConsts.test,
+  releaseBranchConsts.staging,
+  releaseBranchConsts.preview,
+  releaseBranchConsts.release,
+])
+
 export default {
   bookmark,
+  releaseBranch,
 }
