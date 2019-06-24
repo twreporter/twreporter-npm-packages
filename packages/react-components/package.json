@@ -12,13 +12,17 @@
   "dependencies": {
     "@twreporter/core": "1.0.0",
     "@twreporter/redux": "^4.0.2",
+    "hoist-non-react-statics": "^2.3.1",
     "react-redux": "^6.0.0",
-    "react-transition-group": "^1.2.1"
+    "react-transition-group": "^1.2.1",
+    "react-waypoint": "^9.0.2",
+    "smoothscroll": "^0.3.0"
   },
   "devDependencies": {
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "styled-components": "^4.0.0"
   },
@@ -26,6 +30,7 @@
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "styled-components": "^4.0.0"
   }
