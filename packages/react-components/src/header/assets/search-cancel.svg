@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>search_cancel</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Header_phase1_Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="search_cancel">
+            <path d="M14.1625,28.3249 C21.9845,28.3249 28.3245,21.9839 28.3245,14.1619 C28.3245,6.3409 21.9845,-0.0001 14.1625,-0.0001 C6.3405,-0.0001 -0.0005,6.3409 -0.0005,14.1619 C-0.0005,21.9839 6.3405,28.3249 14.1625,28.3249" id="Fill-1" fill="#FFFFFF"></path>
+            <polygon id="Fill-4" fill="#E60013" points="7.6986 9.8201 18.5046 20.6261 20.6256 18.5051 9.8206 7.6991"></polygon>
+            <polygon id="Fill-6" fill="#C7000A" points="18.5048 7.699 7.6988 18.505 9.8198 20.626 20.6258 9.82"></polygon>
+        </g>
+    </g>
+</svg>
