@@ -137,7 +137,7 @@ const RelatedCategory = styled(CategoryName)`
 `
 
 const RelatedTitle = styled.div`
-  font-size: 14px;
+  font-size: 20px;
   font-weight: ${fontWeight.bold};
   color: #4a4949;
   line-height: 1.5;

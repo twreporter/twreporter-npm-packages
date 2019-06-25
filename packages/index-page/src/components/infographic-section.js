@@ -136,7 +136,7 @@ const WordBlock = styled.div`
 const Title = styled.h3`
   margin: 0;
   font-weight: ${fontWeight.bold};
-  font-size: 14px;
+  font-size: 20px;
   color: #4a4a4a;
   @media (min-width: ${breakPoints.desktopMinWidth}) {
     ${truncate('relative', 1.4, 2, '#fff')};

@@ -116,7 +116,7 @@ const Category = styled(CategoryName)`
 
 const Title = styled.div`
   margin-top: 2px;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: ${fontWeight.bold};
   line-height: 1.5;
   ${finalMedia.tablet`

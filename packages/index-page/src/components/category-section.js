@@ -112,7 +112,7 @@ const CategoryName = styled.div`
   font-weight: ${fontWeight.bold};
   line-height: 1.4;
   text-align: center;
-  font-size: 14px;
+  font-size: 20px;
   padding-bottom: 8px;
 `
 
@@ -124,7 +124,7 @@ const TextFrame = styled.div`
 
 const Title = styled.div`
   font-weight: ${fontWeight.bold};
-  font-size: 14px;
+  font-size: 20px;
   color: #4a4949;
   line-height: 1.4;
   width: 92%;
