@@ -121,10 +121,6 @@ const DonateInfo = (
 )
 
 class DonationBoxSection extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.donationLink = this._donationLink.bind(this)
-  }
   render() {
     return (
       <Container>
