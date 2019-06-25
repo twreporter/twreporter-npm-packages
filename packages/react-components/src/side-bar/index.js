@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import Waypoint from 'react-waypoint'
+import { Waypoint } from 'react-waypoint'
 import hoistStatics from 'hoist-non-react-statics'
 import smoothScroll from 'smoothscroll'
 // lodash
