@@ -3,19 +3,19 @@
 This repository is a monorepo containing several npm packages used by the website of online news media [The Reporter](https://www.twreporter.org).
 
 - [twreporter-npm-packages](#twreporter-npm-packages)
-  - [Packages](#packages)
+  - [Packages](#Packages)
     - [`@twreporter/core`](#twreportercore)
     - [`@twreporter/react-component`](#twreporterreact-component)
-  - [Developing Environment](#developing-environment)
-    - [Yarn Workspaces](#yarn-workspaces)
-    - [Eslint and Prettier](#eslint-and-prettier)
-    - [Set Dev Tools](#set-dev-tools)
-      - [At Root](#at-root)
-      - [By Package](#by-package)
-  - [Develop](#develop)
-    - [Develop Single Package](#develop-single-package)
-    - [Develop all Packages](#develop-all-packages)
-  - [Build and Publish](#build-and-publish)
+  - [Developing Environment](#Developing-Environment)
+    - [Yarn Workspaces](#Yarn-Workspaces)
+    - [Eslint and Prettier](#Eslint-and-Prettier)
+    - [Set Dev Tools](#Set-Dev-Tools)
+      - [At Root](#At-Root)
+      - [By Package](#By-Package)
+  - [Develop](#Develop)
+    - [Develop Single Package](#Develop-Single-Package)
+    - [Develop all Packages](#Develop-all-Packages)
+  - [Build and Publish](#Build-and-Publish)
 
 ## Packages
 
@@ -176,4 +176,9 @@ The reason of not using the tool is that the packages in this repo are few and t
 make build
 # after build
 npm publish
+```
+
+```bash
+# at root folder, it will run `make build` at each subfolder
+make build
 ```
