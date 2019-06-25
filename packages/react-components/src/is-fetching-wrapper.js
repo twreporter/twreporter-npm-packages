@@ -1,7 +1,7 @@
 import { replaceStorageUrlPrefix } from '@twreporter/core/lib/utils/storage-url-processor'
+import * as storage from '@twreporter/core/lib/constants/storage'
 import PropTypes from 'prop-types'
 import React from 'react'
-import storage from '@twreporter/core/lib/constants/storage'
 import styled from 'styled-components'
 
 const spinnerLogoUrl = `${storage.google.schema}://${storage.google.hostname}/${storage.google.bucket}/images/spinner-logo.gif`
