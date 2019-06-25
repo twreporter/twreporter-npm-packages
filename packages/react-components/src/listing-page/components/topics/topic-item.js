@@ -3,7 +3,7 @@ import {
   resetLinkStyle,
 } from '../../constants/predefined-css'
 import { TEXT } from '../../constants/topics'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import Image from '../image'
 import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'

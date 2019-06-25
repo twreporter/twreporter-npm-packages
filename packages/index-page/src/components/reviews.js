@@ -13,7 +13,7 @@ import TRLink from './common-utils/twreporter-link'
 import get from 'lodash/get'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
 import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
 

@@ -11,7 +11,7 @@ import BottomLink, {
   LinkIcon,
 } from './common-utils/bottom-link'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import React from 'react'
 import ReporterIcon from '../static/reporter-large.svg'
 import Section from './common-utils/section'

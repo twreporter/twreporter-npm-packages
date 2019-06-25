@@ -1,7 +1,7 @@
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
 import entityPaths from '@twreporter/core/lib/constants/entitiy-path'
 import FetchingWrapper from '../../is-fetching-wrapper'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ListItem from './list-item'
 import mockup from '../constants/mockup-spec'
 import mq from '@twreporter/core/lib/utils/media-query'

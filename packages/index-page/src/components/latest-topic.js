@@ -15,7 +15,7 @@ import strings from '../constants/strings'
 import styled from 'styled-components'
 import topicPropType from './prop-types/topic'
 import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
 

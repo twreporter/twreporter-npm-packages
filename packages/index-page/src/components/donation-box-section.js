@@ -1,5 +1,5 @@
 import { finalMedia } from '../utils/style-utils'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
 import React from 'react'
 import styled from 'styled-components'

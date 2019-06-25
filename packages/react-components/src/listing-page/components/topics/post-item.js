@@ -3,7 +3,7 @@ import {
   linkHoverFadeOut,
   resetLinkStyle,
 } from '../../constants/predefined-css'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import Image from '../image'
 import Link from 'react-router-dom/Link'
 import mq from '@twreporter/core/lib/utils/media-query'

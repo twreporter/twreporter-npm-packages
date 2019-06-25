@@ -1,7 +1,7 @@
 import { TEXT } from '../../constants/topics'
 import { TopSectionContent, ListSectionContent, SectionTitle } from './section'
 import FetchingWrapper from '../../../is-fetching-wrapper'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import PageContent from './page-content'
 import PostItem from './post-item'
 import PostsContainer from './posts'

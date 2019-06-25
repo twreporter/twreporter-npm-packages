@@ -1,7 +1,7 @@
 import { breakPoints, finalMedia } from '../utils/style-utils'
 import { getHref } from '../utils/getHref'
 import BottomLink from './common-utils/bottom-link'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import get from 'lodash/get'
 import ImgWrapper from './common-utils/img-wrapper'
 import MobileFlexSwipeable from './mobile-flex-swipeable'

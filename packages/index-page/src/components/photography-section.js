@@ -13,7 +13,7 @@ import postPropType from './prop-types/post'
 import sectionStrings from '../constants/section-strings'
 import styled from 'styled-components'
 import { breakPoints, finalMedia } from '../utils/style-utils'
-import fontWeight from '@twreporter/core/lib/constants/font-weight'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
 
 const _ = {
