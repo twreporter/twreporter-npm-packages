@@ -161,7 +161,7 @@ class ReporterIntro extends React.PureComponent {
 
   render() {
     const authorHref = 'authors'
-    const donationHref = externalLinks.monthlyDonation
+    const donationHref = externalLinks.donation
     const hiringHref = 'a/hiring-job-description'
     return (
       <ContentContainer mobileWidth={mobileWidth}>

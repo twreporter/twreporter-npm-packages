@@ -1,11 +1,10 @@
 import { finalMedia } from '../utils/style-utils'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
+import externalLinks from '@twreporter/core/lib/constants/external-links'
 import React from 'react'
 import styled from 'styled-components'
 import TrackedLink from '@twreporter/react-components/lib/link-with-tracker'
-
-const DONATION_SITE_URL = 'https://twreporter.backme.tw/checkout/175/3788'
 
 const mockup = {
   defaultWidth: 320,
@@ -134,7 +133,7 @@ class DonationBoxSection extends React.PureComponent {
           <DonateButton>
             <TrackedLink
               clickActionName="homepage_donation_section_button_click"
-              to={DONATION_SITE_URL}
+              to={externalLinks.donation}
               target="_blank"
               rel="noopener noreferrer"
             >

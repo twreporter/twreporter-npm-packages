@@ -54,13 +54,15 @@ export default class TrackedLink extends PureComponent {
   }
 
   render() {
-    const { clickActionName, href, to, ...elseProps } = this.props
+    const { clickActionName, href, to, rel, target, ...elseProps } = this.props
     return (
       // eslint-disable-next-line jsx-a11y/anchor-has-content
       <a
         href={href || to}
         onMouseDown={this.sendClickTrackingEvent}
         onKeyDown={this.sendClickTrackingEvent}
+        rel={rel || (target === '_blank' ? 'noopener noreferrer' : '')}
+        target={target}
         {...elseProps}
       />
     )
@@ -71,10 +73,14 @@ TrackedLink.propTypes = {
   clickActionName: PropTypes.string,
   href: PropTypes.string,
   to: PropTypes.string,
+  rel: PropTypes.string,
+  target: PropTypes.string,
 }
 
 TrackedLink.defaultProps = {
   clickActionName: '',
   href: '',
   to: '',
+  rel: '',
+  target: '_self',
 }

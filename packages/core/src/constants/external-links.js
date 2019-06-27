@@ -1,6 +1,5 @@
 export default {
-  monthlyDonation: 'https://twreporter.backme.tw/checkout/175/3788',
-  onceDonation: 'https://twreporter.backme.tw/checkout/175/3789',
+  donation: 'https://twreporter.org/donation',
   github: 'https://github.com/twreporter',
   line: 'http://line.me/ti/p/%40nbs5015j',
   facebook: 'https://www.facebook.com/twreporter/',

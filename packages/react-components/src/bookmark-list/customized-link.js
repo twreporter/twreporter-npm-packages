@@ -1,25 +1,15 @@
+import entityPath from '@twreporter/core/lib/constants/entitiy-path'
 import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const linkPrefix = {
-  article: '/a/',
-  interactiveArticle: '/i/',
-  categories: '/categories/',
-  tag: '/tag/',
-  topic: '/topic/',
-  topics: '/topics/',
-  author: '/author/',
-  authors: '/authors',
-}
-
 const CustomizedLink = ({ children, isExternal, slug, host }) => {
   if (isExternal) {
     return (
-      <a href={`${host}${linkPrefix.interactiveArticle}${slug}`}>{children}</a>
+      <a href={`${host}${entityPath.interactiveArticle}${slug}`}>{children}</a>
     )
   }
-  return <Link to={`${linkPrefix.article}${slug}`}>{children}</Link>
+  return <Link to={`${entityPath.article}${slug}`}>{children}</Link>
 }
 
 CustomizedLink.defaultProps = {

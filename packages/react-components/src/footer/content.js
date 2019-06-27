@@ -309,7 +309,7 @@ class Content extends React.PureComponent {
         <DonateButton>
           <TrackedLink
             clickActionName="footer_donation_button_click"
-            to={externalLinks.monthlyDonation}
+            to={externalLinks.donation}
             target={aTarget.blank}
           >
             <p>贊助我們</p>
