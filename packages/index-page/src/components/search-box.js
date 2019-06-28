@@ -1,9 +1,9 @@
 /* eslint react/no-string-refs: 0 */
-import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SearchIcon from '../static/search.svg'
 import styled from 'styled-components'
+import withRouter from 'react-router-dom/withRouter'
 
 const mobileWidth = '400px'
 
