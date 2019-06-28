@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import get from 'lodash/get'
-import { replaceStorageUrlPrefix } from '../../utils/url-processor'
+import { replaceGCSUrlOrigin } from '../../utils/url-processor'
 
 const _ = {
   get,
@@ -41,11 +41,11 @@ const srcSetDependOnResolutions = sources => {
   const mobile_url = _.get(sources, 'mobile.url', '')
   const w400_url = _.get(sources, 'w400.url', '')
   if (!w400_url) {
-    return `${replaceStorageUrlPrefix(mobile_url)} ${mobileInherentWidth}`
+    return `${replaceGCSUrlOrigin(mobile_url)} ${mobileInherentWidth}`
   }
-  return `${replaceStorageUrlPrefix(
+  return `${replaceGCSUrlOrigin(
     mobile_url
-  )} ${mobileInherentWidth}, ${replaceStorageUrlPrefix(
+  )} ${mobileInherentWidth}, ${replaceGCSUrlOrigin(
     w400_url
   )} ${w400InherentWidth}`
 }
@@ -73,7 +73,7 @@ class ImgWrapper extends React.Component {
       <ImgObjectFit>
         <img
           alt={alt}
-          src={replaceStorageUrlPrefix(src)}
+          src={replaceGCSUrlOrigin(src)}
           srcSet={srcSetDependOnResolutions(srcSet)}
           sizes={sizes}
           style={{
@@ -83,7 +83,7 @@ class ImgWrapper extends React.Component {
         {this.props.children}
       </ImgObjectFit>
     ) : (
-      <ImgFallback url={replaceStorageUrlPrefix(src)}>
+      <ImgFallback url={replaceGCSUrlOrigin(src)}>
         {this.props.children}
       </ImgFallback>
     )

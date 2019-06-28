@@ -5,7 +5,7 @@ const storageConfig = {
 }
 const URL_NO_SLASH = 'https://www.twreporter.org'
 
-export function replaceStorageUrlPrefix(url = '') {
+export function replaceGCSUrlOrigin(url = '') {
   if (process.env.NODE_ENV !== 'production' || typeof url !== 'string') {
     return url
   }

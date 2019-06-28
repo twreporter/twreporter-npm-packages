@@ -1,5 +1,5 @@
 import get from 'lodash/get'
-import { replaceStorageUrlPrefix } from './url-processor'
+import { replaceGCSUrlOrigin } from './url-processor'
 
 const screenSize = {
   smallScreenMinWidth: 480,
@@ -25,13 +25,13 @@ export const getImageSrcSet = imgObj => {
   if (typeof imgObj !== 'object') {
     return ''
   }
-  const desktopSrc = replaceStorageUrlPrefix(
+  const desktopSrc = replaceGCSUrlOrigin(
     get(imgObj, 'resized_targets.desktop.url')
   )
-  const tabletSrc = replaceStorageUrlPrefix(
+  const tabletSrc = replaceGCSUrlOrigin(
     get(imgObj, 'resized_targets.tablet.url')
   )
-  const mobileSrc = replaceStorageUrlPrefix(
+  const mobileSrc = replaceGCSUrlOrigin(
     get(imgObj, 'resized_targets.mobile.url')
   )
   return `${mobileSrc} ${screenSize.smallScreenMinWidth}w, ${tabletSrc} ${screenSize.mediumScreenMinWidth}w, ${desktopSrc} ${screenSize.largeScreenMinWidth}w`

@@ -1,4 +1,4 @@
-import { replaceStorageUrlPrefix } from '@twreporter/core/lib/utils/storage-url-processor'
+import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
 import * as storage from '@twreporter/core/lib/constants/storage'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -14,7 +14,7 @@ const FetchingBlock = styled.div`
   ${props => {
     return props.showSpinner
       ? `
-      background-image: url(${replaceStorageUrlPrefix(spinnerLogoUrl)});
+      background-image: url(${replaceGCSUrlOrigin(spinnerLogoUrl)});
       background-position: center;
       background-repeat: no-repeat;
     `

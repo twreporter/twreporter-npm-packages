@@ -1,4 +1,4 @@
-import { replaceStorageUrlPrefix } from '@twreporter/core/lib/utils/storage-url-processor'
+import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -54,7 +54,7 @@ class ImgWrapper extends React.Component {
       <ImgObjectFit>
         <img
           alt={alt}
-          src={replaceStorageUrlPrefix(src)}
+          src={replaceGCSUrlOrigin(src)}
           srcSet={srcSet}
           style={{
             transform: 'translateZ(0)',
@@ -63,7 +63,7 @@ class ImgWrapper extends React.Component {
         {this.props.children}
       </ImgObjectFit>
     ) : (
-      <ImgFallback url={replaceStorageUrlPrefix(src)}>
+      <ImgFallback url={replaceGCSUrlOrigin(src)}>
         {this.props.children}
       </ImgFallback>
     )
