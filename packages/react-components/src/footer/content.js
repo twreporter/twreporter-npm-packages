@@ -8,7 +8,7 @@ import TrackedLink from '../link-with-tracker'
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { target as aTarget } from '@twreporter/core/lib/constants/html-attributes'
-import entityPaths from '@twreporter/core/lib/constants/entitiy-path'
+import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash

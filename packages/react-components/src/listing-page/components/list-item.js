@@ -1,4 +1,4 @@
-import entityPaths from '@twreporter/core/lib/constants/entitiy-path'
+import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ImgWrapper from './image'
 import Link from 'react-router-dom/Link'

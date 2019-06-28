@@ -1,4 +1,4 @@
-import entityPath from '@twreporter/core/lib/constants/entitiy-path'
+import entityPath from '@twreporter/core/lib/constants/entity-path'
 import Link from 'react-router-dom/Link'
 import PropTypes from 'prop-types'
 import React from 'react'
