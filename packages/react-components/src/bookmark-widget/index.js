@@ -122,9 +122,8 @@ class BookmarkWidget extends React.PureComponent {
     const slugFromProps = _.get(this.props, 'articleMeta.slug')
     if (slugFromProps) return slugFromProps
     if (typeof window !== 'undefined') {
-      const location = _.get(window, 'location') || {}
-      const { pathname = '' } = location
-      return pathname.match(/(?:\w+-)*\w+$/)[0] || '' // take 'xxx-xxx-xx' from string '/oo-xx/oxox/xxx-xxx-xx'
+      const pathname = _.get(window, 'location.pathname', '')
+      return _.get(pathname.match(/(?:\w+-)*\w+$/), [0]) || '' // take 'xxx-xxx-xx' from string '/oo-xx/oxox/xxx-xxx-xx'
     }
   }
 
