@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/index-page",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -10,13 +10,14 @@
     "dev": "make dev"
   },
   "dependencies": {
-    "@twreporter/core": "1.0.0",
+    "@twreporter/core": "1.0.0-beta.1",
     "@twreporter/velocity-react": "^1.4.1",
     "react-swipeable": "^4.0.1",
     "react-waypoint": "^9.0.2",
     "smoothscroll": "^0.3.0"
   },
   "devDependencies": {
+    "lodash": "^4.0.0",
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
@@ -24,6 +25,7 @@
     "styled-components": "^4.0.0"
   },
   "peerDependencies": {
+    "lodash": "^4.0.0",
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",

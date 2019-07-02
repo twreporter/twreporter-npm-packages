@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/core",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -8,5 +8,13 @@
   "scripts": {
     "build": "make build",
     "dev": "make dev"
+  },
+  "peerDependencies": {
+    "lodash": "^4.0.0",
+    "styled-components": "^4.0.0"
+  },
+  "devDependencies": {
+    "lodash": "^4.0.0",
+    "styled-components": "^4.0.0"
   }
 }
