@@ -73,7 +73,7 @@ const Category = styled.div`
 `
 
 const Title = styled.div`
-  font-size: 14px;
+  font-size: 20px;
   font-weight: ${fontWeight.bold};
   line-height: 1.4;
   color: #4a4949;
