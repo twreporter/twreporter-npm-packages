@@ -4,8 +4,6 @@ This repository is a monorepo containing several npm packages used by the websit
 
 - [twreporter-npm-packages](#twreporter-npm-packages)
   - [Packages](#Packages)
-    - [`@twreporter/core`](#twreportercore)
-    - [`@twreporter/react-component`](#twreporterreact-component)
   - [Developing Environment](#Developing-Environment)
     - [Yarn Workspaces](#Yarn-Workspaces)
     - [Eslint and Prettier](#Eslint-and-Prettier)
@@ -19,27 +17,9 @@ This repository is a monorepo containing several npm packages used by the websit
 
 ## Packages
 
-We divided packages by the different subfolders in `pacakges/` folder.
-
-### `@twreporter/core`
-
-```bash
-twreporter-npm-packages/
-  packages/
-    core/
-```
-
-The package contains the constants and utility functions shared by the packages in `twreporter-npm-packages`.
-
-### `@twreporter/react-component`
-
-```bash
-twreporter-npm-packages/
-  packages/
-    react-components/
-```
-
-The package contains the general React components used by [The Reporter website](https://www.twreporter.org).
+- `@twreporter/core`
+- `@twreporter/index-page`
+- `@twreporter/react-components`
 
 ## Developing Environment
 
