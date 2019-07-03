@@ -149,7 +149,7 @@ This will `yarn install` the packages and run `make dev` at each subfolder.
 
 We do not use tools like [Lerna](https://github.com/lerna/lerna) to manage package version and publish process currently. So if some of the packages are updated at the same time, we need to update the dependencies among them and publish them manually.
 
-The reason of not using the tool is that the packages in this repo are few and the relation among them is still simple. If the amount of packages arise or the inter-dependency become complicated, we can apply the tool at any time.
+The reason of not using the tool is that the packages in this repo are few and the relation among them is still simple. If the amount of packages arises or the inter-dependency becomes complicated, we can apply the tool at any time.
 
 ```bash
 # at any <subfolder>
