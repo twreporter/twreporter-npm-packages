@@ -12,11 +12,17 @@ $(SUBDIRS):
 
 subdirs-job: $(SUBDIRS)
 
+check-dep:
+	@echo "$(P) Check dependencies of the project"
+	yarn install
+
 # `make dev` -> babel watch at all packages
 # `make dev PKG=core` -> babel watch at only `packages/core`
-dev: 
-	yarn install
+dev: check-dep
 	MAKE_TARGET=dev make subdirs-job $(MAKE_FLAG)
+
+build: check-dep
+	MAKE_TARGET=build make subdirs-job $(MAKE_FLAG)
 
 clean:
 	MAKE_TARGET=clean make subdirs-job $(MAKE_FLAG)
@@ -29,8 +35,16 @@ prettier:
 	@echo "$(P) Run prettier"
 	$(BIN_DIR)/prettier --write "**/*.{js,json,css,md,html,htm}"
 
-lint: prettier
+lint:
 	@echo "$(P) Run eslint"
 	$(BIN_DIR)/eslint --fix "**/*.js"
 
-.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS)
+link: check-dep
+	@echo "$(P) Link all packages"
+	yarn workspaces run link
+
+unlink:
+	@echo "$(P) Unlink all packages"
+	yarn workspaces run unlink
+
+.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link
