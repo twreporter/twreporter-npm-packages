@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import get from 'lodash/get'
-import { replaceGCSUrlOrigin } from '../../utils/url-processor'
+import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
 
 const _ = {
   get,
