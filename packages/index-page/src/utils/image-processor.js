@@ -1,5 +1,5 @@
 import get from 'lodash/get'
-import { replaceGCSUrlOrigin } from './url-processor'
+import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
 
 const screenSize = {
   smallScreenMinWidth: 480,

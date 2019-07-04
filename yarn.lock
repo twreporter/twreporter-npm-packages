@@ -744,7 +744,7 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@twreporter/redux@5.0.1":
+"@twreporter/redux@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@twreporter/redux/-/redux-5.0.1.tgz#6deb3221538691b2f31f58eb585817909dc77b22"
   integrity sha512-JrhklJHAo2nWV8N6SwOo6L5T1/vZMffaFLAnxa9GkDUAFO+USEu3o6He6qfJJjZieDBMOjsQyQTeUeWoX7z1Cg==
