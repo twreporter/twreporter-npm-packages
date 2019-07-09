@@ -15,6 +15,15 @@ const bookmark = PropTypes.shape({
   thumbnail: PropTypes.string,
 })
 
+const articleMetaForBookmark = PropTypes.shape({
+  slug: PropTypes.string.isRequired,
+  is_external: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  published_date: PropTypes.string,
+})
+
 const releaseBranch = PropTypes.oneOf([
   releaseBranchConsts.master,
   releaseBranchConsts.test,
@@ -24,6 +33,7 @@ const releaseBranch = PropTypes.oneOf([
 ])
 
 export default {
+  articleMetaForBookmark,
   bookmark,
   releaseBranch,
 }
