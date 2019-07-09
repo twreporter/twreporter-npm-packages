@@ -4,6 +4,12 @@
 
 ## Release
 
+### 7.0.3
+
+- Update dependency
+  - @twreporte/redux: 5.0.2 -> ^5.0.3
+- Delete package.json#peerDependencies
+
 ### 7.0.2
 
 - Update dependency

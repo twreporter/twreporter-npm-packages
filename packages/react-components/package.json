@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@twreporter/core": "^1.0.1",
-    "@twreporter/redux": "5.0.2",
+    "@twreporter/redux": "^5.0.3",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",
     "prop-types": "^15.0.0",
@@ -26,8 +26,5 @@
   },
   "files": [
     "lib"
-  ],
-  "peerDependencies": {
-    "@twreporter/redux": "5.0.2"
-  }
+  ]
 }
