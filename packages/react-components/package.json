@@ -26,5 +26,8 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "peerDependencies": {
+    "@twreporter/redux": "5.0.2"
+  }
 }
