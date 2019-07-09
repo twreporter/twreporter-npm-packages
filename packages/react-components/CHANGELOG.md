@@ -4,7 +4,12 @@
 
 ## Release
 
-### 1.0.1
+### 7.0.2
+
+- Update dependency
+  - @twreporte/redux: ^5.0.1 -> 5.0.2
+
+### 7.0.1
 
 - Update dependencies
 
