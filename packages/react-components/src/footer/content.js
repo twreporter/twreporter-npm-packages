@@ -1,13 +1,12 @@
+import DonationLink from '../donation-link-with-utm'
 import Logo from './logo'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import styles from './constants/styles'
-import TrackedLink from '../link-with-tracker'
 // core
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { target as aTarget } from '@twreporter/core/lib/constants/html-attributes'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -107,11 +106,11 @@ const Intro = styled.p`
 const ContentRow = styled.div`
   ${mq.hdOnly`
     width: ${styles.contentRow.width.hd}px;
-    height: ${styles.contentRow.height.hd}px; 
+    height: ${styles.contentRow.height.hd}px;
   `}
   ${mq.desktopOnly`
     width: ${styles.contentRow.width.desktop}px;
-    height: ${styles.contentRow.height.desktop}px; 
+    height: ${styles.contentRow.height.desktop}px;
   `}
   ${mq.tabletOnly`
     width: ${styles.contentRow.width.tablet}px;
@@ -307,13 +306,9 @@ class Content extends React.PureComponent {
           <ItemList>{buildList(getItemGroups(mainOrigin))}</ItemList>
         </LinksColumn>
         <DonateButton>
-          <TrackedLink
-            clickActionName="footer_donation_button_click"
-            to={externalLinks.donation}
-            target={aTarget.blank}
-          >
+          <DonationLink utmMedium="footer">
             <p>贊助我們</p>
-          </TrackedLink>
+          </DonationLink>
         </DonateButton>
       </ContentRow>
     )
