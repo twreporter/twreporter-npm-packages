@@ -1,10 +1,9 @@
 import { finalMedia } from '../utils/style-utils'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
-import externalLinks from '@twreporter/core/lib/constants/external-links'
+import DonationLink from '@twreporter/react-components/lib/donation-link-with-utm'
 import React from 'react'
 import styled from 'styled-components'
-import TrackedLink from '@twreporter/react-components/lib/link-with-tracker'
 
 const mockup = {
   defaultWidth: 320,
@@ -26,7 +25,7 @@ const Container = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 100px;
@@ -131,14 +130,7 @@ class DonationBoxSection extends React.PureComponent {
             </p>
           </TextColumn>
           <DonateButton>
-            <TrackedLink
-              clickActionName="homepage_donation_section_button_click"
-              to={externalLinks.donation}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {DonateInfo}
-            </TrackedLink>
+            <DonationLink utmMedium="index">{DonateInfo}</DonationLink>
           </DonateButton>
         </ContentContainer>
       </Container>
