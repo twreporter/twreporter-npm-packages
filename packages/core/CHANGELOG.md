@@ -7,6 +7,7 @@
 ### 1.0.3
 
 - Update media-query desktop width: 1023 -> 1024
+- externalLinks.donation: https://twreporter.org/donation -> https://support.twreporter.org
 
 ### 1.0.2
 
