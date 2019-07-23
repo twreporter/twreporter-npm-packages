@@ -1,6 +1,8 @@
-import React from 'react'
-import externalLinks from '@twreporter/core/lib/constants/external-links'
+/* eslint node/no-deprecated-api: "warn" */
 import PropTypes from 'prop-types'
+import React from 'react'
+import url from 'url'
+import externalLinks from '@twreporter/core/lib/constants/external-links'
 
 export default function DonationLinkWithUtm(props) {
   const { children = null, utmMedium = '' } = props
@@ -12,13 +14,17 @@ export default function DonationLinkWithUtm(props) {
 
     try {
       const utmSource = window.location.host
-      const utmCampaign = encodeURIComponent(window.location.pathname)
-      const search = `utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}`
-      const url = new URL(donationURL)
-      url.search = search
-      donationURL = url.toString()
+      const utmCampaign = window.location.pathname
+      const parseQueryString = true
+      const urlObj = url.parse(donationURL, parseQueryString)
+
+      urlObj.query.utm_source = utmSource
+      urlObj.query.utm_medium = utmMedium
+      urlObj.query.utm_campaign = utmCampaign
+
+      donationURL = url.format(urlObj)
     } catch (e) {
-      console.warn('Can not get donation url with utm query params', e)
+      console.warn('Can not get donation url with utm param', e)
     }
 
     window.open(donationURL, 'DonationWindow')
