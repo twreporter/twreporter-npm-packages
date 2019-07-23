@@ -5,7 +5,7 @@ const defaultScreen = {
     width: 768,
   },
   desktop: {
-    width: 1023,
+    width: 1024,
   },
   hd: {
     width: 1440,

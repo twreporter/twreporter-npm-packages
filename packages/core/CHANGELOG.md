@@ -4,6 +4,10 @@
 
 ## Release
 
+### 1.0.3
+
+- Update media-query desktop width: 1023 -> 1024
+
 ### 1.0.2
 
 - Update prop-types constant in @twreporter/core
