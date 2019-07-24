@@ -1,5 +1,5 @@
 export default {
-  donation: 'https://twreporter.org/donation',
+  donation: 'https://support.twreporter.org',
   github: 'https://github.com/twreporter',
   line: 'http://line.me/ti/p/%40nbs5015j',
   facebook: 'https://www.facebook.com/twreporter/',

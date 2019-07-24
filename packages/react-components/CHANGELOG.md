@@ -4,6 +4,11 @@
 
 ## Release
 
+### 7.0.4
+
+- Add src/donation-link-with-utm.js
+- Update src/footer/content.js: link-with-tracker -> donation-link-with-utm
+
 ### 7.0.3
 
 - Update dependency
