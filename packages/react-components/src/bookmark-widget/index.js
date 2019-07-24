@@ -80,6 +80,28 @@ const BookmarkImgDesktop = styled.div`
   left: 50%;
 `
 
+function getHostFromWindowLocation() {
+  const defaultHost = 'https://www.twreporter.org'
+  try {
+    const { host, protocol } = window.location
+    if (host && protocol) {
+      return `${protocol}//${host}`
+    } else {
+      console.warn(
+        'The host or protocol in `window.location` is not valid:',
+        'window.location.protocol:',
+        protocol,
+        'window.location.host:',
+        host,
+        `Return default host '${defaultHost}' instead.`
+      )
+      return defaultHost
+    }
+  } catch (err) {
+    console.warn('Error on getting `host` from `window.location`:', err)
+  }
+}
+
 class BookmarkWidget extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -87,43 +109,29 @@ class BookmarkWidget extends React.PureComponent {
     this.removeCurrentPageFromBookmarks = this.removeCurrentPageFromBookmarks.bind(
       this
     )
+    this.requestedBookmarkSlug = ''
   }
 
-  componentDidMount() {
-    const { bookmark } = this.props
-    if (
-      !bookmark ||
-      bookmark.slug !== this.getCurrentSlug() ||
-      !bookmark.host === this.getCurrentHost()
-    ) {
-      const { jwt, userID, getSingleBookmark } = this.props
-      getSingleBookmark(
-        jwt,
-        userID,
-        this.getCurrentSlug(),
-        this.getCurrentHost()
-      )
-    }
+  componentWillMount() {
+    this.tryToFetchTheBookmarkOnce()
   }
 
-  getCurrentHost() {
-    const hostFromProps = _.get(this.props, 'articleMeta.host')
-    if (hostFromProps) return hostFromProps
-    if (typeof window !== 'undefined') {
-      const location = _.get(window, 'location') || {}
-      const { host = '', protocol = '' } = location
-      return host && protocol
-        ? `${protocol}//${host}`
-        : 'https://www.twreporter.org'
-    }
+  componentDidUpdate() {
+    this.tryToFetchTheBookmarkOnce()
   }
-
-  getCurrentSlug() {
-    const slugFromProps = _.get(this.props, 'articleMeta.slug')
-    if (slugFromProps) return slugFromProps
-    if (typeof window !== 'undefined') {
-      const pathname = _.get(window, 'location.pathname', '')
-      return _.get(pathname.match(/(?:\w+-)*\w+$/), [0]) || '' // take 'xxx-xxx-xx' from string '/oo-xx/oxox/xxx-xxx-xx'
+  tryToFetchTheBookmarkOnce() {
+    const articleSlug = _.get(this.props, 'articleMeta.slug')
+    /* Do nothing if the article slug has not been fetched yet, or the bookmark of it has been requested */
+    if (articleSlug && articleSlug !== this.requestedBookmarkSlug) {
+      const hostFromWindow = getHostFromWindowLocation()
+      if (this.checkIfThisArticleBookmarked()) {
+        /* Do not need to fetch bookmark if it has been already fetched (by SSR) */
+        this.requestedBookmarkSlug = articleSlug
+      } else {
+        const { jwt, userID, getSingleBookmark } = this.props
+        this.requestedBookmarkSlug = articleSlug
+        getSingleBookmark(jwt, userID, articleSlug, hostFromWindow)
+      }
     }
   }
 
@@ -140,41 +148,49 @@ class BookmarkWidget extends React.PureComponent {
   addCurrentPageToBookmarks() {
     this.checkAuthorization()
     const { jwt, userID, createSingleBookmark, articleMeta } = this.props
-    const bookmarkToBeCreated = {
-      host: this.getCurrentHost(),
-      ...articleMeta,
-    }
-    return createSingleBookmark(jwt, userID, bookmarkToBeCreated)
-  }
-
-  removeCurrentPageFromBookmarks() {
-    this.checkAuthorization()
-    const {
-      jwt,
-      userID,
-      deleteSingleBookmark,
-      articleMeta,
-      bookmark,
-    } = this.props
-    if (
-      bookmark.slug === this.getCurrentSlug() &&
-      bookmark.host === this.getCurrentHost()
-    ) {
-      return deleteSingleBookmark(jwt, userID, bookmark.id)
+    if (articleMeta) {
+      const bookmarkToBeCreated = {
+        ...articleMeta,
+        host: getHostFromWindowLocation(),
+      }
+      return createSingleBookmark(jwt, userID, bookmarkToBeCreated)
     } else {
-      // eslint-disable-next-line no-console
       console.error(
-        `Try to delete the bookmark of '${bookmark.slug}' at '${bookmark.host}', but the widget is for '${articleMeta.slug}' at '${articleMeta.host}'`
+        'Error on creating bookmark with `BookmarkWidget`: No valid articleMeta'
       )
     }
   }
 
-  render() {
-    const { bookmark, isMobile, svgColor } = this.props
-    const isBookmarked =
+  removeCurrentPageFromBookmarks() {
+    this.checkAuthorization()
+    const { jwt, userID, deleteSingleBookmark, bookmark } = this.props
+    if (bookmark.id) {
+      deleteSingleBookmark(jwt, userID, bookmark.id)
+    } else {
+      console.error(
+        'Error on deleting bookmark with `BookmarkWidget`: No valid bookmark id.'
+      )
+    }
+  }
+
+  checkIfThisArticleBookmarked() {
+    const { articleMeta, bookmark } = this.props
+    /*
+      When server-side rendering, the bookmark is fetched by a request with given `host`.
+      The `host` and `slug` should be taken from the parsed url that user requested to the server.
+      So it's safe to skip the check.
+    */
+    const isSSR = typeof window === 'undefined'
+    return (
       Boolean(bookmark) &&
-      bookmark.slug === this.getCurrentSlug() &&
-      bookmark.host === this.getCurrentHost()
+      bookmark.slug === _.get(articleMeta, 'slug') &&
+      (isSSR || bookmark.host === getHostFromWindowLocation())
+    )
+  }
+
+  render() {
+    const { isMobile, svgColor } = this.props
+    const isBookmarked = this.checkIfThisArticleBookmarked()
     return isMobile ? (
       <MobileIconContainer
         onClick={
@@ -211,27 +227,20 @@ class BookmarkWidget extends React.PureComponent {
 }
 
 BookmarkWidget.defaultProps = {
-  articleMeta: {},
+  articleMeta: null,
   mobile: false,
   svgColor: '',
 }
 
 BookmarkWidget.propTypes = {
-  articleMeta: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
-    is_external: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
-    thumbnail: PropTypes.string.isRequired,
-    published_date: PropTypes.string,
-  }).isRequired,
+  articleMeta: corePropTypes.articleMetaForBookmark.isRequired,
   isMobile: PropTypes.bool,
   svgColor: PropTypes.string,
   // Props below are provided by redux
   bookmark: corePropTypes.bookmark,
-  getSingleBookmark: PropTypes.func.isRequired,
   createSingleBookmark: PropTypes.func.isRequired,
   deleteSingleBookmark: PropTypes.func.isRequired,
+  getSingleBookmark: PropTypes.func.isRequired,
   isAuthed: PropTypes.bool.isRequired,
   jwt: PropTypes.string.isRequired,
   userID: PropTypes.number.isRequired,
