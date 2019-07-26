@@ -28,24 +28,24 @@ const Page = ({ record }) => <Article post={record} />
 
 ## How to develop this
 
-We use `webpack-dev-server` to render a mock article with all elements for development.
+There are two dev modes:
 
-```bash
-# Start the webpack-dev-server
-make dev
-```
+1. We use `webpack-dev-server` to render a mock article with all elements for development.
+
+   ```bash
+   # Start the webpack-dev-server
+   npm run dev-server
+   ```
+
+2. Or use `babel --watch` to complie the source file if there's any change happened
+
+   ```bash
+   make dev
+   ```
 
 ## How to build this
 
 ```bash
 # Build the distribution files
 make build
-```
-
-We use [Prettier](https://prettier.io/) to take care of code format and use [ESlint with JavaScript Standard Style](https://github.com/standard/eslint-config-standard) for code-quality rules. It will run `prettier` and `eslint` on pre-build and pre-commit hooks.
-
-You can also run `prettier` and `eslint` with:
-
-```bash
-make lint
 ```
