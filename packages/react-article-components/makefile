@@ -1,35 +1,48 @@
 BIN_DIR ?= node_modules/.bin
-P="\\033[32m[+]\\033[0m"
+ROOT_DIR ?= ../../
+ROOT_BIN_DIR ?= $(ROOT_DIR)node_modules/.bin
+P := "\\033[32m[+]\\033[0m"
+CURRENT_DIRNAME := $(notdir $(CURDIR))
+PACKAGE_NAME := "@twreporter/$(CURRENT_DIRNAME)"
 
 help:
+	@echo "\033[33mmake dev\033[0m - Watch source code and re-complie if there's any change"
 	@echo "\033[33mmake lint\033[0m - Run prettier and eslint"
 	@echo "\033[33mmake prettier\033[0m - Run prettier"
 	@echo "\033[33mmake build\033[0m - Build distribution package files"
 	@echo "\033[33mmake publish\033[0m - Publish the package to npm"
 
-dev:
-	@echo "$(P) Start webpack-dev-server"
-	$(BIN_DIR)/webpack-dev-server
-
-build: clean lint
+check-dep:
 	@echo "$(P) Check dependencies of the project"
-	yarn
+	yarn install
+
+print-package-info:
+	@echo "\\033[32m$(PACKAGE_NAME)\\033[0m"
+
+dev: print-package-info
+	@echo "$(P) Start babel watch mode"
+	NODE_ENV=development $(ROOT_BIN_DIR)/babel src --out-dir lib --watch --source-maps --root-mode upward
+
+build: print-package-info clean
 	@echo "$(P) Build distribution package files"
-	NODE_ENV=production $(BIN_DIR)/babel src --out-dir dist
+	NODE_ENV=production $(ROOT_BIN_DIR)/babel src --out-dir lib --root-mode upward
 
 clean:
-	@echo "$(P) Clean dist"
-	$(BIN_DIR)/rimraf dist/
+	@echo "$(P) Clean lib/"
+	$(ROOT_BIN_DIR)/rimraf lib/
 
-publish: build
+publish: check-dep prettier lint build
+	@echo "$(P) Publish package to npm"
 	npm publish
 
+# This will only prettier files under this package
 prettier:
 	@echo "$(P) Run prettier"
-	$(BIN_DIR)/prettier --write "**/*.{js,json,css,md,html,htm}"
+	$(ROOT_BIN_DIR)/prettier --write --ignore-path "$(ROOT_DIR).eslintignore" "**/*.{js,json,css,md,html,htm}"
 
-lint: prettier
+# This will only lint files under this package
+lint:
 	@echo "$(P) Run eslint"
-	$(BIN_DIR)/eslint --fix "**/*.js"
- 
-.PHONY: build clean lint prettier dev
+	$(ROOT_BIN_DIR)/eslint -c "../../.eslintrc" --ignore-path "$(ROOT_DIR).eslintignore" --fix "**/*.js"
+
+.PHONY: build clean lint prettier dev print-package-info check-dep
