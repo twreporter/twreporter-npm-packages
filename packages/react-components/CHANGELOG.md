@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### 7.0.5
+
+- Fix bookmark-widget SSR problem
+
 ## Release
 
 ### 7.0.4

@@ -98,7 +98,10 @@ function getHostFromWindowLocation() {
       return defaultHost
     }
   } catch (err) {
-    console.warn('Error on getting `host` from `window.location`:', err)
+    console.warn(
+      'Error on getting `host` and `protocol` from `window.location`:',
+      err
+    )
   }
 }
 
@@ -109,29 +112,45 @@ class BookmarkWidget extends React.PureComponent {
     this.removeCurrentPageFromBookmarks = this.removeCurrentPageFromBookmarks.bind(
       this
     )
-    this.requestedBookmarkSlug = ''
+    this.requestedBookmarkSlugs = []
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.tryToFetchTheBookmarkOnce()
   }
 
   componentDidUpdate() {
     this.tryToFetchTheBookmarkOnce()
   }
+
+  componentWillUnmount() {
+    this.requestedBookmarkSlugs = []
+  }
+
   tryToFetchTheBookmarkOnce() {
     const articleSlug = _.get(this.props, 'articleMeta.slug')
     /* Do nothing if the article slug has not been fetched yet, or the bookmark of it has been requested */
-    if (articleSlug && articleSlug !== this.requestedBookmarkSlug) {
+    /* TODO: Implement `status` for bookmark widget in redux reducer and action:
+        There should be different states below for the bookmark widget status of an article:
+          unknown: It has not checked the bookmark status yet
+          isChecking: The request to check was make but has not gotten the response yet
+          bookmarked: The article is bookmarked
+          notBookmarked: The article is not bookmarked
+          invalid: There's an error or there's no valid authentication info
+        The current code is a workaround to identify the `unknown` situation (by logging we've sent request for an article or not).
+        We only want to send request to check bookmark when the status is `unknown`.
+     */
+    if (
+      articleSlug &&
+      !this.requestedBookmarkSlugs.some(value => value === articleSlug)
+    ) {
       const hostFromWindow = getHostFromWindowLocation()
-      if (this.checkIfThisArticleBookmarked()) {
-        /* Do not need to fetch bookmark if it has been already fetched (by SSR) */
-        this.requestedBookmarkSlug = articleSlug
-      } else {
+      if (!this.checkIfThisArticleBookmarked()) {
         const { jwt, userID, getSingleBookmark } = this.props
-        this.requestedBookmarkSlug = articleSlug
         getSingleBookmark(jwt, userID, articleSlug, hostFromWindow)
       }
+      /* Do not need to fetch bookmark if it has been already fetched (by SSR) */
+      this.requestedBookmarkSlugs.unshift(articleSlug)
     }
   }
 
@@ -148,24 +167,19 @@ class BookmarkWidget extends React.PureComponent {
   addCurrentPageToBookmarks() {
     this.checkAuthorization()
     const { jwt, userID, createSingleBookmark, articleMeta } = this.props
-    if (articleMeta) {
-      const bookmarkToBeCreated = {
-        ...articleMeta,
-        host: getHostFromWindowLocation(),
-      }
-      return createSingleBookmark(jwt, userID, bookmarkToBeCreated)
-    } else {
-      console.error(
-        'Error on creating bookmark with `BookmarkWidget`: No valid articleMeta'
-      )
+    const bookmarkToBeCreated = {
+      ...articleMeta,
+      host: getHostFromWindowLocation(),
     }
+    return createSingleBookmark(jwt, userID, bookmarkToBeCreated)
   }
 
   removeCurrentPageFromBookmarks() {
     this.checkAuthorization()
     const { jwt, userID, deleteSingleBookmark, bookmark } = this.props
-    if (bookmark.id) {
-      deleteSingleBookmark(jwt, userID, bookmark.id)
+    const bookmarkID = _.get(bookmark, 'id')
+    if (bookmarkID) {
+      deleteSingleBookmark(jwt, userID, bookmarkID)
     } else {
       console.error(
         'Error on deleting bookmark with `BookmarkWidget`: No valid bookmark id.'
@@ -174,23 +188,39 @@ class BookmarkWidget extends React.PureComponent {
   }
 
   checkIfThisArticleBookmarked() {
-    const { articleMeta, bookmark } = this.props
-    /*
-      When server-side rendering, the bookmark is fetched by a request with given `host`.
-      The `host` and `slug` should be taken from the parsed url that user requested to the server.
-      So it's safe to skip the check.
-    */
-    const isSSR = typeof window === 'undefined'
-    return (
-      Boolean(bookmark) &&
-      bookmark.slug === _.get(articleMeta, 'slug') &&
-      (isSSR || bookmark.host === getHostFromWindowLocation())
-    )
+    const { bookmark } = this.props
+    if (bookmark) {
+      const isSSR = typeof window === 'undefined'
+      const hostFromWindow = getHostFromWindowLocation()
+      if (!isSSR || bookmark.host !== hostFromWindow) {
+        /*
+          When server-side rendering, the bookmark is fetched by a request with given `host`.
+          The `host` should be taken from the parsed url that user requested to the server.
+          So it's safe to skip the check.
+        */
+        console.warn(
+          'Warning on checking bookmark status in `BookmarkWidget`:',
+          'The `host` in the bookmark data is diffrent from the `host` in current `window`.',
+          'host in bookmark:',
+          bookmark.host,
+          'host in `window.location`:',
+          hostFromWindow
+        )
+      }
+    }
+    return Boolean(bookmark)
   }
 
   render() {
-    const { isMobile, svgColor } = this.props
+    const { articleMeta } = this.props
+    const { slug } = articleMeta
+
+    if (!slug) {
+      return null
+    }
+
     const isBookmarked = this.checkIfThisArticleBookmarked()
+    const { isMobile, svgColor } = this.props
     return isMobile ? (
       <MobileIconContainer
         onClick={
@@ -227,13 +257,17 @@ class BookmarkWidget extends React.PureComponent {
 }
 
 BookmarkWidget.defaultProps = {
-  articleMeta: null,
-  mobile: false,
+  articleMeta: {},
+  isMobile: false,
   svgColor: '',
+  bookmark: null,
+  isAuthed: false,
+  jwt: '',
+  userID: NaN,
 }
 
 BookmarkWidget.propTypes = {
-  articleMeta: corePropTypes.articleMetaForBookmark.isRequired,
+  articleMeta: corePropTypes.articleMetaForBookmark,
   isMobile: PropTypes.bool,
   svgColor: PropTypes.string,
   // Props below are provided by redux
@@ -241,18 +275,26 @@ BookmarkWidget.propTypes = {
   createSingleBookmark: PropTypes.func.isRequired,
   deleteSingleBookmark: PropTypes.func.isRequired,
   getSingleBookmark: PropTypes.func.isRequired,
-  isAuthed: PropTypes.bool.isRequired,
-  jwt: PropTypes.string.isRequired,
-  userID: PropTypes.number.isRequired,
+  isAuthed: PropTypes.bool,
+  jwt: PropTypes.string,
+  userID: PropTypes.number,
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const currentSlug = _.get(ownProps, 'articleMeta.slug')
   const jwt = _.get(state, [reduxStatePropKeys.auth, 'accessToken'])
   const userID = _.get(state, [reduxStatePropKeys.auth, 'userInfo', 'user_id'])
   const isAuthed = _.get(state, [reduxStatePropKeys.auth, 'isAuthed'])
-  const bookmark = _.get(state, [reduxStatePropKeys.bookmarkWidget, 'bookmark'])
+  const bookmarkInStore = _.get(state, [
+    reduxStatePropKeys.bookmarkWidget,
+    'bookmark',
+  ])
+  const bookmarkForThisWidget =
+    currentSlug && currentSlug === _.get('bookmarkInStore', 'slug')
+      ? bookmarkInStore
+      : null
   return {
-    bookmark,
+    bookmark: bookmarkForThisWidget,
     isAuthed,
     jwt,
     userID,
