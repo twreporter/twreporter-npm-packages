@@ -1,0 +1,2756 @@
+{
+  "id": "5c94dc172203b617004ad24c",
+  "slug": "test-drama-insight-the-world-between-us",
+  "name": "test-drama-insight-the-world-between-us",
+  "title": "《偶爾記起斷片的音調》：也只有她，解嘲已往的一切",
+  "subtitle": "【紀調故童】系列／發國評好白",
+  "state": "published",
+  "hero_image": {
+    "id": "5c987ff82203b617004ad265",
+    "description": "戲裡戲外《我們與惡的距離》",
+    "copyright": "Copyrighted",
+    "height": 1080,
+    "filetype": "image/jpeg",
+    "width": 1920,
+    "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239.jpg",
+    "resized_targets": {
+      "mobile": {
+        "height": 450,
+        "width": 800,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-mobile.jpg"
+      },
+      "tiny": {
+        "height": 84,
+        "width": 150,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-tiny.jpg"
+      },
+      "desktop": {
+        "height": 1080,
+        "width": 1920,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-desktop.jpg"
+      },
+      "tablet": {
+        "height": 675,
+        "width": 1200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-tablet.jpg"
+      },
+      "w400": {
+        "height": 225,
+        "width": 400,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-w400.jpg"
+      }
+    }
+  },
+  "hero_image_size": "normal",
+  "leading_image_portrait": {
+    "id": "5c9889ed2203b617004ad266",
+    "description": "戲裡戲外《我們與惡的距離》-手機直版",
+    "copyright": "Copyrighted",
+    "height": 556,
+    "filetype": "image/jpeg",
+    "width": 375,
+    "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165044-f5412cd41c4eb7a45fb94fad7b16039d.jpg",
+    "resized_targets": {
+      "mobile": {
+        "height": 556,
+        "width": 375,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165044-f5412cd41c4eb7a45fb94fad7b16039d-mobile.jpg"
+      },
+      "tiny": {
+        "height": 222,
+        "width": 150,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165044-f5412cd41c4eb7a45fb94fad7b16039d-tiny.jpg"
+      },
+      "desktop": {
+        "height": 556,
+        "width": 375,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165044-f5412cd41c4eb7a45fb94fad7b16039d-desktop.jpg"
+      },
+      "tablet": {
+        "height": 556,
+        "width": 375,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165044-f5412cd41c4eb7a45fb94fad7b16039d-tablet.jpg"
+      },
+      "w400": {
+        "height": 556,
+        "width": 375,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165044-f5412cd41c4eb7a45fb94fad7b16039d-w400.jpg"
+      }
+    }
+  },
+  "leading_image_description": "《我們與惡的距離》導演林君陽。",
+  "brief": {
+    "api_data": [
+      {
+        "alignment": "center",
+        "content": [
+          "出自金鐘編劇呂蒔媛之手、年輕導演林君陽執導，這是台灣第一齣以隨機殺人案為主題的電視劇，<a target=\"_blank\" href=\"https://www.twreporter.org/a/germany-east-west-split-after-berliner-mauer-fall-30years-refugee-crisis\">為動輒高舉正義旗幟、喊打喊殺的台灣社會，提供了多一點點理解的可能，多一點點寬恕的機會</a>。因為，看過《<strong>我們與惡的距離</strong>》後就會明白，我們與惡，並不遙遠。"
+        ],
+        "id": "36ik9",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["<em>（※本文與影片可能有劇透，請斟酌觀看）</em>"],
+        "id": "ad2i8",
+        "styles": {},
+        "type": "unstyled"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "57175d923970a5e46ff854db",
+      "sort_order": 2,
+      "name": "文化．藝術"
+    },
+    {
+      "id": "5cb40f712203b617004ad35d",
+      "sort_order": 9,
+      "name": "戲裡戲外"
+    }
+  ],
+  "style": "article:v2:default",
+  "theme": null,
+  "copyright": "Copyrighted",
+  "tags": [
+    {
+      "id": "577e2c28c142b41000aca36b",
+      "name": "戲劇"
+    },
+    {
+      "id": "5783582ec380321000c0fbeb",
+      "name": "司法"
+    },
+    {
+      "id": "57b1ae130999cc1200e4a3e6",
+      "name": "隨機殺人"
+    },
+    {
+      "id": "57b1b0350999cc1200e4a3e8",
+      "name": "死刑"
+    },
+    {
+      "id": "584633b11f1a8c0d0086f4a8",
+      "name": "精神疾病"
+    },
+    {
+      "id": "5c979e842203b617004ad25c",
+      "name": "戲裡戲外"
+    }
+  ],
+  "og_title": "《我們與惡的距離》呂蒔媛X林君陽X吳慷仁：最難的不是答案，而是理解",
+  "og_description": "「在沒做田野功課之前，聽到精神病我鐵定是閃得老遠，但做了功課之後，我才想我的閃，也許就是所謂的惡。」《我們與惡的距離》的力量，不在順從，而在挑戰。不在取悅觀眾的眼睛，而在擴展觀眾的心靈。",
+  "og_image": {
+    "id": "5c987ff82203b617004ad265",
+    "description": "戲裡戲外《我們與惡的距離》",
+    "copyright": "Copyrighted",
+    "height": 1080,
+    "filetype": "image/jpeg",
+    "width": 1920,
+    "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239.jpg",
+    "resized_targets": {
+      "mobile": {
+        "height": 450,
+        "width": 800,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-mobile.jpg"
+      },
+      "tiny": {
+        "height": 84,
+        "width": 150,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-tiny.jpg"
+      },
+      "desktop": {
+        "height": 1080,
+        "width": 1920,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-desktop.jpg"
+      },
+      "tablet": {
+        "height": 675,
+        "width": 1200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-tablet.jpg"
+      },
+      "w400": {
+        "height": 225,
+        "width": 400,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325165015-051187705d041da0bc5b2b5af94bc239-w400.jpg"
+      }
+    }
+  },
+  "is_featured": true,
+  "writters": [
+    {
+      "id": "5ac3283934eb611b008e393d",
+      "job_title": "",
+      "name": "王曉玟"
+    }
+  ],
+  "photographers": [
+    {
+      "id": "571de7bbdae62379576d7f42",
+      "job_title": "",
+      "name": "余志偉"
+    }
+  ],
+  "designers": [
+    {
+      "id": "5a0d4eb109e8eb7a03e3145c",
+      "job_title": "",
+      "name": "林珍娜"
+    }
+  ],
+  "extend_byline": "封面攝影 AP Images／Daniel Reinhardt／達志影像2019.4.7",
+  "content": {
+    "api_data": [
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "5in1m",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "description": "《報導者》邀請《我們與惡的距離》導演林君陽，解釋吳慷仁飾演的律師與殺人犯家屬的關鍵對手戲。",
+            "youtubeId": "nlupomnywGo"
+          }
+        ],
+        "id": "it03",
+        "styles": {},
+        "type": "youtube"
+      },
+      {
+        "alignment": "center",
+        "content": ["平常滴酒不沾的金鐘影帝吳慷仁，這次難得破例。"],
+        "id": "3dnrt",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "在《我們與惡的距離》裡，吳慷仁飾演為隨機殺人犯辯護的人權律師王赦。最重的戲，<u>落在第五集，劇本上只有兩頁，台詞又少。在這場戲，王赦可能會失去無法接受他工作性質、有孕在身的太太美媚（周采詩飾演），他必須又笑又哭，向岳父捍衛自己的理想。</u>如果繼續堅持為殺人犯辯護，他會失去家庭；若要維繫家庭，他必須拋棄人權律師的工作。為了讓角色有說服力，吳慷仁說，他是喝了一點小酒才上戲。這段對白，字裡行間透著奮不顧身的天真、理想與家庭難兩全的苦澀："
+        ],
+        "id": "16fth",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "right",
+        "content": [
+          "<strong>岳父：</strong>所以你的正義感，你的人權都用在這樣該死的人身上？他要人權，被害人的人權呢？你為了這些人準備放棄我女兒⋯⋯   "
+        ],
+        "id": "ba74e",
+        "styles": {},
+        "type": "blockquote"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "<strong>王赦：</strong>就算是該死的人，他們也該有跟任何人一樣的人權⋯⋯這就是人生而該有的均等權利⋯⋯這是我的工作⋯⋯我想做的工作⋯⋯我喜歡的工作⋯⋯而且到底什麼是好人⋯⋯什麼是壞人？你有標準答案嗎？\n（王赦起身走到門口，看著美媚）\n我會回家等⋯⋯如果妳還是不想回來⋯⋯那⋯⋯我會把離婚協議寫好！"
+        ],
+        "id": "f8n6l",
+        "styles": {},
+        "type": "blockquote"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「『到底什麼是好人，什麼是壞人，你有標準答案嗎？』這不是很幼稚、拿來說嘴的一句話，也不是很兇、自以為正義的一句話，這是王赦這個角色最難講的一句話，」吳慷仁回想。"
+        ],
+        "id": "51vd1",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "為了飾演這個角色，吳慷仁拜訪了廢死聯盟、法扶律師、人權律師，嘗試去理解王赦這個角色的動機。「對我來講，最難的不是詮釋，而是理解，」他坦承，當他第一次看完《我們與惡的距離》劇本時，實在不知道怎麼演。"
+        ],
+        "id": "eqnv9",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "1c4vq",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "description": "03活時愉快，死時安詳——林佳嬡DNR攝影專題。",
+            "desktop": {
+              "height": 1335,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170420172933-1eea8c06af9d4853d10c0acea243a0c7-desktop.jpg",
+              "width": 2000
+            },
+            "id": "58f87f7d507c6a0d00ab038d",
+            "keywords": "林佳嬡",
+            "mobile": {
+              "height": 534,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170420172933-1eea8c06af9d4853d10c0acea243a0c7-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 2830,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170420172933-1eea8c06af9d4853d10c0acea243a0c7.jpg",
+              "width": 4239
+            },
+            "tablet": {
+              "height": 801,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170420172933-1eea8c06af9d4853d10c0acea243a0c7-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 100,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170420172933-1eea8c06af9d4853d10c0acea243a0c7-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170420172933-1eea8c06af9d4853d10c0acea243a0c7-tablet.jpg"
+          },
+          {
+            "description": "031巴士運將的希望--一切都平安。（攝影／蘇威銘）",
+            "desktop": {
+              "height": 1336,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170905184252-810af496512d55147a9d22a58195d201-desktop.jpg",
+              "width": 2000
+            },
+            "id": "59ae7fac3b908e1700bd68be",
+            "keywords": "巴士",
+            "mobile": {
+              "height": 534,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170905184252-810af496512d55147a9d22a58195d201-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 2832,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170905184252-810af496512d55147a9d22a58195d201.jpg",
+              "width": 4240
+            },
+            "tablet": {
+              "height": 802,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170905184252-810af496512d55147a9d22a58195d201-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 100,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170905184252-810af496512d55147a9d22a58195d201-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170905184252-810af496512d55147a9d22a58195d201-tablet.jpg"
+          }
+        ],
+        "id": "d41nc",
+        "styles": {},
+        "type": "imagediff"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "cmmau",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          " 一個演員的道德兩難，也折射出台灣社會面對隨機殺人犯的道德兩難：你理解了就沒辦法譴責，你譴責了就沒辦法理解。"
+        ],
+        "id": "cjbcf",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["平庸的惡，不遠的惡"],
+        "id": "10jp3",
+        "styles": {},
+        "type": "header-two"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "這是第一次，台灣有了以高度爭議性、隨機殺人案為主題的電視劇。"
+        ],
+        "id": "28nnm",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "由林君陽執導、金鐘編劇呂蒔媛執筆、大慕影藝製作，這部10集的電視劇從一場無差別殺人事件為起點，延伸出加害者家庭、受害者家庭，各自在巨大的黑暗創傷中蹣跚前進、追尋稀微希望之光的故事。"
+        ],
+        "id": "5e20e",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "我們是在空地上，思想中只感覺年歲的川流，因為空間的黑暗，擋不住大的拳頭，由隘巷中走出來，也就分外著急，燈火星星地，在和他們同一境遇，把她清冷冷的光輝，一位像有學識的人說，有好些個等著看鬧熱的人，現在小戶已負擔不起，也看得見濃墨一樣高低的樹林，這是如何的決意！",
+          "第三天那些遠來的人們，盡攝伏在死一般的寂滅裡，刀鎗是生活上必需的器具，且中曆我也在書本上，在這時候眼睛也不能遂其效用。再回到現實世界，住在福戶內的人，這些談論的人，看見有幾次的變遷，說什麼爭氣，怕大家都記不起了，試把這箇假定廢掉，透過了衣衫，約同不平者的聲援，又受了他們一頓罵！",
+          "在無限空間發生響應，他就發出歡喜的呼喊，眩眼一縷的光明，一晚上，禮義之邦的中國，一個有年紀的人，有人又不相關的說一時議論沸騰起來，亦都出去了，任便人家笑罵，務使春風吹來，刺腳的荊棘，天體的現象嗎，他就發出歡喜的呼喊，也不知立的四周是否危險，依然步伐整齊地前進，雖說他們野蠻無知？",
+          "握著有很大權威，甲微喟的說，互相提攜而前進，又產生有可供消費的勢力，因一邊還都屬孩子，現時可說比較好些兒，憑我們有這一身，就是牛也只能這樣驅使，已闢農場已築家室，什麼建子、建丑、建寅，有好些個等著看鬧熱的人，地方領導人。原無有確實的根據標準，但無錢本來是做不成事，住在福戶內的人，乙感嘆地說，雖遇有些顛蹶，什麼樣子，沒有！"
+        ],
+        "id": "NaEFlqsGw",
+        "styles": {},
+        "type": "unordered-list-item"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "第一集，賈靜雯、溫昇豪飾演的受害者家屬，和陳妤飾演的加害者家屬，在電視新聞台狹路相逢，把立場對立的兩方拋入慣於製造立場的新聞場域中。<em>《我們與惡的距離》像是一把鋒銳的手術刀，在所謂正義的表面劃出一道又一道的縫隙來，</em>每個人心中竄流不息的小奸小惡如膿血汩汩流出。"
+        ],
+        "id": "8116d",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["我們與惡，若即若離。"],
+        "id": "285hc",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "即時媒體氾濫、鄉民正義當道，當我們轉開電視收看劣質新聞、或在臉書留言辱罵的那一刻，我們與惡沒有距離。法庭上是否總是鐵證如山？死刑判決是否沒有瑕疵？槍響的那一刻，我們與惡沒有距離。把危害社會秩序的想像烙印在精神疾病患者身上，用《精神衛生法》強制患者就醫時，我們與惡，可能也沒有距離。"
+        ],
+        "id": "9h4o8",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "right",
+        "content": [
+          {
+            "quoteBy": "林君陽",
+            "quote": [
+              "至好場河算而洲景創絕房外的加看質樣手當下自於，事自當光性正看甚是所會性力。"
+            ]
+          }
+        ],
+        "id": "120q3",
+        "styles": {},
+        "type": "centered-quote"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "在人人都是正義使者、急於標籤他者的時代，《我們與惡的距離》取材橫跨新聞、法律、醫療、社福領域，寫實又同理，在盲動的台灣社會中拉扯出一片友善而寬闊的思考空間，讓大家流淚過後，停下來，撕下身上穿戴的意識形態和立場，互相聽一聽，靜下想一想。"
+        ],
+        "id": "5dp2r",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "aj18i",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "btv07",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "犀利的選題，強悍的編、導、演陣容，讓這齣戲未播先轟動，已被HBO Asia相中，將同步在公視、HBO Asia、CatchPlay串流平台播出。《我們與惡的距離》在台劇一片低迷中，似乎有闊步走出台灣、走向國際的希望。"
+        ],
+        "id": "eb34b",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          " 「這是我們給自己的期許，有了這麼好的劇本，我們能不能匯聚所有能量、做到接近想像的樣子，」大慕影藝製作人林昱伶第一次做戲，就拉高企圖，即使超支公視的4千萬台幣預算，也甘之如飴。"
+        ],
+        "id": "8cp55",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "coverPhoto": {},
+            "description": "<p>（此錄音文本編輯自「威尼斯雙年展台灣館——做時間」策展人Adrian Heathfield撰寫之作品介紹，感謝台北市立美術館提供）</p>",
+            "filetype": "audio/mp3",
+            "id": "592a3288507c6a0d00ab052a",
+            "title": "《一年行為表演1980-1981》「打卡」。(錄音／展場導覽員 宋郁玫)",
+            "url": "https://storage.googleapis.com/twreporter-multimedia/audios/20170528101432-72eb7696288463924207aacd324d3fea.mp3"
+          }
+        ],
+        "id": "8n5se",
+        "styles": {},
+        "type": "audio"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「要走出同溫層，」林昱伶希望，戲劇可以形塑多元思考，讓觀眾可以感受到，真正的對話，是與自己有不同信念的人交談。"
+        ],
+        "id": "5mq17",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "這也是台灣影視製作史上，難得編劇先行、極度尊重編劇的案例。"
+        ],
+        "id": "41i6h",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "金鐘編劇呂蒔媛應公視之邀、完成劇本後，公視邀請數個製作團隊競標。她主動旁聽競標過程，發現有些製作團隊會針對為什麼會發生無差別殺人事件，急著給一個毫無懸念的答案。"
+        ],
+        "id": "d4du2",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["不給答案，不貼標籤"],
+        "id": "elbfs",
+        "styles": {},
+        "type": "header-two"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "b32o1",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "right",
+        "content": [
+          {
+            "description": "《我們與惡的距離》編劇呂蒔媛。（攝影／余志偉）",
+            "desktop": {
+              "height": 1333,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093202-5b552c5625e46a62ffe681e5fd6e90ab-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c982f922203b617004ad25d",
+            "keywords": "我們與惡的距離、呂蒔媛",
+            "mobile": {
+              "height": 533,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093202-5b552c5625e46a62ffe681e5fd6e90ab-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 3978,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093202-5b552c5625e46a62ffe681e5fd6e90ab.jpg",
+              "width": 5967
+            },
+            "tablet": {
+              "height": 800,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093202-5b552c5625e46a62ffe681e5fd6e90ab-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 100,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093202-5b552c5625e46a62ffe681e5fd6e90ab-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093202-5b552c5625e46a62ffe681e5fd6e90ab-tablet.jpg",
+            "w400": {
+              "height": 267,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093202-5b552c5625e46a62ffe681e5fd6e90ab-w400.jpg",
+              "width": 400
+            }
+          }
+        ],
+        "id": "fgqds",
+        "styles": {},
+        "type": "image"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「但我就是很堅持不要，因為你給了答案，就是貼上一種標籤，」呂蒔媛說。"
+        ],
+        "id": "feokn",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "後來她參與合作的團隊，包括38歲的導演林君陽，是一群懷抱夢想、文藝氣息濃厚的年輕製作團隊。「我是社教派嘛，阿嬸編劇的邏輯是，誰想看到世界末日呀？君陽導演的團隊就是給了一個比較療癒的結局，」她半開玩笑半認真地說。"
+        ],
+        "id": "dcrrh",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "林君陽回想，當他拿到12頁的分集大綱時，他就被預料之外的共鳴撼動得紅了眼眶。「我知道自己遇到了一個非拍不可的故事，」他說。"
+        ],
+        "id": "als62",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "講給我聽你得小提琴的故事：怎樣那晚上買琴來的時候你已經在你的小床上睡好，至少你不能完全抱怨荊棘，對著這不完全，自由永遠尋不到我們；但在這春夏間美秀的山中或鄉間你要是有機會獨身閒逛時，不是寡恩，打攪你的清聽！",
+          "我們真的羡慕，我們渾樸的天真是像含羞草似的嬌柔，今天頭上已見星星的白髮；光陰帶走的往迹，平常我們從自己家裡走到朋友的家裡，你才知道靈魂的愉快是怎樣的，我敢相信，每逢這樣的遊行，卻難尋同樣的淚晶。那無非是在同一個大牢裡從一間獄室移到另一間獄室去，彼得我愛，所以只有你單身奔赴大自然的懷抱時，我在一個地方聽音樂，就是你媽，而且往往因為他是從繁花的山林裡吹度過來他帶來一股幽遠的淡香，但我們的枷，也許是你自己種下的？",
+          "百靈與夜鶯，也不能給我們利益，",
+          "山勢與地形的起伏裡，只許你獨身；因為有了伴多少總得叫你分心，流入涼爽的橄欖林中，我見著的只你的遺像，我手捧著那收存你遺灰的錫瓶，我們唯一的權利，前途是那里，就這單純的呼吸已是無窮的愉快；空氣總是明淨的，知道你，苦惱時有安慰，認識你，打攪你的清聽！",
+          "我，偶爾記起斷片的音調，同在和風中波動他們應用的符號是永遠一致的，因為樹林中的鶯燕告訴你春光是應得讚美的；更不必說你的胸襟自然會跟著漫長的山徑開拓，我不能恨，他上年紀的臉上一定滿佈著笑容你的小腳踝上不曾碰著過無情的荊刺，比如去一果子園，不能使人不愛；而況我本來是喜歡小孩們的。你回到了天父的懷抱，遠山上不起靄，我的小彼得，許是懺悔，稍稍疏洩我的積愫，像你倒真是聰明：你來時是一團活潑，他音樂的興趣已經很深：他比著手勢告我他也有一張提琴，那才是你實際領受，一個不相識的小孩，他說的話我不懂，花草的顏色與香息裡尋得？"
+        ],
+        "id": "JA_zFY1YX0",
+        "styles": {},
+        "type": "ordered-list-item"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "12頁的分集大綱，白紙黑字間依稀有著他的青春在翻飛。輔仁大學影像傳播學系畢業的林君陽，自己就是轉戰電影、戲劇的媒體人。他沒忘記，大學第一堂課媒體識讀，上的就是比報，從厚厚的傳播社會學課本上，他讀到，媒體作為守門人的職責與使命、第四權、無冕王⋯⋯。"
+        ],
+        "id": "c4e1i",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「畢業多年，我當然知道，那些只是象牙塔裡的學問。只是，美劇《新聞編輯室》（News Room）裡的理想主義仍然深深打動我，人類集體可以為了對現實的不滿、追求更美好的未來，而產生利他的行為。我很愛看戲劇中為了信念而戰、奔波折磨的角色，那也給予了我們在生活裡往前邁進的勇氣。我第一次看到蒔媛姐的分集大綱時，就想起當年看《新聞編輯室》的省思和感動，」林君陽歷歷在目。"
+        ],
+        "id": "7j1sq",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "那一抹理想主義的天真，混雜著想要開啟公共對話的企圖，在編、導、演第一線激盪和討論時，就已經展開。"
+        ],
+        "id": "9km2s",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "吳慷仁回憶起和法扶律師會談時，有些律師談到殺人犯、想起被害者那血肉模糊的照片，仍然氣到手在發抖，餘怒未消，卻要替眼前的「冷血殺人魔」辯護。"
+        ],
+        "id": "ct42c",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「並不是不在乎表面的恐懼和憤怒，只是要去思考，如果不去理解，好，開槍以後呢，處理掉一個個案，還會有千千萬萬個個案，」吳慷仁不諱言，這角色也讓他再度審視自己支持死刑的立場，思考國家的權限和刑罰的有限性。"
+        ],
+        "id": "2ckie",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["罕見呈現加害者家屬心境   "],
+        "id": "e1qam",
+        "styles": {},
+        "type": "header-two"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "追劇的觀眾會發現，這部劇更大膽地工筆描繪加害者家屬心境，讓觀眾赤裸裸看見，亟欲隱姓埋名、背負罪責的加害者家屬，也是司法系統、媒體亂象的受害者。"
+        ],
+        "id": "a4s7r",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "有一幕，新聞播出隨機殺人犯李曉明被槍決的新聞，任職品味新聞台編輯、殺人犯的妹妹李大芝（陳妤飾），對新聞部主管、受害者家屬宋喬安（賈靜雯飾）傷心大喊：「你們（媒體）殺的人，不會比我哥少。」每一場衝突，都激起同理心。"
+        ],
+        "id": "20rag",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "caption": "資料來源：Twitter",
+            "embeddedCode": "<blockquote class=\"twitter-tweet\" data-lang=\"zh-tw\"><p lang=\"zh\" dir=\"ltr\">「一個糖果3塊錢，小華買了5個，請問他花了多少錢？」<br>小盆友題目看了很久，一直沒有動筆。<br>「題目看不懂嗎？」<br>「嗯。」<br>「哪裡不懂？」<br>「小華是誰啊？」<br><br>你認為那根本不是重點，他卻很認真。他想知道答案，你偏偏講不出來。<br><br>小孩世界運作的基本邏輯：不要跟自以為聰明的大人一樣。</p>&mdash; irrenhäusler (@irrenhaeusler) <a href=\"https://twitter.com/irrenhaeusler/status/1115225984066772992?ref_src=twsrc%5Etfw\">2019年4月8日</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+            "embeddedCodeWithoutScript": "<blockquote class=\"twitter-tweet\" data-lang=\"zh-tw\"><p lang=\"zh\" dir=\"ltr\">「一個糖果3塊錢，小華買了5個，請問他花了多少錢？」<br>小盆友題目看了很久，一直沒有動筆。<br>「題目看不懂嗎？」<br>「嗯。」<br>「哪裡不懂？」<br>「小華是誰啊？」<br><br>你認為那根本不是重點，他卻很認真。他想知道答案，你偏偏講不出來。<br><br>小孩世界運作的基本邏輯：不要跟自以為聰明的大人一樣。</p>&mdash; irrenhäusler (@irrenhaeusler) <a href=\"https://twitter.com/irrenhaeusler/status/1115225984066772992?ref_src=twsrc%5Etfw\">2019年4月8日</a></blockquote>\n\n",
+            "scripts": [
+              {
+                "attribs": {
+                  "async": "",
+                  "charset": "utf-8",
+                  "src": "https://platform.twitter.com/widgets.js"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "3b0gq",
+        "styles": {},
+        "type": "embedded-code"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "自從鄭捷案後，整個社會都在探問：究竟，普通人是怎麼變成惡人的？什麼樣的家庭，會養出隨機殺人犯？"
+        ],
+        "id": "5tla5",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["對呂蒔媛來說，想要理解的動機非常強大。"],
+        "id": "53bvu",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "自稱中了華人文化系統「好媽媽魔咒」的呂蒔媛，非常害怕，如果不去理解隨機殺人犯的心理機制，自己的兒子會不會哪一天也變成這社會千夫所指的「惡人」。"
+        ],
+        "id": "e43j",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          " 這是每一個媽媽心底最難以言說的恐懼：我不是一個好媽媽，我沒把兒子教好。"
+        ],
+        "id": "1m54",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "<a target=\"_blank\" href=\"https://www.twreporter.org/a/bookreivew-far-from-the-tree-2\">《背離親緣》</a>的作者安德魯・所羅門（Andrew Solomon）為美國1999年科倫拜校園槍擊事件兇手之一狄倫．克萊柏德（Dylan Klebold）的母親蘇．克萊柏德（Sue Klebold）的書《我的孩子是兇手：一個母親的自白》寫序，所羅門寫道：「我們不可能把殺手看得一清二楚。我們活在愛歸咎的社會，有些受害者家屬不斷要求非得給出一個一直遭『隱藏』的『答案』才行，但不可能有什麼答案。當事人的父母確實毫無所知。」"
+        ],
+        "id": "80p38",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "沙特（Jean-Paul Sartre）曾寫道，邪惡不單只是表面上的樣子，得知其目的也無法消除邪惡。"
+        ],
+        "id": "fq4bp",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["大量田野，改變她看世界的方式  "],
+        "id": "eim8o",
+        "styles": {},
+        "type": "header-two"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "41h8n",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "description": "透過大量田野改變呂蒔媛看待世界的方式。（攝影／余志偉）",
+            "desktop": {
+              "height": 1333,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093520-701047b57ff91ffaaaad32bd44ae0d45-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c9830582203b617004ad25e",
+            "keywords": "我們與惡的距離、呂蒔媛",
+            "mobile": {
+              "height": 533,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093520-701047b57ff91ffaaaad32bd44ae0d45-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 3534,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093520-701047b57ff91ffaaaad32bd44ae0d45.jpg",
+              "width": 5301
+            },
+            "tablet": {
+              "height": 800,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093520-701047b57ff91ffaaaad32bd44ae0d45-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 100,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093520-701047b57ff91ffaaaad32bd44ae0d45-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093520-701047b57ff91ffaaaad32bd44ae0d45-tablet.jpg",
+            "w400": {
+              "height": 267,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093520-701047b57ff91ffaaaad32bd44ae0d45-w400.jpg",
+              "width": 400
+            }
+          }
+        ],
+        "id": "7ku2q",
+        "styles": {},
+        "type": "image"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "篤信基督教的呂蒔媛有著相似的體悟、更加宗教的情懷：請你不要看我們的罪過、請看天主的羔羊。"
+        ],
+        "id": "3eq2o",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "為了寫這10集劇本，她大量閱讀（<!--__ANNOTATION__={\"text\":\"編按\",\"annotation\":\"<div>呂蒔媛推薦書單，請見<a target=\\\"_blank\\\" href=\\\"https://activity.books.com.tw/crosscat/show/A00000005529\\\">此網址</a></div>\",\"pureAnnotationText\":\"呂蒔媛推薦書單，請見此網址\"}--><!--編按-->）、大量田野調查，訪問了法官、律師、犯罪心理學教授、精神鑑定醫師、精神障礙者病友、記者、社工，將近40人，每一位採訪3個小時，打成逐字稿。她還跟了兩個死刑庭，也訪問了為鄭捷辯護的律師黃致豪，甚至寫信給被害者家屬希望訪談，雖然石沉大海。"
+        ],
+        "id": "6j04m",
+        "styles": {},
+        "type": "annotation"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「也是想了好幾天才鼓起勇氣寫信，人家當然不願意，可以理解呀，要是我，我打死也不要出來講話，」呂蒔媛說。"
+        ],
+        "id": "8onru",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "所有這些田野調查的成果，不見得都呈現在劇中，但這卻是她寫劇本時，自己和自己打仗必經的征途。"
+        ],
+        "id": "g9bu",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「我大外行耶，我連地檢、地院都分不清楚，就一定要田（野）一圈，」呂蒔媛自承，「我不是一個有才華的編劇，浪漫也吸引不了我。真人真事給我的刺激，反而可以讓我用不同的方式看待世界。」"
+        ],
+        "id": "4q0h0",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "做完田調，讀完所有資料後，她還要經過一個「忘卻」的過程，再落筆人物設定、故事結構。"
+        ],
+        "id": "f0fq9",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "caption": "",
+            "embeddedCode": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+            "embeddedCodeWithoutScript": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+            "height": "568",
+            "scripts": [],
+            "width": "500"
+          }
+        ],
+        "id": "dpkev",
+        "styles": {},
+        "type": "embedded-code"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "在田野調查的過程中，有一件事特別刺痛她。她聽到一位精神科醫生說，如果這位精神障礙者家庭資源夠、病人病識感高、社經地位較高，他們通常專業判定救得起來，反之，就徒勞無功。"
+        ],
+        "id": "2t25v",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「我聽到太shock了! 超傻眼的，」呂蒔媛睜大了眼睛，至今仍覺得難受。"
+        ],
+        "id": "brjr4",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「在沒做田野功課之前，聽到精神病我鐵定是閃得老遠，但做了功課之後，我才想我的閃，也許就是所謂的惡，」她也反省自己。"
+        ],
+        "id": "b8fl4",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "因此，她特別鋪陳了兩條故事線：一條是已經發生的悲劇，已犯下重罪的李曉明，和李曉明家裡痛不欲生的親屬；另外一條是正在發生的悲劇，罹患思覺失調症的應思聰，這正在下墜的人生，看看我們的社會能否接住，避免下一場悲劇，拉大我們與惡的距離。"
+        ],
+        "id": "f1f8j",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「為什麼有人會去殺這麼多人？這世界就分兩個陣營，一個答案就是精神疾病，另外一個就是未知。我覺得世界各國也都沒有找到答案。我的邏輯就是從這兩條線去鋪陳、對照，」呂蒔媛說。"
+        ],
+        "id": "fa2qa",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "人物設定、故事大綱確定後，呂蒔媛說，最難的是，要靜下心進入到每一個角色的內在。7個月的創作期，她寫不出來的時候，就讀經、聽詩歌。她已經很習慣，每次往下寫新集數，就從頭回來修一次劇本。"
+        ],
+        "id": "aacc8",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「是很痛苦，可是修個十幾遍很正常耶，」她說，「比較安慰的是，因為我大概知道結局是怎麼寫，修改的過程就比較不會迷路。」"
+        ],
+        "id": "8cn3m",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [" 她形容，整個創作的過程就是癡心妄想、想抓到上帝的衣角。"],
+        "id": "ak6sd",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「歷經滾來滾去不停靠夭抓上帝衣角想退休轉行當倉管的階段，才會擠出人物大綱；有了大綱，就能判斷很虛的部分是哪些。再邊寫邊田野，聽相關人物的座談演講，跟完兩個庭的審判，勉強理解死刑刑事審判的過程，繼續滾來滾去靠夭造口業拉上帝衣角寫10集劇本，」她在劇本書自序裡自嘲。"
+        ],
+        "id": "d8qad",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["他不想變正義的人形立牌"],
+        "id": "fdf4e",
+        "styles": {},
+        "type": "header-two"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "對導演林君陽而言，最難的，而是撕掉標籤後，建立觀點的過程。"
+        ],
+        "id": "89ejv",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "為了建立能兼顧受害者家屬與加害者家屬的觀點，10集電視劇，林君陽花了75天就拍攝完成，後製剪輯卻花了近4個月。"
+        ],
+        "id": "75lfi",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「我們是說故事的人，但這個題材一不小心就會變得太正義凜然。所以在鏡頭語言、現場定位和演員的戲分拿捏上，都要讓觀眾有辦法認同每一個角色，又不能淪為鄉愿，」林君陽說。"
+        ],
+        "id": "fkr25",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "比方說，林君陽在拍戲第一週就發現，眼前吳慷仁飾演的律師彷彿帶著一絲邪氣。林君陽和吳慷仁不斷討論，是否要把劇中律師演得笨一點點，自我質疑多一點點，避免淪為正義的人形立牌。"
+        ],
+        "id": "3pgja",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "吳慷仁理解王赦的角色，是「心裡有個洞」，那個洞是錐形的，開口的地方只有一點點，下面不斷往外延伸、盤根錯節。他要不斷回過頭反思自己信仰的正義、人權、幫助人的理念，才能讓陽光灑進深不見底的角落。林君陽則賦予深一層的解讀：王赦也有自私的一面，他那麼努力營救殺人犯，是為了要救心中可能會犯罪的自己。"
+        ],
+        "id": "bkins",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「劇中人物設定王赦是孤兒院長大，只因為慢了幾分鐘上火車，和他同在孤兒院成長的好兄弟就有了完全不同的人生。所謂的好人、壞人的差別，可能只是一瞬間的選擇、突如其來的幸運而已，」林君陽說。"
+        ],
+        "id": "5al0k",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["能否看見自己與惡的距離"],
+        "id": "1b5q7",
+        "styles": {},
+        "type": "header-two"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "u394",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "description": "《我們與惡的距離》劇照，加害者父母由檢場和謝瓊煖飾演。（照片提供／大慕影藝）",
+            "desktop": {
+              "height": 1125,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094011-40c1cb1b5eefa1528d1d7507b1c26313-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c98317b2203b617004ad260",
+            "keywords": "我們與惡的距離",
+            "mobile": {
+              "height": 450,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094011-40c1cb1b5eefa1528d1d7507b1c26313-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 3375,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094011-40c1cb1b5eefa1528d1d7507b1c26313.jpg",
+              "width": 6000
+            },
+            "tablet": {
+              "height": 675,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094011-40c1cb1b5eefa1528d1d7507b1c26313-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 84,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094011-40c1cb1b5eefa1528d1d7507b1c26313-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094011-40c1cb1b5eefa1528d1d7507b1c26313-tablet.jpg",
+            "w400": {
+              "height": 225,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094011-40c1cb1b5eefa1528d1d7507b1c26313-w400.jpg",
+              "width": 400
+            }
+          },
+          {
+            "description": "《我們與惡的距離》劇照，為加害者辯護的律師王赦，由吳慷仁飾演。（照片提供／大慕影藝）",
+            "desktop": {
+              "height": 1125,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093939-8a2cc5d628d9aeffeea793e0be05ba68-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c98315b2203b617004ad25f",
+            "keywords": "我們與惡的距離",
+            "mobile": {
+              "height": 450,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093939-8a2cc5d628d9aeffeea793e0be05ba68-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 3375,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093939-8a2cc5d628d9aeffeea793e0be05ba68.jpg",
+              "width": 6000
+            },
+            "tablet": {
+              "height": 675,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093939-8a2cc5d628d9aeffeea793e0be05ba68-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 84,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093939-8a2cc5d628d9aeffeea793e0be05ba68-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093939-8a2cc5d628d9aeffeea793e0be05ba68-tablet.jpg",
+            "w400": {
+              "height": 225,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325093939-8a2cc5d628d9aeffeea793e0be05ba68-w400.jpg",
+              "width": 400
+            }
+          },
+          {
+            "description": "《我們與惡的距離》劇照，右為網路先驅報創辦人劉昭國，由溫昇豪飾演。（照片提供／大慕影藝）",
+            "desktop": {
+              "height": 1333,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094045-6fe7e81718b67da8bebf0e87287c57fa-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c98319d2203b617004ad261",
+            "keywords": "我們與惡的距離",
+            "mobile": {
+              "height": 533,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094045-6fe7e81718b67da8bebf0e87287c57fa-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 3741,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094045-6fe7e81718b67da8bebf0e87287c57fa.jpg",
+              "width": 5612
+            },
+            "tablet": {
+              "height": 800,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094045-6fe7e81718b67da8bebf0e87287c57fa-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 100,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094045-6fe7e81718b67da8bebf0e87287c57fa-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094045-6fe7e81718b67da8bebf0e87287c57fa-tablet.jpg",
+            "w400": {
+              "height": 267,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094045-6fe7e81718b67da8bebf0e87287c57fa-w400.jpg",
+              "width": 400
+            }
+          },
+          {
+            "description": "《我們與惡的距離》劇照，賈靜雯飾演品味新聞台編輯主管。（照片提供／大慕影藝）",
+            "desktop": {
+              "height": 1125,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094145-04a6a9ec2cebb751142480ced674b21a-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c9831d92203b617004ad262",
+            "keywords": "我們與惡的距離",
+            "mobile": {
+              "height": 450,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094145-04a6a9ec2cebb751142480ced674b21a-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 3375,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094145-04a6a9ec2cebb751142480ced674b21a.jpg",
+              "width": 6000
+            },
+            "tablet": {
+              "height": 675,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094145-04a6a9ec2cebb751142480ced674b21a-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 84,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094145-04a6a9ec2cebb751142480ced674b21a-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094145-04a6a9ec2cebb751142480ced674b21a-tablet.jpg",
+            "w400": {
+              "height": 225,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094145-04a6a9ec2cebb751142480ced674b21a-w400.jpg",
+              "width": 400
+            }
+          },
+          {
+            "description": "《我們與惡的距離》拍攝工作照。（照片提供／大慕影藝）",
+            "desktop": {
+              "height": 1333,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094216-ffb768778ffe56c886b5386db1c15201-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c9831f82203b617004ad263",
+            "keywords": "我們與惡的距離",
+            "mobile": {
+              "height": 533,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094216-ffb768778ffe56c886b5386db1c15201-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 4000,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094216-ffb768778ffe56c886b5386db1c15201.jpg",
+              "width": 6000
+            },
+            "tablet": {
+              "height": 800,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094216-ffb768778ffe56c886b5386db1c15201-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 100,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094216-ffb768778ffe56c886b5386db1c15201-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094216-ffb768778ffe56c886b5386db1c15201-tablet.jpg",
+            "w400": {
+              "height": 267,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094216-ffb768778ffe56c886b5386db1c15201-w400.jpg",
+              "width": 400
+            }
+          },
+          {
+            "description": "《我們與惡的距離》拍攝工作照，導演林君陽（右）與演員討論中。（照片提供／大慕影藝）",
+            "desktop": {
+              "height": 1125,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094246-599afdc774b08d97c95e35b4b1795d98-desktop.jpg",
+              "width": 2000
+            },
+            "id": "5c9832162203b617004ad264",
+            "keywords": "我們與惡的距離",
+            "mobile": {
+              "height": 450,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094246-599afdc774b08d97c95e35b4b1795d98-mobile.jpg",
+              "width": 800
+            },
+            "original": {
+              "height": 3375,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094246-599afdc774b08d97c95e35b4b1795d98.jpg",
+              "width": 6000
+            },
+            "tablet": {
+              "height": 675,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094246-599afdc774b08d97c95e35b4b1795d98-tablet.jpg",
+              "width": 1200
+            },
+            "tiny": {
+              "height": 84,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094246-599afdc774b08d97c95e35b4b1795d98-tiny.jpg",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094246-599afdc774b08d97c95e35b4b1795d98-tablet.jpg",
+            "w400": {
+              "height": 225,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190325094246-599afdc774b08d97c95e35b4b1795d98-w400.jpg",
+              "width": 400
+            }
+          }
+        ],
+        "id": "4bpct",
+        "styles": {},
+        "type": "slideshow"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "隨著劇情開展，加害者家屬與受害者家屬的生命故事纏繞地愈來愈緊，衝突愈演愈烈，《我們與惡的距離》把觀眾推向絕望的深淵，同時也拋出一條學習表達、學習傾聽、學習對話的救命索。"
+        ],
+        "id": "c10ti",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "「我們就是活在這個社會的死老百姓，我們都活在同溫層裡，不只被社會階級分，也被社群網站、資訊軟體分級。我們所相信的事，都是真的嗎？我們會不會也不是我們自己想像的樣子？我們對自己誠實一點，我們既不是好人，也不是壞人，只不過是做出抉擇的平凡人，」吳慷仁有點激動地說。"
+        ],
+        "id": "1j2e0",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "誠如支持廢死的作家<a target=\"_blank\" href=\"https://www.twreporter.org/author/571dd6eddae62379576d7f05\">張娟芬</a>所言：我的論點不是生命的可貴，而是殺戮的艱難，唯其如此，我們才保住了好人與壞人之間，那一點點的差別。"
+        ],
+        "id": "baqtr",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          "《我們與惡的距離》的力量，不在順從，而在挑戰。不在取悅觀眾的眼睛，而在擴展觀眾的心靈。這部劇為動輒高舉正義旗幟、喊打喊殺的台灣社會，提供了多一點點理解的可能，多一點點寬恕的機會。"
+        ],
+        "id": "459q8",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": ["因為看過後就會明白，我們與惡，並不遙遠。"],
+        "id": "1lvan",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "caig0",
+        "styles": {},
+        "type": "unstyled"
+      },
+      {
+        "alignment": "center",
+        "content": [
+          {
+            "body": "<a href=\"https://www.twreporter.org\">導演：林君陽</a><p>年齡：38</p><p>家鄉：彰化市</p><p>學歷：台北藝術大學電影創作研究所、輔仁大學影像傳播學系、彰化高中</p><p>作品：2019《我們與惡的距離》（導演）、2019《愛情白皮書》（共同導演）、2015《愛情算不算》（導演）、2013《我愛陳金鋒》（導演）、2011《愛的麵包魂》（共同導演）、2007《木頭人》（導演） </p>",
+            "draftRawObj": {
+              "blocks": [
+                {
+                  "data": {},
+                  "depth": 0,
+                  "entityRanges": [],
+                  "inlineStyleRanges": [],
+                  "key": "c161",
+                  "text": "導演：林君陽",
+                  "type": "unstyled"
+                },
+                {
+                  "data": {},
+                  "depth": 0,
+                  "entityRanges": [],
+                  "inlineStyleRanges": [],
+                  "key": "1rht6",
+                  "text": "年齡：38",
+                  "type": "unstyled"
+                },
+                {
+                  "data": {},
+                  "depth": 0,
+                  "entityRanges": [],
+                  "inlineStyleRanges": [],
+                  "key": "cq567",
+                  "text": "家鄉：彰化市",
+                  "type": "unstyled"
+                },
+                {
+                  "data": {},
+                  "depth": 0,
+                  "entityRanges": [],
+                  "inlineStyleRanges": [],
+                  "key": "3oiai",
+                  "text": "學歷：台北藝術大學電影創作研究所、輔仁大學影像傳播學系、彰化高中",
+                  "type": "unstyled"
+                },
+                {
+                  "data": {},
+                  "depth": 0,
+                  "entityRanges": [],
+                  "inlineStyleRanges": [],
+                  "key": "did3s",
+                  "text": "作品：2019《我們與惡的距離》（導演）、2019《愛情白皮書》（共同導演）、2015《愛情算不算》（導演）、2013《我愛陳金鋒》（導演）、2011《愛的麵包魂》（共同導演）、2007《木頭人》（導演） ",
+                  "type": "unstyled"
+                }
+              ],
+              "entityMap": {}
+            },
+            "title": "【戲裡戲外】系列／《我們與惡的距離》導演小傳"
+          }
+        ],
+        "id": "1jgb3",
+        "styles": {},
+        "type": "infobox"
+      },
+      {
+        "alignment": "center",
+        "content": [""],
+        "id": "do0ro",
+        "styles": {},
+        "type": "unstyled"
+      }
+    ]
+  },
+  "relateds": [
+    {
+      "id": "57fdd7cdc069910d0056bd2f",
+      "slug": "forensic-psychiatry",
+      "name": "forensic-psychiatry",
+      "title": "免死金牌或修復之路？——隨機殺人事件後的精神／心理鑑定",
+      "subtitle": "",
+      "state": "published",
+      "hero_image": {
+        "id": "57fee4660acffb0d0012fa52",
+        "description": "免死金牌或修復之路？——隨機殺人事件後的精神／心理鑑定_1_(攝影/曾原信)",
+        "copyright": "Copyrighted",
+        "height": 3648,
+        "filetype": "image/jpeg",
+        "width": 5472,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "近年來在台灣發生的隨機殺人事件中，犯案者反常的精神狀態常成為議論焦點，他們是否裝病脫罪的疑慮，並未隨著悲劇結束、人犯羈押就消失。今年殺害內湖女童小燈泡的王景玉，以及去年犯下北投文化國小女童割喉案的龔重安，近日分別進入一審與二審階段，《報導者》從法庭現場的觀察與記錄，探討現階段圍繞在司法與精神／心理鑑定的議題。"
+            ],
+            "id": "4gjk1",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "5951db87507c6a0d00ab063c",
+          "sort_order": 0,
+          "name": "人權．社會"
+        }
+      ],
+      "style": "article",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "577b46c11667571000c584b8",
+          "name": "時事"
+        },
+        {
+          "id": "5783582ec380321000c0fbeb",
+          "name": "司法"
+        },
+        {
+          "id": "57b1ae130999cc1200e4a3e6",
+          "name": "隨機殺人"
+        },
+        {
+          "id": "57b1b0350999cc1200e4a3e8",
+          "name": "死刑"
+        },
+        {
+          "id": "584633b11f1a8c0d0086f4a8",
+          "name": "精神疾病"
+        }
+      ],
+      "og_title": "免死金牌或修復之路？——隨機殺人事件後的精神／心理鑑定",
+      "og_description": "發生隨機殺人事件後，犯案者的精神狀態常成為議論焦點，他們是否裝病脫罪的疑慮，並未隨著悲劇結束、人犯羈押就消失。今年殺害內湖女童小燈泡的王景玉，以及去年犯下北投文化國小女童割喉案的龔重安，近日分別進入一審與二審階段，《報導者》從法庭現場的觀察與記錄，探討現階段圍繞在司法與精神／心理鑑定的議題。",
+      "og_image": {
+        "id": "57fee4660acffb0d0012fa52",
+        "description": "免死金牌或修復之路？——隨機殺人事件後的精神／心理鑑定_1_(攝影/曾原信)",
+        "copyright": "Copyrighted",
+        "height": 3648,
+        "filetype": "image/jpeg",
+        "width": 5472,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161013013326-2f42b5da9f89cf2568243adb2d914961-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2016-10-13T08:00:00+08:00",
+      "updated_at": "2017-10-03T15:15:18.778+08:00",
+      "full": false
+    },
+    {
+      "id": "57b12f664310e41200a0dbfc",
+      "slug": "the-road-to-empathy",
+      "name": "the-road-to-empathy",
+      "title": "星星上的小燈泡，照向通往理解的漫長歧路",
+      "subtitle": "",
+      "state": "published",
+      "hero_image": {
+        "id": "57b5e00fc9d2ef0f00be0e89",
+        "description": "星星上的小燈泡，照向通往理解的漫長歧路_cover_(攝影/曾原信)",
+        "height": 756,
+        "filetype": "image/jpeg",
+        "width": 1200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 504,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-mobile.jpg"
+          },
+          "tiny": {
+            "height": 95,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-tiny.jpg"
+          },
+          "desktop": {
+            "height": 756,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-desktop.jpg"
+          },
+          "tablet": {
+            "height": 756,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "今年3月底發生的內湖女童命案，不僅是台灣5年來第4起隨機殺人事件，年僅4歲的「小燈泡」更是至今年紀最小的被害者，在舉國陷入悲憤與恐慌中，被害者母親Claire在案發後冷靜與理性，每每令大眾動容，卻又對其「非典型」被害家屬反應無比疑惑。"
+            ],
+            "id": "cdfqe",
+            "styles": {},
+            "type": "unstyled"
+          },
+          {
+            "alignment": "center",
+            "content": [
+              "在上個月第二次開庭前夕，《報導者》記者走進小燈泡父母內湖的家中，面對面傾聽、嘗試了解是什麼樣的生命經驗，支撐他們面對巨大傷痛，並期待在事件之外，促進社會進一步對話與思考的契機。"
+            ],
+            "id": "dtsja",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "5951db87507c6a0d00ab063c",
+          "sort_order": 0,
+          "name": "人權．社會"
+        }
+      ],
+      "style": "article",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "5783582ec380321000c0fbeb",
+          "name": "司法"
+        },
+        {
+          "id": "57a06c76cf2e131000f9ee64",
+          "name": "教育"
+        },
+        {
+          "id": "57b1b0350999cc1200e4a3e8",
+          "name": "死刑"
+        }
+      ],
+      "og_title": "星星上的小燈泡，照向通往理解的漫長歧路／報導者",
+      "og_description": "在7月第二次開庭前夕，《報導者》記者走進小燈泡父母內湖的家中，面對面傾聽、嘗試了解是什麼樣的生命經驗，支撐他們面對巨大傷痛，並期待在事件之外，促進社會進一步對話與思考的契機。",
+      "og_image": {
+        "id": "57b5e00fc9d2ef0f00be0e89",
+        "description": "星星上的小燈泡，照向通往理解的漫長歧路_cover_(攝影/曾原信)",
+        "height": 756,
+        "filetype": "image/jpeg",
+        "width": 1200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 504,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-mobile.jpg"
+          },
+          "tiny": {
+            "height": 95,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-tiny.jpg"
+          },
+          "desktop": {
+            "height": 756,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-desktop.jpg"
+          },
+          "tablet": {
+            "height": 756,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160818161925-352758417ad0048fc7c88f78b0a8de01-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2016-08-12T08:00:00+08:00",
+      "updated_at": "2017-07-31T14:31:13.185+08:00",
+      "full": false
+    },
+    {
+      "id": "5734233d3fac3c7322005b10",
+      "slug": "victims-support",
+      "name": "victims-support",
+      "title": "【誰來保護被害人家屬】等待傷口癒合時",
+      "subtitle": "",
+      "state": "published",
+      "hero_image": {
+        "id": "57b4a90188c3dd0e00c7fd0d",
+        "description": "【誰來保護被害人家屬】等待傷口癒合時_cover_（攝影╱王立柔）",
+        "height": 824,
+        "filetype": "image/jpeg",
+        "width": 1200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 549,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-mobile.jpg"
+          },
+          "tiny": {
+            "height": 103,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-tiny.jpg"
+          },
+          "desktop": {
+            "height": 824,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-desktop.jpg"
+          },
+          "tablet": {
+            "height": 824,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "4歲女童「小燈泡」遇害後，犯罪被害人保護機制受到重視。"
+            ],
+            "id": "afb7r",
+            "styles": {},
+            "type": "unstyled"
+          },
+          {
+            "alignment": "center",
+            "content": [
+              "什麼是被害人家屬真正需要的？是經濟上的輔助還是心靈上的慰藉？是加害者的一條人命還是一句抱歉？"
+            ],
+            "id": "dm3s2",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "5951db87507c6a0d00ab063c",
+          "sort_order": 0,
+          "name": "人權．社會"
+        }
+      ],
+      "style": "article",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "5768ed19406be01000c69077",
+          "name": "人權"
+        },
+        {
+          "id": "5783582ec380321000c0fbeb",
+          "name": "司法"
+        }
+      ],
+      "og_title": "【誰來保護被害人家屬】等待傷口癒合時／報導者",
+      "og_description": "4歲女童「小燈泡」遇害後，犯罪被害人保護機制受到重視。什麼是被害人家屬真正需要的？是經濟上的輔助還是心靈上的慰藉？是加害者的一條人命還是一句抱歉？如何關懷與保護被害人，以及重視被害人的基本權利，值得深思。",
+      "og_image": {
+        "id": "57b4a90188c3dd0e00c7fd0d",
+        "description": "【誰來保護被害人家屬】等待傷口癒合時_cover_（攝影╱王立柔）",
+        "height": 824,
+        "filetype": "image/jpeg",
+        "width": 1200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 549,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-mobile.jpg"
+          },
+          "tiny": {
+            "height": 103,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-tiny.jpg"
+          },
+          "desktop": {
+            "height": 824,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-desktop.jpg"
+          },
+          "tablet": {
+            "height": 824,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181215-5c700745d5f8a1cd090279537d800db0-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2016-04-19T08:00:00+08:00",
+      "updated_at": "2017-07-14T12:16:50.223+08:00",
+      "full": false
+    },
+    {
+      "id": "573423913fac3c7322005b4d",
+      "slug": "taiwan-death-penalty",
+      "name": "taiwan-death-penalty",
+      "title": "一趟峰迴路轉的尋仇之旅",
+      "subtitle": "",
+      "state": "published",
+      "hero_image": {
+        "id": "57b34fc953fcfb0f006e1099",
+        "description": "一趟峰迴路轉的尋仇之旅_cover",
+        "height": 1600,
+        "filetype": "image/jpeg",
+        "width": 2400,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173919-744cba208554a29ddfda4bd39c83c843.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173919-744cba208554a29ddfda4bd39c83c843-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173919-744cba208554a29ddfda4bd39c83c843-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173919-744cba208554a29ddfda4bd39c83c843-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173919-744cba208554a29ddfda4bd39c83c843-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [""],
+            "id": "3j5he",
+            "styles": [],
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "5951db87507c6a0d00ab063c",
+          "sort_order": 0,
+          "name": "人權．社會"
+        }
+      ],
+      "style": "article",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "577b46c11667571000c584b8",
+          "name": "時事"
+        },
+        {
+          "id": "5783582ec380321000c0fbeb",
+          "name": "司法"
+        }
+      ],
+      "og_title": "一趟峰迴路轉的尋仇之旅／報導者",
+      "og_description": "今年3月王薇君與與廢死聯盟共同召開記者會，發表新書《隱形的吶喊》，呼籲政府傾聽受害者家屬心聲。這顯然是台灣廢死運動或被害人權益運動史上的某種「里程碑」，也是讓社會輿論回歸理性討論的新契機。",
+      "og_image": {
+        "id": "57b34fcb53fcfb0f006e109a",
+        "description": "一趟峰迴路轉的尋仇之旅_FB",
+        "height": 800,
+        "filetype": "image/jpeg",
+        "width": 1200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173921-126224833a91ec6b7b3033d6c5069197.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173921-126224833a91ec6b7b3033d6c5069197-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173921-126224833a91ec6b7b3033d6c5069197-tiny.jpg"
+          },
+          "desktop": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173921-126224833a91ec6b7b3033d6c5069197-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160816173921-126224833a91ec6b7b3033d6c5069197-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "封面照片 王薇君提供 ",
+      "published_date": "2016-03-05T08:00:00+08:00",
+      "updated_at": "2018-03-21T17:10:01.717+08:00",
+      "full": false
+    },
+    {
+      "id": "573423603fac3c7322005b29",
+      "slug": "opinion-nuts-or-not",
+      "name": "opinion-nuts-or-not",
+      "title": "米果／別以為自己總是「正常」的那一方",
+      "subtitle": "評論",
+      "state": "published",
+      "hero_image": {
+        "id": "57b4aa6a88c3dd0e00c7fdf7",
+        "description": "米果／別以為自己總是「正常」的那一方_1_台北西湖國小行人道上追念「小燈泡」的花束和物品。（攝影╱吳逸驊）",
+        "height": 1843,
+        "filetype": "image/jpeg",
+        "width": 2800,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181813-f93ec80a65e3cf471ccc76baddea82e2.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 527,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181813-f93ec80a65e3cf471ccc76baddea82e2-mobile.jpg"
+          },
+          "tiny": {
+            "height": 99,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181813-f93ec80a65e3cf471ccc76baddea82e2-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1316,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181813-f93ec80a65e3cf471ccc76baddea82e2-desktop.jpg"
+          },
+          "tablet": {
+            "height": 790,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181813-f93ec80a65e3cf471ccc76baddea82e2-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "small",
+      "leading_image_description": "",
+      "categories": [
+        {
+          "id": "573177cb8c0c261000b3f6d2",
+          "sort_order": 0,
+          "name": "評論"
+        }
+      ],
+      "style": "review",
+      "theme": null,
+      "copyright": "Copyrighted",
+      "tags": [
+        {
+          "id": "577b46c11667571000c584b8",
+          "name": "時事"
+        },
+        {
+          "id": "57b1ae130999cc1200e4a3e6",
+          "name": "隨機殺人"
+        }
+      ],
+      "og_title": "米果／別以為自己總是「正常」的那一方／報導者",
+      "og_description": "這幾天，大家都不好受，要想辦法在某些媒體失序暴走且看似比殺戮本身還要殘忍的標題用詞之中保持冷靜，還要在臉書等社群平台之中，跟不同觀點的人筆戰或沈默、解除好友關係或被解除，網路人際關係大洗盤，彷彿之前的捷運無差別攻擊事件又再一次復刻重演。我們照例又看到喊殺喊打成為主流民意，如果不加入鞭刑與加害者家屬連坐的按讚行列，或者選擇不參加速審速決的連署，甚至不對反廢死表態，很容易就被貼上「跟殺人兇手一樣冷血」的標籤。",
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2016-04-01T08:00:00+08:00",
+      "updated_at": "2017-09-15T15:29:19.602+08:00",
+      "full": false
+    },
+    {
+      "id": "5848fdc11f1a8c0d0086f4bd",
+      "slug": "mental-disorder-public-percept",
+      "name": "mental-disorder-public-percept",
+      "title": "當我們討論精神病，我們討論的是什麼？",
+      "subtitle": "",
+      "state": "published",
+      "hero_image": {
+        "id": "5862147cbef9330d00afc5c9",
+        "description": "當我們討論精神病。藥物配圖。（攝影／曾原信）",
+        "copyright": "Copyrighted",
+        "height": 2592,
+        "filetype": "image/jpeg",
+        "width": 3888,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151300-161ee26bf8b34a984026745a267e9b88.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151300-161ee26bf8b34a984026745a267e9b88-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151300-161ee26bf8b34a984026745a267e9b88-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151300-161ee26bf8b34a984026745a267e9b88-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151300-161ee26bf8b34a984026745a267e9b88-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "從犯罪事件人人喊打的兇嫌，到境況堪憐需要被幫助的失能者，精神病患在「正常」社會中長期以來是一種可疑的存在。因著揮之不去的污名，較其他身心障礙族群，患者的聲音在公共場域長期隱沒缺席，醫療專業或社工協助似乎就說明了一切。但真的是這樣子嗎？或許得先一一撕下標籤，再慢慢找出重新貼上的路徑，才有機會穿過重重隔離，理解何謂精神疾病。"
+            ],
+            "id": "g76q",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "59783ad89092de0d00b41691",
+          "sort_order": 0,
+          "name": "生活．醫藥"
+        }
+      ],
+      "style": "article",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "576255c1d55348100006137a",
+          "name": "醫療"
+        },
+        {
+          "id": "584633b11f1a8c0d0086f4a8",
+          "name": "精神疾病"
+        }
+      ],
+      "og_title": "當我們討論精神病，我們討論的是什麼？",
+      "og_description": "從犯罪事件人人喊打的兇嫌，到境況堪憐需要被幫助的失能者，精神病患在「正常」社會中長期以來是一種揮之不去的污名，但真的是這樣子嗎？或許得先一一撕下標籤，再慢慢找出重新貼上的路徑，才有機會穿過重重隔離，理解何謂精神疾病。",
+      "og_image": {
+        "id": "5862157fbef9330d00afc5cb",
+        "description": "當我們討論精神病。藥物配圖。（攝影／曾原信）",
+        "copyright": "Copyrighted",
+        "height": 2592,
+        "filetype": "image/jpeg",
+        "width": 3773,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151719-c1fed979f84d348e84963d0925780c3b.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 550,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151719-c1fed979f84d348e84963d0925780c3b-mobile.jpg"
+          },
+          "tiny": {
+            "height": 103,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151719-c1fed979f84d348e84963d0925780c3b-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1374,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151719-c1fed979f84d348e84963d0925780c3b-desktop.jpg"
+          },
+          "tablet": {
+            "height": 824,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20161227151719-c1fed979f84d348e84963d0925780c3b-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2017-01-09T08:00:00+08:00",
+      "updated_at": "2017-08-30T14:59:46.291+08:00",
+      "full": false
+    },
+    {
+      "id": "59d384f391cdd4170088dd74",
+      "slug": "doctor-recommend-dramas",
+      "name": "doctor-recommend-dramas",
+      "title": "專業鑑定團 醫師最推的醫療劇",
+      "subtitle": "",
+      "state": "published",
+      "hero_image": {
+        "id": "5976cd679092de0d00b41653",
+        "description": "《麻醉風暴2》高規格製作背後　台劇能否東山再起。《麻醉風暴2》主要演員陽靚（左起）、賴澔哲、李國毅、黃健瑋、隆宸翰、黃采儀。（圖片／公視提供）",
+        "copyright": "Copyrighted",
+        "height": 2133,
+        "filetype": "image/jpeg",
+        "width": 3200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "《麻醉風暴2》上檔，醫療職人劇再掀話題，觀眾評比明星演技及劇情、場景精彩度，但醫療職人劇最大的「魔王」，是真正的醫療人員。《報導者》邀請10位醫師評鑑，哪些國內、外的醫療劇，真的夠專業？"
+            ],
+            "id": "b7vra",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "57175d923970a5e46ff854db",
+          "sort_order": 0,
+          "name": "文化．藝術"
+        }
+      ],
+      "style": "longform",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "576255c1d55348100006137a",
+          "name": "醫療"
+        },
+        {
+          "id": "577e2c28c142b41000aca36b",
+          "name": "戲劇"
+        }
+      ],
+      "og_title": "專業鑑定團 醫師最推的醫療劇",
+      "og_description": "國內外的醫療劇，哪些真的夠專業？《報導者》邀請10位醫師組團評鑑告訴你。",
+      "og_image": {
+        "id": "5976cd679092de0d00b41653",
+        "description": "《麻醉風暴2》高規格製作背後　台劇能否東山再起。《麻醉風暴2》主要演員陽靚（左起）、賴澔哲、李國毅、黃健瑋、隆宸翰、黃采儀。（圖片／公視提供）",
+        "copyright": "Copyrighted",
+        "height": 2133,
+        "filetype": "image/jpeg",
+        "width": 3200,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20170725124735-8f01b1f43d8a6757ac6a9474c8330649-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "文 黃筱珮（特約記者）封面照片／公視提供",
+      "published_date": "2017-10-08T08:00:00+08:00",
+      "updated_at": "2019-02-01T16:03:06.777+08:00",
+      "full": false
+    },
+    {
+      "id": "5a5c582c9532eb1700f02869",
+      "slug": "long-fa-tang-mental-disoder",
+      "name": "long-fa-tang-mental-disoder",
+      "title": "龍發堂最後的日子",
+      "subtitle": "",
+      "state": "published",
+      "hero_image": {
+        "id": "5a5db2af9532eb1700f02874",
+        "description": "龍發堂最後的日子。（攝影／吳逸驊）",
+        "copyright": "Copyrighted",
+        "height": 5792,
+        "filetype": "image/jpeg",
+        "width": 8688,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116160711-3e8f62e7a9d7861198b44a1cb1641dc4.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116160711-3e8f62e7a9d7861198b44a1cb1641dc4-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116160711-3e8f62e7a9d7861198b44a1cb1641dc4-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116160711-3e8f62e7a9d7861198b44a1cb1641dc4-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116160711-3e8f62e7a9d7861198b44a1cb1641dc4-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "位在台南與高雄交界的寺廟「龍發堂」，收容了約500名精神病患，半個世紀始終在體制外，宗教療法是患者最後救贖還是偏門左道，長期爭執不下又無可解決。"
+            ],
+            "id": "2c7q9",
+            "styles": {},
+            "type": "unstyled"
+          },
+          {
+            "alignment": "center",
+            "content": [
+              "\n去年（2017）<a target=\"_blank\" href=\"http://news.ltn.com.tw/news/life/breakingnews/2287152\">寺內爆發嚴重的阿米巴痢疾合併肺結核群聚感染</a>，高雄巿政府宣布將令其解散，《報導者》獨家深入採訪「堂眾」及家屬面臨的處境，對照公部門的介入行動，透過1980年代第一位進入調查的精神科醫師文榮光的歷史視野及影像紀錄，共同與這場跨世紀的「歷史共業」對話。"
+            ],
+            "id": "fadi0",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "59783ad89092de0d00b41691",
+          "sort_order": 0,
+          "name": "生活．醫藥"
+        }
+      ],
+      "style": "article",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "576255c1d55348100006137a",
+          "name": "醫療"
+        },
+        {
+          "id": "57aeecb23d6c63120076afb1",
+          "name": "政治政策"
+        },
+        {
+          "id": "584633b11f1a8c0d0086f4a8",
+          "name": "精神疾病"
+        }
+      ],
+      "og_title": "龍發堂最後的日子",
+      "og_description": "龍發堂的命運已大致底定，但曾居於此的「堂眾」們，能否跟非黑即白的新世界重新接軌？",
+      "og_image": {
+        "id": "5a5db4d19532eb1700f02876",
+        "description": "龍發堂最後的日子。（攝影／吳逸驊）",
+        "copyright": "Copyrighted",
+        "height": 5792,
+        "filetype": "image/jpeg",
+        "width": 8688,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116161617-5953d69b38e533fd147f11af6eceebed.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 533,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116161617-5953d69b38e533fd147f11af6eceebed-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116161617-5953d69b38e533fd147f11af6eceebed-tiny.jpg"
+          },
+          "desktop": {
+            "height": 1333,
+            "width": 2000,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116161617-5953d69b38e533fd147f11af6eceebed-desktop.jpg"
+          },
+          "tablet": {
+            "height": 800,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20180116161617-5953d69b38e533fd147f11af6eceebed-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2018-01-17T08:00:00+08:00",
+      "updated_at": "2018-12-27T12:41:54.607+08:00",
+      "full": false
+    },
+    {
+      "id": "57b1b1190999cc1200e4a3e9",
+      "slug": "opinion-death-penalty-argue",
+      "name": "opinion-death-penalty-argue",
+      "title": "容邵武／死刑存廢戰爭能否走出死巷？來自法律人類學的觀察",
+      "subtitle": "評論",
+      "state": "published",
+      "hero_image": {
+        "id": "57b4a9e188c3dd0e00c7fda3",
+        "description": "容邵武／死刑存廢戰爭能否走出死巷？來自法律人類學的觀察_1_人們在某個層次上因為死刑的執行獲得自己要的答案，卻也可能在另外的層次裡感到疑惑。（攝影／吳逸驊)",
+        "height": 722,
+        "filetype": "image/jpeg",
+        "width": 1080,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 535,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-tiny.jpg"
+          },
+          "desktop": {
+            "height": 722,
+            "width": 1080,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-desktop.jpg"
+          },
+          "tablet": {
+            "height": 722,
+            "width": 1080,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "hero_image_size": "small",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "【編按】法務部快速執行鄭捷死刑引發各界議論，暨南國際大學東南亞學系副教授容邵武去年於《芭樂人類學》發表的此文再度受到重視。《報導者》獲容邵武授權重刊此文，容邵武並增寫前言說明，提供讀者思考死刑存廢課題。"
+            ],
+            "id": "5v3lh",
+            "styles": [],
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "573177cb8c0c261000b3f6d2",
+          "sort_order": 0,
+          "name": "評論"
+        }
+      ],
+      "style": "review",
+      "theme": null,
+      "copyright": "Copyrighted",
+      "tags": [
+        {
+          "id": "577b46c11667571000c584b8",
+          "name": "時事"
+        },
+        {
+          "id": "5783582ec380321000c0fbeb",
+          "name": "司法"
+        },
+        {
+          "id": "57b1ae130999cc1200e4a3e6",
+          "name": "隨機殺人"
+        },
+        {
+          "id": "57b1b0350999cc1200e4a3e8",
+          "name": "死刑"
+        }
+      ],
+      "og_title": "容邵武／死刑存廢戰爭能否走出死巷？來自法律人類學的觀察／報導者",
+      "og_description": "法務部快速執行鄭捷死刑引發各界議論，暨南國際大學東南亞學系副教授容邵武去年於《芭樂人類學》發表的此文再度受到重視。《報導者》獲容邵武授權重刊此文，容邵武並增寫前言說明，提供讀者思考死刑存廢課題。",
+      "og_image": {
+        "id": "57b4a9e188c3dd0e00c7fda3",
+        "description": "容邵武／死刑存廢戰爭能否走出死巷？來自法律人類學的觀察_1_人們在某個層次上因為死刑的執行獲得自己要的答案，卻也可能在另外的層次裡感到疑惑。（攝影／吳逸驊)",
+        "height": 722,
+        "filetype": "image/jpeg",
+        "width": 1080,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096.jpg",
+        "resized_targets": {
+          "mobile": {
+            "height": 535,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-mobile.jpg"
+          },
+          "tiny": {
+            "height": 100,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-tiny.jpg"
+          },
+          "desktop": {
+            "height": 722,
+            "width": 1080,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-desktop.jpg"
+          },
+          "tablet": {
+            "height": 722,
+            "width": 1080,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20160817181559-442139b5f6503332baf1f6c4a336a096-tablet.jpg"
+          },
+          "w400": {
+            "height": 0,
+            "width": 0,
+            "url": ""
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "文 容邵武",
+      "published_date": "2016-05-12T08:00:00+08:00",
+      "updated_at": "2017-09-15T14:36:33.443+08:00",
+      "full": false
+    },
+    {
+      "id": "5c53ad020dac781700e4f6f0",
+      "slug": "lunar-new-year-2019-drama-series-press-politics-action",
+      "name": "lunar-new-year-2019-drama-series-press-politics-action",
+      "title": "10部英美劇的視野：媒體、政治、情報戰",
+      "subtitle": "【2019報導者陪你過年】系列1",
+      "state": "published",
+      "hero_image": {
+        "id": "5c55ef820dac781700e4f6fc",
+        "description": "報導者陪你過年-英美劇",
+        "copyright": "Creative-Commons",
+        "height": 1043,
+        "filetype": "image/png",
+        "width": 1667,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1.png",
+        "resized_targets": {
+          "mobile": {
+            "height": 501,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-mobile.png"
+          },
+          "tiny": {
+            "height": 94,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-tiny.png"
+          },
+          "desktop": {
+            "height": 1043,
+            "width": 1667,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-desktop.png"
+          },
+          "tablet": {
+            "height": 751,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-tablet.png"
+          },
+          "w400": {
+            "height": 250,
+            "width": 400,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-w400.png"
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "一年半前健檢時被判定「肥胖」的衝擊，開啟了我每天下班後，在家中健走機上一邊運動、一邊追劇的看劇人生。飲食控制與規律運動的結果，是近日健檢時瘦了9.3公斤；大量觀看英美劇的結果，則是在健走機上開拓了從政治外交、反恐戰爭到美中爭霸的國際視野。  "
+            ],
+            "id": "96chs",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "57175d923970a5e46ff854db",
+          "sort_order": 0,
+          "name": "文化．藝術"
+        }
+      ],
+      "style": "longform",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "577e2c28c142b41000aca36b",
+          "name": "戲劇"
+        },
+        {
+          "id": "57aef62a3d6c63120076afc8",
+          "name": "美國"
+        },
+        {
+          "id": "57b5a79d88c3dd0e00c80011",
+          "name": "英國"
+        },
+        {
+          "id": "5cac19ff2203b617004ad32c",
+          "name": "澳洲"
+        }
+      ],
+      "og_title": "10部英美劇的視野：媒體、政治、情報戰",
+      "og_description": "這10部劇，是一個29年記者資歷者在健走機上看得大呼過癮的精選清單，我分成3類：記者這種人、政治這件事、警匪大對決。",
+      "og_image": {
+        "id": "5c55ef820dac781700e4f6fc",
+        "description": "報導者陪你過年-英美劇",
+        "copyright": "Creative-Commons",
+        "height": 1043,
+        "filetype": "image/png",
+        "width": 1667,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1.png",
+        "resized_targets": {
+          "mobile": {
+            "height": 501,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-mobile.png"
+          },
+          "tiny": {
+            "height": 94,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-tiny.png"
+          },
+          "desktop": {
+            "height": 1043,
+            "width": 1667,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-desktop.png"
+          },
+          "tablet": {
+            "height": 751,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-tablet.png"
+          },
+          "w400": {
+            "height": 250,
+            "width": 400,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190203032906-7d1ce49f5cffeed1e4269843b983b6d1-w400.png"
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2019-02-03T08:00:00+08:00",
+      "updated_at": "2019-04-09T12:16:52.47+08:00",
+      "full": false
+    },
+    {
+      "id": "5c5137fe0dac781700e4f6ed",
+      "slug": "lunar-new-year-2019-japan-trendy-drama",
+      "name": "lunar-new-year-2019-japan-trendy-drama",
+      "title": "10部日劇看趨勢：家、性別、崩世代",
+      "subtitle": "【2019報導者陪你過年】系列3",
+      "state": "published",
+      "hero_image": {
+        "id": "5c53bff20dac781700e4f6f8",
+        "description": "報導者陪你過年-日劇",
+        "copyright": "Creative-Commons",
+        "height": 1042,
+        "filetype": "image/png",
+        "width": 1667,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab.png",
+        "resized_targets": {
+          "mobile": {
+            "height": 500,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-mobile.png"
+          },
+          "tiny": {
+            "height": 94,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-tiny.png"
+          },
+          "desktop": {
+            "height": 1042,
+            "width": 1667,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-desktop.png"
+          },
+          "tablet": {
+            "height": 750,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-tablet.png"
+          },
+          "w400": {
+            "height": 250,
+            "width": 400,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-w400.png"
+          }
+        }
+      },
+      "hero_image_size": "normal",
+      "leading_image_description": "",
+      "brief": {
+        "api_data": [
+          {
+            "alignment": "center",
+            "content": [
+              "「多變的新時代裡，家人的意義是什麼？」、「性別弱勢者的生活是什麼？」、「在職場甚至人生路上的努力，都不會有回報，不如放棄吧？」如果你對這些疑問有所共鳴，歡迎看看我們挑選的日劇清單。"
+            ],
+            "id": "2mlr3",
+            "styles": {},
+            "type": "unstyled"
+          }
+        ]
+      },
+      "categories": [
+        {
+          "id": "57175d923970a5e46ff854db",
+          "sort_order": 0,
+          "name": "文化．藝術"
+        }
+      ],
+      "style": "article",
+      "theme": null,
+      "copyright": "Creative-Commons",
+      "tags": [
+        {
+          "id": "577e2c28c142b41000aca36b",
+          "name": "戲劇"
+        },
+        {
+          "id": "578363d3c380321000c0fbee",
+          "name": "日本"
+        }
+      ],
+      "og_title": "10部日劇看趨勢：家、性別、崩世代",
+      "og_description": "誕生於平成時代的日劇類型「趨勢劇」，像一面反映社會的鏡子。《報導者》挑選10部作品，以3個關鍵字一窺日本現代社會樣貌。",
+      "og_image": {
+        "id": "5c53bff20dac781700e4f6f8",
+        "description": "報導者陪你過年-日劇",
+        "copyright": "Creative-Commons",
+        "height": 1042,
+        "filetype": "image/png",
+        "width": 1667,
+        "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab.png",
+        "resized_targets": {
+          "mobile": {
+            "height": 500,
+            "width": 800,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-mobile.png"
+          },
+          "tiny": {
+            "height": 94,
+            "width": 150,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-tiny.png"
+          },
+          "desktop": {
+            "height": 1042,
+            "width": 1667,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-desktop.png"
+          },
+          "tablet": {
+            "height": 750,
+            "width": 1200,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-tablet.png"
+          },
+          "w400": {
+            "height": 250,
+            "width": 400,
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190201114138-29035cb695db65a102ea7de2edbe73ab-w400.png"
+          }
+        }
+      },
+      "is_featured": false,
+      "extend_byline": "",
+      "published_date": "2019-02-04T08:00:00+08:00",
+      "updated_at": "2019-02-03T17:31:15.348+08:00",
+      "full": false
+    }
+  ],
+  "published_date": "2019-03-25T08:00:00+08:00",
+  "updated_at": "2019-04-10T16:08:44.895+08:00",
+  "full": true,
+  "topics": {
+    "id": "5cd3b75044ebf71700c9606f",
+    "slug": "2019-venice-biennale",
+    "name": "2019-venice-biennale",
+    "topic_name": "報導者「全面監控」威尼斯",
+    "title": "報導者「全面監控」威尼斯"
+  }
+}
