@@ -80,6 +80,31 @@ const BookmarkImgDesktop = styled.div`
   left: 50%;
 `
 
+function getHostFromWindowLocation() {
+  const defaultHost = 'https://www.twreporter.org'
+  try {
+    const { host, protocol } = window.location
+    if (host && protocol) {
+      return `${protocol}//${host}`
+    } else {
+      console.warn(
+        'The host or protocol in `window.location` is not valid:',
+        'window.location.protocol:',
+        protocol,
+        'window.location.host:',
+        host,
+        `Return default host '${defaultHost}' instead.`
+      )
+      return defaultHost
+    }
+  } catch (err) {
+    console.warn(
+      'Error on getting `host` and `protocol` from `window.location`:',
+      err
+    )
+  }
+}
+
 class BookmarkWidget extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -90,45 +115,33 @@ class BookmarkWidget extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { bookmark } = this.props
-    if (
-      !bookmark ||
-      bookmark.slug !== this.getCurrentSlug() ||
-      !bookmark.host === this.getCurrentHost()
-    ) {
-      const { jwt, userID, getSingleBookmark } = this.props
-      getSingleBookmark(
-        jwt,
-        userID,
-        this.getCurrentSlug(),
-        this.getCurrentHost()
+    /* TODO: Implement `status` for bookmark widget in redux reducer and action:
+      There should be different states below for the bookmark widget status of an article:
+        unknown: It has not checked the bookmark status yet
+        isChecking: The request to check was made but has not gotten the response yet
+        bookmarked: The article is bookmarked
+        notBookmarked: The article is not bookmarked
+        invalid: There's an error or there's no valid authentication info
+      The current code does not distinguish the `unknown`, `notBookmarked`, `isChecking`, and `invalid` situation.
+      The best result is that we only send request to check bookmark when the status is `unknown`.
+      But now we send request when there's no bookmark data for this component in the redux store when `componentDidMount`, no matter what's the reason of it.
+     */
+    const articleSlug = _.get(this.props, 'articleMeta.slug')
+    if (articleSlug && typeof articleSlug === 'string') {
+      const { isAuthed } = this.props
+      if (isAuthed && !this.checkIfThisArticleBookmarked()) {
+        const { jwt, userID, getSingleBookmark } = this.props
+        getSingleBookmark(jwt, userID, articleSlug, getHostFromWindowLocation())
+      }
+    } else {
+      console.error(
+        '`this.props.articleMeta.slug` must be an unempty string, but is',
+        articleSlug
       )
     }
   }
 
-  getCurrentHost() {
-    const hostFromProps = _.get(this.props, 'articleMeta.host')
-    if (hostFromProps) return hostFromProps
-    if (typeof window !== 'undefined') {
-      const location = _.get(window, 'location') || {}
-      const { host = '', protocol = '' } = location
-      return host && protocol
-        ? `${protocol}//${host}`
-        : 'https://www.twreporter.org'
-    }
-  }
-
-  getCurrentSlug() {
-    const slugFromProps = _.get(this.props, 'articleMeta.slug')
-    if (slugFromProps) return slugFromProps
-    if (typeof window !== 'undefined') {
-      const pathname = _.get(window, 'location.pathname', '')
-      return _.get(pathname.match(/(?:\w+-)*\w+$/), [0]) || '' // take 'xxx-xxx-xx' from string '/oo-xx/oxox/xxx-xxx-xx'
-    }
-  }
-
-  // Redirect to singin page if user has not been authorized
-  checkAuthorization() {
+  redirectToLoginPageIfNotAuthorized() {
     const { isAuthed, jwt } = this.props
     if (!isAuthed || !jwt) {
       const currentHref =
@@ -138,43 +151,58 @@ class BookmarkWidget extends React.PureComponent {
   }
 
   addCurrentPageToBookmarks() {
-    this.checkAuthorization()
+    this.redirectToLoginPageIfNotAuthorized()
     const { jwt, userID, createSingleBookmark, articleMeta } = this.props
     const bookmarkToBeCreated = {
-      host: this.getCurrentHost(),
       ...articleMeta,
+      host: getHostFromWindowLocation(),
     }
     return createSingleBookmark(jwt, userID, bookmarkToBeCreated)
   }
 
   removeCurrentPageFromBookmarks() {
-    this.checkAuthorization()
-    const {
-      jwt,
-      userID,
-      deleteSingleBookmark,
-      articleMeta,
-      bookmark,
-    } = this.props
-    if (
-      bookmark.slug === this.getCurrentSlug() &&
-      bookmark.host === this.getCurrentHost()
-    ) {
-      return deleteSingleBookmark(jwt, userID, bookmark.id)
+    this.redirectToLoginPageIfNotAuthorized()
+    const { jwt, userID, deleteSingleBookmark, bookmark } = this.props
+    const bookmarkID = _.get(bookmark, 'id')
+    if (bookmarkID) {
+      deleteSingleBookmark(jwt, userID, bookmarkID)
     } else {
-      // eslint-disable-next-line no-console
       console.error(
-        `Try to delete the bookmark of '${bookmark.slug}' at '${bookmark.host}', but the widget is for '${articleMeta.slug}' at '${articleMeta.host}'`
+        'Error on deleting bookmark with `BookmarkWidget`: No valid bookmark id.'
       )
     }
   }
 
+  checkIfThisArticleBookmarked() {
+    const { bookmark } = this.props
+    if (bookmark) {
+      const isClient = typeof window !== 'undefined'
+      const hostFromWindow = getHostFromWindowLocation()
+      if (isClient && _.get(bookmark, 'host') !== hostFromWindow) {
+        /* Only check the consistency of `host` when client-side rendering. */
+        console.warn(
+          'Warning on checking bookmark status in `BookmarkWidget`:',
+          'The `host` in the bookmark data is diffrent from the `host` in current `window`.',
+          'host in bookmark:',
+          bookmark.host,
+          'host in `window.location`:',
+          hostFromWindow
+        )
+      }
+    }
+    return Boolean(bookmark)
+  }
+
   render() {
-    const { bookmark, isMobile, svgColor } = this.props
-    const isBookmarked =
-      Boolean(bookmark) &&
-      bookmark.slug === this.getCurrentSlug() &&
-      bookmark.host === this.getCurrentHost()
+    const { articleMeta } = this.props
+    const { slug } = articleMeta
+
+    if (!slug) {
+      return null
+    }
+
+    const isBookmarked = this.checkIfThisArticleBookmarked()
+    const { isMobile, svgColor } = this.props
     return isMobile ? (
       <MobileIconContainer
         onClick={
@@ -212,38 +240,43 @@ class BookmarkWidget extends React.PureComponent {
 
 BookmarkWidget.defaultProps = {
   articleMeta: {},
-  mobile: false,
+  isMobile: false,
   svgColor: '',
+  bookmark: null,
+  isAuthed: false,
+  jwt: '',
+  userID: NaN,
 }
 
 BookmarkWidget.propTypes = {
-  articleMeta: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
-    is_external: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
-    thumbnail: PropTypes.string.isRequired,
-    published_date: PropTypes.string,
-  }).isRequired,
+  articleMeta: corePropTypes.articleMetaForBookmark,
   isMobile: PropTypes.bool,
   svgColor: PropTypes.string,
   // Props below are provided by redux
   bookmark: corePropTypes.bookmark,
-  getSingleBookmark: PropTypes.func.isRequired,
   createSingleBookmark: PropTypes.func.isRequired,
   deleteSingleBookmark: PropTypes.func.isRequired,
-  isAuthed: PropTypes.bool.isRequired,
-  jwt: PropTypes.string.isRequired,
-  userID: PropTypes.number.isRequired,
+  getSingleBookmark: PropTypes.func.isRequired,
+  isAuthed: PropTypes.bool,
+  jwt: PropTypes.string,
+  userID: PropTypes.number,
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const currentSlug = _.get(ownProps, 'articleMeta.slug')
   const jwt = _.get(state, [reduxStatePropKeys.auth, 'accessToken'])
   const userID = _.get(state, [reduxStatePropKeys.auth, 'userInfo', 'user_id'])
   const isAuthed = _.get(state, [reduxStatePropKeys.auth, 'isAuthed'])
-  const bookmark = _.get(state, [reduxStatePropKeys.bookmarkWidget, 'bookmark'])
+  const bookmarkInStore = _.get(state, [
+    reduxStatePropKeys.bookmarkWidget,
+    'bookmark',
+  ])
+  const bookmarkForThisWidget =
+    currentSlug && currentSlug === _.get(bookmarkInStore, 'slug')
+      ? bookmarkInStore
+      : null
   return {
-    bookmark,
+    bookmark: bookmarkForThisWidget,
     isAuthed,
     jwt,
     userID,
