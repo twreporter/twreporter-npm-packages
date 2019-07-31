@@ -118,13 +118,13 @@ class BookmarkWidget extends React.PureComponent {
     /* TODO: Implement `status` for bookmark widget in redux reducer and action:
       There should be different states below for the bookmark widget status of an article:
         unknown: It has not checked the bookmark status yet
-        isChecking: The request to check was make but has not gotten the response yet
+        isChecking: The request to check was made but has not gotten the response yet
         bookmarked: The article is bookmarked
         notBookmarked: The article is not bookmarked
         invalid: There's an error or there's no valid authentication info
       The current code does not distinguish the `unknown`, `notBookmarked`, `isChecking`, and `invalid` situation.
       The best result is that we only send request to check bookmark when the status is `unknown`.
-      But now we send request when there's no bookmark data for this component in the redux store when `componentDidMount`, no matter the reason of it.
+      But now we send request when there's no bookmark data for this component in the redux store when `componentDidMount`, no matter what's the reason of it.
      */
     const articleSlug = _.get(this.props, 'articleMeta.slug')
     if (articleSlug && typeof articleSlug === 'string') {
