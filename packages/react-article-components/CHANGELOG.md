@@ -4,6 +4,12 @@
 
 ## RELEASE
 
+### 1.0.10
+
+#### Bug fix
+
+- Prevent slideshow:slides from having the same react keys
+
 ### 1.0.9
 
 - Upgrade dependency `@twreporter/react-components` version to v7.0.5
