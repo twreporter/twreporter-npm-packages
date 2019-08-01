@@ -47,7 +47,7 @@ const TextBlock = styled.div`
   }
 `
 
-const Title = styled.div`
+const Title = styled.h1`
   margin: 0;
   font-weight: bold;
   line-height: 1.4;
