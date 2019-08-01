@@ -179,7 +179,8 @@ const AlignRight = styled.div`
 `
 
 function renderElement(data = {}) {
-  const isCenterAligned = data.alignment === 'center'
+  const isCenterAligned =
+    data.alignment !== 'left' && data.alignment !== 'right'
   switch (data.type) {
     case 'annotation':
       return <StyledAnnotation key={data.id} data={data} />
