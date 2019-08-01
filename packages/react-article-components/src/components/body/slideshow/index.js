@@ -7,12 +7,14 @@ import React, { PureComponent } from 'react'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import memoize from 'memoize-one'
+import merge from 'lodash/merge'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled from 'styled-components'
 
 const _ = {
   get,
   map,
+  merge,
 }
 
 const mockup = {
@@ -591,11 +593,19 @@ export default class Slideshow extends PureComponent {
     // slidesOffset: 2
     // input images: [ a, b, c, d ]
     // output images: [c, d, a, b, c, d, a, b]
-    return [].concat(
+    const imagesForSlicing = [].concat(
       images.slice(-slidesOffset),
       images,
       images.slice(defaultCurIndex, slidesOffset)
     )
+
+    // since the items of imagesForSlicing would have the same id,
+    // we copy the images and append an index on their ids to avoid duplication.
+    return _.map(imagesForSlicing, (img, index) => {
+      return _.merge({}, img, {
+        id: `${img.id}_${index}`,
+      })
+    })
   })
 
   render() {
@@ -611,7 +621,7 @@ export default class Slideshow extends PureComponent {
       curSlideIndex + slidesOffset * 2 + 1
     )
 
-    const slidesJSX = _.map(slides, (slide = {}, index) => {
+    const slidesJSX = _.map(slides, (slide = {}) => {
       const objectFit =
         _.get(slide, 'mobile.width', 0) > _.get(slide, 'mobile.height', 0)
           ? 'cover'
