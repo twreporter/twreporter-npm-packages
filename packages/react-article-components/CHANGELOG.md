@@ -4,6 +4,10 @@
 
 ## RELEASE
 
+### 1.0.11
+
+- Treat body component aligned center if its `alignment` value is not `left` or `right`
+
 ### 1.0.10
 
 #### Bug fix
