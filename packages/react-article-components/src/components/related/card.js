@@ -32,11 +32,36 @@ const mockup = {
   },
 }
 
-const Block = styled.article`
+const DescBlock = styled.div`
   position: relative;
-  height: 100%;
 
   ${mq.tabletAndBelow`
+    display: none;
+  `}
+`
+
+const Desc = styled.p`
+  visibility: ${props => props._visibility};
+  position: ${props => props._position};
+
+  /* clear default margin */
+  margin: 0px;
+  width: 100%;
+  display: block;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #808080;
+  padding: 15px 0 15px 0;
+`
+
+const Block = styled.article`
+  position: relative;
+  height: ${props => props._height};
+
+  transition: height 0.1s ease-in-out;
+
+  ${mq.tabletAndBelow`
+    height: auto;
     width: 100%;
     min-height: 152px;
     display: flex;
@@ -81,15 +106,25 @@ const Thumbnail = styled.figure`
   `}
 `
 
-const TextBlock = styled.div`
-  padding: 15px 19px 70px 0px;
+const DesktopTextBlock = styled.div`
+  padding: 15px 19px 15px 0px;
 
+  ${mq.tabletAndBelow`
+    display: none;
+  `}
+`
+
+const MobileTextBlock = styled.div`
   ${mq.tabletAndBelow`
     max-width: 62%;
     order: 1;
     padding: 0;
     display: flex;
     flex-direction: column;
+  `}
+
+  ${mq.desktopAndAbove`
+    display: none;
   `}
 `
 
@@ -110,7 +145,7 @@ const Title = styled.h3`
   font-weight: ${typography.font.weight.bold};
   line-height: 1.5;
   color: ${props => props.theme.colors.base.text};
-  margin: 10px 0 0 0;
+  margin: 10px 0 10px 0;
 
   ${mq.tabletAndBelow`
     order: 2;
@@ -118,83 +153,9 @@ const Title = styled.h3`
   `}
 `
 
-const DescBlock = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 15px;
-
-  > p {
-    display: none;
-  }
-
-  &:hover {
-    width: 100%;
-    &::before {
-      position: absolute;
-      content: '';
-      left: 18px;
-      top: 100%;
-      width: 100%;
-      height: 12px;
-      border-width: 0 0 0 1px;
-      border-style: solid;
-      border-color: #afafaf;
-    }
-
-    > p {
-      display: block;
-      position: absolute;
-      z-index: 1;
-      font-size: 14px;
-      line-height: 1.43;
-      color: #808080;
-      background-color: #fff;
-      padding: 15px;
-      border-radius: 4px;
-      margin-top: 12px;
-    }
-  }
-
-  ${mq.tabletAndBelow`
-    display: none;
-  `}
-`
-
-const DescBT = styled.div`
-  display: inline-block;
-  font-size: 14px;
-  font-weight: ${typography.font.weight.bold};
-  color: #808080;
-  line-height: 1;
-  padding: 5px 10px;
-  &::before {
-    content: '更多內容';
-  }
-`
-
-const DescInfo = styled.div`
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  border: solid 1px #cdcdcd;
-  margin-left: 4px;
-
-  &::after {
-    content: 'i';
-    color: #9c9c9c;
-    position: absolute;
-    font-size: 12px;
-    top: 50%;
-    left: 50%;
-    font-family: RobotoSlab;
-    transform: translate(-50%, -50%);
-  }
-`
-
-const PublishedDate = styled.span`
+const PublishedDate = styled.p`
+  /* clear default margin*/
+  margin: 0;
   font-size: 12px;
   line-height: 2;
   color: #afafaf;
@@ -204,39 +165,115 @@ const PublishedDate = styled.span`
   `}
 `
 
-function Card(props) {
-  const date = props.date
-    ? new Date(props.date).toLocaleString('zh-hant', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
+const _defaultHeight = '100%'
+
+class Card extends React.PureComponent {
+  static propTypes = predefinedProps.card
+
+  constructor(props) {
+    super(props)
+
+    //  state.heightBeforeHovering,
+    //  state.heightAfterHovering,
+    //  _blockRef,
+    //  _descRef,
+    //  are used for computing Card animation details,
+    //  only for desktop and above layout
+    this.state = {
+      heightBeforeHovering: _defaultHeight,
+      heightAfterHovering: _defaultHeight,
+
+      // only desktop and above layout will take
+      // `isHovered` into account.
+      // mobile layout won't have the on-hover animation
+      isHovered: false,
+    }
+    this._blockRef = React.createRef()
+    this._descRef = React.createRef()
+
+    this.handleMouseEnterTextBlock = this._handleIsHovered.bind(this, true)
+    this.handleMouseLeaveTextBlock = this._handleIsHovered.bind(this, false)
+  }
+
+  componentDidMount() {
+    try {
+      this.setState({
+        heightBeforeHovering: `${this._blockRef.current.clientHeight}px`,
+        heightAfterHovering: `${this._blockRef.current.clientHeight +
+          this._descRef.current.clientHeight}px`,
       })
-    : ''
+    } catch (e) {
+      const { title } = this.props
+      console.warn(
+        'cannot set state.heightBeforeHovering and state.heightAfterHovering ' +
+          'after componentDidMount on related post with title: ' +
+          title
+      )
+    }
+  }
 
-  return (
-    <Block>
-      <Thumbnail>
-        <Img
-          defaultImage={props.thumbnail}
-          objectFit="cover"
-          objectPosition="center center"
-        />
-      </Thumbnail>
-      <TextBlock>
-        {props.category ? <Category>{props.category}</Category> : null}
-        {date ? <PublishedDate>{date}</PublishedDate> : null}
-        <Title>{props.title}</Title>
-      </TextBlock>
-      <DescBlock>
-        <DescBT>
-          <DescInfo />
-        </DescBT>
-        <p>{props.desc}</p>
-      </DescBlock>
-    </Block>
-  )
+  _handleIsHovered(isHovered) {
+    this.setState({
+      isHovered,
+    })
+  }
+
+  render() {
+    const { category, title, desc, date, thumbnail } = this.props
+    const localeDate = date
+      ? new Date(date).toLocaleString('zh-hant', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        })
+      : ''
+
+    const { heightBeforeHovering, heightAfterHovering, isHovered } = this.state
+
+    const categoryJSX = category ? <Category>{category}</Category> : null
+    const titleJSX = title ? <Title>{title}</Title> : null
+    const localeDateJSX = localeDate ? (
+      <PublishedDate>{localeDate}</PublishedDate>
+    ) : null
+
+    return (
+      <Block
+        ref={this._blockRef}
+        _height={isHovered ? heightAfterHovering : heightBeforeHovering}
+      >
+        <Thumbnail>
+          <Img
+            defaultImage={thumbnail}
+            objectFit="cover"
+            objectPosition="center center"
+          />
+        </Thumbnail>
+        <DesktopTextBlock
+          onMouseEnter={this.handleMouseEnterTextBlock}
+          onMouseLeave={this.handleMouseLeaveTextBlock}
+        >
+          {categoryJSX}
+          {titleJSX}
+          <DescBlock>
+            <Desc
+              ref={this._descRef}
+              _visibility={isHovered ? 'visible' : 'hidden'}
+              _position={isHovered ? 'static' : 'absolute'}
+            >
+              {desc}
+            </Desc>
+          </DescBlock>
+          {localeDateJSX}
+        </DesktopTextBlock>
+        {/* render `MobileTextBlock` to prevent from re-rendering once hovering */}
+        <MobileTextBlock>
+          {categoryJSX}
+          {titleJSX}
+          {localeDateJSX}
+        </MobileTextBlock>
+      </Block>
+    )
+  }
 }
-
-Card.propTypes = predefinedProps.card
 
 export default Card

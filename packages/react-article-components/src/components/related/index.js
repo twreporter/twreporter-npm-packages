@@ -94,6 +94,7 @@ const List = styled.div`
 `
 
 const Item = styled.div`
+  align-self: ${props => props.alignSelf};
   flex: 0 1 auto;
   border-style: solid;
   border-width: 0 0.5px 0.5px 0;
@@ -124,15 +125,30 @@ export default class Related extends React.PureComponent {
     data: [],
   }
 
+  state = {
+    isMounted: false,
+  }
+
+  componentDidMount() {
+    this.setState({
+      isMounted: true,
+    })
+  }
+
   render() {
     const { data } = this.props
+    const { isMounted } = this.state
 
     const cards = _.map(data, item => {
       return (
         <DynamicComponentsContext.Consumer key={item.id}>
           {components => {
             return (
-              <Item>
+              // Use `stretch` to make sure every Item(Card)
+              // having the same height while mounting.
+              // Then, use `flex-start` instead to make each Item(Card)
+              // show description with different height while hovering.
+              <Item alignSelf={!isMounted ? 'stretch' : 'flex-start'}>
                 <components.Link
                   to={item.href}
                   target={
