@@ -95,6 +95,12 @@ const Descriptor = styled.div`
   `}
 `
 
+const screen = {
+  mobile: 768,
+  destkop: 1024,
+  hd: 1440,
+}
+
 export default class Related extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array,
@@ -104,8 +110,51 @@ export default class Related extends React.PureComponent {
     data: [],
   }
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      lastWindowWidth: 0,
+    }
+
+    this.handleWindowResize = _.debounce(this._handleWindowResize, 500).bind(
+      this
+    )
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleWindowResize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowResize)
+  }
+
+  _handleWindowResize = () => {
+    const curWindowWidth = window.innerWidth
+    let lastWindowWidth
+
+    // The following conditions are set for performance.
+    // Since we only have three different device layout,
+    // including mobile, desktop and hd,
+    // we are not going to re-render `List` component
+    // unless the resize events cause the layout change.
+    if (curWindowWidth < screen.destkop) {
+      lastWindowWidth = screen.mobile
+    } else if (curWindowWidth < screen.hd) {
+      lastWindowWidth = screen.destkop
+    } else {
+      lastWindowWidth = screen.hd
+    }
+
+    this.setState({
+      lastWindowWidth,
+    })
+  }
+
   render() {
     const { data } = this.props
+    const { lastWindowWidth } = this.state
 
     const relateds = _.map(data, related => {
       const style = _.get(related, 'style')
@@ -141,7 +190,7 @@ export default class Related extends React.PureComponent {
     return (
       <Block>
         <Descriptor />
-        <List data={relateds} />
+        <List key={`list-width-${lastWindowWidth}`} data={relateds} />
       </Block>
     )
   }
