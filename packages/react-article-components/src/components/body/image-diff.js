@@ -63,10 +63,10 @@ const Image = styled.div`
     background-position: left center;
   }
   ${Progress} {
-    ${getResponsiveBackground('firstImageSet')}
+    ${getResponsiveBackground('leftImageSet')}
   }
   ${Rail} {
-    ${getResponsiveBackground('secondImageSet')}
+    ${getResponsiveBackground('rightImageSet')}
   }
   ${Indicator} {
     width: 3px;
@@ -111,29 +111,33 @@ export default class ImageDiff extends PureComponent {
   render() {
     const { data } = this.props
     const { content } = data
-    const [firstImageSet, secondImageSet] = content
+    /*
+      TODO: Change the images order to "first image left, second image right" in database and here.
+      The current logic in content is according to the legacy article component.
+    */
+    const [rightImageSet, leftImageSet] = content
     const minHeight = Math.min(
-      firstImageSet.desktop.height,
-      secondImageSet.desktop.height
+      leftImageSet.desktop.height,
+      rightImageSet.desktop.height
     )
     const minWidth = Math.min(
-      firstImageSet.desktop.width,
-      secondImageSet.desktop.width
+      leftImageSet.desktop.width,
+      rightImageSet.desktop.width
     )
     /* the redered size will be the intersection of two images */
     const renderedHeightWidthRation = minHeight / minWidth
     /* Use description of image as caption */
     const caption = _.get(
-      firstImageSet,
+      leftImageSet,
       'description',
-      _.get(secondImageSet, 'description')
+      _.get(rightImageSet, 'description')
     )
     return (
       <Container>
         <Image
           heightWidthRatio={renderedHeightWidthRation}
-          firstImageSet={firstImageSet}
-          secondImageSet={secondImageSet}
+          leftImageSet={leftImageSet}
+          rightImageSet={rightImageSet}
         >
           <div>
             <Slider defaultValue={50} min={1} max={100} />

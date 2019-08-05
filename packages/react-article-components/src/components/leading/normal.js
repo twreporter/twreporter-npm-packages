@@ -41,11 +41,10 @@ const TextBlock = styled.div`
 
 const Title = styled.h1`
   /* clear h1 default style */
-  margin-top: 0px;
   color: ${props => props.theme.colors.base.text};
   letter-spacing: 0.4px;
   font-weight: bold;
-
+  margin: 0;
   ${mq.mobileOnly`
     font-size: 34px;
     margin-bottom: 40px;
@@ -61,9 +60,7 @@ const Title = styled.h1`
 const Subtitle = styled.h2`
   color: ${props => props.theme.colors.base.text};
   font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 30px;
-
+  margin: 0 0 30px 0;
   ${mq.mobileOnly`
     font-size: 16px;
   `}
@@ -82,6 +79,7 @@ const Topic = styled.div`
   border-style: solid;
   border-color: ${props => props.theme.colors.primary.support};
   padding: 10px;
+  margin-bottom: 20px;
 `
 
 const Figure = styled.figure`
