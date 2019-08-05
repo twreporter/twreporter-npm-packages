@@ -19,14 +19,12 @@ import Tools from './aside/tools'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import merge from 'lodash/merge'
-import sortBy from 'lodash/sortBy'
 import throttle from 'lodash/throttle'
 
 const _ = {
   get,
   map,
   merge,
-  sortBy,
   throttle,
 }
 
@@ -169,10 +167,6 @@ const _fontLevel = {
   small: 'small',
   medium: 'medium',
   large: 'large',
-}
-
-const _articleStyles = {
-  interactive: 'interactive',
 }
 
 /**
@@ -344,36 +338,6 @@ export default class Article extends PureComponent {
       relatedPosts,
       relatedTopic,
     } = this.props
-    const relateds = _.map(relatedPosts, related => {
-      const style = _.get(related, 'style')
-      const prefixPath = style === _articleStyles.interactive ? '/i/' : '/a/'
-      const categories = related.categories
-      // sort categories in ascending order
-      _.sortBy(categories, ['sort_order'])
-
-      // use og_image first
-      const imageSet = _.get(related, 'og_image.resized_targets', {})
-      // use `w400` image set first
-      // if `w400` is not provided, then use `mobile` image set
-      const thumbnail = _.get(imageSet, 'w400.url')
-        ? imageSet.w400
-        : imageSet.mobile
-
-      return {
-        category: _.get(categories, '0.name', ''),
-        date: related.published_date,
-        desc: related.og_description,
-        href: prefixPath + related.slug,
-        id: related.id,
-        isTargetBlank: style === _articleStyles.interactive,
-        // if `og_image` is not provided,
-        // use `hero_image` as fallback
-        thumbnail: _.get(thumbnail, 'url')
-          ? thumbnail
-          : _.get(related, 'hero_image.resized_targets.mobile'),
-        title: related.title,
-      }
-    })
 
     const articleMetaForBookmark = {
       slug: _.get(post, 'slug', ''),
@@ -469,7 +433,7 @@ export default class Article extends PureComponent {
               />
               <SeparationCurve />
               <RelatedBlock>
-                <Related data={relateds} />
+                <Related data={relatedPosts} />
               </RelatedBlock>
             </BodyBackground>
           </BackgroundBlock>
