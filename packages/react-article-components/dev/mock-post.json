@@ -1303,6 +1303,50 @@
         "type": "unstyled"
       },
       {
+        "alignment": "center-small",
+        "content": [
+          {
+            "alignment": "center-small",
+            "description": "《我們與惡的距離》的力量，不在順從，而在挑戰。不在取悅觀眾的眼睛，而在擴展觀眾的心靈。",
+            "desktop": {
+              "height": 557,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190731161302-8462e53d8ad3bdaa43125a5c1735d2ae-desktop.gif",
+              "width": 556
+            },
+            "id": "5d414d8e35544318001f8f26",
+            "mobile": {
+              "height": 557,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190731161302-8462e53d8ad3bdaa43125a5c1735d2ae-mobile.gif",
+              "width": 556
+            },
+            "original": {
+              "height": 557,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190731161302-8462e53d8ad3bdaa43125a5c1735d2ae.gif",
+              "width": 556
+            },
+            "tablet": {
+              "height": 557,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190731161302-8462e53d8ad3bdaa43125a5c1735d2ae-tablet.gif",
+              "width": 556
+            },
+            "tiny": {
+              "height": 150,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190731161302-8462e53d8ad3bdaa43125a5c1735d2ae-tiny.gif",
+              "width": 150
+            },
+            "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190731161302-8462e53d8ad3bdaa43125a5c1735d2ae-tablet.gif",
+            "w400": {
+              "height": 401,
+              "url": "https://storage.googleapis.com/twreporter-multimedia/images/20190731161302-8462e53d8ad3bdaa43125a5c1735d2ae-w400.gif",
+              "width": 400
+            }
+          }
+        ],
+        "id": "ajiim",
+        "styles": {},
+        "type": "image"
+      },
+      {
         "alignment": "center",
         "content": [
           "《我們與惡的距離》的力量，不在順從，而在挑戰。不在取悅觀眾的眼睛，而在擴展觀眾的心靈。這部劇為動輒高舉正義旗幟、喊打喊殺的台灣社會，提供了多一點點理解的可能，多一點點寬恕的機會。"
