@@ -179,12 +179,26 @@ export default class Img extends React.PureComponent {
     }, 1500)
   }
 
+  _renderImagePlaceholder() {
+    const { toShowPlaceholder } = this.state
+    const { imgPlaceholderSrc } = this.props
+    return imgPlaceholderSrc ? (
+      <ImgPlaceholder
+        src={replaceGCSUrlOrigin(imgPlaceholderSrc)}
+        toShow={toShowPlaceholder}
+      />
+    ) : (
+      <Placeholder toShow={toShowPlaceholder}>
+        <PlaceholderIcon />
+      </Placeholder>
+    )
+  }
+
   render() {
-    const { isLoaded, toShowPlaceholder } = this.state
+    const { isLoaded } = this.state
     const {
       alt,
       className,
-      imgPlaceholderSrc,
       imgProps,
       imageSet,
       defaultImage,
@@ -192,6 +206,16 @@ export default class Img extends React.PureComponent {
       objectPosition,
       sizes,
     } = this.props
+
+    const defaultImageOriginalUrl = _.get(defaultImage, 'url')
+    /* Render placeholder only if no valid image is given */
+    if (!defaultImageOriginalUrl && (!imageSet || imageSet.length === 0)) {
+      return (
+        <ImgContainer className={className} heightString="height: 100%;">
+          {this._renderImagePlaceholder()}
+        </ImgContainer>
+      )
+    }
 
     const srcset = getSrcsetString(imageSet)
     const heightWidthRatio =
@@ -214,16 +238,7 @@ export default class Img extends React.PureComponent {
             : `padding-top: ${heightWidthRatio * 100}%;`
         }
       >
-        {imgPlaceholderSrc ? (
-          <ImgPlaceholder
-            src={replaceGCSUrlOrigin(imgPlaceholderSrc)}
-            toShow={toShowPlaceholder}
-          />
-        ) : (
-          <Placeholder toShow={toShowPlaceholder}>
-            <PlaceholderIcon />
-          </Placeholder>
-        )}
+        {this._renderImagePlaceholder()}
         <ImgBox toShow={isLoaded}>
           {isObjectFit ? (
             <React.Fragment>
