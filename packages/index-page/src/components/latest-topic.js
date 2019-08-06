@@ -179,7 +179,8 @@ class LatestTopic extends React.PureComponent {
     const { data, useTinyImg } = this.props
     const maxSwipableItems = 2
     const relateds = _.get(data, 'relateds', [])
-      .slice(0, 3)
+      // take last 3 posts from the end
+      .slice(-3)
       .map(post => {
         const style = _.get(post, 'style', '')
         const href = getHref(_.get(post, 'slug', 'error'), style)

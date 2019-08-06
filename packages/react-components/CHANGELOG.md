@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### 7.0.6
+
+- [listing-page] take last 3 posts from the end of `topic.relateds` for top topic component
+
 ### 7.0.5
 
 - Fix bookmark-widget SSR problem
