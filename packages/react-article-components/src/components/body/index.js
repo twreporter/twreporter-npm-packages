@@ -1,3 +1,4 @@
+import alignmentConsts from '../../constants/element-alignment'
 import Annotation from './annotation'
 import Audio from './audio'
 import Blockquote from './blockquote'
@@ -9,8 +10,7 @@ import Image from './image'
 import ImageDiff from './image-diff'
 import Infobox from './infobox'
 import list from './list'
-import map from 'lodash/map'
-import mq from '@twreporter/core/lib/utils/media-query'
+import Multimedia from './multimedia'
 import Paragraph from './paragraph'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import PropTypes from 'prop-types'
@@ -18,8 +18,14 @@ import React, { PureComponent } from 'react'
 import Slideshow from './slideshow'
 import styled, { css } from 'styled-components'
 import Youtube from './youtube'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
+import map from 'lodash/map'
 
 const _ = {
+  get,
   map,
 }
 
@@ -137,8 +143,31 @@ const StyledEmbedded = styled(Embedded)`
   margin: ${mockup.margin.large};
 `
 
-const StyledImageBlock = styled.div`
+const StyledExtendImageBlock = styled.div`
   ${extendWidthCSS};
+`
+
+const StyledLargeImageBlock = styled.div`
+  ${largeWidthCSS}
+  /* overwrite the position of image block and caption */
+  margin-left: auto;
+  margin-right: auto;
+  ${Multimedia.Caption} {
+    ${mq.desktopAndAbove`
+      position: absolute;
+      bottom: 0;
+      transform: translateX(100%);
+      &:after {
+        width: 100%;
+      }
+    `}
+    ${mq.desktopOnly`
+      right: -21px;
+    `}
+    ${mq.hdOnly`
+      right: -38px;
+    `}
+  }
 `
 
 const StyledSlideshow = styled(Slideshow)`
@@ -180,7 +209,8 @@ const AlignRight = styled.div`
 
 function renderElement(data = {}) {
   const isCenterAligned =
-    data.alignment !== 'left' && data.alignment !== 'right'
+    data.alignment === alignmentConsts.center ||
+    data.alignment === alignmentConsts.centerSmall
   switch (data.type) {
     case 'annotation':
       return <StyledAnnotation key={data.id} data={data} />
@@ -221,22 +251,40 @@ function renderElement(data = {}) {
       )
     case 'small-image':
     case 'image':
-    case 'image-link':
+    case 'image-link': {
       /*
         The `image-link` in keystone editor is using `embedded-code` component actually currently.
         If we add a `image-link` type in the future, we just have to make the data format of `image-link` and `image` the same.
       */
-      return (
-        <StyledImageBlock key={data.id}>
-          <Image data={data} small={!isCenterAligned} />
-        </StyledImageBlock>
-      )
+      switch (data.alignment) {
+        case alignmentConsts.right:
+        case alignmentConsts.left:
+          return (
+            <StyledExtendImageBlock key={data.id}>
+              <Image data={data} small />
+            </StyledExtendImageBlock>
+          )
+        case alignmentConsts.centerSmall:
+          return (
+            <StyledLargeImageBlock key={data.id}>
+              <Image data={data} />
+            </StyledLargeImageBlock>
+          )
+        case alignmentConsts.center:
+        default:
+          return (
+            <StyledExtendImageBlock key={data.id}>
+              <Image data={data} />
+            </StyledExtendImageBlock>
+          )
+      }
+    }
     case 'imageDiff':
     case 'imagediff':
       return (
-        <StyledImageBlock key={data.id}>
+        <StyledExtendImageBlock key={data.id}>
           <ImageDiff key={data.id} data={data} />
-        </StyledImageBlock>
+        </StyledExtendImageBlock>
       )
     case 'infobox':
       return isCenterAligned ? (

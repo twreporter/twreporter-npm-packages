@@ -4,6 +4,10 @@
 
 ## RELEASE
 
+### 1.0.13
+
+- Add `center-small` image
+
 ### 1.0.12
 
 - Add margin between topic and title of leading if there's no subtitle. By changing margin-top of subtitle to the margin-bottom of topic.
