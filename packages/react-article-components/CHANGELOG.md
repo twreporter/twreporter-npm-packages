@@ -2,12 +2,13 @@
 
 ## UNRELEASED
 
+## RELEASE
+
 ### 1.0.12
 
 - Add margin between topic and title of leading if there's no subtitle. By changing margin-top of subtitle to the margin-bottom of topic.
 - Change image diff images order
-
-## RELEASE
+- Implement related:card on-hover animation
 
 ### 1.0.11
 
