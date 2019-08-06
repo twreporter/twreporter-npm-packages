@@ -1,16 +1,23 @@
-import Card from './card'
-import DynamicComponentsContext from '../../contexts/dynamic-components-context'
+import List from './list'
+import PropTypes from 'prop-types'
 import React from 'react'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedProps from '../../constants/prop-types/related'
+import sortBy from 'lodash/sortBy'
 import styled from 'styled-components'
+import debounce from 'lodash/debounce'
 import typography from '../../constants/typography'
 
 const _ = {
+  debounce,
   get,
   map,
+  sortBy,
+}
+
+const _articleStyles = {
+  interactive: 'interactive',
 }
 
 const Block = styled.section`
@@ -88,74 +95,102 @@ const Descriptor = styled.div`
   `}
 `
 
-const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
-
-const Item = styled.div`
-  flex: 0 1 auto;
-  border-style: solid;
-  border-width: 0 0.5px 0.5px 0;
-  border-color: #d8d8d8;
-  margin-bottom: 40px;
-  margin-right: 3px;
-
-  ${mq.tabletAndBelow`
-    border-width: 0 0 0.5px 0;
-    margin: 0 auto;
-  `}
-
-  ${mq.mobileOnly`
-    flex-basis: calc(309/355*100%);
-  `}
-
-  ${mq.tabletOnly`
-    flex-basis: 513px;
-  `}
-`
+const screen = {
+  mobile: 768,
+  destkop: 1024,
+  hd: 1440,
+}
 
 export default class Related extends React.PureComponent {
   static propTypes = {
-    data: predefinedProps.data,
+    data: PropTypes.array,
   }
 
   static defaultProps = {
     data: [],
   }
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      lastWindowWidth: 0,
+    }
+
+    this.handleWindowResize = _.debounce(this._handleWindowResize, 500).bind(
+      this
+    )
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleWindowResize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowResize)
+  }
+
+  _handleWindowResize = () => {
+    const curWindowWidth = window.innerWidth
+    let lastWindowWidth
+
+    // The following conditions are set for performance.
+    // Since we only have three different device layout,
+    // including mobile, desktop and hd,
+    // we are not going to re-render `List` component
+    // unless the resize events cause the layout change.
+    if (curWindowWidth < screen.destkop) {
+      lastWindowWidth = screen.mobile
+    } else if (curWindowWidth < screen.hd) {
+      lastWindowWidth = screen.destkop
+    } else {
+      lastWindowWidth = screen.hd
+    }
+
+    this.setState({
+      lastWindowWidth,
+    })
+  }
+
   render() {
     const { data } = this.props
+    const { lastWindowWidth } = this.state
 
-    const cards = _.map(data, item => {
-      return (
-        <DynamicComponentsContext.Consumer key={item.id}>
-          {components => {
-            return (
-              <Item>
-                <components.Link
-                  to={item.href}
-                  target={
-                    _.get(item, 'isTargetBlank', false) ? '_blank' : '_self'
-                  }
-                >
-                  <Card {...item} />
-                </components.Link>
-              </Item>
-            )
-          }}
-        </DynamicComponentsContext.Consumer>
-      )
+    const relateds = _.map(data, related => {
+      const style = _.get(related, 'style')
+      const prefixPath = style === _articleStyles.interactive ? '/i/' : '/a/'
+      const categories = related.categories
+      // sort categories in ascending order
+      _.sortBy(categories, ['sort_order'])
+
+      // use og_image first
+      const imageSet = _.get(related, 'og_image.resized_targets', {})
+      // use `w400` image set first
+      // if `w400` is not provided, then use `mobile` image set
+      const thumbnail = _.get(imageSet, 'w400.url')
+        ? imageSet.w400
+        : imageSet.mobile
+
+      return {
+        category: _.get(categories, '0.name', ''),
+        publishedDate: related.published_date,
+        desc: related.og_description,
+        href: prefixPath + related.slug,
+        id: related.id,
+        isTargetBlank: style === _articleStyles.interactive,
+        // if `og_image` is not provided,
+        // use `hero_image` as fallback
+        thumbnail: _.get(thumbnail, 'url')
+          ? thumbnail
+          : _.get(related, 'hero_image.resized_targets.mobile'),
+        title: related.title,
+      }
     })
-
-    if (cards.length === 0) {
-      return null
-    }
 
     return (
       <Block>
         <Descriptor />
-        <List>{cards}</List>
+        <List key={`list-width-${lastWindowWidth}`} data={relateds} />
       </Block>
     )
   }
