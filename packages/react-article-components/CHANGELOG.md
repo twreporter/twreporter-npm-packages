@@ -6,6 +6,8 @@
 
 ### 1.0.13
 
+- Render placeholder if there’s no any image given to img-with-placeholder
+- Update warning of image-with-placeholder
 - Add `center-small` image
 
 ### 1.0.12
