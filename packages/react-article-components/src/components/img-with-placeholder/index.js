@@ -218,15 +218,17 @@ export default class Img extends React.PureComponent {
     }
 
     const srcset = getSrcsetString(imageSet)
+    const isObjectFit = Boolean(objectFit)
     const heightWidthRatio =
       _.get(defaultImage, 'height') / _.get(defaultImage, 'width')
-    if (!heightWidthRatio) {
+    if (isObjectFit && !heightWidthRatio) {
       console.warn(
-        'Valid height and width of the default image are required. But the default image is:',
+        'Warning on Img component:',
+        'The `objecFit` is set, but no valid height/width ratio of `props.defaultImage` is given.',
+        '`props.defaultImage`:',
         defaultImage
       )
     }
-    const isObjectFit = Boolean(objectFit)
     const defaultImageSrc = replaceGCSUrlOrigin(_.get(defaultImage, 'url'))
 
     return (
