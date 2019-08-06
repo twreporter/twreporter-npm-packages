@@ -84,9 +84,8 @@ class Topics extends Component {
       topTopicJSX = topicsJSX[0]
       listedTopicsJSX = topicsJSX.slice(1)
       topRelatedPosts = _.get(topics, [0, 'relateds'], []).slice(
-        0,
-        3
-      ) /* take 3 posts */
+        -3
+      ) /* take last 3 posts from the end */
       topTopicName = _.get(topics, [0, 'topic_name'], '')
       topicUrl = _.get(topics, [0, 'linkTo'], '')
       topSectionJSX = [
