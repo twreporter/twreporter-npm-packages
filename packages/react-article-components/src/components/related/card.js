@@ -107,7 +107,7 @@ const Thumbnail = styled.figure`
 `
 
 const DesktopTextBlock = styled.div`
-  padding: 15px 19px 15px 0px;
+  padding: 15px 19px 45px 0px;
 
   ${mq.tabletAndBelow`
     display: none;
@@ -159,6 +159,12 @@ const PublishedDate = styled.p`
   font-size: 12px;
   line-height: 2;
   color: #afafaf;
+
+  ${mq.desktopAndAbove`
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+  `}
 
   ${mq.tabletAndBelow`
     order: 3;
