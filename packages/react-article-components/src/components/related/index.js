@@ -173,7 +173,7 @@ export default class Related extends React.PureComponent {
 
       return {
         category: _.get(categories, '0.name', ''),
-        date: related.published_date,
+        publishedDate: related.published_date,
         desc: related.og_description,
         href: prefixPath + related.slug,
         id: related.id,

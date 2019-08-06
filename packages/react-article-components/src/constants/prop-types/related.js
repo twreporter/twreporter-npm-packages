@@ -3,7 +3,7 @@ import predefinedPropTypes from './img-with-placeholder'
 
 const card = {
   category: PropTypes.string,
-  date: PropTypes.string,
+  publishedDate: PropTypes.string,
   desc: PropTypes.string,
   href: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,

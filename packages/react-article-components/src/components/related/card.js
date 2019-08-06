@@ -225,22 +225,20 @@ class Card extends React.PureComponent {
   }
 
   render() {
-    const { category, title, desc, date, thumbnail } = this.props
-    const localeDate = date
-      ? new Date(date).toLocaleString('zh-hant', {
-          year: 'numeric',
-          month: 'numeric',
-          day: 'numeric',
-        })
-      : ''
+    const { category, title, desc, publishedDate, thumbnail } = this.props
+
+    let dateStr = ''
+
+    if (publishedDate) {
+      const date = new Date(publishedDate)
+      dateStr = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+    }
 
     const { heightBeforeHovering, heightAfterHovering, isHovered } = this.state
 
     const categoryJSX = category ? <Category>{category}</Category> : null
     const titleJSX = title ? <Title>{title}</Title> : null
-    const localeDateJSX = localeDate ? (
-      <PublishedDate>{localeDate}</PublishedDate>
-    ) : null
+    const dateJSX = dateStr ? <PublishedDate>{dateStr}</PublishedDate> : null
 
     return (
       <Block
@@ -269,13 +267,13 @@ class Card extends React.PureComponent {
               {desc}
             </Desc>
           </DescBlock>
-          {localeDateJSX}
+          {dateJSX}
         </DesktopTextBlock>
         {/* render `MobileTextBlock` to prevent from re-rendering once hovering */}
         <MobileTextBlock>
           {categoryJSX}
           {titleJSX}
-          {localeDateJSX}
+          {dateJSX}
         </MobileTextBlock>
       </Block>
     )
