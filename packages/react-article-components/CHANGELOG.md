@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+### 1.0.14
+
+- Fix heading content
+
 ## RELEASE
 
 ### 1.0.13
