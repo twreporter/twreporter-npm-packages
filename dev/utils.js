@@ -58,11 +58,11 @@ function parsePackageJson(packageDirname) {
  * Get the dependencies object of a given package.
  *
  * @param {Object} packageJsonObj
- * @param {string} [denpendenciesType] - `dev` or `peer`
+ * @param {string} [dependencyTypeShorthand] - none, 'dev', or 'peer'. As we use `yarn add` with the options.
  * @returns {Object<string, string>}
  */
-function getPackageDependencies(packageJsonObj, depTypeShorthand) {
-  switch (depTypeShorthand) {
+function getPackageDependencies(packageJsonObj, dependencyTypeShorthand) {
+  switch (dependencyTypeShorthand) {
     case 'dev':
       return _.get(packageJsonObj, 'devDependencies')
     case 'peer':
@@ -73,7 +73,7 @@ function getPackageDependencies(packageJsonObj, depTypeShorthand) {
 }
 
 /**
- * Build `depVersionRanges`. The returned object will be like:
+ * Build `dependencyVersionsAcrossPackages`. The returned object will be like:
  * {
  *   lodash: [ '^4.0.0', '^4.0.0', '^4.17.11', '^3.0.0' ],
  *   'styled-components': [ '^4.0.0', '^4.0.0', '^4.0.0', '^4.0.0' ],
@@ -82,12 +82,12 @@ function getPackageDependencies(packageJsonObj, depTypeShorthand) {
  * }
  *
  * @export
- * @param {string} [depTypeShorthand] - 'dev' or 'peer'
+ * @param {string} [dependencyTypeShorthand] - none, 'dev', or 'peer'. As we use `yarn add` with the options.
  * @returns {Object}
  */
-export function getSemverRangesForAllDependencies(depTypeShorthand) {
+export function getSemverRangesForAllDependencies(dependencyTypeShorthand) {
   /* 
-    `depVersionRangesByPackage` is an object like:
+    `dependencyVersionsOfPackages` will be an object like:
     {
       core: {
         lodash: '^4.0.0',
@@ -100,28 +100,31 @@ export function getSemverRangesForAllDependencies(depTypeShorthand) {
       }, ...
     }
   */
-  const depVersionRangesByPackage = _.reduce(
+  const dependencyVersionsOfPackages = _.reduce(
     getPackageDirnames(),
     (_deps, packageDirname) => {
       return {
         ..._deps,
         [packageDirname]: getPackageDependencies(
           parsePackageJson(packageDirname),
-          depTypeShorthand
+          dependencyTypeShorthand
         ),
       }
     },
     {}
   )
 
-  const depVersionRanges = {}
-  _.forEach(depVersionRangesByPackage, packageDeps => {
+  const dependencyVersionsAcrossPackages = {}
+  _.forEach(dependencyVersionsOfPackages, packageDeps => {
     _.forEach(packageDeps, (verRange, dependencyName) => {
-      const _verRanges = depVersionRanges[dependencyName] || []
-      depVersionRanges[dependencyName] = [..._verRanges, verRange]
+      const _verRanges = dependencyVersionsAcrossPackages[dependencyName] || []
+      dependencyVersionsAcrossPackages[dependencyName] = [
+        ..._verRanges,
+        verRange,
+      ]
     })
   })
-  return depVersionRanges
+  return dependencyVersionsAcrossPackages
 }
 
 /**

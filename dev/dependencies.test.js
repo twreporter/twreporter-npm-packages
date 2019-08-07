@@ -7,10 +7,10 @@ const _ = {
   forEach,
 }
 
-describe('All dependencies should have valid intersection of version range among different packages.', () => {
+describe('All dependencies should have valid intersection of its version ranges across different packages.', () => {
   const versionRangesByDependency = utils.getSemverRangesForAllDependencies()
   _.forEach(versionRangesByDependency, (ranges, dependencyName) => {
-    test(`\`${dependencyName}\` should have valid intersection of version range`, () => {
+    test(`\`${dependencyName}\` should have valid intersection`, () => {
       const validatedVersion = utils.validateVersions(ranges)
       if (validatedVersion === null) {
         console.warn(
