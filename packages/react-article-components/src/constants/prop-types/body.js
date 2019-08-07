@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types'
+import alignmentConsts from '../element-alignment'
 
 const elementData = PropTypes.shape({
-  alignment: PropTypes.oneOf(['center', 'center-small', 'left', 'right'])
-    .isRequired,
+  alignment: PropTypes.oneOf([
+    alignmentConsts.center,
+    alignmentConsts.centerSmall,
+    alignmentConsts.left,
+    alignmentConsts.right,
+  ]).isRequired,
   styles: PropTypes.object.isRequired,
   content: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.object])
