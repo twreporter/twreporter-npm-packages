@@ -21,7 +21,7 @@ const _ = {
  * @export
  * @returns {string[]}
  */
-function getPackageDirnames() {
+export function getPackageDirnames() {
   // Cache the dirnames on runtime to reduce disk read
   if (!getPackageDirnames._cache) {
     const packagesPath = constants.packagesAbsolutePath
