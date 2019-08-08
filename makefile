@@ -66,4 +66,8 @@ test:
 	@echo "$(P) Run tests"
 	$(BIN_DIR)/jest
 
-.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link
+cp-make:
+	@echo "$(P) Copy \`dev/source.makefile\` to packages"
+	@for package in $(SUBDIRS); do cp -v dev/source.makefile $$package\makefile; done
+
+.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link cp-make

@@ -1,3 +1,9 @@
+# WARNING:
+# TO ENSURE THE CONSISTENCY OF MAKEFILE AMONG ALL PACKAGES,
+# DO NOT MODIFY THE `packages/**/makefile` DIRECTLY.
+# PLEASE UPDATE THE `dev/source.makefile`,
+# AND USE `make cp-make` COMMAND AT ROOT FOLDER TO COPY THE SOURCE TO ALL PACKAGES
+
 BIN_DIR ?= node_modules/.bin
 ROOT_DIR ?= ../../
 ROOT_BIN_DIR ?= $(ROOT_DIR)node_modules/.bin
