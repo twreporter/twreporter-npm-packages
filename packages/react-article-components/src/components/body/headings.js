@@ -29,14 +29,20 @@ const StyledH2 = styled.h2`
 const H1 = props => {
   const content = _.get(props, 'data.content.0', '')
   return (
-    <StyledH1 className={_.get(props, 'className', '')}>{content}</StyledH1>
+    <StyledH1
+      className={_.get(props, 'className', '')}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   )
 }
 
 const H2 = props => {
   const content = _.get(props, 'data.content.0', '')
   return (
-    <StyledH2 className={_.get(props, 'className', '')}>{content}</StyledH2>
+    <StyledH2
+      className={_.get(props, 'className', '')}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   )
 }
 
