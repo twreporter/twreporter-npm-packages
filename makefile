@@ -47,4 +47,8 @@ unlink:
 	@echo "$(P) Unlink all packages"
 	yarn workspaces run unlink
 
+test:
+	@echo "$(P) Run tests"
+	$(BIN_DIR)/jest
+
 .PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link
