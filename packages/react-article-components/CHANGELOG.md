@@ -2,11 +2,12 @@
 
 ## UNRELEASED
 
+## RELEASE
+
 ### 1.0.14
 
 - Fix heading content
-
-## RELEASE
+- Prevent image flash while sliding between first and last slide
 
 ### 1.0.13
 

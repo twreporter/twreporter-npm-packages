@@ -7,14 +7,12 @@ import React, { PureComponent } from 'react'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import memoize from 'memoize-one'
-import merge from 'lodash/merge'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled from 'styled-components'
 
 const _ = {
   get,
   map,
-  merge,
 }
 
 const mockup = {
@@ -553,7 +551,7 @@ export default class Slideshow extends PureComponent {
           this.setState({
             isSliding: false,
             curSlideIndex: curSlideIndex,
-            translateXUint: this.defaultTranslateXUnit,
+            translateXUint: this.defaultTranslateXUnit - curSlideIndex,
           })
         }, duration * 2)
       }
@@ -578,14 +576,14 @@ export default class Slideshow extends PureComponent {
           this.setState({
             isSliding: false,
             curSlideIndex: curSlideIndex,
-            translateXUint: this.defaultTranslateXUnit,
+            translateXUint: this.defaultTranslateXUnit - curSlideIndex,
           })
         }, duration * 2)
       }
     )
   }
 
-  buildImagesForSlicing = memoize(images => {
+  buildSlides = memoize(images => {
     // For slicing images array easily later,
     // add last `slidesOffset` elements into top of images array.
     // add first `slidesOffset` elements into bottom of images array.
@@ -599,12 +597,23 @@ export default class Slideshow extends PureComponent {
       images.slice(defaultCurIndex, slidesOffset)
     )
 
-    // since the items of imagesForSlicing would have the same id,
-    // we copy the images and append an index on their ids to avoid duplication.
     return _.map(imagesForSlicing, (img, index) => {
-      return _.merge({}, img, {
-        id: `${img.id}_${index}`,
-      })
+      const objectFit =
+        _.get(img, 'mobile.width', 0) > _.get(img, 'mobile.height', 0)
+          ? 'cover'
+          : 'contain'
+      return (
+        // since the items of imagesForSlicing would have the same id,
+        // hence, we append `index` on the key
+        <SlideFlexItem key={`slide_${img.id}_${index}`}>
+          <Img
+            imageSet={[img.mobile, img.tablet, img.desktop]}
+            defaultImage={img.mobile}
+            objectFit={objectFit}
+            sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
+          />
+        </SlideFlexItem>
+      )
     })
   })
 
@@ -614,30 +623,7 @@ export default class Slideshow extends PureComponent {
     const images = _.get(this.props, 'data.content', [])
     const total = images.length
 
-    const imagesForSlicing = this.buildImagesForSlicing(images)
-
-    const slides = imagesForSlicing.slice(
-      curSlideIndex,
-      curSlideIndex + slidesOffset * 2 + 1
-    )
-
-    const slidesJSX = _.map(slides, (slide = {}) => {
-      const objectFit =
-        _.get(slide, 'mobile.width', 0) > _.get(slide, 'mobile.height', 0)
-          ? 'cover'
-          : 'contain'
-      return (
-        <SlideFlexItem key={`slide_${slide.id}`}>
-          <Img
-            imageSet={[slide.mobile, slide.tablet, slide.desktop]}
-            defaultImage={slide.mobile}
-            objectFit={objectFit}
-            sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
-          />
-        </SlideFlexItem>
-      )
-    })
-
+    const slides = this.buildSlides(images)
     const desc = _.get(images, [curSlideIndex, 'description'])
 
     return (
@@ -648,7 +634,7 @@ export default class Slideshow extends PureComponent {
             duration={duration}
             isSliding={isSliding}
           >
-            {slidesJSX}
+            {slides}
           </SlidesFlexBox>
           <LeftSlideMask />
           <RightSlideMask />
