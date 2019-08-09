@@ -584,26 +584,25 @@ export default class Slideshow extends PureComponent {
   }
 
   buildSlides = memoize(images => {
-    // For slicing images array easily later,
     // add last `slidesOffset` elements into top of images array.
     // add first `slidesOffset` elements into bottom of images array.
     // EX:
     // slidesOffset: 2
     // input images: [ a, b, c, d ]
     // output images: [c, d, a, b, c, d, a, b]
-    const imagesForSlicing = [].concat(
+    const _images = [].concat(
       images.slice(-slidesOffset),
       images,
       images.slice(defaultCurIndex, slidesOffset)
     )
 
-    return _.map(imagesForSlicing, (img, index) => {
+    return _.map(_images, (img, index) => {
       const objectFit =
         _.get(img, 'mobile.width', 0) > _.get(img, 'mobile.height', 0)
           ? 'cover'
           : 'contain'
       return (
-        // since the items of imagesForSlicing would have the same id,
+        // since the items of _images would have the same id,
         // hence, we append `index` on the key
         <SlideFlexItem key={`slide_${img.id}_${index}`}>
           <Img
