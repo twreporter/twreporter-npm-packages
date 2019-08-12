@@ -1,6 +1,5 @@
-/* global describe, context, it */
+/* global expect, test, describe */
 
-import { expect } from 'chai'
 import { denormalizePosts, denormalizeTopics } from '../denormalize-asset'
 
 describe('denormalize assets testing', () => {
@@ -32,22 +31,22 @@ describe('denormalize assets testing', () => {
       relateds: ['post-slug-1', 'post-slug-2'],
     },
   }
-  context('denormalize posts', () => {
-    it('should handle empty array', () => {
-      expect(denormalizePosts([], postEntities)).to.deep.equal([])
+  describe('denormalize posts', () => {
+    test('should handle empty array', () => {
+      expect(denormalizePosts([], postEntities)).toEqual([])
     })
-    it('should handle single slug', () => {
-      expect(denormalizePosts('post-slug-1', postEntities)).to.deep.equal([
+    test('should handle single slug', () => {
+      expect(denormalizePosts('post-slug-1', postEntities)).toEqual([
         {
           slug: 'post-slug-1',
           relateds: ['post-slug-2', 'post-slug-3'],
         },
       ])
     })
-    it('should handle multiple slugs', () => {
+    test('should handle multiple slugs', () => {
       expect(
         denormalizePosts(['post-slug-1', 'post-slug-2'], postEntities)
-      ).to.deep.equal([
+      ).toEqual([
         {
           slug: 'post-slug-1',
           relateds: ['post-slug-2', 'post-slug-3'],
@@ -58,24 +57,20 @@ describe('denormalize assets testing', () => {
         },
       ])
     })
-    it('shoulde return new object', () => {
+    test('shoulde return new object', () => {
       const post = denormalizePosts(['post-slug-1'], postEntities)
-      expect(post).to.not.equal(postEntities['post-slug-1'])
-      expect(post[0].relateds).to.not.equal(
-        postEntities['post-slug-1'].relateds
-      )
+      expect(post).not.toBe(postEntities['post-slug-1'])
+      expect(post[0].relateds).not.toBe(postEntities['post-slug-1'].relateds)
     })
   })
-  context('denormalize topics', () => {
-    it('should handle empty array', () => {
-      expect(denormalizeTopics([], topicEntities, postEntities)).to.deep.equal(
-        []
-      )
+  describe('denormalize topics', () => {
+    test('should handle empty array', () => {
+      expect(denormalizeTopics([], topicEntities, postEntities)).toEqual([])
     })
-    it('should handle single slug', () => {
+    test('should handle single slug', () => {
       expect(
         denormalizeTopics('topic-slug-1', topicEntities, postEntities)
-      ).to.deep.equal([
+      ).toEqual([
         {
           slug: 'topic-slug-1',
           relateds: [
@@ -87,14 +82,14 @@ describe('denormalize assets testing', () => {
         },
       ])
     })
-    it('should handle multiple slugs', () => {
+    test('should handle multiple slugs', () => {
       expect(
         denormalizeTopics(
           ['topic-slug-1', 'topic-slug-2'],
           topicEntities,
           postEntities
         )
-      ).to.deep.equal([
+      ).toEqual([
         {
           slug: 'topic-slug-1',
           relateds: [
@@ -119,16 +114,14 @@ describe('denormalize assets testing', () => {
         },
       ])
     })
-    it('shoulde return new object', () => {
+    test('shoulde return new object', () => {
       const topic = denormalizeTopics(
         ['topic-slug-1'],
         topicEntities,
         postEntities
       )
-      expect(topic[0]).to.not.equal(topicEntities['topic-slug-1'])
-      expect(topic[0].relateds).to.not.equal(
-        topicEntities['topic-slug-1'].relateds
-      )
+      expect(topic[0]).not.toBe(topicEntities['topic-slug-1'])
+      expect(topic[0].relateds).not.toBe(topicEntities['topic-slug-1'].relateds)
     })
   })
 })

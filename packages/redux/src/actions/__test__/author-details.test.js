@@ -1,7 +1,6 @@
-/* global describe, it */
+/* global expect, test, describe, beforeEach */
 import { author as authorSchema } from '../../schemas/article-schema'
 import { camelizeKeys } from 'humps'
-import { expect } from 'chai'
 import { normalize } from 'normalizr'
 import * as actions from '../author-details'
 import actionTypes from '../../constants/action-types'
@@ -20,37 +19,43 @@ const searchParas = {
   page: 0,
 }
 
-describe('Test action creators of author-details', function() {
-  describe('Test action creator `requestFetchAuthorDetails`', function() {
+describe('Test action creators of author-details', () => {
+  let testContext
+
+  beforeEach(() => {
+    testContext = {}
+  })
+
+  describe('Test action creator `requestFetchAuthorDetails`', () => {
     const createdAction = actions.requestFetchAuthorDetails(authorId)
-    it('should return an action with property `type`', function() {
+    test('should return an action with property `type`', () => {
       const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_REQUEST
       expect(createdAction)
         .to.have.property('type')
-        .equals(expectedActionType)
+        .toBe(expectedActionType)
     })
-    it('should return an action with property `keywords`', function() {
+    test('should return an action with property `keywords`', () => {
       expect(createdAction)
         .to.have.property('keywords')
-        .equals(authorId)
+        .toBe(authorId)
     })
   })
-  describe('Test action creator `failToFetchAuthorDetails`', function() {
+  describe('Test action creator `failToFetchAuthorDetails`', () => {
     const error = new Error('mock-error')
     const createdAction = actions.failToFetchAuthorDetails(error)
-    it('should return an action with property `type`', function() {
+    test('should return an action with property `type`', () => {
       const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_FAILURE
       expect(createdAction)
         .to.have.property('type')
-        .equals(expectedActionType)
+        .toBe(expectedActionType)
     })
-    it('should return an action with property `error`', function() {
+    test('should return an action with property `error`', () => {
       expect(createdAction)
         .to.have.property('error')
-        .equals(error)
+        .toBe(error)
     })
   })
-  describe('Test action creator `receiveFetchAuthorDetails`', function() {
+  describe('Test action creator `receiveFetchAuthorDetails`', () => {
     const normalizedData = {
       entities: [
         {
@@ -60,29 +65,29 @@ describe('Test action creators of author-details', function() {
       results: ['mock-author-id'],
     }
     const createdAction = actions.receiveFetchAuthorDetails(normalizedData)
-    it('should return an action with property `type`', function() {
+    test('should return an action with property `type`', () => {
       const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS
       expect(createdAction)
         .to.have.property('type')
-        .equals(expectedActionType)
+        .toBe(expectedActionType)
     })
-    it('should return an action with property `normalizedData`', function() {
+    test('should return an action with property `normalizedData`', () => {
       expect(createdAction)
         .to.have.property('normalizedData')
-        .deep.equals(normalizedData)
+        .toEqual(normalizedData)
     })
   })
-  describe('Test action creator `fetchAuthorDetails`', function() {
+  describe('Test action creator `fetchAuthorDetails`', () => {
     const store = mockStore({
       [fieldNames.origins]: {
         api: 'http://localhost:8080',
       },
     })
-    this.afterEach(function() {
+    testContext.afterEach(function() {
       store.clearActions()
       nock.cleanAll()
     })
-    it('should dispatch an action created by `requestFetchAuthorDetails`', function(done) {
+    test('should dispatch an action created by `requestFetchAuthorDetails`', done => {
       nock('http://localhost:8080')
         .get('/v1/search/authors')
         .query(searchParas)
@@ -91,7 +96,7 @@ describe('Test action creators of author-details', function() {
         .dispatch(actions.fetchAuthorDetails(authorId))
         .then(function() {
           const actionsInStore = store.getActions()
-          expect(actionsInStore[0]).to.deep.equal(
+          expect(actionsInStore[0]).toEqual(
             actions.requestFetchAuthorDetails(authorId)
           )
           done()
@@ -100,7 +105,7 @@ describe('Test action creators of author-details', function() {
           done(error)
         })
     })
-    it('should dispatch an action created by `receiveFetchAuthorDetails` if fetching successed', function(done) {
+    test('should dispatch an action created by `receiveFetchAuthorDetails` if fetching successed', done => {
       const mockAuthorData = {
         id: authorId,
         email: 'mock-email',
@@ -118,7 +123,7 @@ describe('Test action creators of author-details', function() {
         .dispatch(actions.fetchAuthorDetails(authorId))
         .then(function() {
           const actionsInStore = store.getActions()
-          expect(actionsInStore[1]).to.deep.equal(
+          expect(actionsInStore[1]).toEqual(
             actions.receiveFetchAuthorDetails(normalizedData)
           )
           done()
@@ -127,7 +132,7 @@ describe('Test action creators of author-details', function() {
           done(error)
         })
     })
-    it('should dispatch an action created by `failToFetchAuthorDetails` if fetching failed', function(done) {
+    test('should dispatch an action created by `failToFetchAuthorDetails` if fetching failed', done => {
       nock('http://localhost:8080')
         .get('/v1/search/authors')
         .query(searchParas)
@@ -136,10 +141,10 @@ describe('Test action creators of author-details', function() {
         .dispatch(actions.fetchAuthorDetails(authorId))
         .then(function() {
           const actionsInStore = store.getActions()
-          expect(actionsInStore[1].type).to.equal(
+          expect(actionsInStore[1].type).toBe(
             actionTypes.FETCH_AUTHOR_DETAILS_FAILURE
           )
-          expect(actionsInStore[1].error).to.be.instanceOf(Error)
+          expect(actionsInStore[1].error).toBeInstanceOf(Error)
           done()
         })
         .catch(function(error) {

@@ -1,6 +1,5 @@
-/* global describe, it, context */
+/* global expect, test, describe */
 'use strict'
-import { expect } from 'chai'
 import {
   authorsList as reducer,
   searchedAuthorsList as searchedReducer,
@@ -13,23 +12,23 @@ import {
   MOCK_KEYWORDS,
 } from './mocks/authors'
 
-describe('Authors Reducer Testing', function() {
-  context('authors list page and load more', function() {
-    describe('The Action: undefinied || Initialize App', function() {
-      it('should return the initial state when previous state is undefined', function() {
+describe('Authors Reducer Testing', () => {
+  describe('authors list page and load more', () => {
+    describe('The Action: undefinied || Initialize App', () => {
+      test('should return the initial state when previous state is undefined', () => {
         const initialState = mockStatesSet.initialState
-        expect(reducer(undefined, {})).to.deep.equal(initialState)
+        expect(reducer(undefined, {})).toEqual(initialState)
       })
-      it('should return the previous state when previous state exist', function() {
+      test('should return the previous state when previous state exist', () => {
         const expectedState = mockStatesSet.expStateSucwithInit
-        expect(reducer(mockStatesSet.expStateSucwithInit, {})).to.deep.equal(
+        expect(reducer(mockStatesSet.expStateSucwithInit, {})).toEqual(
           expectedState
         )
       })
     })
 
-    describe('The Action: LIST_ALL_AUTHORS_REQUEST', function() {
-      it('should return expected state when previous state is initial state', function() {
+    describe('The Action: LIST_ALL_AUTHORS_REQUEST', () => {
+      test('should return expected state when previous state is initial state', () => {
         const initialState = mockStatesSet.initialState
         const expectedState = {
           ...mockStatesSet.initialState,
@@ -37,9 +36,9 @@ describe('Authors Reducer Testing', function() {
         }
         expect(
           reducer(initialState, mockActionsSet.LIST_ALL_AUTHORS_REQUEST)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
-      it('should return the expected state when previous state exist', function() {
+      test('should return the expected state when previous state exist', () => {
         const preState = mockStatesSet.expStateSucwithInit
         const expectedState = {
           ...mockStatesSet.expStateSucwithInit,
@@ -47,19 +46,19 @@ describe('Authors Reducer Testing', function() {
         }
         expect(
           reducer(preState, mockActionsSet.LIST_ALL_AUTHORS_REQUEST)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
     })
 
-    describe('The Action: LIST_ALL_AUTHORS_SUCCESS', function() {
-      it('should return expected state when previous state is initialState', function() {
+    describe('The Action: LIST_ALL_AUTHORS_SUCCESS', () => {
+      test('should return expected state when previous state is initialState', () => {
         const initialState = { ...mockStatesSet.initialState, isFetching: true }
         const expectedState = mockStatesSet.expStateSucwithInit
         expect(
           reducer(initialState, mockActionsSet.LIST_ALL_AUTHORS_SUCCESS)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
-      it('should return expected state when previous state exist', function() {
+      test('should return expected state when previous state exist', () => {
         const preState = {
           ...mockStatesSet.expStateSucwithInit,
           isFetching: true,
@@ -67,19 +66,19 @@ describe('Authors Reducer Testing', function() {
         const expectedState = mockStatesSet.expStateSucwithPre
         expect(
           reducer(preState, { ...mockActionsSet.LIST_ALL_AUTHORS_SUCCESS })
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
     })
 
-    describe('The Action: LIST_ALL_AUTHORS_FAILURE', function() {
-      it('should return expected state when previous state is initial state', function() {
+    describe('The Action: LIST_ALL_AUTHORS_FAILURE', () => {
+      test('should return expected state when previous state is initial state', () => {
         const initialState = { ...mockStatesSet.initialState, isFetching: true }
         const expectedState = mockStatesSet.expStateFailwithInit
         expect(
           reducer(initialState, mockActionsSet.LIST_ALL_AUTHORS_FAILURE)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
-      it('should return expected state when previous state exist', function() {
+      test('should return expected state when previous state exist', () => {
         const preState = {
           ...mockStatesSet.expStateSucwithInit,
           isFetching: true,
@@ -87,27 +86,27 @@ describe('Authors Reducer Testing', function() {
         const expectedState = mockStatesSet.expStateFailwithPre
         expect(
           reducer(preState, mockActionsSet.LIST_ALL_AUTHORS_FAILURE)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
     })
   })
 
-  context('search specific author', function() {
-    describe('The Action: undefinied || Initialize App', function() {
-      it('should return the initial state when previous state is undefined', function() {
+  describe('search specific author', () => {
+    describe('The Action: undefinied || Initialize App', () => {
+      test('should return the initial state when previous state is undefined', () => {
         const initialState = searchedMockStatesSet.initialState
-        expect(searchedReducer(undefined, {})).to.deep.equal(initialState)
+        expect(searchedReducer(undefined, {})).toEqual(initialState)
       })
-      it('should return the previous state when previous state exist', function() {
+      test('should return the previous state when previous state exist', () => {
         const expectedState = searchedMockStatesSet.expStateSuc
-        expect(
-          searchedReducer(searchedMockStatesSet.expStateSuc, {})
-        ).to.deep.equal(expectedState)
+        expect(searchedReducer(searchedMockStatesSet.expStateSuc, {})).toEqual(
+          expectedState
+        )
       })
     })
 
-    describe('The Action: SEARCH_AUTHORS_REQUEST', function() {
-      it('should return expected state when previous state is initial state', function() {
+    describe('The Action: SEARCH_AUTHORS_REQUEST', () => {
+      test('should return expected state when previous state is initial state', () => {
         const initialState = {}
         const expectedState = {
           ...searchedMockStatesSet.initialState,
@@ -116,9 +115,9 @@ describe('Authors Reducer Testing', function() {
         }
         expect(
           searchedReducer(initialState, mockActionsSet.SEARCH_AUTHORS_REQUEST)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
-      it('should return the expected state when previous state exist', function() {
+      test('should return the expected state when previous state exist', () => {
         const preState = searchedMockStatesSet.expStateSucwithInit
         const expectedState = {
           ...searchedMockStatesSet.initialState,
@@ -127,12 +126,12 @@ describe('Authors Reducer Testing', function() {
         }
         expect(
           searchedReducer(preState, mockActionsSet.SEARCH_AUTHORS_REQUEST)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
     })
 
-    describe('The Action: SEARCH_AUTHORS_SUCCESS', function() {
-      it('should return expected state when previous state is initialState', function() {
+    describe('The Action: SEARCH_AUTHORS_SUCCESS', () => {
+      test('should return expected state when previous state is initialState', () => {
         const initialState = {
           ...searchedMockStatesSet.initialState,
           isFetching: true,
@@ -141,9 +140,9 @@ describe('Authors Reducer Testing', function() {
         const expectedState = searchedMockStatesSet.expStateSuc
         expect(
           searchedReducer(initialState, mockActionsSet.SEARCH_AUTHORS_SUCCESS)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
-      it('should return expected state when previous state exist, but pre state will be replaced by init state added with new keywords and isFetching', function() {
+      test('should return expected state when previous state exist, but pre state will be replaced by init state added with new keywords and isFetching', () => {
         const preState = {
           ...searchedMockStatesSet.initialState,
           isFetching: true,
@@ -152,12 +151,12 @@ describe('Authors Reducer Testing', function() {
         const expectedState = searchedMockStatesSet.expStateSuc
         expect(
           searchedReducer(preState, mockActionsSet.SEARCH_AUTHORS_SUCCESS)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
     })
 
-    describe('The Action: SEARCH_AUTHORS_FAILURE', function() {
-      it('should return expected state when previous state is initial state', function() {
+    describe('The Action: SEARCH_AUTHORS_FAILURE', () => {
+      test('should return expected state when previous state is initial state', () => {
         const initialState = {
           ...searchedMockStatesSet.initialState,
           isFetching: true,
@@ -166,9 +165,9 @@ describe('Authors Reducer Testing', function() {
         const expectedState = searchedMockStatesSet.expStateFail
         expect(
           searchedReducer(initialState, mockActionsSet.SEARCH_AUTHORS_FAILURE)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
-      it('should return expected state when previous state exist, but pre state will be replaced by init state added with new keywords and isFetching', function() {
+      test('should return expected state when previous state exist, but pre state will be replaced by init state added with new keywords and isFetching', () => {
         const preState = {
           ...searchedMockStatesSet.initialState,
           isFetching: true,
@@ -177,7 +176,7 @@ describe('Authors Reducer Testing', function() {
         const expectedState = searchedMockStatesSet.expStateFail
         expect(
           searchedReducer(preState, mockActionsSet.SEARCH_AUTHORS_FAILURE)
-        ).to.deep.equal(expectedState)
+        ).toEqual(expectedState)
       })
     })
   })

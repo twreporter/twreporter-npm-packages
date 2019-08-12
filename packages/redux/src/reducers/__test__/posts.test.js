@@ -1,9 +1,7 @@
-/* global describe, it */
+/* global expect, test, describe */
 
 import { post, posts } from '../posts'
 import types from '../../constants/action-types'
-
-import { expect } from 'chai'
 
 const post1 = {
   id: 'post-id-1',
@@ -26,11 +24,11 @@ const post4 = {
 }
 
 describe('post reducer', () => {
-  it('should return the initial state', () => {
-    expect(post({}, {})).to.deep.equal({})
+  test('should return the initial state', () => {
+    expect(post({}, {})).toEqual({})
   })
 
-  it('should handle START_TO_GET_A_FULL_POST', () => {
+  test('should handle START_TO_GET_A_FULL_POST', () => {
     expect(
       post(
         {},
@@ -41,14 +39,14 @@ describe('post reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       isFetching: true,
       slug: 'mock-slug',
       error: null,
     })
   })
 
-  it('should handle GET_A_FULL_POST', () => {
+  test('should handle GET_A_FULL_POST', () => {
     expect(
       post(
         {},
@@ -57,14 +55,14 @@ describe('post reducer', () => {
           payload: post1,
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       slug: post1.slug,
       error: null,
       isFetching: false,
     })
   })
 
-  it('should handle ERROR_TO_GET_A_FULL_POST', () => {
+  test('should handle ERROR_TO_GET_A_FULL_POST', () => {
     const err = new Error('error occurs')
     expect(
       post(
@@ -77,7 +75,7 @@ describe('post reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       slug: 'mock-slug',
       error: err,
     })
@@ -85,11 +83,11 @@ describe('post reducer', () => {
 })
 
 describe('posts reducer', () => {
-  it('should return the initial state', () => {
-    expect(posts({}, {})).to.deep.equal({})
+  test('should return the initial state', () => {
+    expect(posts({}, {})).toEqual({})
   })
 
-  it('should handle GET_LISTED_POSTS', () => {
+  test('should handle GET_LISTED_POSTS', () => {
     expect(
       posts(
         {},
@@ -103,7 +101,7 @@ describe('posts reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       'mock-list-id': {
         items: [post1.slug, post2.slug, post3.slug, post4.slug],
         total: 10,
@@ -126,7 +124,7 @@ describe('posts reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       'mock-list-id': {
         items: [post1.slug, post2.slug, post3.slug, post4.slug],
         total: 10,
@@ -138,7 +136,7 @@ describe('posts reducer', () => {
     })
   })
 
-  it('should handle ERROR_TO_GET_LISTED_POSTS', () => {
+  test('should handle ERROR_TO_GET_LISTED_POSTS', () => {
     const err = new Error('error occurs')
     expect(
       posts(
@@ -155,7 +153,7 @@ describe('posts reducer', () => {
           listID: 'mock-list-id',
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       'mock-list-id': {
         items: [post1],
         total: 5,

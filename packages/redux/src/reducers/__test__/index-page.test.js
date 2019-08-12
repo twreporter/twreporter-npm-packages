@@ -1,4 +1,4 @@
-/* global describe, it */
+/* global expect, test, describe */
 
 import fieldNames from '../../constants/redux-state-field-names'
 import reducer from '../index-page'
@@ -7,8 +7,6 @@ import types from '../../constants/action-types'
 // lodash
 import cloneDeep from 'lodash/cloneDeep'
 import merge from 'lodash/merge'
-
-import { expect } from 'chai'
 
 const _ = {
   cloneDeep,
@@ -49,11 +47,11 @@ const nonFullTopic = {
 }
 
 describe('index-page reducer', () => {
-  it('should return the initial state', () => {
-    expect(reducer({}, {})).to.deep.equal({})
+  test('should return the initial state', () => {
+    expect(reducer({}, {})).toEqual({})
   })
 
-  it('should handle GET_CONTENT_FOR_INDEX_PAGE', () => {
+  test('should handle GET_CONTENT_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {
@@ -78,7 +76,7 @@ describe('index-page reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       [fieldNames.sections.latestSection]: [post1.slug, post2.slug],
       [fieldNames.sections.editorPicksSection]: [post4.slug],
       [fieldNames.sections.reviewsSection]: [post3.slug],
@@ -97,7 +95,7 @@ describe('index-page reducer', () => {
     })
   })
 
-  it('should handle ERROR_TO_GET_CONTENT_FOR_INDEX_PAGE', () => {
+  test('should handle ERROR_TO_GET_CONTENT_FOR_INDEX_PAGE', () => {
     const err = new Error('error occurs')
     expect(
       reducer(
@@ -119,7 +117,7 @@ describe('index-page reducer', () => {
           error: err,
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       [fieldNames.sections.latestSection]: [post1.slug, post2.slug],
       [fieldNames.sections.editorPicksSection]: [post4.slug],
       [fieldNames.sections.reviewsSection]: [post3.slug],
@@ -132,7 +130,7 @@ describe('index-page reducer', () => {
     })
   })
 
-  it('should handle GET_TOPICS_FOR_INDEX_PAGE', () => {
+  test('should handle GET_TOPICS_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {},
@@ -143,12 +141,12 @@ describe('index-page reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       [fieldNames.sections.topicsSection]: [nonFullTopic.slug, fullTopic.slug],
     })
   })
 
-  it('should handle GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE', () => {
+  test('should handle GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {},
@@ -159,12 +157,12 @@ describe('index-page reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       [fieldNames.sections.photosSection]: [post1.slug],
     })
   })
 
-  it('should handle GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE', () => {
+  test('should handle GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {},
@@ -175,12 +173,12 @@ describe('index-page reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       [fieldNames.sections.infographicsSection]: [post1.slug],
     })
   })
 
-  it('should handle GET_EDITOR_PICKED_POSTS', () => {
+  test('should handle GET_EDITOR_PICKED_POSTS', () => {
     expect(
       reducer(
         {},
@@ -191,7 +189,7 @@ describe('index-page reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       [fieldNames.sections.editorPicksSection]: [post1.slug],
     })
   })

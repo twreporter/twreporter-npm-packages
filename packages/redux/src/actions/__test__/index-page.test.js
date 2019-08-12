@@ -1,12 +1,10 @@
-/* global describe, context, it, afterEach */
+/* global expect, test, describe, afterEach */
 
 /*
   Testing functions:
     fetchIndexPageContent
 */
 
-import chai from 'chai'
-import chaiAsPromised from 'chai-as-promised'
 import configureMockStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
 import nock from 'nock'
@@ -14,8 +12,6 @@ import thunk from 'redux-thunk'
 import types from '../../constants/action-types'
 import * as actions from '../index-page'
 
-chai.use(chaiAsPromised)
-const expect = chai.expect
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
@@ -64,8 +60,8 @@ describe('Testing fetchIndexPageContent:', () => {
   afterEach(() => {
     nock.cleanAll()
   })
-  context('Contents are already existed', () => {
-    it('Should dispatch no actions and return Promise.resolve()', () => {
+  describe('Contents are already existed', () => {
+    test('Should dispatch no actions and return Promise.resolve()', () => {
       const store = mockStore({
         [fieldNames.indexPage]: {
           [fieldNames.sections.latestSection]: [post1, post2],
@@ -80,15 +76,14 @@ describe('Testing fetchIndexPageContent:', () => {
           api: 'http://localhost:8080',
         },
       })
-      store.dispatch(actions.fetchIndexPageContent())
-      expect(store.getActions().length).to.equal(0) // no action is dispatched
-      return expect(
-        store.dispatch(actions.fetchIndexPageContent())
-      ).eventually.equal(undefined)
+      return store.dispatch(actions.fetchIndexPageContent()).then(result => {
+        expect(store.getActions().length).toBe(0) // no action is dispatched
+        expect(result).toBeUndefined()
+      })
     })
   })
-  context('Lacks of contents', () => {
-    it('Should dispatch types.GET_CONTENT_FOR_INDEX_PAGE', () => {
+  describe('Lacks of contents', () => {
+    test('Should dispatch types.GET_CONTENT_FOR_INDEX_PAGE', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -110,14 +105,14 @@ describe('Testing fetchIndexPageContent:', () => {
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchIndexPageContent()).then(() => {
-        expect(store.getActions().length).to.equal(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0].type).to.deep.equal(
+        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
+        expect(store.getActions()[0].type).toEqual(
           types.START_TO_GET_INDEX_PAGE_CONTENT
         )
-        expect(store.getActions()[1].type).to.equal(
+        expect(store.getActions()[1].type).toBe(
           types.GET_CONTENT_FOR_INDEX_PAGE
         )
-        expect(store.getActions()[1].payload).to.deep.equal({
+        expect(store.getActions()[1].payload).toEqual({
           [fieldNames.sections.latestSection]: [post1, post2],
           [fieldNames.sections.editorPicksSection]: [post3],
           [fieldNames.sections.latestTopicSection]: [fullTopic],
@@ -129,8 +124,8 @@ describe('Testing fetchIndexPageContent:', () => {
       })
     })
   })
-  context('If the api returns a failure', () => {
-    it('Should dispatch types.ERROR_TO_GET_INDEX_PAGE_CONTENT', () => {
+  describe('If the api returns a failure', () => {
+    test('Should dispatch types.ERROR_TO_GET_INDEX_PAGE_CONTENT', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -141,14 +136,14 @@ describe('Testing fetchIndexPageContent:', () => {
         .reply(404)
 
       return store.dispatch(actions.fetchIndexPageContent()).then(() => {
-        expect(store.getActions().length).to.equal(2) // 2 actions: REQUEST && FAILURE
-        expect(store.getActions()[0].type).to.deep.equal(
+        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && FAILURE
+        expect(store.getActions()[0].type).toEqual(
           types.START_TO_GET_INDEX_PAGE_CONTENT
         )
-        expect(store.getActions()[1].type).to.equal(
+        expect(store.getActions()[1].type).toBe(
           types.ERROR_TO_GET_INDEX_PAGE_CONTENT
         )
-        expect(store.getActions()[1].errorMsg).to.not.equal('')
+        expect(store.getActions()[1].errorMsg).not.toBe('')
       })
     })
   })

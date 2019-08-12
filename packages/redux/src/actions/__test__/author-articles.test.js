@@ -1,5 +1,4 @@
-/* global describe, afterEach, it */
-import { expect } from 'chai'
+/* global expect, test, describe, afterEach */
 import { MAX_ARTICLES_PER_FETCH } from '../../constants/author-page'
 import { mockResponse, items } from './mocks/author-articles'
 import * as actions from '../../../src/actions/author-articles'
@@ -48,20 +47,20 @@ const failChecker = (store, error) => {
       authorId,
     },
   ]
-  expect(actionReq).to.deep.equal(expectedActions[0])
-  expect(actionFail).to.contain.all.keys(expectedActions[1])
-  expect(expectedActions[1]).to.contain.all.keys(actionFail)
-  expect(actionFail.type).to.deep.equal(expectedActions[1].type)
-  expect(actionFail.failedAt).to.be.an('number')
-  expect(actionFail.error).to.be.instanceof(error)
+  expect(actionReq).toEqual(expectedActions[0])
+  expect(actionFail).toEqual(expect.arrayContaining(expectedActions[1]))
+  expect(expectedActions[1]).toEqual(expect.arrayContaining(actionFail))
+  expect(actionFail.type).toEqual(expectedActions[1].type)
+  expect(typeof actionFail.failedAt).toBe('number')
+  expect(actionFail.error).toBeInstanceOf(error)
 }
 
-describe('Atuhor Action Testing', function() {
+describe('Atuhor Action Testing', () => {
   afterEach(() => {
     nock.cleanAll()
   })
 
-  it('API server response Error directly: web status code is greater than 400', function() {
+  test('API server response Error directly: web status code is greater than 400', () => {
     nock('http://localhost:8080')
       .get('/v1/search/posts')
       .query(searchParas)
@@ -75,7 +74,7 @@ describe('Atuhor Action Testing', function() {
       })
   })
 
-  it('The Actions: FETCH_AUTHOR_COLLECTION_REQUEST && FETCH_AUTHOR_COLLECTION_SUCCESS', function() {
+  test('The Actions: FETCH_AUTHOR_COLLECTION_REQUEST && FETCH_AUTHOR_COLLECTION_SUCCESS', () => {
     nock('http://localhost:8080')
       .get('/v1/search/posts')
       .query(searchParas)
@@ -103,28 +102,22 @@ describe('Atuhor Action Testing', function() {
             receivedAt: Date.now(),
           },
         ]
-        expect(actionReq).to.deep.equal(expectedActions[0])
-        expect(actionSuc).to.contain.all.keys(expectedActions[1])
-        expect(expectedActions[1]).to.contain.all.keys(actionSuc)
-        expect(actionSuc.type).to.deep.equal(expectedActions[1].type)
-        expect(actionSuc.normalizedData).to.deep.equal(
+        expect(actionReq).toEqual(expectedActions[0])
+        expect(actionSuc).toEqual(expect.arrayContaining(expectedActions[1]))
+        expect(expectedActions[1]).toEqual(expect.arrayContaining(actionSuc))
+        expect(actionSuc.type).toEqual(expectedActions[1].type)
+        expect(actionSuc.normalizedData).toEqual(
           expectedActions[1].normalizedData
         )
-        expect(actionSuc.authorId).to.deep.equal(expectedActions[1].authorId)
-        expect(actionSuc.currentPage).to.deep.equal(
-          expectedActions[1].currentPage
-        )
-        expect(actionSuc.totalPages).to.deep.equal(
-          expectedActions[1].totalPages
-        )
-        expect(actionSuc.totalResults).to.deep.equal(
-          expectedActions[1].totalResults
-        )
-        expect(actionSuc.receivedAt).to.be.an('number')
+        expect(actionSuc.authorId).toEqual(expectedActions[1].authorId)
+        expect(actionSuc.currentPage).toEqual(expectedActions[1].currentPage)
+        expect(actionSuc.totalPages).toEqual(expectedActions[1].totalPages)
+        expect(actionSuc.totalResults).toEqual(expectedActions[1].totalResults)
+        expect(typeof actionSuc.receivedAt).toBe('number')
       })
   })
 
-  it('The Actions: FETCH_AUTHOR_COLLECTION_REQUEST && FETCH_AUTHOR_COLLECTION_FAILURE', function() {
+  test('The Actions: FETCH_AUTHOR_COLLECTION_REQUEST && FETCH_AUTHOR_COLLECTION_FAILURE', () => {
     nock('http://localhost:8080')
       .get('/v1/search/posts')
       .query(searchParas)

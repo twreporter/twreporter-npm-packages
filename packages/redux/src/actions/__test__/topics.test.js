@@ -1,4 +1,4 @@
-/* global describe, context, it, after, afterEach */
+/* global expect, test, describe, afterEach, afterAll */
 
 /*
   Testing functions:
@@ -8,8 +8,6 @@
 */
 
 import * as actions from '../topics'
-import chai from 'chai'
-import chaiAsPromised from 'chai-as-promised'
 import configureMockStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
 import nock from 'nock'
@@ -19,8 +17,6 @@ import types from '../../constants/action-types'
 
 const { pageToOffset } = pagination
 
-chai.use(chaiAsPromised)
-const expect = chai.expect
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
@@ -45,8 +41,8 @@ describe('Testing fetchAFullTopic:', () => {
   afterEach(() => {
     nock.cleanAll()
   })
-  context('Topic is already existed in entities', () => {
-    it('Should dispatch types.CHANGE_SELECTED_TOPIC with topic', () => {
+  describe('Topic is already existed in entities', () => {
+    test('Should dispatch types.CHANGE_SELECTED_TOPIC with topic', () => {
       const mockSlug = 'mock-slug'
       const mockTopic = {
         id: 'mock-id',
@@ -64,13 +60,13 @@ describe('Testing fetchAFullTopic:', () => {
         },
       })
       store.dispatch(actions.fetchAFullTopic(mockSlug))
-      expect(store.getActions().length).to.equal(1) // dispatch types.CHANGE_SELECTED_TOPIC
-      expect(store.getActions()[0].type).to.equal(types.CHANGE_SELECTED_TOPIC)
-      expect(store.getActions()[0].payload).to.deep.equal(mockTopic)
+      expect(store.getActions().length).toBe(1) // dispatch types.CHANGE_SELECTED_TOPIC
+      expect(store.getActions()[0].type).toBe(types.CHANGE_SELECTED_TOPIC)
+      expect(store.getActions()[0].payload).toEqual(mockTopic)
     })
   })
-  context('It loads a full topic successfully', () => {
-    it('Should dispatch types.START_TO_GET_A_FULL_TOPIC and types.GET_A_FULL_TOPIC', () => {
+  describe('It loads a full topic successfully', () => {
+    test('Should dispatch types.START_TO_GET_A_FULL_TOPIC and types.GET_A_FULL_TOPIC', () => {
       const mockSlug = 'mock-slug'
       const mockTopic = {
         id: 'mock-id',
@@ -96,20 +92,20 @@ describe('Testing fetchAFullTopic:', () => {
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchAFullTopic(mockSlug)).then(() => {
-        expect(store.getActions().length).to.equal(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0].type).to.deep.equal(
+        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
+        expect(store.getActions()[0].type).toEqual(
           types.START_TO_GET_A_FULL_TOPIC
         )
-        expect(store.getActions()[0].payload).to.deep.equal({
+        expect(store.getActions()[0].payload).toEqual({
           slug: mockSlug,
         })
-        expect(store.getActions()[1].type).to.equal(types.GET_A_FULL_TOPIC)
-        expect(store.getActions()[1].payload).to.deep.equal(mockTopic)
+        expect(store.getActions()[1].type).toBe(types.GET_A_FULL_TOPIC)
+        expect(store.getActions()[1].payload).toEqual(mockTopic)
       })
     })
   })
-  context('If the api returns a failure', () => {
-    it('Should dispatch types.START_TO_GET_A_FULL_TOPIC and types.ERROR_TO_GET_A_FULL_TOPIC', () => {
+  describe('If the api returns a failure', () => {
+    test('Should dispatch types.START_TO_GET_A_FULL_TOPIC and types.ERROR_TO_GET_A_FULL_TOPIC', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -121,14 +117,12 @@ describe('Testing fetchAFullTopic:', () => {
         .reply(404)
 
       return store.dispatch(actions.fetchAFullTopic(mockSlug)).then(() => {
-        expect(store.getActions().length).to.equal(2) // 2 actions: REQUEST && FAILURE
-        expect(store.getActions()[0].type).to.deep.equal(
+        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && FAILURE
+        expect(store.getActions()[0].type).toEqual(
           types.START_TO_GET_A_FULL_TOPIC
         )
-        expect(store.getActions()[1].type).to.equal(
-          types.ERROR_TO_GET_A_FULL_TOPIC
-        )
-        expect(store.getActions()[1].payload.error).to.be.an.instanceof(Error)
+        expect(store.getActions()[1].type).toBe(types.ERROR_TO_GET_A_FULL_TOPIC)
+        expect(store.getActions()[1].payload.error).toBeInstanceOf(Error)
       })
     })
   })
@@ -145,8 +139,8 @@ describe('Testing fetchTopics:', () => {
   afterEach(() => {
     nock.cleanAll()
   })
-  context('There is no such page of topics to load', () => {
-    it('Should dispatch types.GET_TOPICS with empty items array', () => {
+  describe('There is no such page of topics to load', () => {
+    test('Should dispatch types.GET_TOPICS with empty items array', () => {
       const store = mockStore({
         [fieldNames.topicList]: {
           page: 2,
@@ -177,9 +171,9 @@ describe('Testing fetchTopics:', () => {
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
-        expect(store.getActions().length).to.equal(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[1].type).to.equal(types.GET_TOPICS)
-        expect(store.getActions()[1].payload).to.deep.equal({
+        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
+        expect(store.getActions()[1].type).toBe(types.GET_TOPICS)
+        expect(store.getActions()[1].payload).toEqual({
           items: [],
           total,
           limit,
@@ -188,8 +182,8 @@ describe('Testing fetchTopics:', () => {
       })
     })
   })
-  context('It loads topics successfully', () => {
-    it('Should dispatch types.GET_TOPICS', () => {
+  describe('It loads topics successfully', () => {
+    test('Should dispatch types.GET_TOPICS', () => {
       const store = mockStore({
         [fieldNames.topicList]: {
           items: {
@@ -218,12 +212,10 @@ describe('Testing fetchTopics:', () => {
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
-        expect(store.getActions().length).to.equal(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0].type).to.deep.equal(
-          types.START_TO_GET_TOPICS
-        )
-        expect(store.getActions()[1].type).to.equal(types.GET_TOPICS)
-        expect(store.getActions()[1].payload).to.deep.equal({
+        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
+        expect(store.getActions()[0].type).toEqual(types.START_TO_GET_TOPICS)
+        expect(store.getActions()[1].type).toBe(types.GET_TOPICS)
+        expect(store.getActions()[1].payload).toEqual({
           items: [topic2],
           total,
           limit,
@@ -232,8 +224,8 @@ describe('Testing fetchTopics:', () => {
       })
     })
   })
-  context('If the api returns a failure', () => {
-    it('Should dispatch types.ERROR_TO_GET_TOPICS', () => {
+  describe('If the api returns a failure', () => {
+    test('Should dispatch types.ERROR_TO_GET_TOPICS', () => {
       const limit = 1
       const offset = 1
       const store = mockStore({
@@ -245,17 +237,15 @@ describe('Testing fetchTopics:', () => {
         .get(encodeURI(`/v1/topics?limit=${limit}&offset=${offset}`))
         .reply(404)
       return store.dispatch(actions.fetchTopics(limit)).then(() => {
-        expect(store.getActions().length).to.equal(2) // 2 actions: REQUEST && FAILURE
-        expect(store.getActions()[0].type).to.deep.equal(
-          types.START_TO_GET_TOPICS
-        )
-        expect(store.getActions()[1].type).to.equal(types.ERROR_TO_GET_TOPICS)
-        expect(store.getActions()[1].payload.error).to.be.an.instanceof(Error)
+        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && FAILURE
+        expect(store.getActions()[0].type).toEqual(types.START_TO_GET_TOPICS)
+        expect(store.getActions()[1].type).toBe(types.ERROR_TO_GET_TOPICS)
+        expect(store.getActions()[1].payload.error).toBeInstanceOf(Error)
       })
     })
   })
-  context('If the parameter nPerPage is invalid', () => {
-    it('Should dispatch no action and return a Promise.reject(err)', () => {
+  describe('If the parameter nPerPage is invalid', () => {
+    test('Should dispatch no action and return a Promise.reject(err)', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -263,14 +253,14 @@ describe('Testing fetchTopics:', () => {
       })
       const page = 1
       const nPerPage = -1
-      expect(
-        store.dispatch(actions.fetchTopics(page, nPerPage))
-      ).eventually.to.be.an.instanceof(Error)
-      return expect(store.getActions().length).to.equal(0) // no action
+      return store.dispatch(actions.fetchTopics(page, nPerPage)).catch(err => {
+        expect(err).toBeInstanceOf(Error)
+        expect(store.getActions().length).toBe(0) // no action
+      })
     })
   })
-  context('If the parameter page is invalid', () => {
-    it('Should dispatch no action and return a Promise.reject(err)', () => {
+  describe('If the parameter page is invalid', () => {
+    test('Should dispatch no action and return a Promise.reject(err)', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -278,10 +268,10 @@ describe('Testing fetchTopics:', () => {
       })
       const page = -1
       const nPerPage = 10
-      expect(
-        store.dispatch(actions.fetchTopics(page, nPerPage))
-      ).eventually.to.be.an.instanceof(Error)
-      return expect(store.getActions().length).to.equal(0) // no action
+      return store.dispatch(actions.fetchTopics(page, nPerPage)).catch(err => {
+        expect(err).toBeInstanceOf(Error)
+        expect(store.getActions().length).toBe(0)
+      })
     })
   })
 })
@@ -295,11 +285,11 @@ describe('Testing fetchTopics:', () => {
 ========= Testing  fetchTopicsOnIndexPage ==========
 */
 describe('Testing fetchTopicsOnIndexPage:', () => {
-  after(() => {
+  afterAll(() => {
     nock.cleanAll()
   })
-  context('index_page.topics are already existed', () => {
-    it('Should do nothing', () => {
+  describe('index_page.topics are already existed', () => {
+    test('Should do nothing', () => {
       const store = mockStore({
         [fieldNames.indexPage]: {
           [fieldNames.sections.topicsSection]: [topic1, topic2],
@@ -308,16 +298,15 @@ describe('Testing fetchTopicsOnIndexPage:', () => {
           api: 'http://localhost:8080',
         },
       })
-      store.dispatch(actions.fetchTopicsOnIndexPage())
-      expect(store.getActions().length).to.equal(0) // no action is dispatched
-      return expect(
-        store.dispatch(actions.fetchTopicsOnIndexPage())
-      ).eventually.equal(undefined)
+      return store.dispatch(actions.fetchTopicsOnIndexPage()).then(result => {
+        expect(store.getActions().length).toBe(0)
+        expect(result).not.toBeDefined()
+      })
     })
   })
 
-  context('Load topics if needed', () => {
-    it('Should dispatch types.GET_TOPICS_FOR_INDEX_PAGE)', () => {
+  describe('Load topics if needed', () => {
+    test('Should dispatch types.GET_TOPICS_FOR_INDEX_PAGE)', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -335,11 +324,9 @@ describe('Testing fetchTopicsOnIndexPage:', () => {
         })
 
       return store.dispatch(actions.fetchTopicsOnIndexPage()).then(() => {
-        expect(store.getActions().length).to.equal(2) // START and GET
-        expect(store.getActions()[1].type).to.equal(
-          types.GET_TOPICS_FOR_INDEX_PAGE
-        )
-        expect(store.getActions()[1].payload.items.length).to.equal(2)
+        expect(store.getActions().length).toBe(2) // START and GET
+        expect(store.getActions()[1].type).toBe(types.GET_TOPICS_FOR_INDEX_PAGE)
+        expect(store.getActions()[1].payload.items.length).toBe(2)
       })
     })
   })

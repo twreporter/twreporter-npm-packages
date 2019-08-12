@@ -1,5 +1,4 @@
-/* global describe, afterEach, it, context */
-import { expect } from 'chai'
+/* global expect, test, describe, afterEach */
 import * as actions from '../../../src/actions/authors'
 import types from '../../constants/action-types'
 import configureMockStore from 'redux-mock-store'
@@ -49,15 +48,13 @@ function checker({
       },
     ]
 
-    expect(actionReq).to.deep.equal(expectedActions[0])
-    expect(actionSuc).to.contain.all.keys(expectedActions[1])
-    expect(expectedActions[1]).to.contain.all.keys(actionSuc)
-    expect(actionSuc.type).to.deep.equal(expectedActions[1].type)
-    expect(actionSuc.keywords).to.deep.equal(expectedActions[1].keywords)
-    expect(actionSuc.normalizedData).to.deep.equal(
-      expectedActions[1].normalizedData
-    )
-    expect(actionSuc.receivedAt).to.be.an('number')
+    expect(actionReq).toEqual(expectedActions[0])
+    expect(actionSuc).toEqual(expect.arrayContaining(expectedActions[1]))
+    expect(expectedActions[1]).toEqual(expect.arrayContaining(actionSuc))
+    expect(actionSuc.type).toEqual(expectedActions[1].type)
+    expect(actionSuc.keywords).toEqual(expectedActions[1].keywords)
+    expect(actionSuc.normalizedData).toEqual(expectedActions[1].normalizedData)
+    expect(typeof actionSuc.receivedAt).toBe('number')
   })
 }
 
@@ -84,24 +81,24 @@ const failChecker = ({
       },
     ]
 
-    expect(actionReq).to.deep.equal(expectedActions[0])
-    expect(actionFail).to.contain.all.keys(expectedActions[1])
-    expect(expectedActions[1]).to.contain.all.keys(actionFail)
-    expect(actionFail.type).to.deep.equal(expectedActions[1].type)
-    expect(actionFail.failedAt).to.be.an('number')
-    expect(actionFail.error.code).to.equal(true)
+    expect(actionReq).toEqual(expectedActions[0])
+    expect(actionFail).toEqual(expect.arrayContaining(expectedActions[1]))
+    expect(expectedActions[1]).toEqual(expect.arrayContaining(actionFail))
+    expect(actionFail.type).toEqual(expectedActions[1].type)
+    expect(typeof actionFail.failedAt).toBe('number')
+    expect(actionFail.error.code).toBe(true)
   })
 }
 
-describe('Two main situations in authors.js file: 1) Keywords is null and list all authors 2) Keywords has value and search specific author', function() {
+describe('Two main situations in authors.js file: 1) Keywords is null and list all authors 2) Keywords has value and search specific author', () => {
   afterEach(() => {
     nock.cleanAll()
   })
 
-  context('Keywords == null', function() {
-    context('Fetch authors list successfully', function() {
-      context('Load First Page of the authors list', function() {
-        it('Actual actions should be same as expected actions', function() {
+  describe('Keywords == null', () => {
+    describe('Fetch authors list successfully', () => {
+      describe('Load First Page of the authors list', () => {
+        test('Actual actions should be same as expected actions', () => {
           const keywords = ''
           const mockDefaultState = mockDefaultStates.initialState
           const searchParas = {
@@ -125,8 +122,8 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
         })
       })
 
-      context('After loaded first page, now we want to load more', function() {
-        it('Actual actions should be same as expected actions', function() {
+      describe('After loaded first page, now we want to load more', () => {
+        test('Actual actions should be same as expected actions', () => {
           const keywords = ''
           const mockDefaultState = mockDefaultStates.afterFirstPageState
           const searchParas = {
@@ -150,21 +147,21 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
         })
       })
 
-      context('Want to load more pages but Algolia has no more', function() {
-        it('should handle the resolved promise (the running tset should be finished)', function() {
+      describe('Want to load more pages but Algolia has no more', () => {
+        test('should handle the resolved promise (the running tset should be finished)', () => {
           const keywords = ''
           const mockDefaultState = mockDefaultStates.gotNothing
           const store = mockStore(mockDefaultState)
           return store
             .dispatch(actions.searchAuthorsIfNeeded(keywords))
             .then(val => {
-              expect(val).to.equal('Promise Resolved')
+              expect(val).toBe('Promise Resolved')
             })
         })
       })
     })
-    context('Fetch authors list unsuccessfully', function() {
-      it('Actual actions should be same as expected actions', function() {
+    describe('Fetch authors list unsuccessfully', () => {
+      test('Actual actions should be same as expected actions', () => {
         const keywords = ''
         const mockDefaultState = mockDefaultStates.initialState
         const searchParas = {
@@ -191,10 +188,10 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
     })
   })
 
-  context('Keywords != null ', function() {
-    context('Fetch specific author successfully', function() {
-      context('keywords are new', function() {
-        it('Actual actions should be same as expected actions', function() {
+  describe('Keywords != null ', () => {
+    describe('Fetch specific author successfully', () => {
+      describe('keywords are new', () => {
+        test('Actual actions should be same as expected actions', () => {
           const keywords = constKeywords
           const mockDefaultState = mockDefaultStates.hasNoPreviousKeywords
           const searchParas = {
@@ -219,22 +216,22 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
         })
       })
 
-      context('keywords are same', function() {
-        it('should handle the resolved promise (the running tset should be finished)', function() {
+      describe('keywords are same', () => {
+        test('should handle the resolved promise (the running tset should be finished)', () => {
           const keywords = constKeywords
           const mockDefaultState = mockDefaultStates.hasPreviousKeywords
           const store = mockStore(mockDefaultState)
           return store
             .dispatch(actions.searchAuthorsIfNeeded(keywords))
             .then(val => {
-              expect(val).to.equal('Promise Resolved')
+              expect(val).toBe('Promise Resolved')
             })
         })
       })
     })
 
-    context('Fetch specific author unsuccessfully', function() {
-      it('Actual actions should be same as expected actions', function() {
+    describe('Fetch specific author unsuccessfully', () => {
+      test('Actual actions should be same as expected actions', () => {
         const keywords = constKeywords
         const mockDefaultState = mockDefaultStates.hasNoPreviousKeywords
         const searchParas = {
@@ -261,8 +258,8 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
     })
   })
 
-  context('Server error 404', function() {
-    it('Actual actions should be same as expected actions', function() {
+  describe('Server error 404', () => {
+    test('Actual actions should be same as expected actions', () => {
       const keywords = ''
       const mockDefaultState = mockDefaultStates.initialState
       const searchParas = {
@@ -292,12 +289,12 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
             },
           ]
 
-          expect(actionReq).to.deep.equal(expectedActions[0])
-          expect(actionFail).to.contain.all.keys(expectedActions[1])
-          expect(expectedActions[1]).to.contain.all.keys(actionFail)
-          expect(actionFail.type).to.deep.equal(expectedActions[1].type)
-          expect(actionFail.failedAt).to.be.an('number')
-          expect(actionFail.error).to.be.instanceof(expectedActions[1].error)
+          expect(actionReq).toEqual(expectedActions[0])
+          expect(actionFail).toEqual(expect.arrayContaining(expectedActions[1]))
+          expect(expectedActions[1]).toEqual(expect.arrayContaining(actionFail))
+          expect(actionFail.type).toEqual(expectedActions[1].type)
+          expect(typeof actionFail.failedAt).toBe('number')
+          expect(actionFail.error).toBeInstanceOf(expectedActions[1].error)
         })
     })
   })

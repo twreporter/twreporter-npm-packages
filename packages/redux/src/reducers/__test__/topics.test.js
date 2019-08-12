@@ -1,8 +1,7 @@
-/* global describe, it */
+/* global expect, test, describe */
 
 import { topic, topics } from '../topics'
 import types from '../../constants/action-types'
-import { expect } from 'chai'
 import pagination from '../../utils/pagination'
 
 const { offsetToPage } = pagination
@@ -18,11 +17,11 @@ const topic2 = {
 }
 
 describe('topic reducer', () => {
-  it('should return the initial state', () => {
-    expect(topic({}, {})).to.deep.equal({})
+  test('should return the initial state', () => {
+    expect(topic({}, {})).toEqual({})
   })
 
-  it('should handle GET_A_FULL_TOPIC', () => {
+  test('should handle GET_A_FULL_TOPIC', () => {
     expect(
       topic(
         {},
@@ -31,14 +30,14 @@ describe('topic reducer', () => {
           payload: topic1,
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       slug: topic1.slug,
       error: null,
       isFetching: false,
     })
   })
 
-  it('should handle ERROR_TO_GET_A_FULL_TOPIC ', () => {
+  test('should handle ERROR_TO_GET_A_FULL_TOPIC ', () => {
     const err = new Error('error occurs')
     expect(
       topic(
@@ -51,7 +50,7 @@ describe('topic reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       slug: 'mock-slug',
       error: err,
       isFetching: false,
@@ -60,11 +59,11 @@ describe('topic reducer', () => {
 })
 
 describe('topics reducer', () => {
-  it('should return the initial state', () => {
-    expect(topics({}, {})).to.deep.equal({})
+  test('should return the initial state', () => {
+    expect(topics({}, {})).toEqual({})
   })
 
-  it('should handle GET_TOPICS', () => {
+  test('should handle GET_TOPICS', () => {
     const total = 10
     const limit = 3
     const offset = 6
@@ -86,7 +85,7 @@ describe('topics reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       items: {
         [page]: [topic1.slug, topic2.slug],
       },
@@ -98,7 +97,7 @@ describe('topics reducer', () => {
     })
   })
 
-  it('should handle ERROR_TO_GET_TOPICS', () => {
+  test('should handle ERROR_TO_GET_TOPICS', () => {
     const err = new Error('error occurs')
     expect(
       topics(
@@ -114,7 +113,7 @@ describe('topics reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       items: [topic1.slug, topic2.slug],
       total: 10,
       error: err,

@@ -1,4 +1,4 @@
-/* global describe, it */
+/* global expect, test, describe */
 
 import fieldNames from '../../constants/redux-state-field-names'
 import reducer from '../entities'
@@ -7,8 +7,6 @@ import types from '../../constants/action-types'
 // lodash
 import cloneDeep from 'lodash/cloneDeep'
 import merge from 'lodash/merge'
-
-import { expect } from 'chai'
 
 const _ = {
   cloneDeep,
@@ -55,11 +53,11 @@ const post1 = {
 }
 
 describe('entities reducer', () => {
-  it('should return the initial state', () => {
-    expect(reducer({}, {})).to.deep.equal({})
+  test('should return the initial state', () => {
+    expect(reducer({}, {})).toEqual({})
   })
 
-  it('should handle GET_CONTENT_FOR_INDEX_PAGE', () => {
+  test('should handle GET_CONTENT_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {
@@ -84,7 +82,7 @@ describe('entities reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {
         [post2.slug]: post2,
         [post3.slug]: post3,
@@ -102,7 +100,7 @@ describe('entities reducer', () => {
     })
   })
 
-  it('should handle GET_TOPICS_FOR_INDEX_PAGE', () => {
+  test('should handle GET_TOPICS_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {},
@@ -113,7 +111,7 @@ describe('entities reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {},
       topics: {
         [nonFullTopic.slug]: nonFullTopic,
@@ -121,7 +119,7 @@ describe('entities reducer', () => {
     })
   })
 
-  it('should handle GET_EDITOR_PICKED_POSTS', () => {
+  test('should handle GET_EDITOR_PICKED_POSTS', () => {
     expect(
       reducer(
         {},
@@ -132,7 +130,7 @@ describe('entities reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {
         [post2.slug]: post2,
       },
@@ -140,7 +138,7 @@ describe('entities reducer', () => {
     })
   })
 
-  it('should handle GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE', () => {
+  test('should handle GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {},
@@ -151,7 +149,7 @@ describe('entities reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {
         [post2.slug]: post2,
       },
@@ -159,7 +157,7 @@ describe('entities reducer', () => {
     })
   })
 
-  it('should handle GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE', () => {
+  test('should handle GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE', () => {
     expect(
       reducer(
         {},
@@ -170,7 +168,7 @@ describe('entities reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {
         [post2.slug]: post2,
       },
@@ -178,7 +176,7 @@ describe('entities reducer', () => {
     })
   })
 
-  it('should handle GET_LISTED_POSTS', () => {
+  test('should handle GET_LISTED_POSTS', () => {
     expect(
       reducer(
         {},
@@ -189,7 +187,7 @@ describe('entities reducer', () => {
           },
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {
         [post2.slug]: post2,
       },
@@ -197,7 +195,7 @@ describe('entities reducer', () => {
     })
   })
 
-  it('should handle GET_A_FULL_POST', () => {
+  test('should handle GET_A_FULL_POST', () => {
     const post = _.cloneDeep(post1)
 
     expect(
@@ -208,7 +206,7 @@ describe('entities reducer', () => {
           payload: post,
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {
         [post1.slug]: {
           slug: post.slug,
@@ -232,7 +230,7 @@ describe('entities reducer', () => {
     })
   })
 
-  it('should handle GET_A_FULL_TOPIC', () => {
+  test('should handle GET_A_FULL_TOPIC', () => {
     const topic = _.cloneDeep(fullTopic)
     expect(
       reducer(
@@ -242,7 +240,7 @@ describe('entities reducer', () => {
           payload: topic,
         }
       )
-    ).to.deep.equal({
+    ).toEqual({
       posts: {
         [post3.slug]: post3,
         [post4.slug]: post4,
