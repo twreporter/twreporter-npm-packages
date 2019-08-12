@@ -6,16 +6,14 @@ import { getAccessToken } from './actions/auth'
 import { Provider } from 'react-redux'
 
 export default class StandaloneHeader extends React.PureComponent {
-  static propTypes = Object.assign(
-    {},
-    wellDefinedPropTypes.context.propTypes,
-    wellDefinedPropTypes.header.propTypes
-  )
-  static defaultProps = Object.assign(
-    {},
-    wellDefinedPropTypes.context.defaultProps,
-    wellDefinedPropTypes.header.defaultProps
-  )
+  static propTypes = {
+    ...wellDefinedPropTypes.context.propTypes,
+    ...wellDefinedPropTypes.header.propTypes,
+  }
+  static defaultProps = {
+    ...wellDefinedPropTypes.context.defaultProps,
+    ...wellDefinedPropTypes.header.defaultProps,
+  }
 
   constructor(props) {
     super(props)

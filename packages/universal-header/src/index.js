@@ -17,26 +17,26 @@ export default {
 }
 
 /* eslint no-console:0 */
-//import React from 'react'
-//import ReactDOM from 'react-dom'
-//import StandaloneHeader from './standalone-header'
-//import reduxStore from './store'
-//import { Provider } from 'react-redux'
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import StandaloneHeader from './standalone-header'
+// import reduxStore from './store'
+// import { Provider } from 'react-redux'
 
-//const store = reduxStore.configureStore()
+// const store = reduxStore.configureStore()
 
-//ReactDOM.hydrate((
-//<Provider store={store}>
-//<StandaloneHeader
-//theme="normal"
-//releaseBranch="staging"
-///>
-//<StandaloneHeader
-//theme="photography"
-//releaseBranch="release"
-///>
-//<StandaloneHeader
-//theme="transparent"
-///>
-//</Provider>
-//), document.getElementById('app'))
+// ReactDOM.hydrate((
+// <Provider store={store}>
+// <StandaloneHeader
+// theme="normal"
+// releaseBranch="staging"
+/// >
+// <StandaloneHeader
+// theme="photography"
+// releaseBranch="release"
+/// >
+// <StandaloneHeader
+// theme="transparent"
+/// >
+// </Provider>
+// ), document.getElementById('app'))

@@ -32,18 +32,14 @@ const Stroke = styled.div`
 `
 
 export default class MobileHeader extends React.PureComponent {
-  static propTypes = Object.assign(
-    {
-      menu: SlideDownMenu.propTypes.data,
-    },
-    wellDefinedPropTypes.header.propTypes
-  )
-  static defaultProps = Object.assign(
-    {
-      menu: SlideDownMenu.defaultProps.data,
-    },
-    wellDefinedPropTypes.header.defaultProps
-  )
+  static propTypes = {
+    ...wellDefinedPropTypes.header.propTypes,
+    menu: SlideDownMenu.propTypes.data,
+  }
+  static defaultProps = {
+    ...wellDefinedPropTypes.header.defaultProps,
+    menu: SlideDownMenu.defaultProps.data,
+  }
 
   constructor(props) {
     super(props)

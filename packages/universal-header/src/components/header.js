@@ -59,18 +59,14 @@ const TopRowContent = styled.div`
 `
 
 class Header extends React.PureComponent {
-  static propTypes = Object.assign(
-    {
-      channels: Channels.propTypes.data,
-    },
-    wellDefinedPropTypes.header.propTypes
-  )
-  static defaultProps = Object.assign(
-    {
-      channels: Channels.defaultProps.data,
-    },
-    wellDefinedPropTypes.header.defaultProps
-  )
+  static propTypes = {
+    ...wellDefinedPropTypes.header.propTypes,
+    channels: Channels.propTypes.data,
+  }
+  static defaultProps = {
+    ...wellDefinedPropTypes.header.defaultProps,
+    channels: Channels.defaultProps.data,
+  }
 
   render() {
     const { pathname, channels } = this.props

@@ -81,20 +81,16 @@ function selectIconElement(serviceKey) {
 }
 
 class Container extends React.PureComponent {
-  static defaultProps = Object.assign(
-    {
-      isAuthed: false,
-    },
-    wellDefinedPropTypes.header.defaultProps,
-    wellDefinedPropTypes.context.defaultProps
-  )
-  static propTypes = Object.assign(
-    {
-      isAuthed: PropTypes.bool,
-    },
-    wellDefinedPropTypes.header.propTypes,
-    wellDefinedPropTypes.context.propTypes
-  )
+  static defaultProps = {
+    ...wellDefinedPropTypes.header.defaultProps,
+    ...wellDefinedPropTypes.context.defaultProps,
+    isAuthed: false,
+  }
+  static propTypes = {
+    ...wellDefinedPropTypes.header.propTypes,
+    ...wellDefinedPropTypes.context.propTypes,
+    isAuthed: PropTypes.bool,
+  }
 
   __prepareServiceProps(releaseBranch, isAuthed, isLinkExternal) {
     const serviceLinks = linkUtils.getServiceLinks(
