@@ -1,4 +1,4 @@
-import get from 'lodash.get'
+import get from 'lodash/get'
 import httpConst from '../constants/http-protocol'
 
 const _ = {

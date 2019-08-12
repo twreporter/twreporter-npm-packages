@@ -1,5 +1,5 @@
 import actionTypes from '../constants/action-types'
-import get from 'lodash.get'
+import get from 'lodash/get'
 import jwtUtils from '../utils/jwt'
 
 const _ = {

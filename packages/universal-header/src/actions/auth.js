@@ -1,7 +1,7 @@
 import actionTypes from '../constants/action-types'
 import axios from 'axios'
 import errorHandling from './error-handling'
-import get from 'lodash.get'
+import get from 'lodash/get'
 import httpConst from '../constants/http-protocol'
 import urlUtils from '../utils/url'
 
