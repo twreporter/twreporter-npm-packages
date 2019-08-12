@@ -64,7 +64,7 @@ unlink:
 
 test:
 	@echo "$(P) Run tests"
-	$(BIN_DIR)/jest
+	NODE_ENV=test $(BIN_DIR)/jest
 
 cp-make:
 	@echo "$(P) Copy \`dev/source.makefile\` to packages"
