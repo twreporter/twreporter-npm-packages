@@ -1,0 +1,80 @@
+{
+  "name": "@twreporter/universal-header",
+  "version": "2.0.5",
+  "description": "Universal header of TWReporter sites",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint -c .eslintrc src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run lint && make build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twreporter/universal-header.git"
+  },
+  "keywords": [
+    "twreporter",
+    "universal",
+    "header"
+  ],
+  "author": "developers@twreporter.org",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/twreporter/universal-header/issues"
+  },
+  "homepage": "https://github.com/twreporter/universal-header#readme",
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "styled-components": "^4.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "lodash.get": "^4.4.2",
+    "prop-types": "^15.6.2",
+    "querystring": "^0.2.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-transition-group": "^1.2.1",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-thunk": "^2.3.0",
+    "smoothscroll": "^0.4.0",
+    "styled-components": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-inline-react-svg": "^1.0.1",
+    "babel-plugin-styled-components": "^1.8.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint": "^5.9.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-react": "^7.11.1",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.0.0"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "files": [
+    "/dist/actions",
+    "/dist/components",
+    "/dist/constants",
+    "/dist/containers",
+    "/dist/contexts",
+    "/dist/index.js",
+    "/dist/reducers",
+    "/dist/standalone-header.js",
+    "/dist/store.js",
+    "/dist/utils"
+  ]
+}

@@ -1,0 +1,11 @@
+# dependencies
+node_modules/
+
+# vim swap files
+.*.sw*
+
+# log files
+*.log
+
+# built files
+dist/

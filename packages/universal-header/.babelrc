@@ -1,0 +1,35 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/react"
+  ],
+  "plugins": [
+    "transform-class-properties",
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true,
+        "displayName": true
+      }
+    ],
+    [
+      "inline-react-svg", {
+        "svgo": {
+          "plugins": [
+            {
+              "cleanupIDs": false
+            },
+            {
+              "removeAttrs": {
+                "attrs": [
+                  "serif.id",
+                  "xmlns.serif"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+  ]
+}
