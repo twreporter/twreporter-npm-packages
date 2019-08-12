@@ -1,0 +1,27 @@
+# Development
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.jshintignore
+.jshintrc
+.npmignore
+.prettierrc
+.babelrc
+makefile
+CHANGELOG.md
+yarn.lock
+__test__
+
+# Packages
+node_modules/
+
+# Source
+src/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
