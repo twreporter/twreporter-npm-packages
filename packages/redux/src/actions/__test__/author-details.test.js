@@ -1,4 +1,4 @@
-/* global expect, test, describe, beforeEach */
+/* global expect, test, describe, afterEach */
 import { author as authorSchema } from '../../schemas/article-schema'
 import { camelizeKeys } from 'humps'
 import { normalize } from 'normalizr'
@@ -20,24 +20,14 @@ const searchParas = {
 }
 
 describe('Test action creators of author-details', () => {
-  let testContext
-
-  beforeEach(() => {
-    testContext = {}
-  })
-
   describe('Test action creator `requestFetchAuthorDetails`', () => {
     const createdAction = actions.requestFetchAuthorDetails(authorId)
     test('should return an action with property `type`', () => {
       const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_REQUEST
-      expect(createdAction)
-        .to.have.property('type')
-        .toBe(expectedActionType)
+      expect(createdAction).toHaveProperty('type', expectedActionType)
     })
     test('should return an action with property `keywords`', () => {
-      expect(createdAction)
-        .to.have.property('keywords')
-        .toBe(authorId)
+      expect(createdAction).toHaveProperty('keywords', authorId)
     })
   })
   describe('Test action creator `failToFetchAuthorDetails`', () => {
@@ -45,14 +35,10 @@ describe('Test action creators of author-details', () => {
     const createdAction = actions.failToFetchAuthorDetails(error)
     test('should return an action with property `type`', () => {
       const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_FAILURE
-      expect(createdAction)
-        .to.have.property('type')
-        .toBe(expectedActionType)
+      expect(createdAction).toHaveProperty('type', expectedActionType)
     })
     test('should return an action with property `error`', () => {
-      expect(createdAction)
-        .to.have.property('error')
-        .toBe(error)
+      expect(createdAction).toHaveProperty('error', error)
     })
   })
   describe('Test action creator `receiveFetchAuthorDetails`', () => {
@@ -67,14 +53,10 @@ describe('Test action creators of author-details', () => {
     const createdAction = actions.receiveFetchAuthorDetails(normalizedData)
     test('should return an action with property `type`', () => {
       const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS
-      expect(createdAction)
-        .to.have.property('type')
-        .toBe(expectedActionType)
+      expect(createdAction).toHaveProperty('type', expectedActionType)
     })
     test('should return an action with property `normalizedData`', () => {
-      expect(createdAction)
-        .to.have.property('normalizedData')
-        .toEqual(normalizedData)
+      expect(createdAction).toHaveProperty('normalizedData', normalizedData)
     })
   })
   describe('Test action creator `fetchAuthorDetails`', () => {
@@ -83,7 +65,7 @@ describe('Test action creators of author-details', () => {
         api: 'http://localhost:8080',
       },
     })
-    testContext.afterEach(function() {
+    afterEach(function() {
       store.clearActions()
       nock.cleanAll()
     })

@@ -1,10 +1,4 @@
 /* global expect, test, describe, afterEach */
-import * as actions from '../../../src/actions/authors'
-import types from '../../constants/action-types'
-import configureMockStore from 'redux-mock-store'
-import nock from 'nock'
-import thunk from 'redux-thunk'
-
 import {
   responseObjSet,
   currentDate,
@@ -13,8 +7,17 @@ import {
   mockSearchParasSet,
   constKeywords,
 } from './mocks/authors.js'
-
 import { NUMBER_OF_FIRST_RESPONSE_PAGE } from '../../constants/authors-list'
+import * as actions from '../../../src/actions/authors'
+import types from '../../constants/action-types'
+import configureMockStore from 'redux-mock-store'
+import nock from 'nock'
+import thunk from 'redux-thunk'
+import keys from 'lodash/keys'
+
+const _ = {
+  keys,
+}
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -49,8 +52,12 @@ function checker({
     ]
 
     expect(actionReq).toEqual(expectedActions[0])
-    expect(actionSuc).toEqual(expect.arrayContaining(expectedActions[1]))
-    expect(expectedActions[1]).toEqual(expect.arrayContaining(actionSuc))
+    expect(_.keys(actionSuc)).toEqual(
+      expect.arrayContaining(_.keys(expectedActions[1]))
+    )
+    expect(_.keys(expectedActions[1])).toEqual(
+      expect.arrayContaining(_.keys(actionSuc))
+    )
     expect(actionSuc.type).toEqual(expectedActions[1].type)
     expect(actionSuc.keywords).toEqual(expectedActions[1].keywords)
     expect(actionSuc.normalizedData).toEqual(expectedActions[1].normalizedData)
@@ -82,8 +89,12 @@ const failChecker = ({
     ]
 
     expect(actionReq).toEqual(expectedActions[0])
-    expect(actionFail).toEqual(expect.arrayContaining(expectedActions[1]))
-    expect(expectedActions[1]).toEqual(expect.arrayContaining(actionFail))
+    expect(_.keys(actionFail)).toEqual(
+      expect.arrayContaining(_.keys(expectedActions[1]))
+    )
+    expect(_.keys(expectedActions[1])).toEqual(
+      expect.arrayContaining(_.keys(actionFail))
+    )
     expect(actionFail.type).toEqual(expectedActions[1].type)
     expect(typeof actionFail.failedAt).toBe('number')
     expect(actionFail.error.code).toBe(true)
@@ -290,8 +301,12 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
           ]
 
           expect(actionReq).toEqual(expectedActions[0])
-          expect(actionFail).toEqual(expect.arrayContaining(expectedActions[1]))
-          expect(expectedActions[1]).toEqual(expect.arrayContaining(actionFail))
+          expect(_.keys(actionFail)).toEqual(
+            expect.arrayContaining(_.keys(expectedActions[1]))
+          )
+          expect(_.keys(expectedActions[1])).toEqual(
+            expect.arrayContaining(_.keys(actionFail))
+          )
           expect(actionFail.type).toEqual(expectedActions[1].type)
           expect(typeof actionFail.failedAt).toBe('number')
           expect(actionFail.error).toBeInstanceOf(expectedActions[1].error)

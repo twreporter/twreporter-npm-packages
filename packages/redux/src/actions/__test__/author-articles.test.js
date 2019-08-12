@@ -5,8 +5,13 @@ import * as actions from '../../../src/actions/author-articles'
 import actionTypes from '../../constants/action-types'
 import configureMockStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
+import keys from 'lodash/keys'
 import nock from 'nock'
 import thunk from 'redux-thunk'
+
+const _ = {
+  keys,
+}
 
 // all constants
 const middlewares = [thunk]
@@ -32,7 +37,7 @@ const searchParas = {
 
 process.env.NODE_ENV = 'development'
 
-const failChecker = (store, error) => {
+const failChecker = store => {
   const actionReq = store.getActions()[0]
   const actionFail = store.getActions()[1]
   const expectedActions = [
@@ -48,11 +53,15 @@ const failChecker = (store, error) => {
     },
   ]
   expect(actionReq).toEqual(expectedActions[0])
-  expect(actionFail).toEqual(expect.arrayContaining(expectedActions[1]))
-  expect(expectedActions[1]).toEqual(expect.arrayContaining(actionFail))
+  expect(_.keys(actionFail)).toEqual(
+    expect.arrayContaining(_.keys(expectedActions[1]))
+  )
+  expect(_.keys(expectedActions[1])).toEqual(
+    expect.arrayContaining(_.keys(actionFail))
+  )
   expect(actionFail.type).toEqual(expectedActions[1].type)
   expect(typeof actionFail.failedAt).toBe('number')
-  expect(actionFail.error).toBeInstanceOf(error)
+  expect(actionFail.error).toBeInstanceOf(Error)
 }
 
 describe('Atuhor Action Testing', () => {
@@ -70,7 +79,7 @@ describe('Atuhor Action Testing', () => {
     return store
       .dispatch(actions.fetchAuthorCollectionIfNeeded(authorId))
       .then(() => {
-        failChecker(store, Error)
+        failChecker(store)
       })
   })
 
@@ -103,8 +112,12 @@ describe('Atuhor Action Testing', () => {
           },
         ]
         expect(actionReq).toEqual(expectedActions[0])
-        expect(actionSuc).toEqual(expect.arrayContaining(expectedActions[1]))
-        expect(expectedActions[1]).toEqual(expect.arrayContaining(actionSuc))
+        expect(_.keys(actionSuc)).toEqual(
+          expect.arrayContaining(_.keys(expectedActions[1]))
+        )
+        expect(_.keys(expectedActions[1])).toEqual(
+          expect.arrayContaining(_.keys(actionSuc[1]))
+        )
         expect(actionSuc.type).toEqual(expectedActions[1].type)
         expect(actionSuc.normalizedData).toEqual(
           expectedActions[1].normalizedData
@@ -128,7 +141,7 @@ describe('Atuhor Action Testing', () => {
     return store
       .dispatch(actions.fetchAuthorCollectionIfNeeded(authorId))
       .then(() => {
-        failChecker(store, Error)
+        failChecker(store)
       })
   })
 })
