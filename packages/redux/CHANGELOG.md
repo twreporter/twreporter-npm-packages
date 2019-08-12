@@ -6,7 +6,6 @@
 
 - Update src/actions/error-action-creators.js: remove `request` object from payload
 
-
 ### 5.0.2
 
 - Add settings action/recuder for redux store

@@ -187,9 +187,7 @@ export function fetchEditorPickedPosts() {
     const state = getState()
     const posts = _.get(
       state,
-      `${stateFieldNames.indexPage}.${
-        stateFieldNames.sections.editorPicksSection
-      }`,
+      `${stateFieldNames.indexPage}.${stateFieldNames.sections.editorPicksSection}`,
       []
     )
 
@@ -254,9 +252,7 @@ export function fetchInfographicPostsOnIndexPage() {
     const state = getState()
     const posts = _.get(
       state,
-      `${stateFieldNames.indexPage}.${
-        stateFieldNames.sections.infographicsSection
-      }`,
+      `${stateFieldNames.indexPage}.${stateFieldNames.sections.infographicsSection}`,
       []
     )
     if (Array.isArray(posts) && posts.length > 0) {
