@@ -12,8 +12,8 @@ import { arrayToCssShorthand, screen } from '../utils/style-utils'
 const styles = {
   headerHeight: 109, // px
   topRowPadding: {
-    tablet: [ 34, 20, 35, 35 ], // px
-    desktop: [ 34, 58, 35, 70 ], // px
+    tablet: [34, 20, 35, 35], // px
+    desktop: [34, 58, 35, 70], // px
   },
   topRowMaxWidth: {
     tablet: 768, // px

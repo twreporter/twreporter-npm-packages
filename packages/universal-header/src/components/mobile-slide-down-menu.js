@@ -68,7 +68,7 @@ class SubMenuFlexItem extends React.PureComponent {
   static propTypes = {
     label: PropTypes.string.isRequired,
     link: PropTypes.shape(wellDefinedPropTypes.link.propTypes).isRequired,
-    icon: PropTypes.oneOfType([ PropTypes.element, PropTypes.object ]),
+    icon: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
     handleClick: PropTypes.func,
   }
 

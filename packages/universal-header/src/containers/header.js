@@ -203,8 +203,8 @@ class Container extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     isAuthed: _.get(state, 'auth.isAuthed', false),
-    //bookmarks: _.get(state, 'header.bookmarks'),
-    //notifications: _.get(state, 'headers.notifications'),
+    // bookmarks: _.get(state, 'header.bookmarks'),
+    // notifications: _.get(state, 'headers.notifications'),
   }
 }
 

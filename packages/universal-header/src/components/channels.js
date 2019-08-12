@@ -33,19 +33,19 @@ const styles = {
     hd: 389, // px
   },
   channelsPadding: {
-    mobile: [ 5, 24 ], // px
-    tablet: [ 5, 220 ], // px
+    mobile: [5, 24], // px
+    tablet: [5, 220], // px
   },
   itemMargin: {
     mobile: 0, // px
     tablet: 0, // px
-    desktop: [ 0, 41, 0, 0 ], // px
-    hd: [ 0, 68, 0, 0 ], // px
+    desktop: [0, 41, 0, 0], // px
+    hd: [0, 68, 0, 0], // px
   },
   itemPadding: {
-    mobile: [ 5, 1 ], // px
-    tablet: [ 5, 1 ], // px
-    desktop: [ 8, 1 ], // px
+    mobile: [5, 1], // px
+    tablet: [5, 1], // px
+    desktop: [8, 1], // px
   },
   channelsContainerMaxWidth: 1440, // px
 }
@@ -272,7 +272,7 @@ class Channels extends React.PureComponent {
     let dropDownMenuJSX = null
 
     if (indexToDropDown > invalidDataIndex) {
-      const dropDownMenu = _.get(data, [ indexToDropDown, dropDownMenuKey ], {})
+      const dropDownMenu = _.get(data, [indexToDropDown, dropDownMenuKey], {})
       dropDownMenuJSX = (
         <DropDownMenu data={dropDownMenu} onClick={this.closeDropDownMenu} />
       )

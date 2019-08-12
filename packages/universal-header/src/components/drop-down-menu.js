@@ -17,13 +17,13 @@ const _ = {
 const styles = {
   contentMaxWidth: 320, // px
   containerPadding: {
-    desktop: [ 10, 0 ], // px
+    desktop: [10, 0], // px
   },
   itemPadding: {
-    mobile: [ 30, 27 ], // px
-    tablet: [ 30, 33 ], // px
-    desktop: [ 9, 22 ], // px
-    hd: [ 9, 46 ], // px
+    mobile: [30, 27], // px
+    tablet: [30, 33], // px
+    desktop: [9, 22], // px
+    hd: [9, 46], // px
   },
   containerBorder: 24, // px
 }
@@ -46,8 +46,8 @@ const MenuBox = styled.div`
   user-select: none;
   ${screen.tabletBelow`
     border: ${arrayToCssShorthand(styles.containerBorder)} solid ${
-  colors.grayBg
-};
+    colors.grayBg
+  };
   `}
   ${screen.desktopAbove`
     padding: ${arrayToCssShorthand(styles.containerPadding.desktop)};
