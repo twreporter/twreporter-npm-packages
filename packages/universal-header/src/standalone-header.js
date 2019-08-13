@@ -1,35 +1,51 @@
+/* global __DEVELOPMENT__ */
+import { Provider } from 'react-redux'
 import Header from './containers/header'
 import PropTypes from 'prop-types'
 import React from 'react'
 import wellDefinedPropTypes from './constants/prop-types'
-import { configureStore } from './store'
-import { getAccessToken } from './actions/auth'
-import { Provider } from 'react-redux'
+// @twreporter
+import twreporterRedux from '@twreporter/redux'
+import origins from '@twreporter/core/lib/constants/request-origins'
+
+const isDev = typeof __DEVELOPMENT__ === 'undefined' ? false : __DEVELOPMENT__
 
 export default class StandaloneHeader extends React.PureComponent {
   static propTypes = {
-    ...wellDefinedPropTypes.context.propTypes,
+    theme: wellDefinedPropTypes.context.propTypes.theme,
+    releaseBranch: wellDefinedPropTypes.context.propTypes.releaseBranch,
+    isAuthed: wellDefinedPropTypes.context.propTypes.isAuthed,
     pathname: PropTypes.string,
   }
+
   static defaultProps = {
-    ...wellDefinedPropTypes.context.defaultProps,
+    theme: wellDefinedPropTypes.context.defaultProps.theme,
+    releaseBranch: wellDefinedPropTypes.context.defaultProps.releaseBranch,
+    isAuthed: wellDefinedPropTypes.context.defaultProps.isAuthed,
     pathname: '',
   }
 
   constructor(props) {
     super(props)
-    this.store = configureStore()
+    const { releaseBranch } = this.props
+    this.store = twreporterRedux.createStore(
+      {
+        [twreporterRedux.reduxStateFields.origins]:
+          origins.forClientSideRendering[releaseBranch],
+      },
+      '',
+      isDev
+    )
   }
 
   componentDidMount() {
-    this.store.dispatch(getAccessToken(null, this.props.branch))
+    this.store.actions.getAccessToken()
   }
 
   render() {
-    const { isLinkExternal, ...passThrough } = this.props // eslint-disable-line
     return (
       <Provider store={this.store}>
-        <Header {...passThrough} isLinkExternal={true} />
+        <Header isLinkExternal={true} {...this.props} />
       </Provider>
     )
   }
