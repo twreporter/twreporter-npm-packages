@@ -9,6 +9,7 @@ import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import mq from '@twreporter/core/lib/utils/media-query'
 import origins from '@twreporter/core/lib/constants/request-origins'
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 const FooterContainer = styled.div`
@@ -69,12 +70,14 @@ const CopyRight = styled.p`
 
 class Footer extends React.PureComponent {
   render() {
-    const { bgColor } = this.props
+    const { bgColor, releaseBranch } = this.props
     const currentYear = new Date().getFullYear()
     return (
       <FooterContainer bgColor={bgColor}>
         <FooterContent>
-          <Content mainOrigin={origins.main} />
+          <Content
+            mainOrigin={origins.forClientSideRendering[releaseBranch].main}
+          />
           <IconList />
           <CopyRight>{`Copyright © ${currentYear} The Reporter.`}</CopyRight>
         </FooterContent>
@@ -84,15 +87,13 @@ class Footer extends React.PureComponent {
 }
 
 Footer.propTypes = {
-  bgColor: PropTypes.string.isRequired,
-  origins: PropTypes.shape({
-    main: PropTypes.string,
-  }),
+  bgColor: PropTypes.string,
+  releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
 Footer.defaultProps = {
   bgColor: '#ffffff',
-  origins: origins.fromClient[releaseBranchConsts.release],
+  releaseBranch: releaseBranchConsts.release,
 }
 
 export default Footer

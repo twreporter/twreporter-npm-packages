@@ -1,6 +1,6 @@
 import releaseBranch from './release-branch'
 
-const fromServer = {
+const forServerSideRendering = {
   [releaseBranch.master]: {
     // accounts: 'http://localhost:3001',
     api: 'http://localhost:8080',
@@ -25,9 +25,9 @@ const fromServer = {
   },
 }
 
-const fromClient = {
-  [releaseBranch.master]: fromServer.master,
-  [releaseBranch.test]: fromServer.test,
+const forClientSideRendering = {
+  [releaseBranch.master]: forServerSideRendering.master,
+  [releaseBranch.test]: forServerSideRendering.test,
   [releaseBranch.staging]: {
     api: 'https://staging-go-api.twreporter.org:443',
     main: 'https://staging.twreporter.org',
@@ -43,6 +43,6 @@ const fromClient = {
 }
 
 export default {
-  fromClient,
-  fromServer,
+  forClientSideRendering,
+  forServerSideRendering,
 }
