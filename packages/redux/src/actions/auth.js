@@ -17,8 +17,7 @@ const timeout = apiConfig.timeout
  *  Send POST method request with Cookie in the headers
  *  to fetch the access_token.
  *
- *  @param {string} cookieList - cookieList contains `id_token` cookie
- *  @param {string} releaseBranch - should be one of 'master', 'test', 'staging' and 'release'
+ *  @param {string} [cookieList] - cookieList contains `id_token` cookie
  *  @return {Function} returned function will get executed by the Redux Thunk middleware
  */
 export function getAccessToken(cookieList) {
