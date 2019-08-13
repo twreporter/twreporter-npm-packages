@@ -8,6 +8,7 @@ const releaseBranchPropTypes = PropTypes.oneOf([
   releaseBranchConst.staging,
   releaseBranchConst.release,
 ])
+
 const themePropTypes = PropTypes.oneOf([
   theme.normal,
   theme.transparent,
@@ -19,12 +20,14 @@ const contextPropTypes = {
   theme: themePropTypes,
   releaseBranch: releaseBranchPropTypes,
   isLinkExternal: PropTypes.bool,
+  isAuthed: PropTypes.bool,
 }
 
 const contextDefaultProps = {
   theme: theme.normal,
   releaseBranch: releaseBranchConst.master,
   isLinkExternal: false,
+  isAuthed: false,
 }
 
 const linkPropTypes = {
