@@ -2,11 +2,11 @@ import Channels from './channels'
 import HeaderContext from '../contexts/header-context'
 import Icons from './icons'
 import Link from './customized-link'
+import PropTypes from 'prop-types'
 import React from 'react'
 import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
 import styled from 'styled-components'
-import wellDefinedPropTypes from '../constants/prop-types'
 import { arrayToCssShorthand, screen } from '../utils/style-utils'
 
 const styles = {
@@ -60,11 +60,11 @@ const TopRowContent = styled.div`
 
 class Header extends React.PureComponent {
   static propTypes = {
-    ...wellDefinedPropTypes.header.propTypes,
+    pathname: PropTypes.string,
     channels: Channels.propTypes.data,
   }
   static defaultProps = {
-    ...wellDefinedPropTypes.header.defaultProps,
+    pathname: '',
     channels: Channels.defaultProps.data,
   }
 

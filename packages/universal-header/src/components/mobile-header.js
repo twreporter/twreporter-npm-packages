@@ -1,12 +1,12 @@
 import HeaderContext from '../contexts/header-context'
 import Link from './customized-link'
+import PropTypes from 'prop-types'
 import React from 'react'
 import SlideDownMenu from './mobile-slide-down-menu'
 import colors from '../constants/colors'
 import linkUtils from '../utils/links'
 import styled from 'styled-components'
 import themeUtils from '../utils/theme'
-import wellDefinedPropTypes from '../constants/prop-types'
 
 const FlexBox = styled.div`
   background-color: ${props => props.bgColor};
@@ -33,11 +33,11 @@ const Stroke = styled.div`
 
 export default class MobileHeader extends React.PureComponent {
   static propTypes = {
-    ...wellDefinedPropTypes.header.propTypes,
+    pathname: PropTypes.string,
     menu: SlideDownMenu.propTypes.data,
   }
   static defaultProps = {
-    ...wellDefinedPropTypes.header.defaultProps,
+    pathname: '',
     menu: SlideDownMenu.defaultProps.data,
   }
 

@@ -82,14 +82,14 @@ function selectIconElement(serviceKey) {
 
 class Container extends React.PureComponent {
   static defaultProps = {
-    ...wellDefinedPropTypes.header.defaultProps,
     ...wellDefinedPropTypes.context.defaultProps,
     isAuthed: false,
+    pathname: '',
   }
   static propTypes = {
-    ...wellDefinedPropTypes.header.propTypes,
     ...wellDefinedPropTypes.context.propTypes,
     isAuthed: PropTypes.bool,
+    pathname: PropTypes.string,
   }
 
   __prepareServiceProps(releaseBranch, isAuthed, isLinkExternal) {

@@ -1,4 +1,5 @@
 import Header from './containers/header'
+import PropTypes from 'prop-types'
 import React from 'react'
 import wellDefinedPropTypes from './constants/prop-types'
 import { configureStore } from './store'
@@ -8,11 +9,11 @@ import { Provider } from 'react-redux'
 export default class StandaloneHeader extends React.PureComponent {
   static propTypes = {
     ...wellDefinedPropTypes.context.propTypes,
-    ...wellDefinedPropTypes.header.propTypes,
+    pathname: PropTypes.string,
   }
   static defaultProps = {
     ...wellDefinedPropTypes.context.defaultProps,
-    ...wellDefinedPropTypes.header.defaultProps,
+    pathname: '',
   }
 
   constructor(props) {

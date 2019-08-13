@@ -32,19 +32,7 @@ const linkPropTypes = {
   isExternal: PropTypes.bool.isRequired,
 }
 
-const headerPropTypes = {
-  pathname: PropTypes.string,
-}
-
-const headerDefaultProps = {
-  pathname: '',
-}
-
 export default {
-  header: {
-    propTypes: headerPropTypes,
-    defaultProps: headerDefaultProps,
-  },
   context: {
     propTypes: contextPropTypes,
     defaultProps: contextDefaultProps,
