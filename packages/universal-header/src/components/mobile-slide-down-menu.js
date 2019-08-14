@@ -6,7 +6,8 @@ import colors from '../constants/colors'
 import styled from 'styled-components'
 import themeUtils from '../utils/theme'
 import wellDefinedPropTypes from '../constants/prop-types'
-import { screen } from '../utils/style-utils'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const defaultFlexBoxItemHeight = 90
 const rowPerColumn = 5
@@ -29,7 +30,7 @@ const FlexBox = styled.div`
     color: ${colors.gray15};
   }
   display: none;
-  ${screen.mobileOnly`
+  ${mq.mobileOnly`
     display: flex;
   `}
   transition: margin-top 0.1s ease-in-out;

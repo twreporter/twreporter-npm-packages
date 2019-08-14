@@ -11,13 +11,15 @@ import SearchIcon from '../../static/search-icon.svg'
 import SubscriptionIcon from '../../static/subscribe-icon.svg'
 import categoryConst from '../constants/categories'
 import channelConst from '../constants/channels'
-import get from 'lodash/get'
 import linkUtils from '../utils/links'
 import serviceConst from '../constants/services'
 import styled from 'styled-components'
 import wellDefinedPropTypes from '../constants/prop-types'
 import { connect } from 'react-redux'
-import { screen } from '../utils/style-utils'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
 
 const _ = {
   get,
@@ -26,7 +28,7 @@ const _ = {
 const MobileOnly = styled.div`
   display: none;
 
-  ${screen.mobileOnly`
+  ${mq.mobileOnly`
     display: block;
   `}
 `
@@ -34,7 +36,7 @@ const MobileOnly = styled.div`
 const NonMobileOnly = styled.div`
   display: block;
 
-  ${screen.mobileOnly`
+  ${mq.mobileOnly`
     display: none;
   `}
 `

@@ -7,17 +7,16 @@ import React from 'react'
 import channelConst from '../constants/channels'
 import colors from '../constants/colors'
 import fonts from '../constants/fonts'
-import get from 'lodash/get'
-import map from 'lodash/map'
 import styled from 'styled-components'
 import themeUtils from '../utils/theme'
 import wellDefinedPropTypes from '../constants/prop-types'
-import {
-  arrayToCssShorthand,
-  linkUnderline,
-  screen,
-} from '../utils/style-utils'
+import { arrayToCssShorthand, linkUnderline } from '../utils/style-utils'
 import { categoriesMenuEffect as dropDownMenuEffect } from '../constants/css-transition-group'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
+import map from 'lodash/map'
 
 const _ = {
   get,
@@ -60,14 +59,14 @@ const DropDownMenuTransitionGroup = styled(CSSTransitionGroup)`
 
 const Box = styled.div`
   width: 100%;
-  ${screen.hdAbove`
+  ${mq.hdOnly`
     max-width: ${styles.channelsContainerMaxWidth}px;
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
   `}
-  ${screen.mobileOnly`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -76,18 +75,18 @@ const List = styled.ul`
   justify-content: space-between;
   padding: ${arrayToCssShorthand(styles.channelsPadding.mobile)};
   background-color: ${props => props.bgColor || colors.white};
-  ${screen.tabletOnly`
+  ${mq.tabletOnly`
     justify-content: space-around;
     padding: ${arrayToCssShorthand(styles.channelsPadding.tablet)};
   `}
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     justify-content: space-around;
     position: absolute;
     top: ${styles.channelsPositionTop.desktop}px;
     left: ${styles.channelsPositionLeft.desktop}px;
     background-color: transparent;
   `}
-  ${screen.hdAbove`
+  ${mq.hdOnly`
     left: ${styles.channelsPositionLeft.hd}px;
   `}
   user-select: none;
@@ -112,11 +111,11 @@ const ListItem = styled.li`
       color: ${props => props.hoverFontColor} !important;
     }
   }
-  ${screen.tabletOnly`
+  ${mq.tabletOnly`
     padding: ${arrayToCssShorthand(styles.itemPadding.tablet)};
     margin: ${arrayToCssShorthand(styles.itemMargin.tablet)};
   `}
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     padding: ${arrayToCssShorthand(styles.itemPadding.desktop)};
     margin: ${arrayToCssShorthand(styles.itemMargin.desktop)};
   `}

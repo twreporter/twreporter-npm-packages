@@ -8,7 +8,8 @@ import querystring from 'querystring'
 import serviceConst from '../constants/services'
 import styled from 'styled-components'
 import themeUtils from '../utils/theme'
-import { screen } from '../utils/style-utils'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const styles = {
   iconContainerSize: 3, // em
@@ -17,7 +18,7 @@ const styles = {
 const IconsContainer = styled.div`
   position: relative;
   display: table;
-  ${screen.mobileOnly`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -40,7 +41,7 @@ const IconContainer = styled.div`
   span {
     display: none;
   }
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     svg {
       opacity: 1;
       transition: transform .3s ease-in-out, opacity .3s ease-in-out;
@@ -83,14 +84,14 @@ const IconContainer = styled.div`
 
 const DisplayOnDesktop = styled(IconContainer)`
   display: none;
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     display: table-cell;
   `}
 `
 
 const HideOnDesktop = styled(IconContainer)`
   display: table-cell;
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     display: none;
   `}
 `

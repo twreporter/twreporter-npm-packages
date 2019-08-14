@@ -3,11 +3,14 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import colors from '../constants/colors'
 import fonts from '../constants/fonts'
-import get from 'lodash/get'
-import map from 'lodash/map'
 import styled from 'styled-components'
 import wellDefinedPropTypes from '../constants/prop-types'
-import { arrayToCssShorthand, screen } from '../utils/style-utils'
+import { arrayToCssShorthand } from '../utils/style-utils'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
+import map from 'lodash/map'
 
 const _ = {
   get,
@@ -44,22 +47,22 @@ const MenuBox = styled.div`
   box-sizing: border-box;
   background-color: ${colors.white};
   user-select: none;
-  ${screen.tabletBelow`
+  ${mq.tabletAndBelow`
     border: ${arrayToCssShorthand(styles.containerBorder)} solid ${
     colors.grayBg
   };
   `}
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     padding: ${arrayToCssShorthand(styles.containerPadding.desktop)};
   `}
 `
 
 const MenuContent = styled.ul`
   flex-wrap: wrap;
-  ${screen.tabletBelow`
+  ${mq.tabletAndBelow`
     max-width: ${styles.contentMaxWidth}px;
   `}
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     flex-wrap: nowrap;
   `}
   margin: 0 auto;
@@ -75,13 +78,13 @@ const MenuContent = styled.ul`
 
 const SubMenuBox = styled.li`
   padding: ${arrayToCssShorthand(styles.itemPadding.mobile)};
-  ${screen.tabletOnly`
+  ${mq.tabletOnly`
     padding: ${arrayToCssShorthand(styles.itemPadding.tablet)};
   `}
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     padding: ${arrayToCssShorthand(styles.itemPadding.desktop)};
   `}
-  ${screen.hdAbove`
+  ${mq.hdOnly`
     padding: ${arrayToCssShorthand(styles.itemPadding.hd)};
   `}
   display: block;
@@ -102,7 +105,7 @@ const SubMenuContent = styled.span`
 `
 
 const Seperator = styled.div`
-  ${screen.tabletBelow`
+  ${mq.tabletAndBelow`
     display: ${props => (props.last > 2 ? 'block' : 'none')};
     bottom: 0;
     left: 50%;
@@ -110,7 +113,7 @@ const Seperator = styled.div`
     width: 40px;
     height: 2px;
   `}
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     top: 50%;
     transform: translateY(-40%);
     right: 0;

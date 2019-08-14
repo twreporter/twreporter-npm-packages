@@ -7,7 +7,9 @@ import React from 'react'
 import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
 import styled from 'styled-components'
-import { arrayToCssShorthand, screen } from '../utils/style-utils'
+import { arrayToCssShorthand } from '../utils/style-utils'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const styles = {
   headerHeight: 109, // px
@@ -40,11 +42,11 @@ const TopRow = styled.div`
 `
 
 const TopRowContent = styled.div`
-  ${screen.tabletOnly`
+  ${mq.tabletOnly`
     padding: ${arrayToCssShorthand(styles.topRowPadding.tablet)};
     max-width: ${styles.topRowMaxWidth.tablet}px;
   `}
-  ${screen.desktopAbove`
+  ${mq.desktopAndAbove`
     padding: ${arrayToCssShorthand(styles.topRowPadding.desktop)};
     max-width: ${styles.topRowMaxWidth.hd}px;
   `}
