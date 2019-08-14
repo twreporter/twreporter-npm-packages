@@ -1,15 +1,37 @@
-import releaseBranchConst from '../constants/release-branch'
-import externalLinks from '../constants/external-links'
-import { channelPathnames } from '../constants/channels'
 import { categoryPathnames } from '../constants/categories'
+import { channelPathnames } from '../constants/channels'
 import { servicePathnames, serviceKeys } from '../constants/services'
-import {
-  accounts as accountsBaseURL,
-  api as apiBaseURL,
-  main as mainBaseURL,
-} from '../constants/base-url'
+import externalLinks from '../constants/external-links'
+// @twreporter
+import origins from '@twreporter/core/lib/constants/request-origins'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+// lodash
+import forEach from 'lodash/forEach'
 
-const defaultReleaseBranch = releaseBranchConst.master
+const _ = {
+  forEach,
+}
+
+const originsForClient = origins.forClientSideRendering
+
+/**
+ * @param {string} domain - one of 'account', 'main', 'support', or 'api'
+ * @returns
+ */
+function getOriginsByType(domain) {
+  const baseURL = {}
+  _.forEach(releaseBranchConsts, branch => {
+    baseURL[branch] = originsForClient[branch][domain]
+  })
+  return baseURL
+}
+
+const accountsBaseURL = getOriginsByType('accounts')
+const apiBaseURL = getOriginsByType('api')
+const mainBaseURL = getOriginsByType('main')
+// const support = getOriginsByType('support')
+
+const defaultReleaseBranch = releaseBranchConsts.master
 const defaultIsExternal = false
 
 function __getLinks(isExternal, releaseBranch, baseURL, paths) {

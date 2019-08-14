@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types'
-import releaseBranchConst from './release-branch'
 import theme from './theme'
-
-const releaseBranchPropTypes = PropTypes.oneOf([
-  releaseBranchConst.master,
-  releaseBranchConst.test,
-  releaseBranchConst.staging,
-  releaseBranchConst.release,
-])
+// @twreporter
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 const themePropTypes = PropTypes.oneOf([
   theme.normal,
@@ -18,14 +13,14 @@ const themePropTypes = PropTypes.oneOf([
 
 const contextPropTypes = {
   theme: themePropTypes,
-  releaseBranch: releaseBranchPropTypes,
+  releaseBranch: predefinedPropTypes.releaseBranch,
   isLinkExternal: PropTypes.bool,
   isAuthed: PropTypes.bool,
 }
 
 const contextDefaultProps = {
   theme: theme.normal,
-  releaseBranch: releaseBranchConst.master,
+  releaseBranch: releaseBranchConsts.master,
   isLinkExternal: false,
   isAuthed: false,
 }
