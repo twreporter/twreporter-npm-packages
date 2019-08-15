@@ -1,5 +1,5 @@
 import React from 'react'
-import get from 'lodash.get'
+import get from 'lodash/get'
 import styled, { css } from 'styled-components'
 import typography from '../../constants/typography'
 
