@@ -16,7 +16,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "make prettier && make lint && make test"
+      "pre-push": "make lint && make test"
     }
   },
   "lint-staged": {
