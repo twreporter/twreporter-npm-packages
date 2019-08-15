@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## Release
+
+### 7.0.7
+
+- Update Footer component
+- Update dependencies:
+  - @twreporter/core: ^1.0.3 -> ^1.1.0
+
 ### 7.0.6
 
 - [listing-page] take last 3 posts from the end of `topic.relateds` for top topic component
@@ -9,8 +17,6 @@
 ### 7.0.5
 
 - Fix bookmark-widget SSR problem
-
-## Release
 
 ### 7.0.4
 
