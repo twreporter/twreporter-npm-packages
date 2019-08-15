@@ -1,6 +1,14 @@
+# CHANGELOG
+
 ## Unrelease
 
 ## Release
+
+### 5.0.4
+
+- Remove unused files
+- Fix jsdoc comment
+- Change testing library from Mocha and Chai to Jest
 
 ### 5.0.3
 
