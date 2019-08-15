@@ -14,7 +14,6 @@
     "@twreporter/velocity-react": "^1.4.1",
     "lodash": "^4.0.0",
     "prop-types": "^15.0.0",
-    "react-dom": "^16.3.0",
     "react-router-dom": "^4.3.1",
     "react-swipeable": "^4.0.1",
     "react-waypoint": "^9.0.2",

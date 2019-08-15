@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Remove `react-dom`
+
 ## Release
 
 ### 1.0.4
