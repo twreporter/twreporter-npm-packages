@@ -21,6 +21,7 @@ This repository is a monorepo containing several npm packages used by the websit
 - `@twreporter/index-page`
 - `@twreporter/react-components`
 - `@twreporter/react-article-components`
+- `@twreporter/redux`
 
 ## Developing Environment
 
