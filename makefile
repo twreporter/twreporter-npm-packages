@@ -1,12 +1,29 @@
 BIN_DIR ?= node_modules/.bin
 P="\\033[32m[+]\\033[0m"
+
+# If no package dirname is given, run the make command at each package. For example:
+# `make dev` -> Will run `make dev` at each package parallelly
+# `make dev PKG=core` -> Will run `make dev` at `packages/core`
 ifeq ($(PKG),)
+	# SUBDIRS will be like "packages/core packages/react-components packages/index-page"
 	SUBDIRS = $(wildcard packages/*/)
 	MAKE_FLAG := -j
 else
 	SUBDIRS = "packages/$(PKG)/"
 endif
 
+# Running:
+# ```
+# packages/core packages/react-components:
+#   make -j -C $@ dev
+# ```
+# equals to running `make -j -C "packages/core packages/react-components" dev`
+# equals to running two child processes parallelly:
+# one runs `cd packages/core && make dev`
+# and the other runs `cd packages/react-components && make dev`
+#
+# Ref: https://www.gnu.org/software/make/manual/html_node/Recursion.html
+#      https://www.gnu.org/software/make/manual/html_node/Parallel.html
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKE_TARGET)
 
@@ -16,8 +33,6 @@ check-dep:
 	@echo "$(P) Check dependencies of the project"
 	yarn install
 
-# `make dev` -> babel watch at all packages
-# `make dev PKG=core` -> babel watch at only `packages/core`
 dev: check-dep
 	MAKE_TARGET=dev make subdirs-job $(MAKE_FLAG)
 
@@ -51,4 +66,8 @@ test:
 	@echo "$(P) Run tests"
 	$(BIN_DIR)/jest
 
-.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link
+cp-make:
+	@echo "$(P) Copy \`dev/source.makefile\` to packages"
+	@for package in $(SUBDIRS); do cp -v dev/source.makefile $$package\makefile; done
+
+.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link cp-make

@@ -1,5 +1,6 @@
 {
   "name": "twreporter-npm-packages",
+  "version": "1.0.0",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
   "license": "MIT",
@@ -15,7 +16,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "make prettier && make lint && make test"
+      "pre-push": "make lint && make test"
     }
   },
   "lint-staged": {
