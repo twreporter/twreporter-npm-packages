@@ -3,6 +3,9 @@
 ## Unreleased
 
 ## Release
+### 7.0.8
+
+- [react-components] update `src/donation-link-with-utm.js`, pure func -> extends React.PureComponent
 
 ### 7.0.7
 
