@@ -16,7 +16,7 @@ const originsForClient = origins.forClientSideRendering
 
 /**
  * @param {string} domain - one of 'account', 'main', 'support', or 'api'
- * @returns
+ * @returns {Object}
  */
 function getOriginsByType(domain) {
   const baseURL = {}
