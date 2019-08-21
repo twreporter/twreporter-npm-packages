@@ -4,6 +4,11 @@
 
 ## RELEASE
 
+### 1.0.15
+
+- Bump `@twreporter/universal-header` version to v2.1.0
+- Fix wrong `lodash` import
+
 ### 1.0.14
 
 - Fix heading content

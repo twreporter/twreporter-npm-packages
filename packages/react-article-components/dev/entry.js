@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime'
 import { Provider } from 'react-redux'
 import Article from '../src/components/article-page'
-import Header from '@twreporter/universal-header/dist/containers/header'
+import Header from '@twreporter/universal-header/lib/containers/header'
 import mockPost from './mock-post.json'
 import React from 'react'
 import ReactDOM from 'react-dom'

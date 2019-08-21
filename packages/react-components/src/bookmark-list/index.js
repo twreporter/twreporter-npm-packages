@@ -8,7 +8,6 @@ import More from '../more'
 import PropTypes from 'prop-types'
 import React from 'react'
 import RedirectToSignIn from './redirect-to-sign-in'
-import reduxStatePropKeys from '@twreporter/core/lib/constants/redux-state-prop-keys'
 import styled from 'styled-components'
 import twreporterRedux from '@twreporter/redux'
 
@@ -18,6 +17,7 @@ import get from 'lodash/get'
 import map from 'lodash/map'
 
 const { deleteSingleBookmark, getMultipleBookmarks } = twreporterRedux.actions
+const reduxStatePropKeys = twreporterRedux.reduxStateFields
 
 const _ = {
   findIndex,

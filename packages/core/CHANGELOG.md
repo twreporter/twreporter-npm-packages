@@ -4,6 +4,13 @@
 
 ## Release
 
+### 1.1.0
+
+- Change request-origin constants naming
+- Update dependency:
+  - Add `prop-types`: ^15.0.0
+- Fix mututal dependency between `@twreporter/redux` and `@twreporter/core`
+
 ### 1.0.3
 
 - Update media-query desktop width: 1023 -> 1024

@@ -7,7 +7,6 @@ import BookmarkUnaddedIconMobile from './assets/add-bookmark-mobile.svg'
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import PropTypes from 'prop-types'
 import React from 'react'
-import reduxStatePropKeys from '@twreporter/core/lib/constants/redux-state-prop-keys'
 import styled from 'styled-components'
 import twreporterRedux from '@twreporter/redux'
 // lodash
@@ -22,6 +21,8 @@ const {
   deleteSingleBookmark,
   getSingleBookmark,
 } = twreporterRedux.actions
+
+const reduxStatePropKeys = twreporterRedux.reduxStateFields
 
 const buttonWidth = 52
 const buttonHeight = 52

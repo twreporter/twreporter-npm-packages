@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -10,13 +10,12 @@
     "dev": "make dev"
   },
   "dependencies": {
-    "@twreporter/core": "^1.0.3",
-    "@twreporter/redux": "^5.0.3",
+    "@twreporter/core": "^1.1.0",
+    "@twreporter/redux": "^5.0.4",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
-    "react-dom": "^16.3.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^1.2.1",
