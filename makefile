@@ -70,4 +70,16 @@ cp-make:
 	@echo "$(P) Copy \`dev/source.makefile\` to packages"
 	@for package in $(SUBDIRS); do cp -v dev/source.makefile $$package\makefile; done
 
-.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link cp-make
+build-dev: check-dep
+	MAKE_TARGET=build-dev make subdirs-job $(MAKE_FLAG)
+
+yalc-publish: build-dev
+	MAKE_TARGET=yalc-publish make subdirs-job $(MAKE_FLAG)
+
+yalc-push: build-dev
+	MAKE_TARGET=yalc-push make subdirs-job $(MAKE_FLAG)
+
+yalc-clean:
+	MAKE_TARGET=yalc-clean make subdirs-job $(MAKE_FLAG)
+
+.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link cp-make check-dep yalc-clean

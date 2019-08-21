@@ -33,6 +33,10 @@ build: print-package-info clean
 	@echo "$(P) Build distribution package files"
 	NODE_ENV=production $(ROOT_BIN_DIR)/babel src --out-dir lib --root-mode upward
 
+build-dev: print-package-info clean
+	@echo "$(P) Build distribution package files"
+	NODE_ENV=development $(ROOT_BIN_DIR)/babel src --out-dir lib --source-maps --root-mode upward
+
 clean:
 	@echo "$(P) Clean lib/"
 	$(ROOT_BIN_DIR)/rimraf lib/
@@ -42,13 +46,25 @@ publish: check-dep prettier lint build
 	npm publish
 
 # This will only prettier files under this package
-prettier:
+prettier: print-package-info
 	@echo "$(P) Run prettier"
 	$(ROOT_BIN_DIR)/prettier --write --ignore-path "$(ROOT_DIR).eslintignore" "**/*.{js,json,css,md,html,htm}"
 
 # This will only lint files under this package
-lint:
+lint: print-package-info
 	@echo "$(P) Run eslint"
 	$(ROOT_BIN_DIR)/eslint -c "../../.eslintrc" --ignore-path "$(ROOT_DIR).eslintignore" --fix "**/*.js"
 
-.PHONY: build clean lint prettier dev print-package-info check-dep
+# Yalc commands:
+# https://github.com/whitecolor/yalc#usage
+
+yalc-publish: print-package-info lint
+	yalc publish
+
+yalc-push: print-package-info lint
+	yalc push --changed
+
+yalc-clean: print-package-info
+	yalc installations clean $(PACKAGE_NAME)
+
+.PHONY: build clean lint prettier dev print-package-info check-dep yalc-push yalc-publish yalc-clean
