@@ -7,8 +7,8 @@ import React from 'react'
 import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
 import styled from 'styled-components'
-import { arrayToCssShorthand } from '../utils/style-utils'
 // @twreporter
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 
 const styles = {

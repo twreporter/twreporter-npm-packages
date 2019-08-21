@@ -7,12 +7,12 @@ import React from 'react'
 import channelConst from '../constants/channels'
 import colors from '../constants/colors'
 import fonts from '../constants/fonts'
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import themeUtils from '../utils/theme'
 import wellDefinedPropTypes from '../constants/prop-types'
-import { arrayToCssShorthand, linkUnderline } from '../utils/style-utils'
 import { categoriesMenuEffect as dropDownMenuEffect } from '../constants/css-transition-group'
 // @twreporter
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
@@ -48,6 +48,27 @@ const styles = {
   },
   channelsContainerMaxWidth: 1440, // px
 }
+
+const changeOpacity = (valueFrom, valueTo) => keyframes`
+  from {
+    opacity: ${valueFrom};
+  }
+  to {
+    opacity: ${valueTo};
+  }
+`
+
+const linkUnderline = css`
+  animation: ${changeOpacity('0', '1')} 0.5s linear;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 3px;
+  background-color: red;
+`
 
 const DropDownMenuTransitionGroup = styled(CSSTransitionGroup)`
   position: absolute;

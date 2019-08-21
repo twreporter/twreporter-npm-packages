@@ -5,8 +5,8 @@ import colors from '../constants/colors'
 import fonts from '../constants/fonts'
 import styled from 'styled-components'
 import wellDefinedPropTypes from '../constants/prop-types'
-import { arrayToCssShorthand } from '../utils/style-utils'
 // @twreporter
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
