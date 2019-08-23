@@ -119,7 +119,7 @@ const BackToTopicBlock = styled.div`
     &:after {
       top: 0;
       left: 0;
-      transform: translateY(100%);
+      transform: translate(-50%, 100%);
     }
   `}
 `
