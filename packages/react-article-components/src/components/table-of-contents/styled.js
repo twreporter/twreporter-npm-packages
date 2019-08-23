@@ -66,10 +66,12 @@ export const TOCRow = styled.div`
 export const TOCTab = styled.div`
   ${mq.tabletAndBelow`
     width: 30px;
-    position: relative;
+    position: fixed;
     top: 20%;
+    left: 0;
+    transition: transform 0.1s ease-in-out 0.1s;
     transform: ${props =>
-      props.isExpanded ? 'translateX(0px)' : `translateX(${tocWidth}px)`};
+      props.isExpanded ? `translateX(${tocWidth}px)` : 'translateX(0px)'};
 
     > div {
       opacity: 0.6;

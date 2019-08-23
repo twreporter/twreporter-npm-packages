@@ -62,7 +62,7 @@ class TableOfContents extends React.PureComponent {
 
   _handleTouchOutside(e) {
     try {
-      if (!this._ref.current.contains(e.target)) {
+      if (!this._ref.current.contains(e.target) && this.state.isExpanded) {
         this.setState({
           isExpanded: false,
         })
@@ -102,17 +102,22 @@ class TableOfContents extends React.PureComponent {
             })
 
             return (
-              <Styled.TOCBackground
-                onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.handleMouseLeave}
-                isExpanded={isExpanded}
-              >
-                <Styled.TOCTab onClick={this.handleTabClick}>
+              <React.Fragment>
+                <Styled.TOCTab
+                  onClick={this.handleTabClick}
+                  isExpanded={isExpanded}
+                >
                   <div>索引</div>
                   <Tab />
                 </Styled.TOCTab>
-                <Styled.TOCBlock>{anchorsJSX}</Styled.TOCBlock>
-              </Styled.TOCBackground>
+                <Styled.TOCBackground
+                  onMouseEnter={this.handleMouseEnter}
+                  onMouseLeave={this.handleMouseLeave}
+                  isExpanded={isExpanded}
+                >
+                  <Styled.TOCBlock>{anchorsJSX}</Styled.TOCBlock>
+                </Styled.TOCBackground>
+              </React.Fragment>
             )
           }}
         />
