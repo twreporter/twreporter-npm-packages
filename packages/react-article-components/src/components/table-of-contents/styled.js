@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import mq from '@twreporter/core/lib/utils/media-query'
+import zIndexConst from '../../constants/position-z-index'
 
 const tocWidth = 190 // px
 
@@ -67,6 +68,7 @@ export const TOCTab = styled.div`
   ${mq.tabletAndBelow`
     width: 30px;
     position: fixed;
+    z-index: ${zIndexConst.toc};
     top: 20%;
     left: 0;
     transition: transform 0.1s ease-in-out 0.1s;
@@ -92,6 +94,7 @@ export const TOCTab = styled.div`
 
 export const TOCBackground = styled.div`
   position: fixed;
+  z-index: ${zIndexConst.toc};
   top: 0;
   left: 0;
   height: 100%;
