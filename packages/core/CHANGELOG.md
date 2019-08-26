@@ -4,6 +4,10 @@
 
 ## Release
 
+### 1.1.1
+
+- Rename the key of `screen` object in `utils/media-query`
+
 ### 1.1.0
 
 - Change request-origin constants naming
