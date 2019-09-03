@@ -332,10 +332,13 @@ export default class Body extends PureComponent {
   render() {
     const { brief, content } = this.props
     const tocManager = TOC.createManager()
+    let enableTOC = false
+
     const contentJsx = Array.isArray(content)
       ? _.map(content, (data, index) => {
           const elementJSX = this._buildContentElement(data, index)
           if (data.type === 'header-one') {
+            enableTOC = true
             return (
               <TOC.React.Anchor
                 key={data.id}
@@ -354,7 +357,7 @@ export default class Body extends PureComponent {
       <div>
         <StyledBrief data={brief} />
         {contentJsx}
-        <TOC.React.TableOfContents manager={tocManager} />
+        {enableTOC ? <TOC.React.TableOfContents manager={tocManager} /> : null}
       </div>
     )
   }
