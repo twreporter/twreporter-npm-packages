@@ -4,6 +4,12 @@
 
 ## RELEASE
 
+### 1.0.17
+
+#### Table of Contents
+
+- render toc on demand
+
 ### 1.0.16
 
 #### Table of Contents
