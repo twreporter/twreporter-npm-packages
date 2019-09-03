@@ -1,7 +1,7 @@
 import * as Styled from './styled'
 import PropTypes from 'prop-types'
 import React from 'react'
-import TOC from './this-file-will-be-moved-to-react-components.js'
+import TOC from '@twreporter/react-components/lib/table-of-contents'
 import map from 'lodash/map'
 import Tab from '../../assets/table-of-contents/long-form-tab.svg'
 
