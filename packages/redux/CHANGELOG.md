@@ -4,6 +4,10 @@
 
 ## Release
 
+### 5.0.5
+
+- Update `src/constants/redux-state-field-names.js`
+
 ### 5.0.4
 
 - Remove unused files
