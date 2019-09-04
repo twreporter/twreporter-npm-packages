@@ -3,9 +3,17 @@
 ## Unreleased
 
 ## Release
+
+### 7.1.0
+
+#### Table of Contents
+
+- Add src/table-of-contents/index.js
+- Add src/table-of-contents/README.md
+
 ### 7.0.8
 
-- [react-components] update `src/donation-link-with-utm.js`, pure func -> extends React.PureComponent
+- Update `src/donation-link-with-utm.js`, pure func -> extends React.PureComponent
 
 ### 7.0.7
 

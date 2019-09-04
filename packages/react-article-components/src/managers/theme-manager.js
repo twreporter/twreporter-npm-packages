@@ -71,6 +71,12 @@ export default class ThemeManager {
       },
       secondary: secondaryColorSet,
       base: baseColorSet,
+      toc: {
+        text: '#9c9c9c',
+        accent: '#ef7ede',
+        support: '#fbafef',
+        background: '#fadaf5',
+      },
     },
     default: {
       primary: {
@@ -83,6 +89,12 @@ export default class ThemeManager {
       base: {
         ...baseColorSet,
         background: '#f1f1f1',
+      },
+      toc: {
+        text: '#afafaf',
+        accent: '#a67a44',
+        support: '#d0a67d',
+        background: '#fefefe',
       },
     },
     photo: {

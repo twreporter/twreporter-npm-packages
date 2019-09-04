@@ -20,7 +20,7 @@ const Container = styled.div`
   border-left: solid 1px ${props => props.theme.colors.secondary.support};
   ${mq.mobileOnly`
     margin: 40px auto;
-    width: 320px;
+    width: 100%;
     min-height: 335px;
   `}
 `

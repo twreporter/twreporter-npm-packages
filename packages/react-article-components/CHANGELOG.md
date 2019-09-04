@@ -4,6 +4,23 @@
 
 ## RELEASE
 
+### 1.0.17
+
+#### Table of Contents
+
+- render toc on demand
+
+### 1.0.16
+
+#### Table of Contents
+
+- add `src/components/table-of-contents/index.js`
+- add `src/components/table-of-contents/styled.js`
+
+#### Dependency Upgrade
+
+- `@twreporter/react-components` to `^7.1.0`
+
 ### 1.0.15
 
 - Bump `@twreporter/universal-header` version to v2.1.0

@@ -17,6 +17,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import Slideshow from './slideshow'
 import styled, { css } from 'styled-components'
+import TOC from '../table-of-contents'
 import Youtube from './youtube'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -324,18 +325,39 @@ export default class Body extends PureComponent {
     if (!data.id) {
       data.id = `body_element_${index}`
     }
+
     return renderElement(data)
   }
 
   render() {
     const { brief, content } = this.props
+    const tocManager = TOC.createManager()
+    let enableTOC = false
+
     const contentJsx = Array.isArray(content)
-      ? _.map(content, this._buildContentElement)
+      ? _.map(content, (data, index) => {
+          const elementJSX = this._buildContentElement(data, index)
+          if (data.type === 'header-one') {
+            enableTOC = true
+            return (
+              <TOC.React.Anchor
+                key={data.id}
+                id={data.id}
+                label={_.get(data, 'content.0')}
+                manager={tocManager}
+              >
+                {elementJSX}
+              </TOC.React.Anchor>
+            )
+          }
+          return elementJSX
+        })
       : null
     return (
       <div>
         <StyledBrief data={brief} />
         {contentJsx}
+        {enableTOC ? <TOC.React.TableOfContents manager={tocManager} /> : null}
       </div>
     )
   }
