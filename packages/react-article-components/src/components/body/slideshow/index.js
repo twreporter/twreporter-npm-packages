@@ -262,6 +262,9 @@ const Desc = styled(Multimedia.Caption)`
   align-self: flex-start;
   display: inline-block;
 
+  /* overwrite Multimedia.Caption styles */
+  margin-bottom: 0;
+
   ${mq.tabletAndBelow`
     order: 4;
     padding-top: 15px;
@@ -272,9 +275,10 @@ const Desc = styled(Multimedia.Caption)`
   `}
 
   ${mq.desktopAndAbove`
-    position: relative;
-    transform: none;
     padding-top: 30px;
+
+    /* overwrite Multimedia.Caption styles */
+    float: none;
   `}
 `
 

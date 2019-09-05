@@ -47,6 +47,7 @@ const Caption = styled.figcaption`
   letter-spacing: 0.5px;
   font-weight: ${typography.font.weight.normal};
   font-size: ${props => props.theme.fontSizeOffset + 14}px;
+  margin-bottom: 30px;
 
   /* border-bottom of caption */
   &:after {
@@ -77,10 +78,11 @@ const Caption = styled.figcaption`
   `}
 
   ${mq.desktopAndAbove`
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transform: translateY(100%);
+    /* clear float */
+    clear: both;
+
+    position: relative;
+    float: right;
 
     &:after {
       width: 100%;
@@ -143,6 +145,25 @@ const Block = styled.div`
         ? `${mockup.hd.width.small}px`
         : `${mockup.hd.width.normal}%`};
   `}
+
+  ${Caption} {
+    ${mq.desktopAndAbove`
+      ${props =>
+        props.small
+          ? `
+        /* overwrite Caption styles */
+        float: none;
+        margin-bottom:0;
+        position: absolute;
+
+        /* give new styles */
+        right: 0;
+        bottom: 0;
+        transform: translateY(100%);
+      `
+          : ''}
+    `}
+  }
 `
 
 export default {

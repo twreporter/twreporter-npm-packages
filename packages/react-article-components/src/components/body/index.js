@@ -154,6 +154,9 @@ const StyledLargeImageBlock = styled.div`
   margin-left: auto;
   margin-right: auto;
   ${Multimedia.Caption} {
+    /* overwrite existing styles*/
+    margin-bottom: 0px;
+
     ${mq.desktopAndAbove`
       position: absolute;
       bottom: 0;
