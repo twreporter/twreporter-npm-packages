@@ -109,7 +109,7 @@ export default {
     ${mq.tabletAndBelow`
       position: relative;
       margin-left: auto;
-      background-color: #f4f4f4;
+      background-color: ${props => props.theme.colors.base.background};
       padding: 15px 15px 15px 0;
       &:after {
         width: calc(100% - 15px);
