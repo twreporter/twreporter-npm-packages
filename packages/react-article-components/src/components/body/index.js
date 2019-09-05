@@ -110,42 +110,42 @@ const alignRightCSS = css`
 `
 
 const StyledAnnotation = styled(Annotation)`
-  ${normalWidthCSS};
+  ${normalWidthCSS}
   margin: ${mockup.margin.normal};
 `
 
 const StyledAudio = styled(Audio)`
-  ${largeWidthCSS};
+  ${largeWidthCSS}
   margin: ${mockup.margin.large};
 `
 
 const StyledCenteredQuote = styled(CenteredQuote)`
-  ${largeWidthCSS};
+  ${largeWidthCSS}
   margin: ${mockup.margin.large};
 `
 
 const StyledBlockquote = styled(Blockquote)`
-  ${normalWidthCSS};
+  ${normalWidthCSS}
   margin: ${mockup.margin.normal};
 `
 
 const StyledHeaderOne = styled(Headings.H1)`
-  ${normalWidthCSS};
+  ${normalWidthCSS}
   margin: ${mockup.margin.headerOne};
 `
 
 const StyledHeaderTwo = styled(Headings.H2)`
-  ${normalWidthCSS};
+  ${normalWidthCSS}
   margin: ${mockup.margin.headerTwo};
 `
 
 const StyledEmbedded = styled(Embedded)`
-  ${largeWidthCSS};
+  ${largeWidthCSS}
   margin: ${mockup.margin.large};
 `
 
 const StyledExtendImageBlock = styled.div`
-  ${extendWidthCSS};
+  ${extendWidthCSS}
 `
 
 const StyledLargeImageBlock = styled.div`
@@ -172,40 +172,44 @@ const StyledLargeImageBlock = styled.div`
 `
 
 const StyledSlideshow = styled(Slideshow)`
-  ${extendWidthCSS};
+  ${extendWidthCSS}
   margin: ${mockup.margin.extend};
 `
 
 const StyledYoutube = styled(Youtube)`
-  ${extendWidthCSS};
+  ${extendWidthCSS}
   margin: ${mockup.margin.extend};
 `
 
 const StyledInfobox = styled(Infobox)`
-  ${largeWidthCSS};
+  ${largeWidthCSS}
   margin: ${mockup.margin.large};
 `
 
 const StyledOrderedList = styled(list.OrderedList)`
-  ${normalWidthCSS};
+  ${normalWidthCSS}
   margin: ${mockup.margin.normal};
 `
 
 const StyledUnorderedList = styled(list.UnorderedList)`
-  ${normalWidthCSS};
+  ${normalWidthCSS}
   margin: ${mockup.margin.normal};
 `
 
 const StyledParagraph = styled(Paragraph)`
-  ${normalWidthCSS};
+  ${normalWidthCSS}
   margin: ${mockup.margin.normal};
 `
 
 const AlignRight = styled.div`
-  ${extendWidthCSS};
+  ${extendWidthCSS}
   ${StyledCenteredQuote}, ${StyledBlockquote}, ${StyledEmbedded}, ${StyledInfobox} {
     ${alignRightCSS};
   }
+`
+
+const ClearFloat = styled.div`
+  clear: both;
 `
 
 function renderElement(data = {}) {
@@ -357,6 +361,7 @@ export default class Body extends PureComponent {
       <div>
         <StyledBrief data={brief} />
         {contentJsx}
+        <ClearFloat />
         {enableTOC ? <TOC.React.TableOfContents manager={tocManager} /> : null}
       </div>
     )
