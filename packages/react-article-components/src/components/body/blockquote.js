@@ -1,3 +1,4 @@
+import cssConst from '../../constants/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import predefinedPropTypes from '../../constants/prop-types/body'
@@ -12,6 +13,8 @@ const _ = {
 }
 
 const Quote = styled.blockquote`
+  ${cssConst.linkChildren}
+
   /* clear default margin */
   margin: 0;
 
