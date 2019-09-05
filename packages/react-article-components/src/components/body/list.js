@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import predefinedPropTypes from '../../constants/prop-types/body'
-import styles from '../../constants/css'
+import ccsConst from '../../constants/css'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -13,7 +13,8 @@ const _ = {
 }
 
 const listStyle = css`
-  ${styles.paragraphText}
+  ${ccsConst.linkChildren}
+  ${ccsConst.paragraphText}
   margin-block-start: 0;
   margin-block-end: 0;
   margin: 0 0 0 3em;
