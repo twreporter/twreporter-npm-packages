@@ -2,11 +2,22 @@
 
 ## UNRELEASED
 
+## RELEASE
+
 ### 1.0.18
 
-- support new english text(ff-tisa) on typekit
+#### Style Tune
 
-## RELEASE
+- support new english text(ff-tisa) on typekit
+- infobox: line break support
+- clear float at the end of body
+- `<a>` link style missing in blockquote, unordered list and ordered list
+- wrong background color of figcaption on photo style
+- figcaptions are covered while having continuous images
+
+#### Bug fix
+
+- theme-manager: add toc theme styles
 
 ### 1.0.17
 
