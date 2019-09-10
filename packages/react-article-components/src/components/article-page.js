@@ -28,6 +28,11 @@ const _ = {
   throttle,
 }
 
+const fontFamilyCss = css`
+  /* ff-tisa-web-prop is for english text */
+  font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
+`
+
 const BorderBox = styled.div`
   * {
     box-sizing: border-box;
@@ -35,6 +40,8 @@ const BorderBox = styled.div`
 `
 
 const BackgroundBlock = styled(BorderBox)`
+  ${fontFamilyCss}
+
   /* pass from ThemeProvider */
   background-color: ${props => props.theme.colors.primary.background};
 

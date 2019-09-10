@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+### 1.0.18
+
+- support new english text(ff-tisa) on typekit
+
 ## RELEASE
 
 ### 1.0.17

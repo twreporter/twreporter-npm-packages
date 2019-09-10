@@ -15,7 +15,8 @@ const _ = {
 }
 
 const Content = styled.div`
-  font-family: source-han-serif-tc, serif;
+  /* ff-tisa-web-pro is for english text */
+  font-family: ff-tisa-web-pro, source-han-serif-tc, serif;
   p {
     color: ${props => props.theme.colors.base.lightText};
     line-height: 1.7;
