@@ -54,6 +54,9 @@ const Content = styled.div`
 const Container = styled.div`
   ${cssConsts.linkChildren}
 
+  /* line breaks */
+  white-space: pre-wrap;
+
   background: #fff;
   position: relative;
   margin: 60px auto 0 auto;

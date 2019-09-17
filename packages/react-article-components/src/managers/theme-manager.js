@@ -133,6 +133,12 @@ export default class ThemeManager {
         line: 'rgba(216, 216, 216, 0.2)',
         background: '#08192d',
       },
+      toc: {
+        text: '#afafaf',
+        accent: '#a67a44',
+        support: '#d0a67d',
+        background: '#fefefe',
+      },
     },
   }
 
