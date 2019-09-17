@@ -8,6 +8,7 @@ export default class DonationLinkWithUtm extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node,
     utmMedium: PropTypes.string,
+    className: PropTypes.string,
   }
 
   state = {
@@ -21,7 +22,7 @@ export default class DonationLinkWithUtm extends React.PureComponent {
   }
 
   render() {
-    const { children, utmMedium } = this.props
+    const { className, children, utmMedium } = this.props
     const { isClient } = this.state
     let donationURL = externalLinks.donation
 
@@ -44,7 +45,12 @@ export default class DonationLinkWithUtm extends React.PureComponent {
     }
 
     return (
-      <a href={donationURL} target="_blank" rel="noopener noreferrer">
+      <a
+        className={className}
+        href={donationURL}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {children}
       </a>
     )
