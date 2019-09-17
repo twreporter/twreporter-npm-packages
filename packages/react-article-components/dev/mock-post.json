@@ -885,9 +885,9 @@
         "alignment": "center",
         "content": [
           {
-            "caption": "",
-            "embeddedCode": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
-            "embeddedCodeWithoutScript": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+            "caption": "做完田調，筆人物設定、故事結構。做完田調，讀完所有資料後，她還要經過一個「忘卻」的過程，再落筆人物設定、故事結構。",
+            "embeddedCode": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=580&show_text=true&appId=131805236835991&height=611\" width=\"580\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+            "embeddedCodeWithoutScript": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=580&show_text=true&appId=131805236835991&height=611\" width=\"580\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
             "height": "568",
             "scripts": [],
             "width": "500"
