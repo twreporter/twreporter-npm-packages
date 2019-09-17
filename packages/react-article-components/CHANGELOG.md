@@ -4,6 +4,12 @@
 
 ## RELEASE
 
+### 1.0.19
+
+#### Bug fix
+
+- Fix embedded overflow problem: The embedded code block will show scroll bar at some browsers even if it's unnecessary. So set the container style to default `overflow: visible`.
+
 ### 1.0.18
 
 #### Style Tune
