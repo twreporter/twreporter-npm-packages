@@ -4,6 +4,10 @@
 
 ## Release
 
+### 7.1.1
+
+- Add `className` prop to `donation-link-with-utm` for styled-components
+
 ### 7.1.0
 
 #### Table of Contents
