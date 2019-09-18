@@ -13,13 +13,8 @@ const _ = {
   merge,
 }
 
-const Container = styled.div`
-  overflow: scroll;
-`
-
 const Embedded = styled.div`
-  overflow: visible;
-  text-align: center;
+  position: relative;
 `
 
 const Caption = styled.div`
@@ -110,13 +105,13 @@ export default class EmbeddedCode extends React.PureComponent {
       {}
     )
     return (
-      <Container className={className}>
+      <div className={className}>
         <Embedded
           ref={this._embbed}
           dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
         />
         {caption ? <Caption>{caption}</Caption> : null}
-      </Container>
+      </div>
     )
   }
 }
