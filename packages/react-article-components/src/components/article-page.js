@@ -439,9 +439,11 @@ export default class Article extends PureComponent {
                 publishedDate={post.published_date}
               />
               <SeparationCurve />
-              <RelatedBlock>
-                <Related data={relatedPosts} />
-              </RelatedBlock>
+              {_.get(relatedPosts, 'length', 0) > 0 ? (
+                <RelatedBlock>
+                  <Related data={relatedPosts} />
+                </RelatedBlock>
+              ) : null}
             </BodyBackground>
           </BackgroundBlock>
         </DynamicComponentsContext.Provider>
