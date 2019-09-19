@@ -10,6 +10,9 @@
 - remove right aligned multimedia block on mobile
 - add margin-(top|bottom) to fix that there is no margin between two continuous images on mobile
 - fix block is covered by align right block
+- add to-be-deprecated comment in theme-manager
+- provide `name` prop in styled.ThemeProvider
+- slideshow: adjust styles in photo theme
 
 ## RELEASE
 
