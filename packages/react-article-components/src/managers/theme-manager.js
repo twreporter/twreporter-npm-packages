@@ -61,6 +61,9 @@ const baseColorSet = {
  *  @class Create a new ThemeManager
  */
 export default class ThemeManager {
+  // WARNING
+  // DO NOT ADD MORE COLORS HERE
+  // ThemeManager is going to be deprecated
   static colors = {
     pink: {
       primary: {
