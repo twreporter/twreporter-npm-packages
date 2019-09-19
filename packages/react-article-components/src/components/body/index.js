@@ -151,6 +151,12 @@ const StyledExtendImageBlock = styled.div`
 
 const StyledLargeImageBlock = styled.div`
   ${largeWidthCSS}
+
+  /* overwrite largeWidthCSS.mobile styles */
+  ${mq.mobileOnly`
+    width: 100%;
+  `}
+
   /* overwrite the position of image block and caption */
   margin-left: auto;
   margin-right: auto;
