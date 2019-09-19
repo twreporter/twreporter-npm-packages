@@ -1,9 +1,9 @@
 import Img from '../img-with-placeholder'
-import React from 'react'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/related'
+import React from 'react'
 import styled, { css } from 'styled-components'
-import themeConst from '../../constants/theme'
+import themeConsts from '../../constants/theme'
 import typography from '../../constants/typography'
 
 const mockup = {
@@ -32,6 +32,7 @@ const mockup = {
     },
   },
 }
+const StyledImg = styled(Img)
 
 const DescBlock = styled.div`
   position: relative;
@@ -174,7 +175,7 @@ const Block = styled.article`
 
 function getBlockStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case themeConsts.article.v2.photo:
       return css`
         ${Category} {
           color: #d0a67d;
@@ -182,8 +183,11 @@ function getBlockStyles(themeName) {
         ${Title} {
           color: rgba(255, 255, 255, 0.9);
         }
+        ${StyledImg} {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
       `
-    case themeConst.article.v2.pink:
+    case themeConsts.article.v2.pink:
       return css`
         ${Category} {
           color: #ef7ede;
@@ -191,8 +195,11 @@ function getBlockStyles(themeName) {
         ${Title} {
           color: #404040;
         }
+        ${StyledImg} {
+          background-color: #e2e2e2;
+        }
       `
-    case themeConst.article.v2.default:
+    case themeConsts.article.v2.default:
     default:
       return css`
         ${Category} {
@@ -200,6 +207,9 @@ function getBlockStyles(themeName) {
         }
         ${Title} {
           color: #404040;
+        }
+        ${StyledImg} {
+          background-color: #e2e2e2;
         }
       `
   }
@@ -280,10 +290,11 @@ class Card extends React.PureComponent {
         _height={isHovered ? heightAfterHovering : heightBeforeHovering}
       >
         <Thumbnail>
-          <Img
+          <StyledImg
             defaultImage={thumbnail}
             objectFit="cover"
             objectPosition="center center"
+            noImgPlaceholder
           />
         </Thumbnail>
         <DesktopTextBlock
