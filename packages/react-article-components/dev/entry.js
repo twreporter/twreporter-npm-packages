@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
+import themeConsts from '../src/constants/theme'
 import twreporterRedux from '@twreporter/redux'
 
 const HeaderContainerWithTransparentTheme = styled.div`
@@ -46,13 +47,32 @@ class MockTwreporterReactArticleContainer extends React.PureComponent {
   }
 }
 
+function selectHeaderTheme(postStyle) {
+  switch (postStyle) {
+    case themeConsts.article.v2.photo:
+      return 'photography'
+    case themeConsts.article.v2.default:
+    case themeConsts.article.v2.pink:
+      return 'transparent'
+    default:
+      return 'normal'
+  }
+}
+
 twreporterRedux.createStore({}, '', true).then(store => {
+  try {
+    const url = new URL(window.location.href)
+    const theme = url.searchParams.get('theme')
+    if (theme) {
+      mockPost.style = theme
+    }
+  } catch (e) {}
   ReactDOM.render(
     <React.Fragment>
       <Provider store={store}>
         <HeaderContainerWithTransparentTheme>
           <Header
-            theme="transparent"
+            theme={selectHeaderTheme(mockPost.style)}
             isLinkExternal={true}
             releaseBranch="master"
           />
