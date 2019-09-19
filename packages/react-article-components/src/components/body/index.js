@@ -142,6 +142,7 @@ const StyledHeaderTwo = styled(Headings.H2)`
 const StyledEmbedded = styled(Embedded)`
   ${largeWidthCSS}
   margin: ${mockup.margin.large};
+  overflow: hidden;
 `
 
 const StyledExtendImageBlock = styled.div`
