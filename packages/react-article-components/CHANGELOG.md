@@ -13,6 +13,7 @@
 - add to-be-deprecated comment in theme-manager
 - provide `name` prop in styled.ThemeProvider
 - slideshow: adjust styles in photo theme
+- audio: style tuning
 
 ## RELEASE
 
