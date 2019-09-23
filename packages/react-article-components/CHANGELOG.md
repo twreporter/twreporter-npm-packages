@@ -7,6 +7,8 @@
 - make `center-small` alignment fills 100% viewport width on mobile
 - centered-quote: support line break
 - metadata:authors - word-break: keep-all
+- remove right aligned multimedia block on mobile
+- add margin-(top|bottom) to fix that there is no margin between two continuous images on mobile
 
 ## RELEASE
 
