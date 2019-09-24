@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import themeConsts from '../src/constants/theme'
 import twreporterRedux from '@twreporter/redux'
+import Footer from '@twreporter/react-components/lib/footer'
 
 const HeaderContainerWithTransparentTheme = styled.div`
   position: relative;
@@ -82,6 +83,7 @@ twreporterRedux.createStore({}, '', true).then(store => {
           relatedPosts={mockPost.relateds}
           relatedTopic={mockPost.topics}
         />
+        <Footer />
       </Provider>
     </React.Fragment>,
     document.getElementById('root')

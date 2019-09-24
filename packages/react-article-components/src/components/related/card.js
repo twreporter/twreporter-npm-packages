@@ -1,4 +1,5 @@
 import Img from '../img-with-placeholder'
+import mockup from './mockup'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/related'
 import React from 'react'
@@ -6,33 +7,7 @@ import styled, { css } from 'styled-components'
 import themeConsts from '../../constants/theme'
 import typography from '../../constants/typography'
 
-const mockup = {
-  mobile: {
-    thumbnail: {
-      width: 88, // px
-      height: 68, // px
-    },
-  },
-  tablet: {
-    thumbnail: {
-      width: 88, // px
-      height: 68, // px
-    },
-  },
-  desktop: {
-    thumbnail: {
-      width: 246, // px
-      height: 148, // px
-    },
-  },
-  hd: {
-    thumbnail: {
-      width: 349, // px
-      height: 148, // px
-    },
-  },
-}
-const StyledImg = styled(Img)
+const StyledImg = styled(Img)``
 
 const DescBlock = styled.div`
   position: relative;
