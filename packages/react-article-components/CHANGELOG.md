@@ -14,6 +14,7 @@
 - provide `name` prop in styled.ThemeProvider
 - slideshow: adjust styles in photo theme
 - audio: style tuning
+- fix embedded img not centered if not big enough
 
 ## RELEASE
 
