@@ -9,6 +9,7 @@
 - metadata:authors - word-break: keep-all
 - remove right aligned multimedia block on mobile
 - add margin-(top|bottom) to fix that there is no margin between two continuous images on mobile
+- fix block is covered by align right block
 
 ## RELEASE
 
