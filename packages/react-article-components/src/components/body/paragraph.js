@@ -16,13 +16,16 @@ const P = styled.p`
 `
 
 export default function Paragraph({ className, data }) {
-  const innerHtmlString = _.get(data, ['content', 0])
-  return innerHtmlString ? (
+  // still create space for empty block
+  let innerHtmlString = _.get(data, ['content', 0])
+  innerHtmlString = innerHtmlString || '&nbsp;'
+
+  return (
     <P
       className={className}
       dangerouslySetInnerHTML={{ __html: innerHtmlString }}
     />
-  ) : null
+  )
 }
 
 Paragraph.propTypes = {
