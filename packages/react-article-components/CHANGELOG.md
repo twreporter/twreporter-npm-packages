@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+### 1.0.20
+
+- [react-article-components] support empty paragrph
+
 ## RELEASE
 
 ### 1.0.19
