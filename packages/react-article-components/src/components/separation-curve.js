@@ -1,16 +1,28 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled from 'styled-components'
+import themeConst from '../constants/theme'
 
 const Separation = styled.div`
   width: 192px;
-  margin: 60px auto;
+  margin: 40px auto;
 
   ${mq.hdOnly`
     width: 270px;
   `}
   >svg>path {
-    fill: ${props => props.theme.colors.primary.support};
+    fill: ${props => {
+      switch (props.theme.name) {
+        case themeConst.article.v2.pink:
+          return '#fbafef'
+        case themeConst.article.v2.photo:
+          return '#a67a44'
+        case themeConst.article.v2.default:
+        default:
+          return '#d0a67d'
+      }
+    }};
   }
 `
 
@@ -30,6 +42,10 @@ const curve = (
   </svg>
 )
 
-export default function SeparationCurve() {
-  return <Separation>{curve}</Separation>
+export default function SeparationCurve(props = {}) {
+  return <Separation className={props.className}>{curve}</Separation>
+}
+
+SeparationCurve.propTypes = {
+  className: PropTypes.string,
 }

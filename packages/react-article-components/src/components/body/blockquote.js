@@ -3,7 +3,8 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import React, { PureComponent } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 // lodash
 import get from 'lodash/get'
@@ -12,7 +13,25 @@ const _ = {
   get,
 }
 
+function getQuoteStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        color: rgba(255, 255, 255, 0.4);
+        border-left: rgba(255, 255, 255, 0.2);
+      `
+    case themeConst.article.v2.pink:
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        color: #808080;
+        border-left: #afafaf;
+      `
+  }
+}
+
 const Quote = styled.blockquote`
+  ${props => getQuoteStyles(props.theme.name)}
   ${cssConst.linkChildren}
 
   /* clear default margin */
@@ -23,10 +42,8 @@ const Quote = styled.blockquote`
 
   line-height: 2.11;
   letter-spacing: 0.6px;
-  color: ${props => props.theme.colors.base.lightText};
   font-size: ${props => props.theme.fontSizeOffset + 18}px;
   font-weight: ${typography.font.weight.normal};
-  border-left: 2px solid ${props => props.theme.colors.base.line};
   ${mq.mobileOnly`
     padding-left: 16px;
   `}

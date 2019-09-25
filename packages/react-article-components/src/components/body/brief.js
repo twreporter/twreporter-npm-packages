@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react'
 import SeparationCurve from '../separation-curve'
 import styled from 'styled-components'
 import styles from '../../constants/css'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 // lodash
 import get from 'lodash/get'
@@ -18,7 +19,17 @@ const Content = styled.div`
   /* ff-tisa-web-pro is for english text */
   font-family: ff-tisa-web-pro, source-han-serif-tc, serif;
   p {
-    color: ${props => props.theme.colors.base.lightText};
+    color: ${props => {
+      switch (props.theme.name) {
+        case themeConst.article.v2.photo:
+          return 'rgba(255, 255, 255, 0.9)'
+        case themeConst.article.v2.pink:
+        case themeConst.article.v2.default:
+        default:
+          return '#808080'
+      }
+    }};
+
     line-height: 1.7;
     letter-spacing: 0.7px;
     font-weight: ${typography.font.weight.semiBold};

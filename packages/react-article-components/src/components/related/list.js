@@ -6,6 +6,7 @@ import map from 'lodash/map'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/related'
 import styled from 'styled-components'
+import themeConst from '../../constants/theme'
 
 const _ = {
   get,
@@ -22,9 +23,23 @@ const Item = styled.div`
   flex: 0 1 auto;
   border-style: solid;
   border-width: 0 0.5px 0.5px 0;
-  border-color: #d8d8d8;
+  border-color: ${props => {
+    switch (props.theme.name) {
+      case themeConst.article.v2.photo:
+        return 'rgba(255, 255, 255, 0.2)'
+      default:
+        return '#d8d8d8'
+    }
+  }};
   margin-bottom: 40px;
-  margin-right: 3px;
+
+  ${mq.hdOnly`
+    margin-right: 10px;
+  `}
+
+  ${mq.desktopOnly`
+    margin-right: 8px;
+  `}
 
   ${mq.tabletAndBelow`
     border-width: 0 0 0.5px 0;

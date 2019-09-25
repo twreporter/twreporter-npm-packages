@@ -5,15 +5,11 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import get from 'lodash/get'
 import predefinedPropTypes from '../../constants/prop-types/leading'
 import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 
 const _ = {
   get,
 }
-
-const BackgroundBlock = styled.div`
-  background-color: ${props => props.theme.colors.base.background};
-  padding-top: 60px;
-`
 
 const ContentBlock = styled.div`
   letter-spacing: 0.4px;
@@ -41,26 +37,23 @@ const TextBlock = styled.div`
 
 const Title = styled.h1`
   /* clear h1 default style */
-  color: ${props => props.theme.colors.base.text};
   letter-spacing: 0.4px;
   font-weight: bold;
-  margin: 0;
+  margin: 0 0 40px 0;
+
   ${mq.mobileOnly`
     font-size: 34px;
-    margin-bottom: 40px;
   `}
 
   ${mq.tabletAndAbove`
     font-size: 42px;
     line-height: 1.38;
-    margin-bottom: 60px;
   `}
 `
 
 const Subtitle = styled.h2`
-  color: ${props => props.theme.colors.base.text};
   font-weight: bold;
-  margin: 0 0 30px 0;
+  margin: 0 0 10px 0;
   ${mq.mobileOnly`
     font-size: 16px;
   `}
@@ -74,12 +67,10 @@ const Subtitle = styled.h2`
 const Topic = styled.div`
   font-size: 14px;
   display: inline-block;
-  color: ${props => props.theme.colors.primary.text};
   border-width: 1px;
   border-style: solid;
-  border-color: ${props => props.theme.colors.primary.support};
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `
 
 const Figure = styled.figure`
@@ -89,7 +80,6 @@ const Figure = styled.figure`
 `
 
 const FigCaption = styled.figcaption`
-  color: ${props => props.theme.colors.base.lightText};
   margin-top: 15px;
 
   ${mq.tabletAndBelow`
@@ -109,8 +99,49 @@ const FigCaption = styled.figcaption`
   ${mq.hdOnly`
     margin-top: 20px;
   `}
-
 `
+
+const BackgroundBlock = styled.div`
+  ${props => getBackgroundBlockStyles(props.theme.name)}
+  padding-top: 10px;
+  ${mq.tabletOnly`
+    padding-top: 30px;
+  `}
+`
+
+function getBackgroundBlockStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        background-color: #08192d;
+        ${FigCaption} {
+          color: rgba(255, 255, 255, 0.4);
+        }
+        ${Topic} {
+          color: #d0a67d;
+          border-color: #a67a44;
+        }
+        ${Subtitle}, ${Title} {
+          color: rgba(255, 255, 255, 0.9);
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        background-color: #f1f1f1;
+        ${FigCaption} {
+          color: #808080;
+        }
+        ${Topic} {
+          color: #a67a44;
+          border-color: #d0a67d;
+        }
+        ${Subtitle}, ${Title} {
+          color: #404040;
+        }
+      `
+  }
+}
 
 export default class NormalLeading extends React.PureComponent {
   static propTypes = predefinedPropTypes.default

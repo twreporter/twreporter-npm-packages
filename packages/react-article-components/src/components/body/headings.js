@@ -1,6 +1,7 @@
 import React from 'react'
 import get from 'lodash/get'
 import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 
 const _ = {
@@ -12,17 +13,26 @@ const heading = css`
   margin: 0;
 
   font-weight: ${typography.font.weight.bold};
+
+  color: ${props => {
+    switch (props.theme.name) {
+      case themeConst.article.v2.photo:
+        return 'rgba(255, 255, 255, 0.9)'
+      case themeConst.article.v2.pink:
+      case themeConst.article.v2.default:
+      default:
+        return '#404040'
+    }
+  }};
 `
 
 const StyledH1 = styled.h1`
   ${heading}
-  color: ${props => props.theme.colors.base.text};
   font-size: 34px;
 `
 
 const StyledH2 = styled.h2`
   ${heading}
-  color: ${props => props.theme.colors.base.text};
   font-size: 28px;
 `
 

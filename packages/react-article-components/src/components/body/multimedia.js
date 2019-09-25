@@ -1,5 +1,6 @@
 import mq from '@twreporter/core/lib/utils/media-query'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 
 const mockup = {
@@ -43,8 +44,36 @@ const mockup = {
   },
 }
 
+function getCaptionStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        color: rgba(255, 255, 255, 0.7);
+        &::after {
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+      `
+    case themeConst.article.v2.pink:
+      return css`
+        color: #494949;
+        &::after {
+          border-color: #fbafef;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        color: #494949;
+        &::after {
+          border-color: #d0a67d;
+        }
+      `
+  }
+}
+
 const Caption = styled.figcaption`
-  color: ${props => props.theme.colors.base.text};
+  ${props => getCaptionStyles(props.theme.name)}
+
   line-height: 1.36;
   letter-spacing: 0.5px;
   font-weight: ${typography.font.weight.normal};
@@ -52,19 +81,19 @@ const Caption = styled.figcaption`
   margin-bottom: 30px;
 
   /* border-bottom of caption */
-  &:after {
+  &::after {
     content: '';
     height: 1px;
     position: absolute;
     bottom: 0;
     left: 0;
-    border-bottom: 2px solid ${props => props.theme.colors.primary.support};
+    border-width: 0 0 1px 0;
+    border-style: solid;
   }
 
   ${mq.tabletAndBelow`
     position: relative;
     margin-left: auto;
-    background-color: ${props => props.theme.colors.base.background};
     padding: 15px 15px 15px 0;
     &:after {
       width: calc(100% - 15px);

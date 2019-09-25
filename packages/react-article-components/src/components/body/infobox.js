@@ -4,6 +4,7 @@ import predefinedPropTypes from '../../constants/prop-types/body'
 import React, { PureComponent } from 'react'
 import cssConsts from '../../constants/css'
 import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 // lodash
 import get from 'lodash/get'
@@ -51,7 +52,36 @@ const Content = styled.div`
   margin: 0 auto;
 `
 
+function getContainerStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        &::before,
+        &::after {
+          background: #a67a44;
+        }
+      `
+    case themeConst.article.v2.pink:
+      return css`
+        &::before,
+        &::after {
+          background: #fbafef;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        &::before,
+        &::after {
+          background: #d0a67d;
+        }
+      `
+  }
+}
+
 const Container = styled.div`
+  ${props => getContainerStyles(props.theme.name)}
+
   ${cssConsts.linkChildren}
 
   /* line breaks */
@@ -79,7 +109,6 @@ const Container = styled.div`
     position: absolute;
     right: -15px;
     top: 28px;
-    background: ${props => props.theme.colors.primary.support};
   }
   &::after {
     /*
@@ -95,7 +124,6 @@ const Container = styled.div`
     position: absolute;
     left: -6px;
     bottom: 22px;
-    background: ${props => props.theme.colors.primary.support};
   }
 `
 

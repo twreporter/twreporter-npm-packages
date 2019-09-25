@@ -1,19 +1,30 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import themeConst from '../constants/theme'
 
 const Text = styled.p`
   /* clear default browser styles */
   margin: 0;
 
-  color: ${props => props.theme.colors.base.lightText};
+  color: ${props => {
+    switch (props.theme.name) {
+      case themeConst.article.v2.photo:
+        return 'rgba(255, 255, 255, 0.4)'
+      case themeConst.article.v2.pink:
+      case themeConst.article.v2.default:
+      default:
+        return '#808080'
+    }
+  }};
+
   font-size: 16px;
   line-height: 1.38;
 `
 
 const Container = styled.div`
   text-align: center;
-  padding: 15px 24px 15px 24px;
+  padding: 0 24px;
 `
 
 export default class License extends React.PureComponent {

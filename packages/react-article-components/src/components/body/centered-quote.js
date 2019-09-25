@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import React, { PureComponent } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import styles from '../../constants/css'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 // lodash
 import get from 'lodash/get'
@@ -23,7 +24,6 @@ const QuoteContent = styled.blockquote`
   line-height: 1.56;
   letter-spacing: 1.1px;
   text-align: center;
-  color: ${props => props.theme.colors.base.text};
 `
 
 const QuoteBy = styled.cite`
@@ -35,16 +35,54 @@ const QuoteBy = styled.cite`
   line-height: 1.56;
   letter-spacing: 0.5px;
   text-align: center;
-  color: ${props => props.theme.colors.base.text};
   ${styles.linkChildren}
 `
 
 const VerticalLine = styled.div`
   width: 2px;
   height: 80px;
-  background: ${props => props.theme.colors.primary.support};
   margin: 0 auto 40px auto;
 `
+
+const QuoteContainer = styled.div`
+  ${props => getQuoteContainerStyles(props.theme.name)}
+`
+
+function getQuoteContainerStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.pink:
+      return css`
+        ${QuoteContent}, ${QuoteBy} {
+          color: #404040;
+        }
+
+        ${VerticalLine} {
+          background-color: #fbafef;
+        }
+      `
+    case themeConst.article.v2.photo:
+      return css`
+        ${QuoteContent}, ${QuoteBy} {
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        ${VerticalLine} {
+          background-color: #a67a44;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        ${QuoteContent}, ${QuoteBy} {
+          color: #404040;
+        }
+
+        ${VerticalLine} {
+          background-color: #d0a67d;
+        }
+      `
+  }
+}
 
 export default class CenteredQuote extends PureComponent {
   static propTypes = {
@@ -57,11 +95,11 @@ export default class CenteredQuote extends PureComponent {
     const content = _.get(data, ['content', 0, 'quote'])
     const by = _.get(data, ['content', 0, 'quoteBy'])
     return content ? (
-      <div className={className}>
+      <QuoteContainer className={className}>
         <VerticalLine />
         <QuoteContent dangerouslySetInnerHTML={{ __html: content }} />
         {by ? <QuoteBy dangerouslySetInnerHTML={{ __html: by }} /> : null}
-      </div>
+      </QuoteContainer>
     ) : null
   }
 }

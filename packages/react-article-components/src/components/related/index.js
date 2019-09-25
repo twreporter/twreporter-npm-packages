@@ -1,12 +1,13 @@
 import List from './list'
 import PropTypes from 'prop-types'
 import React from 'react'
+import debounce from 'lodash/debounce'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import mq from '@twreporter/core/lib/utils/media-query'
 import sortBy from 'lodash/sortBy'
-import styled from 'styled-components'
-import debounce from 'lodash/debounce'
+import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 
 const _ = {
@@ -35,10 +36,35 @@ const Block = styled.section`
 `
 
 const Descriptor = styled.div`
+  ${props => {
+    switch (props.theme.name) {
+      case themeConst.article.v2.photo:
+        return css`
+          color: rgba(255, 255, 255, 0.4);
+          ${mq.desktopAndAbove`
+            border-color: rgba(255, 255, 255, 0.2);
+            &::after {
+              border-color: rgba(255, 255, 255, 0.2);
+            }
+          `}
+        `
+      case themeConst.article.v2.pink:
+      case themeConst.article.v2.default:
+      default:
+        return css`
+          color: #808080;
+          ${mq.desktopAndAbove`
+            border-color: #d8d8d8;
+            &::after {
+              border-color: #d8d8d8;
+            }
+          `}
+        `
+    }
+  }}
 
   ${mq.tabletAndBelow`
     margin: 0 auto 40px auto;
-    color: ${props => props.theme.colors.base.lightText};
     font-size: 20px;
     font-weigth: ${typography.font.weight.bold};
 
@@ -61,26 +87,27 @@ const Descriptor = styled.div`
     font-weight: bold;
     line-height: 1.5;
     letter-spacing: 0.4px;
-    color: #494949;
     margin-right: auto;
     padding-top: 5px;
-    border-top: solid 0.5px #d8d8d8;
+    border-width: 0.5px 0 0 0;
+    border-style: solid;
     position: relative;
 
-    &:before {
+    &::before {
       content: '相關文章';
       margin-left: 5px;
       margin-top: 5px;
     }
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       top: 0;
       right: 0;
       width: 1px;
       height: 12px;
-      border-right: solid 0.5px #d8d8d8;
+      border-width: 0 0.5px 0 0;
+      border-style: solid;
     }
   `}
 

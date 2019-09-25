@@ -20,6 +20,7 @@ import themeConst from '../constants/theme'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import merge from 'lodash/merge'
+import themeConst from '../constants/theme'
 import throttle from 'lodash/throttle'
 
 const _ = {
@@ -40,17 +41,6 @@ const BorderBox = styled.div`
   }
 `
 
-const BackgroundBlock = styled(BorderBox)`
-  ${fontFamilyCss}
-
-  /* pass from ThemeProvider */
-  background-color: ${props => props.theme.colors.primary.background};
-
-  /* boreder-(right|left) of articlePage */
-  padding-left: 10px;
-  padding-right: 10px;
-`
-
 const LeadingBlock = styled.div`
   position: relative;
   /* 20px is border-(right|left) width of articlePage */
@@ -59,7 +49,7 @@ const LeadingBlock = styled.div`
 `
 
 const SeprationLine = styled.div`
-  ${mq.tabletAndAbove`
+  ${mq.desktopAndAbove`
     ${props =>
       props.visible
         ? css`
@@ -75,7 +65,6 @@ const SeprationLine = styled.div`
 
 const BodyBackground = styled.div`
   width: 100%;
-  background-color: ${props => props.theme.colors.base.background};
   padding-bottom: 80px;
 
   ${mq.desktopOnly`
@@ -166,9 +155,67 @@ const ContentBlock = styled.div`
   `}
 `
 
-const RelatedBlock = styled(BodyBlock)`
-  margin: 80px auto 0 auto;
+const StyledSeparationCurve = styled(SeparationCurve)`
+  ${mq.desktopAndAbove`
+    display: none;
+  `}
 `
+
+const RelatedBlock = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  width: 100%;
+
+  ${mq.desktopOnly`
+    max-width: 1024px;
+    margin-top: 60px;
+  `}
+
+  ${mq.hdOnly`
+    max-width: 1440px;
+    margin-top: 90px;
+  `}
+`
+
+const BackgroundBlock = styled(BorderBox)`
+  ${fontFamilyCss}
+  ${props =>
+    getBackgroundBlockStyles(
+      props.theme.name
+    )}
+
+  /* boreder-(right|left) of articlePage */
+  padding-left: 10px;
+  padding-right: 10px;
+`
+
+function getBackgroundBlockStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.pink:
+      return css`
+        background-color: #fadaf5;
+        ${BodyBackground} {
+          background-color: #f4f4f4;
+        }
+      `
+    case themeConst.article.v2.photo:
+      return css`
+        background-color: #08192d;
+        ${BodyBackground} {
+          background-color: #08192d;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        background-color: #f1f1f1;
+        ${BodyBackground} {
+          background-color: #f1f1f1;
+        }
+      `
+  }
+}
 
 const _fontLevel = {
   small: 'small',
@@ -439,7 +486,7 @@ export default class Article extends PureComponent {
                 license={post.copyright}
                 publishedDate={post.published_date}
               />
-              <SeparationCurve />
+              <StyledSeparationCurve />
               {_.get(relatedPosts, 'length', 0) > 0 ? (
                 <RelatedBlock>
                   <Related data={relatedPosts} />
