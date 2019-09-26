@@ -20,7 +20,6 @@ import themeConst from '../constants/theme'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import merge from 'lodash/merge'
-import themeConst from '../constants/theme'
 import throttle from 'lodash/throttle'
 
 const _ = {
