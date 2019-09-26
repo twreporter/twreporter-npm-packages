@@ -22,8 +22,8 @@ const mockup = {
       width: 375, // px
     },
     slide: {
-      width: 340, // px
-      height: 212, // px
+      width: 339, // px
+      height: 189, // px
       paddingRight: 2, // px
     },
     offset: {
@@ -35,12 +35,12 @@ const mockup = {
       width: 768, // px
     },
     slide: {
-      width: 690, // px
-      height: 478, // px
-      paddingRight: 3, // px
+      width: 687, // px
+      height: 387, // px
+      paddingRight: 4, // px
     },
     offset: {
-      left: 39, // px
+      left: 41, // px
     },
   },
   desktop: {
@@ -48,25 +48,25 @@ const mockup = {
       width: 752, // px
     },
     slide: {
-      width: 691, // px
-      height: 429, // px
+      width: 688, // px
+      height: 387, // px
       paddingRight: 4, // px
     },
     offset: {
-      left: 33, // px
+      left: 32, // px
     },
   },
   hd: {
     container: {
-      width: 1033, // px
+      width: 1034, // px
     },
     slide: {
-      width: 938, // px
-      height: 585, // px
+      width: 944, // px
+      height: 531, // px
       paddingRight: 4, // px
     },
     offset: {
-      left: 50, // px
+      left: 45, // px
     },
   },
 }
