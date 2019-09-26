@@ -12,6 +12,9 @@ const _ = {
 }
 
 const QuoteContent = styled.blockquote`
+  /* line breaks */
+  white-space: pre-wrap;
+
   /* clear default margin */
   margin: 0;
 

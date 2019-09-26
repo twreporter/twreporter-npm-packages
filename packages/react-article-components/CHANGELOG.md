@@ -5,6 +5,7 @@
 ### 1.0.20
 
 - make `center-small` alignment fills 100% viewport width on mobile
+- centered-quote: support line break
 
 ## RELEASE
 
