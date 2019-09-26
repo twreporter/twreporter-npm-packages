@@ -6,44 +6,9 @@ import predefinedCss from '../../../constants/css'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import SeekBar from './seek-bar'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
 import typography from '../../../constants/typography'
-
-function getContainerBorderColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return 'rgba(255, 255, 255, 0.2)'
-    case themeConst.article.v2.default:
-    case themeConst.article.v2.pink:
-    default:
-      return '#d8d8d8'
-  }
-}
-
-const Container = styled.div`
-  border-color: ${props => getContainerBorderColor(props.theme.name)};
-  border-width: 0 1px 1px 1px;
-  border-style: solid;
-  border-radius: 0 0 4px 4px;
-  ${mq.tabletAndBelow`
-    padding-bottom: 30px;
-  `}
-  ${mq.desktopAndAbove`
-    padding-bottom: 40px;
-  `}
-`
-
-function getTimeRowColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return 'rgba(255, 255, 255, 0.8)'
-    case themeConst.article.v2.default:
-    case themeConst.article.v2.pink:
-    default:
-      return '#808080'
-  }
-}
 
 const TimeRow = styled.div`
   width: 100%;
@@ -51,7 +16,6 @@ const TimeRow = styled.div`
   justify-content: space-between;
   padding: 16px 15px 13px 15px;
   font-weight: ${typography.font.weight.bold};
-  color: ${props => getTimeRowColor(props.theme.name)};
   letter-spacing: 0.47px;
   font-size: 14px;
   user-select: none;
@@ -106,49 +70,82 @@ const Info = styled.div`
   `}
 `
 
-function getTitleColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return '#fff'
-    case themeConst.article.v2.pink:
-      return '#494949'
-    case themeConst.article.v2.default:
-    default:
-      return '#404040'
-  }
-}
-
-function getDescColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return 'rgba(255, 255, 255, 0.8)'
-    case themeConst.article.v2.pink:
-      return '#494949'
-    case themeConst.article.v2.default:
-    default:
-      return '#404040'
-  }
-}
-
 const Title = styled.div`
   font-size: 16px;
   font-weight: ${typography.font.weight.bold};
   line-height: 1.5;
   letter-spacing: 0.4px;
-  color: ${props => getTitleColor(props.theme.name)};
   ${mq.desktopAndAbove`
     margin-top: 11px;
   `}
 `
 
 const Desc = styled.div`
+  ${predefinedCss.linkChildren};
   font-size: 14px;
   font-weight: ${typography.font.weight.normal};
   line-height: 1.36;
   letter-spacing: 0.5px;
-  color: ${props => getDescColor(props.theme.name)};
-  ${predefinedCss.linkChildren};
 `
+
+const Container = styled.div`
+  ${props => getContainerStyles(props.theme.name)}
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-radius: 0 0 4px 4px;
+  ${mq.tabletAndBelow`
+    padding-bottom: 30px;
+  `}
+  ${mq.desktopAndAbove`
+    padding-bottom: 40px;
+  `}
+`
+
+function getContainerStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        border-color: rgba(255, 255, 255, 0.2);
+
+        ${TimeRow} {
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        ${Title} {
+          color: #fff;
+        }
+
+        ${Desc} {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      `
+    case themeConst.article.v2.pink:
+      return css`
+        border-color: #d8d8d8;
+
+        ${TimeRow} {
+          color: #808080;
+        }
+
+        ${Title}, ${Desc} {
+          color: #494949;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        border-color: #d8d8d8;
+
+        ${TimeRow} {
+          color: #808080;
+        }
+
+        ${Title}, ${Desc} {
+          color: #404040;
+        }
+      `
+  }
+}
 
 export default class AudioPlayer extends PureComponent {
   static propTypes = {
