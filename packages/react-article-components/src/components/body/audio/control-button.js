@@ -4,6 +4,42 @@ import PauseIcon from '../../../assets/body/audio/pause.svg'
 import PlayIcon from '../../../assets/body/audio/play.svg'
 import React from 'react'
 import styled from 'styled-components'
+import themeConst from '../../../constants/theme'
+
+function getButtonBorderColor(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return 'rgba(255, 255, 255, 0.25)'
+    case themeConst.article.v2.pink:
+    case themeConst.article.v2.default:
+    default:
+      return '#d8d8d8'
+  }
+}
+
+function getButtonBgColor(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return '#08192d'
+    case themeConst.article.v2.pink:
+      return '#f4f4f4'
+    case themeConst.article.v2.default:
+    default:
+      return '#f1f1f1'
+  }
+}
+
+function getIconColor(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return '#d0a67d'
+    case themeConst.article.v2.pink:
+      return '#ef7ede'
+    case themeConst.article.v2.default:
+    default:
+      return '#a67a44'
+  }
+}
 
 const IconWrapper = styled.button`
   ${mq.tabletAndBelow`
@@ -14,7 +50,8 @@ const IconWrapper = styled.button`
     width: 65px;
     height: 65px;
   `}
-  border: 1px solid #d8d8d8;
+  background-color: ${props => getButtonBgColor(props.theme.name)};
+  border: 1px solid ${props => getButtonBorderColor(props.theme.name)};
   border-radius: 50%;
   position: relative;
   cursor: pointer;
@@ -29,9 +66,9 @@ const IconWrapper = styled.button`
     transform: translate(-50%, -50%);
     path {
       stroke: ${props =>
-        props.isPlaying ? props.theme.colors.primary.accent : 'none'};
+        props.isPlaying ? getIconColor(props.theme.name) : 'none'};
       fill: ${props =>
-        props.isPlaying ? 'none' : props.theme.colors.primary.accent};
+        props.isPlaying ? 'none' : getIconColor(props.theme.name)};
     }
   }
 `
