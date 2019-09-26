@@ -147,6 +147,7 @@ const StyledEmbedded = styled(Embedded)`
 
 const StyledExtendImageBlock = styled.div`
   ${extendWidthCSS}
+  margin: ${mockup.margin.extend};
 `
 
 const StyledLargeImageBlock = styled.div`
@@ -158,8 +159,7 @@ const StyledLargeImageBlock = styled.div`
   `}
 
   /* overwrite the position of image block and caption */
-  margin-left: auto;
-  margin-right: auto;
+  margin: ${mockup.margin.large};
   ${Multimedia.Caption} {
     /* overwrite existing styles*/
     margin-bottom: 0px;

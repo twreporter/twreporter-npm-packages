@@ -4,36 +4,38 @@ import typography from '../../constants/typography'
 
 const mockup = {
   mobile: {
-    width: {
-      normal: '100%',
-      small: 'calc(250/375*100%)', // %
+    figure: {
+      width: '100%',
     },
     caption: {
       width: 250, // px
     },
   },
   tablet: {
-    width: {
-      normal: '100%',
-      small: 'calc(512/768*100%)', // %
+    figure: {
+      width: '100%',
     },
     caption: {
       width: 512, // px
     },
   },
   desktop: {
-    width: {
-      normal: 100, // %
-      small: 403, // px
+    figure: {
+      width: {
+        normal: 100, // %
+        small: 403, // px
+      },
     },
     caption: {
       width: 180, // px
     },
   },
   hd: {
-    width: {
-      normal: 100, // %
-      small: 532, // px
+    figure: {
+      width: {
+        normal: 100, // %
+        small: 532, // px
+      },
     },
     caption: {
       width: 265, // px
@@ -108,42 +110,30 @@ const Block = styled.div`
     margin: 0;
   }
 
-  ${mq.tabletAndBelow`
-    margin-left: ${props => (props.small ? 'auto' : '0px')};
-    margin-right: ${props => (props.small ? '0px' : 'auto')};
-    float: none;
-  `}
-
   ${mq.mobileOnly`
-    width: ${props =>
-      props.small
-        ? `${mockup.mobile.width.small}`
-        : `${mockup.mobile.width.normal}`};
+    width: ${mockup.mobile.figure.width};
   `}
 
   ${mq.tabletOnly`
-    width: ${props =>
-      props.small
-        ? `${mockup.tablet.width.small}`
-        : `${mockup.tablet.width.normal}`};
+    width: ${mockup.tablet.figure.width};
   `}
 
   ${mq.desktopOnly`
     float: ${props => (props.small ? 'right' : 'none')};
-    margin: ${props => (props.small ? '0 0 20px 25px' : '60px auto')};
+    margin: ${props => (props.small ? '0 0 20px 25px' : '0')};
     width: ${props =>
       props.small
-        ? `${mockup.desktop.width.small}px`
-        : `${mockup.desktop.width.normal}%`};
+        ? `${mockup.desktop.figure.width.small}px`
+        : `${mockup.desktop.figure.width.normal}%`};
   `}
 
   ${mq.hdOnly`
     float: ${props => (props.small ? 'right' : 'none')};
-    margin: ${props => (props.small ? '0 0 20px 25px' : '60px auto')};
+    margin: ${props => (props.small ? '0 0 20px 25px' : 0)};
     width: ${props =>
       props.small
-        ? `${mockup.hd.width.small}px`
-        : `${mockup.hd.width.normal}%`};
+        ? `${mockup.hd.figure.width.small}px`
+        : `${mockup.hd.figure.width.normal}%`};
   `}
 
   ${Caption} {
