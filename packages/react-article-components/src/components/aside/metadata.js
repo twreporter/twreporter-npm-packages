@@ -96,28 +96,34 @@ const AuthorSection = styled.div`
   margin-bottom: 45px;
 `
 
-const AuthorFlexBox = styled.div`
+const AuthorRow = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 10px;
-`
-
-const NoShrinkFlexItem = styled.div`
-  flex-shrink: 0;
 `
 
 const AuthorJobTitle = styled.div`
   font-size: 14px;
   color: #808080;
   margin-left: 5px;
+  padding-top: 2px;
   line-height: 1;
+  flex-shrink: 0;
 `
 
-const AuthorName = styled(AuthorJobTitle)`
+const AuthorNames = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const AuthorName = styled.div`
   color: ${props => props.theme.colors.primary.text};
   font-size: 16px;
   margin-left: 5px;
+  line-height: 1;
   padding-bottom: 3px;
+  word-break: keep-all;
+  vertical-align: top;
 
   &:hover {
     padding-bottom: 2px;
@@ -138,7 +144,8 @@ const RawAuthorText = styled.div`
 const AngledSeparationLine = styled.div`
   border-bottom: 0.5px solid ${props => props.theme.colors.primary.support};
   width: 15px;
-  transform: rotate(-45deg);
+  transform: translateY(9px) rotate(-45deg);
+  flex-shrink: 0;
 `
 
 const TagButton = styled.div`
@@ -248,28 +255,26 @@ class Metadata extends PureComponent {
     }
 
     return (
-      <AuthorFlexBox>
-        <NoShrinkFlexItem>
-          <AuthorJobTitle>{label}</AuthorJobTitle>
-        </NoShrinkFlexItem>
-        <NoShrinkFlexItem>
-          <AngledSeparationLine />
-        </NoShrinkFlexItem>
-        <DynamicComponentsContext.Consumer>
-          {components => {
-            return _.map(authors, author => {
-              return (
-                <components.Link
-                  key={`author_${author.id}`}
-                  to={`/authors/${author.id}`}
-                >
-                  <AuthorName>{author.name}</AuthorName>
-                </components.Link>
-              )
-            })
-          }}
-        </DynamicComponentsContext.Consumer>
-      </AuthorFlexBox>
+      <AuthorRow>
+        <AuthorJobTitle>{label}</AuthorJobTitle>
+        <AngledSeparationLine />
+        <AuthorNames>
+          <DynamicComponentsContext.Consumer>
+            {components => {
+              return _.map(authors, author => {
+                return (
+                  <components.Link
+                    key={`author_${author.id}`}
+                    to={`/authors/${author.id}`}
+                  >
+                    <AuthorName as="span">{author.name}</AuthorName>
+                  </components.Link>
+                )
+              })
+            }}
+          </DynamicComponentsContext.Consumer>
+        </AuthorNames>
+      </AuthorRow>
     )
   }
 
