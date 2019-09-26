@@ -109,6 +109,10 @@ const alignRightCSS = css`
   `}
 `
 
+const clearFloatCSS = css`
+  clear: both;
+`
+
 const StyledAnnotation = styled(Annotation)`
   ${normalWidthCSS}
   margin: ${mockup.margin.normal};
@@ -116,11 +120,13 @@ const StyledAnnotation = styled(Annotation)`
 
 const StyledAudio = styled(Audio)`
   ${largeWidthCSS}
+  ${clearFloatCSS}
   margin: ${mockup.margin.large};
 `
 
 const StyledCenteredQuote = styled(CenteredQuote)`
   ${largeWidthCSS}
+  ${clearFloatCSS}
   margin: ${mockup.margin.large};
 `
 
@@ -141,17 +147,20 @@ const StyledHeaderTwo = styled(Headings.H2)`
 
 const StyledEmbedded = styled(Embedded)`
   ${largeWidthCSS}
+  ${clearFloatCSS}
   margin: ${mockup.margin.large};
   overflow: hidden;
 `
 
 const StyledExtendImageBlock = styled.div`
   ${extendWidthCSS}
+  ${clearFloatCSS}
   margin: ${mockup.margin.extend};
 `
 
 const StyledLargeImageBlock = styled.div`
   ${largeWidthCSS}
+  ${clearFloatCSS}
 
   /* overwrite largeWidthCSS.mobile styles */
   ${mq.mobileOnly`
@@ -183,16 +192,19 @@ const StyledLargeImageBlock = styled.div`
 
 const StyledSlideshow = styled(Slideshow)`
   ${extendWidthCSS}
+  ${clearFloatCSS}
   margin: ${mockup.margin.extend};
 `
 
 const StyledYoutube = styled(Youtube)`
   ${extendWidthCSS}
+  ${clearFloatCSS}
   margin: ${mockup.margin.extend};
 `
 
 const StyledInfobox = styled(Infobox)`
   ${largeWidthCSS}
+  ${clearFloatCSS}
   margin: ${mockup.margin.large};
 `
 
@@ -213,13 +225,14 @@ const StyledParagraph = styled(Paragraph)`
 
 const AlignRight = styled.div`
   ${extendWidthCSS}
+  ${clearFloatCSS}
   ${StyledCenteredQuote}, ${StyledBlockquote}, ${StyledEmbedded}, ${StyledInfobox} {
     ${alignRightCSS};
   }
 `
 
 const ClearFloat = styled.div`
-  clear: both;
+  ${clearFloatCSS}
 `
 
 function renderElement(data = {}) {
