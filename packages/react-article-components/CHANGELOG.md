@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+### 1.0.20
+
+- make `center-small` alignment fills 100% viewport width on mobile
+
 ## RELEASE
 
 ### 1.0.19
