@@ -18,8 +18,9 @@ const DescBlock = styled.div`
 `
 
 const Desc = styled.p`
-  visibility: ${props => props._visibility};
-  position: ${props => props._position};
+  opacity: ${props => (props.isHovered ? '1' : '0')};
+  visibility: ${props => (props.isHovered ? 'visible' : 'hidden')};
+  position: ${props => (props.isHovered ? 'static' : 'absolute')};
 
   /* clear default margin */
   margin: 0px;
@@ -29,6 +30,7 @@ const Desc = styled.p`
   line-height: 1.43;
   color: #808080;
   padding: 15px 0 15px 0;
+  transition: opacity 200ms ease 100ms;
 `
 
 const Thumbnail = styled.figure`
@@ -122,13 +124,13 @@ const PublishedDate = styled.p`
   `}
 `
 
-const Block = styled.article`
+const Block = styled.div`
   ${props => getBlockStyles(props.theme.name)}
 
   position: relative;
   height: ${props => props._height};
 
-  transition: height 0.1s ease-in-out;
+  transition: height 0.2s ease-in-out;
 
   ${mq.tabletAndBelow`
     height: auto;
@@ -279,11 +281,7 @@ class Card extends React.PureComponent {
           {categoryJSX}
           {titleJSX}
           <DescBlock>
-            <Desc
-              ref={this._descRef}
-              _visibility={isHovered ? 'visible' : 'hidden'}
-              _position={isHovered ? 'static' : 'absolute'}
-            >
+            <Desc ref={this._descRef} isHovered={isHovered}>
               {desc}
             </Desc>
           </DescBlock>
