@@ -9,6 +9,7 @@ import map from 'lodash/map'
 import memoize from 'memoize-one'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled from 'styled-components'
+import themeConst from '../../../constants/theme'
 
 const _ = {
   get,
@@ -143,12 +144,23 @@ const PrevNextSection = styled.div`
   `}
 `
 
+function getButtonBorderColor(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return 'rgba(255, 255, 255, 0.2)'
+    case themeConst.article.v2.pink:
+    case themeConst.article.v2.default:
+    default:
+      return '#d8d8d8'
+  }
+}
+
 const PrevButton = styled.div`
   cursor: pointer;
   width: 59px;
   height: 59px;
   display: inline-flex;
-  border: solid 1px #d8d8d8;
+  border: solid 1px ${props => getButtonBorderColor(props.theme.name)};
 
   > svg {
     margin: auto;
@@ -182,11 +194,33 @@ const NextButton = styled(PrevButton)`
   }
 `
 
+function getImageNumberCircleBgColor(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.pink:
+      return '#fbafef'
+    case themeConst.article.v2.photo:
+    case themeConst.article.v2.default:
+    default:
+      return '#d0a67d'
+  }
+}
+
+function getImageNumberColor(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return '#08192d'
+    case themeConst.article.v2.pink:
+    case themeConst.article.v2.default:
+    default:
+      return '#fff'
+  }
+}
+
 const ImageNumberCircle = styled.div`
   display: inline-block;
   width: 80px;
   height: 80px;
-  background-color: ${props => props.theme.colors.primary.support};
+  background-color: ${props => getImageNumberCircleBgColor(props.theme.name)};
   border-radius: 50%;
   vertical-align: top;
 
@@ -196,7 +230,7 @@ const ImageNumberCircle = styled.div`
     content: '';
     position: absolute;
     width: 62px;
-    border-top: solid 1px #fff;
+    border-top: solid 1px ${props => getImageNumberColor(props.theme.name)};
     transform: rotate(-45deg);
     transform-origin: bottom left;
     top: 67px;
@@ -233,7 +267,7 @@ const ImageNumberCircle = styled.div`
 `
 
 const ImageNumber = styled.span`
-  color: #fff;
+  color: ${props => getImageNumberColor(props.theme.name)};
   position: absolute;
   top: 25px;
   left: 9px;
@@ -361,12 +395,23 @@ const SlideFlexItem = styled.div`
   `}
 `
 
+function getSlideMaskBgColor(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.pink:
+      return '#355ed3'
+    case themeConst.article.v2.photo:
+    case themeConst.article.v2.default:
+    default:
+      return '#a67a44'
+  }
+}
+
 const SlideMask = styled.div`
   position: absolute;
   top: 0;
   height: 100%;
   opacity: 0.55;
-  background: ${props => props.theme.colors.primary.text};
+  background-color: ${props => getSlideMaskBgColor(props.theme.name)};
 `
 
 const LeftSlideMask = styled(SlideMask)`

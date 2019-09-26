@@ -15,6 +15,7 @@ import Related from './related'
 import SeparationCurve from './separation-curve'
 import UIManager from '../managers/ui-manager'
 import Tools from './aside/tools'
+import themeConst from '../constants/theme'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -389,6 +390,7 @@ export default class Article extends PureComponent {
     return (
       <ThemeProvider
         theme={{
+          name: _.get(post, 'style', themeConst.article.v2.default),
           colors: uiManager.getThemeColors(),
           fontSizeOffset: this.getFontSizeOffset(fontLevel),
         }}
