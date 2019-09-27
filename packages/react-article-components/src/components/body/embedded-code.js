@@ -15,6 +15,14 @@ const _ = {
 
 const Embedded = styled.div`
   position: relative;
+
+  /* styles for image link */
+  img.img-responsive {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 `
 
 const Caption = styled.div`
