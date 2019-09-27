@@ -67,8 +67,8 @@ class BookmarkWidget extends React.PureComponent {
      */
     const articleSlug = _.get(this.props, 'articleMeta.slug')
     if (articleSlug && typeof articleSlug === 'string') {
-      const { isAuthed } = this.props
-      if (isAuthed && !this.checkIfThisArticleBookmarked()) {
+      const { isAuthed, toAutoCheck } = this.props
+      if (isAuthed && toAutoCheck && !this.checkIfThisArticleBookmarked()) {
         const { jwt, userID, getSingleBookmark } = this.props
         getSingleBookmark(jwt, userID, articleSlug, getHostFromWindowLocation())
       }
@@ -159,6 +159,7 @@ BookmarkWidget.defaultProps = {
   isAuthed: false,
   jwt: '',
   userID: NaN,
+  toAutoCheck: true,
 }
 
 BookmarkWidget.propTypes = {
@@ -172,6 +173,7 @@ BookmarkWidget.propTypes = {
   jwt: PropTypes.string,
   userID: PropTypes.number,
   renderIcon: PropTypes.func.isRequired,
+  toAutoCheck: PropTypes.bool,
 }
 
 function mapStateToProps(state, ownProps) {
