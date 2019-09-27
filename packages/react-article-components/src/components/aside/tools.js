@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { css } from 'styled-components'
 // assets
-import BackToTopicIcon from '../../assets/aside/back-top-topic.svg'
+import BackToTopicIcon from '../../assets/aside/back-to-topic.svg'
 import FBIcon from '../../assets/aside/share-fb.svg'
 import LineIcon from '../../assets/aside/share-line.svg'
 import PrintIcon from '../../assets/aside/tool-print.svg'

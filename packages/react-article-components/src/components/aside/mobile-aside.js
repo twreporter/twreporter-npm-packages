@@ -1,5 +1,5 @@
-import BackToTopicIcon from '../../assets/aside/article-back-to-topic-mobile.svg'
-import BackToTopIcon from '../../assets/aside/article-back-to-top-mobile.svg'
+import BackToTopicIcon from '../../assets/aside/back-to-topic-mobile.svg'
+import BackToTopIcon from '../../assets/aside/back-to-top-mobile.svg'
 import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import PropTypes from 'prop-types'
