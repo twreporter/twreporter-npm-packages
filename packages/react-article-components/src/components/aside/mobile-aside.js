@@ -1,5 +1,3 @@
-import BackToTopicIcon from '../../assets/aside/back-to-topic-mobile.svg'
-import BackToTopIcon from '../../assets/aside/back-to-top-mobile.svg'
 import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import PropTypes from 'prop-types'
@@ -8,6 +6,12 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import smoothScroll from 'smoothscroll'
 import styled from 'styled-components'
+// icons
+import BackToTopicIcon from '../../assets/aside/back-to-topic-mobile.svg'
+import BackToTopIcon from '../../assets/aside/back-to-top-mobile.svg'
+// bookmark icons
+import ToAddBookmarkIcon from '../../assets/aside/add-bookmark-mobile.svg'
+import AddedBookmarkIcon from '../../assets/aside/added-bookmark-mobile.svg'
 
 const Container = styled.div`
   ${mq.tabletAndBelow`
@@ -28,14 +32,11 @@ const Container = styled.div`
 
 const IconContainer = styled.div`
   position: relative;
-  border-radius: 50%;
   width: 52px;
   height: 52px;
-  display: block;
-  background-color: rgba(255, 255, 255, 0.8);
-  overflow: hidden;
   cursor: pointer;
   svg {
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,10 +45,6 @@ const IconContainer = styled.div`
 `
 
 const SubsequentIconContainer = styled(IconContainer)`
-  margin-bottom: 20px;
-`
-
-const WidgetWrapper = styled.div`
   margin-bottom: 20px;
 `
 
@@ -97,9 +94,18 @@ class MobileAside extends React.PureComponent {
     return (
       <Container toShow={toShow}>
         {backToTopic ? <BackToTopicBtn href={backToTopic} /> : null}
-        <WidgetWrapper>
-          <BookmarkWidget articleMeta={articleMetaForBookmark} isMobile />
-        </WidgetWrapper>
+        <BookmarkWidget
+          articleMeta={articleMetaForBookmark}
+          renderIcon={(isBookmarked, addAction, removeAction) => {
+            return (
+              <SubsequentIconContainer
+                onClick={isBookmarked ? removeAction : addAction}
+              >
+                {isBookmarked ? <AddedBookmarkIcon /> : <ToAddBookmarkIcon />}
+              </SubsequentIconContainer>
+            )
+          }}
+        />
         <BackToTopBtn key="back_to_top" />
       </Container>
     )

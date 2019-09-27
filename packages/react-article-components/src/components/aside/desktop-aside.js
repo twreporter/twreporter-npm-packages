@@ -106,7 +106,7 @@ export default class Aside extends React.PureComponent {
   }
 
   render() {
-    const toolsHeight = 280 // px
+    const toolsHeight = 304 // px
 
     const {
       articleMetaForBookmark,
