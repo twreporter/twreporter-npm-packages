@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### 8.0.0
+
+#### Bookmark Widget
+
+- Add `props.renderIcon`, which lets clients render icons on demand
+- Remove icon assets
+
 ## Release
 
 ### 7.1.1
