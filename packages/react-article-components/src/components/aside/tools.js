@@ -261,6 +261,7 @@ export default class Tools extends React.PureComponent {
           </DynamicComponentsContext.Consumer>
         ) : null}
         <BookmarkWidget
+          toAutoCheck={false}
           articleMeta={articleMetaForBookmark}
           renderIcon={(isBookmarked, addAction, removeAction) => {
             return (

@@ -95,6 +95,7 @@ class MobileAside extends React.PureComponent {
       <Container toShow={toShow}>
         {backToTopic ? <BackToTopicBtn href={backToTopic} /> : null}
         <BookmarkWidget
+          toAutoCheck
           articleMeta={articleMetaForBookmark}
           renderIcon={(isBookmarked, addAction, removeAction) => {
             return (
