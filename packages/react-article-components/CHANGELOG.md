@@ -4,6 +4,16 @@
 
 ### 1.0.20
 
+#### Style Fine Tune
+
+styles refinement according to
+
+- mockup `article@2.0.2`
+- mockup `article@2.1.2`
+- mockup `article@2.1.3`
+
+#### Bug fix and Miscellaneous
+
 - make `center-small` alignment fills 100% viewport width on mobile
 - centered-quote: support line break
 - metadata:authors - word-break: keep-all
