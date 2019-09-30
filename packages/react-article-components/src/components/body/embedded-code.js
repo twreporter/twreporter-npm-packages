@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import styled from 'styled-components'
+import themeConst from '../../constants/theme'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -29,7 +30,16 @@ const Caption = styled.div`
   line-height: 1.36;
   letter-spacing: 0.5px;
   font-size: 14px;
-  color: ${props => props.theme.colors.base.text};
+  color: ${props => {
+    switch (props.theme.name) {
+      case themeConst.article.v2.photo:
+        return 'rgba(255, 255, 255, 0.7)'
+      case themeConst.article.v2.pink:
+      case themeConst.article.v2.default:
+      default:
+        return '#494949'
+    }
+  }};
   padding: 20px;
   text-align: center;
 `

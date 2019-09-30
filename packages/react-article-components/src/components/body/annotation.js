@@ -1,8 +1,9 @@
 import predefinedPropTypes from '../../constants/prop-types/body'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import styles from '../../constants/css'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 // lodash
 import get from 'lodash/get'
@@ -22,17 +23,6 @@ const slideDownAndFadeIn = keyframes`
   }
 `
 
-const Container = styled.div`
-  ${styles.paragraphText}
-  ${styles.linkChildren}
-  &:first-child {
-    margin-top: 0;
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
-`
-
 const AnnotationContainer = styled.abbr`
   &[title] {
     margin: 0;
@@ -43,7 +33,6 @@ const AnnotationContainer = styled.abbr`
 
 const AnnotatedText = styled.span`
   cursor: pointer;
-  color: ${props => props.theme.colors.primary.text};
 `
 
 const Indicator = styled.span`
@@ -54,7 +43,8 @@ const Indicator = styled.span`
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1px solid ${props => props.theme.colors.primary.text};
+  border-width: 1px;
+  border-style: solid;
   position: relative;
   top: -1px;
   /* arrow */
@@ -65,7 +55,6 @@ const Indicator = styled.span`
     top: 5px;
     left: 5px;
     transform: rotate(${props => (props.isExpanded ? '45deg' : '-45deg')});
-    background: ${props => props.theme.colors.primary.text};
     display: block;
     position: absolute;
     transition: transform 200ms ease;
@@ -77,7 +66,6 @@ const Indicator = styled.span`
     top: 5px;
     right: 5px;
     transform: rotate(${props => (props.isExpanded ? '-45deg' : '45deg')});
-    background: ${props => props.theme.colors.primary.text};
     display: block;
     position: absolute;
     transition: transform 200ms ease;
@@ -92,11 +80,78 @@ const AnnotationContent = styled.div`
   letter-spacing: 0.5px;
   color: #494949;
   font-weight: ${typography.font.weight.normal};
-  border-top: 2px solid ${props => props.theme.colors.primary.support};
+  border-width: 2px 0 0 0;
+  border-style: solid;
   padding: 25px 11px;
   margin-bottom: 10px;
   animation: ${slideDownAndFadeIn} 300ms ease;
 `
+
+const Container = styled.div`
+  ${props => getContainerStyles(props.theme.name)}
+  ${styles.paragraphText}
+  ${styles.linkChildren}
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+`
+
+function getContainerStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.pink:
+      return css`
+        ${AnnotatedText} {
+          color: #355ed3;
+        }
+        ${Indicator} {
+          border-color: #355ed3;
+          &::before,
+          &::after {
+            background-color: #355ed3;
+          }
+        }
+        ${AnnotationContent} {
+          border-color: #fbafef;
+        }
+      `
+    case themeConst.article.v2.photo:
+      return css`
+        ${AnnotatedText} {
+          color: #d0a67d;
+        }
+        ${Indicator} {
+          border-color: #d0a67d;
+          &::before,
+          &::after {
+            background-color: #d0a67d;
+          }
+        }
+        ${AnnotationContent} {
+          border-color: #d0a67d;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        ${AnnotatedText} {
+          color: #a67a44;
+        }
+        ${Indicator} {
+          border-color: #d0a67d;
+          &::before,
+          &::after {
+            background-color: #d0a67d;
+          }
+        }
+        ${AnnotationContent} {
+          border-color: #d0a67d;
+        }
+      `
+  }
+}
 
 class Annotation extends PureComponent {
   static propTypes = {

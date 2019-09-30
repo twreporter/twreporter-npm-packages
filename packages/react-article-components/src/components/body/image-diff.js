@@ -4,6 +4,7 @@ import Multimedia from './multimedia'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import Slider, { Rail, Progress, Indicator } from './slider'
+import themeConst from '../../constants/theme'
 import styled, { css } from 'styled-components'
 // lodash
 import get from 'lodash/get'
@@ -42,7 +43,17 @@ const sharedStyleOfIndicatorPointer = css`
   width: 24px;
   height: 24px;
   background: #fff;
-  color: ${props => props.theme.colors.primary.support};
+  color: ${props => {
+    switch (props.theme.name) {
+      case themeConst.article.v2.photo:
+        return '#a67a44'
+      case themeConst.article.v2.pink:
+        return '#fbafef'
+      case themeConst.article.v2.default:
+      default:
+        return '#d0a67d'
+    }
+  }};
 `
 
 const Image = styled.div`

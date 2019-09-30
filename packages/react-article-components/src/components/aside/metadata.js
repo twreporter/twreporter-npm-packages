@@ -6,6 +6,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/aside'
 import sortBy from 'lodash/sortBy'
 import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 import { idToPathSegment } from '../../constants/category'
 
 const _ = {
@@ -14,29 +15,20 @@ const _ = {
   sortBy,
 }
 
-const MetadataContainer = styled.div`
-  letter-spacing: 0.4px;
+const createLine = (topOrBottom, themeName) => {
+  let borderColor = '#d8d8d8'
+  if (themeName === themeConst.article.v2.photo) {
+    borderColor = 'rgba(255, 255, 255, 0.2)'
+  }
 
-  ${mq.mobileOnly`
-    width: calc(300/355*100%);
-    margin: 0 auto;
-  `}
-
-  ${mq.tabletOnly`
-    width: 513px;
-    margin: 0 auto;
-  `}
-`
-
-const createLine = topOrBottom => {
   return css`
     position: relative;
-    border-${topOrBottom}: solid 0.5px #d8d8d8;
+    border-${topOrBottom}: 0.5px solid ${borderColor};
     padding-${topOrBottom}: 10px;
 
     &::after {
       content: '';
-      border-right: solid 0.5px #d8d8d8;
+      border-right: 0.5px solid ${borderColor};
       width: 1px;
       height: 12px;
       ${topOrBottom}: 0;
@@ -51,7 +43,7 @@ const CategoryFlexBox = styled.div`
 `
 
 const CategoryFlex = styled.div`
-  ${createLine('top')}
+  ${props => createLine('top', props.theme.name)}
   flex-grow: ${props => props.flexGrow};
 
   ${mq.tabletAndBelow`
@@ -67,19 +59,19 @@ const CategoryFlex = styled.div`
 
 const CategoryText = styled.div`
   display: inline-block;
-  color: ${props => props.theme.colors.primary.text};
   font-size: 16px;
   line-height: 1;
   padding-left: 5px;
 
   &:hover {
     padding-bottom: 2px;
-    border-bottom: 1px solid ${props => props.theme.colors.primary.text};
+    border-width: 0 0 1px 0;
+    border-style: solid;
   }
 `
 
 const DateSection = styled.div`
-  ${createLine('top')}
+  ${props => createLine('top', props.theme.name)}
   font-size: 14px;
   color: #9c9c9c;
   margin-left: 5px;
@@ -117,7 +109,6 @@ const AuthorNames = styled.div`
 `
 
 const AuthorName = styled.div`
-  color: ${props => props.theme.colors.primary.text};
   font-size: 16px;
   margin-left: 5px;
   line-height: 1;
@@ -127,7 +118,8 @@ const AuthorName = styled.div`
 
   &:hover {
     padding-bottom: 2px;
-    border-bottom: 1px solid ${props => props.theme.colors.primary.text};
+    border-width: 0 0 1px 0;
+    border-style: solid;
   }
 
   ${mq.mobileOnly`
@@ -142,7 +134,8 @@ const RawAuthorText = styled.div`
 `
 
 const AngledSeparationLine = styled.div`
-  border-bottom: 0.5px solid ${props => props.theme.colors.primary.support};
+  border-width: 0.5px;
+  border-style: solid;
   width: 15px;
   transform: translateY(9px) rotate(-45deg);
   flex-shrink: 0;
@@ -151,24 +144,15 @@ const AngledSeparationLine = styled.div`
 const TagButton = styled.div`
   border-style: solid;
   border-width: 1px;
-  border-color: ${props => props.theme.colors.base.button.border.color};
   border-radius: 50px;
   padding: 5px 10px 5px 10px;
   font-size: 14px;
   font-weight: normal;
-  color: ${props => props.theme.colors.base.button.text.color};
   margin-bottom: 10px;
   margin-right: 10px;
 
   &:before {
     content: '#';
-  }
-
-  &:hover {
-    color: ${props => props.theme.colors.base.button.hover.text.color};
-    border-color: ${props => props.theme.colors.base.button.hover.border.color};
-    background-color: ${props =>
-      props.theme.colors.base.button.hover.background.color};
   }
 `
 
@@ -177,8 +161,87 @@ const TagsSection = styled.div`
   flex-wrap: wrap;
   align-content: center;
 
-  ${createLine('bottom')}
+  ${props => createLine('bottom', props.theme.name)}
 `
+
+const MetadataContainer = styled.div`
+  ${props => getMetadataContainerStyles(props.theme.name)}
+  letter-spacing: 0.4px;
+
+  ${mq.mobileOnly`
+    width: calc(300/355*100%);
+    margin: 0 auto;
+  `}
+
+  ${mq.tabletOnly`
+    width: 513px;
+    margin: 0 auto;
+  `}
+`
+
+function getMetadataContainerStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        ${CategoryText}, ${AuthorName} {
+          color: #d0a67d;
+          &:hover {
+            border-color: #d0a67d;
+          }
+        }
+        ${AngledSeparationLine} {
+          border-color: #a67a44;
+        }
+        ${TagButton} {
+          border-color: #808080;
+          color: #808080;
+          &:hover {
+            color: #fff;
+            border-color: #fff;
+          }
+        }
+      `
+    case themeConst.article.v2.pink:
+      return css`
+        ${CategoryText}, ${AuthorName} {
+          color: #355ed3;
+          &:hover {
+            border-color: #355ed3;
+          }
+        }
+        ${AngledSeparationLine} {
+          border-color: #fbafef;
+        }
+        ${TagButton} {
+          border-color: #808080;
+          color: #808080;
+          &:hover {
+            background-color: #fff;
+          }
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        ${CategoryText}, ${AuthorName} {
+          color: #a67a44;
+          &:hover {
+            border-color: #a67a44;
+          }
+        }
+        ${AngledSeparationLine} {
+          border-color: #d0a67d;
+        }
+        ${TagButton} {
+          border-color: #808080;
+          color: #808080;
+          &:hover {
+            background-color: #fff;
+          }
+        }
+      `
+  }
+}
 
 class Metadata extends PureComponent {
   static propTypes = predefinedProps.metadata

@@ -1,38 +1,51 @@
 import { TimeContext, ControlsContext, StatusContext } from './audio-contexts'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Slider, { Indicator, Rail, Progress } from '../slider'
 import themeConst from '../../../constants/theme'
 
-function getIndicatorColor(themeName) {
+function getContainerStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.pink:
-      return '#ef7ede'
-    case themeConst.article.v2.photo:
-    case themeConst.article.v2.default:
-    default:
-      return '#a67a44'
-  }
-}
+      return css`
+        ${Indicator} {
+          background-color: #ef7ede;
+        }
 
-function getProgressColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.pink:
-      return '#fbafef'
+        ${Progress} {
+          background-color: #fbafef;
+        }
+      `
     case themeConst.article.v2.photo:
+      return css`
+        ${Indicator} {
+          background-color: #a67a44;
+        }
+
+        ${Progress} {
+          background-color: #d0a67d;
+        }
+      `
     case themeConst.article.v2.default:
     default:
-      return '#d0a67d'
+      return css`
+        ${Indicator} {
+          background-color: #a67a44;
+        }
+        ${Progress} {
+          background-color: #d0a67d;
+        }
+      `
   }
 }
 
 const Container = styled.div`
+  ${props => getContainerStyles(props.theme.name)}
   width: 100%;
   height: 4px;
   border-radius: 2px;
   position: relative;
   ${Indicator} {
-    background: ${props => getIndicatorColor(props.theme.name)};
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -41,9 +54,6 @@ const Container = styled.div`
   }
   ${Rail} {
     background: #d8d8d8;
-  }
-  ${Progress} {
-    background: ${props => getProgressColor(props.theme.name)};
   }
 `
 let resumePlayingAfterSeek = false

@@ -8,7 +8,7 @@ import get from 'lodash/get'
 import map from 'lodash/map'
 import memoize from 'memoize-one'
 import mq from '@twreporter/core/lib/utils/media-query'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
 
 const _ = {
@@ -22,8 +22,8 @@ const mockup = {
       width: 375, // px
     },
     slide: {
-      width: 340, // px
-      height: 212, // px
+      width: 339, // px
+      height: 189, // px
       paddingRight: 2, // px
     },
     offset: {
@@ -35,12 +35,12 @@ const mockup = {
       width: 768, // px
     },
     slide: {
-      width: 690, // px
-      height: 478, // px
-      paddingRight: 3, // px
+      width: 687, // px
+      height: 387, // px
+      paddingRight: 4, // px
     },
     offset: {
-      left: 39, // px
+      left: 41, // px
     },
   },
   desktop: {
@@ -48,25 +48,25 @@ const mockup = {
       width: 752, // px
     },
     slide: {
-      width: 691, // px
-      height: 429, // px
+      width: 688, // px
+      height: 387, // px
       paddingRight: 4, // px
     },
     offset: {
-      left: 33, // px
+      left: 32, // px
     },
   },
   hd: {
     container: {
-      width: 1033, // px
+      width: 1034, // px
     },
     slide: {
-      width: 938, // px
-      height: 585, // px
+      width: 944, // px
+      height: 531, // px
       paddingRight: 4, // px
     },
     offset: {
-      left: 50, // px
+      left: 45, // px
     },
   },
 }
@@ -89,25 +89,6 @@ const duration = 300
 
 // current index to indicate which image should be rendered in the center
 const defaultCurIndex = 0
-
-const SlideshowFlexBox = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  ${mq.tabletAndBelow`
-    width: 100%;
-  `}
-
-  ${mq.desktopOnly`
-    width: ${mockup.desktop.container.width}px;
-  `}
-
-  ${mq.hdOnly`
-    width: ${mockup.hd.container.width}px;
-  `}
-`
 
 const SlidesSection = styled.div`
   flex-shrink: 0;
@@ -144,23 +125,12 @@ const PrevNextSection = styled.div`
   `}
 `
 
-function getButtonBorderColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return 'rgba(255, 255, 255, 0.2)'
-    case themeConst.article.v2.pink:
-    case themeConst.article.v2.default:
-    default:
-      return '#d8d8d8'
-  }
-}
-
 const PrevButton = styled.div`
   cursor: pointer;
   width: 59px;
   height: 59px;
   display: inline-flex;
-  border: solid 1px ${props => getButtonBorderColor(props.theme.name)};
+  border: solid 1px;
 
   > svg {
     margin: auto;
@@ -194,33 +164,10 @@ const NextButton = styled(PrevButton)`
   }
 `
 
-function getImageNumberCircleBgColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.pink:
-      return '#fbafef'
-    case themeConst.article.v2.photo:
-    case themeConst.article.v2.default:
-    default:
-      return '#d0a67d'
-  }
-}
-
-function getImageNumberColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return '#08192d'
-    case themeConst.article.v2.pink:
-    case themeConst.article.v2.default:
-    default:
-      return '#fff'
-  }
-}
-
 const ImageNumberCircle = styled.div`
   display: inline-block;
   width: 80px;
   height: 80px;
-  background-color: ${props => getImageNumberCircleBgColor(props.theme.name)};
   border-radius: 50%;
   vertical-align: top;
 
@@ -230,7 +177,7 @@ const ImageNumberCircle = styled.div`
     content: '';
     position: absolute;
     width: 62px;
-    border-top: solid 1px ${props => getImageNumberColor(props.theme.name)};
+    border-top: solid 1px;
     transform: rotate(-45deg);
     transform-origin: bottom left;
     top: 67px;
@@ -267,7 +214,6 @@ const ImageNumberCircle = styled.div`
 `
 
 const ImageNumber = styled.span`
-  color: ${props => getImageNumberColor(props.theme.name)};
   position: absolute;
   top: 25px;
   left: 9px;
@@ -395,23 +341,11 @@ const SlideFlexItem = styled.div`
   `}
 `
 
-function getSlideMaskBgColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.pink:
-      return '#355ed3'
-    case themeConst.article.v2.photo:
-    case themeConst.article.v2.default:
-    default:
-      return '#a67a44'
-  }
-}
-
 const SlideMask = styled.div`
   position: absolute;
   top: 0;
   height: 100%;
   opacity: 0.55;
-  background-color: ${props => getSlideMaskBgColor(props.theme.name)};
 `
 
 const LeftSlideMask = styled(SlideMask)`
@@ -461,6 +395,87 @@ const RightSlideMask = styled(SlideMask)`
     width: ${getRightMaskWidth(mockup.hd)}px;
   `}
 `
+
+const SlideshowFlexBox = styled.div`
+  ${props => getSlideshowFlexBoxStyles(props.theme.name)}
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  ${mq.tabletAndBelow`
+    width: 100%;
+  `}
+
+  ${mq.desktopOnly`
+    width: ${mockup.desktop.container.width}px;
+  `}
+
+  ${mq.hdOnly`
+    width: ${mockup.hd.container.width}px;
+  `}
+`
+
+function getSlideshowFlexBoxStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        ${PrevButton} {
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+        ${ImageNumberCircle} {
+          background-color: #d0a67d;
+          &::after {
+            border-color: #08192d;
+          }
+        }
+        ${ImageNumber} {
+          color: #08192d;
+        }
+        ${SlideMask} {
+          background-color: #d0a67d;
+        }
+      `
+    case themeConst.article.v2.pink:
+      return css`
+        ${PrevButton} {
+          border-color: #d8d8d8;
+        }
+        ${ImageNumberCircle} {
+          background-color: #fbafef;
+          &::after {
+            border-color: #fff;
+          }
+        }
+        ${ImageNumber} {
+          color: #fff;
+        }
+        ${SlideMask} {
+          background-color: #2440fb;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        ${PrevButton} {
+          border-color: #d8d8d8;
+        }
+        ${ImageNumberCircle} {
+          background-color: #d0a67d;
+          &::after {
+            border-color: #fff;
+          }
+        }
+        ${ImageNumber} {
+          color: #fff;
+        }
+        ${SlideMask} {
+          background-color: #d0a67d;
+        }
+      `
+  }
+}
 
 /**
  * @typedef {Object} SlideMockup

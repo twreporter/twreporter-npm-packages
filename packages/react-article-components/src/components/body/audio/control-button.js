@@ -3,31 +3,8 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import PauseIcon from '../../../assets/body/audio/pause.svg'
 import PlayIcon from '../../../assets/body/audio/play.svg'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
-
-function getButtonBorderColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return 'rgba(255, 255, 255, 0.25)'
-    case themeConst.article.v2.pink:
-    case themeConst.article.v2.default:
-    default:
-      return '#d8d8d8'
-  }
-}
-
-function getButtonBgColor(themeName) {
-  switch (themeName) {
-    case themeConst.article.v2.photo:
-      return '#08192d'
-    case themeConst.article.v2.pink:
-      return '#f4f4f4'
-    case themeConst.article.v2.default:
-    default:
-      return '#f1f1f1'
-  }
-}
 
 function getIconColor(themeName) {
   switch (themeName) {
@@ -41,7 +18,29 @@ function getIconColor(themeName) {
   }
 }
 
+function getIconWrapperStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        background-color: #08192d;
+        border-color: rgba(255, 255, 255, 0.25);
+      `
+    case themeConst.article.v2.pink:
+      return css`
+        background-color: #f4f4f4;
+        border-color: #d8d8d8;
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        background-color: #f1f1f1;
+        border-color: #d8d8d8;
+      `
+  }
+}
+
 const IconWrapper = styled.button`
+  ${props => getIconWrapperStyles(props.theme.name)}
   ${mq.tabletAndBelow`
     width: 48px;
     height: 48px;
@@ -50,8 +49,6 @@ const IconWrapper = styled.button`
     width: 65px;
     height: 65px;
   `}
-  background-color: ${props => getButtonBgColor(props.theme.name)};
-  border: 1px solid ${props => getButtonBorderColor(props.theme.name)};
   border-radius: 50%;
   position: relative;
   cursor: pointer;

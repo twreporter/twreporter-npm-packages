@@ -2,7 +2,8 @@ import Img from '../img-with-placeholder'
 import React from 'react'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/related'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 
 const mockup = {
@@ -54,30 +55,6 @@ const Desc = styled.p`
   padding: 15px 0 15px 0;
 `
 
-const Block = styled.article`
-  position: relative;
-  height: ${props => props._height};
-
-  transition: height 0.1s ease-in-out;
-
-  ${mq.tabletAndBelow`
-    height: auto;
-    width: 100%;
-    min-height: 152px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  `}
-
-  ${mq.desktopOnly`
-    width: ${mockup.desktop.thumbnail.width}px;
-  `}
-
-  ${mq.hdOnly`
-    width: ${mockup.hd.thumbnail.width}px;
-  `}
-`
-
 const Thumbnail = styled.figure`
   margin: 0;
 
@@ -107,7 +84,7 @@ const Thumbnail = styled.figure`
 `
 
 const DesktopTextBlock = styled.div`
-  padding: 15px 19px 45px 0px;
+  padding: 10px 19px 45px 5px;
 
   ${mq.tabletAndBelow`
     display: none;
@@ -129,7 +106,6 @@ const MobileTextBlock = styled.div`
 `
 
 const Category = styled.span`
-  color: ${props => props.theme.colors.primary.accent};
   font-size: 14px;
   font-weight: ${typography.font.weight.bold};
   line-height: 1.43;
@@ -144,8 +120,7 @@ const Title = styled.h3`
   font-size: 16px;
   font-weight: ${typography.font.weight.bold};
   line-height: 1.5;
-  color: ${props => props.theme.colors.base.text};
-  margin: 10px 0 10px 0;
+  margin: 5px 0 10px 0;
 
   ${mq.tabletAndBelow`
     order: 2;
@@ -162,7 +137,7 @@ const PublishedDate = styled.p`
 
   ${mq.desktopAndAbove`
     position: absolute;
-    left: 0;
+    left: 5px;
     bottom: 15px;
   `}
 
@@ -170,6 +145,65 @@ const PublishedDate = styled.p`
     order: 3;
   `}
 `
+
+const Block = styled.article`
+  ${props => getBlockStyles(props.theme.name)}
+
+  position: relative;
+  height: ${props => props._height};
+
+  transition: height 0.1s ease-in-out;
+
+  ${mq.tabletAndBelow`
+    height: auto;
+    width: 100%;
+    min-height: 152px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  `}
+
+  ${mq.desktopOnly`
+    width: ${mockup.desktop.thumbnail.width}px;
+  `}
+
+  ${mq.hdOnly`
+    width: ${mockup.hd.thumbnail.width}px;
+  `}
+`
+
+function getBlockStyles(themeName) {
+  switch (themeName) {
+    case themeConst.article.v2.photo:
+      return css`
+        ${Category} {
+          color: #d0a67d;
+        }
+        ${Title} {
+          color: rgba(255, 255, 255, 0.9);
+        }
+      `
+    case themeConst.article.v2.pink:
+      return css`
+        ${Category} {
+          color: #ef7ede;
+        }
+        ${Title} {
+          color: #404040;
+        }
+      `
+    case themeConst.article.v2.default:
+    default:
+      return css`
+        ${Category} {
+          color: #a67a44;
+        }
+        ${Title} {
+          color: #404040;
+        }
+      `
+  }
+}
 
 const _defaultHeight = '100%'
 

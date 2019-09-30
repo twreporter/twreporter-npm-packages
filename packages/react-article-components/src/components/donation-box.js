@@ -12,7 +12,7 @@ const _content = {
 }
 
 const Container = styled.div`
-  margin: 60px auto 40px auto;
+  margin: 60px auto 55px auto;
   padding: 40px 30px 30px 30px;
   width: 502px;
   min-height: 284px;
