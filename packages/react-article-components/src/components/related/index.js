@@ -179,41 +179,41 @@ export default class Related extends React.PureComponent {
     })
   }
 
+  _buildRelated(related) {
+    const style = _.get(related, 'style')
+    const prefixPath = style === _articleStyles.interactive ? '/i/' : '/a/'
+    const categories = related.categories
+    // sort categories in ascending order
+    _.sortBy(categories, ['sort_order'])
+
+    // use og_image first
+    const imageSet = _.get(related, 'og_image.resized_targets', {})
+    // use `w400` image set first
+    // if `w400` is not provided, then use `mobile` image set
+    const thumbnail = _.get(imageSet, 'w400.url')
+      ? imageSet.w400
+      : imageSet.mobile
+
+    return {
+      category: _.get(categories, '0.name', ''),
+      publishedDate: related.published_date,
+      desc: related.og_description,
+      href: prefixPath + related.slug,
+      id: related.id,
+      isTargetBlank: style === _articleStyles.interactive,
+      // if `og_image` is not provided,
+      // use `hero_image` as fallback
+      thumbnail: _.get(thumbnail, 'url')
+        ? thumbnail
+        : _.get(related, 'hero_image.resized_targets.mobile'),
+      title: related.title,
+    }
+  }
+
   render() {
     const { data } = this.props
     const { lastWindowWidth } = this.state
-
-    const relateds = _.map(data, related => {
-      const style = _.get(related, 'style')
-      const prefixPath = style === _articleStyles.interactive ? '/i/' : '/a/'
-      const categories = related.categories
-      // sort categories in ascending order
-      _.sortBy(categories, ['sort_order'])
-
-      // use og_image first
-      const imageSet = _.get(related, 'og_image.resized_targets', {})
-      // use `w400` image set first
-      // if `w400` is not provided, then use `mobile` image set
-      const thumbnail = _.get(imageSet, 'w400.url')
-        ? imageSet.w400
-        : imageSet.mobile
-
-      return {
-        category: _.get(categories, '0.name', ''),
-        publishedDate: related.published_date,
-        desc: related.og_description,
-        href: prefixPath + related.slug,
-        id: related.id,
-        isTargetBlank: style === _articleStyles.interactive,
-        // if `og_image` is not provided,
-        // use `hero_image` as fallback
-        thumbnail: _.get(thumbnail, 'url')
-          ? thumbnail
-          : _.get(related, 'hero_image.resized_targets.mobile'),
-        title: related.title,
-      }
-    })
-
+    const relateds = _.map(data, this._buildRelated)
     return (
       <Block>
         <Descriptor />

@@ -1,37 +1,13 @@
 import Img from '../img-with-placeholder'
-import React from 'react'
+import mockup from './mockup'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/related'
+import React from 'react'
 import styled, { css } from 'styled-components'
-import themeConst from '../../constants/theme'
+import themeConsts from '../../constants/theme'
 import typography from '../../constants/typography'
 
-const mockup = {
-  mobile: {
-    thumbnail: {
-      width: 88, // px
-      height: 68, // px
-    },
-  },
-  tablet: {
-    thumbnail: {
-      width: 88, // px
-      height: 68, // px
-    },
-  },
-  desktop: {
-    thumbnail: {
-      width: 246, // px
-      height: 148, // px
-    },
-  },
-  hd: {
-    thumbnail: {
-      width: 349, // px
-      height: 148, // px
-    },
-  },
-}
+const StyledImg = styled(Img)``
 
 const DescBlock = styled.div`
   position: relative;
@@ -42,8 +18,9 @@ const DescBlock = styled.div`
 `
 
 const Desc = styled.p`
-  visibility: ${props => props._visibility};
-  position: ${props => props._position};
+  opacity: ${props => (props.isHovered ? '1' : '0')};
+  visibility: ${props => (props.isHovered ? 'visible' : 'hidden')};
+  position: ${props => (props.isHovered ? 'static' : 'absolute')};
 
   /* clear default margin */
   margin: 0px;
@@ -53,6 +30,7 @@ const Desc = styled.p`
   line-height: 1.43;
   color: #808080;
   padding: 15px 0 15px 0;
+  transition: opacity 200ms ease 100ms;
 `
 
 const Thumbnail = styled.figure`
@@ -146,13 +124,13 @@ const PublishedDate = styled.p`
   `}
 `
 
-const Block = styled.article`
+const Block = styled.div`
   ${props => getBlockStyles(props.theme.name)}
 
   position: relative;
   height: ${props => props._height};
 
-  transition: height 0.1s ease-in-out;
+  transition: height 0.2s ease-in-out;
 
   ${mq.tabletAndBelow`
     height: auto;
@@ -174,7 +152,7 @@ const Block = styled.article`
 
 function getBlockStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case themeConsts.article.v2.photo:
       return css`
         ${Category} {
           color: #d0a67d;
@@ -182,8 +160,11 @@ function getBlockStyles(themeName) {
         ${Title} {
           color: rgba(255, 255, 255, 0.9);
         }
+        ${StyledImg} {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
       `
-    case themeConst.article.v2.pink:
+    case themeConsts.article.v2.pink:
       return css`
         ${Category} {
           color: #ef7ede;
@@ -191,8 +172,11 @@ function getBlockStyles(themeName) {
         ${Title} {
           color: #404040;
         }
+        ${StyledImg} {
+          background-color: #e2e2e2;
+        }
       `
-    case themeConst.article.v2.default:
+    case themeConsts.article.v2.default:
     default:
       return css`
         ${Category} {
@@ -200,6 +184,9 @@ function getBlockStyles(themeName) {
         }
         ${Title} {
           color: #404040;
+        }
+        ${StyledImg} {
+          background-color: #e2e2e2;
         }
       `
   }
@@ -280,10 +267,11 @@ class Card extends React.PureComponent {
         _height={isHovered ? heightAfterHovering : heightBeforeHovering}
       >
         <Thumbnail>
-          <Img
+          <StyledImg
             defaultImage={thumbnail}
             objectFit="cover"
             objectPosition="center center"
+            noImgPlaceholder
           />
         </Thumbnail>
         <DesktopTextBlock
@@ -293,11 +281,7 @@ class Card extends React.PureComponent {
           {categoryJSX}
           {titleJSX}
           <DescBlock>
-            <Desc
-              ref={this._descRef}
-              _visibility={isHovered ? 'visible' : 'hidden'}
-              _position={isHovered ? 'static' : 'absolute'}
-            >
+            <Desc ref={this._descRef} isHovered={isHovered}>
               {desc}
             </Desc>
           </DescBlock>

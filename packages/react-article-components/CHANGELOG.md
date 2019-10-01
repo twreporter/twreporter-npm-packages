@@ -2,6 +2,21 @@
 
 ## UNRELEASED
 
+### 1.0.21
+
+#### Update relateds
+
+- Add load-more to relateds
+- Replace related placeholder with gray block
+
+#### Update img-with-placeholder
+
+#### Improve DEV experience
+
+- Add theme selection to dev entry
+
+## RELEASE
+
 ### 1.0.20
 
 #### Style Fine Tune
@@ -25,8 +40,6 @@ styles refinement according to
 - slideshow: adjust styles in photo theme
 - audio: style tuning
 - fix embedded img not centered if not big enough
-
-## RELEASE
 
 ### 1.0.19
 

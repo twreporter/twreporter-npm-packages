@@ -26,11 +26,12 @@ const ImgContainer = styled.div`
   ${props => props.heightString}
 `
 
-const ImgPlaceholder = styled.img`
+const ImgPlaceholder = styled.div`
   display: ${props => (props.toShow ? 'block' : 'none')};
-  filter: blur(5px);
-  object-fit: cover;
-  opacity: 1;
+  ${props => (props.noBlur ? '' : 'filter: blur(5px)')};
+  background-image: url(${props => props.src});
+  background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
   top: 0;
   left: 0;
@@ -98,15 +99,17 @@ export default class Img extends React.PureComponent {
   static propTypes = {
     alt: PropTypes.string,
     className: PropTypes.string,
-    imgPlaceholderSrc: PropTypes.string,
-    imgProps: PropTypes.object,
-    // The properties of `imgProps` will all be passed to `<img />` element.
-    imageSet: PropTypes.arrayOf(predefinedPropTypes.imagePropType),
     defaultImage: predefinedPropTypes.imagePropType,
-    // The component will take the first item in `imageSet` as the default image.
+    // If the default image is not provided, this component will take the first item in `imageSet` as the default image.
     // The usage of default image:
     //   1. `img.src = defaultImage.url` for the browser not supporting `srcset`.
     //   2. The height/width ratio of the default image is used for this component. (no matter which candidate is acturally rendered)
+    imgPlaceholderSrc: PropTypes.string,
+    placeholderNoBlur: PropTypes.bool,
+    noImgPlaceholder: PropTypes.bool,
+    imgProps: PropTypes.object,
+    // The properties of `imgProps` will all be passed to `<img />` element.
+    imageSet: PropTypes.arrayOf(predefinedPropTypes.imagePropType),
     objectFit: PropTypes.oneOf([
       objectFitConsts.cover,
       objectFitConsts.contain,
@@ -119,9 +122,11 @@ export default class Img extends React.PureComponent {
     alt: '',
     className: '',
     defaultImage: {},
-    imgProps: {},
-    imgPlaceholderSrc: '',
     imageSet: [],
+    imgPlaceholderSrc: '',
+    imgProps: {},
+    placeholderNoBlur: false,
+    noImgPlaceholder: false,
     sizes: '',
   }
 
@@ -181,13 +186,25 @@ export default class Img extends React.PureComponent {
 
   _renderImagePlaceholder() {
     const { toShowPlaceholder } = this.state
-    const { imgPlaceholderSrc } = this.props
-    return imgPlaceholderSrc ? (
-      <ImgPlaceholder
-        src={replaceGCSUrlOrigin(imgPlaceholderSrc)}
-        toShow={toShowPlaceholder}
-      />
-    ) : (
+    const {
+      imgPlaceholderSrc,
+      placeholderNoBlur,
+      noImgPlaceholder,
+    } = this.props
+    if (noImgPlaceholder) {
+      return null
+    }
+    if (imgPlaceholderSrc) {
+      return (
+        <ImgPlaceholder
+          src={replaceGCSUrlOrigin(imgPlaceholderSrc)}
+          toShow={toShowPlaceholder}
+          noBlur={placeholderNoBlur}
+        />
+      )
+    }
+    // render default placeholder
+    return (
       <Placeholder toShow={toShowPlaceholder}>
         <PlaceholderIcon />
       </Placeholder>
