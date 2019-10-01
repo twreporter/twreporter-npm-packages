@@ -2,7 +2,13 @@
 
 ## UNRELEASED
 
+## RELEASE
+
 ### 1.0.21
+
+#### Dependency Upgrade
+
+- @twreporter/react-components@^7.1.1 -> @^8.0.0
 
 #### Update relateds
 
@@ -15,7 +21,12 @@
 
 - Add theme selection to dev entry
 
-## RELEASE
+#### Update Aside Tools
+
+- new svg files for icons
+- style fine tune according to `article@2.1.4(FineTune)` mockup
+- render bookmark widget on demand
+- reduce requests of checking if bookmark existed from 3 to 1
 
 ### 1.0.20
 
