@@ -1,13 +1,8 @@
 import { connect } from 'react-redux'
 import { getSignInHref } from '@twreporter/core/lib/utils/sign-in-href'
-import BookmarkAddedIconDesktop from './assets/added-bookmark-desktop.svg'
-import BookmarkAddedIconMobile from './assets/added-bookmark-mobile.svg'
-import BookmarkUnaddedIconDesktop from './assets/add-bookmark-desktop.svg'
-import BookmarkUnaddedIconMobile from './assets/add-bookmark-mobile.svg'
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styled from 'styled-components'
 import twreporterRedux from '@twreporter/redux'
 // lodash
 import get from 'lodash/get'
@@ -23,63 +18,6 @@ const {
 } = twreporterRedux.actions
 
 const reduxStatePropKeys = twreporterRedux.reduxStateFields
-
-const buttonWidth = 52
-const buttonHeight = 52
-
-const MobileIconContainer = styled.div`
-  position: relative;
-  border-radius: 50%;
-  width: ${buttonWidth}px;
-  height: ${buttonHeight}px;
-  background-color: rgba(255, 255, 255, 0.8);
-  overflow: hidden;
-  > div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  cursor: pointer;
-`
-
-const BookmarkImg = styled.div`
-  opacity: ${props => (props.show ? 1 : 0)};
-  transition: opacity 200ms linear;
-  > svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-`
-
-// Desktop
-const DesktopIconContainer = styled.div`
-  cursor: pointer;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  ${props => {
-    if (props.svgColor !== '') {
-      return `
-        path {
-          fill: ${props.svgColor};
-        }
-      `
-    }
-    return ''
-  }};
-`
-
-const BookmarkImgDesktop = styled.div`
-  opacity: ${props => (props.show ? 1 : 0)};
-  transition: opacity 200ms linear;
-  position: absolute;
-  transform: translateX(-50%);
-  left: 50%;
-`
 
 function getHostFromWindowLocation() {
   const defaultHost = 'https://www.twreporter.org'
@@ -129,8 +67,8 @@ class BookmarkWidget extends React.PureComponent {
      */
     const articleSlug = _.get(this.props, 'articleMeta.slug')
     if (articleSlug && typeof articleSlug === 'string') {
-      const { isAuthed } = this.props
-      if (isAuthed && !this.checkIfThisArticleBookmarked()) {
+      const { isAuthed, toAutoCheck } = this.props
+      if (isAuthed && toAutoCheck && !this.checkIfThisArticleBookmarked()) {
         const { jwt, userID, getSingleBookmark } = this.props
         getSingleBookmark(jwt, userID, articleSlug, getHostFromWindowLocation())
       }
@@ -203,56 +141,29 @@ class BookmarkWidget extends React.PureComponent {
     }
 
     const isBookmarked = this.checkIfThisArticleBookmarked()
-    const { isMobile, svgColor } = this.props
-    return isMobile ? (
-      <MobileIconContainer
-        onClick={
-          isBookmarked
-            ? this.removeCurrentPageFromBookmarks
-            : this.addCurrentPageToBookmarks
-        }
-      >
-        <BookmarkImg show={!isBookmarked}>
-          <BookmarkUnaddedIconMobile />
-        </BookmarkImg>
-        <BookmarkImg show={isBookmarked}>
-          <BookmarkAddedIconMobile />
-        </BookmarkImg>
-      </MobileIconContainer>
-    ) : (
-      <DesktopIconContainer
-        onClick={
-          isBookmarked
-            ? this.removeCurrentPageFromBookmarks
-            : this.addCurrentPageToBookmarks
-        }
-        svgColor={svgColor}
-      >
-        <BookmarkImgDesktop show={!isBookmarked}>
-          <BookmarkUnaddedIconDesktop />
-        </BookmarkImgDesktop>
-        <BookmarkImgDesktop show={isBookmarked}>
-          <BookmarkAddedIconDesktop />
-        </BookmarkImgDesktop>
-      </DesktopIconContainer>
-    )
+    const { renderIcon } = this.props
+
+    return typeof renderIcon === 'function'
+      ? renderIcon(
+          isBookmarked,
+          this.addCurrentPageToBookmarks,
+          this.removeCurrentPageFromBookmarks
+        )
+      : null
   }
 }
 
 BookmarkWidget.defaultProps = {
   articleMeta: {},
-  isMobile: false,
-  svgColor: '',
   bookmark: null,
   isAuthed: false,
   jwt: '',
   userID: NaN,
+  toAutoCheck: true,
 }
 
 BookmarkWidget.propTypes = {
   articleMeta: corePropTypes.articleMetaForBookmark,
-  isMobile: PropTypes.bool,
-  svgColor: PropTypes.string,
   // Props below are provided by redux
   bookmark: corePropTypes.bookmark,
   createSingleBookmark: PropTypes.func.isRequired,
@@ -261,6 +172,8 @@ BookmarkWidget.propTypes = {
   isAuthed: PropTypes.bool,
   jwt: PropTypes.string,
   userID: PropTypes.number,
+  renderIcon: PropTypes.func.isRequired,
+  toAutoCheck: PropTypes.bool,
 }
 
 function mapStateToProps(state, ownProps) {

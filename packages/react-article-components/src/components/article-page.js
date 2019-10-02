@@ -34,6 +34,13 @@ const fontFamilyCss = css`
   font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
 `
 
+const shiftLeftCss = css`
+  position: relative;
+  /* 20px is border-(right|left) width of articlePage */
+  width: calc(100% + 20px);
+  left: -10px;
+`
+
 const BorderBox = styled.div`
   * {
     box-sizing: border-box;
@@ -41,10 +48,7 @@ const BorderBox = styled.div`
 `
 
 const LeadingBlock = styled.div`
-  position: relative;
-  /* 20px is border-(right|left) width of articlePage */
-  width: calc(100% + 20px);
-  left: -10px;
+  ${shiftLeftCss}
 `
 
 const SeprationLine = styled.div`
@@ -127,6 +131,10 @@ const MetadataAndToolsBlock = styled.div`
 `
 
 const ToolsBlock = styled.div`
+  ${mq.tabletAndBelow`
+    ${shiftLeftCss}
+  `}
+
   ${mq.mobileOnly`
     margin-top: 20px;
   `}
@@ -140,10 +148,7 @@ const ContentBlock = styled.div`
   margin: 0 auto;
 
   ${mq.tabletAndBelow`
-    position: relative;
-    /* 20px is border-(right|left) width of articlePage */
-    width: calc(100% + 20px);
-    left: -10px;
+    ${shiftLeftCss}
   `}
 
   ${mq.desktopOnly`

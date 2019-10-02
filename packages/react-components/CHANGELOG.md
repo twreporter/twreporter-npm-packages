@@ -4,6 +4,14 @@
 
 ## Release
 
+### 8.0.0
+
+#### Bookmark Widget
+
+- Add `props.renderIcon`, which lets clients render icons on demand
+- Add `props.toAutoCheck`, if `true`, it will automatically check if bookmark is exited after mounting
+- Remove icon assets
+
 ### 7.1.1
 
 - Add `className` prop to `donation-link-with-utm` for styled-components

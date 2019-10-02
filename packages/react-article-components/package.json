@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@twreporter/core": "^1.1.0",
-    "@twreporter/react-components": "^7.1.0",
+    "@twreporter/react-components": "^8.0.0",
     "@twreporter/redux": "^5.0.4",
     "@twreporter/universal-header": "^2.1.0",
     "howler": "^2.1.1",

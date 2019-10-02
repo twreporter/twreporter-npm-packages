@@ -5,55 +5,17 @@ import predefinedProps from '../../constants/prop-types/aside'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { css } from 'styled-components'
-// assets
-import BackToTopicIcon from '../../assets/aside/back-top-topic.svg'
+import themeConst from '../../constants/theme'
+// icons
+import BackToTopicIcon from '../../assets/aside/back-to-topic.svg'
 import FBIcon from '../../assets/aside/share-fb.svg'
 import LineIcon from '../../assets/aside/share-line.svg'
 import PrintIcon from '../../assets/aside/tool-print.svg'
 import TextIcon from '../../assets/aside/tool-text.svg'
 import TwitterIcon from '../../assets/aside/share-twitter.svg'
-
-const ToolsBlock = styled.div`
-  display: flex;
-
-  > svg {
-    cursor: pointer;
-  }
-
-  svg:hover {
-    .darker-on-hover.darker-fill {
-      fill: #262626;
-    }
-
-    .darker-on-hover.darker-stroke {
-      stroke: #262626;
-    }
-  }
-
-  ${mq.mobileOnly`
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: space-around;
-  `}
-
-  ${mq.tabletOnly`
-    width: 513px;
-    margin-left: auto;
-    margin-right: auto;
-    > svg, > div, > a {
-      margin-right: 30px;
-    }
-  `}
-
-  ${mq.desktopAndAbove`
-    width: 20px;
-    height: ${props => props.height || 'auto'};
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  `}
-`
+// bookmark icons
+import ToAddBookmarkIcon from '../../assets/aside/add-bookmark.svg'
+import AddedBookmarkIcon from '../../assets/aside/added-bookmark.svg'
 
 function changeFontSizeOffsetToPct(fontSizeOffset) {
   switch (fontSizeOffset) {
@@ -72,56 +34,143 @@ function changeFontSizeOffsetToPct(fontSizeOffset) {
 
 const iconBlockCSS = css`
   position: relative;
+  cursor: pointer;
+  line-height: 1;
 
-  &:after {
+  svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  &::after {
     position: absolute;
+    top: 5px;
     color: #262626;
     font-size: 14px;
     line-height: 23px;
-    margin-left: 5px;
     visibility: hidden;
+    width: 100px;
   }
 
   &:hover {
-    &:after {
+    &::after {
       visibility: visible;
     }
   }
+
+  ${mq.tabletAndBelow`
+    &::after {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  `}
 `
 
 const TextIconBlock = styled.div`
   ${iconBlockCSS}
-  cursor: pointer;
-
-  &:after {
-    width: calc(14px * 7);
+  &::after {
     content: '字級大小${props =>
       changeFontSizeOffsetToPct(props.theme.fontSizeOffset)}';
   }
-
-  ${mq.tabletAndBelow`
-    &:after {
-      top: 0;
-      left: 0;
-      transform: translateY(100%);
-    }
-  `}
 `
 
 const BackToTopicBlock = styled.div`
   ${iconBlockCSS}
-  &:after {
-    width: calc(14px * 4);
+  &::after {
     content: '回到專題';
   }
+`
 
-  ${mq.tabletAndBelow`
-    &:after {
-      top: 0;
-      left: 0;
-      transform: translate(-50%, 100%);
+const PrintIconBlock = styled.div`
+  ${iconBlockCSS}
+  &::after {
+    content: '列印';
+  }
+`
+
+const BookmarkIconBlock = styled.div`
+  ${iconBlockCSS}
+  &::after {
+    content: '${props => (props.isBookmarked ? '取消書籤' : '加入書籤')}';
+  }
+`
+
+const ShareIconBlock = styled.div`
+  width: 36px;
+  height: 36px;
+  padding: 3px;
+  cursor: pointer;
+`
+
+const ToolsBlock = styled.div`
+  display: flex;
+
+  ${mq.mobileOnly`
+    width: calc(300/375*100%);
+    margin-left: auto;
+    margin-right: auto;
+  `}
+
+  ${mq.tabletOnly`
+    width: calc(453/768*100%);
+    max-width: 453px;
+    margin-left: auto;
+    margin-right: auto;
+    > svg, > div, > a {
+      margin-right: 30px;
     }
   `}
+
+  ${mq.tabletAndBelow`
+    justify-content: space-between;
+  `}
+
+  ${mq.desktopAndAbove`
+    width: 36px;
+    height: ${props => props.height || 'auto'};
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  `}
+
+  ${props => {
+    switch (props.theme.name) {
+      case themeConst.article.v2.photo:
+        return css`
+          ${ShareIconBlock} {
+            svg circle:first-child {
+              fill: rgba(255, 255, 255, 0.08);
+            }
+            svg path {
+              fill: rgba(255, 255, 255, 0.8);
+            }
+          }
+          ${TextIconBlock}, ${BackToTopicBlock}, ${PrintIconBlock}, ${BookmarkIconBlock} {
+            svg circle:first-child {
+              fill: #08192d;
+            }
+
+            svg path {
+              fill: rgba(255, 255, 255, 0.8);
+            }
+
+            &::after {
+              color: rgba(255, 255, 255, 0.8);
+            }
+          }
+
+          ${BackToTopicBlock} {
+            svg circle:not(:first-child) {
+              fill: rgba(255, 255, 255, 0.8);
+            }
+          }
+        `
+      default:
+        return ''
+    }
+  }}
 `
 
 function FBShareBT(props) {
@@ -137,7 +186,11 @@ function FBShareBT(props) {
     window.open(location, '_blank')
   }
 
-  return <FBIcon onClick={handleClick} />
+  return (
+    <ShareIconBlock>
+      <FBIcon width="30px" onClick={handleClick} />
+    </ShareIconBlock>
+  )
 }
 
 FBShareBT.propTypes = {
@@ -154,7 +207,11 @@ function TwitterShareBT(props) {
     window.open(location, '_blank')
   }
 
-  return <TwitterIcon onClick={handleClick} />
+  return (
+    <ShareIconBlock>
+      <TwitterIcon width="30px" onClick={handleClick} />
+    </ShareIconBlock>
+  )
 }
 
 function LineShareBT(props) {
@@ -167,7 +224,11 @@ function LineShareBT(props) {
     window.open(location, '_blank')
   }
 
-  return <LineIcon onClick={handleClick} />
+  return (
+    <ShareIconBlock>
+      <LineIcon width="30px" onClick={handleClick} />
+    </ShareIconBlock>
+  )
 }
 
 const defaultFbAppID = '962589903815787'
@@ -186,21 +247,6 @@ export default class Tools extends React.PureComponent {
 
     return (
       <ToolsBlock height={height}>
-        <FBShareBT appID={fbAppID || defaultFbAppID} />
-        <TwitterShareBT />
-        <LineShareBT />
-        <TextIconBlock>
-          <TextIcon onClick={onFontLevelChange} />
-        </TextIconBlock>
-        <PrintIcon
-          onClick={() => {
-            window.print()
-          }}
-        />
-        <BookmarkWidget
-          articleMeta={articleMetaForBookmark}
-          svgColor="#808080"
-        />
         {backToTopic ? (
           <DynamicComponentsContext.Consumer>
             {components => {
@@ -214,6 +260,33 @@ export default class Tools extends React.PureComponent {
             }}
           </DynamicComponentsContext.Consumer>
         ) : null}
+        <BookmarkWidget
+          toAutoCheck={false}
+          articleMeta={articleMetaForBookmark}
+          renderIcon={(isBookmarked, addAction, removeAction) => {
+            return (
+              <BookmarkIconBlock
+                onClick={isBookmarked ? removeAction : addAction}
+                isBookmarked={isBookmarked}
+              >
+                {isBookmarked ? <AddedBookmarkIcon /> : <ToAddBookmarkIcon />}
+              </BookmarkIconBlock>
+            )
+          }}
+        />
+        <TextIconBlock>
+          <TextIcon onClick={onFontLevelChange} />
+        </TextIconBlock>
+        <PrintIconBlock>
+          <PrintIcon
+            onClick={() => {
+              window.print()
+            }}
+          />
+        </PrintIconBlock>
+        <FBShareBT appID={fbAppID || defaultFbAppID} />
+        <TwitterShareBT />
+        <LineShareBT />
       </ToolsBlock>
     )
   }
