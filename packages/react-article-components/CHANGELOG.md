@@ -4,6 +4,16 @@
 
 ## RELEASE
 
+### 1.0.22
+
+#### Dependency Upgrade
+
+- @twreporter/react-components@^8.0.0 -> @^8.0.1
+
+#### Table of Contents
+
+- provide h1 string as an anchor id
+
 ### 1.0.21
 
 #### Dependency Upgrade

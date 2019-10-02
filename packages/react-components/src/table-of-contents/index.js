@@ -317,7 +317,7 @@ class Anchor extends React.PureComponent {
   }
 
   render() {
-    const { bottomOffset, className, children, topOffset } = this.props
+    const { bottomOffset, className, children, id, topOffset } = this.props
     return (
       // set fireOnRapidScroll=false since we are not using `onEnter` and  `onLeave`
       <Waypoint
@@ -326,7 +326,7 @@ class Anchor extends React.PureComponent {
         onPositionChange={this.handleOnPositionChange}
         fireOnRapidScroll={false}
       >
-        <div className={className} ref={this._ref}>
+        <div id={id} className={className} ref={this._ref}>
           {children}
         </div>
       </Waypoint>
