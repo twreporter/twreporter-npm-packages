@@ -4,6 +4,12 @@
 
 ## Release
 
+### 8.0.1
+
+#### Table of Contents
+
+- Add `id` attribute in the anchor
+
 ### 8.0.0
 
 #### Bookmark Widget
