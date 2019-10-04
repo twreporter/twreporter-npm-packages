@@ -8,7 +8,6 @@ const elementData = PropTypes.shape({
     alignmentConsts.left,
     alignmentConsts.right,
   ]).isRequired,
-  styles: PropTypes.object.isRequired,
   content: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.object])
   ).isRequired,

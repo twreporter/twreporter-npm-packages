@@ -235,7 +235,24 @@ const ClearFloat = styled.div`
   ${clearFloatCSS}
 `
 
-function renderElement(data = {}) {
+/**
+ *  Element Data
+ *  See `elementData` in `src/constants/prop-types/body.js`
+ *  @typedef {Object} ElementData
+ *  @property {string} id - Unique id
+ *  @property {string} alignment - One of `alignmentConsts`
+ *  @property {string} type - Element type
+ *  @property {string[]|Object[]} content - Element content
+ */
+
+/**
+ *
+ *
+ * @export
+ * @param {ElementData} [data={}]
+ * @returns
+ */
+export function renderElement(data = {}) {
   const isCenterAligned =
     data.alignment === alignmentConsts.center ||
     data.alignment === alignmentConsts.centerSmall
