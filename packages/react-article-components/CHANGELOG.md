@@ -4,6 +4,10 @@
 
 ## RELEASE
 
+### 1.0.23
+
+#### Export `renderElement` from body module
+
 ### 1.0.22
 
 #### Dependency Upgrade
