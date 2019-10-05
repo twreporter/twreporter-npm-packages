@@ -4,7 +4,10 @@ import Audio from './audio'
 import Blockquote from './blockquote'
 import Brief from './brief'
 import CenteredQuote from './centered-quote'
-import Embedded from './embedded-code'
+import Embedded, {
+  Block as EmbeddedBlock,
+  Caption as EmbeddedCaption,
+} from './embedded-code'
 import Headings from './headings'
 import Image from './image'
 import ImageDiff from './image-diff'
@@ -145,11 +148,34 @@ const StyledHeaderTwo = styled(Headings.H2)`
   margin: ${mockup.margin.headerTwo};
 `
 
+const embeddedCSS = css`
+  ${clearFloatCSS}
+  margin: ${mockup.margin.normal};
+  overflow: hidden;
+  ${mq.tabletAndBelow`
+    ${EmbeddedBlock} {
+      text-align: center;
+    }
+  `}
+  ${mq.mobileOnly`
+    width: calc(350/375*100%);
+    ${EmbeddedCaption} {
+      width: calc(300/350*100%);
+      margin: 15px auto 0 auto;
+      /* overwrite default styles */
+      padding: 0;
+    }
+  `}
+`
+
 const StyledEmbedded = styled(Embedded)`
   ${largeWidthCSS}
-  ${clearFloatCSS}
-  margin: ${mockup.margin.large};
-  overflow: hidden;
+  ${embeddedCSS}
+`
+
+const StyledEmbeddedNormal = styled(Embedded)`
+  ${normalWidthCSS}
+  ${embeddedCSS}
 `
 
 const StyledExtendImageBlock = styled.div`
@@ -229,6 +255,15 @@ const AlignRight = styled.div`
   ${StyledCenteredQuote}, ${StyledBlockquote}, ${StyledEmbedded}, ${StyledInfobox} {
     ${alignRightCSS};
   }
+
+  ${StyledEmbedded} {
+    ${mq.desktopAndAbove`
+      margin: 0 0 20px 30px;
+      ${EmbeddedCaption} {
+        padding: 13px 10px 0 10px;
+      }
+    `}
+  }
 `
 
 const ClearFloat = styled.div`
@@ -287,13 +322,22 @@ export function renderElement(data = {}) {
     case 'embedded-code':
     case 'embeddedCode':
     case 'embeddedcode':
-      return isCenterAligned ? (
-        <StyledEmbedded key={data.id} data={data} />
-      ) : (
-        <AlignRight key={data.id}>
-          <StyledEmbedded data={data} />
-        </AlignRight>
-      )
+      switch (data.alignment) {
+        case alignmentConsts.right:
+        case alignmentConsts.left: {
+          return (
+            <AlignRight key={data.id}>
+              <StyledEmbedded data={data} />
+            </AlignRight>
+          )
+        }
+        case alignmentConsts.centerSmall:
+          return <StyledEmbeddedNormal key={data.id} data={data} />
+        case alignmentConsts.center:
+        default: {
+          return <StyledEmbedded key={data.id} data={data} />
+        }
+      }
     case 'small-image':
     case 'image':
     case 'image-link': {
