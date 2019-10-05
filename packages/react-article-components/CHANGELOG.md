@@ -2,6 +2,10 @@
 
 ## UNRELEASED
 
+### 1.0.24
+
+- body:embed: style fine tune
+
 ## RELEASE
 
 ### 1.0.23
