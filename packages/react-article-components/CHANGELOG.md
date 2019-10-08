@@ -2,12 +2,12 @@
 
 ## UNRELEASED
 
+## RELEASE
+
 ### 1.0.24
 
 - body:embed: style fine tune
 - slideshow: adjust slide width calculation
-
-## RELEASE
 
 ### 1.0.23
 
