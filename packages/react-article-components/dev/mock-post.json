@@ -41,7 +41,7 @@
       }
     }
   },
-  "hero_image_size": "normal",
+  "hero_image_size": "fullscreen",
   "leading_image_portrait": {
     "id": "5c9889ed2203b617004ad266",
     "description": "戲裡戲外《我們與惡的距離》-手機直版",
@@ -886,8 +886,8 @@
         "content": [
           {
             "caption": "超過版面測試。做完田調，筆人物設定、故事結構。做完田調，讀完所有資料後，她還要經過一個「忘卻」的過程，再落筆人物設定、故事結構。",
-            "embeddedCode": "<div style=\"text-align: center;\"><iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=580&show_text=true&appId=131805236835991&height=611\" width=\"580\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe></div>",
-            "embeddedCodeWithoutScript": "<div style=\"text-align: center;\"><iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=580&show_text=true&appId=131805236835991&height=611\" width=\"580\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe></div>",
+            "embeddedCode": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=580&show_text=true&appId=131805236835991&height=611\" width=\"580\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
+            "embeddedCodeWithoutScript": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=580&show_text=true&appId=131805236835991&height=611\" width=\"580\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
             "scripts": []
           }
         ],
@@ -914,12 +914,12 @@
         "type": "unstyled"
       },
       {
-        "alignment": "center",
+        "alignment": "right",
         "content": [
           {
             "caption": "做完田調，筆人物設定、故事結構。做完田調，讀完所有資料後，她還要經過一個「忘卻」的過程，再落筆人物設定、故事結構。",
-            "embeddedCode": "<div style=\"text-align: center;\"><iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe></div>",
-            "embeddedCodeWithoutScript": "<div style=\"text-align: center;\"><iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe></div>",
+            "embeddedCode": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe></div>",
+            "embeddedCodeWithoutScript": "<iframe src=\"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftwreporter%2Fposts%2F2362471017334090&width=350&show_text=true&appId=131805236835991&height=611\" width=\"350\" height=\"611\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\" allow=\"encrypted-media\"></iframe>",
             "scripts": []
           }
         ],

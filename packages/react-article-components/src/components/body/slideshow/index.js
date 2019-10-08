@@ -95,17 +95,25 @@ const SlidesSection = styled.div`
   flex-basis: 100%;
   overflow: hidden;
   position: relative;
-  padding-bottom: ${(mockup.desktop.slide.height /
-    mockup.desktop.container.width) *
-    100}%;
 
   ${mq.tabletAndBelow`
     order: 2;
   `}
 
+  ${mq.mobileOnly`
+    padding-bottom: calc(${mockup.mobile.slide.height}/${mockup.mobile.container.width}*100%);
+  `}
+
+  ${mq.tabletOnly`
+    padding-bottom: calc(${mockup.tablet.slide.height}/${mockup.tablet.container.width}*100%);
+  `}
+
+  ${mq.desktopOnly`
+    padding-bottom: calc(${mockup.desktop.slide.height}/${mockup.desktop.container.width}*100%);
+  `}
+
   ${mq.hdOnly`
-    padding-bottom: ${(mockup.hd.slide.height / mockup.hd.container.width) *
-      100}%;
+    padding-bottom: calc(${mockup.hd.slide.height}/${mockup.hd.container.width}*100%);
   `}
 `
 
@@ -312,21 +320,21 @@ const SlideFlexItem = styled.div`
   flex-shrink: 0;
 
   ${mq.mobileOnly`
-    flex-basis: ${(getSlideWidth(mockup.mobile) /
-      getContainerWidth(mockup.mobile)) *
-      100}%;
-    padding-right: ${(mockup.mobile.slide.paddingRight /
-      getContainerWidth(mockup.mobile)) *
-      100}%;
+    flex-basis: calc(${getSlideWidth(mockup.mobile)}/${getContainerWidth(
+    mockup.mobile
+  )}*100%);
+    padding-right: calc(${mockup.mobile.slide.paddingRight}/${getContainerWidth(
+    mockup.mobile
+  )}*100%);
   `}
 
   ${mq.tabletOnly`
-    flex-basis: ${(getSlideWidth(mockup.tablet) /
-      getContainerWidth(mockup.tablet)) *
-      100}%;
-    padding-right: ${(mockup.tablet.slide.paddingRight /
-      getContainerWidth(mockup.tablet)) *
-      100}%;
+    flex-basis: calc(${getSlideWidth(mockup.tablet)}/${getContainerWidth(
+    mockup.tablet
+  )}*100%);
+    padding-right: calc(${mockup.tablet.slide.paddingRight}/${getContainerWidth(
+    mockup.tablet
+  )}*100%);
   `}
 
 
@@ -507,7 +515,7 @@ function getSlideshowFlexBoxStyles(themeName) {
  * @return {number}
  */
 function getTranslateX(deviceMockup, unit) {
-  const slideWidth = deviceMockup.slide.width
+  const slideWidth = getSlideWidth(deviceMockup)
 
   // total slides width including padding
   let translateX = unit * slideWidth
@@ -530,7 +538,7 @@ function getContainerWidth(deviceMockup) {
  * @return {number}
  */
 function getSlideWidth(deviceMockup) {
-  return deviceMockup.slide.width
+  return deviceMockup.slide.width + deviceMockup.slide.paddingRight
 }
 
 /**
@@ -549,7 +557,7 @@ function getRightMaskWidth(deviceMockup) {
   return (
     deviceMockup.container.width -
     deviceMockup.offset.left -
-    deviceMockup.slide.width
+    getSlideWidth(deviceMockup)
   ) // px
 }
 
