@@ -13,7 +13,6 @@ import Footer from '@twreporter/react-components/lib/footer'
 
 const HeaderContainerWithTransparentTheme = styled.div`
   position: relative;
-  background-color: #fabcf0;
 `
 
 class MockTwreporterReactArticleContainer extends React.PureComponent {
