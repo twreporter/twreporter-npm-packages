@@ -14,7 +14,7 @@ const _ = {
   merge,
 }
 
-const Embedded = styled.div`
+export const Block = styled.div`
   position: relative;
 
   /* styles for image link */
@@ -26,9 +26,9 @@ const Embedded = styled.div`
   }
 `
 
-const Caption = styled.div`
-  line-height: 1.36;
-  letter-spacing: 0.5px;
+export const Caption = styled.div`
+  line-height: 1.43;
+  letter-spacing: 0.4px;
   font-size: 14px;
   color: ${props => {
     switch (props.theme.name) {
@@ -37,11 +37,10 @@ const Caption = styled.div`
       case themeConst.article.v2.pink:
       case themeConst.article.v2.default:
       default:
-        return '#494949'
+        return '#808080'
     }
   }};
-  padding: 20px;
-  text-align: center;
+  padding: 15px 15px 0 15px;
 `
 
 function dispatchLoadEvent() {
@@ -124,7 +123,7 @@ export default class EmbeddedCode extends React.PureComponent {
     )
     return (
       <div className={className}>
-        <Embedded
+        <Block
           ref={this._embbed}
           dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
         />
