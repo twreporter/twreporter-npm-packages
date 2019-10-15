@@ -54,15 +54,10 @@ class Image extends React.PureComponent {
     this.imgNode = null
   }
 
-  componentWillMount() {
-    if (typeof window !== 'undefined') {
-      this.setState({
-        isObjectFit: 'objectFit' in _.get(document, 'documentElement.style'),
-      })
-    }
-  }
-
   componentDidMount() {
+    this.setState({
+      isObjectFit: 'objectFit' in _.get(document, 'documentElement.style'),
+    })
     // Check if img is already loaded, and cached on the browser.
     // If cached, React.img won't trigger onLoad event.
     // Hence, we need to trigger re-rendering.
