@@ -1,4 +1,4 @@
-const photography = 'photography'
+const photography = 'article:v2:photo'
 const infographic = 'interactive'
 const review = 'review'
 const normal = 'article'
