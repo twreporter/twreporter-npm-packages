@@ -4,6 +4,10 @@
 
 ## Release
 
+### 5.0.6
+
+- Update photo article style constant to v2
+
 ### 5.0.5
 
 - Update `src/constants/redux-state-field-names.js`
