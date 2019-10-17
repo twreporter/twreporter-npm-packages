@@ -4,6 +4,15 @@
 
 ## Release
 
+### 1.0.5
+
+- Remove deprecated componentWillMount
+
+#### Update Dependencies
+
+- Replace customized velocity-react with original one
+- Bump react-router-dom to v5
+
 ### 1.0.4
 
 - Take last 3 related posts from the end of `topic.related` array instead.

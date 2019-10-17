@@ -4,6 +4,15 @@
 
 ## Release
 
+### 8.0.2
+
+- Remove deprecated componentWillMount
+
+#### Update Dependencies
+
+- Bump react-transition-group to v2
+- Bump react-router-dom to v5
+
 ### 8.0.1
 
 #### Table of Contents
