@@ -210,18 +210,18 @@ class PhotographySection extends React.PureComponent {
       // so enable auto hovering.
       isAutoHover: false,
     }
-
     this.itemsToShow = 4
     this.onLeave = this._onElementTouchViewportTop.bind(this, -1)
     this.onEnters = []
     this.onEnter = this._onElementTouchViewportTop.bind(this)
+    this._mounted = false
   }
 
   componentDidMount() {
+    this._mounted = true
     // fetch the posts in advance
     const _checkViewportWidth = this._checkViewportWidth.bind(this)
     _checkViewportWidth()
-
     let resizeTimeout
     function resizeThrottler() {
       // ignore resize events as long as an actualResizeHandler execution is in the queue
@@ -238,11 +238,17 @@ class PhotographySection extends React.PureComponent {
     window.addEventListener('resize', resizeThrottler.bind(this), false)
   }
 
+  componentWillUnmount() {
+    this._mounted = false
+  }
+
   _checkViewportWidth() {
     const innerW = _.get(window, 'innerWidth', oneColumnWidthInt)
-    this.setState({
-      isAutoHover: innerW < oneColumnWidthInt,
-    })
+    if (this._mounted) {
+      this.setState({
+        isAutoHover: innerW < oneColumnWidthInt,
+      })
+    }
   }
 
   _onElementTouchViewportTop(index) {
