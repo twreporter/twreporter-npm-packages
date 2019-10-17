@@ -3,12 +3,12 @@ import { getSignInHref } from '@twreporter/core/lib/utils/sign-in-href'
 import Bookmarks from './bookmarks'
 import Confirmation from '../confirmation'
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import CSSTransition from 'react-transition-group/CSSTransition'
 import More from '../more'
 import PropTypes from 'prop-types'
 import React from 'react'
 import RedirectToSignIn from './redirect-to-sign-in'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import twreporterRedux from '@twreporter/redux'
 
 // lodash
@@ -39,8 +39,8 @@ const text = {
 const transitionName = {
   enter: 'effect-enter',
   enterActive: 'effect-enter-active',
-  leave: 'effect-leave',
-  leaveActive: 'effect-leave-active',
+  leave: 'effect-exit',
+  leaveActive: 'effect-exit-active',
 }
 
 const transitionDuration = {
@@ -52,7 +52,7 @@ const MoreContainer = styled.div`
   display: ${props => (props.hasMore ? 'inline' : 'none')};
 `
 
-const StyledTransitionGroup = styled(CSSTransitionGroup)`
+const reactTransitionCSS = css`
   .${transitionName.enter} {
     opacity: 0.01;
   }
@@ -67,6 +67,10 @@ const StyledTransitionGroup = styled(CSSTransitionGroup)`
     opacity: 0.01;
     transition: opacity ${transitionDuration.leave}ms ease;
   }
+`
+
+const Container = styled.div`
+  ${reactTransitionCSS}
 `
 
 class BookmarkList extends React.Component {
@@ -169,7 +173,7 @@ class BookmarkList extends React.Component {
       return <RedirectToSignIn>您尚未登入，將跳轉至登入頁</RedirectToSignIn>
     const { bookmarks, total } = this.props
     return (
-      <div>
+      <Container>
         <Bookmarks
           bookmarks={bookmarks}
           handleDelete={this.handleDeleteButtonClicked}
@@ -180,22 +184,25 @@ class BookmarkList extends React.Component {
             <span>{text.loadMore}</span>
           </More>
         </MoreContainer>
-        <StyledTransitionGroup
-          transitionName={transitionName}
-          transitionEnterTimeout={transitionDuration.enter}
-          transitionLeaveTimeout={transitionDuration.leave}
+        <CSSTransition
+          classNames={transitionName}
+          in={this.state.showConfirmation}
+          timeout={{
+            enter: transitionDuration.enter,
+            exit: transitionDuration.leave,
+          }}
+          mountOnEnter
+          unmountOnExit
         >
-          {this.state.showConfirmation ? (
-            <Confirmation
-              onCancel={this.hideComfirmation}
-              onConfirm={this.handleDeletingConfirmed}
-              content={text.dialog.content}
-              confirm={text.dialog.confirm}
-              cancel={text.dialog.cancel}
-            />
-          ) : null}
-        </StyledTransitionGroup>
-      </div>
+          <Confirmation
+            onCancel={this.hideComfirmation}
+            onConfirm={this.handleDeletingConfirmed}
+            content={text.dialog.content}
+            confirm={text.dialog.confirm}
+            cancel={text.dialog.cancel}
+          />
+        </CSSTransition>
+      </Container>
     )
   }
 }

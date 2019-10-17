@@ -1,4 +1,4 @@
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import CSSTransition from 'react-transition-group/CSSTransition'
 import DropDownMenu from './drop-down-menu'
 import HeaderContext from '../contexts/header-context'
 import Link from './customized-link'
@@ -10,7 +10,6 @@ import fonts from '../constants/fonts'
 import styled, { css, keyframes } from 'styled-components'
 import themeUtils from '../utils/theme'
 import wellDefinedPropTypes from '../constants/prop-types'
-import { categoriesMenuEffect as dropDownMenuEffect } from '../constants/css-transition-group'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -58,6 +57,17 @@ const changeOpacity = (valueFrom, valueTo) => keyframes`
   }
 `
 
+const dropDownMenuEffectCSS = css`
+  .effect-enter {
+    max-height: 0;
+  }
+
+  .effect-enter-active {
+    max-height: 400px;
+    transition: max-height 600ms ease-in 100ms;
+  }
+`
+
 const linkUnderline = css`
   animation: ${changeOpacity('0', '1')} 0.5s linear;
   position: absolute;
@@ -70,12 +80,12 @@ const linkUnderline = css`
   background-color: red;
 `
 
-const DropDownMenuTransitionGroup = styled(CSSTransitionGroup)`
+const DropDownMenuWrapper = styled.div`
   position: absolute;
   z-index: 999;
   width: 100%;
   left: 0;
-  ${dropDownMenuEffect}
+  ${dropDownMenuEffectCSS}
 `
 
 const Box = styled.div`
@@ -242,16 +252,12 @@ class Channels extends React.PureComponent {
 
   render() {
     const { currentPathname, data } = this.props
-
     const { indexToDropDown } = this.state
-
-    let activeChannelIndex = invalidDataIndex
-
-    if (indexToDropDown > invalidDataIndex) {
-      activeChannelIndex = indexToDropDown
-    } else {
-      activeChannelIndex = this._checkWhichChannelActive(currentPathname)
-    }
+    const toShowDropDownMenu = indexToDropDown > invalidDataIndex
+    const dropDownMenu = _.get(data, [indexToDropDown, dropDownMenuKey], [])
+    const activeChannelIndex = toShowDropDownMenu
+      ? indexToDropDown
+      : this._checkWhichChannelActive(currentPathname)
 
     const channelsJSX = _.map(data, (channelItem, dataIndex) => {
       const channelLabel = channelItem.label
@@ -288,16 +294,6 @@ class Channels extends React.PureComponent {
         </HeaderContext.Consumer>
       )
     })
-
-    let dropDownMenuJSX = null
-
-    if (indexToDropDown > invalidDataIndex) {
-      const dropDownMenu = _.get(data, [indexToDropDown, dropDownMenuKey], {})
-      dropDownMenuJSX = (
-        <DropDownMenu data={dropDownMenu} onClick={this.closeDropDownMenu} />
-      )
-    }
-
     return (
       <React.Fragment>
         <Box>
@@ -308,14 +304,21 @@ class Channels extends React.PureComponent {
             }}
           </HeaderContext.Consumer>
         </Box>
-        <DropDownMenuTransitionGroup
-          key="transition"
-          transitionName="effect"
-          transitionEnterTimeout={600}
-          transitionLeaveTimeout={400}
-        >
-          {dropDownMenuJSX}
-        </DropDownMenuTransitionGroup>
+        <DropDownMenuWrapper>
+          <CSSTransition
+            in={toShowDropDownMenu}
+            classNames="effect"
+            timeout={600}
+            exit={false}
+            mountOnEnter
+            unmountOnExit
+          >
+            <DropDownMenu
+              data={dropDownMenu}
+              onClick={this.closeDropDownMenu}
+            />
+          </CSSTransition>
+        </DropDownMenuWrapper>
       </React.Fragment>
     )
   }
