@@ -1,4 +1,3 @@
-import camelCase from 'camelcase'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -55,35 +54,6 @@ function dispatchLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
-/**
- * Pick attributes that start with data and return them with a new object.
- * Example: ({ data-width: 100, data-pic-id: 'xn3K8s', src: 'xx.png' }) => ({ dataset: { width: 100, picId: 'xn3K8s' }, notDataset: { src: 'xx.png' }  })
- * Ref: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
- *
- * @param {Object} attributes attributes object with camelcased keys
- * @returns {Object}
- */
-function _groupAttribsDataset(attributes) {
-  const dataset = {}
-  const notDataset = {}
-  _.forEach(attributes, (value, key) => {
-    const reg = /^data[^a-z]/
-    const attributeName = camelCase(key)
-    if (reg.test(attributeName)) {
-      const newKeyInDataset = attributeName.replace(reg, matched =>
-        matched.substr(-1, 1).toLowerCase()
-      )
-      dataset[newKeyInDataset] = value
-    } else {
-      notDataset[attributeName] = value
-    }
-  })
-  return {
-    dataset,
-    notDataset,
-  }
-}
-
 export default class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
@@ -109,26 +79,25 @@ export default class EmbeddedCode extends React.PureComponent {
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
     if (node && Array.isArray(scripts)) {
       _.forEach(scripts, script => {
-        try {
-          const scriptEle = document.createElement('script')
-          const attribs = script.attribs
-          const newAttribs = _groupAttribsDataset(attribs)
-          _.merge(scriptEle, newAttribs.notDataset, {
-            dataset: newAttribs.dataset,
-            text: script.text || '',
-            onload: dispatchLoadEvent,
-          })
-          node.appendChild(scriptEle)
-        } catch (err) {
-          console.error(
-            `Append embbeded script error. ID: ${_.get(
-              this.props,
-              'data.id',
-              ''
-            )}, Error: `,
-            err
-          )
-        }
+        const scriptEle = document.createElement('script')
+        const attribs = script.attribs
+        _.forEach(attribs, (value, name) => {
+          try {
+            scriptEle.setAttribute(name, value)
+          } catch (err) {
+            console.error(
+              'Failed to set an attribute to the embbeded script./n',
+              `embedded element id: ${_.get(this.props, 'data.id', '')}/n`,
+              `attribute name: ${name}/n`,
+              `attribute value: ${value}/n`,
+              'error:/n',
+              err
+            )
+          }
+        })
+        scriptEle.text = script.text || ''
+        scriptEle.onload = dispatchLoadEvent
+        node.appendChild(scriptEle)
       })
     }
   }
