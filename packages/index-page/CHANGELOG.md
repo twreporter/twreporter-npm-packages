@@ -4,6 +4,10 @@
 
 ## Release
 
+### 1.0.5-beta.3
+
+- `import withRouter from 'react-router-dom/withRouter'` -> `import { withRouter } from 'react-router-dom'`
+
 ### 1.0.5-beta.2
 
 - Fix warning about setting state on unmounted component

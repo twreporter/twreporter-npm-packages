@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import SearchIcon from '../static/search.svg'
 import styled from 'styled-components'
-import withRouter from 'react-router-dom/withRouter'
+import { withRouter } from 'react-router-dom'
 
 const mobileWidth = '400px'
 
