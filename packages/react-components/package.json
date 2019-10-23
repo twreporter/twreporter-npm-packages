@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.0.1",
+  "version": "8.0.2-beta.2",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -18,8 +18,8 @@
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
     "react-redux": "^6.0.0",
-    "react-router-dom": "^4.3.1",
-    "react-transition-group": "^1.2.1",
+    "react-router-dom": "^5.1.2",
+    "react-transition-group": "^2.0.0",
     "react-waypoint": "^9.0.2",
     "smoothscroll": "^0.3.0",
     "styled-components": "^4.0.0"

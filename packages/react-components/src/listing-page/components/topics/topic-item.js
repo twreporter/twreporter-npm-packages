@@ -5,7 +5,7 @@ import {
 import { TEXT } from '../../constants/topics'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import Image from '../image'
-import Link from 'react-router-dom/Link'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'

@@ -1,5 +1,5 @@
 import HoverEffect from './hover-effect'
-import Link from 'react-router-dom/Link'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'

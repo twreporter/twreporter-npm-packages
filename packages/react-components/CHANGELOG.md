@@ -4,6 +4,21 @@
 
 ## Release
 
+### 8.0.2-beta.2
+
+- Per file imports are deprecated for react-router-dom
+
+### 8.0.2-beta.1
+
+- Remove deprecated `componentWillMount`
+
+#### Update Dependencies
+
+For removing deprecated `componentWillMount` and `componentWillReceiveProps`:
+
+- Bump react-transition-group to v2
+- Bump react-router-dom to v5
+
 ### 8.0.1
 
 #### Table of Contents

@@ -1,4 +1,4 @@
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import CSSTransition from 'react-transition-group/CSSTransition'
 import HeaderContext from '../contexts/header-context'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -6,8 +6,7 @@ import SearchCancel from '../../static/search-cancel.svg'
 import fonts from '../constants/fonts'
 import get from 'lodash/get'
 import linkUtils from '../utils/links'
-import styled from 'styled-components'
-import { searchBoxEffect } from '../constants/css-transition-group'
+import styled, { css } from 'styled-components'
 
 const _ = {
   get,
@@ -19,8 +18,28 @@ const styles = {
   inputWidth: 220, // px
 }
 
-const StyledCSSTransitionGroup = styled(CSSTransitionGroup)`
-  ${searchBoxEffect}
+const searchBoxEffectCSS = css`
+  &.effect-enter {
+    opacity: 0;
+    right: -20px;
+  }
+
+  &.effect-enter-active {
+    opacity: 1;
+    right: 0;
+    transition: opacity 500ms ease, right 500ms ease;
+  }
+
+  &.effect-exit {
+    opacity: 1;
+    right: 0;
+  }
+
+  &.effect-exit-active {
+    opacity: 0;
+    right: -20px;
+    transition: opacity 200ms ease, right 200ms ease;
+  }
 `
 
 const SearchBoxContainer = styled.form`
@@ -34,6 +53,7 @@ const SearchBoxContainer = styled.form`
   transform: translateY(-50%);
   height: ${styles.containerHeight}px;
   box-sizing: border-box;
+  ${searchBoxEffectCSS}
 `
 
 const CellBlock = styled.div`
@@ -109,43 +129,45 @@ class SearchBox extends React.Component {
   render() {
     const { isSearchOpened } = this.props
     return (
-      <StyledCSSTransitionGroup
-        key="transition"
-        transitionName="effect"
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={200}
-      >
-        {!isSearchOpened ? null : (
-          <HeaderContext.Consumer>
-            {({ releaseBranch, isLinkExternal }) => (
-              <SearchBoxContainer
-                onSubmit={e => {
-                  this._handleSubmit(e, releaseBranch, isLinkExternal)
-                }}
-                onReset={this._onReset}
-                noValidate="novalidate"
-              >
-                <CellBlock>
-                  <SearchInput
-                    type="search"
-                    placeholder="搜尋報導者文章"
-                    onBlur={this._handleBlur}
-                    onChange={this._handleChange}
-                    value={this.state.keywords}
-                    autoFocus
-                  />
-                </CellBlock>
-                <CellBlock>
-                  <SearchCancel
-                    style={{ cursor: 'pointer' }}
-                    onMouseDown={this._onReset}
-                  />
-                </CellBlock>
-              </SearchBoxContainer>
-            )}
-          </HeaderContext.Consumer>
+      <HeaderContext.Consumer>
+        {({ releaseBranch, isLinkExternal }) => (
+          <CSSTransition
+            in={isSearchOpened}
+            classNames="effect"
+            timeout={{
+              enter: 500,
+              exit: 200,
+            }}
+            mountOnEnter
+            unmountOnExit
+          >
+            <SearchBoxContainer
+              onSubmit={e => {
+                this._handleSubmit(e, releaseBranch, isLinkExternal)
+              }}
+              onReset={this._onReset}
+              noValidate="novalidate"
+            >
+              <CellBlock>
+                <SearchInput
+                  type="search"
+                  placeholder="搜尋報導者文章"
+                  onBlur={this._handleBlur}
+                  onChange={this._handleChange}
+                  value={this.state.keywords}
+                  autoFocus
+                />
+              </CellBlock>
+              <CellBlock>
+                <SearchCancel
+                  style={{ cursor: 'pointer' }}
+                  onMouseDown={this._onReset}
+                />
+              </CellBlock>
+            </SearchBoxContainer>
+          </CSSTransition>
         )}
-      </StyledCSSTransitionGroup>
+      </HeaderContext.Consumer>
     )
   }
 }

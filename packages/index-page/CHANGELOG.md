@@ -4,6 +4,26 @@
 
 ## Release
 
+### 1.0.5-beta.3
+
+- `import withRouter from 'react-router-dom/withRouter'` -> `import { withRouter } from 'react-router-dom'`
+
+### 1.0.5-beta.2
+
+- Fix warning about setting state on unmounted component
+- Per file imports are deprecated for react-router-dom
+
+### 1.0.5-beta.1
+
+- Remove deprecated `componentWillMount`
+
+#### Update Dependencies
+
+For removing deprecated `componentWillMount` and `componentWillReceiveProps`:
+
+- Replace customized velocity-react with original one
+- Bump react-router-dom to v5
+
 ### 1.0.4
 
 - Take last 3 related posts from the end of `topic.related` array instead.

@@ -1,7 +1,7 @@
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import { resetLinkStyle } from '../../constants/predefined-css'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import Link from 'react-router-dom/Link'
+import { Link } from 'react-router-dom'
 import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React from 'react'

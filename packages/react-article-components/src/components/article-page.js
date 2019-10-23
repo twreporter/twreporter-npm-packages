@@ -290,7 +290,7 @@ export default class Article extends PureComponent {
       _fontLevel.medium,
       _fontLevel.large,
     ]),
-    LinkComponent: PropTypes.func,
+    LinkComponent: PropTypes.elementType,
     onFontLevelChange: PropTypes.func,
   }
 

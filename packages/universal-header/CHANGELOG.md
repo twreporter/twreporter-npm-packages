@@ -4,6 +4,21 @@
 
 ## Released
 
+### 2.1.1-beta.2
+
+- Per file imports are deprecated for react-router-dom
+
+### 2.1.1-beta.1
+
+- Remove deprecated `componentWillMount`
+
+#### Update Dependencies
+
+For removing deprecated `componentWillMount` and `componentWillReceiveProps`:
+
+- Bump react-transition-group to v2
+- Bump react-router-dom to v5
+
 ### 2.1.0
 
 - Spread out the header proptypes
