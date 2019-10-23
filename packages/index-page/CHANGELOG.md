@@ -6,9 +6,11 @@
 
 ### 1.0.5
 
-- Remove deprecated componentWillMount
+- Remove deprecated `componentWillMount`
 
 #### Update Dependencies
+
+For removing deprecated `componentWillMount` and `componentWillReceiveProps`:
 
 - Replace customized velocity-react with original one
 - Bump react-router-dom to v5

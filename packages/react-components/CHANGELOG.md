@@ -6,9 +6,11 @@
 
 ### 8.0.2
 
-- Remove deprecated componentWillMount
+- Remove deprecated `componentWillMount`
 
 #### Update Dependencies
+
+For removing deprecated `componentWillMount` and `componentWillReceiveProps`:
 
 - Bump react-transition-group to v2
 - Bump react-router-dom to v5
