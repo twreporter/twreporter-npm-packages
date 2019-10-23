@@ -4,6 +4,10 @@
 
 ## RELEASE
 
+### 1.0.25-beta.4
+
+- Fix line break typo `/n` -> `\n`
+
 ### 1.0.25-beta.3
 
 - Refactor the attributes setting of embedded `script` elements

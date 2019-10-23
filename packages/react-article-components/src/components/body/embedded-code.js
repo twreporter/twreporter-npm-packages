@@ -86,11 +86,11 @@ export default class EmbeddedCode extends React.PureComponent {
             scriptEle.setAttribute(name, value)
           } catch (err) {
             console.error(
-              'Failed to set an attribute to the embbeded script./n',
-              `embedded element id: ${_.get(this.props, 'data.id', '')}/n`,
-              `attribute name: ${name}/n`,
-              `attribute value: ${value}/n`,
-              'error:/n',
+              'Failed to set an attribute to the embbeded script.\n',
+              `embedded element id: ${_.get(this.props, 'data.id', '')}\n`,
+              `attribute name: ${name}\n`,
+              `attribute value: ${value}\n`,
+              'error:\n',
               err
             )
           }
