@@ -4,7 +4,11 @@
 
 ## Released
 
-### 2.1.1
+### 2.1.1-beta.2
+
+- Per file imports are deprecated for react-router-dom
+
+### 2.1.1-beta.1
 
 - Remove deprecated `componentWillMount`
 

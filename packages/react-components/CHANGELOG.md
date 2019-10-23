@@ -4,7 +4,11 @@
 
 ## Release
 
-### 8.0.2
+### 8.0.2-beta.2
+
+- Per file imports are deprecated for react-router-dom
+
+### 8.0.2-beta.1
 
 - Remove deprecated `componentWillMount`
 

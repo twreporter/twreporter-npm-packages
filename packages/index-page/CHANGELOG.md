@@ -4,7 +4,12 @@
 
 ## Release
 
-### 1.0.5
+### 1.0.5-beta.2
+
+- Fix warning about setting state on unmounted component
+- Per file imports are deprecated for react-router-dom
+
+### 1.0.5-beta.1
 
 - Remove deprecated `componentWillMount`
 
