@@ -8,11 +8,16 @@
 
 - Fix warning about forwardRef as element type
 
+#### Update dependencies
+
+- `@twreporter/react-components@^8.0.2-beta.1` -> `^8.0.2-beta.2`
+- `@twreporter/universal-header@^2.1.1-beta.1` -> `^2.1.1-beta.2`
+
 ### 1.0.25-beta.1
 
 #### Update dependencies
 
-- `@twreporter/react-components@^8.0.1` -> `^8.0.2-beta.1"`
+- `@twreporter/react-components@^8.0.1` -> `^8.0.2-beta.1`
 - `@twreporter/universal-header@^2.1.0` -> `^2.1.1-beta.1`
 
 ### 1.0.24
