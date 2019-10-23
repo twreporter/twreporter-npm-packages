@@ -839,6 +839,32 @@
       {
         "alignment": "center",
         "content": [
+          {
+            "caption": "（資料來源／陳美霞：世界及台灣原住民族健康問題：歷史及政治經濟學的視野。台灣社會研究季刊，第97期，2014.12頁233。）",
+            "embeddedCode": "<script src=\"https://infograph.venngage.com/js/embed/v1/embed.js\" data-vg-id=\"GNqqC1Q5nNs\" data-title=\"衛促會-1\" data-w=\"700\" data-h=\"650\" data-multipage=\"true\" data-f=\"false\"></script>",
+            "embeddedCodeWithoutScript": "",
+            "scripts": [
+              {
+                "attribs": {
+                  "src": "https://infograph.venngage.com/js/embed/v1/embed.js",
+                  "data-vg-id": "GNqqC1Q5nNs",
+                  "data-title": "衛促會-1",
+                  "data-w": "700",
+                  "data-h": "650",
+                  "data-multipage": "true",
+                  "data-f": "false"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "3b0gq2",
+        "styles": {},
+        "type": "embedded-code"
+      },
+      {
+        "alignment": "center",
+        "content": [
           "為了寫這10集劇本，她大量閱讀（<!--__ANNOTATION__={\"text\":\"編按\",\"annotation\":\"<div>呂蒔媛推薦書單，請見<a target=\\\"_blank\\\" href=\\\"https://activity.books.com.tw/crosscat/show/A00000005529\\\">此網址</a></div>\",\"pureAnnotationText\":\"呂蒔媛推薦書單，請見此網址\"}--><!--編按-->）、大量田野調查，訪問了法官、律師、犯罪心理學教授、精神鑑定醫師、精神障礙者病友、記者、社工，將近40人，每一位採訪3個小時，打成逐字稿。她還跟了兩個死刑庭，也訪問了為鄭捷辯護的律師黃致豪，甚至寫信給被害者家屬希望訪談，雖然石沉大海。"
         ],
         "id": "6j04m",

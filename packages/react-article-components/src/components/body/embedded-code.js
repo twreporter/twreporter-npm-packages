@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import predefinedPropTypes from '../../constants/prop-types/body'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 import themeConst from '../../constants/theme'
 // lodash
@@ -54,28 +54,6 @@ function dispatchLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
-/**
- * Pick attributes that start with data and return them with a new object.
- * Example: ({ dataWidth: 100, dataPicId: 'xn3K8s' }) => ({ width: 100, picId: 'xn3K8s' })
- * Ref: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
- *
- * @param {Object} attributes attributes object with camelcased keys
- * @returns {Object} dataset object
- */
-function _pickDatasetFromAttribs(attributes) {
-  const dataset = {}
-  _.forEach(attributes, (value, key) => {
-    const reg = /^data[^a-z]/
-    if (reg.test(key)) {
-      const newKeyInDataset = key.replace(reg, matched =>
-        matched.substr(-1, 1).toLowerCase()
-      )
-      dataset[newKeyInDataset] = value
-    }
-  })
-  return dataset
-}
-
 export default class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
@@ -103,12 +81,22 @@ export default class EmbeddedCode extends React.PureComponent {
       _.forEach(scripts, script => {
         const scriptEle = document.createElement('script')
         const attribs = script.attribs
-        const dataset = _pickDatasetFromAttribs(attribs)
-        _.merge(scriptEle, attribs, {
-          dataset,
-          text: script.text || '',
-          onload: dispatchLoadEvent,
+        _.forEach(attribs, (value, name) => {
+          try {
+            scriptEle.setAttribute(name, value)
+          } catch (err) {
+            console.error(
+              'Failed to set an attribute to the embbeded script./n',
+              `embedded element id: ${_.get(this.props, 'data.id', '')}/n`,
+              `attribute name: ${name}/n`,
+              `attribute value: ${value}/n`,
+              'error:/n',
+              err
+            )
+          }
         })
+        scriptEle.text = script.text || ''
+        scriptEle.onload = dispatchLoadEvent
         node.appendChild(scriptEle)
       })
     }

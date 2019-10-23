@@ -151,7 +151,6 @@ const StyledHeaderTwo = styled(Headings.H2)`
 const embeddedCSS = css`
   ${clearFloatCSS}
   margin: ${mockup.margin.normal};
-  overflow: hidden;
   ${mq.tabletAndBelow`
     ${EmbeddedBlock} {
       text-align: center;

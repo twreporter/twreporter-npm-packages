@@ -4,6 +4,11 @@
 
 ## RELEASE
 
+### 1.0.25-beta.3
+
+- Refactor the attributes setting of embedded `script` elements
+- Remove `overflow:hidden` of embedded code
+
 ### 1.0.25-beta.2
 
 - Fix warning about forwardRef as element type
