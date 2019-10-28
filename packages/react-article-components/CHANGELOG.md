@@ -4,30 +4,17 @@
 
 ## RELEASE
 
-### 1.0.25-beta.4
+### 1.0.25
 
-- Fix line break typo `/n` -> `\n`
-
-### 1.0.25-beta.3
+#### Update embedded element
 
 - Refactor the attributes setting of embedded `script` elements
 - Remove `overflow:hidden` of embedded code
 
-### 1.0.25-beta.2
-
-- Fix warning about forwardRef as element type
-
 #### Update dependencies
 
-- `@twreporter/react-components@^8.0.2-beta.1` -> `^8.0.2-beta.2`
-- `@twreporter/universal-header@^2.1.1-beta.1` -> `^2.1.1-beta.2`
-
-### 1.0.25-beta.1
-
-#### Update dependencies
-
-- `@twreporter/react-components@^8.0.1` -> `^8.0.2-beta.1`
-- `@twreporter/universal-header@^2.1.0` -> `^2.1.1-beta.1`
+- `@twreporter/react-components@^8.0.1` -> `^8.0.2`
+- `@twreporter/universal-header@^2.1.0` -> `^2.1.1`
 
 ### 1.0.24
 
