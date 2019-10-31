@@ -4,6 +4,17 @@
 
 ## Release
 
+### 1.0.6-rc.1
+
+#### Notable Changes
+
+- dep upgrade:
+  - @twreporter/core: ^1.0.1 -> 1.1.2-rc.1
+
+#### Commits
+
+- [[8d709b9](https://github.com/twreporter/twreporter-npm-packages/commit/8d709b9d30552c5121d1a5d746fe89e6767e4883)] - [index-page] @twreporter/core: ^1.0.1 -> 1.1.2-rc.1
+
 ### 1.0.5
 
 - Remove deprecated React API `componentWillMount` and `componentWillReceiveProps`
