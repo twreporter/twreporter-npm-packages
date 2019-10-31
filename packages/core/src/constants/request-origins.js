@@ -31,6 +31,12 @@ const forServerSideRendering = {
     main: 'https://www.twreporter.org',
     support: 'https://support.twreporter.org',
   },
+  [releaseBranch.next]: {
+    accounts: 'https://next-accounts.twreporter.org',
+    api: 'http://go-api:8080',
+    main: 'https://next.twreporter.org',
+    support: 'https://next-support.twreporter.org',
+  },
 }
 
 const forClientSideRendering = {
@@ -53,6 +59,12 @@ const forClientSideRendering = {
     api: 'https://go-api.twreporter.org:443',
     main: forServerSideRendering[releaseBranch.release].main,
     support: forServerSideRendering[releaseBranch.release].support,
+  },
+  [releaseBranch.next]: {
+    accounts: forServerSideRendering[releaseBranch.next].accounts,
+    api: 'https://next-go-api.twreporter.org:443',
+    main: forServerSideRendering[releaseBranch.next].main,
+    support: forServerSideRendering[releaseBranch.next].support,
   },
 }
 
