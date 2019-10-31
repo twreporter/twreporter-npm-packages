@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### 1.1.2-rc.1
+
+#### Notable Changes
+
+- add `next` release branch and corresponding configs
+
+#### Commits
+
+- [[5d0370c](https://github.com/twreporter/twreporter-npm-packages/commit/5d0370cf1cb199c401ce2a06b4fbcf5f6176ad6b)] - add `next` release branch and related request origins(nickhsine)
+
 ## Release
 
 ### 1.1.1

@@ -4,6 +4,13 @@
 
 ## Release
 
+### 8.0.3-rc.1
+
+#### Notable Changes
+
+- dep upgrade:
+  - @twreporter/core: ^1.1.0 -> 1.1.2-rc.1
+
 ### 8.0.2
 
 - Remove deprecated React API `componentWillMount` and `componentWillReceiveProps`

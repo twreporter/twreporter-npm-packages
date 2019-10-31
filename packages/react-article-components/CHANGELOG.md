@@ -4,6 +4,13 @@
 
 ## RELEASE
 
+### 1.0.26-rc.1
+
+#### Notable Changes
+
+- dep upgrade:
+  - @twreporter/core: ^1.1.0 -> 1.1.2-rc.1
+
 ### 1.0.25
 
 #### Update embedded element
