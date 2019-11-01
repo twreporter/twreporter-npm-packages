@@ -11,7 +11,7 @@ export const channelPathnames = {
   [channelKeys.topics]: '/topics',
   [channelKeys.photography]: '/photography',
   [channelKeys.infographic]: '/categories/infographic',
-  [channelKeys.categories]: '/?section=categories',
+  [channelKeys.categories]: '/#categories',
 }
 
 export const channelLabels = {

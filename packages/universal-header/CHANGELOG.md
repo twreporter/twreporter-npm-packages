@@ -4,6 +4,14 @@
 
 ## Released
 
+### 2.1.2-rc.2
+
+- Update `categories` in `channelPathnames` from `/?section=categories` to `/#categories`
+
+#### Commits
+
+- [[72ff7f5](https://github.com/twreporter/twreporter-npm-packages/pull/63/commits/72ff7f5dd50798da5115d635a56f30c48be16509)] - [universal-header] Update constant of `categories` in `channelPathnames` (taylrj)
+
 ### 2.1.2-rc.1
 
 - dep upgrade:
