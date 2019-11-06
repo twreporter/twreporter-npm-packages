@@ -4,6 +4,10 @@
 
 ## Release
 
+### 1.0.6-rc.2
+
+- Set `fireOnRapidScroll` attribute of `Waypoint` to false
+
 ### 1.0.6-rc.1
 
 #### Notable Changes

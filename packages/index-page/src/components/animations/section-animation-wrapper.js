@@ -42,7 +42,7 @@ const SectionAnimationWrapper = WrappedComponent => {
       return (
         <Waypoint
           onEnter={this.startScrollAnimation}
-          fireOnRapidScroll
+          fireOnRapidScroll={false}
           topOffset="80%"
           bottomOffset="19%"
         >
