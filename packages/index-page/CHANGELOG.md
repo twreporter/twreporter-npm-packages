@@ -4,9 +4,24 @@
 
 ## Release
 
+### 1.0.6-rc.3
+
+#### Notable Changes
+
+- dep upgrade:
+  - @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2
+
+#### Commits
+
+- [[d6f4a42](https://github.com/twreporter/twreporter-npm-packages/pull/68/commits/d6f4a42d1fd5f830e7cf2091cbe1197f4bc03d50)] - [index-page] @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2(taylrj)
+
 ### 1.0.6-rc.2
 
 - Set `fireOnRapidScroll` attribute of `Waypoint` to false
+
+#### Commits
+
+- [[2858cb4](https://github.com/twreporter/twreporter-npm-packages/commit/2858cb40d52917d58228418dbf58b8156f3388a3)] - [index-page] Set `fireOnRapidScroll` attribute of `Waypoint` to false(taylrj)
 
 ### 1.0.6-rc.1
 
