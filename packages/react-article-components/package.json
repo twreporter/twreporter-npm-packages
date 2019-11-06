@@ -22,7 +22,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "@twreporter/core": "1.1.2-rc.1",
+    "@twreporter/core": "1.1.2-rc.2",
     "@twreporter/react-components": "8.0.3-rc.1",
     "@twreporter/redux": "^5.0.4",
     "@twreporter/universal-header": "2.1.2-rc.2",
