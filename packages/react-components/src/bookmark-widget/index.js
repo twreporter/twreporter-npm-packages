@@ -114,10 +114,10 @@ class BookmarkWidget extends React.PureComponent {
 
   checkIfThisArticleBookmarked() {
     const { bookmark } = this.props
-    if (bookmark) {
-      const isClient = typeof window !== 'undefined'
+    const isClient = typeof window !== 'undefined'
+    if (bookmark && isClient) {
       const hostFromWindow = getHostFromWindowLocation()
-      if (isClient && _.get(bookmark, 'host') !== hostFromWindow) {
+      if (_.get(bookmark, 'host') !== hostFromWindow) {
         /* Only check the consistency of `host` when client-side rendering. */
         console.warn(
           'Warning on checking bookmark status in `BookmarkWidget`:',
