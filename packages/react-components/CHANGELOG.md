@@ -4,6 +4,17 @@
 
 ## Release
 
+### 8.0.3-rc.2
+
+#### Notable Changes
+
+- dep upgrade:
+  - @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2
+
+#### Commits
+
+- [[3eb434d](https://github.com/twreporter/twreporter-npm-packages/commit/3eb434ddb8ab3ee148a413a7e42b7925d6ca5a27)] - @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2(taylrj)
+
 ### 8.0.3-rc.1
 
 #### Notable Changes
