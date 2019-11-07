@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+### 1.1.2-rc.2
+
+#### Notable Changes
+
+- Use `request-origins.js` constants in `sigin-in-href.js`
+
+#### Commits
+
+- [[44816b0](https://github.com/twreporter/twreporter-npm-packages/commit/44816b05e05bb8941b8174ec056ed1a4f91446f6)] - Use `request-origins.js` constants in `sigin-in-href.js`(taylrj)
+
 ### 1.1.2-rc.1
 
 #### Notable Changes

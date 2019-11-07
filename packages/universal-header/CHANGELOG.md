@@ -4,13 +4,26 @@
 
 ## Released
 
+### 2.1.2-rc.3
+
+- dep upgrade:
+  - @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2
+
+#### Commits
+
+- [[a5ad626](https://github.com/twreporter/twreporter-npm-packages/commit/a5ad626229ad995150c3beb0d26d2e6a70254a84)] - [universal-header] upgrade @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2(taylrj)
+
+#### Commits
+
+- [[1f14b29](https://github.com/twreporter/twreporter-npm-packages/commit/1f14b29912ae703bfea7ea55725f57abdfaf314e)] - [universal-header] Update constant of `categories` in `channelPathnames` (taylrj)
+
 ### 2.1.2-rc.2
 
 - Update `categories` in `channelPathnames` from `/?section=categories` to `/#categories`
 
 #### Commits
 
-- [[72ff7f5](https://github.com/twreporter/twreporter-npm-packages/pull/63/commits/72ff7f5dd50798da5115d635a56f30c48be16509)] - [universal-header] Update constant of `categories` in `channelPathnames` (taylrj)
+- [[1f14b29](https://github.com/twreporter/twreporter-npm-packages/commit/1f14b29912ae703bfea7ea55725f57abdfaf314e)] - [universal-header] Update constant of `categories` in `channelPathnames` (taylrj)
 
 ### 2.1.2-rc.1
 

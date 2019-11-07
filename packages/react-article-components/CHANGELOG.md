@@ -4,6 +4,21 @@
 
 ## RELEASE
 
+### 1.0.26-rc.2
+
+#### Notable Changes
+
+- dep upgrade:
+  - @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2
+  - @twreporter/react-components: 8.0.3-rc.1 -> 8.0.3-rc.2
+  - @twreporter/universal-header": 2.1.2-rc.2 -> 2.1.2-rc.3
+
+#### Commits
+
+- [[ac2e03a](https://github.com/twreporter/twreporter-npm-packages/commit/ac2e03ab52df3e6e9dc34b33c05e21bb3ceeb223)] - @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2(taylrj)
+- [[7dcb2a0](https://github.com/twreporter/twreporter-npm-packages/commit/7dcb2a0b90295db67092955bff9fecbf7551a714)] - @twreporter/universal-header: 2.1.2-rc.2 -> 2.1.2-rc.3 (taylrj)
+- [[e0edf3c](https://github.com/twreporter/twreporter-npm-packages/commit/e0edf3c1c3aa21ada3717d89a0a432e288deaf56)] - @twreporter/react-components: 8.0.3-rc.1 -> 8.0.3-rc.2 (taylrj)
+
 ### 1.0.26-rc.1
 
 #### Notable Changes
