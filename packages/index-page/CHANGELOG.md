@@ -13,7 +13,7 @@
 
 #### Commits
 
-- [[d6f4a42](https://github.com/twreporter/twreporter-npm-packages/pull/68/commits/d6f4a42d1fd5f830e7cf2091cbe1197f4bc03d50)] - [index-page] @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2(taylrj)
+- [[e4df8a8](https://github.com/twreporter/twreporter-npm-packages/commit/e4df8a85c71d48570196e55c389b9b455c8dbd39)] - [index-page] @twreporter/core: 1.1.2-rc.1 -> 1.1.2-rc.2(taylrj)
 
 ### 1.0.6-rc.2
 
