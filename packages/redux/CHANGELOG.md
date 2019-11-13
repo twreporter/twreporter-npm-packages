@@ -4,6 +4,16 @@
 
 ## Release
 
+### 5.0.7-rc.1
+
+#### Notable Changes
+
+- Export `auth` and `origins` reducers
+
+#### Commits
+
+- [[6acbbe9](https://github.com/twreporter/twreporter-npm-packages/commit/6acbbe9)] - Export `auth` and `origins` reducers(taylrj)
+
 ### 5.0.6
 
 - Update photo article style constant to v2
