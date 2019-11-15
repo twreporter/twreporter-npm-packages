@@ -4,6 +4,17 @@
 
 ## Release
 
+### 8.0.3-rc.3
+
+#### Notable Changes
+
+- Bug Fixes
+  - bookmark-widget error on ssr
+
+#### Commits
+
+- [[353339a](https://github.com/twreporter/twreporter-npm-packages/commit/353339a)] - fix: bookmark-widget error on ssr(taylrj)
+
 ### 8.0.3-rc.2
 
 #### Notable Changes
