@@ -23,9 +23,9 @@
   },
   "dependencies": {
     "@twreporter/core": "1.1.2-rc.2",
-    "@twreporter/react-components": "8.0.3-rc.2",
-    "@twreporter/redux": "^5.0.4",
-    "@twreporter/universal-header": "2.1.2-rc.3",
+    "@twreporter/react-components": "^8.0.3-rc.4",
+    "@twreporter/redux": "^5.0.7-rc.1",
+    "@twreporter/universal-header": "2.1.2-rc.6",
     "howler": "^2.1.1",
     "lodash": "^4.17.11",
     "memoize-one": "^5.0.5",
