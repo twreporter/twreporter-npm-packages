@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-article-components",
-  "version": "1.0.26-rc.2",
+  "version": "1.0.26-rc.5",
   "description": "The Reporter react article components, which are used in article page",
   "main": "lib/components/article-page.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
