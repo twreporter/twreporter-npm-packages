@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@twreporter/core": "1.1.2-rc.2",
-    "@twreporter/redux": "^5.0.4",
+    "@twreporter/redux": "^5.0.7-rc.1",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "querystring": "^0.2.0",
