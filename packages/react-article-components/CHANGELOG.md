@@ -4,6 +4,19 @@
 
 ## RELEASE
 
+### 1.0.26-rc.5
+
+#### Notable Changes
+
+- dep upgrade:
+  - @twreporter/react-components: 8.0.3-rc.2 -> 8.0.3-rc.4
+  - @twreporter/redux: 5.0.4 -> 5.0.7-rc.1
+  - @twreporter/universal-header: 2.1.2-rc.3 -> 2.1.2-rc.5
+
+#### Commits
+
+- [[13725b1](https://github.com/twreporter/twreporter-npm-packages/commit/13725b1)] - chore: [react-article-components] upgrade dependencies(taylrj)
+
 ### 1.0.26-rc.2
 
 #### Notable Changes

@@ -4,6 +4,15 @@
 
 ## Released
 
+### 2.1.2-rc.6
+
+- dep upgrade:
+  - @twreporter/redux: 5.0.4 -> 5.0.7-rc.1
+
+#### Commits
+
+- [[11adfd0](https://github.com/twreporter/twreporter-npm-packages/commit/11adfd0)] - @twreporter/redux: v5.0.4 -> v5.0.7-rc.1(taylrj)
+
 ### 2.1.2-rc.3
 
 - dep upgrade:
