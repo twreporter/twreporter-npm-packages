@@ -17,7 +17,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "make lint && make test"
+      "pre-push": "make lint && make test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -38,6 +39,8 @@
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-plugin-inline-react-svg": "1.1.0",
