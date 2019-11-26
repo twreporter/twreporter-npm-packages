@@ -9,9 +9,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 8.0.3-rc.5 (2019-11-26)
 
-### Bug Fixes
-
-- [react-components] bookmark-widget error on ssr ([353339a](https://github.com/twreporter/twreporter-npm-packages/commit/353339a259403ce1f9c8dfdeac92d0ac425f5739))
+**Note:** Version bump only for package @twreporter/react-components
 
 ### 8.0.3-rc.4
 
