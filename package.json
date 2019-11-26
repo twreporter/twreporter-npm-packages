@@ -11,8 +11,11 @@
   "scripts": {
     "dev": "make dev",
     "test": "make test",
+    "build": "make build",
+    "release": "make release",
     "dep-intersect": "babel-node dev/print-dep-intersections.js",
-    "build": "lerna run --stream --sort build"
+    "bump-prerelease-version": "lerna version --conventional-commits --conventional-prerelease",
+    "bump-stable-version": "lerna version --conventional-commits --conventional-graduate"
   },
   "husky": {
     "hooks": {

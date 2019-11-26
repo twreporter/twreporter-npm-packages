@@ -1,8 +1,7 @@
-# CHANGELOG
+# Change Log
 
-## UNRELEASED
-
-## RELEASE
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ### 1.0.26-rc.5
 

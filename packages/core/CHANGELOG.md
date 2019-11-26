@@ -1,6 +1,7 @@
-# CHANGELOG
+# Change Log
 
-## Unreleased
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ### 1.1.2-rc.2
 
@@ -21,8 +22,6 @@
 #### Commits
 
 - [[5d0370c](https://github.com/twreporter/twreporter-npm-packages/commit/5d0370cf1cb199c401ce2a06b4fbcf5f6176ad6b)] - add `next` release branch and related request origins(nickhsine)
-
-## Release
 
 ### 1.1.1
 
