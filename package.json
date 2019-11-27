@@ -11,12 +11,17 @@
   "scripts": {
     "dev": "make dev",
     "test": "make test",
-    "dep-intersect": "babel-node dev/print-dep-intersections.js"
+    "build": "make build",
+    "release": "make release",
+    "dep-intersect": "babel-node dev/print-dep-intersections.js",
+    "bump-prerelease-version": "lerna version --conventional-commits --conventional-prerelease --preid rc",
+    "bump-stable-version": "lerna version --conventional-commits --conventional-graduate"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "make lint && make test"
+      "pre-push": "make lint && make test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -37,6 +42,8 @@
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-plugin-inline-react-svg": "1.1.0",
@@ -52,6 +59,7 @@
     "eslint-plugin-standard": "4.0.0",
     "husky": "^1.3.1",
     "jest": "^24.8.0",
+    "lerna": "^3.19.0",
     "lint-staged": "^8.1.5",
     "prettier": "1.18.2",
     "rimraf": "^2.6.3",

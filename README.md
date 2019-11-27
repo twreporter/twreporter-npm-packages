@@ -148,20 +148,50 @@ make dev
 
 This will `yarn install` the packages and run `make dev` at each subfolder.
 
-## Build and Publish
+## Versioning
 
-We do not use tools like [Lerna](https://github.com/lerna/lerna) to manage package version and publish process currently. So if some of the packages are updated at the same time, we need to update the dependencies among them and publish them manually.
-
-The reason of not using the tool is that the packages in this repo are few and the relation among them is still simple. If the amount of packages arises or the inter-dependency becomes complicated, we can apply the tool at any time.
+We use [Lerna](https://github.com/lerna/lerna) to independently bump version of each package changed since the previous tagged release.
 
 ```bash
-# at any <subfolder>
-make build
-# after build
-npm publish
+# bump a pre-release version
+# e.g. 1.0.0-rc.1 -> 1.0.0-rc.2
+npm run bump-prerelease-version
+
+# bump a stable version
+# graduate prerelease versioned packages to stable versions
+# e.g. 1.0.0-rc.2 -> 1.0.0
+npm run bump-stable-version
 ```
 
+When run, these commands do the following:
+
+1. Identifies packages that have been updated since the previous tagged release.
+2. Prompts for new versions of updated packages.
+3. Modifies package metadata to reflect new release.
+4. Commits those changes and tags the commit.
+5. Pushes to the git remote.
+
+The [Conventional Commits Specification](https://www.conventionalcommits.org/en/v1.0.0/) is applied here to determine which version to bump (major, minor, or patch) and generate `CHANGELOG.md` files to each package. For further usage, please check [documentation of Lerna](https://github.com/lerna/lerna/tree/master/commands/version#positionals)
+
+## Build and Publish
+
+We use [Lerna](https://github.com/lerna/lerna) to manage package build and publish process. If some of the packages are updated at the same time, [Lerna](https://github.com/lerna/lerna) will make sure all tasks execute on packages in topologically sorted order as to respect the dependency relationships.
+
 ```bash
-# at root folder, it will run `make build` at each subfolder
+# at root folder, it will run the npm script in each package which contains that script
 make build
+```
+
+After it is built, `Lerna` can explicitly publish packages tagged in the current commit.
+
+```bash
+# after build
+make publish
+```
+
+Run both `build` and `publish` sequentially
+
+```bash
+# make build & make publish
+make release
 ```

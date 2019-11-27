@@ -1,8 +1,15 @@
-# CHANGELOG
+# Change Log
 
-## UNRELEASED
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## RELEASE
+## [1.0.26](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.0.26-rc.6...@twreporter/react-article-components@1.0.26) (2019-11-26)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+## 1.0.26-rc.6 (2019-11-26)
+
+**Note:** Version bump only for package @twreporter/react-article-components
 
 ### 1.0.26-rc.5
 

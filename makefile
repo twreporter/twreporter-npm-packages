@@ -36,8 +36,15 @@ check-dep:
 dev: check-dep
 	MAKE_TARGET=dev make subdirs-job $(MAKE_FLAG)
 
-build: check-dep
-	MAKE_TARGET=build make subdirs-job $(MAKE_FLAG)
+build:
+	@echo "$(P) Run build"
+	$(BIN_DIR)/lerna run --stream --sort build
+
+publish:
+	@echo "$(P) Run publish"
+	$(BIN_DIR)/lerna publish from-git
+
+release: build publish
 
 clean:
 	MAKE_TARGET=clean make subdirs-job $(MAKE_FLAG)
