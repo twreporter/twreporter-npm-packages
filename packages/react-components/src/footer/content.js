@@ -25,7 +25,6 @@ function getItemGroups(mainOrigin) {
         text: '關於我們',
         link: `${mainOrigin}${entityPaths.aboutus}`,
         target: '_blank',
-        newFlag: true,
       },
       {
         slug: 'contact',
@@ -38,6 +37,13 @@ function getItemGroups(mainOrigin) {
         text: '作者群',
         link: `${mainOrigin}/authors`,
         target: '_self',
+      },
+      {
+        slug: 'impact-and-annual-report',
+        text: '影響力報告',
+        link: `${mainOrigin}${entityPaths.article}impact-and-annual-report`,
+        target: '_self',
+        newFlag: true,
       },
     ],
     [
@@ -59,6 +65,12 @@ function getItemGroups(mainOrigin) {
         link: `${mainOrigin}${entityPaths.article}credit-donate`,
         target: '_blank',
       },
+      {
+        slug: 'download-ijm-brochure',
+        text: '調查報導手冊',
+        link: externalLinks.IJMBrochureDownloadLink,
+        target: '_blank',
+      },
     ],
     [
       {
@@ -77,12 +89,6 @@ function getItemGroups(mainOrigin) {
         slug: 'subcribe',
         text: '訂閱電子報',
         link: externalLinks.newsLetter,
-        target: '_blank',
-      },
-      {
-        slug: 'download-ijm-brochure',
-        text: '下載調查報導手冊',
-        link: externalLinks.IJMBrochureDownloadLink,
         target: '_blank',
       },
     ],
