@@ -1,5 +1,7 @@
-import mq from '@twreporter/core/lib/utils/media-query'
 import DonationLink from '@twreporter/react-components/lib/donation-link-with-utm'
+import DynamicComponentsContext from '../contexts/dynamic-components-context'
+import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedCss from '../constants/css'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import typography from '../constants/typography'
@@ -43,6 +45,7 @@ const Text = styled.p`
   font-size: 16px;
   line-height: 1.75;
   color: #262626;
+  ${predefinedCss.linkChildren}
 `
 
 const Donate = styled.div`
@@ -81,6 +84,16 @@ export default class DonationBox extends PureComponent {
       <Container>
         <Title>{_content.title}</Title>
         <Text>{_content.desc}</Text>
+        <Text>
+          報導後續影響，可參考
+          <DynamicComponentsContext.Consumer>
+            {components => (
+              <components.Link to="/a/impact-and-annual-report" target="_blank">
+                《報導者》影響力報告
+              </components.Link>
+            )}
+          </DynamicComponentsContext.Consumer>
+        </Text>
         <Donate>
           <DonationLink utmMedium="article">
             <p>{_content.bt}</p>
