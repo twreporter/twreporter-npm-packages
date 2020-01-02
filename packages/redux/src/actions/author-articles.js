@@ -30,7 +30,6 @@ export function requestAuthorCollection(authorId) {
 }
 
 export function failToReceiveAuthorCollection(authorId, error) {
-  console.log(error)
   return {
     type: actionTypes.FETCH_AUTHOR_COLLECTION_FAILURE,
     authorId,
