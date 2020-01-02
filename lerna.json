@@ -8,7 +8,7 @@
       "ignoreChanges": ["*.md"],
       "verifyAccess": false,
       "verifyRegistry": false,
-      "message": "chore: bump version"
+      "message": "chore(release): bump version"
     }
   }
 }
