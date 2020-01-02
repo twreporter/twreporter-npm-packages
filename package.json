@@ -14,7 +14,7 @@
     "build": "make build",
     "release": "make release",
     "dep-intersect": "babel-node dev/print-dep-intersections.js",
-    "bump-prerelease-version": "lerna version --conventional-commits --conventional-prerelease --preid rc",
+    "bump-prerelease-version": "lerna version --conventional-commits --conventional-prerelease --preid rc --include-merged-tags",
     "bump-stable-version": "lerna version --conventional-commits --conventional-graduate"
   },
   "husky": {
