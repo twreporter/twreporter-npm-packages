@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.8-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@5.0.7...@twreporter/redux@5.0.8-rc.0) (2020-01-02)
+
+**Note:** Version bump only for package @twreporter/redux
+
 ## [5.0.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@5.0.7-rc.2...@twreporter/redux@5.0.7) (2019-11-26)
 
 **Note:** Version bump only for package @twreporter/redux
