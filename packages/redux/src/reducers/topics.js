@@ -75,7 +75,6 @@ export function topics(state = {}, action = {}) {
     }
 
     case types.START_TO_GET_TOPICS:
-      console.log('url to fetch:', action.url)
       return _.merge({}, state, {
         // page: action.page,
         // nPerPage: action.nPerPage,

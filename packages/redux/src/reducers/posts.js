@@ -89,11 +89,9 @@ export function posts(state = {}, action = {}) {
     }
 
     case types.START_TO_GET_POSTS:
-      console.log('url to fetch:', action.url)
       return state
 
     case types.ERROR_TO_GET_POSTS:
-      console.warn(`${action.type} : ${action.errorMsg.toString()}`)
       return state
     default:
       return state
