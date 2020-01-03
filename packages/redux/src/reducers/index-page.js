@@ -84,7 +84,6 @@ function indexPage(state = {}, action = {}) {
     }
 
     case types.START_TO_GET_INDEX_PAGE_CONTENT: {
-      console.log('url to fetch:', action.url)
       return _.merge({}, state, {
         isFetching: true,
       })

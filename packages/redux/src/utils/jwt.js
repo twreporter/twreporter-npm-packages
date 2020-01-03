@@ -15,7 +15,7 @@ function decodePayload(jwt) {
     const payload = _.get(jwt.split('.'), 1)
     return JSON.parse(Buffer.from(payload, 'base64').toString('utf8'))
   } catch (err) {
-    console.warn('extract payload from jwt error: ', err) // eslint-disable-line
+    console.error('extract payload from jwt error: ', err) // eslint-disable-line
     return null
   }
 }
