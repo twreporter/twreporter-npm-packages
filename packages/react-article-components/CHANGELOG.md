@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.0.27...@twreporter/react-article-components@1.1.0) (2020-01-06)
+
+### Features
+
+- **react-article-components:** add annual report ([6f27643](https://github.com/twreporter/twreporter-npm-packages/commit/6f2764308fab77b0d16f5a7ef474c8b51645b1bf))
+
 ## [1.0.27](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.0.27-rc.1...@twreporter/react-article-components@1.0.27) (2020-01-03)
 
 **Note:** Version bump only for package @twreporter/react-article-components
