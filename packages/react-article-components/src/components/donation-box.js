@@ -45,6 +45,10 @@ const Text = styled.p`
   font-size: 16px;
   line-height: 1.75;
   color: #262626;
+  margin-bottom: 0.5em;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
   ${predefinedCss.linkChildren}
 `
 
@@ -93,6 +97,7 @@ export default class DonationBox extends PureComponent {
               </components.Link>
             )}
           </DynamicComponentsContext.Consumer>
+          。
         </Text>
         <Donate>
           <DonationLink utmMedium="article">
