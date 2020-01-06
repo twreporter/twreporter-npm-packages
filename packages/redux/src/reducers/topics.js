@@ -22,7 +22,7 @@ export function topic(state = {}, action = {}) {
     case types.GET_A_FULL_TOPIC:
     case types.CHANGE_SELECTED_TOPIC: {
       return _.merge({}, state, {
-        slug: _.get(action, 'payload.slug'),
+        slug: _.get(action, 'payload.topic.slug'),
         error: null,
         isFetching: false,
       })

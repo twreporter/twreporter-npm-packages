@@ -91,4 +91,8 @@ export default {
   settings: {
     changeFontLevel: 'change font level',
   },
+
+  dataAlreadyExists: 'data already exists',
+  noMoreItemsToFetch: 'no more items to fetch',
+  lastActionIsStillProcessing: 'last action is still processing',
 }

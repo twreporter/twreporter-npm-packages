@@ -1,23 +1,18 @@
 /* global expect, test, describe, afterEach */
 import {
   responseObjSet,
-  currentDate,
   mockResponseSet,
   mockDefaultStates,
   mockSearchParasSet,
   constKeywords,
 } from './mocks/authors.js'
+import { expectActionErrorObj } from './expect-utils'
 import { NUMBER_OF_FIRST_RESPONSE_PAGE } from '../../constants/authors-list'
 import * as actions from '../../../src/actions/authors'
 import types from '../../constants/action-types'
 import configureMockStore from 'redux-mock-store'
 import nock from 'nock'
 import thunk from 'redux-thunk'
-import keys from 'lodash/keys'
-
-const _ = {
-  keys,
-}
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -33,71 +28,27 @@ function checker({
 }) {
   const store = mockStore(mockDefaultState)
   return store.dispatch(actions.searchAuthorsIfNeeded(keywords)).then(() => {
-    const actionReq = store.getActions()[0]
-    const actionSuc = store.getActions()[1]
-
-    const expectedActions = [
+    const expected = [
       {
         type: typeReq,
-        keywords,
+        payload: {
+          keywords,
+        },
       },
       {
         type: typeSuc,
-        keywords,
-        normalizedData: mockResponse.normalizedData,
-        totalPages: mockResponse.totalPages,
-        currentPage: mockResponse.currentPage,
-        receivedAt: currentDate,
+        payload: {
+          keywords,
+          normalizedData: mockResponse.normalizedData,
+          totalPages: mockResponse.totalPages,
+          currentPage: mockResponse.currentPage,
+          receivedAt: expect.any(Number),
+        },
       },
     ]
 
-    expect(actionReq).toEqual(expectedActions[0])
-    expect(_.keys(actionSuc)).toEqual(
-      expect.arrayContaining(_.keys(expectedActions[1]))
-    )
-    expect(_.keys(expectedActions[1])).toEqual(
-      expect.arrayContaining(_.keys(actionSuc))
-    )
-    expect(actionSuc.type).toEqual(expectedActions[1].type)
-    expect(actionSuc.keywords).toEqual(expectedActions[1].keywords)
-    expect(actionSuc.normalizedData).toEqual(expectedActions[1].normalizedData)
-    expect(typeof actionSuc.receivedAt).toBe('number')
-  })
-}
-
-const failChecker = ({
-  mockDefaultState,
-  keywords,
-  typeReq,
-  typeFail,
-  error,
-}) => {
-  const store = mockStore(mockDefaultState)
-  return store.dispatch(actions.searchAuthorsIfNeeded(keywords)).then(() => {
-    const actionReq = store.getActions()[0]
-    const actionFail = store.getActions()[1]
-    const expectedActions = [
-      {
-        type: typeReq,
-        keywords,
-      },
-      {
-        type: typeFail,
-        error,
-        failedAt: Date.now(),
-      },
-    ]
-
-    expect(actionReq).toEqual(expectedActions[0])
-    expect(_.keys(actionFail)).toEqual(
-      expect.arrayContaining(_.keys(expectedActions[1]))
-    )
-    expect(_.keys(expectedActions[1])).toEqual(
-      expect.arrayContaining(_.keys(actionFail))
-    )
-    expect(actionFail.type).toEqual(expectedActions[1].type)
-    expect(typeof actionFail.failedAt).toBe('number')
-    expect(actionFail.error.code).toBe(true)
+    expect(store.getActions()[0]).toEqual(expected[0])
+    expect(store.getActions()[1]).toEqual(expected[1])
   })
 }
 
@@ -159,14 +110,55 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
       })
 
       describe('Want to load more pages but Algolia has no more', () => {
-        test('should handle the resolved promise (the running tset should be finished)', () => {
+        test('should handle the resolved promise (the running test should be finished)', () => {
           const keywords = ''
           const mockDefaultState = mockDefaultStates.gotNothing
           const store = mockStore(mockDefaultState)
           return store
             .dispatch(actions.searchAuthorsIfNeeded(keywords))
-            .then(val => {
-              expect(val).toBe('Promise Resolved')
+            .then(result => {
+              const expected = {
+                type: types.noMoreItemsToFetch,
+                payload: {
+                  function: actions.searchAuthorsIfNeeded.name,
+                  arguments: {
+                    currentKeywords: keywords,
+                  },
+                  message: expect.any(String),
+                },
+              }
+              expect(store.getActions().length).toBe(1)
+              expect(store.getActions()[0]).toEqual(expected)
+              expect(result).toEqual(expected)
+            })
+        })
+      })
+
+      describe('Want to load more pages but last request is processing', () => {
+        test('should handle the resolved promise (the running test should be finished)', () => {
+          const keywords = ''
+          const store = mockStore({
+            authorsList: {
+              isFetching: true,
+              hasMore: true,
+            },
+          })
+          return store
+            .dispatch(actions.searchAuthorsIfNeeded(keywords))
+            .then(result => {
+              const expected = {
+                type: types.lastActionIsStillProcessing,
+                payload: {
+                  function: actions.searchAuthorsIfNeeded.name,
+                  arguments: {
+                    currentKeywords: keywords,
+                  },
+                  message: expect.any(String),
+                },
+              }
+              expect(store.getActions().length).toBe(1)
+              expect(store.getActions()[0]).toEqual(expected)
+              expect(result).toEqual(expected)
             })
         })
       })
@@ -179,22 +171,44 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
           ...mockSearchParasSet.keyNullSearchParas,
           page: NUMBER_OF_FIRST_RESPONSE_PAGE,
         }
+        const mockStatusCode = 500
+        const mockAPIRes = {
+          message: 'internal server error',
+          status: 'error',
+        }
         nock('http://localhost:8080')
           .get('/v1/search/authors')
           .query(searchParas)
-          .replyWithError({
-            message: 'this is error message for testing',
-            code: true,
-          })
+          .reply(mockStatusCode, mockAPIRes)
 
-        const checkerParas = {
-          mockDefaultState,
-          keywords,
-          typeReq: types.LIST_ALL_AUTHORS_REQUEST,
-          typeFail: types.LIST_ALL_AUTHORS_FAILURE,
-          error: true,
-        }
-        return failChecker(checkerParas)
+        const store = mockStore(mockDefaultState)
+        return store
+          .dispatch(actions.searchAuthorsIfNeeded(keywords))
+          .catch(failAction => {
+            const expected = [
+              {
+                type: types.LIST_ALL_AUTHORS_REQUEST,
+                payload: {
+                  keywords,
+                },
+              },
+              {
+                type: types.LIST_ALL_AUTHORS_FAILURE,
+                payload: {
+                  error: expect.any(Error),
+                  failedAt: expect.any(Number),
+                },
+              },
+            ]
+            expect(store.getActions()[0]).toEqual(expected[0])
+            expect(store.getActions()[1]).toEqual(failAction)
+            expect(store.getActions()[1]).toEqual(expected[1])
+            expectActionErrorObj(
+              store.getActions()[1].payload.error,
+              mockStatusCode,
+              mockAPIRes
+            )
+          })
       })
     })
   })
@@ -228,14 +242,26 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
       })
 
       describe('keywords are same', () => {
-        test('should handle the resolved promise (the running tset should be finished)', () => {
+        test('should handle the resolved promise (the running test should be finished)', () => {
           const keywords = constKeywords
           const mockDefaultState = mockDefaultStates.hasPreviousKeywords
           const store = mockStore(mockDefaultState)
           return store
             .dispatch(actions.searchAuthorsIfNeeded(keywords))
-            .then(val => {
-              expect(val).toBe('Promise Resolved')
+            .then(result => {
+              const expected = {
+                type: types.dataAlreadyExists,
+                payload: {
+                  function: actions.searchAuthorsIfNeeded.name,
+                  arguments: {
+                    currentKeywords: keywords,
+                  },
+                  message: expect.any(String),
+                },
+              }
+              expect(store.getActions().length).toBe(1)
+              expect(store.getActions()[0]).toEqual(expected)
+              expect(result).toEqual(expected)
             })
         })
       })
@@ -249,22 +275,44 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
           ...mockSearchParasSet.keyWithValueParas,
           page: NUMBER_OF_FIRST_RESPONSE_PAGE,
         }
+        const mockStatusCode = 500
+        const mockAPIRes = {
+          message: 'internal server error',
+          status: 'error',
+        }
         nock('http://localhost:8080')
           .get('/v1/search/authors')
           .query(searchParas)
-          .replyWithError({
-            message: 'this is error message for testing',
-            code: true,
-          })
+          .reply(mockStatusCode, mockAPIRes)
 
-        const checkerParas = {
-          mockDefaultState,
-          keywords,
-          typeReq: types.SEARCH_AUTHORS_REQUEST,
-          typeFail: types.SEARCH_AUTHORS_FAILURE,
-          error: true,
-        }
-        return failChecker(checkerParas)
+        const store = mockStore(mockDefaultState)
+        return store
+          .dispatch(actions.searchAuthorsIfNeeded(keywords))
+          .catch(failAction => {
+            const expected = [
+              {
+                type: types.SEARCH_AUTHORS_REQUEST,
+                payload: {
+                  keywords,
+                },
+              },
+              {
+                type: types.SEARCH_AUTHORS_FAILURE,
+                payload: {
+                  error: expect.any(Error),
+                  failedAt: expect.any(Number),
+                },
+              },
+            ]
+            expect(store.getActions()[0]).toEqual(expected[0])
+            expect(store.getActions()[1]).toEqual(failAction)
+            expect(store.getActions()[1]).toEqual(expected[1])
+            expectActionErrorObj(
+              store.getActions()[1].payload.error,
+              mockStatusCode,
+              mockAPIRes
+            )
+          })
       })
     })
   })
@@ -277,39 +325,43 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
         ...mockSearchParasSet.keyNullSearchParas,
         page: NUMBER_OF_FIRST_RESPONSE_PAGE,
       }
+      const mockStatusCode = 404
+      const mockAPIRes = {
+        status: 'fail',
+        data: null,
+      }
       nock('http://localhost:8080')
         .get('/v1/search/authors')
         .query(searchParas)
-        .reply(404)
+        .reply(mockStatusCode, mockAPIRes)
 
       const store = mockStore(mockDefaultState)
       return store
         .dispatch(actions.searchAuthorsIfNeeded(keywords))
-        .then(() => {
-          const actionReq = store.getActions()[0]
-          const actionFail = store.getActions()[1]
-          const expectedActions = [
+        .catch(failAction => {
+          const expected = [
             {
               type: types.LIST_ALL_AUTHORS_REQUEST,
-              keywords,
+              payload: {
+                keywords,
+              },
             },
             {
               type: types.LIST_ALL_AUTHORS_FAILURE,
-              error: Error,
-              failedAt: Date.now(),
+              payload: {
+                error: expect.any(Error),
+                failedAt: expect.any(Number),
+              },
             },
           ]
-
-          expect(actionReq).toEqual(expectedActions[0])
-          expect(_.keys(actionFail)).toEqual(
-            expect.arrayContaining(_.keys(expectedActions[1]))
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(failAction)
+          expect(store.getActions()[1]).toEqual(expected[1])
+          expectActionErrorObj(
+            store.getActions()[1].payload.error,
+            mockStatusCode,
+            mockAPIRes
           )
-          expect(_.keys(expectedActions[1])).toEqual(
-            expect.arrayContaining(_.keys(actionFail))
-          )
-          expect(actionFail.type).toEqual(expectedActions[1].type)
-          expect(typeof actionFail.failedAt).toBe('number')
-          expect(actionFail.error).toBeInstanceOf(expectedActions[1].error)
         })
     })
   })

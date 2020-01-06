@@ -9,6 +9,7 @@
     fetchInfographicPostsOnIndexPage
 */
 
+import { expectActionErrorObj } from './expect-utils'
 import { formURL } from '../../utils/url'
 import * as actions from '../posts'
 import configureMockStore from 'redux-mock-store'
@@ -74,10 +75,16 @@ describe('Testing fetchAFullPost:', () => {
           api: 'http://localhost:8080',
         },
       })
-      store.dispatch(actions.fetchAFullPost(mockSlug))
-      expect(store.getActions().length).toBe(1)
-      expect(store.getActions()[0].type).toBe(types.CHANGE_SELECTED_POST)
-      expect(store.getActions()[0].payload).toEqual(mockPost)
+      return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
+        const expected = {
+          type: types.CHANGE_SELECTED_POST,
+          payload: {
+            post: mockPost,
+          },
+        }
+        expect(store.getActions().length).toBe(1)
+        expect(store.getActions()[0]).toEqual(expected)
+      })
     })
     test('Do nothing if selected post slug is the same as the post slug we want to fetch', () => {
       const mockSlug = 'mock-slug'
@@ -102,8 +109,21 @@ describe('Testing fetchAFullPost:', () => {
           api: 'http://localhost:8080',
         },
       })
-      store.dispatch(actions.fetchAFullPost(mockSlug))
-      expect(store.getActions().length).toBe(0)
+      const expected = {
+        type: types.dataAlreadyExists,
+        payload: {
+          function: actions.fetchAFullPost.name,
+          arguments: {
+            slug: mockSlug,
+          },
+          message: expect.any(String),
+        },
+      }
+      return store.dispatch(actions.fetchAFullPost(mockSlug)).then(result => {
+        expect(result).toEqual(expected)
+        expect(store.getActions().length).toBe(1)
+        expect(store.getActions()[0]).toEqual(expected)
+      })
     })
   })
   describe('It loads a full post successfully', () => {
@@ -133,32 +153,33 @@ describe('Testing fetchAFullPost:', () => {
         },
       }
 
-      const expectedRequestAction = {
-        type: types.START_TO_GET_A_FULL_POST,
-        payload: {
-          slug: mockSlug,
-        },
-      }
-      const expectedSuccessAction = {
-        type: types.GET_A_FULL_POST,
-        payload: {
-          id: 'mock-id',
-          slug: 'mock-slug',
-          style: 'article',
-          full: false,
-        },
-      }
       nock(mockApiHost)
         .get(`/v1/posts/${mockSlug}?full=true`)
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
+        const expected = [
+          {
+            type: types.START_TO_GET_A_FULL_POST,
+            payload: {
+              slug: mockSlug,
+            },
+          },
+          {
+            type: types.GET_A_FULL_POST,
+            payload: {
+              post: {
+                id: 'mock-id',
+                slug: 'mock-slug',
+                style: 'article',
+                full: false,
+              },
+            },
+          },
+        ]
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0]).toEqual(expectedRequestAction)
-        expect(store.getActions()[1].type).toBe(expectedSuccessAction.type)
-        expect(store.getActions()[1].payload).toEqual(
-          expectedSuccessAction.payload
-        )
+        expect(store.getActions()[0]).toEqual(expected[0])
+        expect(store.getActions()[1]).toEqual(expected[1])
       })
     })
   })
@@ -170,22 +191,43 @@ describe('Testing fetchAFullPost:', () => {
         },
       })
       const mockSlug = 'mock-slug'
-      const expectedRequestAction = {
-        type: types.START_TO_GET_A_FULL_POST,
-        payload: {
-          slug: mockSlug,
-        },
+      const mockStatusCode = 404
+      const mockAPIRes = {
+        status: 'fail',
+        data: null,
       }
       nock(mockApiHost)
         .get(`/v1/posts/${mockSlug}?full=true`)
-        .reply(404)
+        .reply(mockStatusCode, mockAPIRes)
 
-      return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
-        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && FAILURE
-        expect(store.getActions()[0]).toEqual(expectedRequestAction)
-        expect(store.getActions()[1].type).toBe(types.ERROR_TO_GET_A_FULL_POST)
-        expect(store.getActions()[1].payload.error).toBeInstanceOf(Error)
-      })
+      return store
+        .dispatch(actions.fetchAFullPost(mockSlug))
+        .catch(failAction => {
+          const expected = [
+            {
+              type: types.START_TO_GET_A_FULL_POST,
+              payload: {
+                slug: mockSlug,
+              },
+            },
+            {
+              type: types.ERROR_TO_GET_A_FULL_POST,
+              payload: {
+                error: expect.any(Error),
+                slug: mockSlug,
+              },
+            },
+          ]
+          expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && FAILURE
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(failAction)
+          expect(store.getActions()[1]).toEqual(expected[1])
+          expectActionErrorObj(
+            store.getActions()[1].payload.error,
+            mockStatusCode,
+            mockAPIRes
+          )
+        })
     })
   })
 })
@@ -221,21 +263,24 @@ describe('Testing fetchListedPosts:', () => {
           api: 'http://localhost:8080',
         },
       })
-      expect.assertions(2)
+      expect.assertions(3)
       return store
         .dispatch(actions.fetchListedPosts(...mockArgs))
         .then(result => {
-          expect(store.getActions().length).toBe(0) // no action is dispatched
-          expect(result).toBeUndefined()
+          const expected = {
+            type: types.noMoreItemsToFetch,
+          }
+          expect(store.getActions().length).toBe(1)
+          expect(result).toEqual(expected)
+          expect(store.getActions()[0]).toEqual(expected)
         })
     })
     test('Items of page are already fetched', () => {
-      const mockArgs = [
-        'mock_target_uuid', // listID
-        'categories', // type
-        10, // limit
-        1, // page
-      ]
+      const listID = 'mock_target_uuid'
+      const listType = 'categories'
+      const limit = 10
+      const page = 1
+      const mockArgs = [listID, listType, limit, page]
       const store = mockStore({
         lists: {
           mock_target_uuid: {
@@ -254,8 +299,22 @@ describe('Testing fetchListedPosts:', () => {
       return store
         .dispatch(actions.fetchListedPosts(...mockArgs))
         .then(result => {
-          expect(store.getActions().length).toBe(0) // no action is dispatched
-          expect(result).toBeUndefined()
+          const expected = {
+            type: types.dataAlreadyExists,
+            payload: {
+              function: actions.fetchListedPosts.name,
+              arguments: {
+                listID,
+                listType,
+                limit,
+                page,
+              },
+              message: expect.any(String),
+            },
+          }
+          expect(store.getActions().length).toBe(1)
+          expect(result).toEqual(expected)
+          expect(store.getActions()[0]).toEqual(expected)
         })
     })
   })
@@ -405,10 +464,15 @@ describe('Testing fetchListedPosts:', () => {
   })
   describe('If the api returns a failure', () => {
     test('Should dispatch types.START_TO_GET_POSTS and types.ERROR_TO_GET_POSTS', () => {
+      const mock = {
+        listID: 'mock_target_uuid',
+        type: 'categories',
+        limit: 1,
+      }
       const mockArgs = [
-        'mock_target_uuid', // listID
-        'categories', // type
-        1, // limit
+        mock.listID, // listID
+        mock.type, // type
+        mock.limit, // limit
       ]
       const store = mockStore({
         // empty lists
@@ -419,27 +483,43 @@ describe('Testing fetchListedPosts:', () => {
       })
       const mockPath = '/v1/posts'
       const mockQuery = {
-        where: '{"categories":{"in":["mock_target_uuid"]}}',
-        limit: 1,
+        where: `{"${mock.type}":{"in":["${mock.listID}"]}}`,
+        limit: mock.limit,
         offset: 0,
       }
       const mockUrl = formURL('http://localhost:8080', mockPath, mockQuery)
-      const expectedRequestAction = {
-        type: types.START_TO_GET_POSTS,
-        url: mockUrl,
-      }
-      const expectedFailedAction = {
-        type: types.ERROR_TO_GET_LISTED_POSTS,
+      const mockStatusCode = 404
+      const mockAPIRes = {
+        status: 'fail',
+        data: null,
       }
       nock(mockApiHost)
         .get(mockPath)
         .query(mockQuery)
-        .reply(404, {})
-      return store.dispatch(actions.fetchListedPosts(...mockArgs)).then(() => {
+        .reply(mockStatusCode, mockAPIRes)
+      return store.dispatch(actions.fetchListedPosts(...mockArgs)).catch(() => {
+        const expected = [
+          {
+            type: types.START_TO_GET_POSTS,
+            url: mockUrl,
+          },
+          {
+            type: types.ERROR_TO_GET_LISTED_POSTS,
+            payload: {
+              error: expect.any(Error),
+              listID: mock.listID,
+              page: 0,
+            },
+          },
+        ]
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0]).toEqual(expectedRequestAction)
-        expect(store.getActions()[1].type).toBe(expectedFailedAction.type)
-        expect(store.getActions()[1].error).toBeInstanceOf(Error)
+        expect(store.getActions()[0]).toEqual(expected[0])
+        expect(store.getActions()[1]).toEqual(expected[1])
+        expectActionErrorObj(
+          store.getActions()[1].payload.error,
+          mockStatusCode,
+          mockAPIRes
+        )
       })
     })
   })
@@ -470,8 +550,16 @@ describe('Testing fetchEditorPickedPosts:', () => {
         },
       })
       return store.dispatch(actions.fetchEditorPickedPosts()).then(result => {
-        expect(store.getActions().length).toBe(0) // no action is dispatched
-        expect(result).toBeUndefined()
+        const expected = {
+          type: types.dataAlreadyExists,
+          payload: {
+            function: actions.fetchEditorPickedPosts.name,
+            message: expect.any(String),
+          },
+        }
+        expect(store.getActions().length).toBe(1)
+        expect(result).toEqual(expected)
+        expect(store.getActions()[0]).toEqual(expected)
       })
     })
   })
@@ -534,8 +622,16 @@ describe('Testing fetchPhotographyPostsOnIndexPage:', () => {
       return store
         .dispatch(actions.fetchPhotographyPostsOnIndexPage())
         .then(result => {
-          expect(store.getActions().length).toBe(0) // no action is dispatched
-          expect(result).toBeUndefined()
+          const expected = {
+            type: types.dataAlreadyExists,
+            payload: {
+              function: actions.fetchPhotographyPostsOnIndexPage.name,
+              message: expect.any(String),
+            },
+          }
+          expect(store.getActions().length).toBe(1)
+          expect(result).toEqual(expected)
+          expect(store.getActions()[0]).toEqual(expected)
         })
     })
   })
@@ -600,8 +696,16 @@ describe('Testing fetchInfographicPostsOnIndexPage:', () => {
       return store
         .dispatch(actions.fetchInfographicPostsOnIndexPage())
         .then(result => {
-          expect(store.getActions().length).toBe(0) // no action is dispatched
-          expect(result).toBeUndefined()
+          const expected = {
+            type: types.dataAlreadyExists,
+            payload: {
+              function: actions.fetchInfographicPostsOnIndexPage.name,
+              message: expect.any(String),
+            },
+          }
+          expect(store.getActions().length).toBe(1)
+          expect(result).toEqual(expected)
+          expect(store.getActions()[0]).toEqual(expected)
         })
     })
   })

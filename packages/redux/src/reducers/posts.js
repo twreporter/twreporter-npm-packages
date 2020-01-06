@@ -20,7 +20,7 @@ export function post(state = {}, action = {}) {
     case types.GET_A_FULL_POST:
     case types.CHANGE_SELECTED_POST: {
       return {
-        slug: _.get(action, 'payload.slug'),
+        slug: _.get(action, 'payload.post.slug'),
         error: null,
         isFetching: false,
       }
@@ -79,9 +79,9 @@ export function posts(state = {}, action = {}) {
     }
 
     case types.ERROR_TO_GET_LISTED_POSTS: {
-      const listID = _.get(action, 'listID')
+      const listID = _.get(action, 'payload.listID')
       const list = _.get(state, listID, {})
-      list.error = _.get(action, 'error')
+      list.error = _.get(action, 'payload.error')
 
       return _.merge({}, state, {
         [listID]: list,

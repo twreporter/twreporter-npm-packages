@@ -3,7 +3,8 @@ import { camelizeKeys } from 'humps'
 import { formURL } from '../utils/url'
 import { normalize } from 'normalizr'
 import actionTypes from '../constants/action-types'
-import fetch from 'isomorphic-fetch'
+import axios from 'axios'
+import errorActionCreators from './error-action-creators'
 import stateFieldNames from '../constants/redux-state-field-names'
 // lodash
 import assign from 'lodash/assign'
@@ -17,25 +18,27 @@ const _ = {
 export function requestFetchAuthorDetails(authorId) {
   return {
     type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
-    keywords: authorId,
-  }
-}
-
-export function failToFetchAuthorDetails(error) {
-  return {
-    type: actionTypes.FETCH_AUTHOR_DETAILS_FAILURE,
-    error,
+    payload: {
+      keywords: authorId,
+    },
   }
 }
 
 export function receiveFetchAuthorDetails(normalizedData) {
   return {
     type: actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS,
-    normalizedData,
+    payload: {
+      normalizedData,
+    },
   }
 }
 
 export function fetchAuthorDetails(authorId) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return function(dispatch, getState) {
     const searchParas = {
       keywords: authorId,
@@ -47,33 +50,49 @@ export function fetchAuthorDetails(authorId) {
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const url = formURL(apiOrigin, '/v1/search/authors', searchParas, false)
     dispatch(requestFetchAuthorDetails(authorId))
-    return fetch(url)
-      .then(res => {
-        if (res.status >= 400) {
-          throw new Error('Bad response from API.')
-        }
-        return res.json()
-      })
-      .then(response => {
-        const { hits } = response
+    return axios.get(url).then(
+      response => {
+        const hits = _.get(response, 'data.hits')
         if (!Array.isArray(hits) || hits.length < 1) {
-          throw new Error(
-            `There should be at least one record matched the given id. But returned ${hits.length}.`
-          )
+          const failAction = {
+            type: actionTypes.FETCH_AUTHOR_DETAILS_FAILURE,
+            payload: {
+              error: new Error(
+                `There should be at least one record matched the given id. But returned ${hits.length}.`
+              ),
+            },
+          }
+          dispatch(failAction)
+          return Promise.reject(failAction)
         }
         const author = _.assign({}, hits[0])
         delete author._highlightResult
         if (author) {
           const normalizedData = normalize(camelizeKeys(author), authorSchema)
-          return dispatch(receiveFetchAuthorDetails(normalizedData))
+          const successAction = receiveFetchAuthorDetails(normalizedData)
+          dispatch(successAction)
+          return successAction
         } else {
-          throw new Error(
-            'Got response data but it has no valid authorDetails.'
-          )
+          const failAction = {
+            type: actionTypes.FETCH_AUTHOR_DETAILS_FAILURE,
+            payload: {
+              error: new Error(
+                'Got response data but it has no valid authorDetails.'
+              ),
+            },
+          }
+          dispatch(failAction)
+          return Promise.reject(failAction)
         }
-      })
-      .catch(error => {
-        dispatch(failToFetchAuthorDetails(error))
-      })
+      },
+      error => {
+        const failAction = errorActionCreators.axios(
+          error,
+          actionTypes.FETCH_AUTHOR_DETAILS_FAILURE
+        )
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      }
+    )
   }
 }

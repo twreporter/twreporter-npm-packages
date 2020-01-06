@@ -30,7 +30,7 @@ export const searchedAuthorsList = (
   state = initSearchedAuthorsListStates,
   action = {}
 ) => {
-  const keywords = _.get(action, 'keywords', '')
+  const keywords = _.get(action, 'payload.keywords', '')
   switch (action.type) {
     case types.SEARCH_AUTHORS_REQUEST:
       return _.assign({}, initSearchedAuthorsListStates, {
@@ -43,19 +43,19 @@ export const searchedAuthorsList = (
         isFetching: false,
         currentPage: _.get(
           action,
-          'currentPage',
+          'payload.currentPage',
           NUMBER_OF_FIRST_RESPONSE_PAGE - 1
         ),
-        items: _.get(action, 'normalizedData.result', []),
+        items: _.get(action, 'payload.normalizedData.result', []),
         error: null,
-        lastUpdated: action.receivedAt,
+        lastUpdated: action.payload.receivedAt,
       })
     case types.SEARCH_AUTHORS_FAILURE:
       return _.assign({}, state, {
         keywords,
         isFetching: false,
-        error: action.error,
-        lastUpdated: action.failedAt,
+        error: action.payload.error,
+        lastUpdated: action.payload.failedAt,
       })
     default:
       return state
@@ -80,13 +80,13 @@ export const authorsList = (state = initAuthorsListStates, action = {}) => {
     case types.LIST_ALL_AUTHORS_SUCCESS: {
       const currentPage = _.get(
         action,
-        'currentPage',
+        'payload.currentPage',
         NUMBER_OF_FIRST_RESPONSE_PAGE - 1
       )
-      const totalPages = _.get(action, 'totalPages', 0)
+      const totalPages = _.get(action, 'payload.totalPages', 0)
       const previousAuthorsInList = _.get(state, 'items', [])
       const nextAuthorsInList = previousAuthorsInList.concat(
-        _.get(action, 'normalizedData.result', [])
+        _.get(action, 'payload.normalizedData.result', [])
       ) // Concat array if list all
       return _.assign({}, state, {
         isFetching: false,
@@ -94,14 +94,14 @@ export const authorsList = (state = initAuthorsListStates, action = {}) => {
         hasMore: currentPage - NUMBER_OF_FIRST_RESPONSE_PAGE + 1 < totalPages,
         items: nextAuthorsInList,
         error: null,
-        lastUpdated: action.receivedAt,
+        lastUpdated: action.payload.receivedAt,
       })
     }
     case types.LIST_ALL_AUTHORS_FAILURE:
       return _.assign({}, state, {
         isFetching: false,
-        error: action.error,
-        lastUpdated: action.failedAt,
+        error: action.payload.error,
+        lastUpdated: action.payload.failedAt,
       })
     default:
       return state

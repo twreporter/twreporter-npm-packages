@@ -22,7 +22,7 @@ const initialSubState = {
 }
 
 export const articlesByAuthor = (state = {}, action = {}) => {
-  const authorId = _.get(action, 'authorId', '')
+  const authorId = _.get(action, 'payload.authorId', '')
   const previousSubState = _.get(state, authorId, null)
   let nextSubState = {}
   switch (action.type) {
@@ -39,12 +39,17 @@ export const articlesByAuthor = (state = {}, action = {}) => {
         [authorId, 'collectIndexList'],
         []
       )
-      const { currentPage, totalPages, totalResults, receivedAt } = action
+      const {
+        currentPage,
+        totalPages,
+        totalResults,
+        receivedAt,
+      } = action.payload
       nextSubState = _.assign({}, initialSubState, {
         isFetching: false,
         collectIndexList: _.uniq(
           previousCollectionIdList.concat(
-            _.get(action, 'normalizedData.result', [])
+            _.get(action, 'payload.normalizedData.result', [])
           )
         ),
         currentPage,
@@ -59,8 +64,8 @@ export const articlesByAuthor = (state = {}, action = {}) => {
     case types.FETCH_AUTHOR_COLLECTION_FAILURE: {
       nextSubState = _.assign({}, initialSubState, {
         isFetching: false,
-        error: action.error,
-        lastUpdated: action.failedAt,
+        error: action.payload.error,
+        lastUpdated: action.payload.failedAt,
       })
       return _.assign({}, state, {
         [authorId]: nextSubState,

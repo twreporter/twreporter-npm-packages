@@ -60,19 +60,23 @@ describe('index-page reducer', () => {
         {
           type: types.GET_CONTENT_FOR_INDEX_PAGE,
           payload: {
-            [fieldNames.sections.latestSection]: _.cloneDeep([post1, post2]),
-            [fieldNames.sections.editorPicksSection]: _.cloneDeep([post4]),
-            [fieldNames.sections.reviewsSection]: _.cloneDeep([post3]),
-            [fieldNames.sections.latestTopicSection]: _.cloneDeep([fullTopic]),
-            [fieldNames.sections.topicsSection]: _.cloneDeep([
-              fullTopic,
-              nonFullTopic,
-            ]),
-            [fieldNames.sections.photosSection]: _.cloneDeep([post1, post4]),
-            [fieldNames.sections.infographicsSection]: _.cloneDeep([
-              post2,
-              post3,
-            ]),
+            items: {
+              [fieldNames.sections.latestSection]: _.cloneDeep([post1, post2]),
+              [fieldNames.sections.editorPicksSection]: _.cloneDeep([post4]),
+              [fieldNames.sections.reviewsSection]: _.cloneDeep([post3]),
+              [fieldNames.sections.latestTopicSection]: _.cloneDeep([
+                fullTopic,
+              ]),
+              [fieldNames.sections.topicsSection]: _.cloneDeep([
+                fullTopic,
+                nonFullTopic,
+              ]),
+              [fieldNames.sections.photosSection]: _.cloneDeep([post1, post4]),
+              [fieldNames.sections.infographicsSection]: _.cloneDeep([
+                post2,
+                post3,
+              ]),
+            },
           },
         }
       )
@@ -114,7 +118,9 @@ describe('index-page reducer', () => {
         },
         {
           type: types.ERROR_TO_GET_INDEX_PAGE_CONTENT,
-          error: err,
+          payload: {
+            error: err,
+          },
         }
       )
     ).toEqual({

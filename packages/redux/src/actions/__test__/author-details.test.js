@@ -1,6 +1,7 @@
 /* global expect, test, describe, afterEach */
 import { author as authorSchema } from '../../schemas/article-schema'
 import { camelizeKeys } from 'humps'
+import { expectActionErrorObj } from './expect-utils'
 import { normalize } from 'normalizr'
 import * as actions from '../author-details'
 import actionTypes from '../../constants/action-types'
@@ -20,28 +21,17 @@ const searchParas = {
 }
 
 describe('Test action creators of author-details', () => {
-  describe('Test action creator `requestFetchAuthorDetails`', () => {
+  test('Test action creator `requestFetchAuthorDetails`', () => {
+    const expected = {
+      type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
+      payload: {
+        keywords: authorId,
+      },
+    }
     const createdAction = actions.requestFetchAuthorDetails(authorId)
-    test('should return an action with property `type`', () => {
-      const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_REQUEST
-      expect(createdAction).toHaveProperty('type', expectedActionType)
-    })
-    test('should return an action with property `keywords`', () => {
-      expect(createdAction).toHaveProperty('keywords', authorId)
-    })
+    expect(createdAction).toEqual(expected)
   })
-  describe('Test action creator `failToFetchAuthorDetails`', () => {
-    const error = new Error('mock-error')
-    const createdAction = actions.failToFetchAuthorDetails(error)
-    test('should return an action with property `type`', () => {
-      const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_FAILURE
-      expect(createdAction).toHaveProperty('type', expectedActionType)
-    })
-    test('should return an action with property `error`', () => {
-      expect(createdAction).toHaveProperty('error', error)
-    })
-  })
-  describe('Test action creator `receiveFetchAuthorDetails`', () => {
+  test('Test action creator `receiveFetchAuthorDetails`', () => {
     const normalizedData = {
       entities: [
         {
@@ -51,13 +41,13 @@ describe('Test action creators of author-details', () => {
       results: ['mock-author-id'],
     }
     const createdAction = actions.receiveFetchAuthorDetails(normalizedData)
-    test('should return an action with property `type`', () => {
-      const expectedActionType = actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS
-      expect(createdAction).toHaveProperty('type', expectedActionType)
-    })
-    test('should return an action with property `normalizedData`', () => {
-      expect(createdAction).toHaveProperty('normalizedData', normalizedData)
-    })
+    const expected = {
+      type: actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS,
+      payload: {
+        normalizedData,
+      },
+    }
+    expect(createdAction).toEqual(expected)
   })
   describe('Test action creator `fetchAuthorDetails`', () => {
     const store = mockStore({
@@ -69,25 +59,7 @@ describe('Test action creators of author-details', () => {
       store.clearActions()
       nock.cleanAll()
     })
-    test('should dispatch an action created by `requestFetchAuthorDetails`', done => {
-      nock('http://localhost:8080')
-        .get('/v1/search/authors')
-        .query(searchParas)
-        .reply(200, { hits: [] })
-      store
-        .dispatch(actions.fetchAuthorDetails(authorId))
-        .then(function() {
-          const actionsInStore = store.getActions()
-          expect(actionsInStore[0]).toEqual(
-            actions.requestFetchAuthorDetails(authorId)
-          )
-          done()
-        })
-        .catch(function(error) {
-          done(error)
-        })
-    })
-    test('should dispatch an action created by `receiveFetchAuthorDetails` if fetching successed', done => {
+    test('should dispatch an action created by `receiveFetchAuthorDetails` if fetching successed', () => {
       const mockAuthorData = {
         id: authorId,
         email: 'mock-email',
@@ -101,36 +73,62 @@ describe('Test action creators of author-details', () => {
         .get('/v1/search/authors')
         .query(searchParas)
         .reply(200, { hits: [mockAuthorData] })
-      store
+      return store
         .dispatch(actions.fetchAuthorDetails(authorId))
         .then(function() {
-          const actionsInStore = store.getActions()
-          expect(actionsInStore[1]).toEqual(
-            actions.receiveFetchAuthorDetails(normalizedData)
-          )
-          done()
-        })
-        .catch(function(error) {
-          done(error)
+          const expected = [
+            {
+              type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
+              payload: {
+                keywords: authorId,
+              },
+            },
+            {
+              type: actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS,
+              payload: {
+                normalizedData,
+              },
+            },
+          ]
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(expected[1])
         })
     })
-    test('should dispatch an action created by `failToFetchAuthorDetails` if fetching failed', done => {
+    test('should dispatch an action created by `failToFetchAuthorDetails` if fetching failed', () => {
+      const mockStatusCode = 500
+      const mockAPIRes = {
+        message: 'mock internal server error',
+        status: 'error',
+      }
       nock('http://localhost:8080')
         .get('/v1/search/authors')
         .query(searchParas)
-        .reply(500)
-      store
+        .reply(mockStatusCode, mockAPIRes)
+      return store
         .dispatch(actions.fetchAuthorDetails(authorId))
-        .then(function() {
-          const actionsInStore = store.getActions()
-          expect(actionsInStore[1].type).toBe(
-            actionTypes.FETCH_AUTHOR_DETAILS_FAILURE
+        .catch(function(failAction) {
+          const expected = [
+            {
+              type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
+              payload: {
+                keywords: authorId,
+              },
+            },
+            {
+              type: actionTypes.FETCH_AUTHOR_DETAILS_FAILURE,
+              payload: {
+                error: expect.any(Error),
+              },
+            },
+          ]
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(failAction)
+          expect(store.getActions()[1]).toEqual(expected[1])
+          expectActionErrorObj(
+            store.getActions()[1].payload.error,
+            mockStatusCode,
+            mockAPIRes
           )
-          expect(actionsInStore[1].error).toBeInstanceOf(Error)
-          done()
-        })
-        .catch(function(error) {
-          done(error)
         })
     })
   })

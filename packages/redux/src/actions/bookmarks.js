@@ -101,12 +101,20 @@ function buildSuccessActionFromRes(axiosResponse, actionType) {
  * @param {string} jwt - access_token granted for the user
  * @param {number} userID - id of user
  * @param {BookmarkToBeCreated} bookmarkToBeCreated
- * @returns
+ * @return {Function} - function will be executed in Redux Thunk middleware
  */
 export function createSingleBookmark(jwt, userID, bookmarkToBeCreated) {
   /* go-api takes `published_date` as an unix timestamp (in secs) int */
   // eslint-disable-next-line camelcase
   const { published_date, ...passedBookmarkProperties } = bookmarkToBeCreated
+
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @param {Object} option
+   * @param {Object} option.httpClientWithToken
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return function(dispatch, getState, { httpClientWithToken }) {
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
@@ -147,6 +155,7 @@ export function createSingleBookmark(jwt, userID, bookmarkToBeCreated) {
           types.singleBookmark.create.success
         )
         dispatch(successAction)
+        return successAction
       })
       .catch(error => {
         const failAction = failActionCreators.axios(
@@ -154,6 +163,7 @@ export function createSingleBookmark(jwt, userID, bookmarkToBeCreated) {
           types.singleBookmark.create.failure
         )
         dispatch(failAction)
+        return Promise.reject(failAction)
       })
   }
 }
@@ -167,9 +177,16 @@ export function createSingleBookmark(jwt, userID, bookmarkToBeCreated) {
  * @param {number} offset - the offset of the request
  * @param {number} limit - max amount of records per fetch
  * @param {string} sort - sort by
- * @returns
+ * @return {Function} - function will be executed in Redux Thunk middleware
  */
 export function getMultipleBookmarks(jwt, userID, offset, limit, sort) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @param {Object} option
+   * @param {Object} option.httpClientWithToken
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return function(dispatch, getState, { httpClientWithToken }) {
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
@@ -207,6 +224,7 @@ export function getMultipleBookmarks(jwt, userID, offset, limit, sort) {
           types.multipleBookMarks.read.success
         )
         dispatch(successAction)
+        return successAction
       })
       .catch(error => {
         const failAction = failActionCreators.axios(
@@ -214,6 +232,7 @@ export function getMultipleBookmarks(jwt, userID, offset, limit, sort) {
           types.multipleBookMarks.read.failure
         )
         dispatch(failAction)
+        return Promise.reject(failAction)
       })
   }
 }
@@ -226,9 +245,16 @@ export function getMultipleBookmarks(jwt, userID, offset, limit, sort) {
  * @param {number} userID - id of user
  * @param {string} bookmarkSlug - the article slug of the bookmark. Ex: xxx-xxx-xxxxxxx-xx
  * @param {string} bookmarkHost - the hostname of the bookmark. Ex: 'https://www.xxxx.xx'
- * @returns
+ * @return {Function} - function will be executed in Redux Thunk middleware
  */
 export function getSingleBookmark(jwt, userID, bookmarkSlug, bookmarkHost) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @param {Object} option
+   * @param {Object} option.httpClientWithToken
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return function(dispatch, getState, { httpClientWithToken }) {
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
@@ -266,6 +292,7 @@ export function getSingleBookmark(jwt, userID, bookmarkSlug, bookmarkHost) {
           types.singleBookmark.read.success
         )
         dispatch(successAction)
+        return successAction
       })
       .catch(error => {
         const failAction = failActionCreators.axios(
@@ -273,6 +300,7 @@ export function getSingleBookmark(jwt, userID, bookmarkSlug, bookmarkHost) {
           types.singleBookmark.read.failure
         )
         dispatch(failAction)
+        return Promise.reject(failAction)
       })
   }
 }
@@ -284,9 +312,16 @@ export function getSingleBookmark(jwt, userID, bookmarkSlug, bookmarkHost) {
  * @param {string} jwt - access_token granted for the user
  * @param {number} userID - id of user
  * @param {number} bookmarkID - id of bookmark
- * @returns
+ * @return {Function} - function will be executed in Redux Thunk middleware
  */
 export function deleteSingleBookmark(jwt, userID, bookmarkID) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @param {Object} option
+   * @param {Object} option.httpClientWithToken
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return function(dispatch, getState, { httpClientWithToken }) {
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
@@ -325,6 +360,7 @@ export function deleteSingleBookmark(jwt, userID, bookmarkID) {
         )
         successAction.payload.bookmarkID = bookmarkID
         dispatch(successAction)
+        return successAction
       })
       .catch(error => {
         const failAction = failActionCreators.axios(
@@ -332,6 +368,7 @@ export function deleteSingleBookmark(jwt, userID, bookmarkID) {
           types.singleBookmark.delete.failure
         )
         dispatch(failAction)
+        return Promise.reject(failAction)
       })
   }
 }

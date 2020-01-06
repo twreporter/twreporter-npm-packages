@@ -71,14 +71,20 @@ describe('entities reducer', () => {
         {
           type: types.GET_CONTENT_FOR_INDEX_PAGE,
           payload: {
-            [fieldNames.sections.latestSection]: _.cloneDeep([post2]),
-            [fieldNames.sections.editorPicksSection]: _.cloneDeep([post2]),
-            [fieldNames.sections.reviewsSection]: _.cloneDeep([post3]),
-            [fieldNames.sections.latestTopicSection]: _.cloneDeep([fullTopic]),
-            [fieldNames.sections.topicsSection]: _.cloneDeep([nonFullTopic]),
-            [fieldNames.sections.photosSection]: _.cloneDeep([post2]),
-            [fieldNames.sections.infographicsSection]: _.cloneDeep([post3]),
-            [fieldNames.categories.humanRightsAndSociety]: _.cloneDeep([post4]),
+            items: {
+              [fieldNames.sections.latestSection]: _.cloneDeep([post2]),
+              [fieldNames.sections.editorPicksSection]: _.cloneDeep([post2]),
+              [fieldNames.sections.reviewsSection]: _.cloneDeep([post3]),
+              [fieldNames.sections.latestTopicSection]: _.cloneDeep([
+                fullTopic,
+              ]),
+              [fieldNames.sections.topicsSection]: _.cloneDeep([nonFullTopic]),
+              [fieldNames.sections.photosSection]: _.cloneDeep([post2]),
+              [fieldNames.sections.infographicsSection]: _.cloneDeep([post3]),
+              [fieldNames.categories.humanRightsAndSociety]: _.cloneDeep([
+                post4,
+              ]),
+            },
           },
         }
       )
@@ -203,7 +209,9 @@ describe('entities reducer', () => {
         {},
         {
           type: types.GET_A_FULL_POST,
-          payload: post,
+          payload: {
+            post,
+          },
         }
       )
     ).toEqual({
@@ -237,7 +245,9 @@ describe('entities reducer', () => {
         {},
         {
           type: types.GET_A_FULL_TOPIC,
-          payload: topic,
+          payload: {
+            topic,
+          },
         }
       )
     ).toEqual({

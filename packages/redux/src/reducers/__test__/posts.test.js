@@ -52,7 +52,27 @@ describe('post reducer', () => {
         {},
         {
           type: types.GET_A_FULL_POST,
-          payload: post1,
+          payload: {
+            post: post1,
+          },
+        }
+      )
+    ).toEqual({
+      slug: post1.slug,
+      error: null,
+      isFetching: false,
+    })
+  })
+
+  test('should handle CHANGE_SELECTED_POST', () => {
+    expect(
+      post(
+        {},
+        {
+          type: types.CHANGE_SELECTED_POST,
+          payload: {
+            post: post1,
+          },
         }
       )
     ).toEqual({
@@ -149,8 +169,10 @@ describe('posts reducer', () => {
         },
         {
           type: types.ERROR_TO_GET_LISTED_POSTS,
-          error: err,
-          listID: 'mock-list-id',
+          payload: {
+            error: err,
+            listID: 'mock-list-id',
+          },
         }
       )
     ).toEqual({

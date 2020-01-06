@@ -8,8 +8,8 @@ import {
 import { formURL } from '../utils/url'
 import { schema, normalize } from 'normalizr'
 import actionTypes from '../constants/action-types'
-import fetch from 'isomorphic-fetch'
-import httpConsts from '../constants/http-protocol'
+import axios from 'axios'
+import errorActionCreators from './error-action-creators'
 import stateFieldNames from '../constants/redux-state-field-names'
 // lodash
 import get from 'lodash/get'
@@ -20,21 +20,12 @@ const _ = {
   omit,
 }
 
-const { statusCode } = httpConsts
-
 export function requestAuthorCollection(authorId) {
   return {
     type: actionTypes.FETCH_AUTHOR_COLLECTION_REQUEST,
-    authorId,
-  }
-}
-
-export function failToReceiveAuthorCollection(authorId, error) {
-  return {
-    type: actionTypes.FETCH_AUTHOR_COLLECTION_FAILURE,
-    authorId,
-    error,
-    failedAt: Date.now(),
+    payload: {
+      authorId,
+    },
   }
 }
 
@@ -59,6 +50,11 @@ export function failToReceiveAuthorCollection(authorId, error) {
  */
 
 export function fetchAuthorCollection({ targetPage, authorId, returnDelay }) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     // eslint-disable-line no-unused-vars
     const searchParas = {
@@ -71,50 +67,59 @@ export function fetchAuthorCollection({ targetPage, authorId, returnDelay }) {
     const url = formURL(apiOrigin, `/v1/search/posts`, searchParas, false)
     dispatch(requestAuthorCollection(authorId))
     // Call our API server to fetch the data
-    return fetch(url)
+    return axios
+      .get(url)
       .then(response => {
-        if (response.status >= 400) {
-          const err = new Error(
-            'Bad response from API, response:' + JSON.stringify(response)
-          )
-          err.status = statusCode.internalServerError
-          throw err
-        }
-        return response.json()
-      })
-      .then(responseObject => {
-        const responseItems = _.get(responseObject, 'hits', {}) // responseObject.hit
+        const responseItems = _.get(response, 'data.hits', {})
         const receiveAuthorCollectionAction = {
           type: actionTypes.FETCH_AUTHOR_COLLECTION_SUCCESS,
-          authorId,
-          normalizedData: normalize(
-            camelizeKeys(responseItems),
-            new schema.Array(articleSchema)
-          ),
-          currentPage: _.get(
-            responseObject,
-            'page',
-            NUMBER_OF_FIRST_RESPONSE_PAGE - 1
-          ),
-          totalPages: _.get(responseObject, 'nbPages', 0),
-          totalResults: _.get(responseObject, 'nbHits', 0),
-          receivedAt: Date.now(),
+          payload: {
+            authorId,
+            normalizedData: normalize(
+              camelizeKeys(responseItems),
+              new schema.Array(articleSchema)
+            ),
+            currentPage: _.get(
+              response,
+              'data.page',
+              NUMBER_OF_FIRST_RESPONSE_PAGE - 1
+            ),
+            totalPages: _.get(response, 'data.nbPages', 0),
+            totalResults: _.get(response, 'data.nbHits', 0),
+            receivedAt: Date.now(),
+          },
         }
         // delay for displaying loading spinner
         if (returnDelay > 0) {
           return new Promise(function(resolve) {
             setTimeout(function() {
-              resolve(dispatch(receiveAuthorCollectionAction))
+              dispatch(receiveAuthorCollectionAction)
+              resolve(receiveAuthorCollectionAction)
             }, returnDelay)
           })
         }
-        return dispatch(receiveAuthorCollectionAction)
+        dispatch(receiveAuthorCollectionAction)
+        return receiveAuthorCollectionAction
       })
-      .catch(error => dispatch(failToReceiveAuthorCollection(authorId, error)))
+      .catch(error => {
+        const failAction = errorActionCreators.axios(
+          error,
+          actionTypes.FETCH_AUTHOR_COLLECTION_FAILURE
+        )
+        failAction.payload.authorId = authorId
+        failAction.payload.failedAt = Date.now()
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      })
   }
 }
 
 export function fetchAuthorCollectionIfNeeded(authorId) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     const currentState = getState()
     const articlesDataOfAnAuthor = _.get(
@@ -143,5 +148,18 @@ export function fetchAuthorCollectionIfNeeded(authorId) {
         })
       )
     }
+
+    const action = {
+      type: actionTypes.dataAlreadyExists,
+      payload: {
+        function: fetchAuthorCollectionIfNeeded.name,
+        arguments: {
+          authorId,
+        },
+        message: 'Author collection data already exists',
+      },
+    }
+    dispatch(action)
+    return Promise.resolve(action)
   }
 }

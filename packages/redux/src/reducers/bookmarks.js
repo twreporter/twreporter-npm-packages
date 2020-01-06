@@ -89,7 +89,7 @@ export default function bookmarks(state = initState, action) {
         ...state,
         actionType: action.type,
         isRequesting: false,
-        errorMessage: _.get(action, 'payload.message'),
+        errorMessage: _.get(action, 'payload.error.message'),
       }
     }
     default:
