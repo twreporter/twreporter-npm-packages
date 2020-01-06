@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.0...@twreporter/react-article-components@1.1.1) (2020-01-06)
+
+### Bug Fixes
+
+- add margin to paragraph in donation box ([dded110](https://github.com/twreporter/twreporter-npm-packages/commit/dded110969ac7db1f1ab525e3bf7915d1512378e))
+
 # [1.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.0.27...@twreporter/react-article-components@1.1.0) (2020-01-06)
 
 ### Features
