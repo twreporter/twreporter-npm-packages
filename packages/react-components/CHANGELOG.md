@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.0.4...@twreporter/react-components@8.1.0) (2020-01-06)
+
+### Features
+
+- add annual report link to footer ([2bb5446](https://github.com/twreporter/twreporter-npm-packages/commit/2bb5446d13e0adfce4d6cf787009a30298cc4320))
+
 ## [8.0.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.0.4-rc.1...@twreporter/react-components@8.0.4) (2020-01-03)
 
 **Note:** Version bump only for package @twreporter/react-components
