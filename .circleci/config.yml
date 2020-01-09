@@ -14,20 +14,20 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "print informations"
-        command: |
-        BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release): \?v*.*.*$" -n)
-        echo ===
-        echo $GIT_BASE_REVISION
-        echo ===
-        echo $GIT_CURRENT_REVISION
-        echo ===
-        echo $BUMP_VERSION_COMMITS
-        echo ===
-        git remote -v
-        echo ===
-        echo $(git branch --list -a)
-        echo ===
+          name: "print informations"
+          command: |
+            BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release): \?v*.*.*$" -n)
+            echo ===
+            echo $GIT_BASE_REVISION
+            echo ===
+            echo $GIT_CURRENT_REVISION
+            echo ===
+            echo $BUMP_VERSION_COMMITS
+            echo ===
+            git remote -v
+            echo ===
+            echo $(git branch --list -a)
+            echo ===
 
 workflows:
   version: 2.1
