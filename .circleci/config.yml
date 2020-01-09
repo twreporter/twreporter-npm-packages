@@ -1,0 +1,39 @@
+version: 2.1
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:10.15
+    working_directory: ~/repo
+
+jobs:
+  print:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+        name: "print informations"
+        command: |
+        GIT_BASE_REVISION=<< pipeline.git.base_revision >>
+        GIT_CURRENT_REVISION=<< pipeline.git.revision >>
+        BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release): \?v*.*.*$" -n)
+        echo ===
+        echo $GIT_BASE_REVISION
+        echo ===
+        echo $GIT_CURRENT_REVISION
+        echo ===
+        echo $BUMP_VERSION_COMMITS
+        echo ===
+        git remote -v
+        echo ===
+        echo $(git branch --list -a)
+        echo ===
+
+workflows:
+  version: 2.1
+  print_infos:
+    jobs:
+      - print
+    filters:
+      branches:
+        only:
+          - ci-dev
