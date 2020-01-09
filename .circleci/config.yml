@@ -17,7 +17,8 @@ jobs:
       - run: echo "$GIT_CURRENT_REVISION"
       - run: git remote -v
       - run: echo $(git branch --list -a)
-      - run: BUMP_VERSION_COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty=format:%h:%s | grep "(release):\ \?v*.*.*$" -n 2>&1); echo "$BUMP_VERSION_COMMITS"
+      - run: BUMP_VERSION_COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty=format:%h:%s | grep "chore")
+      - run: echo $BUMP_VERSION_COMMITS
 
 workflows:
   version: 2.1
