@@ -20,7 +20,7 @@ jobs:
       - run: |
           BUMP_VERSION_COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty=format:%h:%s | grep "chore")
           echo $BUMP_VERSION_COMMITS
-          echo "export BUMP_VERSION_COMMITS=\"$(BUMP_VERSION_COMMITS)\"" >> $BASH_ENV
+          echo "export BUMP_VERSION_COMMITS=\"${BUMP_VERSION_COMMITS}\"" >> $BASH_ENV
       - run: echo $BUMP_VERSION_COMMITS
 
 workflows:
