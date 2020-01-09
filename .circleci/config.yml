@@ -13,7 +13,7 @@ jobs:
       - GIT_CURRENT_REVISION: << pipeline.git.revision >>
     steps:
       - checkout
-      - run: BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release): \?v*.*.*$" -n)
+      - run: BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release):\ \?v*.*.*$" -n)
       - run: echo ===
       - run: echo $GIT_BASE_REVISION
       - run: echo ===
