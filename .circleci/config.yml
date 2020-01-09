@@ -22,7 +22,7 @@ jobs:
       - run: echo ===
       - run: echo $(git branch --list -a)
       - run: echo ===
-      - run: BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release):\ \?v*.*.*$" -n)
+      - run: BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release):\ \?v*.*.*$" -n 2>&1)
       - run: echo $BUMP_VERSION_COMMITS
       - run: echo ===
 
