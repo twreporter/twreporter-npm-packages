@@ -13,24 +13,19 @@ jobs:
       - GIT_CURRENT_REVISION: << pipeline.git.revision >>
     steps:
       - checkout
-      - run:
-          name: "print informations"
-          command: |
-            BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release): \?v*.*.*$" -n)
-            echo ===
-            echo $GIT_BASE_REVISION
-            echo ===
-            echo $GIT_CURRENT_REVISION
-            echo ===
-            echo $BUMP_VERSION_COMMITS
-            echo ===
-            git remote -v
-            echo ===
-            echo $(git branch --list -a)
-            echo ===
+      - run: BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release): \?v*.*.*$" -n)
+      - run: echo ===
+      - run: echo $GIT_BASE_REVISION
+      - run: echo ===
+      - run: echo $GIT_CURRENT_REVISION
+      - run: echo ===
+      - run: echo $BUMP_VERSION_COMMITS
+      - run: echo ===
+      - run: git remote -v
+      - run: echo ===
+      - run: echo $(git branch --list -a)
+      - run: echo ===
 
-
-            
 workflows:
   version: 2.1
   print_infos:
