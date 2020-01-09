@@ -34,7 +34,7 @@ workflows:
   print_infos:
     jobs:
       - print
-    filters:
-      branches:
-        only:
-          - ci-dev
+          filters:
+            branches:
+              only:
+                - ci-dev
