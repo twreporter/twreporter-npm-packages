@@ -29,11 +29,13 @@ jobs:
             echo $(git branch --list -a)
             echo ===
 
+
+            
 workflows:
   version: 2.1
   print_infos:
     jobs:
-      - print
+      - print:
           filters:
             branches:
               only:
