@@ -13,6 +13,7 @@ jobs:
       - run:
         name: "print informations"
         command: |
+        # print infos
         GIT_BASE_REVISION=<< pipeline.git.base_revision >>
         GIT_CURRENT_REVISION=<< pipeline.git.revision >>
         BUMP_VERSION_COMMITS=$(git log $GIT_BASE_REVISION..$GIT_CURRENT_REVISION --pretty=format:%h:%s | grep "(release): \?v*.*.*$" -n)
