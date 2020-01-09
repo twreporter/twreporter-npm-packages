@@ -1,0 +1,71 @@
+version: 2.1
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:10.15
+    working_directory: ~/repo
+
+jobs:
+  bump-version-or-deploy:
+    executor: node-executor
+    environment:
+      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
+      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
+    steps:
+      - checkout
+      - run:
+          name: "Pick out lerna version commit"
+          command: |
+            VERSION_COMMIT_TITLE=$(node -e "console.log(require('./lerna.json').command.publish.message)")
+            VERSION_COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty=format:%h | grep "$VERSION_COMMIT_MESSAGE" | awk '{ print $1 }')
+            VERSION_COMMITS_COUNT=$(echo $VERSION_COMMITS | grep -c)
+            if [ "$VERSION_COMMITS_COUNT" -gt 1 ]; then
+              echo "There are more than one pushed commits containing the release message."
+              exit 1
+            fi
+            echo "export VERSION_COMMIT_HASH=\"${VERSION_COMMITS}\"" >> $BASH_ENV
+            # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-build-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-build-{{ checksum "yarn.lock" }}
+      - run:
+          name: "Bump version or build and deploy the packages"
+          command: |
+            if [ -n "$VERSION_COMMIT_HASH" ]; then
+              # version commit exists
+              git checkout $VERSION_COMMIT_HASH
+              # authenticate with npm registry
+              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+              # publish packages
+              lerna publish from-package
+            else
+              npm run bump-prerelease-version
+              if ["$(git rev-parse HEAD)" -eq "$GIT_CURRENT_REVISION"]; then
+                echo "No package files change. No need to bump version."
+              else
+                git push origin master --follow-tags
+                # Create stable release PR
+                git checkout -b "release-at-$GIT_CURRENT_REVISION"
+                npm run bump-release-version
+                git push origin --set-upstream origin "release-at-$GIT_CURRENT_REVISION"
+                curl -X POST \
+                  -H "Authorization: token $GITHUB_TOKEN" \
+                  -H "Content-Type: application/json" \
+                  -d '{"title" : "chore(release): bump version", "head" : "release-at-$GIT_CURRENT_REVISION", "base": "master", "body": "Release stable version. Submit from CircleCI build [#$CIRCLE_BUILD_NUM](https://circleci.com/gh/twreporter/twreporter-npm-packages/$CIRCLE_BUILD_NUM"}' \
+                  "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls"
+              fi
+            fi
+
+workflows:
+  version: 2.1
+  bump_version_or_deploy:
+    jobs:
+      - bump-version-or-deploy:
+          filters:
+            branches:
+              only: ci-dev
