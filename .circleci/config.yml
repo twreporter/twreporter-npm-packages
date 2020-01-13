@@ -6,29 +6,51 @@ executors:
     working_directory: ~/repo
 
 jobs:
-  print:
+  tag-only:
     executor: node-executor
     environment:
       - GIT_BASE_REVISION: << pipeline.git.base_revision >>
       - GIT_CURRENT_REVISION: << pipeline.git.revision >>
+      - GIT_TAG: << pipeline.git.tag >>
+      - GIT_BRANCH: << pipeline.git.branch >>
     steps:
       - checkout
-      - run: echo "$GIT_BASE_REVISION"
-      - run: echo "$GIT_CURRENT_REVISION"
-      - run: git remote -v
-      - run: echo $(git branch --list -a)
-      - run: |
-          BUMP_VERSION_COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty=format:%h:%s | grep "chore")
-          echo $BUMP_VERSION_COMMITS
-          echo "export BUMP_VERSION_COMMITS=\"${BUMP_VERSION_COMMITS}\"" >> $BASH_ENV
-      - run: echo $BUMP_VERSION_COMMITS
+      - run:
+          name: 'print information'
+          command: |
+            echo "tag-only-job"
+            echo "The tag triggering: $GIT_TAG"
+            echo "The branch triggering: $GIT_BRANCH"
+  
+  no-tag-only:
+    executor: node-executor
+    environment:
+      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
+      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
+      - GIT_TAG: << pipeline.git.tag >>
+      - GIT_BRANCH: << pipeline.git.branch >>
+    steps:
+      - checkout
+      - run:
+          name: 'print information'
+          command: |
+            echo "no-tag-only-job"
+            echo "The tag triggering: $GIT_TAG"
+            echo "The branch triggering: $GIT_BRANCH"
 
 workflows:
   version: 2.1
   print_infos:
     jobs:
-      - print:
+      - tag-only:
+          filters:
+            tags:
+              only: /testing@[0-9]*\.[0-9]*\.[0-9]*/
+            branches:
+              ignore: /.*/
+      - no-tag-only:
           filters:
             branches:
-              only:
-                - ci-dev
+              only: ci-dev
+            tags:
+              ignore: /testing@[0-9]*\.[0-9]*\.[0-9]*/
