@@ -45,7 +45,7 @@ workflows:
       - tag-only:
           filters:
             tags:
-              only: .+@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?
+              only: /.+@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?/
             branches:
               ignore: /.*/
       - no-tag-only:
@@ -53,4 +53,4 @@ workflows:
             branches:
               only: ci-dev
             tags:
-              ignore: /.+@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?
+              ignore: /.+@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?/
