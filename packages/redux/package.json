@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/redux",
-  "version": "5.0.8",
+  "version": "6.0.0",
   "description": "redux actions and reducers for twreporter website",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
