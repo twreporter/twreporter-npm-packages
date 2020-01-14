@@ -38,6 +38,22 @@ jobs:
             echo "The tag triggering: $GIT_TAG"
             echo "The branch triggering: $GIT_BRANCH"
 
+  run-on-ci-dev:
+    executor: node-executor
+    environment:
+      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
+      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
+      - GIT_TAG: << pipeline.git.tag >>
+      - GIT_BRANCH: << pipeline.git.branch >>
+    steps:
+      - checkout
+      - run:
+          name: 'print information'
+          command: |
+            echo "no-tag-only-job"
+            echo "The tag triggering: $GIT_TAG"
+            echo "The branch triggering: $GIT_BRANCH"
+
 workflows:
   version: 2.1
   print_infos:
@@ -54,3 +70,7 @@ workflows:
               only: ci-dev
             tags:
               ignore: /(.+)@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?/
+      - run-on-ci-dev:
+          filters:
+            branches:
+              only: ci-dev
