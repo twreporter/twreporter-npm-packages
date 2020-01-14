@@ -27,7 +27,27 @@ describe('topic reducer', () => {
         {},
         {
           type: types.GET_A_FULL_TOPIC,
-          payload: topic1,
+          payload: {
+            topic: topic1,
+          },
+        }
+      )
+    ).toEqual({
+      slug: topic1.slug,
+      error: null,
+      isFetching: false,
+    })
+  })
+
+  test('should handle CHANGE_SELECTED_TOPIC', () => {
+    expect(
+      topic(
+        {},
+        {
+          type: types.CHANGE_SELECTED_TOPIC,
+          payload: {
+            topic: topic1,
+          },
         }
       )
     ).toEqual({

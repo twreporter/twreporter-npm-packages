@@ -42,42 +42,54 @@ const singleAuthorHits = [
 export const mockActionsSet = {
   [types.SEARCH_AUTHORS_REQUEST]: {
     type: types.SEARCH_AUTHORS_REQUEST,
-    keywords: MOCK_KEYWORDS,
+    payload: {
+      keywords: MOCK_KEYWORDS,
+    },
   },
 
   [types.SEARCH_AUTHORS_SUCCESS]: {
     type: types.SEARCH_AUTHORS_SUCCESS,
-    keywords: MOCK_KEYWORDS,
-    normalizedData: theNormalize(singleAuthorHits),
-    totalPages: 1,
-    currentPage: 0,
-    receivedAt: CURRENT_DATE,
+    payload: {
+      keywords: MOCK_KEYWORDS,
+      normalizedData: theNormalize(singleAuthorHits),
+      totalPages: 1,
+      currentPage: 0,
+      receivedAt: CURRENT_DATE,
+    },
   },
 
   [types.SEARCH_AUTHORS_FAILURE]: {
     type: types.SEARCH_AUTHORS_FAILURE,
-    error: ERROR_MSG,
-    failedAt: CURRENT_DATE,
+    payload: {
+      error: ERROR_MSG,
+      failedAt: CURRENT_DATE,
+    },
   },
 
   [types.LIST_ALL_AUTHORS_REQUEST]: {
     type: types.LIST_ALL_AUTHORS_REQUEST,
-    keywords: '',
+    payload: {
+      keywords: '',
+    },
   },
 
   [types.LIST_ALL_AUTHORS_SUCCESS]: {
     type: types.LIST_ALL_AUTHORS_SUCCESS,
-    keywords: '',
-    normalizedData: theNormalize(mockResponseHits),
-    totalPages: 8,
-    currentPage: 0,
-    receivedAt: CURRENT_DATE,
+    payload: {
+      keywords: '',
+      normalizedData: theNormalize(mockResponseHits),
+      totalPages: 8,
+      currentPage: 0,
+      receivedAt: CURRENT_DATE,
+    },
   },
 
   [types.LIST_ALL_AUTHORS_FAILURE]: {
     type: types.LIST_ALL_AUTHORS_FAILURE,
-    error: ERROR_MSG,
-    failedAt: CURRENT_DATE,
+    payload: {
+      error: ERROR_MSG,
+      failedAt: CURRENT_DATE,
+    },
   },
 }
 

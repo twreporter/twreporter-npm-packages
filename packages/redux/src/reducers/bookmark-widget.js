@@ -55,7 +55,7 @@ export default function bookmarkWidget(state = initState, action) {
         actionType: action.type,
         isRequesting: false,
         bookmark: _.get(state, 'bookmark'),
-        errorMessage: _.get(action, 'payload.message'),
+        errorMessage: _.get(action, 'payload.error.message'),
       }
     }
     default:

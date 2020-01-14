@@ -38,8 +38,12 @@ export default async function createStore(
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
     compose
   const storeEnhancer = composeEnhancers(
-    applyMiddleware(thunkMiddleware.withExtraArgument({ httpClientWithToken })),
-    bindActionsToStore
+    // NOTICE:
+    // `bindActionsToStore` should be former than
+    // `applyMiddleware(thunkMiddleware.withExtraArgument({ httpClientWithToken }))`.
+    // Otherwise, store.actions dispatch won't be enhanced by redux-thunk middleware.
+    bindActionsToStore,
+    applyMiddleware(thunkMiddleware.withExtraArgument({ httpClientWithToken }))
   )
   if (detectEnv.isBrowser()) {
     try {

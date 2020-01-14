@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@5.0.8...@twreporter/redux@6.0.0) (2020-01-14)
+
+### Bug Fixes
+
+- **redux:** enhance store.actions dispatch function by redux-thunk ([cc3bb33](https://github.com/twreporter/twreporter-npm-packages/commit/cc3bb33d1506a26cf8cd28766acbd8fa75c58f0c)), closes [/github.com/reduxjs/redux/blob/master/src/compose.ts#L56](https://github.com//github.com/reduxjs/redux/blob/master/src/compose.ts/issues/L56)
+
+### Features
+
+- **redux:** update actions and reducers ([1e71014](https://github.com/twreporter/twreporter-npm-packages/commit/1e71014466275bf02bced9fead798e057344c931))
+
+### BREAKING CHANGES
+
+- **redux:** action will resolve with success action and
+  reject with fail action.
+  Application code should catch action error,
+  otherwise, it occurs Promise rejection not handled error.
+
+* consolidate first layer properties of actions
+
+  - action object structure should be
+    {
+    type: actionType,
+    payload: {
+    // stuff should be handled by reducers
+    // is put here.
+    }
+    }
+
+* dispatch dataAlreadyExists, noMoreDataToFetch,
+  lastActionIsStillProcessing actions
+
+* isomorphic-fetch -> axios
+
+* error-action-creators: change plain error object to Error instance
+
+* only contain informative properties of axios config
+
+  - the following properties would be removed:
+    - httpsAgent
+    - httpAgent
+    - socketPath
+    - maxRedirects
+    - validateStatus
+    - onDownloadProgress
+    - onUploadProgress
+    - xsrfHeaderName
+    - xsrfCookieName
+    - adapter
+    - paramsSerializer
+    - paramsSerializer
+
+* getAccessToken: action.payload.config is removed
+
+* remove exported functions:
+
+  - failToReceiveAuthorCollection
+  - failToFetchAuthorDetails
+  - failToSearchAuthors
+
+* enhance and refactor unit tests
+
 ## [5.0.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@5.0.8-rc.1...@twreporter/redux@5.0.8) (2020-01-03)
 
 **Note:** Version bump only for package @twreporter/redux

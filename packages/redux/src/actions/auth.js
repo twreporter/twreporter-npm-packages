@@ -21,6 +21,11 @@ const timeout = apiConfig.timeout
  *  @return {Function} returned function will get executed by the Redux Thunk middleware
  */
 export function getAccessToken(cookieList) {
+  /**
+   *  @param {Function} dispatch - Redux store dispatch function
+   *  @param {Function} getState - Redux store getState function
+   *  @return {Promise} resolve with success action and reject with fail action
+   */
   return (dispatch, getState) => {
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
@@ -59,18 +64,24 @@ export function getAccessToken(cookieList) {
     return axios
       .post(url, null, options)
       .then(axiosRes => {
-        dispatch({
+        const successAction = {
           type: actionTypes.AUTH_SUCCESS,
           payload: {
             headers: axiosRes.headers,
             statusCode: axiosRes.status,
-            config: axiosRes.config,
             data: _.get(axiosRes, 'data.data'),
           },
-        })
+        }
+        dispatch(successAction)
+        return successAction
       })
       .catch(err => {
-        dispatch(errorActionCreators.axios(err, actionTypes.AUTH_FAILURE))
+        const failAction = errorActionCreators.axios(
+          err,
+          actionTypes.AUTH_FAILURE
+        )
+        dispatch(failAction)
+        return Promise.reject(failAction)
       })
   }
 }

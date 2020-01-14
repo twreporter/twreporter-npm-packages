@@ -6,46 +6,13 @@ const ERROR_MSG = new Error('mock fetch collection failure')
 export const MOCKID1 = 'mock requested author Id 1'
 export const MOCKID2 = 'mock requested author Id 2'
 export const FETCH_SEC_AUTHOR_COLLECTION_SUCCESS = {
-  authorId: MOCKID2,
-  collectIndexList: ['articleId1', 'articleId2', 'articleId3'],
-  currentPage: 0,
-  totalResults: 65,
-  lastUpdated: CURRENT_DATE,
-  totalPages: 13,
-  normalizedData: {
-    entities: {
-      articles: { articleId1: {}, articleId2: {}, articleId3: {} },
-      authors: { authorId1: {}, authorId2: {}, authorId3: {} },
-    },
-    result: ['articleId1', 'articleId2', 'articleId3'],
-  },
-}
-export const FETCH_FIRST_AUTHOR_SEC_TIMES = {
-  currentPage: 1,
-  collectIndexList: ['articleId4', 'articleId5', 'articleId6'],
-  normalizedData: {
-    entities: {
-      articles: { articleId4: {}, articleId5: {}, articleId6: {} },
-      authors: { authorId1: {}, authorId2: {}, authorId3: {} },
-    },
-    result: ['articleId4', 'articleId5', 'articleId6'],
-  },
-}
-
-export const mockActions = {
-  [types.FETCH_AUTHOR_COLLECTION_REQUEST]: {
-    type: types.FETCH_AUTHOR_COLLECTION_REQUEST,
-    authorId: MOCKID1,
-  },
-
-  [types.FETCH_AUTHOR_COLLECTION_SUCCESS]: {
-    type: types.FETCH_AUTHOR_COLLECTION_SUCCESS,
-    authorId: MOCKID1,
+  payload: {
+    authorId: MOCKID2,
     collectIndexList: ['articleId1', 'articleId2', 'articleId3'],
     currentPage: 0,
-    totalResults: 75,
-    receivedAt: CURRENT_DATE,
-    totalPages: 15,
+    totalResults: 65,
+    lastUpdated: CURRENT_DATE,
+    totalPages: 13,
     normalizedData: {
       entities: {
         articles: { articleId1: {}, articleId2: {}, articleId3: {} },
@@ -54,12 +21,55 @@ export const mockActions = {
       result: ['articleId1', 'articleId2', 'articleId3'],
     },
   },
+}
+export const FETCH_FIRST_AUTHOR_SEC_TIMES = {
+  payload: {
+    currentPage: 1,
+    collectIndexList: ['articleId4', 'articleId5', 'articleId6'],
+    normalizedData: {
+      entities: {
+        articles: { articleId4: {}, articleId5: {}, articleId6: {} },
+        authors: { authorId1: {}, authorId2: {}, authorId3: {} },
+      },
+      result: ['articleId4', 'articleId5', 'articleId6'],
+    },
+  },
+}
+
+export const mockActions = {
+  [types.FETCH_AUTHOR_COLLECTION_REQUEST]: {
+    type: types.FETCH_AUTHOR_COLLECTION_REQUEST,
+    payload: {
+      authorId: MOCKID1,
+    },
+  },
+
+  [types.FETCH_AUTHOR_COLLECTION_SUCCESS]: {
+    type: types.FETCH_AUTHOR_COLLECTION_SUCCESS,
+    payload: {
+      authorId: MOCKID1,
+      collectIndexList: ['articleId1', 'articleId2', 'articleId3'],
+      currentPage: 0,
+      totalResults: 75,
+      receivedAt: CURRENT_DATE,
+      totalPages: 15,
+      normalizedData: {
+        entities: {
+          articles: { articleId1: {}, articleId2: {}, articleId3: {} },
+          authors: { authorId1: {}, authorId2: {}, authorId3: {} },
+        },
+        result: ['articleId1', 'articleId2', 'articleId3'],
+      },
+    },
+  },
 
   [types.FETCH_AUTHOR_COLLECTION_FAILURE]: {
     type: types.FETCH_AUTHOR_COLLECTION_FAILURE,
-    authorId: MOCKID1,
-    error: ERROR_MSG,
-    failedAt: CURRENT_DATE,
+    payload: {
+      authorId: MOCKID1,
+      error: ERROR_MSG,
+      failedAt: CURRENT_DATE,
+    },
   },
 }
 

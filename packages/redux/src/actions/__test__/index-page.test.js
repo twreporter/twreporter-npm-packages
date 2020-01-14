@@ -5,12 +5,13 @@
     fetchIndexPageContent
 */
 
+import * as actions from '../index-page'
 import configureMockStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
 import nock from 'nock'
 import thunk from 'redux-thunk'
 import types from '../../constants/action-types'
-import * as actions from '../index-page'
+import { expectActionErrorObj } from './expect-utils'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -77,8 +78,15 @@ describe('Testing fetchIndexPageContent:', () => {
         },
       })
       return store.dispatch(actions.fetchIndexPageContent()).then(result => {
-        expect(store.getActions().length).toBe(0) // no action is dispatched
-        expect(result).toBeUndefined()
+        expect(store.getActions().length).toBe(1)
+        expect(result).toEqual({
+          type: types.dataAlreadyExists,
+          payload: {
+            function: actions.fetchIndexPageContent.name,
+            message: expect.any(String),
+          },
+        })
+        expect(store.getActions()[0]).toEqual(result)
       })
     })
   })
@@ -101,7 +109,7 @@ describe('Testing fetchIndexPageContent:', () => {
         },
       }
       nock('http://localhost:8080')
-        .get(encodeURI('/v1/index_page'))
+        .get('/v1/index_page')
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchIndexPageContent()).then(() => {
@@ -113,13 +121,15 @@ describe('Testing fetchIndexPageContent:', () => {
           types.GET_CONTENT_FOR_INDEX_PAGE
         )
         expect(store.getActions()[1].payload).toEqual({
-          [fieldNames.sections.latestSection]: [post1, post2],
-          [fieldNames.sections.editorPicksSection]: [post3],
-          [fieldNames.sections.latestTopicSection]: [fullTopic],
-          [fieldNames.sections.reviewsSection]: [post4],
-          [fieldNames.sections.topicsSection]: [nonFullTopic],
-          [fieldNames.sections.photosSection]: [post2],
-          [fieldNames.sections.infographicsSection]: [post3],
+          items: {
+            [fieldNames.sections.latestSection]: [post1, post2],
+            [fieldNames.sections.editorPicksSection]: [post3],
+            [fieldNames.sections.latestTopicSection]: [fullTopic],
+            [fieldNames.sections.reviewsSection]: [post4],
+            [fieldNames.sections.topicsSection]: [nonFullTopic],
+            [fieldNames.sections.photosSection]: [post2],
+            [fieldNames.sections.infographicsSection]: [post3],
+          },
         })
       })
     })
@@ -131,20 +141,41 @@ describe('Testing fetchIndexPageContent:', () => {
           api: 'http://localhost:8080',
         },
       })
-      nock('http://localhost:8080')
-        .get('/v1/index_Page')
-        .reply(404)
 
-      return store.dispatch(actions.fetchIndexPageContent()).then(() => {
-        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && FAILURE
-        expect(store.getActions()[0].type).toEqual(
-          types.START_TO_GET_INDEX_PAGE_CONTENT
-        )
-        expect(store.getActions()[1].type).toBe(
-          types.ERROR_TO_GET_INDEX_PAGE_CONTENT
-        )
-        expect(store.getActions()[1].errorMsg).not.toBe('')
-      })
+      const mockStatusCode = 404
+      const mockAPIRes = {
+        status: 'fail',
+        data: null,
+      }
+      nock('http://localhost:8080')
+        .get('/v1/index_page')
+        .reply(mockStatusCode, mockAPIRes)
+
+      return store
+        .dispatch(actions.fetchIndexPageContent())
+        .catch(failAction => {
+          const expected = [
+            {
+              type: types.START_TO_GET_INDEX_PAGE_CONTENT,
+              url: 'http://localhost:8080/v1/index_page',
+            },
+            {
+              type: types.ERROR_TO_GET_INDEX_PAGE_CONTENT,
+              payload: {
+                error: expect.any(Error),
+              },
+            },
+          ]
+          expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && FAILURE
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(failAction)
+          expect(store.getActions()[1]).toEqual(expected[1])
+          expectActionErrorObj(
+            store.getActions()[1].payload.error,
+            mockStatusCode,
+            mockAPIRes
+          )
+        })
     })
   })
 })

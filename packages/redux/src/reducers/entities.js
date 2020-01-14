@@ -210,7 +210,7 @@ function entities(state = {}, action = {}) {
       const fields = _.concat(sections, categories)
 
       fields.forEach(field => {
-        const posts = _.get(payload, field, [])
+        const posts = _.get(payload, ['items', field], [])
         normalizedObj = normalizeAssets(
           posts,
           normalizedObj.postEntities,
@@ -220,13 +220,13 @@ function entities(state = {}, action = {}) {
       })
 
       normalizedObj = normalizeTopic(
-        _.get(payload, [fieldNames.sections.latestTopicSection, 0]),
+        _.get(payload, ['items', fieldNames.sections.latestTopicSection, 0]),
         normalizedObj.postEntities,
         normalizedObj.topicEntities
       )
 
       normalizedObj = normalizeAssets(
-        _.get(payload, fieldNames.sections.topicsSection, []),
+        _.get(payload, ['items', fieldNames.sections.topicsSection], []),
         normalizedObj.postEntities,
         normalizedObj.topicEntities,
         'topic'
@@ -275,7 +275,7 @@ function entities(state = {}, action = {}) {
     }
 
     case types.GET_A_FULL_POST: {
-      const post = _.get(action, 'payload', {})
+      const post = _.get(action, 'payload.post', {})
       normalizedObj = normalizePost(
         post,
         normalizedObj.postEntities,
@@ -289,7 +289,7 @@ function entities(state = {}, action = {}) {
     }
 
     case types.GET_A_FULL_TOPIC: {
-      const topic = _.get(action, 'payload', {})
+      const topic = _.get(action, 'payload.topic', {})
       normalizedObj = normalizeTopic(
         topic,
         normalizedObj.postEntities,

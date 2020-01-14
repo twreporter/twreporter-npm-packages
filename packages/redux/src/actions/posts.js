@@ -1,4 +1,5 @@
 import { formURL } from '../utils/url'
+import errorActionCreators from './error-action-creators'
 import apiConfig from '../constants/api-config'
 import apiEndpoints from '../constants/api-endpoints'
 import axios from 'axios'
@@ -17,8 +18,14 @@ const _ = {
 
 /* Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of post
+ * @return {Function} returned funciton will get executed by Redux Thunk middleware
  */
 export function fetchAFullPost(slug) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     const state = getState()
     const post = _.get(
@@ -32,14 +39,29 @@ export function fetchAFullPost(slug) {
       // current selected post is not the post just been fetched,
       // change the selected post
       if (slug !== _.get(state, `${stateFieldNames.selectedPost}.slug`)) {
-        return dispatch({
+        const successAction = {
           type: types.CHANGE_SELECTED_POST,
-          payload: post,
-        })
+          payload: {
+            post,
+          },
+        }
+        dispatch(successAction)
+        return Promise.resolve(successAction)
       }
       // current selected post is the post just been fetched,
       // do nothing
-      return Promise.resolve()
+      const action = {
+        type: types.dataAlreadyExists,
+        payload: {
+          function: fetchAFullPost.name,
+          arguments: {
+            slug,
+          },
+          message: 'Post already exists in redux state.',
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v1/${apiEndpoints.posts}/${slug}`
@@ -57,33 +79,37 @@ export function fetchAFullPost(slug) {
         timeout: apiConfig.timeout,
       })
       .then(response => {
-        return dispatch({
+        const successAction = {
           type: types.GET_A_FULL_POST,
-          payload: _.get(response, 'data.record', {}),
-        })
+          payload: {
+            post: _.get(response, 'data.record', {}),
+          },
+        }
+        dispatch(successAction)
+        return successAction
       })
       .catch(error => {
-        // Error to get topics
-        return dispatch({
-          type: types.ERROR_TO_GET_A_FULL_POST,
-          payload: {
-            error,
-            slug,
-          },
-        })
+        const failAction = errorActionCreators.axios(
+          error,
+          types.ERROR_TO_GET_A_FULL_POST
+        )
+        failAction.payload.slug = slug
+        dispatch(failAction)
+        return Promise.reject(failAction)
       })
   }
 }
 
 /**
  * @param {Function} dispatch - dispatch of redux
- * @param {string} path - url path
- * @param {Object} params - url query params
+ * @param {string} origin - URL origin
+ * @param {string} path - URL path
+ * @param {Object} params - URL query params
  * @param {string} successActionType - action type
  * @param {string} failureActionType - action type
  * @param {Object} defaultPayload
+ * @return {Promise} resolve with success action or reject with fail action
  **/
-
 function _fetchPosts(
   dispatch,
   origin,
@@ -104,7 +130,7 @@ function _fetchPosts(
       timeout: apiConfig.timeout,
     })
     .then(response => {
-      return dispatch({
+      const successAction = {
         type: successActionType,
         payload: _.merge(
           {
@@ -113,19 +139,15 @@ function _fetchPosts(
           },
           defaultPayload
         ),
-      })
+      }
+      dispatch(successAction)
+      return successAction
     })
     .catch(error => {
-      // Error to get topics
-      return dispatch(
-        _.merge(
-          {
-            type: failureActionType,
-            error,
-          },
-          defaultPayload
-        )
-      )
+      const failAction = errorActionCreators.axios(error, failureActionType)
+      failAction.payload = _.merge(failAction.payload, defaultPayload)
+      dispatch(failAction)
+      return Promise.reject(failAction)
     })
 }
 
@@ -134,20 +156,44 @@ function _fetchPosts(
  * @param {string} listID - id of the tag, category or topic
  * @param {string} listType - tags, categories or topics
  * @param {number} limit - the number of posts you want to get in one request
+ * @return {Function} returned funciton will get executed by Redux Thunk middleware
  */
 export function fetchListedPosts(listID, listType, limit = 10, page = 0) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     const state = getState()
     const list = _.get(state, [stateFieldNames.lists, listID])
 
     // if list is already existed and there is nothing more to load
     if (list && _.get(list, 'total', 0) <= _.get(list, 'items.length', 0)) {
-      return Promise.resolve()
+      const action = {
+        type: types.noMoreItemsToFetch,
+      }
+      dispatch(action)
+      return Promise.resolve(action)
     }
 
     // items of page are already fetched
     if (page > 0 && Array.isArray(_.get(list, ['pages', page]))) {
-      return Promise.resolve()
+      const action = {
+        type: types.dataAlreadyExists,
+        payload: {
+          function: fetchListedPosts.name,
+          arguments: {
+            listID,
+            listType,
+            limit,
+            page,
+          },
+          message: 'Posts already exist in redux state.',
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
     }
 
     const where = {
@@ -180,9 +226,16 @@ export function fetchListedPosts(listID, listType, limit = 10, page = 0) {
   }
 }
 
-/** Fetch those posts picked by editors
+/**
+ * Fetch those posts picked by editors
+ * @return {Function} returned funciton will get executed by Redux Thunk middleware
  */
 export function fetchEditorPickedPosts() {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     const state = getState()
     const posts = _.get(
@@ -192,7 +245,15 @@ export function fetchEditorPickedPosts() {
     )
 
     if (posts.length > 0) {
-      return Promise.resolve()
+      const action = {
+        type: types.dataAlreadyExists,
+        payload: {
+          function: fetchEditorPickedPosts.name,
+          message: 'Posts already exist in redux state.',
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v1/${apiEndpoints.posts}`
@@ -214,8 +275,14 @@ export function fetchEditorPickedPosts() {
  * fetchPhotographyPostsOnIndexPage
  * This function will fetch 6 latest posts with photography style and `is_featured: true`,
  * It's specifically made for index page
+ * @return {Function} returned funciton will get executed by Redux Thunk middleware
  */
 export function fetchPhotographyPostsOnIndexPage() {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     const state = getState()
     const posts = _.get(
@@ -224,7 +291,15 @@ export function fetchPhotographyPostsOnIndexPage() {
       []
     )
     if (Array.isArray(posts) && posts.length > 0) {
-      return Promise.resolve()
+      const action = {
+        type: types.dataAlreadyExists,
+        payload: {
+          function: fetchPhotographyPostsOnIndexPage.name,
+          message: 'Posts already exist in redux state.',
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v1/${apiEndpoints.posts}`
@@ -246,8 +321,14 @@ export function fetchPhotographyPostsOnIndexPage() {
  * fetchInfographicPostsOnIndexPage
  * This function will fetch 10 latest posts with interactive style,
  * It's specifically made for index page
+ * @return {Function} returned funciton will get executed by Redux Thunk middleware
  */
 export function fetchInfographicPostsOnIndexPage() {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     const state = getState()
     const posts = _.get(
@@ -256,7 +337,15 @@ export function fetchInfographicPostsOnIndexPage() {
       []
     )
     if (Array.isArray(posts) && posts.length > 0) {
-      return Promise.resolve()
+      const action = {
+        type: types.dataAlreadyExists,
+        payload: {
+          function: fetchInfographicPostsOnIndexPage.name,
+          message: 'Posts already exist in redux state.',
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v1/${apiEndpoints.posts}`

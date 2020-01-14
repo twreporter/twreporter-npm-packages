@@ -27,7 +27,7 @@ function indexPage(state = {}, action = {}) {
       const fields = _.concat(sections, categories)
 
       fields.forEach(field => {
-        rtn[field] = _.map(_.get(payload, field), post => {
+        rtn[field] = _.map(_.get(payload, ['items', field]), post => {
           return _.get(post, 'slug')
         })
       })
@@ -91,7 +91,7 @@ function indexPage(state = {}, action = {}) {
 
     case types.ERROR_TO_GET_INDEX_PAGE_CONTENT: {
       return _.merge({}, state, {
-        error: action.error,
+        error: action.payload.error,
         isFetching: false,
       })
     }

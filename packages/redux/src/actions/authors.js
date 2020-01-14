@@ -9,8 +9,8 @@ import {
 import { formURL } from '../utils/url'
 import { schema, normalize } from 'normalizr'
 import actionTypes from '../constants/action-types'
-import fetch from 'isomorphic-fetch'
-import httpConsts from '../constants/http-protocol'
+import axios from 'axios'
+import errorActionCreators from './error-action-creators'
 import stateFieldNames from '../constants/redux-state-field-names'
 // lodash
 import assign from 'lodash/assign'
@@ -25,26 +25,15 @@ const _ = {
   omit,
 }
 
-const { statusCode } = httpConsts
-
 export function requestSearchAuthors(keywords = '') {
   return {
     type:
       keywords === ''
         ? actionTypes.LIST_ALL_AUTHORS_REQUEST
         : actionTypes.SEARCH_AUTHORS_REQUEST,
-    keywords: keywords,
-  }
-}
-
-export function failToSearchAuthors(keywords = '', error) {
-  return {
-    type:
-      keywords === ''
-        ? actionTypes.LIST_ALL_AUTHORS_FAILURE
-        : actionTypes.SEARCH_AUTHORS_FAILURE,
-    error,
-    failedAt: Date.now(),
+    payload: {
+      keywords: keywords,
+    },
   }
 }
 
@@ -67,6 +56,11 @@ export function failToSearchAuthors(keywords = '', error) {
  */
 
 export function searchAuthors({ keywords, targetPage, returnDelay }) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     // eslint-disable-line no-unused-vars
     const searchParas = {
@@ -81,57 +75,58 @@ export function searchAuthors({ keywords, targetPage, returnDelay }) {
     const url = formURL(apiOrigin, '/v1/search/authors', searchParas, false)
     dispatch(requestSearchAuthors(keywords))
     // Call our API server to fetch the data
-    return fetch(url)
-      .then(response => {
-        if (response.status >= 400) {
-          const err = new Error(
-            'Bad response from API, response:' + JSON.stringify(response)
-          )
-          err.status = statusCode.internalServerError
-          throw err
-        }
-        return response.json()
-      })
-      .then(
-        responseObject => {
-          const authors = _.get(responseObject, 'hits', {})
-          const receiveSearchAuthorsAction = {
-            type:
-              keywords === ''
-                ? actionTypes.LIST_ALL_AUTHORS_SUCCESS
-                : actionTypes.SEARCH_AUTHORS_SUCCESS,
+    return axios.get(url).then(
+      response => {
+        const authors = _.get(response, 'data.hits', {})
+        const receiveSearchAuthorsAction = {
+          type:
+            keywords === ''
+              ? actionTypes.LIST_ALL_AUTHORS_SUCCESS
+              : actionTypes.SEARCH_AUTHORS_SUCCESS,
+          payload: {
             keywords,
             normalizedData: Array.isArray(authors)
               ? normalize(camelizeKeys(authors), new schema.Array(authorSchema))
               : normalize(camelizeKeys(authors), authorSchema),
             currentPage: _.get(
-              responseObject,
-              'page',
+              response,
+              'data.page',
               NUMBER_OF_FIRST_RESPONSE_PAGE - 1
             ),
-            totalPages: _.get(responseObject, 'nbPages', 0),
+            totalPages: _.get(response, 'data.nbPages', 0),
             receivedAt: Date.now(),
-          }
-          // delay for displaying loading spinner
-          function delayDispatch() {
-            return new Promise((resolve, reject) => {
-              // eslint-disable-line no-unused-vars
-              setTimeout(() => {
-                resolve()
-              }, returnDelay)
-            })
-          }
-          if (returnDelay > 0) {
-            return delayDispatch().then(() => {
-              return dispatch(receiveSearchAuthorsAction)
-            })
-          }
-          return dispatch(receiveSearchAuthorsAction)
-        },
-        error => {
-          return dispatch(failToSearchAuthors(keywords, error))
+          },
         }
-      )
+        // delay for displaying loading spinner
+        function delayDispatch() {
+          return new Promise((resolve, reject) => {
+            // eslint-disable-line no-unused-vars
+            setTimeout(() => {
+              resolve()
+            }, returnDelay)
+          })
+        }
+        if (returnDelay > 0) {
+          return delayDispatch().then(() => {
+            dispatch(receiveSearchAuthorsAction)
+            return receiveSearchAuthorsAction
+          })
+        }
+        dispatch(receiveSearchAuthorsAction)
+        return receiveSearchAuthorsAction
+      },
+      error => {
+        const type =
+          keywords === ''
+            ? actionTypes.LIST_ALL_AUTHORS_FAILURE
+            : actionTypes.SEARCH_AUTHORS_FAILURE
+
+        const failAction = errorActionCreators.axios(error, type)
+        failAction.payload.failedAt = Date.now()
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      }
+    )
   }
 }
 
@@ -144,12 +139,17 @@ export function searchAuthors({ keywords, targetPage, returnDelay }) {
 export function searchAuthorsIfNeeded(currentKeywords = '') {
   /* --------- list all authors --------- */
   if (currentKeywords === '') {
+    /**
+     * @param {Function} dispatch - Redux store dispatch function
+     * @param {Function} getState - Redux store getState function
+     * @return {Promise} resolve with success action or reject with fail action
+     */
     return (dispatch, getState) => {
       const currentState = getState()
       const authorsList = _.get(currentState, 'authorsList', {})
       const { isFetching, currentPage, hasMore } = authorsList
       if (currentPage < NUMBER_OF_FIRST_RESPONSE_PAGE) {
-        // Situation 1/3: If no data exists => fetch first page immediately
+        // If no data exists => fetch first page immediately
         return dispatch(
           searchAuthors({
             keywords: '',
@@ -158,21 +158,53 @@ export function searchAuthorsIfNeeded(currentKeywords = '') {
           })
         )
       }
-      // If current page >= NUMBER_OF_FIRST_RESPONSE_PAGE:
-      if (!isFetching && hasMore) {
-        // Situation 2/3: If already have data AND not fetching AND has more => delay && next page
-        return dispatch(
-          searchAuthors({
-            keywords: '',
-            targetPage: currentPage + 1,
-            returnDelay: RETURN_DELAY_TIME,
-          })
-        )
+
+      if (!hasMore) {
+        const action = {
+          type: actionTypes.noMoreItemsToFetch,
+          payload: {
+            function: searchAuthorsIfNeeded.name,
+            arguments: {
+              currentKeywords,
+            },
+            message: 'There is no more authors to search by current keywords.',
+          },
+        }
+        dispatch(action)
+        return Promise.resolve(action)
       }
-      return Promise.resolve('Promise Resolved') // Situation 3/3: If already have all data (not has more) OR is fetching => do nothing
+
+      if (isFetching) {
+        const action = {
+          type: actionTypes.lastActionIsStillProcessing,
+          payload: {
+            function: searchAuthorsIfNeeded.name,
+            arguments: {
+              currentKeywords,
+            },
+            message: 'Request to search authors is still in progress.',
+          },
+        }
+        dispatch(action)
+        return Promise.resolve(action)
+      }
+
+      // If already have data AND not fetching AND has more => delay && next page
+      return dispatch(
+        searchAuthors({
+          keywords: '',
+          targetPage: currentPage + 1,
+          returnDelay: RETURN_DELAY_TIME,
+        })
+      )
     }
   }
   /* --------- searching authors --------- */
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
   return (dispatch, getState) => {
     const currentState = getState()
     const authorsList = _.get(currentState, 'searchedAuthorsList', {})
@@ -187,6 +219,17 @@ export function searchAuthorsIfNeeded(currentKeywords = '') {
         })
       )
     }
-    return Promise.resolve('Promise Resolved') // Situation 2/2:If keywords are the same => do nothing
+    const action = {
+      type: actionTypes.dataAlreadyExists,
+      payload: {
+        function: searchAuthorsIfNeeded.name,
+        arguments: {
+          currentKeywords,
+        },
+        message: 'Authors related to keywords already exists.',
+      },
+    }
+    dispatch(action)
+    return Promise.resolve(action) // Situation 2/2:If keywords are the same => do nothing
   }
 }

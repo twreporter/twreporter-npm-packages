@@ -35,7 +35,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.selectedTopic]: topic,
   [reduxStatePropKey.topicList]: topics,
   [reduxStatePropKey.entitiesForAuthors]: (state = {}, action) => {
-    const entities = _.get(action, 'normalizedData.entities')
+    const entities = _.get(action, 'payload.normalizedData.entities')
     if (entities) {
       // WORKAROUND:
       // When the data of an author is updated, we have not build the function to synchronize the author data saved in old post records on Algolia.
