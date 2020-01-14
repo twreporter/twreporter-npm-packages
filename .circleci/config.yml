@@ -6,7 +6,7 @@ executors:
     working_directory: ~/repo
 
 jobs:
-  tag-only-branch-ignore:
+  push-tag:
     executor: node-executor
     environment:
       - GIT_BASE_REVISION: << pipeline.git.base_revision >>
@@ -15,84 +15,21 @@ jobs:
       - GIT_BRANCH: << pipeline.git.branch >>
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "1f:2d:43:07:77:82:69:5a:76:5e:43:4b:7c:4f:bd:33"
       - run:
-          name: 'print information'
-          command: |
-            echo "tag-only-branch-ignore-job"
-            echo "The tag triggering: $GIT_TAG"
-            echo "The branch triggering: $GIT_BRANCH"
-  
-  tag-ignore-branch-only:
-    executor: node-executor
-    environment:
-      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
-      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
-      - GIT_TAG: << pipeline.git.tag >>
-      - GIT_BRANCH: << pipeline.git.branch >>
-    steps:
-      - checkout
+          name: 'bump version'
+          command: git tag ci-dev-test-tag-<< pipeline.git.revision >>
       - run:
-          name: 'print information'
-          command: |
-            echo "tag-ignore-branch-only-job"
-            echo "The tag triggering: $GIT_TAG"
-            echo "The branch triggering: $GIT_BRANCH"
-
-  branch-only:
-    executor: node-executor
-    environment:
-      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
-      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
-      - GIT_TAG: << pipeline.git.tag >>
-      - GIT_BRANCH: << pipeline.git.branch >>
-    steps:
-      - checkout
-      - run:
-          name: 'print information'
-          command: |
-            echo "branch-only-job"
-            echo "The tag triggering: $GIT_TAG"
-            echo "The branch triggering: $GIT_BRANCH"
-
-  tag-branch-only:
-    executor: node-executor
-    environment:
-      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
-      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
-      - GIT_TAG: << pipeline.git.tag >>
-      - GIT_BRANCH: << pipeline.git.branch >>
-    steps:
-      - checkout
-      - run:
-          name: 'print information'
-          command: |
-            echo "tag-branch-only-job"
-            echo "The tag triggering: $GIT_TAG"
-            echo "The branch triggering: $GIT_BRANCH"
+          name: 'push tag'
+          command: git push origin ci-dev-test-tag-<< pipeline.git.revision >>
 
 workflows:
   version: 2.1
   print_infos:
     jobs:
-      - tag-only-branch-ignore:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /(.+)@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?/
-      - tag-ignore-branch-only:
+      - bump-version:
           filters:
             branches:
               only: ci-dev
-            tags:
-              ignore: /(.+)@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?/
-      - branch-only:
-          filters:
-            branches:
-              only: ci-dev
-      - tag-branch-only:
-          filters:
-            branches:
-              only: ci-dev
-            tags:
-              only: /(.+)@[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?/
