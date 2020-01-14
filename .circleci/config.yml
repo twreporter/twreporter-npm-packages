@@ -6,7 +6,7 @@ executors:
     working_directory: ~/repo
 
 jobs:
-  push-tag:
+  test-npm:
     executor: node-executor
     environment:
       - GIT_BASE_REVISION: << pipeline.git.base_revision >>
@@ -15,21 +15,23 @@ jobs:
       - GIT_BRANCH: << pipeline.git.branch >>
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "1f:2d:43:07:77:82:69:5a:76:5e:43:4b:7c:4f:bd:33"
       - run:
-          name: 'bump version'
-          command: git tag ci-dev-test-tag-<< pipeline.git.revision >>
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
-          name: 'push tag'
-          command: git push origin ci-dev-test-tag-<< pipeline.git.revision >>
+          name: Publish package
+          command: |
+            npm whoami
+            npm ping
+            npm profile get
+            npm config list
+            npm view @twreporter/core
 
 workflows:
   version: 2.1
   print_infos:
     jobs:
-      - push-tag:
+      - test-npm:
           filters:
             branches:
               only: ci-dev
