@@ -29,7 +29,7 @@ workflows:
   version: 2.1
   print_infos:
     jobs:
-      - bump-version:
+      - push-tag:
           filters:
             branches:
               only: ci-dev
