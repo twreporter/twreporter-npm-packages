@@ -15,9 +15,6 @@ jobs:
       - GIT_BRANCH: << pipeline.git.branch >>
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "1f:2d:43:07:77:82:69:5a:76:5e:43:4b:7c:4f:bd:33"
       - run:
           name: 'Create GitHub PR'
           command: |
