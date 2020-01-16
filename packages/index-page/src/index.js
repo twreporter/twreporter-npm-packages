@@ -12,6 +12,7 @@ import ScrollFadein from './components/animations/scroll-fadein'
 import SeachBox from './components/search-box'
 import TopicsSection from './components/topics-section'
 
+/* void comment message for ci testing */
 export default {
   components: {
     CategorySection,
