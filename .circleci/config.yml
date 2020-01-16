@@ -1,13 +1,108 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:10.15
+    working_directory: ~/repo
+
+jobs:
+  bump-version-or-deploy:
+    executor: node-executor
+    environment:
+      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
+      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
+      - BIN_DIR: "node_modules/.bin"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-build-{{ checksum "yarn.lock" }}
+      - run: yarn
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-build-{{ checksum "yarn.lock" }}
+      - run:
+          name: "pick out lerna version commit"
+          command: |
+            VERSION_COMMIT_TITLE=$(node -e "console.log(require('./lerna.json').command.publish.message)")
+            COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty="format:%h  %s")
+            echo "pushed commits:"
+            echo "$COMMITS"
+            VERSION_COMMITS_COUNT=$(echo $COMMITS | grep -cF "$VERSION_COMMIT_TITLE" || true)
+            VERSION_COMMITS=$(echo $COMMITS | grep -F "$VERSION_COMMIT_TITLE" || true)
+            echo "version commits count: $VERSION_COMMITS_COUNT"
+            echo "version commits: $VERSION_COMMITS"
+            if [ $VERSION_COMMITS_COUNT -eq 0 ]; then
+              echo "There is no commit containing the release message."
+              VERSION_COMMIT_HASH=""
+            elif [ $VERSION_COMMITS_COUNT -gt 1 ]; then
+              echo "There are more than one pushed commits containing the release message."
+              for i in "${VERSION_COMMITS[@]}"; do
+                echo $(git show $i --pretty="format:%h  %B" --no-patch)
+              done
+              exit 1
+            else
+              echo "Find one version commit: $VERSION_COMMITS"
+              VERSION_COMMIT_HASH="$(echo "$VERSION_COMMITS" | awk '{ print $1 }')"
+            fi
+            echo "export VERSION_COMMIT_HASH=\"${VERSION_COMMIT_HASH}\"" >> $BASH_ENV
+      # Add GitHub ssh key for pushing commits to origin
+      - add_ssh_keys:
+          fingerprints:
+            - "47:59:56:60:06:a3:38:a0:35:b8:a2:46:5f:47:b3:e5"
+      - run:
+          name: "bump version or build and deploy the packages"
+          command: |
+            if [[ -n "$VERSION_COMMIT_HASH" ]]; then
+              git checkout $VERSION_COMMIT_HASH
+              # Authenticate with npm registry
+              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+              # Publish packages
+              npm run publish
+            else
+              # Bump prerelease version and push to origin
+              echo "Try to bump prerelease version."
+              ${BIN_DIR}/lerna version --conventional-commits --conventional-prerelease --preid rc --include-merged-tags --yes
+
+              GIT_AFTER_BUMP_REVISION=$(git log -1 --pretty=format:%H)
+              echo "Current HEAD after bump-prerelease-version: $GIT_AFTER_BUMP_REVISION"
+
+              if [[ "$GIT_AFTER_BUMP_REVISION" == "$GIT_CURRENT_REVISION" ]]; then
+                echo "No prerelease version detect. No need to bump stable version either."
+              else
+                # Set git configs
+                git config --global user.email "developer@twreporter.org"
+                git config --global user.name "reporterdev"
+                # Create stable release branch
+                STABLE_BRANCH_NAME="release-at-${GIT_CURRENT_REVISION:0:5}"
+                echo "Creating stable release branch $STABLE_BRANCH_NAME"
+                git checkout -b "$STABLE_BRANCH_NAME"
+                git push -u origin "$STABLE_BRANCH_NAME"
+                ${BIN_DIR}/lerna version --conventional-commits --conventional-graduate --include-merged-tags --yes
+
+                # Create Pull Request
+                curl "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls" \
+                  -X POST \
+                  -H "Authorization: token $GITHUB_TOKEN" \
+                  -H "Content-Type: application/json" \
+                  --data "$(cat \<<EOF
+                {
+                  "title": "chore(release): bump version",
+                  "head": "$STABLE_BRANCH_NAME",
+                  "base": "master",
+                  "body": "Release stable version. Submit from CircleCI build [#$CIRCLE_BUILD_NUM](https://circleci.com/gh/twreporter/twreporter-npm-packages/$CIRCLE_BUILD_NUM)."
+                }
+            EOF
+                )"
+              fi
+            fi
+
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  version: 2.1
+  bump_version_or_deploy:
     jobs:
-      - welcome/run
+      - bump-version-or-deploy:
+          filters:
+            branches:
+              only: master
