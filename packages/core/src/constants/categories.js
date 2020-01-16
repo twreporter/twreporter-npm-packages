@@ -1,3 +1,5 @@
+/* void comment message for ci testing */
+
 export const configs = [
   {
     text: '人權．社會',
