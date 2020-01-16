@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "make build",
-    "dev": "make dev"
+    "dev": "make dev",
+    "prepublishOnly": "make build"
   },
   "dependencies": {
     "@twreporter/core": "^1.1.2",
