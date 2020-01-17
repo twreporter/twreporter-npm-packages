@@ -13,73 +13,26 @@ jobs:
       - GIT_CURRENT_REVISION: << pipeline.git.revision >>
     steps:
       - checkout
+      - add_ssh_keys:
+        fingerprints:
+          - "47:59:56:60:06:a3:38:a0:35:b8:a2:46:5f:47:b3:e5"
       - run:
           name: "pick out lerna version commit"
           command: |
-            VERSION_COMMIT_TITLE=$(node -e "console.log(require('./lerna.json').command.publish.message)")
-            COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty="format:%h  %s")
-            echo "pushed commits:"
-            echo "$COMMITS"
-            VERSION_COMMITS_COUNT=$(echo $COMMITS | grep -cF "$VERSION_COMMIT_TITLE" || true)
-            VERSION_COMMITS=$(echo $COMMITS | grep -F "$VERSION_COMMIT_TITLE" || true)
-            echo "version commits count: $VERSION_COMMITS_COUNT"
-            echo "version commits: $VERSION_COMMITS"
-            if [ $VERSION_COMMITS_COUNT -eq 0 ]; then
-              echo "There is no commit containing the release message."
-              VERSION_COMMIT_HASH=""
-            elif [ $VERSION_COMMITS_COUNT -gt 1 ]; then
-              echo "There are more than one pushed commits containing the release message."
-              for i in "${VERSION_COMMITS[@]}"; do
-                echo $(git show $i --pretty="format:%h  %B" --no-patch)
-              done
-              exit 1
-            else
-              echo "Find one version commit: $VERSION_COMMITS"
-              VERSION_COMMIT_HASH="$(echo "$VERSION_COMMITS" | awk '{ print $1 }')"
-            fi
-            echo "export VERSION_COMMIT_HASH=\"${VERSION_COMMIT_HASH}\"" >> $BASH_ENV
-      - restore_cache:
-          keys:
-          - v1-dependencies-build-{{ checksum "yarn.lock" }}
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-build-{{ checksum "yarn.lock" }}
-      - add_ssh_keys:
-          fingerprints:
-            - "47:59:56:60:06:a3:38:a0:35:b8:a2:46:5f:47:b3:e5"
-      - run:
-          name: bump version or build and deploy the packages"
-          command: |
-            if [[ -n "$VERSION_COMMIT_HASH" ]]; then
-              # version commit exists
-              git checkout $VERSION_COMMIT_HASH
-              # authenticate with npm registry
-              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-              # publish packages
-              lerna publish from-package
-            else
-              git config --global user.email "developer@twreporter.org"
-              git config --global user.name "reporterdev"
-              npm run bump-prerelease-version
-              GIT_AFTER_BUMP_REVISION=$(git log -1 --pretty=format:%H)
-              echo "current: $GIT_AFTER_BUMP_REVISION"
-              if [[ "$GIT_AFTER_BUMP_REVISION" == "$GIT_CURRENT_REVISION" ]]; then
-                echo "No package files change. No need to bump version."
-              else
-                STABLE_BRANCH_NAME="release-at-${GIT_CURRENT_REVISION:0:5}"
-                echo "Creating stable release branch $STABLE_BRANCH_NAME"
-                git checkout -b "$STABLE_BRANCH_NAME"
-                git push -u origin "$STABLE_BRANCH_NAME"
-                npm run bump-stable-version
-                curl -X POST \
-                  -H "Authorization: token $GITHUB_TOKEN" \
-                  -H "Content-Type: application/json" \
-                  -d '{"title" : "chore(release): bump version", "head" : "$STABLE_BRANCH_NAME", "base": "master", "body": "Release stable version. Submit from CircleCI build [#$CIRCLE_BUILD_NUM](https://circleci.com/gh/twreporter/twreporter-npm-packages/$CIRCLE_BUILD_NUM"}' \
-                  "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls"
-              fi
-            fi
+            git config --global user.email "developer@twreporter.org"
+            git config --global user.name "reporterdev"
+            STABLE_BRANCH_NAME="release-at-${GIT_CURRENT_REVISION:0:6}"
+            echo "Creating stable release branch $STABLE_BRANCH_NAME"
+            git checkout -b "$STABLE_BRANCH_NAME"
+            echo "test file" >> TEST_FILE
+            git add TEST_FILE
+            git commit -m "chore: add test-file"
+            git push -u origin "$STABLE_BRANCH_NAME"
+            curl -X POST \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d '{"title": "chore(release): bump version","head": "$STABLE_BRANCH_NAME","base": "master","body": "Release stable version. Submit from CircleCI build [#$CIRCLE_BUILD_NUM](https://circleci.com/gh/twreporter/twreporter-npm-packages/$CIRCLE_BUILD_NUM)"}' \
+              "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls"
 
 workflows:
   version: 2.1
