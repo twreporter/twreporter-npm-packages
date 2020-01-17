@@ -14,8 +14,8 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-        fingerprints:
-          - "47:59:56:60:06:a3:38:a0:35:b8:a2:46:5f:47:b3:e5"
+          fingerprints:
+            - "47:59:56:60:06:a3:38:a0:35:b8:a2:46:5f:47:b3:e5"
       - run:
           name: "pick out lerna version commit"
           command: |
