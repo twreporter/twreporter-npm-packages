@@ -33,7 +33,7 @@ jobs:
               -H "Content-Type: application/json" \
               -d '$@-' \
               "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls" \
-              << EOF
+              \<\< EOF
               {
                 "title": "chore(release): bump version",
                 "head": "$STABLE_BRANCH_NAME",
