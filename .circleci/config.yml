@@ -31,8 +31,16 @@ jobs:
             curl -X POST \
               -H "Authorization: token $GITHUB_TOKEN" \
               -H "Content-Type: application/json" \
-              -d '{"title": "chore(release): bump version","head": "$STABLE_BRANCH_NAME","base": "master","body": "Release stable version. Submit from CircleCI build [#$CIRCLE_BUILD_NUM](https://circleci.com/gh/twreporter/twreporter-npm-packages/$CIRCLE_BUILD_NUM)"}' \
-              "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls"
+              -d '$@-' \
+              "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls" \
+              << EOF
+              {
+                "title": "chore(release): bump version",
+                "head": "$STABLE_BRANCH_NAME",
+                "base": "master",
+                "body": "Release stable version. Submit from CircleCI build [#$CIRCLE_BUILD_NUM](https://circleci.com/gh/twreporter/twreporter-npm-packages/$CIRCLE_BUILD_NUM)."
+              }
+              EOF
 
 workflows:
   version: 2.1
