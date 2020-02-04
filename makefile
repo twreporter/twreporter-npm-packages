@@ -64,8 +64,10 @@ unlink:
 	yarn workspaces run unlink
 
 test:
-	@echo "$(P) Run tests"
-	NODE_ENV=test $(BIN_DIR)/jest
+	@echo "$(P) Run overall tests"
+	NODE_ENV=test $(BIN_DIR)/jest dev
+	@echo "$(P) Run tests of changed packages"
+	NODE_ENV=test $(BIN_DIR)/lerna run test --since --stream --include-merged-tags
 
 cp-make:
 	@echo "$(P) Copy \`dev/source.makefile\` to packages"

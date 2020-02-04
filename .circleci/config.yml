@@ -95,23 +95,14 @@ commands:
 
 jobs:
 
-  overall-test:
+  test:
     executor: node-executor
     steps:
       - checkout
       - install-build-deps
       - run:
-          name: 'Run overall tests'
-          command: npm run test
-  
-  changed-packages-tests:
-    executor: node-executor
-    steps:
-      - checkout
-      - install-build-deps
-      - run:
-          name: 'Run package tests if changed'
-          command: ${NODE_BIN_DIR}/lerna run test --since
+          name: 'Run tests'
+          command: make test
 
   version:
     executor: node-executor
@@ -144,12 +135,7 @@ workflows:
   version: 2.1
   version_and_publish:
     jobs:
-      - test:
-          filters:
-            branches:
-              only:
-                - release
-                - master
+      - test
       - version:
           name: version_release
           prerelease: false
