@@ -12,9 +12,7 @@
     "dev": "make dev",
     "test": "make test",
     "build": "make build",
-    "release": "make release",
-    "dep-intersect": "babel-node dev/print-dep-intersections.js",
-    "publish": "lerna publish from-package"
+    "dep-intersect": "babel-node dev/print-dep-intersections.js"
   },
   "husky": {
     "hooks": {

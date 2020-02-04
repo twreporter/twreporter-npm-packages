@@ -13,8 +13,7 @@
         ".*"
       ],
       "verifyAccess": false,
-      "verifyRegistry": false,
-      "message": "chore(release): bump version"
+      "verifyRegistry": false
     }
   }
 }

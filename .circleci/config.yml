@@ -1,108 +1,184 @@
 version: 2.1
+
 executors:
   node-executor:
     docker:
       - image: circleci/node:10.15
     working_directory: ~/repo
-
-jobs:
-  bump-version-or-deploy:
-    executor: node-executor
     environment:
-      - GIT_BASE_REVISION: << pipeline.git.base_revision >>
-      - GIT_CURRENT_REVISION: << pipeline.git.revision >>
-      - BIN_DIR: "node_modules/.bin"
+      - NODE_BIN_DIR: "node_modules/.bin"
+      - PRERELEASE_COMMIT_HEAD: "chore(prerelease): bump version"
+      - RELEASE_COMMIT_HEAD: "chore(release): bump version"
+
+commands:
+  add-github-write-key:
+    description: "Add GitHub read/write ssh key"
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-build-{{ checksum "yarn.lock" }}
-      - run: yarn
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-build-{{ checksum "yarn.lock" }}
-      - run:
-          name: "pick out lerna version commit"
-          command: |
-            VERSION_COMMIT_TITLE=$(node -e "console.log(require('./lerna.json').command.publish.message)")
-            COMMITS=$(git log "$GIT_BASE_REVISION".."$GIT_CURRENT_REVISION" --pretty="format:%h  %s")
-            echo "pushed commits:"
-            echo "$COMMITS"
-            VERSION_COMMITS_COUNT=$(echo $COMMITS | grep -cF "$VERSION_COMMIT_TITLE" || true)
-            VERSION_COMMITS=$(echo $COMMITS | grep -F "$VERSION_COMMIT_TITLE" || true)
-            echo "version commits count: $VERSION_COMMITS_COUNT"
-            echo "version commits: $VERSION_COMMITS"
-            if [ $VERSION_COMMITS_COUNT -eq 0 ]; then
-              echo "There is no commit containing the release message."
-              VERSION_COMMIT_HASH=""
-            elif [ $VERSION_COMMITS_COUNT -gt 1 ]; then
-              echo "There are more than one pushed commits containing the release message."
-              for i in "${VERSION_COMMITS[@]}"; do
-                echo $(git show $i --pretty="format:%h  %B" --no-patch)
-              done
-              exit 1
-            else
-              echo "Find one version commit: $VERSION_COMMITS"
-              VERSION_COMMIT_HASH="$(echo "$VERSION_COMMITS" | awk '{ print $1 }')"
-            fi
-            echo "export VERSION_COMMIT_HASH=\"${VERSION_COMMIT_HASH}\"" >> $BASH_ENV
-      # Add GitHub ssh key for pushing commits to origin
       - add_ssh_keys:
           fingerprints:
             - "47:59:56:60:06:a3:38:a0:35:b8:a2:46:5f:47:b3:e5"
+
+  set-git-user:
+    description: "Set git user in config"
+    parameters:
+      email:
+        type: string
+        default: "developer@twreporter.org"
+      username:
+        type: string
+        default: "reporterdev"
+    steps:
+      - run: git config --global user.email << parameters.email >>
+      - run: git config --global user.name << parameters.username >>
+
+  set-npm-auth:
+    description: "Set NPM authentication"
+    steps:
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+
+  install-build-deps:
+    description: "Install build dependencies"
+    steps:
+      - restore_cache:
+          keys:
+            - v2-dependencies-build-{{ checksum "yarn.lock" }}
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+            - packages/core/node_modules
+            - packages/index-page/node_modules
+            - packages/react-article-components/node_modules
+            - packages/react-components/node_modules
+            - packages/redux/node_modules
+            - packages/universal-header/node_modules
+          key: v2-dependencies-build-{{ checksum "yarn.lock" }}
+
+  publish:
+    description: "Publish packages to NPM registry if needed"
+    parameters:
+      prerelease:
+        type: boolean
+        default: false
+    steps:
       - run:
-          name: "bump version or build and deploy the packages"
+          name: "Publish packages to NPM registry if needed"
           command: |
-            if [[ -n "$VERSION_COMMIT_HASH" ]]; then
-              git checkout $VERSION_COMMIT_HASH
-              # Authenticate with npm registry
-              echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-              # Publish packages
-              npm run publish
-            else
-              # Bump prerelease version and push to origin
-              echo "Try to bump prerelease version."
-              ${BIN_DIR}/lerna version --conventional-commits --conventional-prerelease --preid rc --include-merged-tags --yes
+            ${NODE_BIN_DIR}/lerna publish from-package \
+              <<# parameters.prerelease >> --pre-dist-tag rc<</ parameters.prerelease >> \
+              --yes
 
-              GIT_AFTER_BUMP_REVISION=$(git log -1 --pretty=format:%H)
-              echo "Current HEAD after bump-prerelease-version: $GIT_AFTER_BUMP_REVISION"
+  version:
+    description: "Bump packages version if needed"
+    parameters:
+      prerelease:
+        type: boolean
+        default: false
+    steps:
+      - run:
+          name: "Bump packages version if needed"
+          command: |
+            echo "HEAD before version: $(git log -1 --pretty=format:%H)"
+            # Bump release version and push to origin (distribution files are built at `prepublishOnly` hook)
+            ${NODE_BIN_DIR}/lerna version \
+              --conventional-commits \
+              <<# parameters.prerelease >>--preid rc<</ parameters.prerelease >> \
+              <<# parameters.prerelease >>--conventional-prerelease<</ parameters.prerelease >> \
+              <<^ parameters.prerelease >>--conventional-graduate<</ parameters.prerelease >> \
+              --include-merged-tags \
+              <<# parameters.prerelease >>--message "$PRERELEASE_COMMIT_HEAD"<</ parameters.prerelease >> \
+              <<^ parameters.prerelease >>--message "$RELEASE_COMMIT_HEAD"<</ parameters.prerelease >> \
+              --yes
+            # Push new version commit back to origin/master
+            <<^ parameters.prerelease >>git push origin master<</ parameters.prerelease >>
+            echo "HEAD after version: $(git log -1 --pretty=format:%H)"
 
-              if [[ "$GIT_AFTER_BUMP_REVISION" == "$GIT_CURRENT_REVISION" ]]; then
-                echo "No prerelease version detect. No need to bump stable version either."
-              else
-                # Set git configs
-                git config --global user.email "developer@twreporter.org"
-                git config --global user.name "reporterdev"
-                # Create stable release branch
-                STABLE_BRANCH_NAME="release-at-${GIT_CURRENT_REVISION:0:5}"
-                echo "Creating stable release branch $STABLE_BRANCH_NAME"
-                git checkout -b "$STABLE_BRANCH_NAME"
-                git push -u origin "$STABLE_BRANCH_NAME"
-                ${BIN_DIR}/lerna version --conventional-commits --conventional-graduate --include-merged-tags --yes
+jobs:
 
-                # Create Pull Request
-                curl "https://api.github.com/repos/twreporter/twreporter-npm-packages/pulls" \
-                  -X POST \
-                  -H "Authorization: token $GITHUB_TOKEN" \
-                  -H "Content-Type: application/json" \
-                  --data "$(cat \<<EOF
-                {
-                  "title": "chore(release): bump version",
-                  "head": "$STABLE_BRANCH_NAME",
-                  "base": "master",
-                  "body": "Release stable version. Submit from CircleCI build [#$CIRCLE_BUILD_NUM](https://circleci.com/gh/twreporter/twreporter-npm-packages/$CIRCLE_BUILD_NUM)."
-                }
-            EOF
-                )"
-              fi
-            fi
+  overall-test:
+    executor: node-executor
+    steps:
+      - checkout
+      - install-build-deps
+      - run:
+          name: 'Run overall tests'
+          command: npm run test
+  
+  changed-packages-tests:
+    executor: node-executor
+    steps:
+      - checkout
+      - install-build-deps
+      - run:
+          name: 'Run package tests if changed'
+          command: ${NODE_BIN_DIR}/lerna run test --since
+
+  version:
+    executor: node-executor
+    parameters:
+      prerelease:
+        type: boolean
+        default: false
+    steps:
+      - checkout
+      - install-build-deps
+      - add-github-write-key
+      - set-git-user
+      - version:
+          prerelease: << parameters.prerelease >>
+
+  publish:
+    executor: node-executor
+    parameters:
+      prerelease:
+        type: boolean
+        default: false
+    steps:
+      - checkout
+      - install-build-deps
+      - set-npm-auth
+      - publish:
+          prerelease: << parameters.prerelease >>
 
 workflows:
   version: 2.1
-  bump_version_or_deploy:
+  version_and_publish:
     jobs:
-      - bump-version-or-deploy:
+      - test:
+          filters:
+            branches:
+              only:
+                - release
+                - master
+      - version:
+          name: version_release
+          prerelease: false
+          requires:
+            - test
+          filters:
+            branches:
+              only: release
+      - publish:
+          name: publish_release
+          prerelease: false
+          requires:
+            - test
+          filters:
+            branches:
+              only: release
+      - version:
+          name: version_prerelease
+          prerelease: true
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+      - publish:
+          name: publish_prerelease
+          prerelease: true
+          requires:
+            - test
           filters:
             branches:
               only: master
