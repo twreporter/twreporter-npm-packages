@@ -22,11 +22,12 @@ export default class AudioProvider extends PureComponent {
       isPlaying: false,
       isMute: false,
     }
-    this.stop = this.stop.bind(this)
-    this.play = this.play.bind(this)
-    this.pause = this.pause.bind(this)
-    this.setCurrent = this.setCurrent.bind(this)
-    this.toggleMute = this.toggleMute.bind(this)
+    this.stop = this._stop.bind(this)
+    this.play = this._play.bind(this)
+    this.pause = this._pause.bind(this)
+    this.mute = this._mute.bind(this)
+    this.setCurrent = this._setCurrent.bind(this)
+    this.toggleMute = this._toggleMute.bind(this)
     /* 
       `memoize-one` here is used to prevent creating new object in every render.
       It will shallow compare the input parameters.
@@ -48,6 +49,68 @@ export default class AudioProvider extends PureComponent {
       })
     )
     this._update = null
+    this._sound = null
+  }
+
+  _setCurrent(to) {
+    const sound = this._sound
+    if (sound && typeof sound.seek === 'function') {
+      if (to >= 0 && to !== Infinity) {
+        // If param `to` is given and valid, set current seek to it and update state with it.
+        this.setState({
+          current: to, // Not using `current = sound.seek(to).seek()` because `sound.seek(sound.duration()) < sound.duration()` may be true
+        })
+        sound.seek(to)
+      } else {
+        // If `to` is undefined, just get the position of playback and update state with it.
+        this.setState({
+          current: sound.seek(),
+        })
+      }
+    }
+  }
+
+  _play() {
+    if (this._sound) {
+      this._sound.play()
+    } else {
+      console.warn('Tried to play audio but no sound instance.')
+    }
+  }
+
+  _stop() {
+    if (this._sound) {
+      this._sound.stop()
+    } else {
+      console.warn('Tried to stop audio but no sound instance.')
+    }
+  }
+
+  _pause() {
+    if (this._sound) {
+      this._sound.pause()
+    } else {
+      console.warn('Tried to pause audio but no sound instance.')
+    }
+  }
+
+  _mute(muteOrNot) {
+    if (this._sound) {
+      this._sound.mute(muteOrNot)
+    } else {
+      console.warn('Tried to mute audio but no sound instance.')
+    }
+  }
+
+  _toggleMute() {
+    const nextMute = !this.state.isMute
+    this.setState({
+      isMute: nextMute,
+    })
+    this._mute(nextMute)
+  }
+
+  componentDidMount() {
     this._sound = new Howl({
       src: this.props.src,
       autoplay: false,
@@ -84,59 +147,21 @@ export default class AudioProvider extends PureComponent {
         })
         clearInterval(this._update)
       },
-      onplayerror: (soundId, err) => {
+      onplayerror: (soundId, errMessage) => {
         console.warn(
-          'Something went wrong when playing audio',
-          this.props.src,
-          err
+          'Error on playing audio in <AudioProvider>.',
+          `this.props.src: ${this.props.src}`,
+          `error message ${errMessage}`
         )
       },
-      onloaderror: (soundId, err) => {
+      onloaderror: (soundId, errMessage) => {
         console.warn(
-          'Something went wrong when loading audio',
-          this.props.src,
-          err
+          'Error on loading audio in <AudioProvider>.',
+          `this.props.src: ${this.props.src}`,
+          `error message ${errMessage}`
         )
       },
     })
-  }
-
-  setCurrent(to) {
-    const sound = this._sound
-    if (sound && typeof sound.seek === 'function') {
-      if (to >= 0 && to !== Infinity) {
-        // If param `to` is given and valid, set current seek to it and update state with it.
-        this.setState({
-          current: to, // Not using `current = sound.seek(to).seek()` because `sound.seek(sound.duration()) < sound.duration()` may be true
-        })
-        sound.seek(to)
-      } else {
-        // If `to` is undefined, just get the position of playback and update state with it.
-        this.setState({
-          current: sound.seek(),
-        })
-      }
-    }
-  }
-
-  play() {
-    this._sound.play()
-  }
-
-  stop() {
-    this._sound.stop()
-  }
-
-  pause() {
-    this._sound.pause()
-  }
-
-  toggleMute() {
-    const nextMute = !this.state.isMute
-    this.setState({
-      isMute: nextMute,
-    })
-    this._sound.mute(nextMute)
   }
 
   componentWillUnmount() {
