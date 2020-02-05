@@ -65,9 +65,11 @@ const FlexItems = styled.div`
   `}
 `
 
+const Items = FetchingWrapper(FlexItems)
+
 class List extends PureComponent {
   render() {
-    const { data, catName, tagName } = this.props
+    const { data, catName, tagName, isFetching } = this.props
     const listJSX = []
     _.forEach(data, item => {
       const style = _.get(item, 'style')
@@ -111,11 +113,10 @@ class List extends PureComponent {
         />
       )
     })
-
     return (
       <Container>
-        <Header>{catName || `#${tagName}`}</Header>
-        <FlexItems>{listJSX}</FlexItems>
+        <Header>{catName || (tagName ? `#${tagName}` : '')}</Header>
+        <Items isFetching={isFetching}>{listJSX}</Items>
       </Container>
     )
   }
@@ -125,6 +126,7 @@ List.defaultProps = {
   data: [],
   catName: '',
   tagName: '',
+  isFetching: false,
 }
 
 List.propTypes = {
@@ -142,6 +144,7 @@ List.propTypes = {
   ),
   tagName: PropTypes.string,
   catName: PropTypes.string,
+  isFetching: PropTypes.bool,
 }
 
-export default FetchingWrapper(List)
+export default List
