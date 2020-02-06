@@ -66,6 +66,18 @@ const LoadMoreButton = styled.div`
   cursor: pointer;
   ${props => selectButtonColors(props.theme.name)}
   transition: color 100ms ease;
+  ${mq.tabletAndBelow`
+    display: ${props =>
+      props.showAll || props.total < firstShowedLimit.tabletAndBelow
+        ? 'none'
+        : 'block'};
+  `}
+  ${mq.desktopAndAbove`
+    display: ${props =>
+      props.showAll || props.total < firstShowedLimit.desktopAndAbove
+        ? 'none'
+        : 'block'};
+  `}
   ${mq.mobileOnly`
     width: ${mockup.mobile.item.width};
     margin: 30px auto;
@@ -200,7 +212,6 @@ export default class List extends React.PureComponent {
     const cards = showAll
       ? _.map(data, this.renderCard)
       : _.map(data.slice(0, firstShowedLimit.desktopAndAbove), this.renderCard)
-
     // Use `align-items: stretch` to make sure every Item(Card)
     // having the same height while mounting.
     // Then, use `flex-start` instead to make each Item(Card)
@@ -208,9 +219,13 @@ export default class List extends React.PureComponent {
     return (
       <div>
         <ListBlock alignItems={alignItems}>{cards}</ListBlock>
-        {showAll ? null : (
-          <LoadMoreButton onClick={this.loadMore}>載入更多文章</LoadMoreButton>
-        )}
+        <LoadMoreButton
+          showAll={showAll}
+          total={data.length}
+          onClick={this.loadMore}
+        >
+          載入更多文章
+        </LoadMoreButton>
       </div>
     )
   }
