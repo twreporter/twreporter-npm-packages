@@ -66,18 +66,20 @@ export function posts(state = {}, action = {}) {
       list.items = _.concat(list.items, _.map(items, item => item.slug))
       list.total = total
       list.error = null
-
-      // not support page = 0
-      // page starts from 1, not 0
-      if (page > 0) {
-        _.set(list.pages, page, [itemsNum, itemsNum + (items.length - 1)])
-      }
-
-      return _.merge({}, state, {
-        [listID]: list,
-      })
+      const nextlist = _.merge(
+        {},
+        state,
+        { [listID]: list },
+        {
+          [listID]: {
+            pages: {
+              [page]: [itemsNum, itemsNum + (items.length - 1)],
+            },
+          },
+        }
+      )
+      return nextlist
     }
-
     case types.ERROR_TO_GET_LISTED_POSTS: {
       const listID = _.get(action, 'payload.listID')
       const list = _.get(state, listID, {})
@@ -87,10 +89,8 @@ export function posts(state = {}, action = {}) {
         [listID]: list,
       })
     }
-
     case types.START_TO_GET_POSTS:
       return state
-
     case types.ERROR_TO_GET_POSTS:
       return state
     default:
