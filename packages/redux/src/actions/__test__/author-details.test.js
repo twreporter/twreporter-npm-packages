@@ -15,7 +15,6 @@ const mockStore = configureStore([thunk])
 const authorId = 'mock-author-id'
 const searchParas = {
   keywords: authorId,
-  filters: 'articlesCount>0',
   hitsPerPage: 1,
   page: 0,
 }

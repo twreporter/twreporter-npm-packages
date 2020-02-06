@@ -42,7 +42,6 @@ export function fetchAuthorDetails(authorId) {
   return function(dispatch, getState) {
     const searchParas = {
       keywords: authorId,
-      filters: 'articlesCount>0',
       hitsPerPage: 1,
       page: 0,
     }
