@@ -36,24 +36,6 @@ commands:
     steps:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
 
-  install-build-deps:
-    description: "Install build dependencies"
-    steps:
-      - restore_cache:
-          keys:
-            - v2-dependencies-build-{{ checksum "yarn.lock" }}
-      - run: yarn install --frozen-lockfile
-      - save_cache:
-          paths:
-            - node_modules
-            - packages/core/node_modules
-            - packages/index-page/node_modules
-            - packages/react-article-components/node_modules
-            - packages/react-components/node_modules
-            - packages/redux/node_modules
-            - packages/universal-header/node_modules
-          key: v2-dependencies-build-{{ checksum "yarn.lock" }}
-
   publish:
     description: "Publish packages to NPM registry if needed"
     parameters:
@@ -93,16 +75,36 @@ commands:
             <<^ parameters.prerelease >>git push origin master<</ parameters.prerelease >>
             echo "HEAD after version: $(git log -1 --pretty=format:%H)"
 
+  install-deps:
+    description: "Install build dependencies"
+    steps:
+      - restore_cache:
+          keys:
+            - v2-dependencies-build-{{ checksum "yarn.lock" }}
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+            - packages/package-a/node_modules
+          key: v2-dependencies-build-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+            - packages/package-a/node_modules
+
 jobs:
 
   test:
     executor: node-executor
     steps:
-      - checkout
-      - install-build-deps
+      - install-deps
       - run:
-          name: 'Run tests'
-          command: make test
+          name: "Run overall tests"
+          command: make overall-test
+      - run:
+          name: "Run tests of changed packages"
+          command: make changed-test
 
   version:
     executor: node-executor
@@ -111,8 +113,8 @@ jobs:
         type: boolean
         default: false
     steps:
-      - checkout
-      - install-build-deps
+      - attach_workspace:
+          at: .
       - add-github-write-key
       - set-git-user
       - version:
@@ -125,8 +127,8 @@ jobs:
         type: boolean
         default: false
     steps:
-      - checkout
-      - install-build-deps
+      - attach_workspace:
+          at: .
       - set-npm-auth
       - publish:
           prerelease: << parameters.prerelease >>

@@ -63,9 +63,11 @@ unlink:
 	@echo "$(P) Unlink all packages"
 	yarn workspaces run unlink
 
-test:
+overall-test:
 	@echo "$(P) Run overall tests"
 	NODE_ENV=test $(BIN_DIR)/jest dev
+
+changed-test:
 	@echo "$(P) Run tests of changed packages"
 	NODE_ENV=test $(BIN_DIR)/lerna run test --since --stream --include-merged-tags
 
@@ -73,4 +75,4 @@ cp-make:
 	@echo "$(P) Copy \`dev/source.makefile\` to packages"
 	@for package in $(SUBDIRS); do cp -v dev/source.makefile $$package\makefile; done
 
-.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link cp-make
+.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link cp-make overall-test changed-test
