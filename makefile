@@ -1,78 +1,42 @@
 BIN_DIR ?= node_modules/.bin
 P="\\033[32m[+]\\033[0m"
 
-# If no package dirname is given, run the make command at each package. For example:
-# `make dev` -> Will run `make dev` at each package parallelly
-# `make dev PKG=core` -> Will run `make dev` at `packages/core`
-ifeq ($(PKG),)
-	# SUBDIRS will be like "packages/core packages/react-components packages/index-page"
-	SUBDIRS = $(wildcard packages/*/)
-	MAKE_FLAG := -j
-else
-	SUBDIRS = "packages/$(PKG)/"
-endif
-
-# Running:
-# ```
-# packages/core packages/react-components:
-#   make -j -C $@ dev
-# ```
-# equals to running `make -j -C "packages/core packages/react-components" dev`
-# equals to running two child processes parallelly:
-# one runs `cd packages/core && make dev`
-# and the other runs `cd packages/react-components && make dev`
-#
-# Ref: https://www.gnu.org/software/make/manual/html_node/Recursion.html
-#      https://www.gnu.org/software/make/manual/html_node/Parallel.html
-$(SUBDIRS):
-	$(MAKE) -C $@ $(MAKE_TARGET)
-
-subdirs-job: $(SUBDIRS)
-
 check-dep:
-	@echo "$(P) Check dependencies of the project"
-	yarn install
+	@echo "$(P) Install dependencies of all packages"
+	yarn install --frozen-lockfile
 
 dev: check-dep
-	MAKE_TARGET=dev make subdirs-job $(MAKE_FLAG)
+	@echo "$(P) Run \`npm run dev\` of all packages with \`scripts.dev\`"
+	$(BIN_DIR)/lerna run --parallel dev
 
-build:
-	@echo "$(P) Run build"
-	$(BIN_DIR)/lerna run --stream --sort build
+build: check-dep
+	@echo "$(P) Run \`npm run build\` of all packages with \`scripts.build\`"
+	$(BIN_DIR)/lerna run --stream build
 
 clean:
-	MAKE_TARGET=clean make subdirs-job $(MAKE_FLAG)
+	@echo "$(P) Run \`npm run clean\` of all packages with \`scripts.clean\`"
+	$(BIN_DIR)/lerna run --stream clean
 
-help:
-	@echo "\033[33mmake lint\033[0m - Run prettier and eslint"
-	@echo "\033[33mmake prettier\033[0m - Run prettier"
+changed-packages-unit-test:
+	@echo "$(P) Run tests of changed packages"
+	NODE_ENV=test $(BIN_DIR)/lerna run test --since --stream --include-merged-tags
+
+integration-test:
+	@echo "$(P) Run integration tests among packages"
+	NODE_ENV=test $(BIN_DIR)/jest dev
+
+test: integration-test changed-packages-unit-test
 
 prettier:
 	@echo "$(P) Run prettier"
 	$(BIN_DIR)/prettier --write "**/*.{js,json,css,md,html,htm}"
 
-lint:
-	@echo "$(P) Run eslint"
+lint: build
+	@echo "$(P) Run eslint with --fix"
 	$(BIN_DIR)/eslint --fix "**/*.js"
 
-link: check-dep
-	@echo "$(P) Link all packages"
-	yarn workspaces run link
+dep-intersect:
+	@echo "$(P) Find dependency version intersection among packages"
+	$(BIN_DIR)/babel-node dev/print-dep-intersections.js"
 
-unlink:
-	@echo "$(P) Unlink all packages"
-	yarn workspaces run unlink
-
-overall-test:
-	@echo "$(P) Run overall tests"
-	NODE_ENV=test $(BIN_DIR)/jest dev
-
-changed-test:
-	@echo "$(P) Run tests of changed packages"
-	NODE_ENV=test $(BIN_DIR)/lerna run test --since --stream --include-merged-tags
-
-cp-make:
-	@echo "$(P) Copy \`dev/source.makefile\` to packages"
-	@for package in $(SUBDIRS); do cp -v dev/source.makefile $$package\makefile; done
-
-.PHONY: prettier lint dev clean subdirs-job $(SUBDIRS) build link cp-make overall-test changed-test
+.PHONY: check-dep dev build clean changed-packages-unit-test integration-test test prettier lint dep-intersect

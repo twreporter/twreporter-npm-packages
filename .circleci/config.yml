@@ -100,11 +100,11 @@ jobs:
     steps:
       - install-deps
       - run:
-          name: "Run overall tests"
-          command: make overall-test
+          name: "Run integration tests"
+          command: make integration-test
       - run:
-          name: "Run tests of changed packages"
-          command: make changed-test
+          name: "Run unit tests of changed packages"
+          command: make changed-packages-unit-test
 
   version:
     executor: node-executor

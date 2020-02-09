@@ -6,6 +6,7 @@
   "author": "twreporter <developer@twreporter.org>",
   "license": "MIT",
   "scripts": {
+    "clean": "make clean",
     "build": "make build",
     "dev": "make dev",
     "prepublishOnly": "make build"

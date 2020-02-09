@@ -11,8 +11,7 @@
   "scripts": {
     "dev": "make dev",
     "test": "make test",
-    "build": "make build",
-    "dep-intersect": "babel-node dev/print-dep-intersections.js"
+    "build": "make build"
   },
   "husky": {
     "hooks": {

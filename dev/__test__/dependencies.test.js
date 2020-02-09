@@ -1,5 +1,5 @@
 /* global test describe expect */
-import * as utils from './utils'
+import * as utils from '../utils'
 // lodash
 import forEach from 'lodash/forEach'
 
