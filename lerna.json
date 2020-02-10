@@ -5,10 +5,15 @@
   "useWorkspaces": true,
   "command": {
     "publish": {
-      "ignoreChanges": ["*.md"],
+      "ignoreChanges": [
+        "**/*.md",
+        "**/*.yml",
+        "**/*.test.js",
+        "**/makefile",
+        ".*"
+      ],
       "verifyAccess": false,
-      "verifyRegistry": false,
-      "message": "chore(release): bump version"
+      "verifyRegistry": false
     }
   }
 }

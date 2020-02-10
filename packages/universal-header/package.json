@@ -4,8 +4,10 @@
   "description": "Universal header of TWReporter sites",
   "main": "lib/index.js",
   "scripts": {
+    "clean": "make clean",
     "build": "make build",
-    "dev": "make dev"
+    "dev": "make dev",
+    "prepublishOnly": "make build"
   },
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",

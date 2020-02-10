@@ -7,9 +7,11 @@
   "author": "twreporter <developer@twreporter.org>",
   "license": "MIT",
   "scripts": {
+    "clean": "make clean",
     "build": "make build",
     "dev": "make dev",
-    "dev-server": "webpack-dev-server"
+    "dev-server": "webpack-dev-server",
+    "prepublishOnly": "make build"
   },
   "devDependencies": {
     "babel-loader": "^8.0.6",

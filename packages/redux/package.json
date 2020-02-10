@@ -6,8 +6,11 @@
   "author": "twreporter <developer@twreporter.org>",
   "main": "lib/index.js",
   "scripts": {
+    "clean": "make clean",
     "build": "make build",
-    "dev": "make dev"
+    "dev": "make dev",
+    "prepublishOnly": "make build",
+    "test": "jest --config jest.config.js"
   },
   "keywords": [
     "twreporter",
