@@ -98,6 +98,7 @@ jobs:
   test:
     executor: node-executor
     steps:
+      - checkout
       - install-deps
       - run:
           name: "Run integration tests"
@@ -113,6 +114,7 @@ jobs:
         type: boolean
         default: false
     steps:
+      - checkout
       - attach_workspace:
           at: .
       - add-github-write-key
@@ -127,6 +129,7 @@ jobs:
         type: boolean
         default: false
     steps:
+      - checkout
       - attach_workspace:
           at: .
       - set-npm-auth
