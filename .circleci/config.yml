@@ -80,18 +80,28 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - v2-dependencies-build-{{ checksum "yarn.lock" }}
+            - v3-dependencies-build-{{ checksum "yarn.lock" }}
       - run: yarn install --frozen-lockfile
       - save_cache:
           paths:
             - node_modules
-            - packages/package-a/node_modules
-          key: v2-dependencies-build-{{ checksum "yarn.lock" }}
+            - packages/core/node_modules
+            - packages/index-page/node_modules
+            - packages/react-article-components/node_modules
+            - packages/react-components/node_modules
+            - packages/redux/node_modules
+            - packages/universal-header/node_modules
+          key: v3-dependencies-build-{{ checksum "yarn.lock" }}
       - persist_to_workspace:
           root: .
           paths:
             - node_modules
-            - packages/package-a/node_modules
+            - packages/core/node_modules
+            - packages/index-page/node_modules
+            - packages/react-article-components/node_modules
+            - packages/react-components/node_modules
+            - packages/redux/node_modules
+            - packages/universal-header/node_modules
 
 jobs:
 
