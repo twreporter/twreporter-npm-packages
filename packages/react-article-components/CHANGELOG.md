@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.3-rc.0...@twreporter/react-article-components@1.1.3-rc.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* fix loadmore btn display logic ([#99](https://github.com/twreporter/twreporter-npm-packages/issues/99)) ([7fcd994](https://github.com/twreporter/twreporter-npm-packages/commit/7fcd994c5113ab94057d708f2bb117cabdfe4db7))
+
+
+
+
+
 ## [1.1.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.2...@twreporter/react-article-components@1.1.3-rc.0) (2020-02-10)
 
 
