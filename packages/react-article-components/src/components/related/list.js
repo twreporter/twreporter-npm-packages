@@ -68,13 +68,13 @@ const LoadMoreButton = styled.div`
   transition: color 100ms ease;
   ${mq.tabletAndBelow`
     display: ${props =>
-      props.showAll || props.total < firstShowedLimit.tabletAndBelow
+      props.showAll || props.total <= firstShowedLimit.tabletAndBelow
         ? 'none'
         : 'block'};
   `}
   ${mq.desktopAndAbove`
     display: ${props =>
-      props.showAll || props.total < firstShowedLimit.desktopAndAbove
+      props.showAll || props.total <= firstShowedLimit.desktopAndAbove
         ? 'none'
         : 'block'};
   `}
