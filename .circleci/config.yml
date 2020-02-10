@@ -110,7 +110,7 @@ commands:
           paths:
             - node_modules
       - save_cache:
-          key: v1-dependencies-build-{{ checksum "packages-checksums" }}
+          key: v1-dependencies-link-{{ checksum "packages-checksums" }}
           paths:
             - packages/core/node_modules
             - packages/index-page/node_modules
