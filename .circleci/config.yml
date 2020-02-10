@@ -92,16 +92,6 @@ commands:
             - packages/redux/node_modules
             - packages/universal-header/node_modules
           key: v3-dependencies-build-{{ checksum "yarn.lock" }}
-      - persist_to_workspace:
-          root: .
-          paths:
-            - node_modules
-            - packages/core/node_modules
-            - packages/index-page/node_modules
-            - packages/react-article-components/node_modules
-            - packages/react-components/node_modules
-            - packages/redux/node_modules
-            - packages/universal-header/node_modules
 
 jobs:
 
@@ -125,8 +115,7 @@ jobs:
         default: false
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - install-deps
       - add-github-write-key
       - set-git-user
       - version:
@@ -140,8 +129,7 @@ jobs:
         default: false
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - install-deps
       - set-npm-auth
       - publish:
           prerelease: << parameters.prerelease >>
