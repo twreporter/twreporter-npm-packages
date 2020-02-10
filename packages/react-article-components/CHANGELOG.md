@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.2...@twreporter/react-article-components@1.1.3-rc.0) (2020-02-10)
+
+
+### Bug Fixes
+
+* **react-article-components:** update loadmore btn ([#93](https://github.com/twreporter/twreporter-npm-packages/issues/93)) ([c770bc3](https://github.com/twreporter/twreporter-npm-packages/commit/c770bc3609b2f36d4a951c0792ca1fa7304546a6))
+* only new audio instance on client ([#90](https://github.com/twreporter/twreporter-npm-packages/issues/90)) ([f28082f](https://github.com/twreporter/twreporter-npm-packages/commit/f28082f092a2b1a6590a0976090b91dd7ec7993d))
+
+
+
+
+
 ## [1.1.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.1...@twreporter/react-article-components@1.1.2) (2020-01-14)
 
 **Note:** Version bump only for package @twreporter/react-article-components

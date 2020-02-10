@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.1.1...@twreporter/react-components@8.2.0-rc.0) (2020-02-10)
+
+
+### Features
+
+* **react-components:** add media center link ([#97](https://github.com/twreporter/twreporter-npm-packages/issues/97)) ([c6e9484](https://github.com/twreporter/twreporter-npm-packages/commit/c6e9484fba55e80c9e0cb03b9f2bf76d6bfa2352))
+
+
+
+
+
 ## [8.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.1.0...@twreporter/react-components@8.1.1) (2020-01-14)
 
 **Note:** Version bump only for package @twreporter/react-components
