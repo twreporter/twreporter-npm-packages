@@ -7,12 +7,13 @@ const signInSearchKeys = {
   destination: 'destination',
 }
 const signInPathname = '/signin'
+const mainHref = requestOrigins.forClientSideRendering[releaseBranch].main
 
-export function getSignInHref(destination = '') {
+export function getSignInHref(destination = mainHref) {
   const signInOrigin =
     requestOrigins.forClientSideRendering[releaseBranch].accounts
   const currentHrefSearch = destination
-    ? `?${signInSearchKeys.destination}=${destination}`
+    ? `?${signInSearchKeys.destination}=${encodeURIComponent(destination)}`
     : ''
   return `${signInOrigin}${signInPathname}${currentHrefSearch}`
 }
