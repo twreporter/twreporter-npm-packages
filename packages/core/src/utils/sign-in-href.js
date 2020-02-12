@@ -13,7 +13,7 @@ export function getSignInHref(destination = mainHref) {
   const signInOrigin =
     requestOrigins.forClientSideRendering[releaseBranch].accounts
   const currentHrefSearch = destination
-    ? `?${signInSearchKeys.destination}=${destination}`
+    ? `?${signInSearchKeys.destination}=${encodeURIComponent(destination)}`
     : ''
   return `${signInOrigin}${signInPathname}${currentHrefSearch}`
 }
