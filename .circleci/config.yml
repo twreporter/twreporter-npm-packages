@@ -78,20 +78,46 @@ commands:
   install-deps:
     description: "Install build dependencies"
     steps:
+      - run:
+          name: 'Generate checksum list of packages/*/package.json'
+          # Ref: https://github.com/chrisbanes/tivi/blob/c1219aeee9f62600fcd43d7caf1ea21e6e92930f/checksum.sh
+          command: |
+            RESULT_FILE="packages-checksums"
+            if [ -f $RESULT_FILE ]; then
+              rm $RESULT_FILE
+            fi
+            touch $RESULT_FILE
+            checksum_file() {
+              echo `openssl md5 $1 | awk '{print $2}'`
+            }
+            FILES=()
+            while read -r -d ''; do
+              FILES+=("$REPLY")
+            done < <(find ./packages -name 'package.json' -type f -print0)
+            # Loop through files and append MD5 to result file
+            for FILE in ${FILES[@]}; do
+              echo `checksum_file $FILE` >> $RESULT_FILE
+            done
+            # Now sort the file so that it is 
+            sort $RESULT_FILE -o $RESULT_FILE
       - restore_cache:
-          keys:
-            - v3-dependencies-build-{{ checksum "yarn.lock" }}
+          key: v4-dependencies-build-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: v1-dependencies-link-{{ checksum "packages-checksums" }}
       - run: yarn install --frozen-lockfile
       - save_cache:
+          key: v4-dependencies-build-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
+      - save_cache:
+          key: v1-dependencies-link-{{ checksum "packages-checksums" }}
+          paths:
             - packages/core/node_modules
             - packages/index-page/node_modules
             - packages/react-article-components/node_modules
             - packages/react-components/node_modules
             - packages/redux/node_modules
             - packages/universal-header/node_modules
-          key: v3-dependencies-build-{{ checksum "yarn.lock" }}
 
 jobs:
 

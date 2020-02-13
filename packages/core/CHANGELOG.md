@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.1.3...@twreporter/core@1.2.0-rc.0) (2020-02-12)
+
+
+### Bug Fixes
+
+* encode query string ([af0a07a](https://github.com/twreporter/twreporter-npm-packages/commit/af0a07af2a94bc6f006c6e811144219073e8a27f))
+
+
+### Features
+
+* **core:** add sign out href ([174ccf8](https://github.com/twreporter/twreporter-npm-packages/commit/174ccf84ae47e8f00933383cb779067e3d4a0375))
+
+
+
+
+
 ## [1.1.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.1.3-rc.0...@twreporter/core@1.1.3) (2020-02-10)
 
 **Note:** Version bump only for package @twreporter/core
