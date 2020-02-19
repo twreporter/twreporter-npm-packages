@@ -1,13 +1,13 @@
-import { Provider } from 'react-redux'
 import Header from './containers/header'
 import PropTypes from 'prop-types'
 import React from 'react'
+import requestOrigins from '@twreporter/core/lib/constants/request-origins'
+import rootReducer from './reducers/index'
+import thunk from 'redux-thunk'
 import wellDefinedPropTypes from './constants/prop-types'
-// @twreporter
-import twreporterRedux from '@twreporter/redux'
-import origins from '@twreporter/core/lib/constants/request-origins'
-
-const isDev = process && process.env && process.env.NODE_ENV === 'development'
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux'
+import { getAccessToken } from './actions/auth'
 
 export default class StandaloneHeader extends React.PureComponent {
   static propTypes = {
@@ -27,19 +27,20 @@ export default class StandaloneHeader extends React.PureComponent {
   constructor(props) {
     super(props)
     const { releaseBranch } = this.props
-    const cookie = ''
-    this.store = twreporterRedux.createStore(
+    this.store = createStore(
+      rootReducer,
       {
-        [twreporterRedux.reduxStateFields.origins]:
-          origins.forClientSideRendering[releaseBranch],
+        origins: requestOrigins.forClientSideRendering[releaseBranch],
+        auth: {},
       },
-      cookie,
-      isDev
+      applyMiddleware(thunk)
     )
   }
 
   componentDidMount() {
-    this.store.actions.getAccessToken()
+    this.store.dispatch(getAccessToken()).catch(failAction => {
+      console.log(failAction)
+    })
   }
 
   render() {
