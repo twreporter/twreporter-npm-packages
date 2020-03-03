@@ -20,9 +20,6 @@ const FooterContainer = styled.div`
   ${mq.tabletAndAbove`
     min-height: ${styles.footerHeight.desktop}px;
   `}
-  ${mq.mobileOnly`
-    max-height: 811px;
-  `}
   * {
     box-sizing: border-box;
   }
