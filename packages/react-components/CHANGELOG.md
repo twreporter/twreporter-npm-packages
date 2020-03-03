@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.2.1...@twreporter/react-components@8.2.2-rc.0) (2020-03-03)
+
+
+### Bug Fixes
+
+* **footer:** body's background shows when exceeds max-height ([#106](https://github.com/twreporter/twreporter-npm-packages/issues/106)) ([6d7b4be](https://github.com/twreporter/twreporter-npm-packages/commit/6d7b4be2cc39fa6bfad902b69e947c127682263d))
+
+
+
+
+
 ## [8.2.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.2.1-rc.0...@twreporter/react-components@8.2.1) (2020-02-13)
 
 **Note:** Version bump only for package @twreporter/react-components
