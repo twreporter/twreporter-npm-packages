@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.2.2-rc.0",
+  "version": "8.2.2",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
