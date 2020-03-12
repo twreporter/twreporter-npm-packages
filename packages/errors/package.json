@@ -1,0 +1,20 @@
+{
+  "name": "@twreporter/errors",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
+  "author": "twreporter <developer@twreporter.org>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "make clean",
+    "build": "make build",
+    "dev": "make dev",
+    "prepublishOnly": "make build"
+  },
+  "dependencies": {
+    "lodash.get": "4"
+  },
+  "files": [
+    "lib"
+  ]
+}
