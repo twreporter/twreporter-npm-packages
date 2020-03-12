@@ -118,6 +118,7 @@ commands:
             - packages/react-components/node_modules
             - packages/redux/node_modules
             - packages/universal-header/node_modules
+            - packages/error/node_modules
 
 jobs:
 
