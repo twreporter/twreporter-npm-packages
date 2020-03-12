@@ -10,6 +10,7 @@ This repository is a monorepo containing several npm packages used by the websit
   - [Develop](#develop)
     - [Develop all Packages](#develop-all-packages)
     - [Develop Single Package](#develop-single-package)
+    - [Add A New Package to This Repo](#add-a-new-package-to-this-repo)
   - [CI/CD](#cicd)
 
 ## Packages
@@ -91,6 +92,23 @@ make dev
 cd packages/core;
 make dev
 ```
+
+### Add A New Package to This Repo
+
+1. Init the package with setting (TODO: use make script or .bin script to create the files)
+2. Set initial version to 0.0.0
+3. If it's ready for first prerelease, add a `BREAKING CHANGE: initial release` line to your commit message.
+4. Update the ci caching path in `.circleci/config.yml`:
+
+   ```yml
+   - save_cache:
+       key: v1-dependencies-link-{{ checksum "packages-checksums" }}
+       paths:
+         # ...
+         - packages/[new package name]/node_modules
+   ```
+
+5. Remember to set `"publishConfig.access"` to `"public"` in `package.json` of the package
 
 ## CI/CD
 
