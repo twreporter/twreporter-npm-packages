@@ -1,4 +1,4 @@
-# @twreporter/core
+# @twreporter/errors
 
 [![NPM version](https://img.shields.io/npm/v/@twreporter/core.svg)](https://www.npmjs.com/package/@twreporter/errors)
 
@@ -6,7 +6,7 @@ This package provides the helpers for handling errors in the [The Reporter](http
 
 Inspired by [package `errors` for Go language](https://godoc.org/github.com/pkg/errors) and [the related article by Dave Cheney](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully).
 
-- [@twreporter/core](#twreportercore)
+- [@twreporter/errors](#twreportererrors)
   - [Use](#use)
     - [errors.helpers.wrap](#errorshelperswrap)
     - [errors.helpers.unwrap](#errorshelpersunwrap)
