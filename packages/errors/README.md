@@ -38,7 +38,7 @@ See [source code and JSDoc](src/helpers/general.js#L4) for all parameters
 Example:
 
 ```js
-import errors from '@twreporter/error'
+import errors from '@twreporter/errors'
 
 function doSomething() {
   try {
@@ -73,7 +73,7 @@ See [source code and JSDoc](src/helpers/general.js#L46) for all parameters
 Example:
 
 ```js
-import errors from '@twreporter/error'
+import errors from '@twreporter/errors'
 
 function doSomething() {
   try {
@@ -101,7 +101,7 @@ It will return the earliest error in the chain that the input error belongs to.
 See [source code and JSDoc](src/helpers/general.js#L33) for all parameters
 
 ```js
-import errors from '@twreporter/error'
+import errors from '@twreporter/errors'
 
 function nestedFailedTask() {
   throw new Error('nested failure')
@@ -150,7 +150,7 @@ ErrorType: failed to invoke something
 See [source code and JSDoc](src/helpers/print.js#L40) for all parameters
 
 ```js
-import errors from '@twreporter/error'
+import errors from '@twreporter/errors'
 
 function nestedFailedTask() {
   throw new Error('nested failure')
@@ -210,7 +210,7 @@ ErrorType: failed to invoke something
 See [source code and JSDoc](src/helpers/print.js#L11) for all parameters
 
 ```js
-import errors from '@twreporter/error'
+import errors from '@twreporter/errors'
 
 function invokeSomethingWithError() {
   throw new Error('nested error')
@@ -251,7 +251,7 @@ ErrorType: failed to invoke something
 See [source code and JSDoc](src/helpers/annotate-axios-error.js#L62) for all parameters
 
 ```js
-import errors from '@twreporter/error'
+import errors from '@twreporter/errors'
 import axios from 'axios'
 
 async function doSomething() {
