@@ -15,12 +15,7 @@ This repository is a monorepo containing several npm packages used by the websit
 
 ## Packages
 
-- `@twreporter/core`
-- `@twreporter/index-page`
-- `@twreporter/react-components`
-- `@twreporter/react-article-components`
-- `@twreporter/redux`
-- `@twreporter/universal-header`
+Packages are located in [packages/](https://github.com/twreporter/twreporter-npm-packages/tree/master/packages)
 
 ## Developing Environment
 
@@ -28,13 +23,13 @@ This repository is a monorepo containing several npm packages used by the websit
 
 We use _Yarn Workspaces_ to:
 
-- Add and remove dependencies of all packages (subfolders) easily.
-- Prevent installing duplicate dependencies across packages (subfolders). Yarn can _hoist_ them to the root folder.
-- Create symlinks between packages (subfolders) that depend on each other.
+- Add and remove dependencies of all packages (sub-folders) easily.
+- Prevent installing duplicate dependencies across packages (sub-folders). Yarn can _hoist_ them to the root folder.
+- Create sym-links between packages (sub-folders) that depend on each other.
 
 The official [document](https://yarnpkg.com/en/docs/workspaces) and [blog post](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/) give clear examples showing how workspaces can get theses done.
 
-And here are some example commands for common scienarios:
+And here are some example commands for common scenarios:
 
 - Add `lodash` to the dependencies of all packages:
 
@@ -96,8 +91,8 @@ make dev
 ### Add A New Package to This Repo
 
 1. Init the package with setting (TODO: use make script or .bin script to create the files)
-2. Set initial version to 0.0.0
-3. If it's ready for first prerelease, add a `BREAKING CHANGE: initial release` line to your commit message.
+2. Set initial version to 0.0.0 (in `package.json`)
+3. When it's ready for first prerelease, add a `BREAKING CHANGE: initial release` line in the message of one of the commits in a PR, and merge that PR into `master`.
 4. Update the ci caching path in `.circleci/config.yml`:
 
    ```yml
@@ -105,7 +100,7 @@ make dev
        key: v1-dependencies-link-{{ checksum "packages-checksums" }}
        paths:
          # ...
-         - packages/[new package name]/node_modules
+         - packages/[new_package_folder]/node_modules
    ```
 
 5. Remember to set `"publishConfig.access"` to `"public"` in `package.json` of the package
@@ -116,6 +111,6 @@ We use [CircleCI](https://circleci.com/) with [Lerna](https://github.com/lerna/l
 
 When new commits are pushed to branch `master` or `release`, the CI/CD server will run `lerna` to check if there is any package needs to bump version, and also use `lerna` to publish the package which has not been published to the NPM registry yet.
 
-Changes in `master` will be versioned/publshed as release candidate (rc). Changes in `release` will be versioned/publshed as production release.
+Changes in `master` will be versioned/published as release candidate (rc). Changes in `release` will be versioned/published as production release.
 
-The [Conventional Commits Specification](https://www.conventionalcommits.org/en/v1.0.0/) is applied here to determine which version to bump (major, minor, or patch) and generate `CHANGELOG.md` files to each package. For further usage, please check [documentation of Lerna](https://github.com/lerna/lerna/tree/master/commands/version#positionals)
+The [Conventional Commits Specification](https://www.conventionalcommits.org/en/v1.0.0/) is applied here to determine which version to bump (major, minor, or patch) and generate `CHANGELOG.md` files to each package. For further usage, please check [documentation of Lerna](https://github.com/lerna/lerna/tree/master/commands/version#positionals).
