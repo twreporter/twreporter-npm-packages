@@ -14,7 +14,7 @@ function trimLinesFromTheBottom(string, trimmedCount) {
  * @param {Object} fields
  * @param {boolean} fields.withStack
  * @param {boolean} fields.withPayload
- * @param {number} [trimStack=9] - how many lines that will be trimmed in the stack from the bottom
+ * @param {number} [trimStack=0] - how many lines that will be trimmed in the stack from the bottom
  * @returns {string}
  */
 function printOne(error, fields, trimStack = 0) {
@@ -28,6 +28,9 @@ function printOne(error, fields, trimStack = 0) {
   return message
 }
 
+const defaultTrimStack =
+  Error.stackTraceLimit > 1 ? Error.stackTraceLimit - 1 : 0
+
 /**
  * print the information of all errors from cause to input errors
  *
@@ -35,13 +38,16 @@ function printOne(error, fields, trimStack = 0) {
  * @param {Object} fields
  * @param {boolean} [fields.withStack=true]
  * @param {boolean} [fields.withPayload=true]
- * @param {boolean} [fields.withCauseStack=false]
  * @param {number} [limit=0] - how many errors will be printed from the cause. if limit = 0, all errors will be printed
+ * @param {number} [trimCauseStack=defaultTrimStack] - how many frames of cause stack will be trimmed
  * @returns {string}
  */
-function printAll(error, fields, limit = 0) {
-  const trimCauseStack =
-    Error.stackTraceLimit > 1 ? Error.stackTraceLimit - 1 : 0
+function printAll(
+  error,
+  fields = {},
+  limit = 0,
+  trimCauseStack = defaultTrimStack
+) {
   const { withStack = true, withPayload = true } = fields
   let joinedMessage = ''
   let _error = error
