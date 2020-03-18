@@ -103,14 +103,14 @@ commands:
       - restore_cache:
           key: v4-dependencies-build-{{ checksum "yarn.lock" }}
       - restore_cache:
-          key: v1-dependencies-link-{{ checksum "packages-checksums" }}
+          key: v2-dependencies-link-{{ checksum "packages-checksums" }}
       - run: yarn install --frozen-lockfile
       - save_cache:
           key: v4-dependencies-build-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
       - save_cache:
-          key: v1-dependencies-link-{{ checksum "packages-checksums" }}
+          key: v2-dependencies-link-{{ checksum "packages-checksums" }}
           paths:
             - packages/core/node_modules
             - packages/index-page/node_modules
@@ -118,7 +118,7 @@ commands:
             - packages/react-components/node_modules
             - packages/redux/node_modules
             - packages/universal-header/node_modules
-            - packages/error/node_modules
+            - packages/errors/node_modules
 
 jobs:
 
