@@ -79,6 +79,7 @@ export default class EmbeddedCode extends React.PureComponent {
     if (node && Array.isArray(scripts)) {
       const scriptsCount = scripts.length
       let loadScriptsCount = 0
+      const scriptsFragment = new DocumentFragment() // eslint-disable-line no-undef
       _.forEach(scripts, script => {
         const scriptEle = document.createElement('script')
         const attribs = script.attribs
@@ -106,8 +107,9 @@ export default class EmbeddedCode extends React.PureComponent {
           scriptEle.removeEventListener('load', handleLoad)
         }
         scriptEle.addEventListener('load', handleLoad)
-        node.appendChild(scriptEle)
+        scriptsFragment.appendChild(scriptEle)
       })
+      node.appendChild(scriptsFragment)
     }
   }
 
