@@ -72,10 +72,6 @@ export default class EmbeddedCode extends React.PureComponent {
   componentDidMount() {
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
-    // Workaround to trigger rendering of venngage infographics:
-    // The embedded venngage code (https://infograph.venngage.com/js/embed/v1/embed.js)
-    // will initiate when `'load'` event on `window` is emitted.
-    // Hence, we need to emit the `'load'` event of `window` manually after all scripts are load.
     if (node && Array.isArray(scripts)) {
       const scriptsCount = scripts.length
       let loadScriptsCount = 0
@@ -98,6 +94,10 @@ export default class EmbeddedCode extends React.PureComponent {
           }
         })
         scriptEle.text = script.text || ''
+        // `dispatchWindowLoadEvent` is a workaround to trigger rendering of venngage infographics:
+        // The embedded venngage code (https://infograph.venngage.com/js/embed/v1/embed.js)
+        // will only initiate when `load` event on `window` is emitted.
+        // Hence, we need to emit the `load` event of `window` manually after all scripts are load.
         const handleLoad = () => {
           loadScriptsCount += 1
           if (loadScriptsCount === scriptsCount) {
