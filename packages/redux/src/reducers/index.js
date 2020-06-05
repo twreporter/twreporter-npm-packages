@@ -92,28 +92,16 @@ const _ = {
  *  @property {Image} hero_image
  *  @property {Image} leading_image_portrait
  *  @property {Image} og_image
- *  @property {Object[]} brief.api_data
- *  @property {Object} brief
- *  @property {Object} theme
  *  @property {Slug} slug
  *  @property {Tag[]} tags
  *  @property {bool} full
  *  @property {bool} is_external
- *  @property {bool} is_featured
- *  @property {string} copyright
- *  @property {string} extend_byline
- *  @property {string} hero_image_size
  *  @property {string} id
- *  @property {string} leading_image_description
- *  @property {string} name
  *  @property {string} og_description
- *  @property {string} og_title
  *  @property {string} published_date
- *  @property {string} state
  *  @property {string} style
  *  @property {string} subtitle
  *  @property {string} title
- *  @property {string} updated_at
  */
 
 /**
@@ -121,24 +109,11 @@ const _ = {
  *  @typedef {Object} Topic
  *  @property {Image} leading_image
  *  @property {Image} og_image
- *  @property {Object} description
- *  @property {Object[]} description.api_data
- *  @property {Object} team_description
- *  @property {Object[]} team_description.api_data
  *  @property {TopicSlug} slug
  *  @property {bool} full
- *  @property {string} headline
  *  @property {string} id
- *  @property {string} name
  *  @property {string} og_description
- *  @property {string} og_title
- *  @property {string} published_date
- *  @property {string} relateds_background
- *  @property {string} relateds_format
- *  @property {string} state
- *  @property {string} subtitle
  *  @property {string} title
- *  @property {string} title_position
  *  @property {string} topic_name
  *  @property {string} updated_at
  */
@@ -148,29 +123,27 @@ const _ = {
  *  @typedef {Object} FullTopic
  *  @property {Image} leading_image
  *  @property {Image} og_image
- *  @property {Object} description
- *  @property {Object[]} description.api_data
- *  @property {Object} team_description
- *  @property {Object[]} team_description.api_data
  *  @property {TopicSlug} slug
  *  @property {bool} full
- *  @property {string} headline
  *  @property {string} id
- *  @property {string} name
  *  @property {string} og_description
+ *  @property {string} title
+ *  @property {string} topic_name
+ *  @property {string} updated_at
+ *
+ *  @property {Object[]} description.api_data
+ *  @property {Object[]} team_description.api_data
+ *  @property {Object} description
+ *  @property {Object} leading_video
+ *  @property {Object} team_description
+ *  @property {Post[]} relateds
+ *  @property {string} headline
  *  @property {string} og_title
  *  @property {string} published_date
  *  @property {string} relateds_background
  *  @property {string} relateds_format
- *  @property {string} state
  *  @property {string} subtitle
- *  @property {string} title
  *  @property {string} title_position
- *  @property {string} topic_name
- *  @property {string} updated_at
- *
- *  @property {Object} leading_video
- *  @property {Post[]} relateds
  */
 
 /**
@@ -178,39 +151,35 @@ const _ = {
  *  @typedef {Object} FullPost
  *  @property {Category[]} categories
  *  @property {Image} hero_image
+ *  @property {Image} leading_image_portrait
  *  @property {Image} og_image
- *  @property {Object} brief
- *  @property {Object[]} brief.api_data
- *  @property {Object} theme
  *  @property {Slug} slug
  *  @property {Tag[]} tags
  *  @property {bool} full
  *  @property {bool} is_external
- *  @property {bool} is_featured
- *  @property {string} copyright
- *  @property {string} extend_byline
- *  @property {string} hero_image_size
  *  @property {string} id
- *  @property {string} leading_image_description
- *  @property {string} name
  *  @property {string} og_description
- *  @property {string} og_title
  *  @property {string} published_date
- *  @property {string} state
  *  @property {string} style
  *  @property {string} subtitle
  *  @property {string} title
- *  @property {string} updated_at
  *
  *  @property {Author[]} designers
  *  @property {Author[]} engineers
  *  @property {Author[]} photographers
  *  @property {Author[]} writters
- *  @property {Image} leading_image_portrait
- *  @property {Object} content
- *  @property {Object[]} content.api_data
- *  @property {Post[]} relateds
  *  @property {FullTopic} topics
+ *  @property {Object[]} brief.api_data
+ *  @property {Object[]} content.api_data
+ *  @property {Object} brief
+ *  @property {Object} content
+ *  @property {Post[]} relateds
+ *  @property {string} copyright
+ *  @property {string} extend_byline
+ *  @property {string} hero_image_size
+ *  @property {string} leading_image_description
+ *  @property {string} og_title
+ *  @property {string} updated_at
  */
 
 /**
