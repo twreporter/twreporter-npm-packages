@@ -136,7 +136,7 @@ const _ = {
  *  @property {Object} description
  *  @property {Object} leading_video
  *  @property {Object} team_description
- *  @property {Post[]} relateds
+ *  @property {ObjectID[]} relateds - slugs of related posts
  *  @property {string} headline
  *  @property {string} og_title
  *  @property {string} published_date
@@ -168,7 +168,11 @@ const _ = {
  *  @property {Author[]} engineers
  *  @property {Author[]} photographers
  *  @property {Author[]} writters
- *  @property {FullTopic} topics
+ *  @property {Object} topics
+ *  @property {ObjectID[]} topics.relateds
+ *  @property {string} topics.slug
+ *  @property {string} topics.title
+ *  @property {string} topics.topic_name
  *  @property {Object[]} brief.api_data
  *  @property {Object[]} content.api_data
  *  @property {Object} brief
@@ -188,14 +192,14 @@ const _ = {
  *  @property {Object.<number, number[]>} pages - Page to item positions. Ex: `1: [0, 9]`, which means items[0] - items[9] are for page 1
  *  @property {Object} error
  *  @property {number} total
- *  @property {Slug[]} items
+ *  @property {ObjectID[]} items
  */
 
 /**
  *  TopicList type definition
  *  @typedef {Object} TopicList
  *  @property {bool} isFetching
- *  @property {Object.<number, TopicSlug[]>} items - Page to slugs. Ex: `1: ['slug_1', 'slug_2']`, which means page 1 having 'slug_1' and 'slug_2'
+ *  @property {Object.<number, ObjectID[]>} items - Page to objectID. Ex: `1: ['id_1', 'id_2']`, which means page 1 having 'id_1' and 'id_2' entities
  *  @property {number} totalPages
  *  @property {number} page
  *  @property {number} nPerPage
@@ -212,19 +216,19 @@ const _ = {
  *  @property {Object} index_page
  *  @property {Object} index_page.error
  *  @property {bool} index_page.isFetching
- *  @property {Slug[]} index_page.culture_and_art
- *  @property {Slug[]} index_page.editor_picks_section
- *  @property {Slug[]} index_page.environment_and_education
- *  @property {Slug[]} index_page.hime_right_and_society
- *  @property {Slug[]} index_page.infgraphics_section
- *  @property {Slug[]} index_page.international
- *  @property {Slug[]} index_page.latest_section
- *  @property {TopicSlug[]} index_page.latest_topic_section
- *  @property {Slug[]} index_page.living_and_medical_care
- *  @property {Slug[]} index_page.photos_section
- *  @property {Slug[]} index_page.politics_and_economy
- *  @property {Slug[]} index_page.reviews_section
- *  @property {TopicSlug[]} index_page.topics_section
+ *  @property {ObjectID[]} index_page.culture_and_art
+ *  @property {ObjectID[]} index_page.editor_picks_section
+ *  @property {ObjectID[]} index_page.environment_and_education
+ *  @property {ObjectID[]} index_page.hime_right_and_society
+ *  @property {ObjectID[]} index_page.infgraphics_section
+ *  @property {ObjectID[]} index_page.international
+ *  @property {ObjectID[]} index_page.latest_section
+ *  @property {ObjectID[]} index_page.latest_topic_section
+ *  @property {ObjectID[]} index_page.living_and_medical_care
+ *  @property {ObjectID[]} index_page.photos_section
+ *  @property {ObjectID[]} index_page.politics_and_economy
+ *  @property {ObjectID[]} index_page.reviews_section
+ *  @property {ObjectID[]} index_page.topics_section
  *
  *  @property {Object} selected_post
  *  @property {Object} selected_post.error
