@@ -43,7 +43,7 @@ export const Caption = styled.div`
   padding: 15px 15px 0 15px;
 `
 
-function dispatchLoadEvent() {
+function dispatchWindowLoadEvent() {
   let loadEvent
   try {
     loadEvent = new Event('load') // eslint-disable-line no-undef
@@ -66,18 +66,16 @@ export default class EmbeddedCode extends React.PureComponent {
 
   constructor(props) {
     super(props)
-    this._embbed = React.createRef()
+    this._embedded = React.createRef()
   }
 
   componentDidMount() {
-    // workaround for rendering venngage embedded infographics
-    // In the script(https://infograph.venngage.com/js/embed/v1/embed.js) venngage provided,
-    // it addEventListener on 'load' event.
-    // After 'load' event emits, it renders the iframe.
-    // Hence, we emit the 'load' event after the script downloaded and executed.
-    const node = this._embbed.current
+    const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
     if (node && Array.isArray(scripts)) {
+      const scriptsCount = scripts.length
+      let loadScriptsCount = 0
+      const scriptsFragment = new DocumentFragment() // eslint-disable-line no-undef
       _.forEach(scripts, script => {
         const scriptEle = document.createElement('script')
         const attribs = script.attribs
@@ -96,9 +94,22 @@ export default class EmbeddedCode extends React.PureComponent {
           }
         })
         scriptEle.text = script.text || ''
-        scriptEle.onload = dispatchLoadEvent
-        node.appendChild(scriptEle)
+        // `dispatchWindowLoadEvent` is a workaround to trigger rendering of venngage infographics:
+        // The embedded venngage code (https://infograph.venngage.com/js/embed/v1/embed.js)
+        // will only initiate when `load` event on `window` is emitted.
+        // Hence, we need to emit the `load` event of `window` manually after all scripts are load.
+        const handleLoad = () => {
+          loadScriptsCount += 1
+          if (loadScriptsCount === scriptsCount) {
+            /* all scripts are load */
+            dispatchWindowLoadEvent()
+          }
+          scriptEle.removeEventListener('load', handleLoad)
+        }
+        scriptEle.addEventListener('load', handleLoad)
+        scriptsFragment.appendChild(scriptEle)
       })
+      node.appendChild(scriptsFragment)
     }
   }
 
@@ -112,7 +123,7 @@ export default class EmbeddedCode extends React.PureComponent {
     return (
       <div className={className}>
         <Block
-          ref={this._embbed}
+          ref={this._embedded}
           dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
         />
         {caption ? <Caption>{caption}</Caption> : null}

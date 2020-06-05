@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.8-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.7...@twreporter/react-article-components@1.1.8-rc.0) (2020-06-02)
+
+
+### Bug Fixes
+
+* **react-article-components:** manually dispatch window load event ([b9f6403](https://github.com/twreporter/twreporter-npm-packages/commit/b9f64031f7e6875d2543eb6963b0697c1e1a3e74))
+* **react-article-components:** update DOM once ([37c18d9](https://github.com/twreporter/twreporter-npm-packages/commit/37c18d9d8adeb6599209c4c991bf177589cdb2b0))
+
+
+
+
+
 ## [1.1.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.7-rc.0...@twreporter/react-article-components@1.1.7) (2020-03-18)
 
 **Note:** Version bump only for package @twreporter/react-article-components
