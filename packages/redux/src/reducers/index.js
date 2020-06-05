@@ -32,11 +32,6 @@ const _ = {
  */
 
 /**
- *  TopicSlug type defintion
- *  @typedef {string} TopicSlug
- */
-
-/**
  * ResizedTarget type definition
  * @typedef {Object} ResizedTarget
  * @property {string} url
@@ -109,7 +104,7 @@ const _ = {
  *  @typedef {Object} Topic
  *  @property {Image} leading_image
  *  @property {Image} og_image
- *  @property {TopicSlug} slug
+ *  @property {Slug} slug
  *  @property {bool} full
  *  @property {string} id
  *  @property {string} og_description
@@ -123,7 +118,7 @@ const _ = {
  *  @typedef {Object} FullTopic
  *  @property {Image} leading_image
  *  @property {Image} og_image
- *  @property {TopicSlug} slug
+ *  @property {Slug} slug
  *  @property {bool} full
  *  @property {string} id
  *  @property {string} og_description
@@ -206,12 +201,28 @@ const _ = {
  */
 
 /**
+ *  PostEntity type definition
+ *  @typedef {Object} PostEnitity
+ *  @property {Object.<ObjectID, Post|FullPost>} byId
+ *  @property {ObjectID[]} allIds
+ *  @property {Object.<Slug, ObjectID>} slugToId
+ */
+
+/**
+ *  TopicEntity type definition
+ *  @typedef {Object} TopicEntity
+ *  @property {Object.<ObjectID, Topic|FullTopic>} byId
+ *  @property {ObjectID[]} allIds
+ *  @property {Object.<Slug, ObjectID>} slugToId
+ */
+
+/**
  *  ReduxState type definition
  *  @typedef {Object} ReduxState
  *
  *  @property {Object} entities
- *  @property {Object.<Slug, Post|FullPost>} entities.posts - slug to post map
- *  @property {Object.<TopicSlug, Topic|FullTopic>} entities.topics - slug to topic map
+ *  @property {PostEntity} entities.posts
+ *  @property {TopicEntity} entities.topics
  *
  *  @property {Object} index_page
  *  @property {Object} index_page.error
@@ -237,7 +248,7 @@ const _ = {
  *
  *  @property {Object} selected_topic
  *  @property {Object} selected_topic.error
- *  @property {TopicSlug} selected_topic.slug
+ *  @property {Slug} selected_topic.slug
  *  @property {bool} selected_topic.isFetching
  *
  *  @property {Object} lists
@@ -263,6 +274,41 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.bookmarks]: bookmarks,
   [reduxStatePropKey.bookmarkWidget]: bookmarkWidget,
   [reduxStatePropKey.entities]: entities,
+  /*
+   entities: {
+      topics: {},
+      posts: {
+        byId: {
+          post1_id: {
+            id: 'post1_id',
+            slug: 'post1_slug',
+            full: true,
+            // `relateds` and `topics` exists because of `full: true`
+            relateds: ['post3_id'],
+            topics: {
+              topic_name: '',
+              slug: 'topic1_slug',
+              id: 'topic1_id',
+              relateds: ['post1_id', 'post2_id']
+            }
+            ...
+          },
+          post2_id: {
+            id: 'post2_id',
+            slug: 'post2_slug',
+            full: false,
+            ...
+          }
+        },
+        allIds: [post1_id, post2_id],
+        slugToId: {
+          post1_slug: 'post1_id',
+          post2_slug: 'post2_id'
+        }
+      },
+    }
+  */
+
   [reduxStatePropKey.indexPage]: indexPage,
   [reduxStatePropKey.lists]: posts,
   [reduxStatePropKey.searchedAuthorsList]: searchedAuthorsList,
