@@ -202,7 +202,7 @@ function TwitterShareBT(props) {
     const currentURL = window.location.href
     const location =
       'https://twitter.com/intent/tweet?' +
-      `url=${encodeURIComponent(currentURL)}`
+      `url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(document.title)}&via=tw_reporter_org`
 
     window.open(location, '_blank')
   }
