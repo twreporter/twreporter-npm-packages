@@ -84,6 +84,15 @@ export default {
     },
   },
 
+  relatedPosts: {
+    read: {
+      request: 'request to fetch related posts',
+      success: 'success to fetch related posts',
+      failure: 'fail to fetch related posts',
+      noMore: 'no more related posts to fetch',
+    },
+  },
+
   origins: {
     update: 'update request origins',
   },

@@ -5,6 +5,7 @@ import types from '../constants/action-types'
 // lodash
 import concat from 'lodash/concat'
 import filter from 'lodash/filter'
+import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import merge from 'lodash/merge'
@@ -13,6 +14,7 @@ import values from 'lodash/values'
 const _ = {
   concat,
   filter,
+  forEach,
   get,
   map,
   merge,
@@ -299,6 +301,33 @@ function entities(state = {}, action = {}) {
       return _.merge({}, state, {
         [fieldNames.postsInEntities]: normalizedObj.postEntities,
         [fieldNames.topicsInEntities]: normalizedObj.topicEntities,
+      })
+    }
+
+    case types.relatedsOf.post.read.success: {
+      const allIds = _.get(state, [fieldNames.postsInEntities, 'allIds'], [])
+      const relateds = _.get(action, 'payload.items', [])
+
+      const byIds = {}
+      const postIds = []
+      const slugToId = {}
+
+      _.forEach(relateds, relatedPost => {
+        const id = _.get(relatedPost, 'id', '')
+        const slug = _.get(relatedPost, 'slug', '')
+        if (allIds.indexOf(id) === -1) {
+          postIds.push(id)
+          slugToId[slug] = id
+          byIds[id] = relatedPost
+        }
+      })
+
+      return _.merge({}, state, {
+        [fieldNames.postsInEntities]: {
+          byIds,
+          slugToId,
+          allIds: allIds.concat(postIds),
+        },
       })
     }
 

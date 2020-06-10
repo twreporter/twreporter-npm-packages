@@ -8,10 +8,12 @@ import stateFieldNames from '../constants/redux-state-field-names'
 import types from '../constants/action-types'
 
 // lodash
+import filter from 'lodash/filter'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
 
 const _ = {
+  filter,
   get,
   merge,
 }
@@ -102,9 +104,7 @@ export function fetchAFullPost(slug) {
 
 /**
  * @param {Function} dispatch - dispatch of redux
- * @param {string} origin - URL origin
- * @param {string} path - URL path
- * @param {Object} params - URL query params
+ * @param {string} url - URL to request
  * @param {string} successActionType - action type
  * @param {string} failureActionType - action type
  * @param {Object} defaultPayload
@@ -112,19 +112,11 @@ export function fetchAFullPost(slug) {
  **/
 function _fetchPosts(
   dispatch,
-  origin,
-  path = '',
-  params = {},
+  url,
   successActionType,
   failureActionType = types.ERROR_TO_GET_POSTS,
   defaultPayload = {}
 ) {
-  const url = formURL(origin, path, params)
-  dispatch({
-    type: types.START_TO_GET_POSTS,
-    url,
-  })
-
   return axios
     .get(url, {
       timeout: apiConfig.timeout,
@@ -149,6 +141,106 @@ function _fetchPosts(
       dispatch(failAction)
       return Promise.reject(failAction)
     })
+}
+
+/**
+ *  Given ObjectID of a target post, this functions will load the related posts
+ *  of that target post.
+ *
+ *  @param {import('../typedef').ObjectID} entityId - ObjectID of a entity, which could be a post or topic
+ *  @param {number} limit - specify how many posts to load
+ *  @return {Function} returned funciton will get executed by Redux Thunk middleware
+ */
+export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
+  return (dispatch, getState) => {
+    /** @type {import('../typedef').ReduxState} */
+    const state = getState()
+    const allPostIds = _.get(
+      state,
+      [stateFieldNames.entities, stateFieldNames.postsInEntities, 'allIds'],
+      []
+    )
+
+    /**  @type {import('../typedef').RelatedPostsOfAnEntity} */
+    const relatedsOfAnEntity = _.get(
+      state,
+      ['relatedPostsOf', 'byId', entityId],
+      {}
+    )
+    const more = _.get(relatedsOfAnEntity, 'more', [])
+
+    if (
+      _.get(more, 'length', 0) === 0 ||
+      typeof limit !== 'number' ||
+      limit <= 0
+    ) {
+      // no more posts to load
+      const action = {
+        type: types.relatedPosts.read.noMore,
+        payload: {
+          targetEntityId: entityId,
+          limit,
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
+    }
+
+    const targetRelatedPostsIds = more.slice(0, limit)
+
+    // filter out those related posts already fetched
+    const idsToRequest = _.filter(targetRelatedPostsIds, id => {
+      return allPostIds.indexOf(id) === -1
+    })
+
+    // dispatch success action if related posts already fetched
+    if (_.get(idsToRequest, 'length', 0) === 0) {
+      const action = {
+        type: types.relatedPosts.read.success,
+        payload: {
+          targetEntityId: entityId,
+          targetRelatedPostsIds,
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
+    }
+
+    const where = {
+      ids: {
+        in: idsToRequest,
+      },
+    }
+
+    const params = {
+      where: JSON.stringify(where),
+    }
+
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const path = `/v1/${apiEndpoints.posts}`
+    const url = formURL(apiOrigin, path, params)
+
+    dispatch({
+      type: types.relatedPosts.read.request,
+      payload: {
+        url,
+        targetEntityId: entityId,
+      },
+    })
+
+    return _fetchPosts(
+      dispatch,
+      url,
+      types.relatedPosts.read.success,
+      types.relatedPosts.read.failure,
+      { targetEntityId: entityId, targetRelatedPostsIds }
+    )
+  }
 }
 
 /* Fetch a listed posts(only containing meta properties),
@@ -214,11 +306,15 @@ export function fetchListedPosts(listID, listType, limit = 10, page = 0) {
       limit,
       offset,
     }
+
+    const url = formURL(apiOrigin, path, params)
+    dispatch({
+      type: types.START_TO_GET_POSTS,
+      url,
+    })
     return _fetchPosts(
       dispatch,
-      apiOrigin,
-      path,
-      params,
+      url,
       types.GET_LISTED_POSTS,
       types.ERROR_TO_GET_LISTED_POSTS,
       { listID, page }
@@ -261,13 +357,12 @@ export function fetchEditorPickedPosts() {
       where: '{"is_featured":true}',
       limit: 6,
     }
-    return _fetchPosts(
-      dispatch,
-      apiOrigin,
-      path,
-      params,
-      types.GET_EDITOR_PICKED_POSTS
-    )
+    const url = formURL(apiOrigin, path, params)
+    dispatch({
+      type: types.START_TO_GET_POSTS,
+      url,
+    })
+    return _fetchPosts(dispatch, url, types.GET_EDITOR_PICKED_POSTS)
   }
 }
 
@@ -307,11 +402,14 @@ export function fetchPhotographyPostsOnIndexPage() {
       where: `{"style":"${postStyles.photography}"}`,
       limit: 6,
     }
+    const url = formURL(apiOrigin, path, params)
+    dispatch({
+      type: types.START_TO_GET_POSTS,
+      url,
+    })
     return _fetchPosts(
       dispatch,
-      apiOrigin,
-      path,
-      params,
+      url,
       types.GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE
     )
   }
@@ -354,11 +452,14 @@ export function fetchInfographicPostsOnIndexPage() {
       limit: 10,
     }
 
+    const url = formURL(apiOrigin, path, params)
+    dispatch({
+      type: types.START_TO_GET_POSTS,
+      url,
+    })
     return _fetchPosts(
       dispatch,
-      apiOrigin,
-      path,
-      params,
+      url,
       types.GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE
     )
   }
