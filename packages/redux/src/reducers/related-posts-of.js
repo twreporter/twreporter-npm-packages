@@ -22,6 +22,36 @@ const _ = {
  */
 export default function relatedPostsOf(state = {}, action = {}) {
   switch (action.type) {
+    case types.GET_A_FULL_TOPIC: {
+      const topic = _.get(action, 'payload.topic', {})
+      const entityId = _.get(topic, 'id', '')
+      const relateds = _.get(topic, 'relateds', [])
+      let more = []
+
+      if (Array.isArray(relateds)) {
+        more = more.concat(relateds)
+      }
+
+      const allIds = _.get(state, 'allIds', [])
+      const ids = []
+
+      if (allIds.indexOf(entityId) === -1) {
+        ids.push(entityId)
+      }
+
+      return _.merge({}, state, {
+        byId: {
+          [entityId]: {
+            isFetching: false,
+            error: null,
+            more,
+            items: [],
+          },
+        },
+        allIds: allIds.concat(ids),
+      })
+    }
+
     case types.GET_A_FULL_POST: {
       const post = _.get(action, 'payload.post', {})
       const entityId = _.get(post, 'id', '')
@@ -38,10 +68,10 @@ export default function relatedPostsOf(state = {}, action = {}) {
       }
 
       const allIds = _.get(state, 'allIds', [])
-      let nextAllIds = [...allIds]
+      const ids = []
 
       if (allIds.indexOf(entityId) === -1) {
-        nextAllIds.push(entityId)
+        ids.push(entityId)
       }
 
       return _.merge({}, state, {
@@ -53,7 +83,7 @@ export default function relatedPostsOf(state = {}, action = {}) {
             items: [],
           },
         },
-        allIds: nextAllIds,
+        allIds: allIds.concat(ids),
       })
     }
 
