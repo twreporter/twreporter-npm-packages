@@ -4,15 +4,6 @@ import fieldNames from '../../constants/redux-state-field-names'
 import reducer from '../entities'
 import types from '../../constants/action-types'
 
-// lodash
-import cloneDeep from 'lodash/cloneDeep'
-import merge from 'lodash/merge'
-
-const _ = {
-  cloneDeep,
-  merge,
-}
-
 const post2 = {
   id: 'post-id-2',
   slug: 'post-slug-2',
@@ -31,14 +22,14 @@ const post4 = {
   full: false,
 }
 
-const fullTopic = {
+const topic1 = {
   id: 'topic-id-1',
   slug: 'topic-slug-1',
-  relateds: [post3, post4],
+  relateds: [post3.id, post4.id],
   full: true,
 }
 
-const nonFullTopic = {
+const topic2 = {
   id: 'topic-id-2',
   slug: 'topic-slug-2',
   full: false,
@@ -47,8 +38,8 @@ const nonFullTopic = {
 const post1 = {
   id: 'post-id-1',
   slug: 'post-slug-1',
-  relateds: [post2],
-  topics: fullTopic,
+  relateds: [post2.id],
+  topics: topic1,
   full: true,
 }
 
@@ -62,46 +53,64 @@ describe('entities reducer', () => {
       reducer(
         {
           posts: {
-            [post3.slug]: post3,
+            byId: {
+              [post3.id]: post3,
+            },
+            slugToId: {
+              [post3.slug]: post3.id,
+            },
+            allIds: [post3.id],
           },
           topics: {
-            [nonFullTopic.slug]: nonFullTopic,
+            byId: {
+              [topic2.id]: topic2,
+            },
+            slugToId: {
+              [topic2.slug]: topic2.id,
+            },
+            allIds: [topic2.id],
           },
         },
         {
           type: types.GET_CONTENT_FOR_INDEX_PAGE,
           payload: {
             items: {
-              [fieldNames.sections.latestSection]: _.cloneDeep([post2]),
-              [fieldNames.sections.editorPicksSection]: _.cloneDeep([post2]),
-              [fieldNames.sections.reviewsSection]: _.cloneDeep([post3]),
-              [fieldNames.sections.latestTopicSection]: _.cloneDeep([
-                fullTopic,
-              ]),
-              [fieldNames.sections.topicsSection]: _.cloneDeep([nonFullTopic]),
-              [fieldNames.sections.photosSection]: _.cloneDeep([post2]),
-              [fieldNames.sections.infographicsSection]: _.cloneDeep([post3]),
-              [fieldNames.categories.humanRightsAndSociety]: _.cloneDeep([
-                post4,
-              ]),
+              [fieldNames.sections.latestSection]: [post2],
+              [fieldNames.sections.editorPicksSection]: [post2],
+              [fieldNames.sections.reviewsSection]: [post3],
+              [fieldNames.sections.latestTopicSection]: [topic1],
+              [fieldNames.sections.topicsSection]: [topic2],
+              [fieldNames.sections.photosSection]: [post2],
+              [fieldNames.sections.infographicsSection]: [post3],
+              [fieldNames.categories.humanRightsAndSociety]: [post4],
             },
           },
         }
       )
     ).toEqual({
       posts: {
-        [post2.slug]: post2,
-        [post3.slug]: post3,
-        [post4.slug]: post4,
+        byId: {
+          [post2.id]: post2,
+          [post3.id]: post3,
+          [post4.id]: post4,
+        },
+        slugToId: {
+          [post2.slug]: post2.id,
+          [post3.slug]: post3.id,
+          [post4.slug]: post4.id,
+        },
+        allIds: [post3.id, post2.id, post4.id],
       },
       topics: {
-        [fullTopic.slug]: {
-          id: fullTopic.id,
-          slug: fullTopic.slug,
-          full: fullTopic.full,
-          relateds: [post3.slug, post4.slug],
+        byId: {
+          [topic1.id]: topic1,
+          [topic2.id]: topic2,
         },
-        [nonFullTopic.slug]: nonFullTopic,
+        slugToId: {
+          [topic1.slug]: topic1.id,
+          [topic2.slug]: topic2.id,
+        },
+        allIds: [topic2.id, topic1.id],
       },
     })
   })
@@ -113,14 +122,19 @@ describe('entities reducer', () => {
         {
           type: types.GET_TOPICS_FOR_INDEX_PAGE,
           payload: {
-            items: _.cloneDeep([nonFullTopic]),
+            items: [topic2],
           },
         }
       )
     ).toEqual({
-      posts: {},
       topics: {
-        [nonFullTopic.slug]: nonFullTopic,
+        byId: {
+          [topic2.id]: topic2,
+        },
+        slugToId: {
+          [topic2.slug]: topic2.id,
+        },
+        allIds: [topic2.id],
       },
     })
   })
@@ -132,15 +146,20 @@ describe('entities reducer', () => {
         {
           type: types.GET_EDITOR_PICKED_POSTS,
           payload: {
-            items: _.cloneDeep([post2]),
+            items: [post2],
           },
         }
       )
     ).toEqual({
       posts: {
-        [post2.slug]: post2,
+        byId: {
+          [post2.id]: post2,
+        },
+        slugToId: {
+          [post2.slug]: post2.id,
+        },
+        allIds: [post2.id],
       },
-      topics: {},
     })
   })
 
@@ -151,15 +170,20 @@ describe('entities reducer', () => {
         {
           type: types.GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE,
           payload: {
-            items: _.cloneDeep([post2]),
+            items: [post2],
           },
         }
       )
     ).toEqual({
       posts: {
-        [post2.slug]: post2,
+        byId: {
+          [post2.id]: post2,
+        },
+        slugToId: {
+          [post2.slug]: post2.id,
+        },
+        allIds: [post2.id],
       },
-      topics: {},
     })
   })
 
@@ -170,15 +194,20 @@ describe('entities reducer', () => {
         {
           type: types.GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE,
           payload: {
-            items: _.cloneDeep([post2]),
+            items: [post2],
           },
         }
       )
     ).toEqual({
       posts: {
-        [post2.slug]: post2,
+        byId: {
+          [post2.id]: post2,
+        },
+        slugToId: {
+          [post2.slug]: post2.id,
+        },
+        allIds: [post2.id],
       },
-      topics: {},
     })
   })
 
@@ -189,74 +218,91 @@ describe('entities reducer', () => {
         {
           type: types.GET_LISTED_POSTS,
           payload: {
-            items: _.cloneDeep([post2]),
+            items: [post2],
           },
         }
       )
     ).toEqual({
       posts: {
-        [post2.slug]: post2,
+        byId: {
+          [post2.id]: post2,
+        },
+        slugToId: {
+          [post2.slug]: post2.id,
+        },
+        allIds: [post2.id],
       },
-      topics: {},
     })
   })
 
   test('should handle GET_A_FULL_POST', () => {
-    const post = _.cloneDeep(post1)
-
     expect(
       reducer(
-        {},
+        {
+          posts: {
+            byId: {
+              [post1.id]: post1,
+            },
+            slugToId: {
+              [post1.slug]: post1.id,
+            },
+            allIds: [post1.id],
+          },
+        },
         {
           type: types.GET_A_FULL_POST,
           payload: {
-            post,
+            post: post2,
           },
         }
       )
     ).toEqual({
       posts: {
-        [post1.slug]: {
-          slug: post.slug,
-          id: post.id,
-          relateds: [post2.slug],
-          topics: fullTopic.slug,
-          full: true,
+        byId: {
+          [post1.id]: post1,
+          [post2.id]: post2,
         },
-        [post2.slug]: post2,
-        [post3.slug]: post3,
-        [post4.slug]: post4,
-      },
-      topics: {
-        [fullTopic.slug]: {
-          id: 'topic-id-1',
-          slug: 'topic-slug-1',
-          relateds: [post3.slug, post4.slug],
-          full: true,
+        slugToId: {
+          [post1.slug]: post1.id,
+          [post2.slug]: post2.id,
         },
+        allIds: [post1.id, post2.id],
       },
     })
   })
 
   test('should handle GET_A_FULL_TOPIC', () => {
-    const topic = _.cloneDeep(fullTopic)
     expect(
       reducer(
-        {},
+        {
+          topics: {
+            byId: {
+              [topic1.id]: topic1,
+            },
+            slugToId: {
+              [topic1.slug]: topic1.id,
+            },
+            allIds: [topic1.id],
+          },
+        },
         {
           type: types.GET_A_FULL_TOPIC,
           payload: {
-            topic,
+            topic: topic2,
           },
         }
       )
     ).toEqual({
-      posts: {
-        [post3.slug]: post3,
-        [post4.slug]: post4,
-      },
       topics: {
-        [topic.slug]: topic,
+        byId: {
+          [topic1.id]: topic1,
+          [topic2.id]: topic2,
+        },
+        slugToId: {
+          [topic1.slug]: topic1.id,
+          [topic2.slug]: topic2.id,
+        },
+        allIds: [topic1.id, topic2.id],
       },
     })
   })
