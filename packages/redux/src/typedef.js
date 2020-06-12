@@ -178,7 +178,7 @@
  */
 
 /**
- *  PostEntity type definition
+ *  PostEntities type definition
  *  @typedef {Object} PostEnitity
  *  @property {Object.<ObjectID, Post|FullPost>} byId
  *  @property {ObjectID[]} allIds
@@ -186,8 +186,8 @@
  */
 
 /**
- *  TopicEntity type definition
- *  @typedef {Object} TopicEntity
+ *  TopicEntities type definition
+ *  @typedef {Object} TopicEntities
  *  @property {Object.<ObjectID, Topic|FullTopic>} byId
  *  @property {ObjectID[]} allIds
  *  @property {Object.<Slug, ObjectID>} slugToId
@@ -207,8 +207,8 @@
  *  @typedef {Object} ReduxState
  *
  *  @property {Object} entities
- *  @property {PostEntity} entities.posts
- *  @property {TopicEntity} entities.topics
+ *  @property {PostEntities} entities.posts
+ *  @property {TopicEntities} entities.topics
  *
  *  @property {Object} index_page
  *  @property {Object} index_page.error
