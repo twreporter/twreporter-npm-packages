@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.8...@twreporter/react-article-components@1.1.9-rc.0) (2020-06-12)
+
+
+### Bug Fixes
+
+* **react-article-components:** added text and via to Twitter share link ([320a664](https://github.com/twreporter/twreporter-npm-packages/commit/320a664fd51d10288c553ec17be0902646737c65))
+* **react-article-components:** removed the via, added a hashtag ([c4497ce](https://github.com/twreporter/twreporter-npm-packages/commit/c4497ce8ade83ef4494c318688e28e189d1521db))
+
+
+
+
+
 ## [1.1.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.8-rc.0...@twreporter/react-article-components@1.1.8) (2020-06-05)
 
 **Note:** Version bump only for package @twreporter/react-article-components
