@@ -11,6 +11,11 @@ const _ = {
   merge,
 }
 
+const initialState = {
+  byId: {},
+  allIds: [],
+}
+
 /**
  *  @param {import('../typedef').ReduxState.relatedPostsof} state
  *  @param {Object} action
@@ -20,11 +25,16 @@ const _ = {
  *  @param {string[]} action.payload.targetRelatedPostsIds
  *  @param {Object} action.payload.error
  */
-export default function relatedPostsOf(state = {}, action = {}) {
-  switch (action.type) {
+export default function relatedPostsOf(state = initialState, action = {}) {
+  switch (_.get(action, 'type', '')) {
     case types.GET_A_FULL_TOPIC: {
       const topic = _.get(action, 'payload.topic', {})
       const entityId = _.get(topic, 'id', '')
+
+      if (!entityId) {
+        return state
+      }
+
       const relateds = _.get(topic, 'relateds', [])
       let more = []
 
@@ -39,8 +49,9 @@ export default function relatedPostsOf(state = {}, action = {}) {
         ids.push(entityId)
       }
 
-      return _.merge({}, state, {
+      return Object.assign({}, state, {
         byId: {
+          ...state.byId,
           [entityId]: {
             isFetching: false,
             error: null,
@@ -55,6 +66,11 @@ export default function relatedPostsOf(state = {}, action = {}) {
     case types.GET_A_FULL_POST: {
       const post = _.get(action, 'payload.post', {})
       const entityId = _.get(post, 'id', '')
+
+      if (!entityId) {
+        return state
+      }
+
       const relateds = _.get(post, 'relateds', [])
       const topicRelateds = _.get(post, 'topics.relateds', [])
       let more = []
@@ -74,8 +90,9 @@ export default function relatedPostsOf(state = {}, action = {}) {
         ids.push(entityId)
       }
 
-      return _.merge({}, state, {
+      return Object.assign({}, state, {
         byId: {
+          ...state.byId,
           [entityId]: {
             isFetching: false,
             error: null,
@@ -89,6 +106,11 @@ export default function relatedPostsOf(state = {}, action = {}) {
 
     case types.relatedPosts.read.request: {
       const entityId = _.get(action, 'payload.targetEntityId', '')
+
+      if (!entityId) {
+        return state
+      }
+
       return _.merge({}, state, {
         byId: {
           [entityId]: {
@@ -100,6 +122,11 @@ export default function relatedPostsOf(state = {}, action = {}) {
 
     case types.relatedPosts.read.success: {
       const targetEntityId = _.get(action, 'payload.targetEntityId', '')
+
+      if (!targetEntityId) {
+        return state
+      }
+
       const targetRelatedPostsIds = _.get(
         action,
         'payload.targetRelatedPostsIds',
@@ -115,9 +142,11 @@ export default function relatedPostsOf(state = {}, action = {}) {
       })
 
       const items = _.get(relatedPostsOfAnEntity, 'items', [])
+      const allIds = _.get(state, 'allIds', [])
 
-      return _.merge({}, state, {
+      return Object.assign({}, state, {
         byId: {
+          ...state.byId,
           [targetEntityId]: {
             isFetching: false,
             error: null,
@@ -125,14 +154,23 @@ export default function relatedPostsOf(state = {}, action = {}) {
             items: items.concat(targetRelatedPostsIds),
           },
         },
+        allIds:
+          allIds.indexOf(targetEntityId) === -1
+            ? allIds.concat(targetEntityId)
+            : allIds,
       })
     }
 
     case types.relatedPosts.read.failure: {
-      const targetEntityId = _.get(action, 'payload.targetEntityId', '')
+      const entityId = _.get(action, 'payload.targetEntityId', '')
+
+      if (!entityId) {
+        return state
+      }
+
       return _.merge({}, state, {
         byId: {
-          [targetEntityId]: {
+          [entityId]: {
             isFetching: false,
             error: _.get(action, 'payload.error', null),
           },
