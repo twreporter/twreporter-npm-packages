@@ -1,4 +1,4 @@
-/* global expect, test, describe, afterEach, afterAll */
+/* global expect, test, describe, afterEach, afterAll, beforeAll */
 
 /*
   Testing functions:
@@ -735,6 +735,287 @@ describe('Testing fetchInfographicPostsOnIndexPage:', () => {
             types.GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE
           )
           expect(store.getActions()[1].payload.items.length).toBe(2)
+        })
+    })
+  })
+})
+
+describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
+  function _expect(store, entityId, limit, returnValue, expectedActions) {
+    return store
+      .dispatch(actions.fetchRelatedPostsOfAnEntity(entityId, limit))
+      .then(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+  }
+
+  describe('No more related posts to fetch', () => {
+    test('due to entityId === null', () => {
+      const store = mockStore()
+
+      const returnValue = {
+        type: types.relatedPosts.read.noMore,
+        payload: {
+          targetEntityId: null,
+          limit: 6,
+        },
+      }
+
+      const expectedActions = [returnValue]
+
+      return _expect(store, null, 6, returnValue, expectedActions)
+    })
+
+    test("due to entityId === ''", () => {
+      const store = mockStore()
+
+      const returnValue = {
+        type: types.relatedPosts.read.noMore,
+        payload: {
+          targetEntityId: '',
+          limit: 6,
+        },
+      }
+
+      const expectedActions = [returnValue]
+
+      return _expect(store, '', 6, returnValue, expectedActions)
+    })
+
+    test('due to entityId === undefeind', () => {
+      const store = mockStore()
+
+      const returnValue = {
+        type: types.relatedPosts.read.noMore,
+        payload: {
+          targetEntityId: undefined,
+          limit: 6,
+        },
+      }
+
+      const expectedActions = [returnValue]
+
+      return _expect(store, undefined, 6, returnValue, expectedActions)
+    })
+
+    test('due to limit <= 0', () => {
+      const targetPost = post1
+      const relatedPost = post2
+
+      const store = mockStore({
+        [fieldNames.relatedPostsOf]: {
+          byId: {
+            [targetPost.id]: {
+              isFetching: false,
+              error: null,
+              more: [relatedPost.id],
+              items: [],
+            },
+          },
+          allIds: [targetPost.id],
+        },
+      })
+
+      const returnValue = {
+        type: types.relatedPosts.read.noMore,
+        payload: {
+          targetEntityId: targetPost.id,
+          limit: 0,
+        },
+      }
+
+      const expectedActions = [returnValue]
+
+      return _expect(store, targetPost.id, 0, returnValue, expectedActions)
+    })
+  })
+
+  describe('Dispatch success action', () => {
+    beforeAll(() => {
+      nock(mockApiHost)
+        .get('/v1/posts')
+        .query({
+          where: `{"ids":{"in":["${post2.id}"]}}`,
+        })
+        .reply(200, {
+          records: [post2],
+          meta: {
+            total: 1,
+          },
+        })
+    })
+
+    afterAll(() => {
+      nock.clearAll()
+    })
+
+    test('because of related posts already in entities', () => {
+      const targetPost = post1
+      const relatedPost = post2
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+        [fieldNames.entities]: {
+          [fieldNames.postsInEntities]: {
+            byId: {
+              [targetPost.id]: targetPost,
+              [relatedPost.id]: relatedPost,
+            },
+            allIds: [targetPost.id, relatedPost.id],
+          },
+        },
+        [fieldNames.relatedPostsOf]: {
+          byId: {
+            [targetPost.id]: {
+              isFetching: false,
+              error: null,
+              more: [relatedPost.id],
+              items: [],
+            },
+          },
+          allIds: [targetPost.id],
+        },
+      })
+
+      const returnValue = {
+        type: types.relatedPosts.read.success,
+        payload: {
+          targetEntityId: targetPost.id,
+          targetRelatedPostsIds: [relatedPost.id],
+        },
+      }
+
+      const expectedActions = [returnValue]
+
+      return _expect(store, targetPost.id, 6, returnValue, expectedActions)
+    })
+
+    test('by requesting api to fetch related posts', () => {
+      const targetPost = post1
+      const relatedPost = post2
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+        [fieldNames.entities]: {
+          [fieldNames.postsInEntities]: {
+            [targetPost.id]: targetPost,
+          },
+        },
+        [fieldNames.relatedPostsOf]: {
+          byId: {
+            [targetPost.id]: {
+              isFetching: false,
+              error: null,
+              more: [relatedPost.id],
+              items: [],
+            },
+          },
+          allIds: [targetPost.id],
+        },
+      })
+
+      const returnValue = {
+        type: types.relatedPosts.read.success,
+        payload: {
+          targetEntityId: targetPost.id,
+          targetRelatedPostsIds: [relatedPost.id],
+          items: [relatedPost],
+          total: 1,
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.relatedPosts.read.request,
+          payload: {
+            url: `${mockApiHost}/v1/posts?where=${encodeURIComponent(
+              JSON.stringify({ ids: { in: [relatedPost.id] } })
+            )}`,
+            targetEntityId: targetPost.id,
+          },
+        },
+        returnValue,
+      ]
+
+      return _expect(store, targetPost.id, 6, returnValue, expectedActions)
+    })
+  })
+
+  describe('Dispatch failure action', () => {
+    beforeAll(() => {
+      nock(mockApiHost)
+        .get('/v1/posts')
+        .query({
+          where: `{"ids":{"in":["${post3.id}"]}}`,
+        })
+        .reply(500, {
+          error: 'internal server error',
+        })
+    })
+
+    afterAll(() => {
+      nock.clearAll()
+    })
+    test('return failure action due to requesting api failure', () => {
+      const targetPost = post1
+      const relatedPost = post3
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+        [fieldNames.entities]: {
+          [fieldNames.postsInEntities]: {
+            [targetPost.id]: targetPost,
+          },
+        },
+        [fieldNames.relatedPostsOf]: {
+          byId: {
+            [targetPost.id]: {
+              isFetching: false,
+              error: null,
+              more: [relatedPost.id],
+              items: [],
+            },
+          },
+          allIds: [targetPost.id],
+        },
+      })
+
+      const returnValue = {
+        type: types.relatedPosts.read.failure,
+        payload: {
+          targetEntityId: targetPost.id,
+          targetRelatedPostsIds: [relatedPost.id],
+          error: expect.any(Error),
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.relatedPosts.read.request,
+          payload: {
+            url: `${mockApiHost}/v1/posts?where=${encodeURIComponent(
+              JSON.stringify({ ids: { in: [relatedPost.id] } })
+            )}`,
+            targetEntityId: targetPost.id,
+          },
+        },
+        returnValue,
+      ]
+
+      return store
+        .dispatch(actions.fetchRelatedPostsOfAnEntity(targetPost.id, 6))
+        .catch(result => {
+          expect(result).toEqual(returnValue)
+          expect(store.getActions().length).toBe(expectedActions.length)
+          expect(store.getActions()).toEqual(expectedActions)
         })
     })
   })
