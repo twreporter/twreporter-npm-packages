@@ -18,16 +18,21 @@ const _ = {
 
 const { pageToOffset } = pagination
 
-/* Fetch a full topic, whose assets like relateds, leading_video ...etc are all complete,
+/**
+ *  Description of async action creator
+ *  @name Thunk
+ *  @function
+ *  @param {Function} dispatch - Redux store dispatch function
+ *  @param {Function} getState - Redux store getState function
+ *  @return {Promise} resolve with success action or reject with fail action
+ */
+
+/**
+ * Fetch a full topic, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of topic
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {Thunk} async action creator
  */
 export function fetchAFullTopic(slug) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     const state = getState()
     const topic = _.get(
@@ -133,14 +138,9 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
 /* Fetch topics(only containing meta properties),
  * and it will load more if (total > items you have currently).
  * @param {number} limit - the number of posts you want to get in one request
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {Thunk} async action creator
  */
 export function fetchTopics(page = 1, nPerPage = 5) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     /* If nPerPage number is invalid, return a Promise.reject(err) */
     if (!_.isInteger(nPerPage) || nPerPage <= 0) {
@@ -180,17 +180,100 @@ export function fetchTopics(page = 1, nPerPage = 5) {
 }
 
 /**
+ *  This function fetch the latest topic,
+ *  and three related posts, sorted by `published_date` in descending order,
+ *  of that topic.
+ *
+ *  @return {Thunk} async action creator
+ */
+export function fetchFeatureTopic() {
+  return (dispatch, getState) => {
+    const state = getState()
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const url = formURL(apiOrigin, `/v2/${apiEndpoints.topics}`, {
+      limit: 1,
+      offset: 0,
+    })
+
+    // dispatch request action
+    dispatch({
+      type: types.featureTopic.read.request,
+    })
+
+    return (
+      axios
+        // fetch the latest topic as feature topic
+        .get(url, {
+          timeout: apiConfig.timeout,
+        })
+        .then(response => {
+          const topic = _.get(response, 'data.data', {})
+          return topic
+        })
+        // fetch feature topic's latest three related posts
+        .then(topic => {
+          const allRelatedIds = _.get(topic, 'relateds', [])
+          const lastThreeRelatedIds = Array.isArray(allRelatedIds)
+            ? allRelatedIds.slice(-3)
+            : []
+
+          if (lastThreeRelatedIds.length > 0) {
+            const url = formURL(apiOrigin, `/v2/${apiEndpoints.posts}`, {
+              id: lastThreeRelatedIds,
+            })
+            return Promise.all([
+              topic,
+              axios.get(url, {
+                timeout: apiConfig.timeout,
+              }),
+            ])
+          }
+
+          // return empty response
+          return Promise.all([
+            topic,
+            {
+              data: {
+                records: [],
+              },
+            },
+          ])
+        })
+        // dispatch success action
+        .then(results => {
+          const topic = results[0]
+          const lastThreeRelatedPosts = _.get(results, '1.data.records', [])
+
+          const action = {
+            type: types.featureTopic.read.success,
+            payload: {
+              topic,
+              lastThreeRelatedPosts,
+            },
+          }
+          dispatch(action)
+          return Promise.resolve(action)
+        })
+        // handle axios error response
+        .catch(error => {
+          const failAction = errorActionCreators.axios(
+            error,
+            types.featureTopic.read.failure
+          )
+          dispatch(failAction)
+          return Promise.reject(failAction)
+        })
+    )
+  }
+}
+
+/**
  * fetchTopicsOnIndexPage
  * This function will fetch the 2 to 5 latest topics.
  * It's specifically made for index page
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {Thunk} async action creator
  */
 export function fetchTopicsOnIndexPage() {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     const state = getState()
     const topics = _.get(

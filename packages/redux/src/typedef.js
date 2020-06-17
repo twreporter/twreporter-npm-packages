@@ -246,6 +246,12 @@
  *  @property {Object.<ObjectID, RelatedPostsOfAnEntity>} relatedPostsOf.byId
  *  @property {ObjectID[]} relatedPostsOf.allIds - ids of entities
  *
+ *  @property {Object} featureTopic
+ *  @property {bool} isFetching
+ *  @property {string} id - topic id
+ *  @property {Object} error
+ *  @property {ObjectID[]} lastThreeRelatedPostIds - three related posts, sort by published_date in descending order, of topic
+ *
  *  @property {Object} articlesByAuthor
  *  @property {Object} auth
  *  @property {Object} authorsList

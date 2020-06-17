@@ -93,6 +93,14 @@ export default {
     },
   },
 
+  featureTopic: {
+    read: {
+      request: 'request to fetch feature topic',
+      success: 'success to fetch feature topic',
+      failure: 'fail to fetch feature topic',
+    },
+  },
+
   origins: {
     update: 'update request origins',
   },

@@ -181,6 +181,28 @@ function entities(state = defaultState, action = {}) {
       })
     }
 
+    case types.featureTopic.read.success: {
+      const allPostIds = _.get(
+        state,
+        [fieldNames.postsInEntities, 'allIds'],
+        []
+      )
+
+      const allTopicIds = _.get(
+        state,
+        [fieldNames.topicsInEntities, 'allIds'],
+        []
+      )
+
+      const posts = _.get(action, 'payload.lastThreeRelatedPosts', [])
+      const topics = [_.get(action, 'payload.topic', {})]
+
+      return _.merge({}, state, {
+        [fieldNames.postsInEntities]: _buildState(allPostIds, posts),
+        [fieldNames.topicsInEntities]: _buildState(allTopicIds, topics),
+      })
+    }
+
     default: {
       return state
     }
