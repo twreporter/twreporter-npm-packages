@@ -35,12 +35,16 @@ const defaultState = {
   },
 }
 
-/**
- *  @param {string[]} allIds
- *  @param {{id: string, slug: string}[]} entities
+/** This function will check each entity in `entities` argument,
+ *  if the `entity.id` is not in `allIds` argument array or
+ *  `overwriteExisted` argument is true , then we will put this entity in the returned object.
+ *
+ *  @param {string[]} allIds - array of entity ids
+ *  @param {{id: string, slug: string, full: bool}[]} entities - array of entities
+ *  @param {bool} [overwriteExisted=false] - not to overwrite existed entity if false, otherwise overwrite
  *  @return {{byId: Object, slugToId: Object, allIds: string[]}}
  */
-function _buildState(allIds, entities) {
+function _buildState(allIds, entities, overwriteExisted = false) {
   let _entities = []
 
   if (!Array.isArray(entities) && typeof entities === 'object') {
@@ -58,6 +62,9 @@ function _buildState(allIds, entities) {
     const slug = _.get(entity, 'slug', '')
     if (ids.indexOf(id) === -1) {
       ids.push(id)
+      slugToId[slug] = id
+      byId[id] = entity
+    } else if (overwriteExisted) {
       slugToId[slug] = id
       byId[id] = entity
     }
@@ -140,7 +147,7 @@ function entities(state = defaultState, action = {}) {
       const post = _.get(action, 'payload.post', {})
 
       return _.merge({}, state, {
-        [fieldNames.postsInEntities]: _buildState(allPostIds, post),
+        [fieldNames.postsInEntities]: _buildState(allPostIds, post, true),
       })
     }
 
@@ -153,7 +160,7 @@ function entities(state = defaultState, action = {}) {
       const topic = _.get(action, 'payload.topic', {})
 
       return _.merge({}, state, {
-        [fieldNames.topicsInEntities]: _buildState(allTopicIds, topic),
+        [fieldNames.topicsInEntities]: _buildState(allTopicIds, topic, true),
       })
     }
 
