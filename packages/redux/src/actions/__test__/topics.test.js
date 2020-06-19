@@ -423,3 +423,235 @@ describe('Testing fetchTopicsOnIndexPage:', () => {
     })
   })
 })
+
+describe('Test function `fetchFeatureTopic`', () => {
+  const mockApiHost = 'http://localhost:8080'
+
+  const mockPost1 = {
+    id: 'post-id-1',
+  }
+
+  const mockPost2 = {
+    id: 'post-id-2',
+  }
+
+  const mockPost3 = {
+    id: 'post-id-3',
+  }
+
+  const mockPost4 = {
+    id: 'post-id-4',
+  }
+
+  const mockFeatureTopic = {
+    id: 'topic-id-1',
+    relateds: [mockPost1.id, mockPost2.id, mockPost3.id, mockPost4.id],
+  }
+
+  const mockFeatureTopicWithoutRelateds = Object.assign({}, mockFeatureTopic, {
+    relateds: [],
+  })
+
+  describe('Dispatch success action', () => {
+    afterAll(() => {
+      nock.clearAll()
+    })
+
+    test('by requesting api to fetch the topic which does not have related posts', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
+        .reply(200, {
+          status: 'success',
+          data: mockFeatureTopicWithoutRelateds,
+        })
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+      })
+
+      const returnValue = {
+        type: types.featureTopic.read.success,
+        payload: {
+          topic: mockFeatureTopicWithoutRelateds,
+          lastThreeRelatedPosts: [],
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).then(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+
+    test('by requesting api to fetch the topic and corresponding related posts', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
+        .reply(200, {
+          status: 'success',
+          data: mockFeatureTopic,
+        })
+
+      nock(mockApiHost)
+        .get('/v2/posts')
+        .query({
+          id: [mockPost2.id, mockPost3.id, mockPost4.id],
+        })
+        .reply(200, {
+          status: 'success',
+          records: [mockPost2, mockPost3, mockPost4],
+        })
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+      })
+
+      const returnValue = {
+        type: types.featureTopic.read.success,
+        payload: {
+          topic: mockFeatureTopic,
+          lastThreeRelatedPosts: [mockPost2, mockPost3, mockPost4],
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).then(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+  })
+
+  describe('Dispatch failure action', () => {
+    afterAll(() => {
+      nock.clearAll()
+    })
+
+    test('because of fetching topic failure', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
+        .reply(404, {
+          status: 'fail',
+          data: {
+            slug: 'Cannot find the topic from the slug',
+          },
+        })
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+      })
+
+      const returnValue = {
+        type: types.featureTopic.read.failure,
+        payload: {
+          error: expect.any(Error),
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).catch(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+
+    test('because of fetching related posts failure', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
+        .reply(200, {
+          status: 'success',
+          data: mockFeatureTopic,
+        })
+
+      nock(mockApiHost)
+        .get('/v2/posts')
+        .query({
+          id: [mockPost2.id, mockPost3.id, mockPost4.id],
+        })
+        .reply(500, {
+          status: 'error',
+          message: 'Unexpected error',
+        })
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+      })
+
+      const returnValue = {
+        type: types.featureTopic.read.failure,
+        payload: {
+          error: expect.objectContaining({
+            statusCode: 500,
+            name: 'AxiosError',
+          }),
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).catch(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+  })
+})
