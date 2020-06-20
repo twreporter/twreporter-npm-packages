@@ -65,7 +65,7 @@ export function fetchAFullPost(slug) {
       return Promise.resolve(action)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}/${slug}`
+    const path = `/v2/${apiEndpoints.posts}/${slug}`
     const url = formURL(apiOrigin, path, { full: 'true' })
     // Start to get topics
     dispatch({
@@ -83,7 +83,7 @@ export function fetchAFullPost(slug) {
         const successAction = {
           type: types.GET_A_FULL_POST,
           payload: {
-            post: _.get(response, 'data.record', {}),
+            post: _.get(response, 'data.data', {}),
           },
         }
         dispatch(successAction)
@@ -210,19 +210,9 @@ export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
       return Promise.resolve(action)
     }
 
-    const where = {
-      ids: {
-        in: idsToRequest,
-      },
-    }
-
-    const params = {
-      where: JSON.stringify(where),
-    }
-
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}`
-    const url = formURL(apiOrigin, path, params)
+    const path = `/v2/${apiEndpoints.posts}`
+    const url = formURL(apiOrigin, path, { id: idsToRequest })
 
     dispatch({
       type: types.relatedPosts.read.request,

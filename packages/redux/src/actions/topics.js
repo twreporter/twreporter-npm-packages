@@ -51,7 +51,7 @@ export function fetchAFullTopic(slug) {
       return Promise.resolve(successAction)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.topics}/${slug}`
+    const path = `/v2/${apiEndpoints.topics}/${slug}`
     const params = {
       full: 'true',
     }
@@ -72,7 +72,7 @@ export function fetchAFullTopic(slug) {
         const successAction = {
           type: types.GET_A_FULL_TOPIC,
           payload: {
-            topic: _.get(response, 'data.record', {}),
+            topic: _.get(response, 'data.data', {}),
           },
         }
         dispatch(successAction)
@@ -169,7 +169,7 @@ export function fetchTopics(page = 1, nPerPage = 5) {
     const { limit, offset } = pageToOffset({ page, nPerPage })
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.topics}`
+    const path = `/v2/${apiEndpoints.topics}`
     const params = {
       limit,
       offset,

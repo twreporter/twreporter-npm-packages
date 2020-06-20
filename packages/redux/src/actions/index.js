@@ -6,7 +6,11 @@ import {
   fetchIndexPageContent,
   fetchCategoriesPostsOnIndexPage,
 } from './index-page'
-import { fetchAFullPost, fetchListedPosts } from './posts'
+import {
+  fetchAFullPost,
+  fetchListedPosts,
+  fetchRelatedPostsOfAnEntity,
+} from './posts'
 import { fetchAFullTopic, fetchTopics } from './topics'
 import {
   createSingleBookmark,
@@ -25,6 +29,7 @@ export default {
   fetchCategoriesPostsOnIndexPage,
   fetchIndexPageContent,
   fetchListedPosts,
+  fetchRelatedPostsOfAnEntity,
   fetchTopics,
   getAccessToken,
   getMultipleBookmarks,

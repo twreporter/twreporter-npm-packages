@@ -92,11 +92,12 @@ describe('Testing fetchAFullTopic:', () => {
         },
       })
       const mockApiResponse = {
-        record: mockTopic,
+        status: 'success',
+        data: mockTopic,
       }
 
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics/${mockSlug}?full=true`))
+        .get(encodeURI(`/v2/topics/${mockSlug}?full=true`))
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchAFullTopic(mockSlug)).then(() => {
@@ -131,10 +132,12 @@ describe('Testing fetchAFullTopic:', () => {
       const mockStatusCode = 404
       const mockAPIRes = {
         status: 'fail',
-        data: null,
+        data: {
+          slug: 'Cannot find the topic from the slug',
+        },
       }
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics/${mockSlug}?full=true`))
+        .get(encodeURI(`/v2/topics/${mockSlug}?full=true`))
         .reply(mockStatusCode, mockAPIRes)
 
       return store.dispatch(actions.fetchAFullTopic(mockSlug)).catch(() => {
@@ -205,7 +208,7 @@ describe('Testing fetchTopics:', () => {
         },
       }
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics?limit=${limit}&offset=${offset}`))
+        .get(encodeURI(`/v2/topics?limit=${limit}&offset=${offset}`))
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
@@ -246,7 +249,7 @@ describe('Testing fetchTopics:', () => {
         },
       }
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics?limit=${limit}&offset=${offset}`))
+        .get(encodeURI(`/v2/topics?limit=${limit}&offset=${offset}`))
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
@@ -271,13 +274,13 @@ describe('Testing fetchTopics:', () => {
           api: 'http://localhost:8080',
         },
       })
-      const mockStatusCode = 404
+      const mockStatusCode = 500
       const mockAPIRes = {
-        status: 'fail',
-        data: null,
+        status: 'error',
+        message: 'Unexpecetd error',
       }
       nock('http://localhost:8080')
-        .get(`/v1/topics?limit=${limit}&offset=${offset}`)
+        .get(`/v2/topics?limit=${limit}&offset=${offset}`)
         .reply(mockStatusCode, mockAPIRes)
 
       const page = 1
@@ -286,7 +289,7 @@ describe('Testing fetchTopics:', () => {
         const expected = [
           {
             type: types.START_TO_GET_TOPICS,
-            url: `http://localhost:8080/v1/topics?limit=${limit}&offset=${offset}`,
+            url: `http://localhost:8080/v2/topics?limit=${limit}&offset=${offset}`,
           },
           {
             type: types.ERROR_TO_GET_TOPICS,

@@ -142,7 +142,8 @@ describe('Testing fetchAFullPost:', () => {
         },
       })
       const mockApiResponse = {
-        record: {
+        status: 'success',
+        data: {
           id: 'mock-id',
           slug: 'mock-slug',
           style: 'article',
@@ -151,7 +152,7 @@ describe('Testing fetchAFullPost:', () => {
       }
 
       nock(mockApiHost)
-        .get(`/v1/posts/${mockSlug}?full=true`)
+        .get(`/v2/posts/${mockSlug}?full=true`)
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
@@ -191,10 +192,12 @@ describe('Testing fetchAFullPost:', () => {
       const mockStatusCode = 404
       const mockAPIRes = {
         status: 'fail',
-        data: null,
+        data: {
+          slug: 'Cannot find the post from the slug',
+        },
       }
       nock(mockApiHost)
-        .get(`/v1/posts/${mockSlug}?full=true`)
+        .get(`/v2/posts/${mockSlug}?full=true`)
         .reply(mockStatusCode, mockAPIRes)
 
       return store
@@ -617,10 +620,7 @@ describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
   describe('Dispatch success action', () => {
     beforeAll(() => {
       nock(mockApiHost)
-        .get('/v1/posts')
-        .query({
-          where: `{"ids":{"in":["${post2.id}"]}}`,
-        })
+        .get(`/v2/posts?id=${post2.id}`)
         .reply(200, {
           records: [post2],
           meta: {
@@ -716,9 +716,7 @@ describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
         {
           type: types.relatedPosts.read.request,
           payload: {
-            url: `${mockApiHost}/v1/posts?where=${encodeURIComponent(
-              JSON.stringify({ ids: { in: [relatedPost.id] } })
-            )}`,
+            url: `${mockApiHost}/v2/posts?id=${relatedPost.id}`,
             targetEntityId: targetPost.id,
           },
         },
@@ -732,10 +730,7 @@ describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
   describe('Dispatch failure action', () => {
     beforeAll(() => {
       nock(mockApiHost)
-        .get('/v1/posts')
-        .query({
-          where: `{"ids":{"in":["${post3.id}"]}}`,
-        })
+        .get(`/v2/posts?id=${post3.id}`)
         .reply(500, {
           error: 'internal server error',
         })
@@ -783,9 +778,7 @@ describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
         {
           type: types.relatedPosts.read.request,
           payload: {
-            url: `${mockApiHost}/v1/posts?where=${encodeURIComponent(
-              JSON.stringify({ ids: { in: [relatedPost.id] } })
-            )}`,
+            url: `${mockApiHost}/v2/posts?id=${relatedPost.id}`,
             targetEntityId: targetPost.id,
           },
         },
