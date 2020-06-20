@@ -368,4 +368,61 @@ describe('entities reducer', () => {
       },
     })
   })
+
+  test('should handle `types.featureTopic.read.success`', () => {
+    expect(
+      reducer(
+        {
+          topics: {
+            byId: {
+              [fullTopic1.id]: fullTopic1,
+            },
+            slugToId: {
+              [fullTopic1.slug]: fullTopic1.id,
+            },
+            allIds: [fullTopic1.id],
+          },
+          posts: {
+            byId: {
+              [fullPost1.id]: fullPost1,
+            },
+            slugToId: {
+              [fullPost1.slug]: fullPost1.id,
+            },
+            allIds: [fullPost1.id],
+          },
+        },
+        {
+          type: types.featureTopic.read.success,
+          payload: {
+            topic: metaTopic1,
+            lastThreeRelatedPosts: [metaPost1, metaPost2, metaPost3],
+          },
+        }
+      )
+    ).toEqual({
+      topics: {
+        byId: {
+          [fullTopic1.id]: fullTopic1,
+        },
+        slugToId: {
+          [fullTopic1.slug]: fullTopic1.id,
+        },
+        allIds: [fullTopic1.id],
+      },
+      posts: {
+        byId: {
+          [fullPost1.id]: fullPost1,
+          [metaPost2.id]: metaPost2,
+          [metaPost3.id]: metaPost3,
+        },
+        slugToId: {
+          [fullPost1.slug]: fullPost1.id,
+          [metaPost2.slug]: metaPost2.id,
+          [metaPost3.slug]: metaPost3.id,
+        },
+        allIds: [fullPost1.id, metaPost2.id, metaPost3.id],
+      },
+    })
+  })
 })
