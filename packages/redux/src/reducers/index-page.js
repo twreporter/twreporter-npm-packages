@@ -35,54 +35,6 @@ function indexPage(state = {}, action = {}) {
       return _.merge({}, state, rtn, { error: null, isFetching: false })
     }
 
-    case types.GET_TOPICS_FOR_INDEX_PAGE: {
-      return _.merge({}, state, {
-        // only store the topic slugs
-        [fieldNames.sections.topicsSection]: _.map(
-          _.get(action, 'payload.items'),
-          item => {
-            return _.get(item, 'slug')
-          }
-        ),
-      })
-    }
-
-    case types.GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE: {
-      return _.merge({}, state, {
-        // only store the posts slugs
-        [fieldNames.sections.photosSection]: _.map(
-          _.get(action, 'payload.items'),
-          item => {
-            return _.get(item, 'slug')
-          }
-        ),
-      })
-    }
-
-    case types.GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE: {
-      return _.merge({}, state, {
-        // only store the posts slugs
-        [fieldNames.sections.infographicsSection]: _.map(
-          _.get(action, 'payload.items'),
-          item => {
-            return _.get(item, 'slug')
-          }
-        ),
-      })
-    }
-
-    case types.GET_EDITOR_PICKED_POSTS: {
-      return _.merge({}, state, {
-        // only store the posts slugs
-        [fieldNames.sections.editorPicksSection]: _.map(
-          _.get(action, 'payload.items'),
-          item => {
-            return _.get(item, 'slug')
-          }
-        ),
-      })
-    }
-
     case types.START_TO_GET_INDEX_PAGE_CONTENT: {
       return _.merge({}, state, {
         isFetching: true,

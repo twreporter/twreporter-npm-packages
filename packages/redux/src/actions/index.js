@@ -6,14 +6,8 @@ import {
   fetchIndexPageContent,
   fetchCategoriesPostsOnIndexPage,
 } from './index-page'
-import {
-  fetchAFullPost,
-  fetchListedPosts,
-  fetchEditorPickedPosts,
-  fetchInfographicPostsOnIndexPage,
-  fetchPhotographyPostsOnIndexPage,
-} from './posts'
-import { fetchAFullTopic, fetchTopics, fetchTopicsOnIndexPage } from './topics'
+import { fetchAFullPost, fetchListedPosts } from './posts'
+import { fetchAFullTopic, fetchTopics } from './topics'
 import {
   createSingleBookmark,
   deleteSingleBookmark,
@@ -29,13 +23,9 @@ export default {
   fetchAuthorCollectionIfNeeded,
   fetchAuthorDetails,
   fetchCategoriesPostsOnIndexPage,
-  fetchEditorPickedPosts,
   fetchIndexPageContent,
-  fetchInfographicPostsOnIndexPage,
   fetchListedPosts,
-  fetchPhotographyPostsOnIndexPage,
   fetchTopics,
-  fetchTopicsOnIndexPage,
   getAccessToken,
   getMultipleBookmarks,
   getSingleBookmark,

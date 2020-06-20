@@ -4,7 +4,7 @@
   Testing functions:
     fetchAFullTopic
     fetchTopics
-    fetchTopicsOnIndexPage
+    fetchFeatureTopic
 */
 
 import * as actions from '../topics'
@@ -358,68 +358,6 @@ describe('Testing fetchTopics:', () => {
             httpProtocolConsts.statusCode.badRequest
           )
         })
-    })
-  })
-})
-
-/**
- * fetchTopicsOnIndexPage
- * This function will fetch the 2 to 5 latest topics.
- * It's specifically made for index page
- */
-/*
-========= Testing  fetchTopicsOnIndexPage ==========
-*/
-describe('Testing fetchTopicsOnIndexPage:', () => {
-  afterAll(() => {
-    nock.cleanAll()
-  })
-  describe('index_page.topics are already existed', () => {
-    test('Should do nothing', () => {
-      const store = mockStore({
-        [fieldNames.indexPage]: {
-          [fieldNames.sections.topicsSection]: [topic1, topic2],
-        },
-        [fieldNames.origins]: {
-          api: 'http://localhost:8080',
-        },
-      })
-      return store.dispatch(actions.fetchTopicsOnIndexPage()).then(result => {
-        expect(store.getActions().length).toBe(1)
-        expect(result).toEqual({
-          type: types.dataAlreadyExists,
-          payload: {
-            function: actions.fetchTopicsOnIndexPage.name,
-            message: expect.any(String),
-          },
-        })
-      })
-    })
-  })
-
-  describe('Load topics if needed', () => {
-    test('Should dispatch types.GET_TOPICS_FOR_INDEX_PAGE)', () => {
-      const store = mockStore({
-        [fieldNames.origins]: {
-          api: 'http://localhost:8080',
-        },
-      })
-      nock('http://localhost:8080')
-        .get(encodeURI('/v1/topics?offset=1&limit=4'))
-        .reply(200, {
-          records: [topic1, topic2],
-          meta: {
-            limit: 10,
-            total: 2,
-            offset: 0,
-          },
-        })
-
-      return store.dispatch(actions.fetchTopicsOnIndexPage()).then(() => {
-        expect(store.getActions().length).toBe(2) // START and GET
-        expect(store.getActions()[1].type).toBe(types.GET_TOPICS_FOR_INDEX_PAGE)
-        expect(store.getActions()[1].payload.items.length).toBe(2)
-      })
     })
   })
 })

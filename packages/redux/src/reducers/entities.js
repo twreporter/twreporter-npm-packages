@@ -124,8 +124,7 @@ function entities(state = defaultState, action = {}) {
       })
     }
 
-    case types.GET_TOPICS:
-    case types.GET_TOPICS_FOR_INDEX_PAGE: {
+    case types.GET_TOPICS: {
       const allTopicIds = _.get(
         state,
         [fieldNames.topicsInEntities, 'allIds'],
@@ -164,9 +163,6 @@ function entities(state = defaultState, action = {}) {
       })
     }
 
-    case types.GET_EDITOR_PICKED_POSTS:
-    case types.GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE:
-    case types.GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE:
     case types.GET_LISTED_POSTS:
     case types.relatedPosts.read.success: {
       const allPostIds = _.get(
