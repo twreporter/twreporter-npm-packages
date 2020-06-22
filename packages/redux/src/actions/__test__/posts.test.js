@@ -3,7 +3,8 @@
 /*
   Testing functions:
     fetchAFullPost
-    fetchListedPosts
+    fetchPostsByCategoryListId
+    fetchPostsByTagListId
     fetchRelatedPostsOfAnEntity
 */
 
@@ -190,7 +191,7 @@ describe('Testing fetchAFullPost:', () => {
       })
       const mockSlug = 'mock-slug'
       const mockStatusCode = 404
-      const mockAPIRes = {
+      const mockApiRes = {
         status: 'fail',
         data: {
           slug: 'Cannot find the post from the slug',
@@ -198,7 +199,7 @@ describe('Testing fetchAFullPost:', () => {
       }
       nock(mockApiHost)
         .get(`/v2/posts/${mockSlug}?full=true`)
-        .reply(mockStatusCode, mockAPIRes)
+        .reply(mockStatusCode, mockApiRes)
 
       return store
         .dispatch(actions.fetchAFullPost(mockSlug))
@@ -225,91 +226,51 @@ describe('Testing fetchAFullPost:', () => {
           expectActionErrorObj(
             store.getActions()[1].payload.error,
             mockStatusCode,
-            mockAPIRes
+            mockApiRes
           )
         })
     })
   })
 })
 
-/* Fetch a listed posts(only containing meta properties),
- * such as the posts belonging to the same tag/category/topic.
- * @param {string} listID - id of the tag, category or topic
- * @param {string} listType - tags, categories or topics
- * @param {number} limit - the number of posts you want to get in one request
- */
-/*
-========= Testing fetchListedPosts ==========
-*/
-describe('Testing fetchListedPosts:', () => {
-  afterEach(() => {
-    nock.cleanAll()
-  })
-  describe('There is no more posts to load', () => {
-    test('Should dispatch no actions and return Promise.resolve()', () => {
-      const mockArgs = [
-        'mock_target_uuid', // listID
-        'categories', // type
-        10, // limit
-      ]
-      const store = mockStore({
-        lists: {
-          mock_target_uuid: {
-            total: 4,
-            items: [post1, post2, post3, post4],
-          },
-        },
-        [fieldNames.origins]: {
-          api: 'http://localhost:8080',
-        },
-      })
-      expect.assertions(3)
-      return store
-        .dispatch(actions.fetchListedPosts(...mockArgs))
-        .then(result => {
-          const expected = {
-            type: types.noMoreItemsToFetch,
-          }
-          expect(store.getActions().length).toBe(1)
-          expect(result).toEqual(expected)
-          expect(store.getActions()[0]).toEqual(expected)
-        })
+function testFetchPostsByListId(actionToFetch, paramKey) {
+  const mockListId = 'list-id-1'
+
+  describe('Return Promise.resolve', () => {
+    afterAll(() => {
+      nock.cleanAll()
     })
-    test('Items of page are already fetched', () => {
-      const listID = 'mock_target_uuid'
-      const listType = 'categories'
+    test('when items of that page are already fetched', () => {
       const limit = 10
+      const total = limit
       const page = 1
-      const mockArgs = [listID, listType, limit, page]
       const store = mockStore({
         lists: {
-          mock_target_uuid: {
-            total: 10,
+          [mockListId]: {
+            total,
             items: [post1, post2, post3, post4],
             pages: {
               // page 1 already fetched, and items post1, post2, post3 and post4
-              1: [0, 3],
+              [page]: [0, 3],
             },
           },
         },
         [fieldNames.origins]: {
-          api: 'http://localhost:8080',
+          api: mockApiHost,
         },
       })
+
+      expect.assertions(3)
+
       return store
-        .dispatch(actions.fetchListedPosts(...mockArgs))
+        .dispatch(actionToFetch(mockListId, limit, page))
         .then(result => {
           const expected = {
-            type: types.dataAlreadyExists,
+            type: types.postsByListId.read.alreadyExists,
             payload: {
-              function: actions.fetchListedPosts.name,
-              arguments: {
-                listID,
-                listType,
-                limit,
-                page,
-              },
-              message: expect.any(String),
+              listId: mockListId,
+              limit,
+              page,
             },
           }
           expect(store.getActions().length).toBe(1)
@@ -317,142 +278,55 @@ describe('Testing fetchListedPosts:', () => {
           expect(store.getActions()[0]).toEqual(expected)
         })
     })
-  })
-  describe('It loads posts successfully', () => {
-    test('Should load items when there is no items in the store', () => {
-      const mockArgs = [
-        'mock_target_uuid', // listID
-        'categories', // type
-        1, // limit
-        0, // page
-      ]
+
+    test('when fetch posts of certain page successfully', () => {
+      const limit = 1
+      const offset = 1
+      const page = 2
+      const total = page
       const store = mockStore({
         // empty lists
         lists: {},
         [fieldNames.origins]: {
-          api: 'http://localhost:8080',
+          api: mockApiHost,
         },
       })
-      const mockPath = '/v1/posts'
       const mockQuery = {
-        where: '{"categories":{"in":["mock_target_uuid"]}}',
-        limit: 1,
-        offset: 0,
+        [paramKey]: mockListId,
+        limit,
+        offset,
       }
-      const mockUrl = formURL('http://localhost:8080', mockPath, mockQuery)
+      const mockPath = '/v2/posts'
+      const mockUrl = formURL(mockApiHost, mockPath, mockQuery)
       const mockApiResponse = {
-        records: [
-          {
-            _id: 'mock_category_article_id_01',
-            title: 'mock_category_article_title',
-            slug: 'mock-category-article-slug',
-            style: 'article',
-            og_description: 'mock_category_article_title_og_description',
-          },
-        ],
+        records: [post2],
         meta: {
-          limit: 1,
-          total: 2,
-          offset: 0,
+          limit,
+          total,
+          offset,
         },
       }
       const expectedRequestAction = {
-        type: types.START_TO_GET_POSTS,
+        type: types.postsByListId.read.request,
         url: mockUrl,
       }
       const expectedSuccessAction = {
-        type: types.GET_LISTED_POSTS,
+        type: types.postsByListId.read.success,
         payload: {
-          items: [
-            {
-              _id: 'mock_category_article_id_01',
-              title: 'mock_category_article_title',
-              slug: 'mock-category-article-slug',
-              style: 'article',
-              og_description: 'mock_category_article_title_og_description',
-            },
-          ],
+          items: [post2],
           total: 2,
-          listID: 'mock_target_uuid',
-          page: 0,
+          listId: mockListId,
+          page,
         },
       }
       nock(mockApiHost)
         .get(mockPath)
         .query(mockQuery)
         .reply(200, mockApiResponse)
-      return store.dispatch(actions.fetchListedPosts(...mockArgs)).then(() => {
-        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0]).toEqual(expectedRequestAction)
-        expect(store.getActions()[1].type).toBe(expectedSuccessAction.type)
-        expect(store.getActions()[1].payload).toEqual(
-          expectedSuccessAction.payload
-        )
-      })
-    })
-    test('Should load items when page is provided', () => {
-      const mockArgs = [
-        'mock_target_uuid', // listID
-        'categories', // type
-        1, // limit
-        2, // page
-      ]
-      const store = mockStore({
-        // empty lists
-        lists: {},
-        [fieldNames.origins]: {
-          api: 'http://localhost:8080',
-        },
-      })
-      const mockQuery = {
-        where: '{"categories":{"in":["mock_target_uuid"]}}',
-        limit: 1,
-        offset: 1,
-      }
-      const mockPath = '/v1/posts'
-      const mockUrl = formURL('http://localhost:8080', mockPath, mockQuery)
-      const mockApiResponse = {
-        records: [
-          {
-            _id: 'mock_category_article_id_01',
-            title: 'mock_category_article_title',
-            slug: 'mock-category-article-slug',
-            style: 'article',
-            og_description: 'mock_category_article_title_og_description',
-          },
-        ],
-        meta: {
-          limit: 1,
-          total: 2,
-          offset: 0,
-        },
-      }
-      const expectedRequestAction = {
-        type: types.START_TO_GET_POSTS,
-        url: mockUrl,
-      }
-      const expectedSuccessAction = {
-        type: types.GET_LISTED_POSTS,
-        payload: {
-          items: [
-            {
-              _id: 'mock_category_article_id_01',
-              title: 'mock_category_article_title',
-              slug: 'mock-category-article-slug',
-              style: 'article',
-              og_description: 'mock_category_article_title_og_description',
-            },
-          ],
-          total: 2,
-          listID: 'mock_target_uuid',
-          page: 2,
-        },
-      }
-      nock(mockApiHost)
-        .get(mockPath)
-        .query(mockQuery)
-        .reply(200, mockApiResponse)
-      return store.dispatch(actions.fetchListedPosts(...mockArgs)).then(() => {
+
+      expect.assertions(4)
+
+      return store.dispatch(actionToFetch(mockListId, limit, page)).then(() => {
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
         expect(store.getActions()[0]).toEqual(expectedRequestAction)
         expect(store.getActions()[1].type).toBe(expectedSuccessAction.type)
@@ -462,18 +336,55 @@ describe('Testing fetchListedPosts:', () => {
       })
     })
   })
-  describe('If the api returns a failure', () => {
-    test('Should dispatch types.START_TO_GET_POSTS and types.ERROR_TO_GET_POSTS', () => {
-      const mock = {
-        listID: 'mock_target_uuid',
-        type: 'categories',
-        limit: 1,
-      }
-      const mockArgs = [
-        mock.listID, // listID
-        mock.type, // type
-        mock.limit, // limit
-      ]
+
+  describe('Return Promise.reject', () => {
+    afterAll(() => {
+      nock.cleanAll()
+    })
+
+    function _expectFailureDueTopage(store, listId, limit, page) {
+      expect.assertions(2)
+
+      return store.dispatch(actionToFetch(listId, limit, page)).catch(() => {
+        expect(store.getActions().length).toBe(1)
+        expect(store.getActions()[0]).toEqual({
+          type: types.postsByListId.read.failure,
+          payload: {
+            listId,
+            error: expect.any(Error),
+          },
+        })
+      })
+    }
+
+    test('when page is not a number', () => {
+      const page = '1'
+      const limit = 10
+      const store = mockStore()
+
+      return _expectFailureDueTopage(store, mockListId, limit, page)
+    })
+
+    test('when page is < 1', () => {
+      const page = 0
+      const limit = 10
+      const store = mockStore()
+
+      return _expectFailureDueTopage(store, mockListId, limit, page)
+    })
+
+    test('when page is NaN', () => {
+      const page = NaN
+      const limit = 10
+      const store = mockStore()
+
+      return _expectFailureDueTopage(store, mockListId, limit, page)
+    })
+
+    test('when it fails to fetch posts of certain page', () => {
+      const limit = 1
+      const page = 1
+      const offset = 0
       const store = mockStore({
         // empty lists
         lists: {},
@@ -481,52 +392,64 @@ describe('Testing fetchListedPosts:', () => {
           api: 'http://localhost:8080',
         },
       })
-      const mockPath = '/v1/posts'
+      const mockPath = '/v2/posts'
       const mockQuery = {
-        where: `{"${mock.type}":{"in":["${mock.listID}"]}}`,
-        limit: mock.limit,
-        offset: 0,
+        [paramKey]: mockListId,
+        limit,
+        offset,
       }
       const mockUrl = formURL('http://localhost:8080', mockPath, mockQuery)
-      const mockStatusCode = 404
-      const mockAPIRes = {
-        status: 'fail',
-        data: null,
+      const mockStatusCode = 500
+      const mockApiRes = {
+        status: 'error',
+        message: 'Unexpected error',
       }
       nock(mockApiHost)
         .get(mockPath)
         .query(mockQuery)
-        .reply(mockStatusCode, mockAPIRes)
-      return store.dispatch(actions.fetchListedPosts(...mockArgs)).catch(() => {
-        const expected = [
-          {
-            type: types.START_TO_GET_POSTS,
-            url: mockUrl,
-          },
-          {
-            type: types.ERROR_TO_GET_LISTED_POSTS,
-            payload: {
-              error: expect.any(Error),
-              listID: mock.listID,
-              page: 0,
+        .reply(mockStatusCode, mockApiRes)
+      return store
+        .dispatch(actionToFetch(mockListId, limit, page))
+        .catch(() => {
+          const expected = [
+            {
+              type: types.postsByListId.read.request,
+              url: mockUrl,
             },
-          },
-        ]
-        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0]).toEqual(expected[0])
-        expect(store.getActions()[1]).toEqual(expected[1])
-        expectActionErrorObj(
-          store.getActions()[1].payload.error,
-          mockStatusCode,
-          mockAPIRes
-        )
-      })
+            {
+              type: types.postsByListId.read.failure,
+              payload: {
+                error: expect.any(Error),
+                listId: mockListId,
+                page,
+              },
+            },
+          ]
+          expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(expected[1])
+          expectActionErrorObj(
+            store.getActions()[1].payload.error,
+            mockStatusCode,
+            mockApiRes
+          )
+        })
     })
   })
+}
+
+describe('Test function `fetchPostsByTagListId`', () => {
+  testFetchPostsByListId(actions.fetchPostsByTagListId, 'tag_id')
+})
+
+describe('Test function `fetchPostsByCategoryListId`', () => {
+  testFetchPostsByListId(actions.fetchPostsByCategoryListId, 'category_id')
 })
 
 describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
   function _expect(store, entityId, limit, returnValue, expectedActions) {
+    expect.assertions(3)
+
     return store
       .dispatch(actions.fetchRelatedPostsOfAnEntity(entityId, limit))
       .then(result => {
@@ -732,7 +655,8 @@ describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
       nock(mockApiHost)
         .get(`/v2/posts?id=${post3.id}`)
         .reply(500, {
-          error: 'internal server error',
+          status: 'error',
+          message: 'Unexpected error',
         })
     })
 

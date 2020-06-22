@@ -113,7 +113,7 @@ function _fetchPosts(
   dispatch,
   url,
   successActionType,
-  failureActionType = types.ERROR_TO_GET_POSTS,
+  failureActionType,
   defaultPayload = {}
 ) {
   return axios
@@ -212,7 +212,9 @@ export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
 
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v2/${apiEndpoints.posts}`
-    const url = formURL(apiOrigin, path, { id: idsToRequest })
+    const url = formURL(apiOrigin, path, {
+      id: idsToRequest,
+    })
 
     dispatch({
       type: types.relatedPosts.read.request,
@@ -232,81 +234,82 @@ export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
   }
 }
 
+const startPage = 1
+
 /* Fetch a listed posts(only containing meta properties),
  * such as the posts belonging to the same tag/category/topic.
- * @param {string} listID - id of the tag, category or topic
- * @param {string} listType - tags, categories or topics
- * @param {number} limit - the number of posts you want to get in one request
+ * @param {string} listId - id of tag or category
+ * @param {string} listType - tag_id or category_id
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] -
  * @return {Function} returned funciton will get executed by Redux Thunk middleware
  */
-export function fetchListedPosts(listID, listType, limit = 10, page = 0) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
+function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
   return (dispatch, getState) => {
-    const state = getState()
-    const list = _.get(state, [stateFieldNames.lists, listID])
-
-    // if list is already existed and there is nothing more to load
-    if (list && _.get(list, 'total', 0) <= _.get(list, 'items.length', 0)) {
+    if (typeof page !== 'number' || isNaN(page) || page < startPage) {
       const action = {
-        type: types.noMoreItemsToFetch,
+        type: types.postsByListId.read.failure,
+        payload: {
+          listId,
+          error: new Error('page should be > 0'),
+        },
       }
       dispatch(action)
-      return Promise.resolve(action)
+      return Promise.reject(action)
     }
 
+    const state = getState()
+    const list = _.get(state, [stateFieldNames.lists, listId])
+
     // items of page are already fetched
-    if (page > 0 && Array.isArray(_.get(list, ['pages', page]))) {
+    if (Array.isArray(_.get(list, ['pages', page]))) {
       const action = {
-        type: types.dataAlreadyExists,
+        type: types.postsByListId.read.alreadyExists,
         payload: {
-          function: fetchListedPosts.name,
-          arguments: {
-            listID,
-            listType,
-            limit,
-            page,
-          },
-          message: 'Posts already exist in redux state.',
+          listId,
+          limit,
+          page,
         },
       }
       dispatch(action)
       return Promise.resolve(action)
     }
 
-    const where = {
-      [listType]: {
-        in: [listID],
-      },
-    }
-
-    // if page provided(should bigger than 0),
-    // use page to count offset,
-    // otherwise, use current length of items
-    const offset =
-      page > 0 ? (page - 1) * limit : _.get(list, 'items.length', 0)
+    const offset = (page - 1) * limit
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}`
+    const path = `/v2/${apiEndpoints.posts}`
     const params = {
-      where: JSON.stringify(where),
+      [listType]: listId,
       limit,
       offset,
     }
 
     const url = formURL(apiOrigin, path, params)
     dispatch({
-      type: types.START_TO_GET_POSTS,
+      type: types.postsByListId.read.request,
       url,
     })
     return _fetchPosts(
       dispatch,
       url,
-      types.GET_LISTED_POSTS,
-      types.ERROR_TO_GET_LISTED_POSTS,
-      { listID, page }
+      types.postsByListId.read.success,
+      types.postsByListId.read.failure,
+      { listId, page }
     )
+  }
+}
+
+export function fetchPostsByCategoryListId(listId, limit = 10, page = 0) {
+  return (dispatch, getState) => {
+    return fetchPostsByListId(listId, 'category_id', limit, page)(
+      dispatch,
+      getState
+    )
+  }
+}
+
+export function fetchPostsByTagListId(listId, limit = 10, page = 0) {
+  return (dispatch, getState) => {
+    return fetchPostsByListId(listId, 'tag_id', limit, page)(dispatch, getState)
   }
 }

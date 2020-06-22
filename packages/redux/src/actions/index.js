@@ -8,7 +8,8 @@ import {
 } from './index-page'
 import {
   fetchAFullPost,
-  fetchListedPosts,
+  fetchPostsByCategoryListId,
+  fetchPostsByTagListId,
   fetchRelatedPostsOfAnEntity,
 } from './posts'
 import { fetchAFullTopic, fetchTopics } from './topics'
@@ -28,7 +29,8 @@ export default {
   fetchAuthorDetails,
   fetchCategoriesPostsOnIndexPage,
   fetchIndexPageContent,
-  fetchListedPosts,
+  fetchPostsByCategoryListId,
+  fetchPostsByTagListId,
   fetchRelatedPostsOfAnEntity,
   fetchTopics,
   getAccessToken,

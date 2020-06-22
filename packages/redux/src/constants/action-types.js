@@ -19,12 +19,6 @@ export default {
   ERROR_TO_GET_A_FULL_TOPIC: 'ERROR_TO_GET_A_FULL_TOPIC',
   GET_A_FULL_TOPIC: 'GET_A_FULL_TOPIC',
 
-  // actions fetching posts
-  START_TO_GET_POSTS: 'START_TO_GET_POSTS',
-  ERROR_TO_GET_POSTS: 'ERROR_TO_GET_POSTS',
-  GET_LISTED_POSTS: 'GET_LISTED_POSTS',
-  ERROR_TO_GET_LISTED_POSTS: 'ERROR_TO_GET_LISTED_POSTS',
-
   // actions fetching a full post
   START_TO_GET_A_FULL_POST: 'START_TO_GET_A_FULL_POST',
   ERROR_TO_GET_A_FULL_POST: 'ERROR_TO_GET_A_FULL_POST',
@@ -52,6 +46,16 @@ export default {
   FETCH_AUTHOR_COLLECTION_SUCCESS: 'FETCH_AUTHOR_COLLECTION_SUCCESS',
 
   SET_NEXT_POPUP_TIME_STAMP: 'SET_NEXT_POPUP_TIME_STAMP',
+
+  postsByListId: {
+    read: {
+      request: 'request to fetch posts by list id',
+      success: 'success to fetch posts by list id',
+      failure: 'fail to fetch posts by list id',
+      noMore: 'no more posts by list id to fetch',
+      alreadyExists: 'posts by list id to fetch are already existed',
+    },
+  },
 
   singleBookmark: {
     read: {
