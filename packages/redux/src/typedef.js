@@ -21,11 +21,7 @@
  *  @typedef {Object} Image
  *  @property {string} id
  *  @property {string} description
- *  @property {string} copyright
  *  @property {string} filetype
- *  @property {number} height
- *  @property {number} width
- *  @property {string} url
  *  @property {Object} resized_targets
  *  @property {ResizedTarget} resized_targets.tiny
  *  @property {ResizedTarget} resized_targets.w400
@@ -108,7 +104,7 @@
  *  @property {Object} description
  *  @property {Object} leading_video
  *  @property {Object} team_description
- *  @property {ObjectID[]} relateds - slugs of related posts
+ *  @property {ObjectID[]} relateds - ObjectIDs of related posts
  *  @property {string} headline
  *  @property {string} og_title
  *  @property {string} published_date
