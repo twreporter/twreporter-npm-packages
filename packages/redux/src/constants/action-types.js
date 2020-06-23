@@ -24,11 +24,6 @@ export default {
   ERROR_TO_GET_A_FULL_POST: 'ERROR_TO_GET_A_FULL_POST',
   GET_A_FULL_POST: 'GET_A_FULL_POST',
 
-  // actions on index page
-  GET_CONTENT_FOR_INDEX_PAGE: 'GET_CONTENT_FOR_INDEX_PAGE',
-  START_TO_GET_INDEX_PAGE_CONTENT: 'START_TO_GET_INDEX_PAGE_CONTENT',
-  ERROR_TO_GET_INDEX_PAGE_CONTENT: 'ERROR_TO_GET_INDEX_PAGE_CONTENT',
-
   FETCH_AUTHOR_DETAILS_REQUEST: 'FETCH_AUTHOR_DETAILS_REQUEST',
   FETCH_AUTHOR_DETAILS_SUCCESS: 'FETCH_AUTHOR_DETAILS_SUCCESS',
   FETCH_AUTHOR_DETAILS_FAILURE: 'FETCH_AUTHOR_DETAILS_FAILURE',
@@ -46,6 +41,15 @@ export default {
   FETCH_AUTHOR_COLLECTION_SUCCESS: 'FETCH_AUTHOR_COLLECTION_SUCCESS',
 
   SET_NEXT_POPUP_TIME_STAMP: 'SET_NEXT_POPUP_TIME_STAMP',
+
+  indexPage: {
+    read: {
+      request: 'request to fetch index page content',
+      success: 'success to fetch index page content',
+      failure: 'fail to fetch index page content',
+      alreadyExists: 'index page content is already existed',
+    },
+  },
 
   postsByListId: {
     read: {

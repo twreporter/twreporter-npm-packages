@@ -16,10 +16,16 @@ const _ = {
   values,
 }
 
-function indexPage(state = {}, action = {}) {
+const initialState = {
+  error: null,
+  isFetching: false,
+  isReady: false,
+}
+
+function indexPage(state = initialState, action = {}) {
   let payload
   switch (action.type) {
-    case types.GET_CONTENT_FOR_INDEX_PAGE: {
+    case types.indexPage.read.success: {
       payload = action.payload
       const rtn = {}
       const sections = _.values(fieldNames.sections)
@@ -28,23 +34,29 @@ function indexPage(state = {}, action = {}) {
 
       fields.forEach(field => {
         rtn[field] = _.map(_.get(payload, ['items', field]), post => {
-          return _.get(post, 'slug')
+          return _.get(post, 'id')
         })
       })
 
-      return _.merge({}, state, rtn, { error: null, isFetching: false })
-    }
-
-    case types.START_TO_GET_INDEX_PAGE_CONTENT: {
-      return _.merge({}, state, {
-        isFetching: true,
+      return _.merge({}, state, rtn, {
+        error: null,
+        isFetching: false,
+        isReady: true,
       })
     }
 
-    case types.ERROR_TO_GET_INDEX_PAGE_CONTENT: {
+    case types.indexPage.read.request: {
+      return _.merge({}, state, {
+        isFetching: true,
+        isReady: false,
+      })
+    }
+
+    case types.indexPage.read.failure: {
       return _.merge({}, state, {
         error: action.payload.error,
         isFetching: false,
+        isReady: false,
       })
     }
 

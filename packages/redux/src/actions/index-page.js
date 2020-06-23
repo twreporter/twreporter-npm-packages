@@ -26,7 +26,7 @@ function _fetch(dispatch, origin, path, params) {
   const url = formURL(origin, path, params)
   // Start to get content
   dispatch({
-    type: types.START_TO_GET_INDEX_PAGE_CONTENT,
+    type: types.indexPage.read.request,
     url,
   })
 
@@ -37,10 +37,10 @@ function _fetch(dispatch, origin, path, params) {
       })
       // Get content successfully
       .then(response => {
-        const items = _.get(response, 'data.records', {})
+        const items = _.get(response, 'data.data', {})
 
         const successAction = {
-          type: types.GET_CONTENT_FOR_INDEX_PAGE,
+          type: types.indexPage.read.success,
           payload: {
             items,
           },
@@ -52,7 +52,7 @@ function _fetch(dispatch, origin, path, params) {
       .catch(error => {
         const failAction = errorActionCreators.axios(
           error,
-          types.ERROR_TO_GET_INDEX_PAGE_CONTENT
+          types.indexPage.read.failure
         )
         dispatch(failAction)
         return Promise.reject(failAction)
@@ -70,70 +70,20 @@ function _fetch(dispatch, origin, path, params) {
  */
 export function fetchIndexPageContent() {
   return (dispatch, getState) => {
+    /** @type {import('../typedef').ReduxState} */
     const state = getState()
     const indexPage = _.get(state, stateFieldNames.indexPage, {})
-
-    // categories_section is not part of the result
-    const sections = _.values(stateFieldNames.sections)
-    let isContentReady = true
-
-    sections.forEach(section => {
-      if (!Object.prototype.hasOwnProperty.call(indexPage, section)) {
-        isContentReady = false
-      }
-    })
+    const isContentReady = _.get(indexPage, 'isReady', false)
 
     if (isContentReady) {
       const action = {
-        type: types.dataAlreadyExists,
-        payload: {
-          function: fetchIndexPageContent.name,
-          message:
-            'Posts in other sections except for category section already exist.',
-        },
+        type: types.indexPage.read.alreadyExists,
       }
       dispatch(action)
       return Promise.resolve(action)
     }
+
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    return _fetch(dispatch, apiOrigin, `/v1/${apiEndpoints.indexPage}`)
-  }
-}
-
-/**
- * fetchCategoriesPostsOnIndexPage
- * This function will fetch all the posts of each category, total 6 categories, for categories_section on the index page.
- * @return {import('../typedef').Thunk} async action creator
- */
-export function fetchCategoriesPostsOnIndexPage() {
-  return (dispatch, getState) => {
-    const state = getState()
-    const indexPage = _.get(state, stateFieldNames.indexPage, {})
-    const categories = _.values(stateFieldNames.categories)
-    let isContentReady = true
-
-    categories.forEach(category => {
-      if (_.get(indexPage, [category, 'length'], 0) === 0) {
-        isContentReady = false
-      }
-    })
-
-    if (isContentReady) {
-      const action = {
-        type: types.dataAlreadyExists,
-        payload: {
-          function: fetchCategoriesPostsOnIndexPage.name,
-          message: 'Posts in category section on index page already exist.',
-        },
-      }
-      dispatch(action)
-      return Promise.resolve(action)
-    }
-    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    return _fetch(
-      dispatch,
-      apiOrigin,
-      `/v1/${apiEndpoints.indexPageCategories}`
-    )
+    return _fetch(dispatch, apiOrigin, `/v2/${apiEndpoints.indexPage}`)
   }
 }

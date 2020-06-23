@@ -2,10 +2,7 @@ import { getAccessToken } from './auth'
 import { fetchAuthorCollectionIfNeeded } from './author-articles'
 import { fetchAuthorDetails } from './author-details'
 import { searchAuthorsIfNeeded } from './authors'
-import {
-  fetchIndexPageContent,
-  fetchCategoriesPostsOnIndexPage,
-} from './index-page'
+import { fetchIndexPageContent } from './index-page'
 import {
   fetchAFullPost,
   fetchPostsByCategoryListId,
@@ -27,7 +24,6 @@ export default {
   fetchAFullTopic,
   fetchAuthorCollectionIfNeeded,
   fetchAuthorDetails,
-  fetchCategoriesPostsOnIndexPage,
   fetchIndexPageContent,
   fetchPostsByCategoryListId,
   fetchPostsByTagListId,

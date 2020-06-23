@@ -4,15 +4,6 @@ import fieldNames from '../../constants/redux-state-field-names'
 import reducer from '../index-page'
 import types from '../../constants/action-types'
 
-// lodash
-import cloneDeep from 'lodash/cloneDeep'
-import merge from 'lodash/merge'
-
-const _ = {
-  cloneDeep,
-  merge,
-}
-
 const post1 = {
   id: 'post-id-1',
   slug: 'post-slug-1',
@@ -48,91 +39,85 @@ const nonFullTopic = {
 
 describe('index-page reducer', () => {
   test('should return the initial state', () => {
-    expect(reducer({}, {})).toEqual({})
+    expect(reducer(undefined, {})).toEqual({
+      error: null,
+      isFetching: false,
+      isReady: false,
+    })
   })
 
-  test('should handle GET_CONTENT_FOR_INDEX_PAGE', () => {
+  test('should handle `types.indexPage.read.success`', () => {
     expect(
       reducer(
         {
           [fieldNames.sections.latestTopicSection]: 'topic-slug-3',
         },
         {
-          type: types.GET_CONTENT_FOR_INDEX_PAGE,
+          type: types.indexPage.read.success,
           payload: {
             items: {
-              [fieldNames.sections.latestSection]: _.cloneDeep([post1, post2]),
-              [fieldNames.sections.editorPicksSection]: _.cloneDeep([post4]),
-              [fieldNames.sections.reviewsSection]: _.cloneDeep([post3]),
-              [fieldNames.sections.latestTopicSection]: _.cloneDeep([
-                fullTopic,
-              ]),
-              [fieldNames.sections.topicsSection]: _.cloneDeep([
-                fullTopic,
-                nonFullTopic,
-              ]),
-              [fieldNames.sections.photosSection]: _.cloneDeep([post1, post4]),
-              [fieldNames.sections.infographicsSection]: _.cloneDeep([
-                post2,
-                post3,
-              ]),
+              [fieldNames.sections.latestSection]: [post1],
+              [fieldNames.sections.editorPicksSection]: [post2],
+              [fieldNames.sections.reviewsSection]: [post3],
+              [fieldNames.sections.latestTopicSection]: [fullTopic],
+              [fieldNames.sections.topicsSection]: [fullTopic, nonFullTopic],
+              [fieldNames.sections.photosSection]: [post4],
+              [fieldNames.sections.infographicsSection]: [],
+              [fieldNames.categories.humanRightsAndSociety]: [post1],
+              [fieldNames.categories.environmentAndEducation]: [post2],
+              [fieldNames.categories.politicsAndEconomy]: [post3],
+              [fieldNames.categories.cultureAndArt]: [post4],
+              [fieldNames.categories.livingAndMedicalCare]: [],
+              [fieldNames.categories.international]: [],
             },
           },
         }
       )
     ).toEqual({
-      [fieldNames.sections.latestSection]: [post1.slug, post2.slug],
-      [fieldNames.sections.editorPicksSection]: [post4.slug],
-      [fieldNames.sections.reviewsSection]: [post3.slug],
-      [fieldNames.sections.latestTopicSection]: [fullTopic.slug],
-      [fieldNames.sections.topicsSection]: [fullTopic.slug, nonFullTopic.slug],
-      [fieldNames.sections.photosSection]: [post1.slug, post4.slug],
-      [fieldNames.sections.infographicsSection]: [post2.slug, post3.slug],
-      [fieldNames.categories.humanRightsAndSociety]: [],
-      [fieldNames.categories.environmentAndEducation]: [],
-      [fieldNames.categories.politicsAndEconomy]: [],
-      [fieldNames.categories.cultureAndArt]: [],
+      [fieldNames.sections.latestSection]: [post1.id],
+      [fieldNames.sections.editorPicksSection]: [post2.id],
+      [fieldNames.sections.reviewsSection]: [post3.id],
+      [fieldNames.sections.latestTopicSection]: [fullTopic.id],
+      [fieldNames.sections.topicsSection]: [fullTopic.id, nonFullTopic.id],
+      [fieldNames.sections.photosSection]: [post4.id],
+      [fieldNames.sections.infographicsSection]: [],
+      [fieldNames.categories.humanRightsAndSociety]: [post1.id],
+      [fieldNames.categories.environmentAndEducation]: [post2.id],
+      [fieldNames.categories.politicsAndEconomy]: [post3.id],
+      [fieldNames.categories.cultureAndArt]: [post4.id],
       [fieldNames.categories.livingAndMedicalCare]: [],
       [fieldNames.categories.international]: [],
       error: null,
       isFetching: false,
+      isReady: true,
     })
   })
 
-  test('should handle ERROR_TO_GET_CONTENT_FOR_INDEX_PAGE', () => {
-    const err = new Error('error occurs')
+  test('should handle `types.indexPage.read.request`', () => {
     expect(
-      reducer(
-        {
-          [fieldNames.sections.latestSection]: [post1.slug, post2.slug],
-          [fieldNames.sections.editorPicksSection]: [post4.slug],
-          [fieldNames.sections.reviewsSection]: [post3.slug],
-          [fieldNames.sections.latestTopicSection]: [fullTopic.slug],
-          [fieldNames.sections.topicsSection]: [
-            fullTopic.slug,
-            nonFullTopic.slug,
-          ],
-          [fieldNames.sections.photosSection]: [post1.slug, post4.slug],
-          [fieldNames.sections.infographicsSection]: [post2.slug, post3.slug],
-          error: null,
-        },
-        {
-          type: types.ERROR_TO_GET_INDEX_PAGE_CONTENT,
-          payload: {
-            error: err,
-          },
-        }
-      )
+      reducer(undefined, {
+        type: types.indexPage.read.request,
+      })
     ).toEqual({
-      [fieldNames.sections.latestSection]: [post1.slug, post2.slug],
-      [fieldNames.sections.editorPicksSection]: [post4.slug],
-      [fieldNames.sections.reviewsSection]: [post3.slug],
-      [fieldNames.sections.latestTopicSection]: [fullTopic.slug],
-      [fieldNames.sections.topicsSection]: [fullTopic.slug, nonFullTopic.slug],
-      [fieldNames.sections.photosSection]: [post1.slug, post4.slug],
-      [fieldNames.sections.infographicsSection]: [post2.slug, post3.slug],
-      error: err,
+      error: null,
+      isFetching: true,
+      isReady: false,
+    })
+  })
+
+  test('should handle `types.indexPage.read.failure`', () => {
+    const error = new Error('error occurs')
+    expect(
+      reducer(undefined, {
+        type: types.indexPage.read.failure,
+        payload: {
+          error,
+        },
+      })
+    ).toEqual({
+      error,
       isFetching: false,
+      isReady: false,
     })
   })
 })

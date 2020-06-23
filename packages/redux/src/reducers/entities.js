@@ -86,7 +86,7 @@ function _buildState(allIds, entities, overwriteExisted = false) {
  */
 function entities(state = defaultState, action = {}) {
   switch (action.type) {
-    case types.GET_CONTENT_FOR_INDEX_PAGE: {
+    case types.indexPage.read.success: {
       const allPostIds = _.get(
         state,
         [fieldNames.postsInEntities, 'allIds'],

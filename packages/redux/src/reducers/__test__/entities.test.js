@@ -91,11 +91,11 @@ describe('entities reducer', () => {
     expect(reducer(originalState, {})).toEqual(originalState)
   })
 
-  describe('should handle GET_CONTENT_FOR_INDEX_PAGE', () => {
+  describe('should handle `types.indexPage.read.success`', () => {
     test('when state is initialState', () => {
       expect(
         reducer(initialState, {
-          type: types.GET_CONTENT_FOR_INDEX_PAGE,
+          type: types.indexPage.read.success,
           payload: {
             items: {
               [fieldNames.sections.latestSection]: [metaPost1],
@@ -167,7 +167,7 @@ describe('entities reducer', () => {
       }
       expect(
         reducer(state, {
-          type: types.GET_CONTENT_FOR_INDEX_PAGE,
+          type: types.indexPage.read.success,
           payload: {
             items: {
               [fieldNames.sections.latestSection]: [metaPost1],
