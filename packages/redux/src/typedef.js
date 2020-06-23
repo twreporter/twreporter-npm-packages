@@ -258,3 +258,12 @@
  *  @property {Object} searchedAuthorsList
  *  @property {number} nextNotifyPopupTS
  */
+
+/**
+ *  Description of async action creator
+ *  @name Thunk
+ *  @function
+ *  @param {Function} dispatch - Redux store dispatch function
+ *  @param {Function} getState - Redux store getState function
+ *  @return {Promise} resolve with success action or reject with fail action
+ */

@@ -66,14 +66,9 @@ function _fetch(dispatch, origin, path, params) {
  * on the index page,
  * including latest_section, editor_picks_section, latest_topic_section,
  * infographics_section, reviews_section, and photos_section.
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchIndexPageContent() {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     const state = getState()
     const indexPage = _.get(state, stateFieldNames.indexPage, {})
@@ -108,14 +103,9 @@ export function fetchIndexPageContent() {
 /**
  * fetchCategoriesPostsOnIndexPage
  * This function will fetch all the posts of each category, total 6 categories, for categories_section on the index page.
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchCategoriesPostsOnIndexPage() {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     const state = getState()
     const indexPage = _.get(state, stateFieldNames.indexPage, {})

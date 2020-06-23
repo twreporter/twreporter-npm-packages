@@ -19,14 +19,9 @@ const _ = {
 
 /* Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of post
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchAFullPost(slug) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     const state = getState()
     const post = _.get(
@@ -148,14 +143,9 @@ function _fetchPosts(
  *
  *  @param {import('../typedef').ObjectID} entityId - ObjectID of a entity, which could be a post or topic
  *  @param {number} limit - specify how many posts to load
- *  @return {Function} returned funciton will get executed by Redux Thunk middleware
+ *  @return {import('../typedef').Thunk} async action creator
  */
 export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     /** @type {import('../typedef').ReduxState} */
     const state = getState()
@@ -241,8 +231,8 @@ const startPage = 1
  * @param {string} listId - id of tag or category
  * @param {string} listType - tag_id or category_id
  * @param {number} [limit=10] - the number of posts you want to get in one request
- * @param {number} [page=1] -
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @return {import('../typedef').Thunk} async action creator
  */
 function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
   return (dispatch, getState) => {
@@ -299,6 +289,13 @@ function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
   }
 }
 
+/**
+ * Fetch posts(only containing meta properties) by category list id.
+ * @param {string} listId - id of category
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @return {import('../typedef').Thunk} async action creator
+ */
 export function fetchPostsByCategoryListId(listId, limit = 10, page = 0) {
   return (dispatch, getState) => {
     return fetchPostsByListId(listId, 'category_id', limit, page)(
@@ -308,6 +305,13 @@ export function fetchPostsByCategoryListId(listId, limit = 10, page = 0) {
   }
 }
 
+/**
+ * Fetch posts(only containing meta properties) by tag list id.
+ * @param {string} listId - id of tag
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @return {import('../typedef').Thunk} async action creator
+ */
 export function fetchPostsByTagListId(listId, limit = 10, page = 0) {
   return (dispatch, getState) => {
     return fetchPostsByListId(listId, 'tag_id', limit, page)(dispatch, getState)

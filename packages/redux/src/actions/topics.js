@@ -19,18 +19,9 @@ const _ = {
 const { pageToOffset } = pagination
 
 /**
- *  Description of async action creator
- *  @name Thunk
- *  @function
- *  @param {Function} dispatch - Redux store dispatch function
- *  @param {Function} getState - Redux store getState function
- *  @return {Promise} resolve with success action or reject with fail action
- */
-
-/**
  * Fetch a full topic, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of topic
- * @return {Thunk} async action creator
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchAFullTopic(slug) {
   return (dispatch, getState) => {
@@ -138,7 +129,7 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
 /* Fetch topics(only containing meta properties),
  * and it will load more if (total > items you have currently).
  * @param {number} limit - the number of posts you want to get in one request
- * @return {Thunk} async action creator
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchTopics(page = 1, nPerPage = 5) {
   return (dispatch, getState) => {
@@ -184,7 +175,7 @@ export function fetchTopics(page = 1, nPerPage = 5) {
  *  and three related posts, sorted by `published_date` in descending order,
  *  of that topic.
  *
- *  @return {Thunk} async action creator
+ *  @return {import('../typedef').Thunk} async action creator
  */
 export function fetchFeatureTopic() {
   return (dispatch, getState) => {
