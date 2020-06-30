@@ -7,6 +7,7 @@ import authReducer from './auth'
 import bookmarks from './bookmarks'
 import bookmarkWidget from './bookmark-widget'
 import entities from './entities'
+import featureTopic from './feature-topic'
 import indexPage from './index-page'
 import origins from './origins'
 import reduxStatePropKey from '../constants/redux-state-field-names'
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.selectedTopic]: topic,
   [reduxStatePropKey.topicList]: topics,
   [reduxStatePropKey.relatedPostsOf]: relatedPostsOf,
+  [reduxStatePropKey.featureTopic]: featureTopic,
 
   [reduxStatePropKey.entitiesForAuthors]: (state = {}, action) => {
     const entities = _.get(action, 'payload.normalizedData.entities')

@@ -60,13 +60,8 @@ export function posts(state = {}, action = {}) {
       const page = _.get(action, 'payload.page', 0)
       const oldItems = _.get(state, [listId, 'items'], [])
 
-      // Make sure we declare
-      // `items` and `pages` as `undefined`.
-      // The reason we use `undefined` is because
-      // `lodash/merge` will not replace the old value if
-      // new value is `undefined`.
-      let items
-      let pages
+      let items = []
+      let pages = {}
       if (newItems.length > 0 && page >= 1) {
         const startAt = oldItems.length
         const endAt = startAt + newItems.length - 1

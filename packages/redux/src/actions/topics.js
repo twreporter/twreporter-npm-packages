@@ -221,14 +221,14 @@ export function fetchFeatureTopic() {
           }
 
           // return empty response
-          return Promise.all([
+          return [
             topic,
             {
               data: {
                 records: [],
               },
             },
-          ])
+          ]
         })
         // dispatch success action
         .then(results => {

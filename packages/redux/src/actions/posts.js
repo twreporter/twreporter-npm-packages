@@ -138,8 +138,8 @@ function _fetchPosts(
 }
 
 /**
- *  Given ObjectID of a target post, this functions will load the related posts
- *  of that target post.
+ *  Given ObjectID of a target entity (post or topic), this functions will load the related posts
+ *  of that target entity.
  *
  *  @param {import('../typedef').ObjectID} entityId - ObjectID of a entity, which could be a post or topic
  *  @param {number} limit - specify how many posts to load
@@ -158,7 +158,7 @@ export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
     /**  @type {import('../typedef').RelatedPostsOfAnEntity} */
     const relatedsOfAnEntity = _.get(
       state,
-      ['relatedPostsOf', 'byId', entityId],
+      [stateFieldNames.relatedPostsOf, 'byId', entityId],
       {}
     )
     const more = _.get(relatedsOfAnEntity, 'more', [])
