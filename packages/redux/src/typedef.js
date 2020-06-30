@@ -82,7 +82,7 @@
  *  @property {string} id
  *  @property {string} og_description
  *  @property {string} title
- *  @property {string} topic_name
+ *  @property {string} short_title
  *  @property {string} updated_at
  */
 
@@ -96,14 +96,14 @@
  *  @property {string} id
  *  @property {string} og_description
  *  @property {string} title
- *  @property {string} topic_name
+ *  @property {string} short_title
  *  @property {string} updated_at
  *
- *  @property {Object[]} description.api_data
- *  @property {Object[]} team_description.api_data
  *  @property {Object} description
- *  @property {Object} leading_video
+ *  @property {Object[]} description.api_data
  *  @property {Object} team_description
+ *  @property {Object[]} team_description.api_data
+ *  @property {Object} leading_video
  *  @property {ObjectID[]} relateds - ObjectIDs of related posts
  *  @property {string} headline
  *  @property {string} og_title
@@ -140,7 +140,7 @@
  *  @property {ObjectID[]} topic.relateds
  *  @property {string} topic.slug
  *  @property {string} topic.title
- *  @property {string} topic.topic_name
+ *  @property {string} topic.short_title
  *  @property {Object} brief
  *  @property {Object[]} brief.api_data
  *  @property {Object} content
