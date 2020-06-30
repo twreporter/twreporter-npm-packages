@@ -140,4 +140,5 @@ export default {
   searchedAuthorsList,
   settings,
   relatedPostsOf: 'relatedPostsOf',
+  featureTopic: 'featureTopic',
 }
