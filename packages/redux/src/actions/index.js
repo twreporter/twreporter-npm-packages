@@ -9,7 +9,7 @@ import {
   fetchPostsByTagListId,
   fetchRelatedPostsOfAnEntity,
 } from './posts'
-import { fetchAFullTopic, fetchTopics } from './topics'
+import { fetchAFullTopic, fetchFeatureTopic, fetchTopics } from './topics'
 import {
   createSingleBookmark,
   deleteSingleBookmark,
@@ -24,6 +24,7 @@ export default {
   fetchAFullTopic,
   fetchAuthorCollectionIfNeeded,
   fetchAuthorDetails,
+  fetchFeatureTopic,
   fetchIndexPageContent,
   fetchPostsByCategoryListId,
   fetchPostsByTagListId,
