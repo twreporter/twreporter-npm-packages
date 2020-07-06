@@ -299,11 +299,14 @@ function testFetchPostsByListId(actionToFetch, paramKey) {
       const mockPath = '/v2/posts'
       const mockUrl = formURL(mockApiHost, mockPath, mockQuery)
       const mockApiResponse = {
-        records: [post2],
-        meta: {
-          limit,
-          total,
-          offset,
+        status: 'success',
+        data: {
+          records: [post2],
+          meta: {
+            limit,
+            total,
+            offset,
+          },
         },
       }
       const expectedRequestAction = {
@@ -542,14 +545,18 @@ describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
 
   describe('Dispatch success action', () => {
     beforeAll(() => {
-      nock(mockApiHost)
-        .get(`/v2/posts?id=${post2.id}`)
-        .reply(200, {
+      const mockApiResponse = {
+        status: 'success',
+        data: {
           records: [post2],
           meta: {
             total: 1,
           },
-        })
+        },
+      }
+      nock(mockApiHost)
+        .get(`/v2/posts?id=${post2.id}`)
+        .reply(200, mockApiResponse)
     })
 
     afterAll(() => {

@@ -120,8 +120,8 @@ function _fetchPosts(
         type: successActionType,
         payload: _.merge(
           {
-            items: _.get(response, 'data.records', []),
-            total: _.get(response, 'data.meta.total', 0),
+            items: _.get(response, 'data.data.records', []),
+            total: _.get(response, 'data.data.meta.total', 0),
           },
           defaultPayload
         ),

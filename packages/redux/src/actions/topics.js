@@ -102,12 +102,12 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
       timeout: apiConfig.timeout,
     })
     .then(response => {
-      const meta = _.get(response, 'data.meta', {})
+      const meta = _.get(response, 'data.data.meta', {})
       const { total, offset, limit } = meta
       const successAction = {
         type: successActionType,
         payload: {
-          items: _.get(response, 'data.records', []),
+          items: _.get(response, 'data.data.records', []),
           total,
           limit,
           offset,
@@ -198,7 +198,7 @@ export function fetchFeatureTopic() {
           timeout: apiConfig.timeout,
         })
         .then(response => {
-          const topic = _.get(response, 'data.data', {})
+          const topic = _.get(response, 'data.data.records.0', {})
           return topic
         })
         // fetch feature topic's latest three related posts
@@ -233,7 +233,11 @@ export function fetchFeatureTopic() {
         // dispatch success action
         .then(results => {
           const topic = results[0]
-          const lastThreeRelatedPosts = _.get(results, '1.data.records', [])
+          const lastThreeRelatedPosts = _.get(
+            results,
+            '1.data.data.records',
+            []
+          )
 
           const action = {
             type: types.featureTopic.read.success,

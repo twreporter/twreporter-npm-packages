@@ -200,11 +200,14 @@ describe('Testing fetchTopics:', () => {
       const { limit, offset } = pageToOffset({ page, nPerPage })
       const total = 5
       const mockApiResponse = {
-        records: [],
-        meta: {
-          limit,
-          total,
-          offset,
+        status: 'success',
+        data: {
+          records: [],
+          meta: {
+            limit,
+            total,
+            offset,
+          },
         },
       }
       nock('http://localhost:8080')
@@ -241,11 +244,14 @@ describe('Testing fetchTopics:', () => {
       const { limit, offset } = pageToOffset({ page, nPerPage })
       const total = 5
       const mockApiResponse = {
-        records: [topic2],
-        meta: {
-          limit,
-          total,
-          offset,
+        status: 'success',
+        data: {
+          records: [topic2],
+          meta: {
+            limit,
+            total,
+            offset,
+          },
         },
       }
       nock('http://localhost:8080')
@@ -407,7 +413,14 @@ describe('Test function `fetchFeatureTopic`', () => {
         })
         .reply(200, {
           status: 'success',
-          data: mockFeatureTopicWithoutRelateds,
+          data: {
+            meta: {
+              limit: 1,
+              offset: 0,
+              total: 10,
+            },
+            records: [mockFeatureTopicWithoutRelateds],
+          },
         })
 
       const store = mockStore({
@@ -449,7 +462,14 @@ describe('Test function `fetchFeatureTopic`', () => {
         })
         .reply(200, {
           status: 'success',
-          data: mockFeatureTopic,
+          data: {
+            meta: {
+              limit: 1,
+              offset: 0,
+              total: 10,
+            },
+            records: [mockFeatureTopic],
+          },
         })
 
       nock(mockApiHost)
@@ -459,7 +479,14 @@ describe('Test function `fetchFeatureTopic`', () => {
         })
         .reply(200, {
           status: 'success',
-          records: [mockPost2, mockPost3, mockPost4],
+          data: {
+            meta: {
+              limit: 10,
+              offset: 0,
+              total: 3,
+            },
+            records: [mockPost2, mockPost3, mockPost4],
+          },
         })
 
       const store = mockStore({
@@ -505,11 +532,9 @@ describe('Test function `fetchFeatureTopic`', () => {
           limit: 1,
           offset: 0,
         })
-        .reply(404, {
-          status: 'fail',
-          data: {
-            slug: 'Cannot find the topic from the slug',
-          },
+        .reply(500, {
+          status: 'error',
+          message: 'Unexpected error',
         })
 
       const store = mockStore({
@@ -550,7 +575,14 @@ describe('Test function `fetchFeatureTopic`', () => {
         })
         .reply(200, {
           status: 'success',
-          data: mockFeatureTopic,
+          data: {
+            meta: {
+              limit: 1,
+              offset: 0,
+              total: 10,
+            },
+            records: [mockFeatureTopic],
+          },
         })
 
       nock(mockApiHost)
