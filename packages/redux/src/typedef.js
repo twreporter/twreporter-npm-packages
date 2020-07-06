@@ -212,7 +212,7 @@
  *  @property {ObjectID[]} index_page.culture_and_art
  *  @property {ObjectID[]} index_page.editor_picks_section
  *  @property {ObjectID[]} index_page.environment_and_education
- *  @property {ObjectID[]} index_page.hime_right_and_society
+ *  @property {ObjectID[]} index_page.human_rights_and_society
  *  @property {ObjectID[]} index_page.infgraphics_section
  *  @property {ObjectID[]} index_page.international
  *  @property {ObjectID[]} index_page.latest_section
