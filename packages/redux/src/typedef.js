@@ -158,9 +158,10 @@
  *  PostList type definition
  *  @typedef {Object} PostList
  *  @property {Object.<number, number[]>} pages - Page to item positions. Ex: `1: [0, 9]`, which means items[0] - items[9] are for page 1
- *  @property {Object} error
- *  @property {number} total
  *  @property {ObjectID[]} items
+ *  @property {Object} error
+ *  @property {bool} isFetching
+ *  @property {number} total
  */
 
 /**
