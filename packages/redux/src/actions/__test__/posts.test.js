@@ -353,12 +353,30 @@ function testFetchPostsByListId(actionToFetch, paramKey) {
         expect(store.getActions()[0]).toEqual({
           type: types.postsByListId.read.failure,
           payload: {
-            listId,
+            listId: typeof listId !== 'string' || !listId ? '' : listId,
             error: expect.any(Error),
           },
         })
       })
     }
+
+    test('when listId is empty string', () => {
+      const page = 1
+      const limit = 10
+      const listId = ''
+      const store = mockStore()
+
+      return _expectFailureDueTopage(store, listId, limit, page)
+    })
+
+    test('when listId is not a string', () => {
+      const page = 1
+      const limit = 10
+      const listId = {}
+      const store = mockStore()
+
+      return _expectFailureDueTopage(store, listId, limit, page)
+    })
 
     test('when page is not a number', () => {
       const page = '1'

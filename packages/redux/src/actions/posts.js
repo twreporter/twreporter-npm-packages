@@ -236,6 +236,20 @@ const startPage = 1
  */
 function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
   return (dispatch, getState) => {
+    if (typeof listId !== 'string' || !listId) {
+      const action = {
+        type: types.postsByListId.read.failure,
+        payload: {
+          listId: '',
+          error: new Error(
+            'listId should be a string and not empty, but got ' + listId
+          ),
+        },
+      }
+      dispatch(action)
+      return Promise.reject(action)
+    }
+
     if (typeof page !== 'number' || isNaN(page) || page < startPage) {
       const action = {
         type: types.postsByListId.read.failure,
