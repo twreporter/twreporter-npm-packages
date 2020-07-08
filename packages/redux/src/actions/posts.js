@@ -291,7 +291,10 @@ function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
     const url = formURL(apiOrigin, path, params)
     dispatch({
       type: types.postsByListId.read.request,
-      url,
+      payload: {
+        url,
+        listId,
+      },
     })
     return _fetchPosts(
       dispatch,

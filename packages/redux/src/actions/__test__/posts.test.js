@@ -311,7 +311,10 @@ function testFetchPostsByListId(actionToFetch, paramKey) {
       }
       const expectedRequestAction = {
         type: types.postsByListId.read.request,
-        url: mockUrl,
+        payload: {
+          url: mockUrl,
+          listId: mockListId,
+        },
       }
       const expectedSuccessAction = {
         type: types.postsByListId.read.success,
@@ -435,7 +438,10 @@ function testFetchPostsByListId(actionToFetch, paramKey) {
           const expected = [
             {
               type: types.postsByListId.read.request,
-              url: mockUrl,
+              payload: {
+                listId: mockListId,
+                url: mockUrl,
+              },
             },
             {
               type: types.postsByListId.read.failure,
