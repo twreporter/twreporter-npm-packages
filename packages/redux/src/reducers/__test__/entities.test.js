@@ -179,13 +179,13 @@ describe('entities reducer', () => {
     })
   })
 
-  describe('should handle GET_LISTED_POSTS', () => {
+  describe('should handle types.postsByListId.read.success', () => {
     test('', () => {
       expect(
         reducer(
           {},
           {
-            type: types.GET_LISTED_POSTS,
+            type: types.postsByListId.read.success,
             payload: {
               items: [metaPost2],
             },

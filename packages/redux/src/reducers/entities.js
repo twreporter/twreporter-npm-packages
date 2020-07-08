@@ -163,7 +163,7 @@ function entities(state = defaultState, action = {}) {
       })
     }
 
-    case types.GET_LISTED_POSTS:
+    case types.postsByListId.read.success:
     case types.relatedPosts.read.success: {
       const allPostIds = _.get(
         state,
