@@ -107,7 +107,7 @@ describe('topics reducer', () => {
       )
     ).toEqual({
       items: {
-        [page]: [topic1.slug, topic2.slug],
+        [page]: [topic1.id, topic2.id],
       },
       page,
       nPerPage,
@@ -122,7 +122,7 @@ describe('topics reducer', () => {
     expect(
       topics(
         {
-          items: [topic1.slug, topic2.slug],
+          items: [topic1.id, topic2.id],
           total: 10,
           error: null,
         },
@@ -134,7 +134,7 @@ describe('topics reducer', () => {
         }
       )
     ).toEqual({
-      items: [topic1.slug, topic2.slug],
+      items: [topic1.id, topic2.id],
       total: 10,
       error: err,
       isFetching: false,

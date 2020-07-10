@@ -58,7 +58,7 @@ export function topics(state = {}, action = {}) {
         offset,
         total,
       })
-      const pageItems = _.map(_.get(payload, 'items'), item => item.slug)
+      const pageItems = _.map(_.get(payload, 'items'), item => item.id)
       /* If nPerPage changed, overwrite the items in state, otherwise merge items with which in state */
       const items =
         nPerPage !== state.nPerPage
