@@ -124,7 +124,7 @@ function entities(state = defaultState, action = {}) {
       })
     }
 
-    case types.GET_TOPICS: {
+    case types.topics.read.success: {
       const allTopicIds = _.get(
         state,
         [fieldNames.topicsInEntities, 'allIds'],

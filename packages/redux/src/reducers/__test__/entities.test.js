@@ -179,29 +179,53 @@ describe('entities reducer', () => {
     })
   })
 
-  describe('should handle types.postsByListId.read.success', () => {
-    test('', () => {
-      expect(
-        reducer(
-          {},
-          {
-            type: types.postsByListId.read.success,
-            payload: {
-              items: [metaPost2],
-            },
-          }
-        )
-      ).toEqual({
-        posts: {
-          byId: {
-            [metaPost2.id]: metaPost2,
+  test('should handle types.postsByListId.read.success', () => {
+    expect(
+      reducer(
+        {},
+        {
+          type: types.postsByListId.read.success,
+          payload: {
+            items: [metaPost2],
           },
-          slugToId: {
-            [metaPost2.slug]: metaPost2.id,
-          },
-          allIds: [metaPost2.id],
+        }
+      )
+    ).toEqual({
+      posts: {
+        byId: {
+          [metaPost2.id]: metaPost2,
         },
-      })
+        slugToId: {
+          [metaPost2.slug]: metaPost2.id,
+        },
+        allIds: [metaPost2.id],
+      },
+    })
+  })
+
+  test('should handle types.topics.read.success', () => {
+    expect(
+      reducer(
+        {},
+        {
+          type: types.topics.read.success,
+          payload: {
+            items: [metaTopic1, metaTopic2],
+          },
+        }
+      )
+    ).toEqual({
+      topics: {
+        byId: {
+          [metaTopic1.id]: metaTopic1,
+          [metaTopic2.id]: metaTopic2,
+        },
+        slugToId: {
+          [metaTopic1.slug]: metaTopic1.id,
+          [metaTopic2.slug]: metaTopic2.id,
+        },
+        allIds: [metaTopic1.id, metaTopic2.id],
+      },
     })
   })
 

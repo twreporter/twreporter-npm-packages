@@ -93,7 +93,7 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
   // Start to get topics
   const url = formURL(origin, path, params)
   dispatch({
-    type: types.START_TO_GET_TOPICS,
+    type: types.topics.read.request,
     url,
   })
 
@@ -119,7 +119,7 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
     .catch(error => {
       const failAction = errorActionCreators.axios(
         error,
-        types.ERROR_TO_GET_TOPICS
+        types.topics.read.failure
       )
       dispatch(failAction)
       return Promise.reject(failAction)
@@ -139,7 +139,7 @@ export function fetchTopics(page = 1, nPerPage = 5) {
         {
           nPerPage: `value must be an interger larger than 0, but is ${nPerPage}`,
         },
-        types.ERROR_TO_GET_TOPICS
+        types.topics.read.failure
       )
       dispatch(failAction)
       return Promise.reject(failAction)
@@ -150,7 +150,7 @@ export function fetchTopics(page = 1, nPerPage = 5) {
         {
           page: `value must be an interger larger than 0, but is ${page}`,
         },
-        types.ERROR_TO_GET_TOPICS
+        types.topics.read.failure
       )
       dispatch(failAction)
       return Promise.reject(failAction)
@@ -166,7 +166,13 @@ export function fetchTopics(page = 1, nPerPage = 5) {
       offset,
     }
 
-    return _fetchTopics(dispatch, apiOrigin, path, params, types.GET_TOPICS)
+    return _fetchTopics(
+      dispatch,
+      apiOrigin,
+      path,
+      params,
+      types.topics.read.success
+    )
   }
 }
 

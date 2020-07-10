@@ -9,11 +9,6 @@ export default {
   CHANGE_SELECTED_POST: 'CHANGE_SELECTED_POST',
   CHANGE_SELECTED_TOPIC: 'CHANGE_SELECTED_TOPIC',
 
-  // actions fetching topics
-  START_TO_GET_TOPICS: 'START_TO_GET_TOPICS',
-  ERROR_TO_GET_TOPICS: 'ERROR_TO_GET_TOPICS',
-  GET_TOPICS: 'GET_TOPICS',
-
   // actions fetching a full topic
   START_TO_GET_A_FULL_TOPIC: 'START_TO_GET_A_FULL_TOPIC',
   ERROR_TO_GET_A_FULL_TOPIC: 'ERROR_TO_GET_A_FULL_TOPIC',
@@ -101,6 +96,14 @@ export default {
       request: 'request to fetch feature topic',
       success: 'success to fetch feature topic',
       failure: 'fail to fetch feature topic',
+    },
+  },
+
+  topics: {
+    read: {
+      request: 'request to fetch topics',
+      success: 'success to fetch topics',
+      failure: 'fail to fetch topics',
     },
   },
 

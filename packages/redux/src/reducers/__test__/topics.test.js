@@ -83,7 +83,7 @@ describe('topics reducer', () => {
     expect(topics({}, {})).toEqual({})
   })
 
-  test('should handle GET_TOPICS', () => {
+  test('should handle `types.topics.read.success`', () => {
     const total = 10
     const limit = 3
     const offset = 6
@@ -96,7 +96,7 @@ describe('topics reducer', () => {
       topics(
         {},
         {
-          type: types.GET_TOPICS,
+          type: types.topics.read.success,
           payload: {
             items: [topic1, topic2],
             total,
@@ -117,7 +117,7 @@ describe('topics reducer', () => {
     })
   })
 
-  test('should handle ERROR_TO_GET_TOPICS', () => {
+  test('should handle `types.topics.read.failure`', () => {
     const err = new Error('error occurs')
     expect(
       topics(
@@ -127,7 +127,7 @@ describe('topics reducer', () => {
           error: null,
         },
         {
-          type: types.ERROR_TO_GET_TOPICS,
+          type: types.topics.read.failure,
           payload: {
             error: err,
           },

@@ -181,7 +181,7 @@ describe('Testing fetchTopics:', () => {
     nock.cleanAll()
   })
   describe('There is no such page of topics to load', () => {
-    test('Should dispatch types.GET_TOPICS with empty items array', () => {
+    test('Should dispatch types.topics.read.success with empty items array', () => {
       const store = mockStore({
         [fieldNames.topicList]: {
           page: 2,
@@ -216,7 +216,7 @@ describe('Testing fetchTopics:', () => {
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[1].type).toBe(types.GET_TOPICS)
+        expect(store.getActions()[1].type).toBe(types.topics.read.success)
         expect(store.getActions()[1].payload).toEqual({
           items: [],
           total,
@@ -227,7 +227,7 @@ describe('Testing fetchTopics:', () => {
     })
   })
   describe('It loads topics successfully', () => {
-    test('Should dispatch types.GET_TOPICS', () => {
+    test('Should dispatch types.topics.read.success', () => {
       const store = mockStore({
         [fieldNames.topicList]: {
           items: {
@@ -260,8 +260,8 @@ describe('Testing fetchTopics:', () => {
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0].type).toEqual(types.START_TO_GET_TOPICS)
-        expect(store.getActions()[1].type).toBe(types.GET_TOPICS)
+        expect(store.getActions()[0].type).toEqual(types.topics.read.request)
+        expect(store.getActions()[1].type).toBe(types.topics.read.success)
         expect(store.getActions()[1].payload).toEqual({
           items: [topic2],
           total,
@@ -272,7 +272,7 @@ describe('Testing fetchTopics:', () => {
     })
   })
   describe('If the api returns a failure', () => {
-    test('Should dispatch types.ERROR_TO_GET_TOPICS', () => {
+    test('Should dispatch types.topics.read.failure', () => {
       const limit = 1
       const offset = 0
       const store = mockStore({
@@ -294,11 +294,11 @@ describe('Testing fetchTopics:', () => {
       return store.dispatch(actions.fetchTopics(page, nPerPage)).catch(() => {
         const expected = [
           {
-            type: types.START_TO_GET_TOPICS,
+            type: types.topics.read.request,
             url: `http://localhost:8080/v2/topics?limit=${limit}&offset=${offset}`,
           },
           {
-            type: types.ERROR_TO_GET_TOPICS,
+            type: types.topics.read.failure,
             payload: {
               error: expect.any(Error),
             },
@@ -329,7 +329,7 @@ describe('Testing fetchTopics:', () => {
         .catch(failAction => {
           const expected = [
             {
-              type: types.ERROR_TO_GET_TOPICS,
+              type: types.topics.read.failure,
               payload: {
                 error: expect.any(Error),
               },
@@ -356,7 +356,7 @@ describe('Testing fetchTopics:', () => {
         .catch(failAction => {
           const expected = [
             {
-              type: types.ERROR_TO_GET_TOPICS,
+              type: types.topics.read.failure,
               payload: {
                 error: expect.any(Error),
               },
