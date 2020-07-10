@@ -169,6 +169,7 @@
  *  @typedef {Object} TopicList
  *  @property {bool} isFetching
  *  @property {Object.<number, ObjectID[]>} items - Page to objectID. Ex: `1: ['id_1', 'id_2']`, which means page 1 having 'id_1' and 'id_2' entities
+ *  @property {Object} error
  *  @property {number} totalPages
  *  @property {number} page
  *  @property {number} nPerPage
