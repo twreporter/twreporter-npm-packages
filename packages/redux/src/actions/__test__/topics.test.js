@@ -4,7 +4,7 @@
   Testing functions:
     fetchAFullTopic
     fetchTopics
-    fetchTopicsOnIndexPage
+    fetchFeatureTopic
 */
 
 import * as actions from '../topics'
@@ -92,11 +92,12 @@ describe('Testing fetchAFullTopic:', () => {
         },
       })
       const mockApiResponse = {
-        record: mockTopic,
+        status: 'success',
+        data: mockTopic,
       }
 
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics/${mockSlug}?full=true`))
+        .get(encodeURI(`/v2/topics/${mockSlug}?full=true`))
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchAFullTopic(mockSlug)).then(() => {
@@ -131,10 +132,12 @@ describe('Testing fetchAFullTopic:', () => {
       const mockStatusCode = 404
       const mockAPIRes = {
         status: 'fail',
-        data: null,
+        data: {
+          slug: 'Cannot find the topic from the slug',
+        },
       }
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics/${mockSlug}?full=true`))
+        .get(encodeURI(`/v2/topics/${mockSlug}?full=true`))
         .reply(mockStatusCode, mockAPIRes)
 
       return store.dispatch(actions.fetchAFullTopic(mockSlug)).catch(() => {
@@ -178,7 +181,7 @@ describe('Testing fetchTopics:', () => {
     nock.cleanAll()
   })
   describe('There is no such page of topics to load', () => {
-    test('Should dispatch types.GET_TOPICS with empty items array', () => {
+    test('Should dispatch types.topics.read.success with empty items array', () => {
       const store = mockStore({
         [fieldNames.topicList]: {
           page: 2,
@@ -197,20 +200,23 @@ describe('Testing fetchTopics:', () => {
       const { limit, offset } = pageToOffset({ page, nPerPage })
       const total = 5
       const mockApiResponse = {
-        records: [],
-        meta: {
-          limit,
-          total,
-          offset,
+        status: 'success',
+        data: {
+          records: [],
+          meta: {
+            limit,
+            total,
+            offset,
+          },
         },
       }
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics?limit=${limit}&offset=${offset}`))
+        .get(encodeURI(`/v2/topics?limit=${limit}&offset=${offset}`))
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[1].type).toBe(types.GET_TOPICS)
+        expect(store.getActions()[1].type).toBe(types.topics.read.success)
         expect(store.getActions()[1].payload).toEqual({
           items: [],
           total,
@@ -221,7 +227,7 @@ describe('Testing fetchTopics:', () => {
     })
   })
   describe('It loads topics successfully', () => {
-    test('Should dispatch types.GET_TOPICS', () => {
+    test('Should dispatch types.topics.read.success', () => {
       const store = mockStore({
         [fieldNames.topicList]: {
           items: {
@@ -238,21 +244,24 @@ describe('Testing fetchTopics:', () => {
       const { limit, offset } = pageToOffset({ page, nPerPage })
       const total = 5
       const mockApiResponse = {
-        records: [topic2],
-        meta: {
-          limit,
-          total,
-          offset,
+        status: 'success',
+        data: {
+          records: [topic2],
+          meta: {
+            limit,
+            total,
+            offset,
+          },
         },
       }
       nock('http://localhost:8080')
-        .get(encodeURI(`/v1/topics?limit=${limit}&offset=${offset}`))
+        .get(encodeURI(`/v2/topics?limit=${limit}&offset=${offset}`))
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0].type).toEqual(types.START_TO_GET_TOPICS)
-        expect(store.getActions()[1].type).toBe(types.GET_TOPICS)
+        expect(store.getActions()[0].type).toEqual(types.topics.read.request)
+        expect(store.getActions()[1].type).toBe(types.topics.read.success)
         expect(store.getActions()[1].payload).toEqual({
           items: [topic2],
           total,
@@ -263,7 +272,7 @@ describe('Testing fetchTopics:', () => {
     })
   })
   describe('If the api returns a failure', () => {
-    test('Should dispatch types.ERROR_TO_GET_TOPICS', () => {
+    test('Should dispatch types.topics.read.failure', () => {
       const limit = 1
       const offset = 0
       const store = mockStore({
@@ -271,13 +280,13 @@ describe('Testing fetchTopics:', () => {
           api: 'http://localhost:8080',
         },
       })
-      const mockStatusCode = 404
+      const mockStatusCode = 500
       const mockAPIRes = {
-        status: 'fail',
-        data: null,
+        status: 'error',
+        message: 'Unexpecetd error',
       }
       nock('http://localhost:8080')
-        .get(`/v1/topics?limit=${limit}&offset=${offset}`)
+        .get(`/v2/topics?limit=${limit}&offset=${offset}`)
         .reply(mockStatusCode, mockAPIRes)
 
       const page = 1
@@ -285,11 +294,11 @@ describe('Testing fetchTopics:', () => {
       return store.dispatch(actions.fetchTopics(page, nPerPage)).catch(() => {
         const expected = [
           {
-            type: types.START_TO_GET_TOPICS,
-            url: `http://localhost:8080/v1/topics?limit=${limit}&offset=${offset}`,
+            type: types.topics.read.request,
+            url: `http://localhost:8080/v2/topics?limit=${limit}&offset=${offset}`,
           },
           {
-            type: types.ERROR_TO_GET_TOPICS,
+            type: types.topics.read.failure,
             payload: {
               error: expect.any(Error),
             },
@@ -320,7 +329,7 @@ describe('Testing fetchTopics:', () => {
         .catch(failAction => {
           const expected = [
             {
-              type: types.ERROR_TO_GET_TOPICS,
+              type: types.topics.read.failure,
               payload: {
                 error: expect.any(Error),
               },
@@ -347,7 +356,7 @@ describe('Testing fetchTopics:', () => {
         .catch(failAction => {
           const expected = [
             {
-              type: types.ERROR_TO_GET_TOPICS,
+              type: types.topics.read.failure,
               payload: {
                 error: expect.any(Error),
               },
@@ -362,63 +371,259 @@ describe('Testing fetchTopics:', () => {
   })
 })
 
-/**
- * fetchTopicsOnIndexPage
- * This function will fetch the 2 to 5 latest topics.
- * It's specifically made for index page
- */
-/*
-========= Testing  fetchTopicsOnIndexPage ==========
-*/
-describe('Testing fetchTopicsOnIndexPage:', () => {
-  afterAll(() => {
-    nock.cleanAll()
+describe('Test function `fetchFeatureTopic`', () => {
+  const mockApiHost = 'http://localhost:8080'
+
+  const mockPost1 = {
+    id: 'post-id-1',
+  }
+
+  const mockPost2 = {
+    id: 'post-id-2',
+  }
+
+  const mockPost3 = {
+    id: 'post-id-3',
+  }
+
+  const mockPost4 = {
+    id: 'post-id-4',
+  }
+
+  const mockFeatureTopic = {
+    id: 'topic-id-1',
+    relateds: [mockPost1.id, mockPost2.id, mockPost3.id, mockPost4.id],
+  }
+
+  const mockFeatureTopicWithoutRelateds = Object.assign({}, mockFeatureTopic, {
+    relateds: [],
   })
-  describe('index_page.topics are already existed', () => {
-    test('Should do nothing', () => {
-      const store = mockStore({
-        [fieldNames.indexPage]: {
-          [fieldNames.sections.topicsSection]: [topic1, topic2],
-        },
-        [fieldNames.origins]: {
-          api: 'http://localhost:8080',
-        },
-      })
-      return store.dispatch(actions.fetchTopicsOnIndexPage()).then(result => {
-        expect(store.getActions().length).toBe(1)
-        expect(result).toEqual({
-          type: types.dataAlreadyExists,
-          payload: {
-            function: actions.fetchTopicsOnIndexPage.name,
-            message: expect.any(String),
+
+  describe('Dispatch success action', () => {
+    afterAll(() => {
+      nock.clearAll()
+    })
+
+    test('by requesting api to fetch the topic which does not have related posts', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
+        .reply(200, {
+          status: 'success',
+          data: {
+            meta: {
+              limit: 1,
+              offset: 0,
+              total: 10,
+            },
+            records: [mockFeatureTopicWithoutRelateds],
           },
         })
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+      })
+
+      const returnValue = {
+        type: types.featureTopic.read.success,
+        payload: {
+          topic: mockFeatureTopicWithoutRelateds,
+          lastThreeRelatedPosts: [],
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).then(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+
+    test('by requesting api to fetch the topic and corresponding related posts', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
+        .reply(200, {
+          status: 'success',
+          data: {
+            meta: {
+              limit: 1,
+              offset: 0,
+              total: 10,
+            },
+            records: [mockFeatureTopic],
+          },
+        })
+
+      nock(mockApiHost)
+        .get('/v2/posts')
+        .query({
+          id: [mockPost2.id, mockPost3.id, mockPost4.id],
+        })
+        .reply(200, {
+          status: 'success',
+          data: {
+            meta: {
+              limit: 10,
+              offset: 0,
+              total: 3,
+            },
+            records: [mockPost2, mockPost3, mockPost4],
+          },
+        })
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+      })
+
+      const returnValue = {
+        type: types.featureTopic.read.success,
+        payload: {
+          topic: mockFeatureTopic,
+          lastThreeRelatedPosts: [mockPost2, mockPost3, mockPost4],
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).then(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
       })
     })
   })
 
-  describe('Load topics if needed', () => {
-    test('Should dispatch types.GET_TOPICS_FOR_INDEX_PAGE)', () => {
+  describe('Dispatch failure action', () => {
+    afterAll(() => {
+      nock.clearAll()
+    })
+
+    test('because of fetching topic failure', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
+        .reply(500, {
+          status: 'error',
+          message: 'Unexpected error',
+        })
+
       const store = mockStore({
         [fieldNames.origins]: {
-          api: 'http://localhost:8080',
+          api: mockApiHost,
         },
       })
-      nock('http://localhost:8080')
-        .get(encodeURI('/v1/topics?offset=1&limit=4'))
+
+      const returnValue = {
+        type: types.featureTopic.read.failure,
+        payload: {
+          error: expect.any(Error),
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).catch(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+    })
+
+    test('because of fetching related posts failure', () => {
+      nock(mockApiHost)
+        .get('/v2/topics')
+        .query({
+          limit: 1,
+          offset: 0,
+        })
         .reply(200, {
-          records: [topic1, topic2],
-          meta: {
-            limit: 10,
-            total: 2,
-            offset: 0,
+          status: 'success',
+          data: {
+            meta: {
+              limit: 1,
+              offset: 0,
+              total: 10,
+            },
+            records: [mockFeatureTopic],
           },
         })
 
-      return store.dispatch(actions.fetchTopicsOnIndexPage()).then(() => {
-        expect(store.getActions().length).toBe(2) // START and GET
-        expect(store.getActions()[1].type).toBe(types.GET_TOPICS_FOR_INDEX_PAGE)
-        expect(store.getActions()[1].payload.items.length).toBe(2)
+      nock(mockApiHost)
+        .get('/v2/posts')
+        .query({
+          id: [mockPost2.id, mockPost3.id, mockPost4.id],
+        })
+        .reply(500, {
+          status: 'error',
+          message: 'Unexpected error',
+        })
+
+      const store = mockStore({
+        [fieldNames.origins]: {
+          api: mockApiHost,
+        },
+      })
+
+      const returnValue = {
+        type: types.featureTopic.read.failure,
+        payload: {
+          error: expect.objectContaining({
+            statusCode: 500,
+            name: 'AxiosError',
+          }),
+        },
+      }
+
+      const expectedActions = [
+        {
+          type: types.featureTopic.read.request,
+        },
+        returnValue,
+      ]
+
+      expect.assertions(3)
+
+      return store.dispatch(actions.fetchFeatureTopic()).catch(result => {
+        expect(result).toEqual(returnValue)
+        expect(store.getActions().length).toBe(expectedActions.length)
+        expect(store.getActions()).toEqual(expectedActions)
       })
     })
   })

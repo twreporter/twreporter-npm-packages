@@ -139,4 +139,6 @@ export default {
   nextNotifyPopupTS,
   searchedAuthorsList,
   settings,
+  relatedPostsOf: 'relatedPostsOf',
+  featureTopic: 'featureTopic',
 }

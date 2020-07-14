@@ -1,18 +1,24 @@
 import { denormalizePosts, denormalizeTopics } from './utils/denormalize-asset'
 import { formURL } from './utils/url'
-import { post, posts } from './reducers/posts'
-import { topic, topics } from './reducers/topics'
 import actionTypes from './constants/action-types'
-import actions from './actions'
-import auth from './reducers/auth'
 import createStore from './store/create-store'
-import entities from './reducers/entities'
-import indexPage from './reducers/index-page'
-import origins from './reducers/origins'
 import pagination from './utils/pagination'
 import reduxStateFields from './constants/redux-state-field-names'
 import ReduxStoreContext from './context/redux-store'
 import ReduxStoreProvider from './component/provider'
+
+// actions
+import actions from './actions'
+
+// reducers
+import auth from './reducers/auth'
+import entities from './reducers/entities'
+import featureTopic from './reducers/feature-topic'
+import indexPage from './reducers/index-page'
+import origins from './reducers/origins'
+import relatedPostsOf from './reducers/related-posts-of'
+import { post, posts } from './reducers/posts'
+import { topic, topics } from './reducers/topics'
 
 export default {
   actions,
@@ -21,10 +27,12 @@ export default {
   reducers: {
     auth,
     entities,
+    featureTopic,
     indexPage,
     origins,
     post,
     posts,
+    relatedPostsOf,
     topic,
     topics,
   },

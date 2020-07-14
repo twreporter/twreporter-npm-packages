@@ -9,36 +9,15 @@ export default {
   CHANGE_SELECTED_POST: 'CHANGE_SELECTED_POST',
   CHANGE_SELECTED_TOPIC: 'CHANGE_SELECTED_TOPIC',
 
-  // actions fetching topics
-  START_TO_GET_TOPICS: 'START_TO_GET_TOPICS',
-  ERROR_TO_GET_TOPICS: 'ERROR_TO_GET_TOPICS',
-  GET_TOPICS: 'GET_TOPICS',
-
   // actions fetching a full topic
   START_TO_GET_A_FULL_TOPIC: 'START_TO_GET_A_FULL_TOPIC',
   ERROR_TO_GET_A_FULL_TOPIC: 'ERROR_TO_GET_A_FULL_TOPIC',
   GET_A_FULL_TOPIC: 'GET_A_FULL_TOPIC',
 
-  // actions fetching posts
-  START_TO_GET_POSTS: 'START_TO_GET_POSTS',
-  ERROR_TO_GET_POSTS: 'ERROR_TO_GET_POSTS',
-  GET_EDITOR_PICKED_POSTS: 'GET_EDITOR_PICKED_POSTS',
-  GET_LISTED_POSTS: 'GET_LISTED_POSTS',
-  ERROR_TO_GET_LISTED_POSTS: 'ERROR_TO_GET_LISTED_POSTS',
-  ERROR_TO_GET_EDITOR_PICKED_POSTS: 'ERROR_TO_GET_EDITOR_PICKED_POSTS',
-
   // actions fetching a full post
   START_TO_GET_A_FULL_POST: 'START_TO_GET_A_FULL_POST',
   ERROR_TO_GET_A_FULL_POST: 'ERROR_TO_GET_A_FULL_POST',
   GET_A_FULL_POST: 'GET_A_FULL_POST',
-
-  // actions on index page
-  GET_TOPICS_FOR_INDEX_PAGE: 'GET_TOPICS_FOR_INDEX_PAGE',
-  GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE: 'GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE',
-  GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE: 'GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE',
-  GET_CONTENT_FOR_INDEX_PAGE: 'GET_CONTENT_FOR_INDEX_PAGE',
-  START_TO_GET_INDEX_PAGE_CONTENT: 'START_TO_GET_INDEX_PAGE_CONTENT',
-  ERROR_TO_GET_INDEX_PAGE_CONTENT: 'ERROR_TO_GET_INDEX_PAGE_CONTENT',
 
   FETCH_AUTHOR_DETAILS_REQUEST: 'FETCH_AUTHOR_DETAILS_REQUEST',
   FETCH_AUTHOR_DETAILS_SUCCESS: 'FETCH_AUTHOR_DETAILS_SUCCESS',
@@ -57,6 +36,25 @@ export default {
   FETCH_AUTHOR_COLLECTION_SUCCESS: 'FETCH_AUTHOR_COLLECTION_SUCCESS',
 
   SET_NEXT_POPUP_TIME_STAMP: 'SET_NEXT_POPUP_TIME_STAMP',
+
+  indexPage: {
+    read: {
+      request: 'request to fetch index page content',
+      success: 'success to fetch index page content',
+      failure: 'fail to fetch index page content',
+      alreadyExists: 'index page content is already existed',
+    },
+  },
+
+  postsByListId: {
+    read: {
+      request: 'request to fetch posts by list id',
+      success: 'success to fetch posts by list id',
+      failure: 'fail to fetch posts by list id',
+      noMore: 'no more posts by list id to fetch',
+      alreadyExists: 'posts by list id to fetch are already existed',
+    },
+  },
 
   singleBookmark: {
     read: {
@@ -81,6 +79,31 @@ export default {
       request: 'request to fetch multiple bookmarks',
       success: 'succes to fetch multiple bookmarks',
       failure: 'fail to fetch multiple bookmarks',
+    },
+  },
+
+  relatedPosts: {
+    read: {
+      request: 'request to fetch related posts',
+      success: 'success to fetch related posts',
+      failure: 'fail to fetch related posts',
+      noMore: 'no more related posts to fetch',
+    },
+  },
+
+  featureTopic: {
+    read: {
+      request: 'request to fetch feature topic',
+      success: 'success to fetch feature topic',
+      failure: 'fail to fetch feature topic',
+    },
+  },
+
+  topics: {
+    read: {
+      request: 'request to fetch topics',
+      success: 'success to fetch topics',
+      failure: 'fail to fetch topics',
     },
   },
 
