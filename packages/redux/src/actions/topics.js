@@ -231,7 +231,9 @@ export function fetchFeatureTopic() {
             topic,
             {
               data: {
-                records: [],
+                data: {
+                  records: [],
+                },
               },
             },
           ]
