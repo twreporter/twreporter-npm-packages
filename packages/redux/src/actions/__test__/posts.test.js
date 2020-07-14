@@ -73,6 +73,9 @@ describe('Testing fetchAFullPost:', () => {
           api: 'http://localhost:8080',
         },
       })
+
+      expect.assertions(2)
+
       return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
         const expected = {
           type: types.CHANGE_SELECTED_POST,
@@ -117,6 +120,9 @@ describe('Testing fetchAFullPost:', () => {
           message: expect.any(String),
         },
       }
+
+      expect.assertions(3)
+
       return store.dispatch(actions.fetchAFullPost(mockSlug)).then(result => {
         expect(result).toEqual(expected)
         expect(store.getActions().length).toBe(1)
@@ -125,7 +131,7 @@ describe('Testing fetchAFullPost:', () => {
     })
   })
   describe('It loads a full post successfully', () => {
-    test('Should dispatch types.START_TO_GET_POSTS and types.GET_LISTED_POSTS', () => {
+    test('Should dispatch types.START_TO_GET_A_FULL_POST and types.GET_A_FULL_POST', () => {
       const mockSlug = 'mock-slug'
       const store = mockStore({
         entities: {
@@ -156,6 +162,8 @@ describe('Testing fetchAFullPost:', () => {
         .get(`/v2/posts/${mockSlug}?full=true`)
         .reply(200, mockApiResponse)
 
+      expect.assertions(3)
+
       return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
         const expected = [
           {
@@ -183,7 +191,7 @@ describe('Testing fetchAFullPost:', () => {
     })
   })
   describe('If the api returns a failure', () => {
-    test('Should dispatch types.START_TO_GET_POSTS and types.ERROR_TO_GET_POSTS', () => {
+    test('Should dispatch types.START_TO_GET_A_FULL_POST and types.ERROR_TO_GET_A_FULL_POST', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -200,6 +208,8 @@ describe('Testing fetchAFullPost:', () => {
       nock(mockApiHost)
         .get(`/v2/posts/${mockSlug}?full=true`)
         .reply(mockStatusCode, mockApiRes)
+
+      expect.assertions(11)
 
       return store
         .dispatch(actions.fetchAFullPost(mockSlug))
@@ -432,6 +442,9 @@ function testFetchPostsByListId(actionToFetch, paramKey) {
         .get(mockPath)
         .query(mockQuery)
         .reply(mockStatusCode, mockApiRes)
+
+      expect.assertions(10)
+
       return store
         .dispatch(actionToFetch(mockListId, limit, page))
         .catch(() => {
@@ -739,6 +752,8 @@ describe('Test function `fetchRelatedPostsOfAnEntity`', () => {
         },
         returnValue,
       ]
+
+      expect.assertions(3)
 
       return store
         .dispatch(actions.fetchRelatedPostsOfAnEntity(targetPost.id, 6))
