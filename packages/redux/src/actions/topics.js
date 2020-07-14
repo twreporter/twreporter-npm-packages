@@ -25,15 +25,21 @@ const { pageToOffset } = pagination
  */
 export function fetchAFullTopic(slug) {
   return (dispatch, getState) => {
+    const { entities, topicsInEntities } = stateFieldNames
     const state = getState()
+    const topicId = _.get(
+      state,
+      [entities, topicsInEntities, 'slugToId', slug],
+      ''
+    )
     const topic = _.get(
       state,
-      [stateFieldNames.entities, stateFieldNames.topicsInEntities, slug],
-      {}
+      [entities, topicsInEntities, 'byId', topicId],
+      null
     )
     if (_.get(topic, 'full', false)) {
       const successAction = {
-        type: types.CHANGE_SELECTED_TOPIC,
+        type: types.selectedTopic.read.alreadyExists,
         payload: {
           topic,
         },
@@ -49,7 +55,7 @@ export function fetchAFullTopic(slug) {
 
     // Start to get topics
     dispatch({
-      type: types.START_TO_GET_A_FULL_TOPIC,
+      type: types.selectedTopic.read.request,
       payload: {
         slug,
       },
@@ -61,7 +67,7 @@ export function fetchAFullTopic(slug) {
       })
       .then(response => {
         const successAction = {
-          type: types.GET_A_FULL_TOPIC,
+          type: types.selectedTopic.read.success,
           payload: {
             topic: _.get(response, 'data.data', {}),
           },
@@ -72,7 +78,7 @@ export function fetchAFullTopic(slug) {
       .catch(error => {
         const failAction = errorActionCreators.axios(
           error,
-          types.ERROR_TO_GET_A_FULL_TOPIC
+          types.selectedTopic.read.failure
         )
         failAction.payload.slug = slug
         dispatch(failAction)

@@ -21,12 +21,12 @@ describe('topic reducer', () => {
     expect(topic({}, {})).toEqual({})
   })
 
-  test('should handle GET_A_FULL_TOPIC', () => {
+  test('should handle types.selectedTopic.read.success', () => {
     expect(
       topic(
         {},
         {
-          type: types.GET_A_FULL_TOPIC,
+          type: types.selectedTopic.read.success,
           payload: {
             topic: topic1,
           },
@@ -39,12 +39,12 @@ describe('topic reducer', () => {
     })
   })
 
-  test('should handle CHANGE_SELECTED_TOPIC', () => {
+  test('should handle types.selectedTopic.read.alreadyExists', () => {
     expect(
       topic(
         {},
         {
-          type: types.CHANGE_SELECTED_TOPIC,
+          type: types.selectedTopic.read.alreadyExists,
           payload: {
             topic: topic1,
           },
@@ -57,13 +57,13 @@ describe('topic reducer', () => {
     })
   })
 
-  test('should handle ERROR_TO_GET_A_FULL_TOPIC ', () => {
+  test('should handle types.selectedTopic.read.failure', () => {
     const err = new Error('error occurs')
     expect(
       topic(
         {},
         {
-          type: types.ERROR_TO_GET_A_FULL_TOPIC,
+          type: types.selectedTopic.read.failure,
           payload: {
             slug: 'mock-slug',
             error: err,

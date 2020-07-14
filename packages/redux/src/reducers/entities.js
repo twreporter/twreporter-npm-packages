@@ -150,7 +150,7 @@ function entities(state = defaultState, action = {}) {
       })
     }
 
-    case types.GET_A_FULL_TOPIC: {
+    case types.selectedTopic.read.success: {
       const allTopicIds = _.get(
         state,
         [fieldNames.topicsInEntities, 'allIds'],

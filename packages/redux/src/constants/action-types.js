@@ -7,12 +7,6 @@ export default {
 
   // change selected post
   CHANGE_SELECTED_POST: 'CHANGE_SELECTED_POST',
-  CHANGE_SELECTED_TOPIC: 'CHANGE_SELECTED_TOPIC',
-
-  // actions fetching a full topic
-  START_TO_GET_A_FULL_TOPIC: 'START_TO_GET_A_FULL_TOPIC',
-  ERROR_TO_GET_A_FULL_TOPIC: 'ERROR_TO_GET_A_FULL_TOPIC',
-  GET_A_FULL_TOPIC: 'GET_A_FULL_TOPIC',
 
   // actions fetching a full post
   START_TO_GET_A_FULL_POST: 'START_TO_GET_A_FULL_POST',
@@ -36,6 +30,15 @@ export default {
   FETCH_AUTHOR_COLLECTION_SUCCESS: 'FETCH_AUTHOR_COLLECTION_SUCCESS',
 
   SET_NEXT_POPUP_TIME_STAMP: 'SET_NEXT_POPUP_TIME_STAMP',
+
+  selectedTopic: {
+    read: {
+      request: 'request to fetch the topic',
+      success: 'success to fetch the topic',
+      failure: 'fail to fetch the topic',
+      alreadyExists: 'the topic is already existed',
+    },
+  },
 
   indexPage: {
     read: {

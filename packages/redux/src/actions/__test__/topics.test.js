@@ -25,12 +25,10 @@ const mockStore = configureMockStore(middlewares)
 const topic1 = {
   id: 'topic-id-1',
   slug: 'topic-slug-1',
-  full: true,
 }
 const topic2 = {
   id: 'topic-id-2',
   slug: 'topic-slug-2',
-  full: true,
 }
 
 /* Fetch a full topic, whose assets like relateds, leading_video ...etc are all complete,
@@ -44,47 +42,58 @@ describe('Testing fetchAFullTopic:', () => {
     nock.cleanAll()
   })
   describe('Topic is already existed in entities', () => {
-    test('Should dispatch types.CHANGE_SELECTED_TOPIC with topic', () => {
-      const mockSlug = 'mock-slug'
-      const mockTopic = {
-        id: 'mock-id',
-        slug: mockSlug,
+    test('Should dispatch alreadyExisted action', () => {
+      const fullTopic = Object.assign({}, topic1, {
         full: true,
-      }
+      })
       const store = mockStore({
         [fieldNames.entities]: {
           [fieldNames.topicsInEntities]: {
-            [mockSlug]: mockTopic,
+            byId: {
+              [fullTopic.id]: fullTopic,
+            },
+            allIds: [fullTopic.id],
+            slugToId: {
+              [fullTopic.slug]: fullTopic.id,
+            },
           },
         },
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
         },
       })
-      return store.dispatch(actions.fetchAFullTopic(mockSlug)).then(() => {
-        const expected = {
-          type: types.CHANGE_SELECTED_TOPIC,
-          payload: {
-            topic: mockTopic,
-          },
-        }
-        expect(store.getActions().length).toBe(1) // dispatch types.CHANGE_SELECTED_TOPIC
-        expect(store.getActions()[0]).toEqual(expected)
-      })
+      return store
+        .dispatch(actions.fetchAFullTopic(fullTopic.slug))
+        .then(() => {
+          const expected = {
+            type: types.selectedTopic.read.alreadyExists,
+            payload: {
+              topic: fullTopic,
+            },
+          }
+          expect(store.getActions().length).toBe(1) // dispatch types.CHANGE_SELECTED_TOPIC
+          expect(store.getActions()[0]).toEqual(expected)
+        })
     })
   })
   describe('It loads a full topic successfully', () => {
-    test('Should dispatch types.START_TO_GET_A_FULL_TOPIC and types.GET_A_FULL_TOPIC', () => {
-      const mockSlug = 'mock-slug'
-      const mockTopic = {
-        id: 'mock-id',
-        slug: mockSlug,
+    test('Should dispatch request action and success action', () => {
+      const metaOfTopic = Object.assign({}, topic1, {
         full: false,
-      }
+      })
+      const fullTopic = Object.assign({}, topic1, {
+        full: true,
+      })
       const store = mockStore({
-        entities: {
-          topics: {
-            [mockSlug]: mockTopic,
+        [fieldNames.entities]: {
+          [fieldNames.topicsInEntities]: {
+            byId: {
+              [metaOfTopic.id]: metaOfTopic,
+            },
+            allIds: [metaOfTopic.id],
+            slugToId: {
+              [metaOfTopic.slug]: metaOfTopic.id,
+            },
           },
         },
         [fieldNames.origins]: {
@@ -93,36 +102,38 @@ describe('Testing fetchAFullTopic:', () => {
       })
       const mockApiResponse = {
         status: 'success',
-        data: mockTopic,
+        data: fullTopic,
       }
 
       nock('http://localhost:8080')
-        .get(encodeURI(`/v2/topics/${mockSlug}?full=true`))
+        .get(encodeURI(`/v2/topics/${metaOfTopic.slug}?full=true`))
         .reply(200, mockApiResponse)
 
-      return store.dispatch(actions.fetchAFullTopic(mockSlug)).then(() => {
-        const expected = [
-          {
-            type: types.START_TO_GET_A_FULL_TOPIC,
-            payload: {
-              slug: mockSlug,
+      return store
+        .dispatch(actions.fetchAFullTopic(metaOfTopic.slug))
+        .then(() => {
+          const expected = [
+            {
+              type: types.selectedTopic.read.request,
+              payload: {
+                slug: metaOfTopic.slug,
+              },
             },
-          },
-          {
-            type: types.GET_A_FULL_TOPIC,
-            payload: {
-              topic: mockTopic,
+            {
+              type: types.selectedTopic.read.success,
+              payload: {
+                topic: fullTopic,
+              },
             },
-          },
-        ]
-        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0]).toEqual(expected[0])
-        expect(store.getActions()[1]).toEqual(expected[1])
-      })
+          ]
+          expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(expected[1])
+        })
     })
   })
   describe('If the api returns a failure', () => {
-    test('Should dispatch types.START_TO_GET_A_FULL_TOPIC and types.ERROR_TO_GET_A_FULL_TOPIC', () => {
+    test('Should dispatch request action and failure action', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -143,13 +154,13 @@ describe('Testing fetchAFullTopic:', () => {
       return store.dispatch(actions.fetchAFullTopic(mockSlug)).catch(() => {
         const expected = [
           {
-            type: types.START_TO_GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.request,
             payload: {
               slug: mockSlug,
             },
           },
           {
-            type: types.ERROR_TO_GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.failure,
             payload: {
               error: expect.any(Error),
               slug: mockSlug,

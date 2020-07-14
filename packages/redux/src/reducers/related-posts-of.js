@@ -27,7 +27,7 @@ const initialState = {
  */
 export default function relatedPostsOf(state = initialState, action = {}) {
   switch (_.get(action, 'type', '')) {
-    case types.GET_A_FULL_TOPIC: {
+    case types.selectedTopic.read.success: {
       const topic = _.get(action, 'payload.topic', {})
       const entityId = _.get(topic, 'id', '')
 
