@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@6.1.0-rc.0...@twreporter/redux@7.0.0-rc.0) (2020-07-14)
+
+
+### Code Refactoring
+
+* **redux:** update README.md ([cfd2d5e](https://github.com/twreporter/twreporter-npm-packages/commit/cfd2d5e7df4d96b0d8a1f5e244b2860ac863d3c5))
+
+
+### BREAKING CHANGES
+
+* **redux:** update redux state, action and reducers for go-api v2
+
+Update src/constants/redux-state-field-names.js as well.
+
+
+
+
+
 # [6.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@6.0.1...@twreporter/redux@6.1.0-rc.0) (2020-07-14)
 
 
