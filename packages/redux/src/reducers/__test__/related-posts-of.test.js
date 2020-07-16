@@ -274,7 +274,7 @@ const suites = [
               post: {
                 id: 'post-id-1',
                 relateds: ['post-id-3'],
-                topics: {
+                topic: {
                   relateds: ['post-id-4'],
                 },
               },
@@ -313,7 +313,7 @@ const suites = [
               post: {
                 id: 'post-id-2',
                 relateds: ['post-id-1'],
-                topics: {
+                topic: {
                   relateds: ['post-id-4'],
                 },
               },

@@ -72,7 +72,7 @@ export default function relatedPostsOf(state = initialState, action = {}) {
       }
 
       const relateds = _.get(post, 'relateds', [])
-      const topicRelateds = _.get(post, 'topics.relateds', [])
+      const topicRelateds = _.get(post, 'topic.relateds', [])
       let more = []
 
       if (Array.isArray(relateds)) {
