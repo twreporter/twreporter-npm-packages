@@ -3,6 +3,7 @@ import Card from './card'
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import mockup from './mockup'
 import mq from '@twreporter/core/lib/utils/media-query'
+import PropTypes from 'prop-types'
 import predefinedProps from '../../constants/prop-types/related'
 import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
@@ -14,11 +15,6 @@ import map from 'lodash/map'
 const _ = {
   get,
   map,
-}
-
-const firstShowedLimit = {
-  tabletAndBelow: 3,
-  desktopAndAbove: 6,
 }
 
 const fadeIn = keyframes`
@@ -66,18 +62,6 @@ const LoadMoreButton = styled.div`
   cursor: pointer;
   ${props => selectButtonColors(props.theme.name)}
   transition: color 100ms ease;
-  ${mq.tabletAndBelow`
-    display: ${props =>
-      props.showAll || props.total <= firstShowedLimit.tabletAndBelow
-        ? 'none'
-        : 'block'};
-  `}
-  ${mq.desktopAndAbove`
-    display: ${props =>
-      props.showAll || props.total <= firstShowedLimit.desktopAndAbove
-        ? 'none'
-        : 'block'};
-  `}
   ${mq.mobileOnly`
     width: ${mockup.mobile.item.width};
     margin: 30px auto;
@@ -120,12 +104,6 @@ const Item = styled.div`
   ${mq.tabletAndBelow`
     border-width: 0 0 0.5px 0;
     margin: 0 auto;
-  
-    /* Show less items at mobile and tabet than desktop */
-    display: ${props =>
-      !props.showAll && props.i > firstShowedLimit.tabletAndBelow - 1
-        ? 'none'
-        : 'block'};
   `}
 
   ${mq.mobileOnly`
@@ -150,15 +128,17 @@ const Item = styled.div`
 export default class List extends React.PureComponent {
   static propTypes = {
     data: predefinedProps.data,
+    hasMore: PropTypes.bool,
+    loadMore: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     data: [],
+    hasMore: false,
   }
 
   state = {
     alignItems: 'stretch',
-    showAll: false,
   }
 
   componentDidMount() {
@@ -167,12 +147,26 @@ export default class List extends React.PureComponent {
     })
   }
 
+  componentDidUpdate(prevProps) {
+    // After loading more items,
+    // we have to set `alignItems: flex-start` to
+    // make each Card expand individually while hovering.
+    if (
+      prevProps.data.length !== this.props.data.length &&
+      this.state.alignItems === 'stretch'
+    ) {
+      this.setState({
+        alignItems: 'flex-start',
+      })
+    }
+  }
+
   renderCard = (item, i) => {
     return (
       <DynamicComponentsContext.Consumer key={item.id}>
         {components => {
           return (
-            <Item i={i} showAll={this.state.showAll}>
+            <Item>
               <components.Link
                 to={item.href}
                 target={
@@ -189,29 +183,21 @@ export default class List extends React.PureComponent {
   }
 
   loadMore = () => {
+    // `alignItems: stretch` will make cards the same height.
+    // Therefore, we have to set `alignItems: stretch`
+    // before loading more to render.
     this.setState(
       {
-        showAll: true,
         alignItems: 'stretch',
       },
-      () => {
-        // `align-items: flex-start` will be applied after the new cards mounted with `stretch`
-        this.setState({
-          alignItems: 'flex-start',
-        })
-      }
+      this.props.loadMore
     )
   }
 
   render() {
-    const { data } = this.props
-    if (data.length === 0) {
-      return null
-    }
-    const { showAll, alignItems } = this.state
-    const cards = showAll
-      ? _.map(data, this.renderCard)
-      : _.map(data.slice(0, firstShowedLimit.desktopAndAbove), this.renderCard)
+    const { data, hasMore } = this.props
+    const { alignItems } = this.state
+    const cards = _.map(data, this.renderCard)
     // Use `align-items: stretch` to make sure every Item(Card)
     // having the same height while mounting.
     // Then, use `flex-start` instead to make each Item(Card)
@@ -219,13 +205,11 @@ export default class List extends React.PureComponent {
     return (
       <div>
         <ListBlock alignItems={alignItems}>{cards}</ListBlock>
-        <LoadMoreButton
-          showAll={showAll}
-          total={data.length}
-          onClick={this.loadMore}
-        >
-          載入更多文章
-        </LoadMoreButton>
+        {hasMore ? (
+          <LoadMoreButton total={data.length} onClick={this.loadMore}>
+            載入更多文章
+          </LoadMoreButton>
+        ) : null}
       </div>
     )
   }
