@@ -15,8 +15,8 @@ const _ = {
 
 export function post(state = {}, action = {}) {
   switch (action.type) {
-    case types.GET_A_FULL_POST:
-    case types.CHANGE_SELECTED_POST: {
+    case types.selectedPost.read.success:
+    case types.selectedPost.read.alreadyExists: {
       return {
         slug: _.get(action, 'payload.post.slug'),
         error: null,
@@ -24,14 +24,14 @@ export function post(state = {}, action = {}) {
       }
     }
 
-    case types.START_TO_GET_A_FULL_POST:
+    case types.selectedPost.read.request:
       return {
         isFetching: true,
         slug: _.get(action, 'payload.slug'),
         error: null,
       }
 
-    case types.ERROR_TO_GET_A_FULL_POST:
+    case types.selectedPost.read.failure:
       return action.payload
     default:
       return state

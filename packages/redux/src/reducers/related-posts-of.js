@@ -63,7 +63,7 @@ export default function relatedPostsOf(state = initialState, action = {}) {
       })
     }
 
-    case types.GET_A_FULL_POST: {
+    case types.selectedPost.read.success: {
       const post = _.get(action, 'payload.post', {})
       const entityId = _.get(post, 'id', '')
 

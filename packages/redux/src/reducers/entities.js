@@ -137,7 +137,7 @@ function entities(state = defaultState, action = {}) {
       })
     }
 
-    case types.GET_A_FULL_POST: {
+    case types.selectedPost.read.success: {
       const allPostIds = _.get(
         state,
         [fieldNames.postsInEntities, 'allIds'],
