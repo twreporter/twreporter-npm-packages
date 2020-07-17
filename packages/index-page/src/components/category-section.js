@@ -152,12 +152,12 @@ class Category extends React.PureComponent {
   render() {
     const { data, useTinyImg } = this.props
     const items = data.map(item => {
-      const style = _.get(item, 'style', '')
-      const href = getHref(_.get(item, 'slug', 'error'), style)
+      const isExternal = _.get(item, 'is_external', false)
+      const href = getHref(_.get(item, 'slug', 'error'), isExternal)
       return (
         <FlexItem key={_.get(item, 'id')}>
           <CategoryName>{_.get(item, 'listName')}</CategoryName>
-          <TRLink href={href} redirect={style === 'interactive'}>
+          <TRLink href={href} redirect={isExternal}>
             <ImgFrame>
               <ImgWrapper
                 alt={_.get(item, 'hero_image.description')}

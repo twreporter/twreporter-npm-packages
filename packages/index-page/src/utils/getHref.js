@@ -1,8 +1,3 @@
-import { INTERACTIVE } from '../constants/post-style'
-
-export const getHref = (slug, style) => {
-  if (style === INTERACTIVE) {
-    return `i/${slug}`
-  }
-  return `a/${slug}`
+export const getHref = (slug, isExternal) => {
+  return isExternal ? `i/${slug}` : `a/${slug}`
 }

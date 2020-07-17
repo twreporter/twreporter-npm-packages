@@ -147,11 +147,11 @@ class Reviews extends React.PureComponent {
   render() {
     const { data, moreURI, useTinyImg } = this.props
     const ReviewsItem = data.map(post => {
-      const style = _.get(post, 'style', '')
-      const href = getHref(_.get(post, 'slug', 'error'), style)
+      const isExternal = _.get(post, 'is_external', false)
+      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       return (
         <FlexItem key={_.get(post, 'id')}>
-          <TRLink href={href} redirect={style === 'interactive'}>
+          <TRLink href={href} redirect={isExternal}>
             <ImgFrame>
               <ImgWrapper
                 alt={_.get(post, 'hero_image.description')}

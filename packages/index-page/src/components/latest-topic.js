@@ -187,11 +187,11 @@ class LatestTopic extends React.PureComponent {
         return
       }
 
-      const style = _.get(post, 'style', '')
-      const href = getHref(_.get(post, 'slug', 'error'), style)
+      const isExternal = _.get(post, 'is_external', false)
+      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       relatedsJsx.push(
         <FlexItem key={_.get(post, 'id')} mobileWidth={mobileWidth}>
-          <TRLink href={href} redirect={style === 'interactive'}>
+          <TRLink href={href} redirect={isExternal}>
             <ImgFrame>
               <ImgWrapper
                 alt={_.get(post, 'hero_image.description')}
