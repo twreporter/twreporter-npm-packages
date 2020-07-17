@@ -9,6 +9,7 @@ import React from 'react'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
+import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
@@ -20,6 +21,7 @@ import { getHref } from '../utils/getHref'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
 
 const _ = {
+  forEach,
   get,
 }
 
@@ -179,44 +181,47 @@ class LatestTopic extends React.PureComponent {
     const { data, useTinyImg } = this.props
     const maxSwipableItems = 2
     const relateds = _.get(data, 'relateds', [])
-      // take last 3 posts from the end
-      .slice(-3)
-      .map(post => {
-        const style = _.get(post, 'style', '')
-        const href = getHref(_.get(post, 'slug', 'error'), style)
-        return (
-          <FlexItem key={_.get(post, 'id')} mobileWidth={mobileWidth}>
-            <TRLink href={href} redirect={style === 'interactive'}>
-              <ImgFrame>
-                <ImgWrapper
-                  alt={_.get(post, 'hero_image.description')}
-                  src={_.get(post, [
-                    'hero_image',
-                    'resized_targets',
-                    useTinyImg ? 'tiny' : 'mobile',
-                    'url',
-                  ])}
-                  srcSet={_.get(post, 'hero_image.resized_targets', '')}
-                  sizes={
-                    `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                    `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                    `${mockup.img.sizes.mobile}`
-                  }
-                />
-              </ImgFrame>
-              <RelatedsContentFrame>
-                <RelatedCategory>
-                  {`${categoryPrefix}${_.get(data, 'topic_name', '')}`}
-                </RelatedCategory>
-                <RelatedTitle>{_.get(post, 'title', '')}</RelatedTitle>
-                <RelatedDescription>
-                  {_.get(post, 'og_description', '')}
-                </RelatedDescription>
-              </RelatedsContentFrame>
-            </TRLink>
-          </FlexItem>
-        )
-      })
+    let relatedsJsx = []
+    _.forEach(relateds, post => {
+      if (typeof post !== 'object' || post === null) {
+        return
+      }
+
+      const style = _.get(post, 'style', '')
+      const href = getHref(_.get(post, 'slug', 'error'), style)
+      relatedsJsx.push(
+        <FlexItem key={_.get(post, 'id')} mobileWidth={mobileWidth}>
+          <TRLink href={href} redirect={style === 'interactive'}>
+            <ImgFrame>
+              <ImgWrapper
+                alt={_.get(post, 'hero_image.description')}
+                src={_.get(post, [
+                  'hero_image',
+                  'resized_targets',
+                  useTinyImg ? 'tiny' : 'mobile',
+                  'url',
+                ])}
+                srcSet={_.get(post, 'hero_image.resized_targets', '')}
+                sizes={
+                  `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+                  `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+                  `${mockup.img.sizes.mobile}`
+                }
+              />
+            </ImgFrame>
+            <RelatedsContentFrame>
+              <RelatedCategory>
+                {`${categoryPrefix}${_.get(data, 'short_title', '')}`}
+              </RelatedCategory>
+              <RelatedTitle>{_.get(post, 'title', '')}</RelatedTitle>
+              <RelatedDescription>
+                {_.get(post, 'og_description', '')}
+              </RelatedDescription>
+            </RelatedsContentFrame>
+          </TRLink>
+        </FlexItem>
+      )
+    })
 
     return (
       <Container>
@@ -227,25 +232,25 @@ class LatestTopic extends React.PureComponent {
           <TopicFrame>
             <CategoryName>{`${categoryPrefix}${_.get(
               data,
-              'topic_name',
+              'short_title',
               ''
             )}`}</CategoryName>
             <Title>{_.get(data, 'title', '')}</Title>
             <Description>{_.get(data, 'og_description', '')}</Description>
           </TopicFrame>
-          <FlexBox>{relateds}</FlexBox>
+          <FlexBox>{relatedsJsx}</FlexBox>
           <MobileList maxWidth={mobileWidth}>
             <MobileFlexSwipeable.SwipableFlexItems
               alignItems={'flex-start'}
               mobileWidth={mobileWidth}
               maxSwipableItems={maxSwipableItems}
             >
-              {relateds}
+              {relatedsJsx}
             </MobileFlexSwipeable.SwipableFlexItems>
           </MobileList>
           <MoreFrame>
             <BottomLink
-              text={`更多${_.get(data, 'topic_name', '')}文章`}
+              text={`更多${_.get(data, 'short_title', '')}文章`}
               path={`topics/${_.get(data, 'slug', '')}`}
             />
           </MoreFrame>
