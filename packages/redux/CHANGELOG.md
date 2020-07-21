@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.0.0-rc.0...@twreporter/redux@7.0.0-rc.1) (2020-07-21)
+
+
+### Bug Fixes
+
+* **redux:** address JSDoc ([c21f7d9](https://github.com/twreporter/twreporter-npm-packages/commit/c21f7d9bc14efbdf3afcf3a1bdfe49b5618c42d2))
+* **redux:** fix fetchAFullPost action ([7d60e19](https://github.com/twreporter/twreporter-npm-packages/commit/7d60e19a6f86e1fc2777ce5c8fad1c63e755e46a))
+* **redux:** fix fetchAFullTopic action ([a47f316](https://github.com/twreporter/twreporter-npm-packages/commit/a47f316505acd668b08501323fb0390edc30e60d))
+* **redux:** fix json path of related-posts-of reducer ([7fefd37](https://github.com/twreporter/twreporter-npm-packages/commit/7fefd37b17e8309fc98ba9a5c538d50db10aace3))
+
+
+
+
+
 # [7.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@6.1.0-rc.0...@twreporter/redux@7.0.0-rc.0) (2020-07-14)
 
 
