@@ -27,7 +27,7 @@ const initialState = {
  */
 export default function relatedPostsOf(state = initialState, action = {}) {
   switch (_.get(action, 'type', '')) {
-    case types.GET_A_FULL_TOPIC: {
+    case types.selectedTopic.read.success: {
       const topic = _.get(action, 'payload.topic', {})
       const entityId = _.get(topic, 'id', '')
 
@@ -63,7 +63,7 @@ export default function relatedPostsOf(state = initialState, action = {}) {
       })
     }
 
-    case types.GET_A_FULL_POST: {
+    case types.selectedPost.read.success: {
       const post = _.get(action, 'payload.post', {})
       const entityId = _.get(post, 'id', '')
 
@@ -72,7 +72,7 @@ export default function relatedPostsOf(state = initialState, action = {}) {
       }
 
       const relateds = _.get(post, 'relateds', [])
-      const topicRelateds = _.get(post, 'topics.relateds', [])
+      const topicRelateds = _.get(post, 'topic.relateds', [])
       let more = []
 
       if (Array.isArray(relateds)) {

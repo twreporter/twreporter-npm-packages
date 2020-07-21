@@ -83,7 +83,7 @@
  *  @property {string} og_description
  *  @property {string} title
  *  @property {string} short_title
- *  @property {string} updated_at
+ *  @property {string} published_date
  */
 
 /**
@@ -97,7 +97,7 @@
  *  @property {string} og_description
  *  @property {string} title
  *  @property {string} short_title
- *  @property {string} updated_at
+ *  @property {string} published_date
  *
  *  @property {Object} description
  *  @property {Object[]} description.api_data
@@ -107,11 +107,11 @@
  *  @property {ObjectID[]} relateds - ObjectIDs of related posts
  *  @property {string} headline
  *  @property {string} og_title
- *  @property {string} published_date
  *  @property {string} relateds_background
  *  @property {string} relateds_format
  *  @property {string} subtitle
  *  @property {string} title_position
+ *  @property {string} updated_at
  */
 
 /**

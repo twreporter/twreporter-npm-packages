@@ -17,6 +17,8 @@ const _ = {
   merge,
 }
 
+const { entities, postsInEntities } = stateFieldNames
+
 /* Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of post
  * @return {import('../typedef').Thunk} async action creator
@@ -24,19 +26,19 @@ const _ = {
 export function fetchAFullPost(slug) {
   return (dispatch, getState) => {
     const state = getState()
-    const post = _.get(
+    const postId = _.get(
       state,
-      `${stateFieldNames.entities}.${stateFieldNames.postsInEntities}.${slug}`,
-      {}
+      [entities, postsInEntities, 'slugToId', slug],
+      ''
     )
-
+    const post = _.get(state, [entities, postsInEntities, 'byId', postId], null)
     // post is already fully fetched
     if (_.get(post, 'full', false)) {
       // current selected post is not the post just been fetched,
       // change the selected post
       if (slug !== _.get(state, `${stateFieldNames.selectedPost}.slug`)) {
         const successAction = {
-          type: types.CHANGE_SELECTED_POST,
+          type: types.selectedPost.read.alreadyExists,
           payload: {
             post,
           },
@@ -64,7 +66,7 @@ export function fetchAFullPost(slug) {
     const url = formURL(apiOrigin, path, { full: 'true' })
     // Start to get topics
     dispatch({
-      type: types.START_TO_GET_A_FULL_POST,
+      type: types.selectedPost.read.request,
       payload: {
         slug,
       },
@@ -76,7 +78,7 @@ export function fetchAFullPost(slug) {
       })
       .then(response => {
         const successAction = {
-          type: types.GET_A_FULL_POST,
+          type: types.selectedPost.read.success,
           payload: {
             post: _.get(response, 'data.data', {}),
           },
@@ -87,7 +89,7 @@ export function fetchAFullPost(slug) {
       .catch(error => {
         const failAction = errorActionCreators.axios(
           error,
-          types.ERROR_TO_GET_A_FULL_POST
+          types.selectedPost.read.failure
         )
         failAction.payload.slug = slug
         dispatch(failAction)

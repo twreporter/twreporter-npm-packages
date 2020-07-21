@@ -229,7 +229,7 @@ describe('entities reducer', () => {
     })
   })
 
-  test('should handle GET_A_FULL_POST', () => {
+  test('should handle types.selectedPost.read.success', () => {
     expect(
       reducer(
         {
@@ -244,7 +244,7 @@ describe('entities reducer', () => {
           },
         },
         {
-          type: types.GET_A_FULL_POST,
+          type: types.selectedPost.read.success,
           payload: {
             post: fullPost1,
           },
@@ -263,7 +263,7 @@ describe('entities reducer', () => {
     })
   })
 
-  test('should handle GET_A_FULL_TOPIC', () => {
+  test('should handle types.selectedTopic.read.success', () => {
     expect(
       reducer(
         {
@@ -278,7 +278,7 @@ describe('entities reducer', () => {
           },
         },
         {
-          type: types.GET_A_FULL_TOPIC,
+          type: types.selectedTopic.read.success,
           payload: {
             topic: fullTopic1,
           },

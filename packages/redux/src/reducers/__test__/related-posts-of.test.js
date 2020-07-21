@@ -39,14 +39,14 @@ const suites = [
     ],
   },
   {
-    describe: 'should handle `types.GET_A_FULL_TOPIC`',
+    describe: 'should handle `types.selectedTopic.read.success`',
     cases: [
       {
         test: 'action.payload is undefined',
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: undefined,
           },
         },
@@ -57,7 +57,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: {},
           },
         },
@@ -68,7 +68,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: null,
           },
         },
@@ -79,7 +79,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: {
               topic: null,
             },
@@ -92,7 +92,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: {
               topic: {},
             },
@@ -105,7 +105,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: {
               topic: undefined,
             },
@@ -118,7 +118,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: {
               topic: {
                 id: 'topic-id-1',
@@ -160,7 +160,7 @@ const suites = [
             allIds: ['topic-id-1', 'topic-id-2'],
           },
           action: {
-            type: types.GET_A_FULL_TOPIC,
+            type: types.selectedTopic.read.success,
             payload: {
               topic: {
                 id: 'topic-id-2',
@@ -190,14 +190,14 @@ const suites = [
     ],
   },
   {
-    describe: 'should handle `types.GET_A_FULL_POST`',
+    describe: 'should handle `types.selectedPost.read.success`',
     cases: [
       {
         test: 'action.payload is undefined',
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: undefined,
           },
         },
@@ -208,7 +208,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: {},
           },
         },
@@ -219,7 +219,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: null,
           },
         },
@@ -230,7 +230,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: {
               post: null,
             },
@@ -243,7 +243,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: {
               post: {},
             },
@@ -256,7 +256,7 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: {
               post: undefined,
             },
@@ -269,12 +269,12 @@ const suites = [
         args: {
           state: initialState,
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: {
               post: {
                 id: 'post-id-1',
                 relateds: ['post-id-3'],
-                topics: {
+                topic: {
                   relateds: ['post-id-4'],
                 },
               },
@@ -308,12 +308,12 @@ const suites = [
             allIds: ['topic-id-1'],
           },
           action: {
-            type: types.GET_A_FULL_POST,
+            type: types.selectedPost.read.success,
             payload: {
               post: {
                 id: 'post-id-2',
                 relateds: ['post-id-1'],
-                topics: {
+                topic: {
                   relateds: ['post-id-4'],
                 },
               },

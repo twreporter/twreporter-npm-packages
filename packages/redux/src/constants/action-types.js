@@ -5,20 +5,6 @@ export default {
   AUTH_FAILURE: 'grant_authorization_failure',
   AUTH_CLEAR: 'clear_authorization',
 
-  // change selected post
-  CHANGE_SELECTED_POST: 'CHANGE_SELECTED_POST',
-  CHANGE_SELECTED_TOPIC: 'CHANGE_SELECTED_TOPIC',
-
-  // actions fetching a full topic
-  START_TO_GET_A_FULL_TOPIC: 'START_TO_GET_A_FULL_TOPIC',
-  ERROR_TO_GET_A_FULL_TOPIC: 'ERROR_TO_GET_A_FULL_TOPIC',
-  GET_A_FULL_TOPIC: 'GET_A_FULL_TOPIC',
-
-  // actions fetching a full post
-  START_TO_GET_A_FULL_POST: 'START_TO_GET_A_FULL_POST',
-  ERROR_TO_GET_A_FULL_POST: 'ERROR_TO_GET_A_FULL_POST',
-  GET_A_FULL_POST: 'GET_A_FULL_POST',
-
   FETCH_AUTHOR_DETAILS_REQUEST: 'FETCH_AUTHOR_DETAILS_REQUEST',
   FETCH_AUTHOR_DETAILS_SUCCESS: 'FETCH_AUTHOR_DETAILS_SUCCESS',
   FETCH_AUTHOR_DETAILS_FAILURE: 'FETCH_AUTHOR_DETAILS_FAILURE',
@@ -36,6 +22,24 @@ export default {
   FETCH_AUTHOR_COLLECTION_SUCCESS: 'FETCH_AUTHOR_COLLECTION_SUCCESS',
 
   SET_NEXT_POPUP_TIME_STAMP: 'SET_NEXT_POPUP_TIME_STAMP',
+
+  selectedPost: {
+    read: {
+      request: 'request to fetch the post',
+      success: 'success to fetch the post',
+      failure: 'fail to fetch the post',
+      alreadyExists: 'the post is already existed',
+    },
+  },
+
+  selectedTopic: {
+    read: {
+      request: 'request to fetch the topic',
+      success: 'success to fetch the topic',
+      failure: 'fail to fetch the topic',
+      alreadyExists: 'the topic is already existed',
+    },
+  },
 
   indexPage: {
     read: {

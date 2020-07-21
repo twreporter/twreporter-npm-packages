@@ -28,12 +28,12 @@ describe('post reducer', () => {
     expect(post({}, {})).toEqual({})
   })
 
-  test('should handle START_TO_GET_A_FULL_POST', () => {
+  test('should handle types.selectedPost.read.request', () => {
     expect(
       post(
         {},
         {
-          type: types.START_TO_GET_A_FULL_POST,
+          type: types.selectedPost.read.request,
           payload: {
             slug: 'mock-slug',
           },
@@ -46,12 +46,12 @@ describe('post reducer', () => {
     })
   })
 
-  test('should handle GET_A_FULL_POST', () => {
+  test('should handle types.selectedPost.read.success', () => {
     expect(
       post(
         {},
         {
-          type: types.GET_A_FULL_POST,
+          type: types.selectedPost.read.success,
           payload: {
             post: post1,
           },
@@ -64,12 +64,12 @@ describe('post reducer', () => {
     })
   })
 
-  test('should handle CHANGE_SELECTED_POST', () => {
+  test('should handle types.selectedPost.read.alreadyExists', () => {
     expect(
       post(
         {},
         {
-          type: types.CHANGE_SELECTED_POST,
+          type: types.selectedPost.read.alreadyExists,
           payload: {
             post: post1,
           },
@@ -82,13 +82,13 @@ describe('post reducer', () => {
     })
   })
 
-  test('should handle ERROR_TO_GET_A_FULL_POST', () => {
+  test('should handle types.selectedPost.read.failure', () => {
     const err = new Error('error occurs')
     expect(
       post(
         {},
         {
-          type: types.ERROR_TO_GET_A_FULL_POST,
+          type: types.selectedPost.read.failure,
           payload: {
             slug: 'mock-slug',
             error: err,

@@ -19,8 +19,8 @@ const { offsetToPage } = pagination
 
 export function topic(state = {}, action = {}) {
   switch (action.type) {
-    case types.GET_A_FULL_TOPIC:
-    case types.CHANGE_SELECTED_TOPIC: {
+    case types.selectedTopic.read.success:
+    case types.selectedTopic.read.alreadyExists: {
       return _.merge({}, state, {
         slug: _.get(action, 'payload.topic.slug'),
         error: null,
@@ -28,14 +28,14 @@ export function topic(state = {}, action = {}) {
       })
     }
 
-    case types.START_TO_GET_A_FULL_TOPIC:
+    case types.selectedTopic.read.request:
       return _.merge({}, state, {
         slug: _.get(action, 'payload.slug'),
         error: null,
         isFetching: true,
       })
 
-    case types.ERROR_TO_GET_A_FULL_TOPIC:
+    case types.selectedTopic.read.failure:
       return _.merge({}, state, {
         slug: _.get(action, 'payload.slug'),
         error: _.get(action, 'payload.error'),

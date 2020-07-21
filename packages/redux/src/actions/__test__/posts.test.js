@@ -55,18 +55,21 @@ describe('Testing fetchAFullPost:', () => {
     nock.cleanAll()
   })
   describe('Post is already fully fetched', () => {
-    test('Change the selected post if selected post slug is not the same as the post slug we want to fetch', () => {
-      const mockSlug = 'mock-slug'
-      const mockPost = {
-        id: 'mock-id',
-        slug: 'mock-slug',
-        brief: {},
+    test('Should dispatch alreadyExisted action', () => {
+      const fullPost = Object.assign({}, post1, {
         full: true,
-      }
+      })
+
       const store = mockStore({
         entities: {
           posts: {
-            'mock-slug': mockPost,
+            slugToId: {
+              [fullPost.slug]: fullPost.id,
+            },
+            byId: {
+              [fullPost.id]: fullPost,
+            },
+            allIds: [fullPost.id],
           },
         },
         [fieldNames.origins]: {
@@ -76,72 +79,36 @@ describe('Testing fetchAFullPost:', () => {
 
       expect.assertions(2)
 
-      return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
+      return store.dispatch(actions.fetchAFullPost(fullPost.slug)).then(() => {
         const expected = {
-          type: types.CHANGE_SELECTED_POST,
+          type: types.selectedPost.read.alreadyExists,
           payload: {
-            post: mockPost,
+            post: fullPost,
           },
         }
         expect(store.getActions().length).toBe(1)
         expect(store.getActions()[0]).toEqual(expected)
       })
     })
-    test('Do nothing if selected post slug is the same as the post slug we want to fetch', () => {
-      const mockSlug = 'mock-slug'
-      const mockPost = {
-        id: 'mock-id',
-        slug: 'mock-slug',
-        brief: {},
-        full: true,
-      }
-      const store = mockStore({
-        entities: {
-          posts: {
-            'mock-slug': mockPost,
-          },
-        },
-        selected_post: {
-          error: null,
-          slug: 'mock-slug',
-          isFetching: false,
-        },
-        [fieldNames.origins]: {
-          api: 'http://localhost:8080',
-        },
-      })
-      const expected = {
-        type: types.dataAlreadyExists,
-        payload: {
-          function: actions.fetchAFullPost.name,
-          arguments: {
-            slug: mockSlug,
-          },
-          message: expect.any(String),
-        },
-      }
-
-      expect.assertions(3)
-
-      return store.dispatch(actions.fetchAFullPost(mockSlug)).then(result => {
-        expect(result).toEqual(expected)
-        expect(store.getActions().length).toBe(1)
-        expect(store.getActions()[0]).toEqual(expected)
-      })
-    })
   })
   describe('It loads a full post successfully', () => {
-    test('Should dispatch types.START_TO_GET_A_FULL_POST and types.GET_A_FULL_POST', () => {
-      const mockSlug = 'mock-slug'
+    test('Should dispatch request and success actions', () => {
+      const metaOfPost = Object.assign({}, post1, {
+        full: false,
+      })
+      const fullPost = Object.assign({}, post1, {
+        full: true,
+      })
       const store = mockStore({
         entities: {
           posts: {
-            'mock-slug': {
-              id: 'mock-id',
-              slug: 'mock-slug',
-              style: 'article',
-              full: false,
+            slugToId: {
+              [metaOfPost.slug]: metaOfPost.id,
             },
+            byId: {
+              [metaOfPost.id]: metaOfPost,
+            },
+            allIds: [metaOfPost.id],
           },
         },
         [fieldNames.origins]: {
@@ -150,48 +117,40 @@ describe('Testing fetchAFullPost:', () => {
       })
       const mockApiResponse = {
         status: 'success',
-        data: {
-          id: 'mock-id',
-          slug: 'mock-slug',
-          style: 'article',
-          full: false,
-        },
+        data: fullPost,
       }
 
       nock(mockApiHost)
-        .get(`/v2/posts/${mockSlug}?full=true`)
+        .get(`/v2/posts/${metaOfPost.slug}?full=true`)
         .reply(200, mockApiResponse)
 
       expect.assertions(3)
 
-      return store.dispatch(actions.fetchAFullPost(mockSlug)).then(() => {
-        const expected = [
-          {
-            type: types.START_TO_GET_A_FULL_POST,
-            payload: {
-              slug: mockSlug,
-            },
-          },
-          {
-            type: types.GET_A_FULL_POST,
-            payload: {
-              post: {
-                id: 'mock-id',
-                slug: 'mock-slug',
-                style: 'article',
-                full: false,
+      return store
+        .dispatch(actions.fetchAFullPost(metaOfPost.slug))
+        .then(() => {
+          const expected = [
+            {
+              type: types.selectedPost.read.request,
+              payload: {
+                slug: metaOfPost.slug,
               },
             },
-          },
-        ]
-        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0]).toEqual(expected[0])
-        expect(store.getActions()[1]).toEqual(expected[1])
-      })
+            {
+              type: types.selectedPost.read.success,
+              payload: {
+                post: fullPost,
+              },
+            },
+          ]
+          expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
+          expect(store.getActions()[0]).toEqual(expected[0])
+          expect(store.getActions()[1]).toEqual(expected[1])
+        })
     })
   })
   describe('If the api returns a failure', () => {
-    test('Should dispatch types.START_TO_GET_A_FULL_POST and types.ERROR_TO_GET_A_FULL_POST', () => {
+    test('Should dispatch request and failure actions', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -216,13 +175,13 @@ describe('Testing fetchAFullPost:', () => {
         .catch(failAction => {
           const expected = [
             {
-              type: types.START_TO_GET_A_FULL_POST,
+              type: types.selectedPost.read.request,
               payload: {
                 slug: mockSlug,
               },
             },
             {
-              type: types.ERROR_TO_GET_A_FULL_POST,
+              type: types.selectedPost.read.failure,
               payload: {
                 error: expect.any(Error),
                 slug: mockSlug,
