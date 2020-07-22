@@ -25,7 +25,7 @@ export default function settings(state = defaultState, action = {}) {
           return _.assign({}, state, { fontLevel: payload })
         }
         default: {
-          return _.assign({}, state, { fontLevel: _fontLevels.small })
+          return state
         }
       }
     }
