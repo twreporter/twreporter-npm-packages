@@ -56,12 +56,6 @@ const rootReducer = combineReducers({
     }
     return state
   },
-  [reduxStatePropKey.nextNotifyPopupTS]: (state = 0, action) => {
-    if (action.type === types.SET_NEXT_POPUP_TIME_STAMP) {
-      return action.payload
-    }
-    return state
-  },
   [reduxStatePropKey.origins]: origins,
   [reduxStatePropKey.settings]: settings,
 })
