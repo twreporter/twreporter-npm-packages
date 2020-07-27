@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.3-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.2.3-rc.3...@twreporter/react-components@8.2.3-rc.4) (2020-07-27)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
 ## [8.2.3-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.2.3-rc.2...@twreporter/react-components@8.2.3-rc.3) (2020-07-21)
 
 **Note:** Version bump only for package @twreporter/react-components
