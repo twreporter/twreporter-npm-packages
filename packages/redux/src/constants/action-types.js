@@ -98,6 +98,7 @@ export default {
       request: 'request to fetch feature topic',
       success: 'success to fetch feature topic',
       failure: 'fail to fetch feature topic',
+      alreadyExists: 'feature topic is already existed',
     },
   },
 
@@ -106,6 +107,7 @@ export default {
       request: 'request to fetch topics',
       success: 'success to fetch topics',
       failure: 'fail to fetch topics',
+      alreadyExists: 'topics are already existed',
     },
   },
 

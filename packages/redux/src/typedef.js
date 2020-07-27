@@ -76,7 +76,9 @@
  *  Topic type definition
  *  @typedef {Object} Topic
  *  @property {Image} leading_image
+ *  @property {Image} leading_image_portrait
  *  @property {Image} og_image
+ *  @property {ObjectID[]} relateds - ObjectIDs of related posts
  *  @property {Slug} slug
  *  @property {bool} full
  *  @property {string} id
@@ -104,7 +106,6 @@
  *  @property {Object} team_description
  *  @property {Object[]} team_description.api_data
  *  @property {Object} leading_video
- *  @property {ObjectID[]} relateds - ObjectIDs of related posts
  *  @property {string} headline
  *  @property {string} og_title
  *  @property {string} relateds_background

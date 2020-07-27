@@ -191,54 +191,39 @@ describe('Testing fetchTopics:', () => {
   afterEach(() => {
     nock.cleanAll()
   })
-  describe('There is no such page of topics to load', () => {
-    test('Should dispatch types.topics.read.success with empty items array', () => {
-      const store = mockStore({
-        [fieldNames.topicList]: {
-          page: 2,
-          totalPages: 2,
-          items: {
-            1: [topic1.slug],
-            2: [topic2.slug],
-          },
+  test('Dispatch already existed action', () => {
+    const nPerPage = 1
+    const page = 2
+    const store = mockStore({
+      [fieldNames.topicList]: {
+        nPerPage,
+        page,
+        totalPages: 2,
+        items: {
+          1: [topic1.slug],
+          [page]: [topic2.slug],
         },
-        [fieldNames.origins]: {
-          api: 'http://localhost:8080',
-        },
-      })
-      const page = 3
-      const nPerPage = 1
-      const { limit, offset } = pageToOffset({ page, nPerPage })
-      const total = 5
-      const mockApiResponse = {
-        status: 'success',
-        data: {
-          records: [],
-          meta: {
-            limit,
-            total,
-            offset,
-          },
-        },
-      }
-      nock('http://localhost:8080')
-        .get(encodeURI(`/v2/topics?limit=${limit}&offset=${offset}`))
-        .reply(200, mockApiResponse)
+        isFetching: false,
+        error: null,
+      },
+      [fieldNames.origins]: {
+        api: 'http://localhost:8080',
+      },
+    })
 
-      return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
-        expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[1].type).toBe(types.topics.read.success)
-        expect(store.getActions()[1].payload).toEqual({
-          items: [],
-          total,
-          limit,
-          offset,
-        })
+    return store.dispatch(actions.fetchTopics(page, nPerPage)).then(() => {
+      expect(store.getActions().length).toBe(1)
+      expect(store.getActions()[0]).toEqual({
+        type: types.topics.read.alreadyExists,
+        payload: {
+          page,
+          nPerPage,
+        },
       })
     })
   })
-  describe('It loads topics successfully', () => {
-    test('Should dispatch types.topics.read.success', () => {
+  describe('Dispatch success action', () => {
+    test('if it loads topics successfully', () => {
       const store = mockStore({
         [fieldNames.topicList]: {
           items: {
@@ -282,8 +267,8 @@ describe('Testing fetchTopics:', () => {
       })
     })
   })
-  describe('If the api returns a failure', () => {
-    test('Should dispatch types.topics.read.failure', () => {
+  describe('Dispatch failure action', () => {
+    test('if api returns the response with 500 status code', () => {
       const limit = 1
       const offset = 0
       const store = mockStore({
@@ -325,9 +310,7 @@ describe('Testing fetchTopics:', () => {
         )
       })
     })
-  })
-  describe('If the parameter nPerPage is invalid', () => {
-    test('Should dispatch no action and return a Promise.reject(err)', () => {
+    test('if the parameter nPerPage is invalid', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -352,9 +335,7 @@ describe('Testing fetchTopics:', () => {
           )
         })
     })
-  })
-  describe('If the parameter page is invalid', () => {
-    test('Should dispatch no action and return a Promise.reject(err)', () => {
+    test('if the parameter page is invalid', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -408,6 +389,34 @@ describe('Test function `fetchFeatureTopic`', () => {
 
   const mockFeatureTopicWithoutRelateds = Object.assign({}, mockFeatureTopic, {
     relateds: [],
+  })
+
+  test('Dispatch already existed action', () => {
+    const store = mockStore({
+      [fieldNames.origins]: {
+        api: mockApiHost,
+      },
+      [fieldNames.featureTopic]: {
+        id: mockFeatureTopic.id,
+        error: null,
+        isFetching: false,
+        lastThreeRelatedPostIds: mockFeatureTopic.relateds.slice(-3),
+      },
+    })
+
+    const returnValue = {
+      type: types.featureTopic.read.alreadyExists,
+    }
+
+    const expectedActions = [returnValue]
+
+    expect.assertions(3)
+
+    return store.dispatch(actions.fetchFeatureTopic()).then(result => {
+      expect(result).toEqual(returnValue)
+      expect(store.getActions().length).toBe(expectedActions.length)
+      expect(store.getActions()).toEqual(expectedActions)
+    })
   })
 
   describe('Dispatch success action', () => {

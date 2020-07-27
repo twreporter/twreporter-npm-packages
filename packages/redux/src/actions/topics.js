@@ -165,6 +165,19 @@ export function fetchTopics(page = 1, nPerPage = 5) {
     /* construct request path */
     const { limit, offset } = pageToOffset({ page, nPerPage })
     const state = getState()
+    if (
+      _.get(state, [stateFieldNames.topicList, 'items', page, 'length'], 0) > 0
+    ) {
+      const action = {
+        type: types.topics.read.alreadyExists,
+        payload: {
+          page,
+          nPerPage,
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
+    }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v2/${apiEndpoints.topics}`
     const params = {
@@ -192,6 +205,15 @@ export function fetchTopics(page = 1, nPerPage = 5) {
 export function fetchFeatureTopic() {
   return (dispatch, getState) => {
     const state = getState()
+
+    if (_.get(state, [stateFieldNames.featureTopic, 'id'])) {
+      const action = {
+        type: types.featureTopic.read.alreadyExists,
+      }
+      dispatch(action)
+      return Promise.resolve(action)
+    }
+
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const url = formURL(apiOrigin, `/v2/${apiEndpoints.topics}`, {
       limit: 1,
