@@ -277,6 +277,8 @@ const _fontLevel = {
  *  @property {string} topic_name - Name of topic
  */
 
+function noop() {}
+
 /**
  *  @exports
  */
@@ -292,6 +294,8 @@ export default class Article extends PureComponent {
     ]),
     LinkComponent: PropTypes.elementType,
     onFontLevelChange: PropTypes.func,
+    hasMoreRelateds: PropTypes.bool,
+    loadMoreRelateds: PropTypes.func,
   }
 
   static defaultProps = {
@@ -299,6 +303,8 @@ export default class Article extends PureComponent {
     fontLevel: _fontLevel.small,
     relatedPosts: [],
     relatedTopic: {},
+    hasMoreRelateds: false,
+    loadMoreRelateds: noop,
   }
 
   constructor(props) {
@@ -395,6 +401,8 @@ export default class Article extends PureComponent {
       post,
       relatedPosts,
       relatedTopic,
+      hasMoreRelateds,
+      loadMoreRelateds,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -491,11 +499,13 @@ export default class Article extends PureComponent {
                 publishedDate={post.published_date}
               />
               <StyledSeparationCurve />
-              {_.get(relatedPosts, 'length', 0) > 0 ? (
-                <RelatedBlock>
-                  <Related data={relatedPosts} />
-                </RelatedBlock>
-              ) : null}
+              <RelatedBlock>
+                <Related
+                  data={relatedPosts}
+                  hasMore={hasMoreRelateds}
+                  loadMore={loadMoreRelateds}
+                />
+              </RelatedBlock>
             </BodyBackground>
           </BackgroundBlock>
         </DynamicComponentsContext.Provider>

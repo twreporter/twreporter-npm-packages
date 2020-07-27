@@ -131,10 +131,13 @@ const screen = {
 export default class Related extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array,
+    hasMore: PropTypes.bool,
+    loadMore: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     data: [],
+    hasMore: false,
   }
 
   constructor(props) {
@@ -211,13 +214,18 @@ export default class Related extends React.PureComponent {
   }
 
   render() {
-    const { data } = this.props
+    const { data, hasMore, loadMore } = this.props
     const { lastWindowWidth } = this.state
     const relateds = _.map(data, this._buildRelated)
     return (
       <Block>
         <Descriptor />
-        <List key={`list-width-${lastWindowWidth}`} data={relateds} />
+        <List
+          key={`list-width-${lastWindowWidth}`}
+          data={relateds}
+          hasMore={hasMore}
+          loadMore={loadMore}
+        />
       </Block>
     )
   }
