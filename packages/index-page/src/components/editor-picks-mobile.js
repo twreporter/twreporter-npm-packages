@@ -104,11 +104,11 @@ class EditorPicksMobile extends SwipableMixin {
       }
     }
     const ImageComp = post => {
-      const style = _.get(post, 'style', '')
-      const href = getHref(_.get(post, 'slug', 'error'), style)
+      const isExternal = _.get(post, 'is_external', false)
+      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       const heroImg = _.get(post, 'hero_image')
       return (
-        <TRLink href={href} redirect={style === 'interactive'}>
+        <TRLink href={href} redirect={isExternal}>
           <ImgFrame>
             <ImgWrapper
               alt={_.get(heroImg, 'description')}
@@ -138,8 +138,8 @@ class EditorPicksMobile extends SwipableMixin {
     })
 
     const textFrameContent = data.map((post, index) => {
-      const style = _.get(post, 'style', '')
-      const href = getHref(_.get(post, 'slug', 'error'), style)
+      const isExternal = _.get(post, 'is_external', false)
+      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       const fadingStyle = {
         opacity: this.state.selected === index ? '1' : '0',
         zIndex: this.state.selected === index ? '1' : '0',
@@ -152,7 +152,7 @@ class EditorPicksMobile extends SwipableMixin {
         >
           <Category>{_.get(post, 'categories[0].name', '')}</Category>
           <Title style={fadingStyle}>
-            <TRLink href={href} redirect={style === 'interactive'}>
+            <TRLink href={href} redirect={isExternal}>
               <TitleSpan>{_.get(post, 'title', '')}</TitleSpan>
             </TRLink>
           </Title>

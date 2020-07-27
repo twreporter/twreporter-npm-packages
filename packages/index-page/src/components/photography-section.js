@@ -154,11 +154,11 @@ const More = styled.div`
 
 class Photography extends React.PureComponent {
   render() {
-    const { title, imgObj, isHover, slug, style } = this.props
-    const href = getHref(slug, style)
+    const { title, imgObj, isHover, slug, isExternal } = this.props
+    const href = getHref(slug, isExternal)
     return (
       <Item>
-        <TRLink href={href} redirect={style === 'interactive'}>
+        <TRLink href={href} redirect={isExternal}>
           <Img>
             <ImgWrapper
               alt={imgObj.alt}
@@ -187,17 +187,17 @@ class Photography extends React.PureComponent {
 Photography.defaultProps = {
   title: '',
   imgObj: {},
+  isExternal: false,
   isHover: false,
   slug: '',
-  style: '',
 }
 
 Photography.propTypes = {
   title: PropTypes.string,
   imgObj: PropTypes.object,
+  isExternal: PropTypes.bool,
   isHover: PropTypes.bool,
   slug: PropTypes.string,
-  style: PropTypes.string,
 }
 
 class PhotographySection extends React.PureComponent {
@@ -292,7 +292,7 @@ class PhotographySection extends React.PureComponent {
               }}
               isHover={isHover}
               slug={_.get(item, 'slug')}
-              style={_.get(item, 'style', '')}
+              isExternal={_.get(item, 'is_external', false)}
               ifSrcset={this.state.ifSrcset}
             />
           </span>

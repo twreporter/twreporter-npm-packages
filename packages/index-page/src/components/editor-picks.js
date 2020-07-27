@@ -256,8 +256,8 @@ class EditorPicks extends React.Component {
     }
     const FlexItems = (() => {
       return swappedData.map((obj, i) => {
-        const style = _.get(obj, 'style', '')
-        const href = getHref(_.get(obj, 'slug', 'error'), style)
+        const isExternal = _.get(obj, 'is_external', false)
+        const href = getHref(_.get(obj, 'slug', 'error'), isExternal)
         const propsMap = {
           middle: false,
           onClick: () => {},
@@ -280,7 +280,7 @@ class EditorPicks extends React.Component {
             }}
           >
             {i === this.state.selected ? (
-              <TRLink href={href} redirect={style === 'interactive'} plain>
+              <TRLink href={href} redirect={isExternal} plain>
                 <HoverEffect ifHover={this.state.ifHover}>
                   <Title
                     middle={propsMap.middle}
@@ -337,8 +337,8 @@ class EditorPicks extends React.Component {
 
       return propList.map(theProp => {
         return swappedData.map((post, index) => {
-          const style = _.get(post, 'style', '')
-          const href = getHref(_.get(post, 'slug', 'error'), style)
+          const isExternal = _.get(post, 'is_external', false)
+          const href = getHref(_.get(post, 'slug', 'error'), isExternal)
           const currentData = _.get(post, theProp.dataPath, '')
           const selectDataToShow = {
             left: this.state.selected - 1,
@@ -356,7 +356,7 @@ class EditorPicks extends React.Component {
               isSelected={index === selectDataToShow[theProp.position]}
             >
               {theProp.dataPath === 'og_description' ? (
-                <TRLink href={href} redirect={style === 'interactive'} plain>
+                <TRLink href={href} redirect={isExternal} plain>
                   <theProp.component
                     ifHover={this.state.ifHover}
                     top={theProp.propsForComponent.top}
@@ -387,8 +387,8 @@ class EditorPicks extends React.Component {
 
     const Images = swappedData.map((post, index) => {
       const heroImg = _.get(post, 'hero_image')
-      const style = _.get(post, 'style', '')
-      const href = getHref(_.get(post, 'slug', 'error'), style)
+      const isExternal = _.get(post, 'is_external', false)
+      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       const fadingStyle = {
         opacity: this.state.selected === index ? '1' : '0',
         zIndex: this.state.selected === index ? '1' : '0',
@@ -399,7 +399,7 @@ class EditorPicks extends React.Component {
           key={_.get(heroImg, 'id')}
           isSelected={index === this.state.selected}
         >
-          <TRLink href={href} redirect={style === 'interactive'} plain>
+          <TRLink href={href} redirect={isExternal} plain>
             <HoverEffect ifHover={this.state.ifHover}>
               <ImgFrame
                 onMouseEnter={this.handleOnMouseEnter}
