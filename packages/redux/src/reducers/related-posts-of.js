@@ -17,10 +17,10 @@ const initialState = {
 }
 
 /**
- *  @param {import('../typedef').ReduxState.relatedPostsof} state
- *  @param {Object} action
- *  @param {string} action.type
- *  @param {Object} action.payload
+ *  @param {import('../typedef').RelatedPostsOf} state
+ *  @param {Object} [action = {}]
+ *  @param {string} [action.type]
+ *  @param {Object} [action.payload]
  *  @param {string} action.payload.targetEntityId
  *  @param {string[]} action.payload.targetRelatedPostsIds
  *  @param {Object} action.payload.error

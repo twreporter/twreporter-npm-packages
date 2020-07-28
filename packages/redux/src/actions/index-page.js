@@ -84,6 +84,6 @@ export function fetchIndexPageContent() {
     }
 
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    return _fetch(dispatch, apiOrigin, `/v2/${apiEndpoints.indexPage}`)
+    return _fetch(dispatch, apiOrigin, `/v2/${apiEndpoints.indexPage}`, {})
   }
 }

@@ -19,7 +19,8 @@ const _ = {
 
 const { entities, postsInEntities } = stateFieldNames
 
-/* Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
+/**
+ * Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of post
  * @return {import('../typedef').Thunk} async action creator
  */
@@ -91,7 +92,7 @@ export function fetchAFullPost(slug) {
           error,
           types.selectedPost.read.failure
         )
-        failAction.payload.slug = slug
+        failAction.payload['slug'] = slug
         dispatch(failAction)
         return Promise.reject(failAction)
       })
@@ -142,7 +143,6 @@ function _fetchPosts(
 /**
  *  Given ObjectID of a target entity (post or topic), this functions will load the related posts
  *  of that target entity.
- *
  *  @param {import('../typedef').ObjectID} entityId - ObjectID of a entity, which could be a post or topic
  *  @param {number} limit - specify how many posts to load
  *  @return {import('../typedef').Thunk} async action creator
@@ -151,6 +151,7 @@ export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
   return (dispatch, getState) => {
     /** @type {import('../typedef').ReduxState} */
     const state = getState()
+
     const allPostIds = _.get(
       state,
       [stateFieldNames.entities, stateFieldNames.postsInEntities, 'allIds'],
@@ -228,7 +229,8 @@ export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
 
 const startPage = 1
 
-/* Fetch a listed posts(only containing meta properties),
+/**
+ * Fetch a listed posts(only containing meta properties),
  * such as the posts belonging to the same tag/category/topic.
  * @param {string} listId - id of tag or category
  * @param {string} listType - tag_id or category_id
