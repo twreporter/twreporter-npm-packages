@@ -64,8 +64,8 @@ export default {}
  *  @property {Image} og_image
  *  @property {Slug} slug
  *  @property {Tag[]} tags
- *  @property {bool} full
- *  @property {bool} is_external
+ *  @property {boolean} full
+ *  @property {boolean} is_external
  *  @property {string} id
  *  @property {string} og_description
  *  @property {string} published_date
@@ -82,7 +82,7 @@ export default {}
  *  @property {Image} og_image
  *  @property {ObjectID[]} relateds - ObjectIDs of related posts
  *  @property {Slug} slug
- *  @property {bool} full
+ *  @property {boolean} full
  *  @property {string} id
  *  @property {string} og_description
  *  @property {string} title
@@ -138,14 +138,14 @@ export default {}
  *  @property {Object.<number, number[]>} pages - Page to item positions. Ex: `1: [0, 9]`, which means items[0] - items[9] are for page 1
  *  @property {ObjectID[]} items
  *  @property {Object} error
- *  @property {bool} isFetching
+ *  @property {boolean} isFetching
  *  @property {number} total
  */
 
 /**
  *  TopicList type definition
  *  @typedef {Object} TopicList
- *  @property {bool} isFetching
+ *  @property {boolean} isFetching
  *  @property {Object.<number, ObjectID[]>} items - Page to objectID. Ex: `1: ['id_1', 'id_2']`, which means page 1 having 'id_1' and 'id_2' entities
  *  @property {Object} error
  *  @property {number} totalPages
@@ -186,7 +186,7 @@ export default {}
 /**
  *  RelatedPostsOfAnEntity type definition
  *  @typedef {Object} RelatedPostsOfAnEntity
- *  @property {bool} isFetching
+ *  @property {boolean} isFetching
  *  @property {Object} error
  *  @property {ObjectID[]} more - Enitites not loaded, but indicate what we can load next
  *  @property {ObjectID[]} items- Entities already loaded and ready for rendering
@@ -195,7 +195,7 @@ export default {}
 /**
  *  FeatureTopic type definition
  *  @typedef {Object} FeatureTopic
- *  @property {bool} isFetching
+ *  @property {boolean} isFetching
  *  @property {string} id - topic id
  *  @property {Object} error
  *  @property {ObjectID[]} lastThreeRelatedPostIds - three related posts, sort by published_date in descending order, of topic
@@ -209,7 +209,7 @@ export default {}
  *
  *  @property {Object} index_page
  *  @property {Object} index_page.error
- *  @property {bool} index_page.isFetching
+ *  @property {boolean} index_page.isFetching
  *  @property {ObjectID[]} index_page.culture_and_art
  *  @property {ObjectID[]} index_page.editor_picks_section
  *  @property {ObjectID[]} index_page.environment_and_education
@@ -227,12 +227,12 @@ export default {}
  *  @property {Object} selected_post
  *  @property {Object} selected_post.error
  *  @property {Slug} selected_post.slug
- *  @property {bool} selected_post.isFetching
+ *  @property {boolean} selected_post.isFetching
  *
  *  @property {Object} selected_topic
  *  @property {Object} selected_topic.error
  *  @property {Slug} selected_topic.slug
- *  @property {bool} selected_topic.isFetching
+ *  @property {boolean} selected_topic.isFetching
  *
  *  @property {Object.<ObjectID, PostList>} lists
  *
