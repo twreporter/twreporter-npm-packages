@@ -9,7 +9,7 @@ const _ = {
   map,
 }
 
-/** @type {import('../typedef').ReduxState.featureTopic} */
+/** @type {import('../typedef').FeatureTopic} */
 const initialState = {
   isFetching: false,
   error: null,
@@ -18,10 +18,10 @@ const initialState = {
 }
 
 /**
- *  @param {import('../typedef').ReduxState.featureTopic} state
- *  @param {Object} action
- *  @param {string} action.type
- *  @param {Object} action.payload
+ *  @param {import('../typedef').FeatureTopic} state
+ *  @param {Object} [action={}]
+ *  @param {string} [action.type]
+ *  @param {Object} [action.payload]
  *  @param {Object} action.payload.topic
  *  @param {Object[]} action.payload.lastThreeRelatedPosts
  *  @param {Object} action.payload.error

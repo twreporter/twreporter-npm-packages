@@ -65,7 +65,7 @@ function refineAxiosConfig(axiosConfig) {
  *  @property {Object} config - Axios config
  *  @property {Object} request - Axios request
  *  @property {Object} response- Axios response
- *  @property {bool} isAxiosError
+ *  @property {boolean} isAxiosError
  *  @property {string} message - Error message
  *  @property {string} stack - Error stack
  */

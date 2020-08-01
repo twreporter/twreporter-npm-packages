@@ -1,3 +1,5 @@
+export default {}
+
 /**
  *  Mongodb ObjectID type definition
  *  @typedef {string} ObjectID
@@ -54,16 +56,16 @@
  */
 
 /**
- *  Post type definition
- *  @typedef {Object} Post
+ *  MetaOfPost type definition
+ *  @typedef {Object} MetaOfPost
  *  @property {Category[]} categories
  *  @property {Image} hero_image
  *  @property {Image} leading_image_portrait
  *  @property {Image} og_image
  *  @property {Slug} slug
  *  @property {Tag[]} tags
- *  @property {bool} full
- *  @property {bool} is_external
+ *  @property {boolean} full
+ *  @property {boolean} is_external
  *  @property {string} id
  *  @property {string} og_description
  *  @property {string} published_date
@@ -73,14 +75,14 @@
  */
 
 /**
- *  Topic type definition
- *  @typedef {Object} Topic
+ *  MetaOfTopic type definition
+ *  @typedef {Object} MetaOfTopic
  *  @property {Image} leading_image
  *  @property {Image} leading_image_portrait
  *  @property {Image} og_image
  *  @property {ObjectID[]} relateds - ObjectIDs of related posts
  *  @property {Slug} slug
- *  @property {bool} full
+ *  @property {boolean} full
  *  @property {string} id
  *  @property {string} og_description
  *  @property {string} title
@@ -90,17 +92,7 @@
 
 /**
  *  FullTopic type definition
- *  @typedef {Object} FullTopic
- *  @property {Image} leading_image
- *  @property {Image} og_image
- *  @property {Slug} slug
- *  @property {bool} full
- *  @property {string} id
- *  @property {string} og_description
- *  @property {string} title
- *  @property {string} short_title
- *  @property {string} published_date
- *
+ *  @typedef {MetaOfTopic} FullTopic
  *  @property {Object} description
  *  @property {Object[]} description.api_data
  *  @property {Object} team_description
@@ -117,22 +109,7 @@
 
 /**
  *  FullPost type definition
- *  @typedef {Object} FullPost
- *  @property {Category[]} categories
- *  @property {Image} hero_image
- *  @property {Image} leading_image_portrait
- *  @property {Image} og_image
- *  @property {Slug} slug
- *  @property {Tag[]} tags
- *  @property {bool} full
- *  @property {bool} is_external
- *  @property {string} id
- *  @property {string} og_description
- *  @property {string} published_date
- *  @property {string} style
- *  @property {string} subtitle
- *  @property {string} title
- *
+ *  @typedef {MetaOfPost} FullPost
  *  @property {Author[]} designers
  *  @property {Author[]} engineers
  *  @property {Author[]} photographers
@@ -161,14 +138,14 @@
  *  @property {Object.<number, number[]>} pages - Page to item positions. Ex: `1: [0, 9]`, which means items[0] - items[9] are for page 1
  *  @property {ObjectID[]} items
  *  @property {Object} error
- *  @property {bool} isFetching
+ *  @property {boolean} isFetching
  *  @property {number} total
  */
 
 /**
  *  TopicList type definition
  *  @typedef {Object} TopicList
- *  @property {bool} isFetching
+ *  @property {boolean} isFetching
  *  @property {Object.<number, ObjectID[]>} items - Page to objectID. Ex: `1: ['id_1', 'id_2']`, which means page 1 having 'id_1' and 'id_2' entities
  *  @property {Object} error
  *  @property {number} totalPages
@@ -178,8 +155,8 @@
 
 /**
  *  PostEntities type definition
- *  @typedef {Object} PostEnitity
- *  @property {Object.<ObjectID, Post|FullPost>} byId
+ *  @typedef {Object} PostEntities
+ *  @property {Object.<ObjectID, MetaOfPost|FullPost>} byId
  *  @property {ObjectID[]} allIds
  *  @property {Object.<Slug, ObjectID>} slugToId
  */
@@ -187,31 +164,52 @@
 /**
  *  TopicEntities type definition
  *  @typedef {Object} TopicEntities
- *  @property {Object.<ObjectID, Topic|FullTopic>} byId
+ *  @property {Object.<ObjectID, MetaOfTopic|FullTopic>} byId
  *  @property {ObjectID[]} allIds
  *  @property {Object.<Slug, ObjectID>} slugToId
  */
 
 /**
+ *  Entities type definition
+ *  @typedef {Object} Entities
+ *  @property {PostEntities} posts
+ *  @property {TopicEntities} topics
+ */
+
+/**
+ *  RelatedPostsOf type definition
+ *  @typedef {Object} RelatedPostsOf
+ *  @property {Object.<ObjectID, RelatedPostsOfAnEntity>} byId
+ *  @property {ObjectID[]} allIds - ids of entities
+ */
+
+/**
  *  RelatedPostsOfAnEntity type definition
  *  @typedef {Object} RelatedPostsOfAnEntity
- *  @property {bool} isFetching
+ *  @property {boolean} isFetching
  *  @property {Object} error
  *  @property {ObjectID[]} more - Enitites not loaded, but indicate what we can load next
  *  @property {ObjectID[]} items- Entities already loaded and ready for rendering
  */
 
 /**
+ *  FeatureTopic type definition
+ *  @typedef {Object} FeatureTopic
+ *  @property {boolean} isFetching
+ *  @property {string} id - topic id
+ *  @property {Object} error
+ *  @property {ObjectID[]} lastThreeRelatedPostIds - three related posts, sort by published_date in descending order, of topic
+ */
+
+/**
  *  ReduxState type definition
  *  @typedef {Object} ReduxState
  *
- *  @property {Object} entities
- *  @property {PostEntities} entities.posts
- *  @property {TopicEntities} entities.topics
+ *  @property {Entities} entities
  *
  *  @property {Object} index_page
  *  @property {Object} index_page.error
- *  @property {bool} index_page.isFetching
+ *  @property {boolean} index_page.isFetching
  *  @property {ObjectID[]} index_page.culture_and_art
  *  @property {ObjectID[]} index_page.editor_picks_section
  *  @property {ObjectID[]} index_page.environment_and_education
@@ -229,27 +227,20 @@
  *  @property {Object} selected_post
  *  @property {Object} selected_post.error
  *  @property {Slug} selected_post.slug
- *  @property {bool} selected_post.isFetching
+ *  @property {boolean} selected_post.isFetching
  *
  *  @property {Object} selected_topic
  *  @property {Object} selected_topic.error
  *  @property {Slug} selected_topic.slug
- *  @property {bool} selected_topic.isFetching
+ *  @property {boolean} selected_topic.isFetching
  *
- *  @property {Object} lists
- *  @property {Object.<ObjectID, PostList>}
+ *  @property {Object.<ObjectID, PostList>} lists
  *
  *  @property {TopicList} topic_list
  *
- *  @property {Object} relatedPostsOf
- *  @property {Object.<ObjectID, RelatedPostsOfAnEntity>} relatedPostsOf.byId
- *  @property {ObjectID[]} relatedPostsOf.allIds - ids of entities
+ *  @property {RelatedPostsOf} relatedPostsOf
  *
- *  @property {Object} featureTopic
- *  @property {bool} isFetching
- *  @property {string} id - topic id
- *  @property {Object} error
- *  @property {ObjectID[]} lastThreeRelatedPostIds - three related posts, sort by published_date in descending order, of topic
+ *  @property {FeatureTopic} featureTopic
  *
  *  @property {Object} articlesByAuthor
  *  @property {Object} auth
@@ -264,8 +255,7 @@
 
 /**
  *  Description of async action creator
- *  @name Thunk
- *  @function
+ *  @callback Thunk
  *  @param {Function} dispatch - Redux store dispatch function
  *  @param {Function} getState - Redux store getState function
  *  @return {Promise} resolve with success action or reject with fail action

@@ -23,9 +23,6 @@ const _ = {
   merge,
 }
 
-/**
- *  @param {import(../typedef).ReduxState} reduxState
- */
 const rootReducer = combineReducers({
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
   [reduxStatePropKey.auth]: authReducer,

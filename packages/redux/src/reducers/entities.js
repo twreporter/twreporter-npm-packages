@@ -21,14 +21,13 @@ const _ = {
   values,
 }
 
-/**  @type {import('../typedef').ReduxState.entities} */
 const defaultState = {
-  [fieldNames.postsInEntities]: {
+  posts: {
     allIds: [],
     byId: {},
     slugToId: {},
   },
-  [fieldNames.topicsInEntities]: {
+  topics: {
     allIds: [],
     byId: {},
     slugToId: {},
@@ -40,8 +39,8 @@ const defaultState = {
  *  `overwriteExisted` argument is true , then we will put this entity in the returned object.
  *
  *  @param {string[]} allIds - array of entity ids
- *  @param {{id: string, slug: string, full: bool}[]} entities - array of entities
- *  @param {bool} [overwriteExisted=false] - not to overwrite existed entity if false, otherwise overwrite
+ *  @param {{id: string, slug: string, full: boolean}[]} entities - array of entities
+ *  @param {boolean} [overwriteExisted=false] - not to overwrite existed entity if false, otherwise overwrite
  *  @return {{byId: Object, slugToId: Object, allIds: string[]}}
  */
 function _buildState(allIds, entities, overwriteExisted = false) {
@@ -78,11 +77,11 @@ function _buildState(allIds, entities, overwriteExisted = false) {
 }
 
 /**
- *  @param {import('../typedef').ReduxState.entities} state
- *  @param {Object} action
- *  @param {string} action.type
- *  @param {Object} action.payload
- *  @return {import('../typedef').ReduxState.entities}
+ *  @param {import('../typedef').Entities} [state=defaultState]
+ *  @param {Object} [action={}]
+ *  @param {string} [action.type]
+ *  @param {Object} [action.payload]
+ *  @return {import('../typedef').Entities}
  */
 function entities(state = defaultState, action = {}) {
   switch (action.type) {

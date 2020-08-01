@@ -80,7 +80,7 @@ export function fetchAFullTopic(slug) {
           error,
           types.selectedTopic.read.failure
         )
-        failAction.payload.slug = slug
+        failAction.payload['slug'] = slug
         dispatch(failAction)
         return Promise.reject(failAction)
       })
@@ -132,9 +132,12 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
     })
 }
 
-/* Fetch topics(only containing meta properties),
+/**
+ * Fetch topics(only containing meta properties),
  * and it will load more if (total > items you have currently).
- * @param {number} limit - the number of posts you want to get in one request
+ *
+ * @param {number} [page=1]
+ * @param {number} [nPerPage=5]
  * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchTopics(page = 1, nPerPage = 5) {
@@ -248,32 +251,21 @@ export function fetchFeatureTopic() {
             })
             return Promise.all([
               topic,
-              axios.get(url, {
-                timeout: apiConfig.timeout,
-              }),
+              axios
+                .get(url, {
+                  timeout: apiConfig.timeout,
+                })
+                .then(res => _.get(res, 'data.data.records', [])),
             ])
           }
 
           // return empty response
-          return [
-            topic,
-            {
-              data: {
-                data: {
-                  records: [],
-                },
-              },
-            },
-          ]
+          return Promise.all([topic, []])
         })
         // dispatch success action
         .then(results => {
           const topic = results[0]
-          const lastThreeRelatedPosts = _.get(
-            results,
-            '1.data.data.records',
-            []
-          )
+          const lastThreeRelatedPosts = results[1]
 
           const action = {
             type: types.featureTopic.read.success,
