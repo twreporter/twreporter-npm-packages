@@ -134,7 +134,7 @@ export default class FullScreenLeading extends React.PureComponent {
     portraitPoster: {},
     subtitle: '',
     topicHref: '',
-    topicName: '',
+    shortTitle: '',
   }
 
   isEmptyPortraitPoster(portraitPoster) {
@@ -150,7 +150,7 @@ export default class FullScreenLeading extends React.PureComponent {
       subtitle,
       title,
       topicHref,
-      topicName,
+      shortTitle,
     } = this.props
 
     let portraitPosterJSX = null
@@ -198,13 +198,13 @@ export default class FullScreenLeading extends React.PureComponent {
         )}
         <FigureOverlayMask />
         <TextBlock>
-          {topicName ? (
+          {shortTitle ? (
             <DynamicComponentsContext.Consumer>
               {components => {
                 return (
                   <components.Link to={topicHref}>
                     <Topic>
-                      {topicName}
+                      {shortTitle}
                       <RightArrow />
                     </Topic>
                   </components.Link>

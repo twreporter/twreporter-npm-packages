@@ -10,7 +10,7 @@ const leading = {
   }),
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  topicName: PropTypes.string,
+  shortTitle: PropTypes.string,
   topicHref: PropTypes.string,
 }
 
