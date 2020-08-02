@@ -174,7 +174,7 @@ export default class LeadingBlock extends PureComponent {
     poster: {},
     subtitle: '',
     topicHref: '',
-    topicName: '',
+    shortTitle: '',
     paddingTop: '',
   }
 
@@ -185,19 +185,19 @@ export default class LeadingBlock extends PureComponent {
       subtitle,
       title,
       topicHref,
-      topicName,
+      shortTitle,
     } = this.props
 
     return (
       <BackgroundBlock paddingTop={paddingTop}>
         <ContentBlock>
           <TextBlock>
-            {topicName ? (
+            {shortTitle ? (
               <DynamicComponentsContext.Consumer>
                 {components => {
                   return (
                     <components.Link to={topicHref}>
-                      <TopicTextBlock>{topicName}</TopicTextBlock>
+                      <TopicTextBlock>{shortTitle}</TopicTextBlock>
                     </components.Link>
                   )
                 }}

@@ -151,7 +151,7 @@ export default class NormalLeading extends React.PureComponent {
     poster: {},
     subtitle: '',
     topicHref: '',
-    topicName: '',
+    shortTitle: '',
   }
 
   constructor(props) {
@@ -191,19 +191,19 @@ export default class NormalLeading extends React.PureComponent {
       subtitle,
       title,
       topicHref,
-      topicName,
+      shortTitle,
     } = this.props
 
     return (
       <BackgroundBlock>
         <ContentBlock>
           <TextBlock>
-            {topicName ? (
+            {shortTitle ? (
               <DynamicComponentsContext.Consumer>
                 {components => {
                   return (
                     <components.Link to={topicHref}>
-                      <Topic>{topicName}</Topic>
+                      <Topic>{shortTitle}</Topic>
                     </components.Link>
                   )
                 }}

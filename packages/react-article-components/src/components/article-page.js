@@ -274,7 +274,7 @@ const _fontLevel = {
  *  Topic Object
  *  @typedef {Object} TopicObject
  *  @property {string} slug - Slug of topic
- *  @property {string} topic_name - Name of topic
+ *  @property {string} shortTitle - Short title of topic
  */
 
 function noop() {}
