@@ -15,7 +15,7 @@ This repository is a monorepo containing several npm packages used by the websit
 
 ## Packages
 
-Packages are located in [packages/](https://github.com/twreporter/twreporter-npm-packages/tree/master/packages)
+Packages are located in [`packages/`](https://github.com/twreporter/twreporter-npm-packages/tree/master/packages)
 
 ## Developing Environment
 
