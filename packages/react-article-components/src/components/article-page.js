@@ -432,7 +432,7 @@ export default class Article extends PureComponent {
           designers={post.designers}
           photographers={post.photographers}
           tags={post.tags}
-          writers={post.writters}
+          writers={post.writers}
           engineers={post.engineers}
           rawAutherText={post.extend_byline}
         />
@@ -477,7 +477,7 @@ export default class Article extends PureComponent {
                     designers={post.designers}
                     photographers={post.photographers}
                     tags={post.tags}
-                    writers={post.writters}
+                    writers={post.writers}
                     engineers={post.engineers}
                     rawAutherText={post.extend_byline}
                     onFontLevelChange={this.changeFontLevel}
