@@ -132,6 +132,7 @@ export default class Related extends React.PureComponent {
   static propTypes = {
     data: PropTypes.array,
     hasMore: PropTypes.bool,
+    id: PropTypes.string,
     loadMore: PropTypes.func.isRequired,
   }
 
@@ -214,14 +215,14 @@ export default class Related extends React.PureComponent {
   }
 
   render() {
-    const { data, hasMore, loadMore } = this.props
+    const { data, hasMore, id, loadMore } = this.props
     const { lastWindowWidth } = this.state
     const relateds = _.map(data, this._buildRelated)
     return (
       <Block>
         <Descriptor />
         <List
-          key={`list-width-${lastWindowWidth}`}
+          key={`${id}-with-list-width-${lastWindowWidth}`}
           data={relateds}
           hasMore={hasMore}
           loadMore={loadMore}

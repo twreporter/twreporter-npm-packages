@@ -501,6 +501,7 @@ export default class Article extends PureComponent {
               <StyledSeparationCurve />
               <RelatedBlock>
                 <Related
+                  id={post.id}
                   data={relatedPosts}
                   hasMore={hasMoreRelateds}
                   loadMore={loadMoreRelateds}

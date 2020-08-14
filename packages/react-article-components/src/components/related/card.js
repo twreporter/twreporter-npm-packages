@@ -1,4 +1,5 @@
 import Img from '../img-with-placeholder'
+import PropTypes from 'prop-types'
 import mockup from './mockup'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/related'
@@ -195,7 +196,14 @@ function getBlockStyles(themeName) {
 const _defaultHeight = '100%'
 
 class Card extends React.PureComponent {
-  static propTypes = predefinedProps.card
+  static propTypes = {
+    ...predefinedProps.card,
+    handleMounted: PropTypes.func,
+  }
+
+  static defaultProps = {
+    handleMounted: () => {},
+  }
 
   constructor(props) {
     super(props)
@@ -224,11 +232,14 @@ class Card extends React.PureComponent {
 
   componentDidMount() {
     try {
-      this.setState({
-        heightBeforeHovering: `${this._blockRef.current.clientHeight}px`,
-        heightAfterHovering: `${this._blockRef.current.clientHeight +
-          this._descRef.current.clientHeight}px`,
-      })
+      this.setState(
+        {
+          heightBeforeHovering: `${this._blockRef.current.clientHeight}px`,
+          heightAfterHovering: `${this._blockRef.current.clientHeight +
+            this._descRef.current.clientHeight}px`,
+        },
+        this.props.handleMounted()
+      )
     } catch (e) {
       const { title } = this.props
       console.warn(

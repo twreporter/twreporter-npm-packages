@@ -137,24 +137,15 @@ export default class List extends React.PureComponent {
     hasMore: false,
   }
 
+  mountedCardNum = 0
+
   state = {
     alignItems: 'stretch',
   }
 
-  componentDidMount() {
-    this.setState({
-      alignItems: 'flex-start',
-    })
-  }
-
-  componentDidUpdate(prevProps) {
-    // After loading more items,
-    // we have to set `alignItems: flex-start` to
-    // make each Card expand individually while hovering.
-    if (
-      prevProps.data.length !== this.props.data.length &&
-      this.state.alignItems === 'stretch'
-    ) {
+  handleCardMounted = () => {
+    this.mountedCardNum += 1
+    if (this.mountedCardNum === _.get(this.props, 'data.length', 0)) {
       this.setState({
         alignItems: 'flex-start',
       })
@@ -173,7 +164,7 @@ export default class List extends React.PureComponent {
                   _.get(item, 'isTargetBlank', false) ? '_blank' : '_self'
                 }
               >
-                <Card {...item} />
+                <Card {...item} handleMounted={this.handleCardMounted} />
               </components.Link>
             </Item>
           )
