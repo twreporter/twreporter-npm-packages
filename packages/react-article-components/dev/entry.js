@@ -63,28 +63,28 @@ function selectHeaderTheme(postStyle) {
   }
 }
 
-twreporterRedux.createStore({}, '', true).then(store => {
-  try {
-    const url = new URL(window.location.href)
-    const theme = url.searchParams.get('theme')
-    if (theme) {
-      mockPost.style = theme
-    }
-  } catch (e) {}
-  ReactDOM.render(
-    <React.Fragment>
-      <Provider store={store}>
-        <HeaderContainerWithTransparentTheme>
-          <Header
-            theme={selectHeaderTheme(mockPost.style)}
-            isLinkExternal={true}
-            releaseBranch="master"
-          />
-        </HeaderContainerWithTransparentTheme>
-        <MockTwreporterReactArticleContainer />
-        <Footer />
-      </Provider>
-    </React.Fragment>,
-    document.getElementById('root')
-  )
-})
+const store = twreporterRedux.createStore({}, '', true)
+
+try {
+  const url = new URL(window.location.href)
+  const theme = url.searchParams.get('theme')
+  if (theme) {
+    mockPost.style = theme
+  }
+} catch (e) {}
+ReactDOM.render(
+  <React.Fragment>
+    <Provider store={store}>
+      <HeaderContainerWithTransparentTheme>
+        <Header
+          theme={selectHeaderTheme(mockPost.style)}
+          isLinkExternal={true}
+          releaseBranch="master"
+        />
+      </HeaderContainerWithTransparentTheme>
+      <MockTwreporterReactArticleContainer />
+      <Footer />
+    </Provider>
+  </React.Fragment>,
+  document.getElementById('root')
+)
