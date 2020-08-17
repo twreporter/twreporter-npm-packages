@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.0-rc.4...@twreporter/react-article-components@1.2.0-rc.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* **react-article-components:** relateds did not have the same height ([acc9a1e](https://github.com/twreporter/twreporter-npm-packages/commit/acc9a1e122bf9d448d586d2d4e9190ecb00c933d))
+* **react-article-components:** update dev/entry.js ([792caa2](https://github.com/twreporter/twreporter-npm-packages/commit/792caa295d4dd91d44b6af366c010267e076e627))
+* **react-article-components:** writters -> writers ([eda19d1](https://github.com/twreporter/twreporter-npm-packages/commit/eda19d1399cc38296f2dee2cafcca56b6838fb5e))
+
+
+
+
+
 # [1.2.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.0-rc.3...@twreporter/react-article-components@1.2.0-rc.4) (2020-08-02)
 
 
