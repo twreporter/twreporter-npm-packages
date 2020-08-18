@@ -301,7 +301,7 @@ const buildList = itemGroups =>
 
 class Content extends React.PureComponent {
   render() {
-    const { mainOrigin } = this.props
+    const { mainOrigin, pathname, host } = this.props
     return (
       <ContentRow>
         <IntroColumn>
@@ -312,7 +312,11 @@ class Content extends React.PureComponent {
           <ItemList>{buildList(getItemGroups(mainOrigin))}</ItemList>
         </LinksColumn>
         <DonateButton>
-          <DonationLink utmMedium="footer">
+          <DonationLink
+            utmMedium="footer"
+            utmCampaign={pathname}
+            utmSource={host}
+          >
             <p>贊助我們</p>
           </DonationLink>
         </DonateButton>
@@ -323,10 +327,14 @@ class Content extends React.PureComponent {
 
 Content.propTypes = {
   mainOrigin: PropTypes.string,
+  pathname: PropTypes.string,
+  host: PropTypes.string,
 }
 
 Content.defaultProps = {
   mainOrigin: '',
+  pathname: '',
+  host: '',
 }
 
 export default Content
