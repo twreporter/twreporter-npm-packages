@@ -179,7 +179,7 @@
     }
   },
   "is_featured": true,
-  "writters": [
+  "writers": [
     {
       "id": "5ac3283934eb611b008e393d",
       "job_title": "",
@@ -2828,7 +2828,7 @@
   "published_date": "2019-03-25T08:00:00+08:00",
   "updated_at": "2019-04-10T16:08:44.895+08:00",
   "full": true,
-  "topics": {
+  "topic": {
     "id": "5cd3b75044ebf71700c9606f",
     "slug": "2019-venice-biennale",
     "name": "2019-venice-biennale",

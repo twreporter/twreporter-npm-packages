@@ -1,24 +1,22 @@
 import types from '../constants/action-types'
 
 // lodash
-import concat from 'lodash/concat'
+import forEach from 'lodash/forEach'
 import get from 'lodash/get'
-import map from 'lodash/map'
 import merge from 'lodash/merge'
 import set from 'lodash/set'
 
 const _ = {
-  concat,
+  forEach,
   get,
-  map,
   merge,
   set,
 }
 
 export function post(state = {}, action = {}) {
   switch (action.type) {
-    case types.GET_A_FULL_POST:
-    case types.CHANGE_SELECTED_POST: {
+    case types.selectedPost.read.success:
+    case types.selectedPost.read.alreadyExists: {
       return {
         slug: _.get(action, 'payload.post.slug'),
         error: null,
@@ -26,14 +24,14 @@ export function post(state = {}, action = {}) {
       }
     }
 
-    case types.START_TO_GET_A_FULL_POST:
+    case types.selectedPost.read.request:
       return {
         isFetching: true,
         slug: _.get(action, 'payload.slug'),
         error: null,
       }
 
-    case types.ERROR_TO_GET_A_FULL_POST:
+    case types.selectedPost.read.failure:
       return action.payload
     default:
       return state
@@ -42,12 +40,31 @@ export function post(state = {}, action = {}) {
 
 export function posts(state = {}, action = {}) {
   switch (action.type) {
-    case types.GET_LISTED_POSTS: {
-      const items = _.get(action, 'payload.items', [])
+    case types.postsByListId.read.success: {
+      const listId = _.get(action, 'payload.listId', '')
+
+      if (!listId) {
+        return state
+      }
+
+      const posts = _.get(action, 'payload.items', [])
+      const newItems = []
+      _.forEach(posts, post => {
+        const id = _.get(post, 'id', '')
+        if (id) {
+          newItems.push(id)
+        }
+      })
+
       const total = _.get(action, 'payload.total', 0)
-      const listID = _.get(action, 'payload.listID', '')
       const page = _.get(action, 'payload.page', 0)
-      const list = _.get(state, listID, {
+      const oldItems = _.get(state, [listId, 'items'], [])
+
+      let items = []
+      let pages = {}
+      if (newItems.length > 0 && page >= 1) {
+        const startAt = oldItems.length
+        const endAt = startAt + newItems.length - 1
         // pages is used to store items position,
         // say, if
         // pages = {
@@ -55,44 +72,50 @@ export function posts(state = {}, action = {}) {
         // }
         // which means, items of page 1 are stored
         // from items[0] to items[9]
-        pages: {},
-        items: [],
-        total: 0,
-        error: null,
-      })
-
-      const itemsNum = list.items.length || 0
-
-      list.items = _.concat(list.items, _.map(items, item => item.slug))
-      list.total = total
-      list.error = null
-      const nextlist = _.merge(
-        {},
-        state,
-        { [listID]: list },
-        {
-          [listID]: {
-            pages: {
-              [page]: [itemsNum, itemsNum + (items.length - 1)],
-            },
-          },
+        pages = {
+          [page]: [startAt, endAt],
         }
-      )
-      return nextlist
-    }
-    case types.ERROR_TO_GET_LISTED_POSTS: {
-      const listID = _.get(action, 'payload.listID')
-      const list = _.get(state, listID, {})
-      list.error = _.get(action, 'payload.error')
+
+        items = [].concat(oldItems, newItems)
+      }
 
       return _.merge({}, state, {
-        [listID]: list,
+        [listId]: {
+          pages,
+          items,
+          total,
+          error: null,
+          isFetching: false,
+        },
       })
     }
-    case types.START_TO_GET_POSTS:
-      return state
-    case types.ERROR_TO_GET_POSTS:
-      return state
+    case types.postsByListId.read.failure: {
+      const listId = _.get(action, 'payload.listId')
+
+      if (!listId) {
+        return state
+      }
+
+      return _.merge({}, state, {
+        [listId]: {
+          error: _.get(action, 'payload.error'),
+          isFetching: false,
+        },
+      })
+    }
+    case types.postsByListId.read.request:
+      const listId = _.get(action, 'payload.listId')
+
+      if (!listId) {
+        return state
+      }
+
+      return _.merge({}, state, {
+        [listId]: {
+          error: null,
+          isFetching: true,
+        },
+      })
     default:
       return state
   }

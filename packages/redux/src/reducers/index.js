@@ -7,9 +7,11 @@ import authReducer from './auth'
 import bookmarks from './bookmarks'
 import bookmarkWidget from './bookmark-widget'
 import entities from './entities'
+import featureTopic from './feature-topic'
 import indexPage from './index-page'
 import origins from './origins'
 import reduxStatePropKey from '../constants/redux-state-field-names'
+import relatedPostsOf from './related-posts-of'
 import settings from './settings'
 import types from '../constants/action-types'
 // lodash
@@ -34,6 +36,9 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.selectedPost]: post,
   [reduxStatePropKey.selectedTopic]: topic,
   [reduxStatePropKey.topicList]: topics,
+  [reduxStatePropKey.relatedPostsOf]: relatedPostsOf,
+  [reduxStatePropKey.featureTopic]: featureTopic,
+
   [reduxStatePropKey.entitiesForAuthors]: (state = {}, action) => {
     const entities = _.get(action, 'payload.normalizedData.entities')
     if (entities) {
@@ -45,12 +50,6 @@ const rootReducer = combineReducers({
         return _.merge({}, state, { articles: entities.articles })
       }
       return _.merge({}, state, entities)
-    }
-    return state
-  },
-  [reduxStatePropKey.nextNotifyPopupTS]: (state = 0, action) => {
-    if (action.type === types.SET_NEXT_POPUP_TIME_STAMP) {
-      return action.payload
     }
     return state
   },

@@ -18,8 +18,8 @@ const initState = {
 
 /**
  *  @param {Object} state - redux state
- *  @param {bool} state.isRequesting - requst is in progress
- *  @param {bool} state.isAuthed - indicates if authorization succeeds
+ *  @param {boolean} state.isRequesting - requst is in progress
+ *  @param {boolean} state.isAuthed - indicates if authorization succeeds
  *  @param {Object} state.lastAction - last redux action for debugging
  *  @param {string} state.lastAction.actionType
  *  @param {Object} state.lastAction.actionPayload

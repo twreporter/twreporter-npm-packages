@@ -3,6 +3,109 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.0-rc.4...@twreporter/react-article-components@1.2.0-rc.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* **react-article-components:** relateds did not have the same height ([acc9a1e](https://github.com/twreporter/twreporter-npm-packages/commit/acc9a1e122bf9d448d586d2d4e9190ecb00c933d))
+* **react-article-components:** update dev/entry.js ([792caa2](https://github.com/twreporter/twreporter-npm-packages/commit/792caa295d4dd91d44b6af366c010267e076e627))
+* **react-article-components:** writters -> writers ([eda19d1](https://github.com/twreporter/twreporter-npm-packages/commit/eda19d1399cc38296f2dee2cafcca56b6838fb5e))
+
+
+
+
+
+# [1.2.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.0-rc.3...@twreporter/react-article-components@1.2.0-rc.4) (2020-08-02)
+
+
+### Bug Fixes
+
+* **react-article-components:** topic_name -> short_title ([5083807](https://github.com/twreporter/twreporter-npm-packages/commit/508380775b7d4c5bdfe2645a32eb194535feab54))
+
+
+
+
+
+# [1.2.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.0-rc.2...@twreporter/react-article-components@1.2.0-rc.3) (2020-08-01)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.0-rc.1...@twreporter/react-article-components@1.2.0-rc.2) (2020-07-27)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.2.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.0-rc.0...@twreporter/react-article-components@1.2.0-rc.1) (2020-07-27)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.9-rc.4...@twreporter/react-article-components@1.2.0-rc.0) (2020-07-27)
+
+
+### Features
+
+* **react-article-components:** update Relateds props ([1728a65](https://github.com/twreporter/twreporter-npm-packages/commit/1728a65def08c3f69d0562b9d429530a7c5d7193))
+
+
+
+
+
+## [1.1.9-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.9-rc.3...@twreporter/react-article-components@1.1.9-rc.4) (2020-07-21)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.1.9-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.9-rc.2...@twreporter/react-article-components@1.1.9-rc.3) (2020-07-20)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.1.9-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.9-rc.1...@twreporter/react-article-components@1.1.9-rc.2) (2020-07-14)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.1.9-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.9-rc.0...@twreporter/react-article-components@1.1.9-rc.1) (2020-07-14)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.1.9-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.8...@twreporter/react-article-components@1.1.9-rc.0) (2020-06-12)
+
+
+### Bug Fixes
+
+* **react-article-components:** added text and via to Twitter share link ([320a664](https://github.com/twreporter/twreporter-npm-packages/commit/320a664fd51d10288c553ec17be0902646737c65))
+* **react-article-components:** removed the via, added a hashtag ([c4497ce](https://github.com/twreporter/twreporter-npm-packages/commit/c4497ce8ade83ef4494c318688e28e189d1521db))
+
+
+
+
+
 ## [1.1.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.1.8-rc.0...@twreporter/react-article-components@1.1.8) (2020-06-05)
 
 **Note:** Version bump only for package @twreporter/react-article-components

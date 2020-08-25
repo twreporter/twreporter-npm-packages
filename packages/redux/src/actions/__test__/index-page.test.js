@@ -72,6 +72,7 @@ describe('Testing fetchIndexPageContent:', () => {
           [fieldNames.sections.topicsSection]: [nonFullTopic],
           [fieldNames.sections.photosSection]: [post2],
           [fieldNames.sections.infographicsSection]: [post3],
+          isReady: true,
         },
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -80,25 +81,21 @@ describe('Testing fetchIndexPageContent:', () => {
       return store.dispatch(actions.fetchIndexPageContent()).then(result => {
         expect(store.getActions().length).toBe(1)
         expect(result).toEqual({
-          type: types.dataAlreadyExists,
-          payload: {
-            function: actions.fetchIndexPageContent.name,
-            message: expect.any(String),
-          },
+          type: types.indexPage.read.alreadyExists,
         })
         expect(store.getActions()[0]).toEqual(result)
       })
     })
   })
   describe('Lacks of contents', () => {
-    test('Should dispatch types.GET_CONTENT_FOR_INDEX_PAGE', () => {
+    test('Should dispatch `types.indexPage.read.success`', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
         },
       })
       const mockApiResponse = {
-        records: {
+        data: {
           [fieldNames.sections.latestSection]: [post1, post2],
           [fieldNames.sections.editorPicksSection]: [post3],
           [fieldNames.sections.latestTopicSection]: [fullTopic],
@@ -109,17 +106,13 @@ describe('Testing fetchIndexPageContent:', () => {
         },
       }
       nock('http://localhost:8080')
-        .get('/v1/index_page')
+        .get('/v2/index_page')
         .reply(200, mockApiResponse)
 
       return store.dispatch(actions.fetchIndexPageContent()).then(() => {
         expect(store.getActions().length).toBe(2) // 2 actions: REQUEST && SUCCESS
-        expect(store.getActions()[0].type).toEqual(
-          types.START_TO_GET_INDEX_PAGE_CONTENT
-        )
-        expect(store.getActions()[1].type).toBe(
-          types.GET_CONTENT_FOR_INDEX_PAGE
-        )
+        expect(store.getActions()[0].type).toEqual(types.indexPage.read.request)
+        expect(store.getActions()[1].type).toBe(types.indexPage.read.success)
         expect(store.getActions()[1].payload).toEqual({
           items: {
             [fieldNames.sections.latestSection]: [post1, post2],
@@ -135,7 +128,7 @@ describe('Testing fetchIndexPageContent:', () => {
     })
   })
   describe('If the api returns a failure', () => {
-    test('Should dispatch types.ERROR_TO_GET_INDEX_PAGE_CONTENT', () => {
+    test('Should dispatch `types.indexPage.read.failure`', () => {
       const store = mockStore({
         [fieldNames.origins]: {
           api: 'http://localhost:8080',
@@ -148,7 +141,7 @@ describe('Testing fetchIndexPageContent:', () => {
         data: null,
       }
       nock('http://localhost:8080')
-        .get('/v1/index_page')
+        .get('/v2/index_page')
         .reply(mockStatusCode, mockAPIRes)
 
       return store
@@ -156,11 +149,11 @@ describe('Testing fetchIndexPageContent:', () => {
         .catch(failAction => {
           const expected = [
             {
-              type: types.START_TO_GET_INDEX_PAGE_CONTENT,
-              url: 'http://localhost:8080/v1/index_page',
+              type: types.indexPage.read.request,
+              url: 'http://localhost:8080/v2/index_page',
             },
             {
-              type: types.ERROR_TO_GET_INDEX_PAGE_CONTENT,
+              type: types.indexPage.read.failure,
               payload: {
                 error: expect.any(Error),
               },

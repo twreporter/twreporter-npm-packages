@@ -69,7 +69,7 @@ const Items = FetchingWrapper(FlexItems)
 
 class List extends PureComponent {
   render() {
-    const { data, catName, tagName, isFetching } = this.props
+    const { data, catName, tagName, isFetching, showSpinner } = this.props
     const listJSX = []
     _.forEach(data, item => {
       const style = _.get(item, 'style')
@@ -116,7 +116,9 @@ class List extends PureComponent {
     return (
       <Container>
         <Header>{catName || (tagName ? `#${tagName}` : '')}</Header>
-        <Items isFetching={isFetching}>{listJSX}</Items>
+        <Items isFetching={isFetching} showSpinner={showSpinner}>
+          {listJSX}
+        </Items>
       </Container>
     )
   }
@@ -127,6 +129,7 @@ List.defaultProps = {
   catName: '',
   tagName: '',
   isFetching: false,
+  showSpinner: false,
 }
 
 List.propTypes = {
@@ -145,6 +148,7 @@ List.propTypes = {
   tagName: PropTypes.string,
   catName: PropTypes.string,
   isFetching: PropTypes.bool,
+  showSpinner: PropTypes.bool,
 }
 
 export default List

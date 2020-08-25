@@ -3,44 +3,43 @@ import errorActionCreators from './error-action-creators'
 import apiConfig from '../constants/api-config'
 import apiEndpoints from '../constants/api-endpoints'
 import axios from 'axios'
-import postStyles from '../constants/post-styles'
 import stateFieldNames from '../constants/redux-state-field-names'
 import types from '../constants/action-types'
 
 // lodash
+import filter from 'lodash/filter'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
 
 const _ = {
+  filter,
   get,
   merge,
 }
 
-/* Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
+const { entities, postsInEntities } = stateFieldNames
+
+/**
+ * Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of post
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchAFullPost(slug) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     const state = getState()
-    const post = _.get(
+    const postId = _.get(
       state,
-      `${stateFieldNames.entities}.${stateFieldNames.postsInEntities}.${slug}`,
-      {}
+      [entities, postsInEntities, 'slugToId', slug],
+      ''
     )
-
+    const post = _.get(state, [entities, postsInEntities, 'byId', postId], null)
     // post is already fully fetched
     if (_.get(post, 'full', false)) {
       // current selected post is not the post just been fetched,
       // change the selected post
       if (slug !== _.get(state, `${stateFieldNames.selectedPost}.slug`)) {
         const successAction = {
-          type: types.CHANGE_SELECTED_POST,
+          type: types.selectedPost.read.alreadyExists,
           payload: {
             post,
           },
@@ -64,11 +63,11 @@ export function fetchAFullPost(slug) {
       return Promise.resolve(action)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}/${slug}`
+    const path = `/v2/${apiEndpoints.posts}/${slug}`
     const url = formURL(apiOrigin, path, { full: 'true' })
     // Start to get topics
     dispatch({
-      type: types.START_TO_GET_A_FULL_POST,
+      type: types.selectedPost.read.request,
       payload: {
         slug,
       },
@@ -80,9 +79,9 @@ export function fetchAFullPost(slug) {
       })
       .then(response => {
         const successAction = {
-          type: types.GET_A_FULL_POST,
+          type: types.selectedPost.read.success,
           payload: {
-            post: _.get(response, 'data.record', {}),
+            post: _.get(response, 'data.data', {}),
           },
         }
         dispatch(successAction)
@@ -91,9 +90,9 @@ export function fetchAFullPost(slug) {
       .catch(error => {
         const failAction = errorActionCreators.axios(
           error,
-          types.ERROR_TO_GET_A_FULL_POST
+          types.selectedPost.read.failure
         )
-        failAction.payload.slug = slug
+        failAction.payload['slug'] = slug
         dispatch(failAction)
         return Promise.reject(failAction)
       })
@@ -102,9 +101,7 @@ export function fetchAFullPost(slug) {
 
 /**
  * @param {Function} dispatch - dispatch of redux
- * @param {string} origin - URL origin
- * @param {string} path - URL path
- * @param {Object} params - URL query params
+ * @param {string} url - URL to request
  * @param {string} successActionType - action type
  * @param {string} failureActionType - action type
  * @param {Object} defaultPayload
@@ -112,19 +109,11 @@ export function fetchAFullPost(slug) {
  **/
 function _fetchPosts(
   dispatch,
-  origin,
-  path = '',
-  params = {},
+  url,
   successActionType,
-  failureActionType = types.ERROR_TO_GET_POSTS,
+  failureActionType,
   defaultPayload = {}
 ) {
-  const url = formURL(origin, path, params)
-  dispatch({
-    type: types.START_TO_GET_POSTS,
-    url,
-  })
-
   return axios
     .get(url, {
       timeout: apiConfig.timeout,
@@ -134,8 +123,8 @@ function _fetchPosts(
         type: successActionType,
         payload: _.merge(
           {
-            items: _.get(response, 'data.records', []),
-            total: _.get(response, 'data.meta.total', 0),
+            items: _.get(response, 'data.data.records', []),
+            total: _.get(response, 'data.data.meta.total', 0),
           },
           defaultPayload
         ),
@@ -151,215 +140,201 @@ function _fetchPosts(
     })
 }
 
-/* Fetch a listed posts(only containing meta properties),
- * such as the posts belonging to the same tag/category/topic.
- * @param {string} listID - id of the tag, category or topic
- * @param {string} listType - tags, categories or topics
- * @param {number} limit - the number of posts you want to get in one request
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+/**
+ *  Given ObjectID of a target entity (post or topic), this functions will load the related posts
+ *  of that target entity.
+ *  @param {import('../typedef').ObjectID} entityId - ObjectID of a entity, which could be a post or topic
+ *  @param {number} limit - specify how many posts to load
+ *  @return {import('../typedef').Thunk} async action creator
  */
-export function fetchListedPosts(listID, listType, limit = 10, page = 0) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
+export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
   return (dispatch, getState) => {
+    /** @type {import('../typedef').ReduxState} */
     const state = getState()
-    const list = _.get(state, [stateFieldNames.lists, listID])
 
-    // if list is already existed and there is nothing more to load
-    if (list && _.get(list, 'total', 0) <= _.get(list, 'items.length', 0)) {
-      const action = {
-        type: types.noMoreItemsToFetch,
-      }
-      dispatch(action)
-      return Promise.resolve(action)
-    }
+    const allPostIds = _.get(
+      state,
+      [stateFieldNames.entities, stateFieldNames.postsInEntities, 'allIds'],
+      []
+    )
 
-    // items of page are already fetched
-    if (page > 0 && Array.isArray(_.get(list, ['pages', page]))) {
+    /**  @type {import('../typedef').RelatedPostsOfAnEntity} */
+    const relatedsOfAnEntity = _.get(
+      state,
+      [stateFieldNames.relatedPostsOf, 'byId', entityId],
+      {}
+    )
+    const more = _.get(relatedsOfAnEntity, 'more', [])
+
+    if (
+      _.get(more, 'length', 0) === 0 ||
+      typeof limit !== 'number' ||
+      limit <= 0
+    ) {
+      // no more posts to load
       const action = {
-        type: types.dataAlreadyExists,
+        type: types.relatedPosts.read.noMore,
         payload: {
-          function: fetchListedPosts.name,
-          arguments: {
-            listID,
-            listType,
-            limit,
-            page,
-          },
-          message: 'Posts already exist in redux state.',
+          targetEntityId: entityId,
+          limit,
         },
       }
       dispatch(action)
       return Promise.resolve(action)
     }
 
-    const where = {
-      [listType]: {
-        in: [listID],
-      },
+    const targetRelatedPostsIds = more.slice(0, limit)
+
+    // filter out those related posts already fetched
+    const idsToRequest = _.filter(targetRelatedPostsIds, id => {
+      return allPostIds.indexOf(id) === -1
+    })
+
+    // dispatch success action if related posts already fetched
+    if (_.get(idsToRequest, 'length', 0) === 0) {
+      const action = {
+        type: types.relatedPosts.read.success,
+        payload: {
+          targetEntityId: entityId,
+          targetRelatedPostsIds,
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
     }
 
-    // if page provided(should bigger than 0),
-    // use page to count offset,
-    // otherwise, use current length of items
-    const offset =
-      page > 0 ? (page - 1) * limit : _.get(list, 'items.length', 0)
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}`
+    const path = `/v2/${apiEndpoints.posts}`
+    const url = formURL(apiOrigin, path, {
+      id: idsToRequest,
+    })
+
+    dispatch({
+      type: types.relatedPosts.read.request,
+      payload: {
+        url,
+        targetEntityId: entityId,
+      },
+    })
+
+    return _fetchPosts(
+      dispatch,
+      url,
+      types.relatedPosts.read.success,
+      types.relatedPosts.read.failure,
+      { targetEntityId: entityId, targetRelatedPostsIds }
+    )
+  }
+}
+
+const startPage = 1
+
+/**
+ * Fetch a listed posts(only containing meta properties),
+ * such as the posts belonging to the same tag/category/topic.
+ * @param {string} listId - id of tag or category
+ * @param {string} listType - tag_id or category_id
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @return {import('../typedef').Thunk} async action creator
+ */
+function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
+  return (dispatch, getState) => {
+    if (typeof listId !== 'string' || !listId) {
+      const action = {
+        type: types.postsByListId.read.failure,
+        payload: {
+          listId: '',
+          error: new Error(
+            'listId should be a string and not empty, but got ' + listId
+          ),
+        },
+      }
+      dispatch(action)
+      return Promise.reject(action)
+    }
+
+    if (typeof page !== 'number' || isNaN(page) || page < startPage) {
+      const action = {
+        type: types.postsByListId.read.failure,
+        payload: {
+          listId,
+          error: new Error('page should be > 0'),
+        },
+      }
+      dispatch(action)
+      return Promise.reject(action)
+    }
+
+    const state = getState()
+    const list = _.get(state, [stateFieldNames.lists, listId])
+
+    // items of page are already fetched
+    if (Array.isArray(_.get(list, ['pages', page]))) {
+      const action = {
+        type: types.postsByListId.read.alreadyExists,
+        payload: {
+          listId,
+          limit,
+          page,
+        },
+      }
+      dispatch(action)
+      return Promise.resolve(action)
+    }
+
+    const offset = (page - 1) * limit
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const path = `/v2/${apiEndpoints.posts}`
     const params = {
-      where: JSON.stringify(where),
+      [listType]: listId,
       limit,
       offset,
     }
+
+    const url = formURL(apiOrigin, path, params)
+    dispatch({
+      type: types.postsByListId.read.request,
+      payload: {
+        url,
+        listId,
+      },
+    })
     return _fetchPosts(
       dispatch,
-      apiOrigin,
-      path,
-      params,
-      types.GET_LISTED_POSTS,
-      types.ERROR_TO_GET_LISTED_POSTS,
-      { listID, page }
+      url,
+      types.postsByListId.read.success,
+      types.postsByListId.read.failure,
+      { listId, page }
     )
   }
 }
 
 /**
- * Fetch those posts picked by editors
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * Fetch posts(only containing meta properties) by category list id.
+ * @param {string} listId - id of category
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchEditorPickedPosts() {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
+export function fetchPostsByCategoryListId(listId, limit = 10, page = 0) {
   return (dispatch, getState) => {
-    const state = getState()
-    const posts = _.get(
-      state,
-      `${stateFieldNames.indexPage}.${stateFieldNames.sections.editorPicksSection}`,
-      []
-    )
-
-    if (posts.length > 0) {
-      const action = {
-        type: types.dataAlreadyExists,
-        payload: {
-          function: fetchEditorPickedPosts.name,
-          message: 'Posts already exist in redux state.',
-        },
-      }
-      dispatch(action)
-      return Promise.resolve(action)
-    }
-    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}`
-    const params = {
-      where: '{"is_featured":true}',
-      limit: 6,
-    }
-    return _fetchPosts(
+    return fetchPostsByListId(listId, 'category_id', limit, page)(
       dispatch,
-      apiOrigin,
-      path,
-      params,
-      types.GET_EDITOR_PICKED_POSTS
+      getState
     )
   }
 }
 
 /**
- * fetchPhotographyPostsOnIndexPage
- * This function will fetch 6 latest posts with photography style and `is_featured: true`,
- * It's specifically made for index page
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * Fetch posts(only containing meta properties) by tag list id.
+ * @param {string} listId - id of tag
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchPhotographyPostsOnIndexPage() {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
+export function fetchPostsByTagListId(listId, limit = 10, page = 0) {
   return (dispatch, getState) => {
-    const state = getState()
-    const posts = _.get(
-      state,
-      `${stateFieldNames.indexPage}.${stateFieldNames.sections.photosSection}`,
-      []
-    )
-    if (Array.isArray(posts) && posts.length > 0) {
-      const action = {
-        type: types.dataAlreadyExists,
-        payload: {
-          function: fetchPhotographyPostsOnIndexPage.name,
-          message: 'Posts already exist in redux state.',
-        },
-      }
-      dispatch(action)
-      return Promise.resolve(action)
-    }
-    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}`
-    const params = {
-      where: `{"style":"${postStyles.photography}"}`,
-      limit: 6,
-    }
-    return _fetchPosts(
-      dispatch,
-      apiOrigin,
-      path,
-      params,
-      types.GET_PHOTOGRAPHY_POSTS_FOR_INDEX_PAGE
-    )
-  }
-}
-
-/**
- * fetchInfographicPostsOnIndexPage
- * This function will fetch 10 latest posts with interactive style,
- * It's specifically made for index page
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
- */
-export function fetchInfographicPostsOnIndexPage() {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
-  return (dispatch, getState) => {
-    const state = getState()
-    const posts = _.get(
-      state,
-      `${stateFieldNames.indexPage}.${stateFieldNames.sections.infographicsSection}`,
-      []
-    )
-    if (Array.isArray(posts) && posts.length > 0) {
-      const action = {
-        type: types.dataAlreadyExists,
-        payload: {
-          function: fetchInfographicPostsOnIndexPage.name,
-          message: 'Posts already exist in redux state.',
-        },
-      }
-      dispatch(action)
-      return Promise.resolve(action)
-    }
-    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.posts}`
-    const params = {
-      where: `{"style":"${postStyles.infographic}"}`,
-      limit: 10,
-    }
-
-    return _fetchPosts(
-      dispatch,
-      apiOrigin,
-      path,
-      params,
-      types.GET_INFOGRAPHIC_POSTS_FOR_INDEX_PAGE
-    )
+    return fetchPostsByListId(listId, 'tag_id', limit, page)(dispatch, getState)
   }
 }

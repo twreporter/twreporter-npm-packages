@@ -3,7 +3,6 @@ import { Provider } from 'react-redux'
 import Article from '../src/components/article-page'
 import Header from '@twreporter/universal-header/lib/containers/header'
 import mockPost from './mock-post.json'
-import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
@@ -15,15 +14,12 @@ const HeaderContainerWithTransparentTheme = styled.div`
   position: relative;
 `
 
-class MockTwreporterReactArticleContainer extends React.PureComponent {
-  static propTypes = {
-    post: PropTypes.object,
-    relatedPosts: PropTypes.array,
-    relatedTopic: PropTypes.object,
-  }
+const defaultNumberOfRelateds = 6
 
+class MockTwreporterReactArticleContainer extends React.PureComponent {
   state = {
     fontLevel: 'small',
+    numberOfRelatedsToShow: defaultNumberOfRelateds,
   }
 
   handleFontLevelChange = nextFontLevel => {
@@ -32,14 +28,22 @@ class MockTwreporterReactArticleContainer extends React.PureComponent {
     })
   }
 
+  loadMoreRelateds = () => {
+    this.setState({
+      numberOfRelatedsToShow:
+        this.state.numberOfRelatedsToShow + defaultNumberOfRelateds,
+    })
+  }
+
   render() {
-    const { post, relatedPosts, relatedTopic } = this.props
-    const { fontLevel } = this.state
+    const { fontLevel, numberOfRelatedsToShow } = this.state
     return (
       <Article
-        post={post}
-        relatedPosts={relatedPosts}
-        relatedTopic={relatedTopic}
+        post={mockPost}
+        relatedPosts={mockPost.relateds.slice(0, numberOfRelatedsToShow)}
+        relatedTopic={mockPost.topics}
+        hasMoreRelateds={mockPost.relateds.length > numberOfRelatedsToShow}
+        loadMoreRelateds={this.loadMoreRelateds}
         fontLevel={fontLevel}
         onFontLevelChange={this.handleFontLevelChange}
       />
@@ -59,32 +63,28 @@ function selectHeaderTheme(postStyle) {
   }
 }
 
-twreporterRedux.createStore({}, '', true).then(store => {
-  try {
-    const url = new URL(window.location.href)
-    const theme = url.searchParams.get('theme')
-    if (theme) {
-      mockPost.style = theme
-    }
-  } catch (e) {}
-  ReactDOM.render(
-    <React.Fragment>
-      <Provider store={store}>
-        <HeaderContainerWithTransparentTheme>
-          <Header
-            theme={selectHeaderTheme(mockPost.style)}
-            isLinkExternal={true}
-            releaseBranch="master"
-          />
-        </HeaderContainerWithTransparentTheme>
-        <MockTwreporterReactArticleContainer
-          post={mockPost}
-          relatedPosts={mockPost.relateds}
-          relatedTopic={mockPost.topics}
+const store = twreporterRedux.createStore({}, '', true)
+
+try {
+  const url = new URL(window.location.href)
+  const theme = url.searchParams.get('theme')
+  if (theme) {
+    mockPost.style = theme
+  }
+} catch (e) {}
+ReactDOM.render(
+  <React.Fragment>
+    <Provider store={store}>
+      <HeaderContainerWithTransparentTheme>
+        <Header
+          theme={selectHeaderTheme(mockPost.style)}
+          isLinkExternal={true}
+          releaseBranch="master"
         />
-        <Footer />
-      </Provider>
-    </React.Fragment>,
-    document.getElementById('root')
-  )
-})
+      </HeaderContainerWithTransparentTheme>
+      <MockTwreporterReactArticleContainer />
+      <Footer />
+    </Provider>
+  </React.Fragment>,
+  document.getElementById('root')
+)

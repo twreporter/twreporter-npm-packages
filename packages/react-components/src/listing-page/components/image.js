@@ -2,6 +2,8 @@ import LogoIcon from '../assets/img-loading-placeholder.svg'
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
+
 // lodash
 import get from 'lodash/get'
 
@@ -28,7 +30,7 @@ const ImgObjectFit = styled(ImgContainer)`
 const ImgFallback = styled(ImgContainer)`
   background-size: cover;
   background-image: ${props => {
-    return `url(${_.get(props, 'url')})`
+    return `url(${replaceGCSUrlOrigin(_.get(props, 'url'))})`
   }};
   background-position: center center;
 `
@@ -95,13 +97,13 @@ class Image extends React.PureComponent {
             this.imgNode = node
           }}
           alt={alt}
-          src={src}
+          src={replaceGCSUrlOrigin(src)}
           srcSet={srcSet}
           onLoad={this.handleImgOnLoad}
         />
       </ImgObjectFit>
     ) : (
-      <ImgFallback url={src} />
+      <ImgFallback url={replaceGCSUrlOrigin(src)} />
     )
 
     return (

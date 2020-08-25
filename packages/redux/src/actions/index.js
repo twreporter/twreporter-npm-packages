@@ -2,18 +2,14 @@ import { getAccessToken } from './auth'
 import { fetchAuthorCollectionIfNeeded } from './author-articles'
 import { fetchAuthorDetails } from './author-details'
 import { searchAuthorsIfNeeded } from './authors'
-import {
-  fetchIndexPageContent,
-  fetchCategoriesPostsOnIndexPage,
-} from './index-page'
+import { fetchIndexPageContent } from './index-page'
 import {
   fetchAFullPost,
-  fetchListedPosts,
-  fetchEditorPickedPosts,
-  fetchInfographicPostsOnIndexPage,
-  fetchPhotographyPostsOnIndexPage,
+  fetchPostsByCategoryListId,
+  fetchPostsByTagListId,
+  fetchRelatedPostsOfAnEntity,
 } from './posts'
-import { fetchAFullTopic, fetchTopics, fetchTopicsOnIndexPage } from './topics'
+import { fetchAFullTopic, fetchFeatureTopic, fetchTopics } from './topics'
 import {
   createSingleBookmark,
   deleteSingleBookmark,
@@ -28,14 +24,12 @@ export default {
   fetchAFullTopic,
   fetchAuthorCollectionIfNeeded,
   fetchAuthorDetails,
-  fetchCategoriesPostsOnIndexPage,
-  fetchEditorPickedPosts,
+  fetchFeatureTopic,
   fetchIndexPageContent,
-  fetchInfographicPostsOnIndexPage,
-  fetchListedPosts,
-  fetchPhotographyPostsOnIndexPage,
+  fetchPostsByCategoryListId,
+  fetchPostsByTagListId,
+  fetchRelatedPostsOfAnEntity,
   fetchTopics,
-  fetchTopicsOnIndexPage,
   getAccessToken,
   getMultipleBookmarks,
   getSingleBookmark,

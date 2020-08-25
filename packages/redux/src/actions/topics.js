@@ -18,26 +18,28 @@ const _ = {
 
 const { pageToOffset } = pagination
 
-/* Fetch a full topic, whose assets like relateds, leading_video ...etc are all complete,
+/**
+ * Fetch a full topic, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of topic
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchAFullTopic(slug) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
+    const { entities, topicsInEntities } = stateFieldNames
     const state = getState()
+    const topicId = _.get(
+      state,
+      [entities, topicsInEntities, 'slugToId', slug],
+      ''
+    )
     const topic = _.get(
       state,
-      [stateFieldNames.entities, stateFieldNames.topicsInEntities, slug],
-      {}
+      [entities, topicsInEntities, 'byId', topicId],
+      null
     )
     if (_.get(topic, 'full', false)) {
       const successAction = {
-        type: types.CHANGE_SELECTED_TOPIC,
+        type: types.selectedTopic.read.alreadyExists,
         payload: {
           topic,
         },
@@ -46,14 +48,14 @@ export function fetchAFullTopic(slug) {
       return Promise.resolve(successAction)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.topics}/${slug}`
+    const path = `/v2/${apiEndpoints.topics}/${slug}`
     const params = {
       full: 'true',
     }
 
     // Start to get topics
     dispatch({
-      type: types.START_TO_GET_A_FULL_TOPIC,
+      type: types.selectedTopic.read.request,
       payload: {
         slug,
       },
@@ -65,9 +67,9 @@ export function fetchAFullTopic(slug) {
       })
       .then(response => {
         const successAction = {
-          type: types.GET_A_FULL_TOPIC,
+          type: types.selectedTopic.read.success,
           payload: {
-            topic: _.get(response, 'data.record', {}),
+            topic: _.get(response, 'data.data', {}),
           },
         }
         dispatch(successAction)
@@ -76,9 +78,9 @@ export function fetchAFullTopic(slug) {
       .catch(error => {
         const failAction = errorActionCreators.axios(
           error,
-          types.ERROR_TO_GET_A_FULL_TOPIC
+          types.selectedTopic.read.failure
         )
-        failAction.payload.slug = slug
+        failAction.payload['slug'] = slug
         dispatch(failAction)
         return Promise.reject(failAction)
       })
@@ -97,7 +99,7 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
   // Start to get topics
   const url = formURL(origin, path, params)
   dispatch({
-    type: types.START_TO_GET_TOPICS,
+    type: types.topics.read.request,
     url,
   })
 
@@ -106,12 +108,12 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
       timeout: apiConfig.timeout,
     })
     .then(response => {
-      const meta = _.get(response, 'data.meta', {})
+      const meta = _.get(response, 'data.data.meta', {})
       const { total, offset, limit } = meta
       const successAction = {
         type: successActionType,
         payload: {
-          items: _.get(response, 'data.records', []),
+          items: _.get(response, 'data.data.records', []),
           total,
           limit,
           offset,
@@ -123,24 +125,22 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
     .catch(error => {
       const failAction = errorActionCreators.axios(
         error,
-        types.ERROR_TO_GET_TOPICS
+        types.topics.read.failure
       )
       dispatch(failAction)
       return Promise.reject(failAction)
     })
 }
 
-/* Fetch topics(only containing meta properties),
+/**
+ * Fetch topics(only containing meta properties),
  * and it will load more if (total > items you have currently).
- * @param {number} limit - the number of posts you want to get in one request
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
+ *
+ * @param {number} [page=1]
+ * @param {number} [nPerPage=5]
+ * @return {import('../typedef').Thunk} async action creator
  */
 export function fetchTopics(page = 1, nPerPage = 5) {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
   return (dispatch, getState) => {
     /* If nPerPage number is invalid, return a Promise.reject(err) */
     if (!_.isInteger(nPerPage) || nPerPage <= 0) {
@@ -148,7 +148,7 @@ export function fetchTopics(page = 1, nPerPage = 5) {
         {
           nPerPage: `value must be an interger larger than 0, but is ${nPerPage}`,
         },
-        types.ERROR_TO_GET_TOPICS
+        types.topics.read.failure
       )
       dispatch(failAction)
       return Promise.reject(failAction)
@@ -159,7 +159,7 @@ export function fetchTopics(page = 1, nPerPage = 5) {
         {
           page: `value must be an interger larger than 0, but is ${page}`,
         },
-        types.ERROR_TO_GET_TOPICS
+        types.topics.read.failure
       )
       dispatch(failAction)
       return Promise.reject(failAction)
@@ -168,59 +168,124 @@ export function fetchTopics(page = 1, nPerPage = 5) {
     /* construct request path */
     const { limit, offset } = pageToOffset({ page, nPerPage })
     const state = getState()
-    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.topics}`
-    const params = {
-      limit,
-      offset,
-    }
-
-    return _fetchTopics(dispatch, apiOrigin, path, params, types.GET_TOPICS)
-  }
-}
-
-/**
- * fetchTopicsOnIndexPage
- * This function will fetch the 2 to 5 latest topics.
- * It's specifically made for index page
- * @return {Function} returned funciton will get executed by Redux Thunk middleware
- */
-export function fetchTopicsOnIndexPage() {
-  /**
-   * @param {Function} dispatch - Redux store dispatch function
-   * @param {Function} getState - Redux store getState function
-   * @return {Promise} resolve with success action or reject with fail action
-   */
-  return (dispatch, getState) => {
-    const state = getState()
-    const topics = _.get(
-      state,
-      `${stateFieldNames.indexPage}.${stateFieldNames.sections.topicsSection}`,
-      []
-    )
-    if (Array.isArray(topics) && topics.length > 0) {
+    if (
+      _.get(state, [stateFieldNames.topicList, 'items', page, 'length'], 0) > 0
+    ) {
       const action = {
-        type: types.dataAlreadyExists,
+        type: types.topics.read.alreadyExists,
         payload: {
-          function: fetchTopicsOnIndexPage.name,
-          message: 'Topics already exist in redux state.',
+          page,
+          nPerPage,
         },
       }
       dispatch(action)
       return Promise.resolve(action)
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const path = `/v1/${apiEndpoints.topics}`
+    const path = `/v2/${apiEndpoints.topics}`
     const params = {
-      offset: 1,
-      limit: 4,
+      limit,
+      offset,
     }
+
     return _fetchTopics(
       dispatch,
       apiOrigin,
       path,
       params,
-      types.GET_TOPICS_FOR_INDEX_PAGE
+      types.topics.read.success
+    )
+  }
+}
+
+/**
+ *  This function fetch the latest topic,
+ *  and three related posts, sorted by `published_date` in descending order,
+ *  of that topic.
+ *
+ *  @return {import('../typedef').Thunk} async action creator
+ */
+export function fetchFeatureTopic() {
+  return (dispatch, getState) => {
+    const state = getState()
+
+    if (_.get(state, [stateFieldNames.featureTopic, 'id'])) {
+      const action = {
+        type: types.featureTopic.read.alreadyExists,
+      }
+      dispatch(action)
+      return Promise.resolve(action)
+    }
+
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const url = formURL(apiOrigin, `/v2/${apiEndpoints.topics}`, {
+      limit: 1,
+      offset: 0,
+    })
+
+    // dispatch request action
+    dispatch({
+      type: types.featureTopic.read.request,
+    })
+
+    return (
+      axios
+        // fetch the latest topic as feature topic
+        .get(url, {
+          timeout: apiConfig.timeout,
+        })
+        .then(response => {
+          const topic = _.get(response, 'data.data.records.0', {})
+          return topic
+        })
+        // fetch feature topic's latest three related posts
+        .then(topic => {
+          const allRelatedIds = _.get(topic, 'relateds', [])
+          const lastThreeRelatedIds = Array.isArray(allRelatedIds)
+            ? allRelatedIds.slice(-3)
+            : []
+
+          if (lastThreeRelatedIds.length > 0) {
+            const url = formURL(apiOrigin, `/v2/${apiEndpoints.posts}`, {
+              id: lastThreeRelatedIds,
+            })
+            return Promise.all([
+              topic,
+              axios
+                .get(url, {
+                  timeout: apiConfig.timeout,
+                })
+                .then(res => _.get(res, 'data.data.records', [])),
+            ])
+          }
+
+          // return empty response
+          return Promise.all([topic, []])
+        })
+        // dispatch success action
+        .then(results => {
+          const topic = results[0]
+          const lastThreeRelatedPosts = results[1]
+
+          const action = {
+            type: types.featureTopic.read.success,
+            payload: {
+              topic,
+              lastThreeRelatedPosts,
+            },
+          }
+          dispatch(action)
+          return Promise.resolve(action)
+        })
+        // handle axios error response
+        .catch(error => {
+          const failAction = errorActionCreators.axios(
+            error,
+            types.featureTopic.read.failure
+          )
+          dispatch(failAction)
+          return Promise.reject(failAction)
+        })
     )
   }
 }

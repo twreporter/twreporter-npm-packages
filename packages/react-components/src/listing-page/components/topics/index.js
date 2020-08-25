@@ -29,6 +29,10 @@ const NoData = styled.div`
 class Topics extends Component {
   _buildRelatedPosts(posts) {
     const _buildPostJSX = post => {
+      if (typeof post !== 'object' || post === null) {
+        return null
+      }
+
       const { id, linkTarget, linkTo, title, imgUrl } = post
       return (
         <PostItem
@@ -63,7 +67,7 @@ class Topics extends Component {
   }
 
   render() {
-    const { topics, currentPage, isFetching } = this.props
+    const { topics, currentPage, isFetching, showSpinner } = this.props
     if (!isFetching && _.get(topics, 'length', 0) <= 0) {
       return (
         <PageContent>
@@ -117,7 +121,10 @@ class Topics extends Component {
         {isFetching && isFirstPage ? null : (
           <SectionTitle>{TEXT.SECTION_TITLE_OTHERS}</SectionTitle>
         )}
-        <WrappedListSectionContent isFetching={isFetching} />
+        <WrappedListSectionContent
+          isFetching={isFetching}
+          showSpinner={showSpinner}
+        />
       </PageContent>
     )
   }
@@ -147,11 +154,13 @@ Topics.propTypes = {
   ),
   currentPage: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  showSpinner: PropTypes.bool,
 }
 
 Topics.defaultProps = {
   topics: [],
   currentPage: 1,
+  showSpinner: false,
 }
 
 export default Topics

@@ -143,11 +143,11 @@ const Title = styled.div`
 class LatestSection extends React.Component {
   render() {
     const latestItems = this.props.data.map(item => {
-      const style = _.get(item, 'style', '')
-      const href = getHref(_.get(item, 'slug', 'error'), style)
+      const isExternal = _.get(item, 'is_external', false)
+      const href = getHref(_.get(item, 'slug', 'error'), isExternal)
       return (
         <ItemFrame key={_.get(item, 'id')}>
-          <TRLink href={href} redirect={style === 'interactive'}>
+          <TRLink href={href} redirect={isExternal}>
             <ImageFrame>
               <ImgWrapper
                 alt={_.get(item, 'hero_image.description', '')}

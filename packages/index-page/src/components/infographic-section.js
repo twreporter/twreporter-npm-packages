@@ -181,11 +181,11 @@ const More = styled.div`
 
 class Infographic extends React.PureComponent {
   render() {
-    const { title, imgObj, isPortrait, slug, style } = this.props
-    const href = getHref(slug, style)
+    const { title, imgObj, isPortrait, slug, isExternal } = this.props
+    const href = getHref(slug, isExternal)
     return (
       <Item>
-        <TRLink href={href} redirect={style === 'interactive'}>
+        <TRLink href={href} redirect={isExternal}>
           <ImgFrame isPortrait={isPortrait}>
             <ImgWrapper
               alt={imgObj.alt}
@@ -211,17 +211,17 @@ class Infographic extends React.PureComponent {
 Infographic.defaultProps = {
   title: '',
   imgObj: {},
+  isExternal: false,
   isPortrait: false,
   slug: '',
-  style: '',
 }
 
 Infographic.propTypes = {
   title: PropTypes.string,
   imgObj: PropTypes.object,
+  isExternal: PropTypes.bool,
   isPortrait: PropTypes.bool,
   slug: PropTypes.string,
-  style: PropTypes.string,
 }
 
 class InfographicSection extends React.PureComponent {
@@ -254,7 +254,7 @@ class InfographicSection extends React.PureComponent {
           title={_.get(item, 'title')}
           isPortrait={index === 0 || index === 4 || index === 5}
           slug={_.get(item, 'slug')}
-          style={_.get(item, 'style')}
+          isExternal={_.get(item, 'is_external', false)}
         />
       )
     })

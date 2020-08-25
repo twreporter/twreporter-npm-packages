@@ -1,60 +1,3 @@
-/** These strings are used for field key of redux state
- * Redux state will be like
- *  {
- *    index_page: {
- *      latest_section: [],
- *      editor_picks_section: [],
- *      latest_topic_section: [],
- *      reviews_section: [],
- *      topics_section: [],
- *      photos_section: [],
- *      infographics_section: [],
- *    },
- *    entities: {
- *      posts: {},
- *      topics: {},
- *    },
- *
- *    lists: {
- *      // list might be any group of ariticles, topics or other assets
- *      listID1: {
- *        total: 10,
- *        items: [],
- *      },
- *      listID2: {
- *        total: 15,
- *        items: []
- *      }
- *    },
- *
- *    // list topics we already get
- *    topic_list: {
- *      total: 10,
- *      // only store topic id
- *      items: []
- *    },
- *
- *    // current post we want to show in article page
- *    selected_post: {
- *      isFetching: true,
- *      slug: 'post-slug',
- *      error: null
- *    },
- *
- *    // current topic we want to show in topic landing page
- *    selected_topic: {
- *      isFetching: true,
- *      slug: 'topic-slug',
- *      error: null
- *    },
- *
- *  }
- *
- */
-
-/**
- * first level properties of redux state
- */
 const entities = 'entities'
 const indexPage = 'index_page'
 const lists = 'lists'
@@ -139,4 +82,6 @@ export default {
   nextNotifyPopupTS,
   searchedAuthorsList,
   settings,
+  relatedPostsOf: 'relatedPostsOf',
+  featureTopic: 'featureTopic',
 }

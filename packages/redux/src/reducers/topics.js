@@ -19,8 +19,8 @@ const { offsetToPage } = pagination
 
 export function topic(state = {}, action = {}) {
   switch (action.type) {
-    case types.GET_A_FULL_TOPIC:
-    case types.CHANGE_SELECTED_TOPIC: {
+    case types.selectedTopic.read.success:
+    case types.selectedTopic.read.alreadyExists: {
       return _.merge({}, state, {
         slug: _.get(action, 'payload.topic.slug'),
         error: null,
@@ -28,14 +28,14 @@ export function topic(state = {}, action = {}) {
       })
     }
 
-    case types.START_TO_GET_A_FULL_TOPIC:
+    case types.selectedTopic.read.request:
       return _.merge({}, state, {
         slug: _.get(action, 'payload.slug'),
         error: null,
         isFetching: true,
       })
 
-    case types.ERROR_TO_GET_A_FULL_TOPIC:
+    case types.selectedTopic.read.failure:
       return _.merge({}, state, {
         slug: _.get(action, 'payload.slug'),
         error: _.get(action, 'payload.error'),
@@ -48,7 +48,7 @@ export function topic(state = {}, action = {}) {
 
 export function topics(state = {}, action = {}) {
   switch (action.type) {
-    case types.GET_TOPICS: {
+    case types.topics.read.success: {
       const { payload } = action
       const total = _.get(payload, 'total')
       const offset = _.get(payload, 'offset')
@@ -58,7 +58,7 @@ export function topics(state = {}, action = {}) {
         offset,
         total,
       })
-      const pageItems = _.map(_.get(payload, 'items'), item => item.slug)
+      const pageItems = _.map(_.get(payload, 'items'), item => item.id)
       /* If nPerPage changed, overwrite the items in state, otherwise merge items with which in state */
       const items =
         nPerPage !== state.nPerPage
@@ -74,7 +74,7 @@ export function topics(state = {}, action = {}) {
       })
     }
 
-    case types.START_TO_GET_TOPICS:
+    case types.topics.read.request:
       return _.merge({}, state, {
         // page: action.page,
         // nPerPage: action.nPerPage,
@@ -82,7 +82,7 @@ export function topics(state = {}, action = {}) {
         isFetching: true,
       })
 
-    case types.ERROR_TO_GET_TOPICS:
+    case types.topics.read.failure:
       return _.merge({}, state, {
         error: _.get(action, 'payload.error'),
         isFetching: false,

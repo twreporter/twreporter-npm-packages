@@ -274,8 +274,10 @@ const _fontLevel = {
  *  Topic Object
  *  @typedef {Object} TopicObject
  *  @property {string} slug - Slug of topic
- *  @property {string} topic_name - Name of topic
+ *  @property {string} shortTitle - Short title of topic
  */
+
+function noop() {}
 
 /**
  *  @exports
@@ -292,6 +294,8 @@ export default class Article extends PureComponent {
     ]),
     LinkComponent: PropTypes.elementType,
     onFontLevelChange: PropTypes.func,
+    hasMoreRelateds: PropTypes.bool,
+    loadMoreRelateds: PropTypes.func,
   }
 
   static defaultProps = {
@@ -299,6 +303,8 @@ export default class Article extends PureComponent {
     fontLevel: _fontLevel.small,
     relatedPosts: [],
     relatedTopic: {},
+    hasMoreRelateds: false,
+    loadMoreRelateds: noop,
   }
 
   constructor(props) {
@@ -395,6 +401,8 @@ export default class Article extends PureComponent {
       post,
       relatedPosts,
       relatedTopic,
+      hasMoreRelateds,
+      loadMoreRelateds,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -424,7 +432,7 @@ export default class Article extends PureComponent {
           designers={post.designers}
           photographers={post.photographers}
           tags={post.tags}
-          writers={post.writters}
+          writers={post.writers}
           engineers={post.engineers}
           rawAutherText={post.extend_byline}
         />
@@ -469,7 +477,7 @@ export default class Article extends PureComponent {
                     designers={post.designers}
                     photographers={post.photographers}
                     tags={post.tags}
-                    writers={post.writters}
+                    writers={post.writers}
                     engineers={post.engineers}
                     rawAutherText={post.extend_byline}
                     onFontLevelChange={this.changeFontLevel}
@@ -491,11 +499,14 @@ export default class Article extends PureComponent {
                 publishedDate={post.published_date}
               />
               <StyledSeparationCurve />
-              {_.get(relatedPosts, 'length', 0) > 0 ? (
-                <RelatedBlock>
-                  <Related data={relatedPosts} />
-                </RelatedBlock>
-              ) : null}
+              <RelatedBlock>
+                <Related
+                  id={post.id}
+                  data={relatedPosts}
+                  hasMore={hasMoreRelateds}
+                  loadMore={loadMoreRelateds}
+                />
+              </RelatedBlock>
             </BodyBackground>
           </BackgroundBlock>
         </DynamicComponentsContext.Provider>

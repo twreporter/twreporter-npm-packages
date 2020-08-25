@@ -202,7 +202,7 @@ function TwitterShareBT(props) {
     const currentURL = window.location.href
     const location =
       'https://twitter.com/intent/tweet?' +
-      `url=${encodeURIComponent(currentURL)}`
+      `url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(document.title + ' #報導者')}`
 
     window.open(location, '_blank')
   }
