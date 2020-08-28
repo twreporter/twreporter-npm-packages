@@ -8,6 +8,8 @@ export default class DonationLinkWithUtm extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node,
     utmMedium: PropTypes.string,
+    utmSource: PropTypes.string,
+    utmCampaign: PropTypes.string,
     className: PropTypes.string,
   }
 
@@ -29,8 +31,8 @@ export default class DonationLinkWithUtm extends React.PureComponent {
     if (isClient) {
       // client side rendering
       try {
-        const utmSource = window.location.host
-        const utmCampaign = window.location.pathname
+        const utmSource = this.props.utmSource || window.location.host
+        const utmCampaign = this.props.utmCampaign || window.location.pathname
         const parseQueryString = true
         const urlObj = url.parse(donationURL, parseQueryString)
 
