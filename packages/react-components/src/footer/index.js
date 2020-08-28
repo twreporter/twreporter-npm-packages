@@ -67,13 +67,15 @@ const CopyRight = styled.p`
 
 class Footer extends React.PureComponent {
   render() {
-    const { bgColor, releaseBranch } = this.props
+    const { bgColor, releaseBranch, pathname, host } = this.props
     const currentYear = new Date().getFullYear()
     return (
       <FooterContainer bgColor={bgColor}>
         <FooterContent>
           <Content
             mainOrigin={origins.forClientSideRendering[releaseBranch].main}
+            pathname={pathname}
+            host={host}
           />
           <IconList />
           <CopyRight>{`Copyright © ${currentYear} The Reporter.`}</CopyRight>
@@ -86,11 +88,15 @@ class Footer extends React.PureComponent {
 Footer.propTypes = {
   bgColor: PropTypes.string,
   releaseBranch: predefinedPropTypes.releaseBranch,
+  host: PropTypes.string,
+  pathname: PropTypes.string,
 }
 
 Footer.defaultProps = {
   bgColor: '#ffffff',
   releaseBranch: releaseBranchConsts.release,
+  host: '',
+  pathname: '',
 }
 
 export default Footer
