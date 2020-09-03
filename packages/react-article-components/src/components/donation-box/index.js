@@ -1,9 +1,17 @@
 import DonationLink from '@twreporter/react-components/lib/donation-link-with-utm'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedCss from '../constants/css'
 import React, { PureComponent } from 'react'
+import axios from 'axios'
+import get from 'lodash/get'
+import map from 'lodash/map'
+import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedCss from '../../constants/css'
 import styled from 'styled-components'
-import typography from '../constants/typography'
+import typography from '../../constants/typography'
+
+const _ = {
+  get,
+  map,
+}
 
 const _content = {
   title: '用行動支持報導者',
@@ -85,16 +93,47 @@ const Donate = styled.div`
 `
 
 export default class DonationBox extends PureComponent {
+  state = {
+    content: null,
+  }
+
+  componentDidMount() {
+    const contentURL =
+      'https://raw.githubusercontent.com/twreporter/twreporter-npm-packages/master/packages/react-article-components/src/components/donation-box/content.json'
+    axios
+      .get(contentURL, {
+        timeout: 10000,
+      })
+      .then(res => {
+        const content = _.get(res, 'data', _content)
+        this.setState({
+          content,
+        })
+      })
+      .catch(err => {
+        console.error('Fetching donation-box content occurs error', err)
+        this.setState({
+          content: _content,
+        })
+      })
+  }
+
   render() {
+    const content = this.state.content
+
+    if (!content) {
+      return null
+    }
+
     return (
       <Container>
-        <Title>{_content.title}</Title>
-        {_content.desc.map((p, index) => {
+        <Title>{content.title}</Title>
+        {_.map(content.desc, (p, index) => {
           return <Text key={`donation-box-desc-${index + 1}`}>{p}</Text>
         })}
         <Donate>
           <DonationLink utmMedium="article">
-            <p>{_content.bt}</p>
+            <p>{content.bt}</p>
           </DonationLink>
         </Donate>
       </Container>
