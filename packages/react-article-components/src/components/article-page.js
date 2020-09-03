@@ -487,6 +487,7 @@ export default class Article extends PureComponent {
                 {metadataAndToolsJSX}
                 <ContentBlock>
                   <Body
+                    key={_.get(post, 'slug', 'article-page-body-key')}
                     brief={_.get(post, 'brief.api_data')}
                     content={_.get(post, 'content.api_data')}
                   />
