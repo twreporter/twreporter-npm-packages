@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.2-rc.1...@twreporter/react-article-components@1.2.2-rc.2) (2020-09-04)
+
+
+### Reverts
+
+* Revert "refactor(react-article-component): load donation box content on demand" ([88635e5](https://github.com/twreporter/twreporter-npm-packages/commit/88635e5b090c1438e622a0efd26e48fd21f906aa))
+
+
+
+
+
+## [1.2.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.2-rc.0...@twreporter/react-article-components@1.2.2-rc.1) (2020-09-04)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.2.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.1...@twreporter/react-article-components@1.2.2-rc.0) (2020-09-03)
+
+
+### Bug Fixes
+
+* toc disappears after article body rerenders ([1e0eadb](https://github.com/twreporter/twreporter-npm-packages/commit/1e0eadb62d79e0516e1d668e58eb80b7d006b3b0))
+
+
+
+
+
 ## [1.2.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.1-rc.0...@twreporter/react-article-components@1.2.1) (2020-08-28)
 
 **Note:** Version bump only for package @twreporter/react-article-components

@@ -408,6 +408,8 @@ export default class Body extends PureComponent {
     content: [],
   }
 
+  tocManager = TOC.createManager()
+
   _buildContentElement = (data, index) => {
     if (!data.id) {
       data.id = `body_element_${index}`
@@ -418,7 +420,6 @@ export default class Body extends PureComponent {
 
   render() {
     const { brief, content } = this.props
-    const tocManager = TOC.createManager()
     let enableTOC = false
 
     const contentJsx = Array.isArray(content)
@@ -429,9 +430,9 @@ export default class Body extends PureComponent {
             return (
               <TOC.React.Anchor
                 key={data.id}
-                id={_.get(data, 'content.0', `section-${index}`)}
+                id={_.get(data, 'id', `section-${index}`)}
                 label={_.get(data, 'content.0')}
-                manager={tocManager}
+                manager={this.tocManager}
               >
                 {elementJSX}
               </TOC.React.Anchor>
@@ -445,7 +446,9 @@ export default class Body extends PureComponent {
         <StyledBrief data={brief} />
         {contentJsx}
         <ClearFloat />
-        {enableTOC ? <TOC.React.TableOfContents manager={tocManager} /> : null}
+        {enableTOC ? (
+          <TOC.React.TableOfContents manager={this.tocManager} />
+        ) : null}
       </div>
     )
   }

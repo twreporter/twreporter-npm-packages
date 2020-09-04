@@ -38,8 +38,7 @@ class TOCManager {
    *  @param {Anchor[]} [props.anchors=[]] - anchors of table of contents
    *  @param {Anchor} [props.highlightAnchor=null] - it indicates which anchor is entering the viewport and should be highlighted
    *  @param {TableOfContents} [props.toc=null] - table of contents
-   *  @param {bool} [props.toStopAutoUpdateHighlightAnchor=false] - it stops automatically updating highlight anchor
-   *  @returns {undefined}
+   *  @param {boolean} [props.toStopAutoUpdateHighlightAnchor=false] - it stops automatically updating highlight anchor
    */
   constructor({
     anchors = [],
@@ -57,8 +56,8 @@ class TOCManager {
    *  use `Array.concat` to add `Anchor` into array
    *
    *  @method
-   *  @param {Anchor} - an instance of `Anchor`
-   *  @returns {undefined}
+   *  @param {Anchor} anchor - an instance of `Anchor`
+   *  @returns
    */
   addAnchor(anchor) {
     if (anchor instanceof Anchor) {
@@ -73,7 +72,7 @@ class TOCManager {
   /**
    *  Re-render `TableOfContents` if needed.
    *  Use debounce for optimizing rendering performance.
-   *  @returns {undefined}
+   *  @returns
    */
   renderTOC = _.debounce(() => {
     if (this._toc instanceof TableOfContents) {
@@ -84,7 +83,7 @@ class TOCManager {
   /**
    *  Update highlight anchor.
    *  Use debounce for optimizing rendering performance.
-   *  @returns {undefined}
+   *  @returns
    */
   updateHighlightAnchor = _.debounce(() => {
     // sort the anchors by the distance to viewport top in ascending order.
@@ -150,8 +149,8 @@ class TOCManager {
    *  It indicates which anchor is entering the viewport
    *  and should be highlighted in the table of contents.
    *  @method
-   *  @param {Anchor} - an instance of `Anchor`
-   *  @return {undefined}
+   *  @param {Anchor} anchor - an instance of `Anchor`
+   *  @returns
    */
   set highlightAnchor(anchor) {
     if (anchor instanceof Anchor) {
@@ -193,7 +192,7 @@ class TOCManager {
   /**
    *  This is a setter function.
    *  @method
-   *  @returns {undefined}
+   *  @returns
    */
   set toc(toc) {
     this._toc = toc
@@ -211,7 +210,7 @@ class TOCManager {
   /**
    *  This is a setter function.
    *  @method
-   *  @returns {undefined}
+   *  @returns
    */
   set toStopAutoUpdateHighlightAnchor(toStopAutoUpdateHighlightAnchor) {
     this._toStopAutoUpdateHighlightAnchor = toStopAutoUpdateHighlightAnchor
@@ -220,7 +219,7 @@ class TOCManager {
   /**
    *  This is a getter function.
    *  @method
-   *  @returns {bool}
+   *  @returns {boolean}
    */
   get toStopAutoUpdateHighlightAnchor() {
     return this._toStopAutoUpdateHighlightAnchor
@@ -253,6 +252,7 @@ class Anchor extends React.PureComponent {
     this.handleOnPositionChange = this._handleOnPositionChange.bind(this)
 
     this.currentPosition = TOCManager.position.invisible
+
     const { manager } = props
     manager.addAnchor(this)
     manager.renderTOC()
@@ -280,16 +280,16 @@ class Anchor extends React.PureComponent {
   }
 
   /**
-   *  @param {Object} [props={}]
-   *  @param {string} props.currentPosition - it could be one of
+   *  @param {Object} [posObj={}]
+   *  @param {string} [posObj.currentPosition=''] - it could be one of
    *  Waypoint.below, Waypoint.above, Waypoint.inside and Waypoint.invisible
    *
-   *  @returns {undefined}
+   *  @returns
    */
-  _handleOnPositionChange({ currentPosition } = {}) {
+  _handleOnPositionChange(posObj = {}) {
     const { manager } = this.props
 
-    this.currentPosition = currentPosition
+    this.currentPosition = posObj.currentPosition
 
     if (manager.toStopAutoUpdateHighlightAnchor) {
       return
@@ -344,7 +344,7 @@ class TableOfContents extends React.PureComponent {
      *  @callback
      *  @param {Anchor[]} anchors
      *  @param {?Anchor} highlightAnchor
-     *  @param {TableOfContents#handleAnchorClick} handleAnchorClick - callback function for handling clicking anchor
+     *  @param {Function} handleAnchorClick - callback function for handling clicking anchor
      */
     render: PropTypes.func,
   }
@@ -365,8 +365,8 @@ class TableOfContents extends React.PureComponent {
   }
 
   /**
-   *  @param {Anchor} - anchor to highlight
-   *  @returns {undefined}
+   *  @param {Anchor} anchor - anchor to highlight
+   *  @returns
    */
   _setHighlightAnchor(anchor) {
     this.setState({
@@ -376,7 +376,7 @@ class TableOfContents extends React.PureComponent {
 
   /**
    *  @param {string} anchorID - id of clicked anchor
-   *  @returns {undefined}
+   *  @returns
    */
   _handleAnchorClick(anchorID) {
     const { manager } = this.props
