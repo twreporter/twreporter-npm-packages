@@ -430,7 +430,8 @@ export default class Body extends PureComponent {
             return (
               <TOC.React.Anchor
                 key={data.id}
-                id={_.get(data, 'id', `section-${index}`)}
+                // provide header-one string as anchor id for article
+                id={_.get(data, 'content.0', `section-${index}`)}
                 label={_.get(data, 'content.0')}
                 manager={this.tocManager}
               >
