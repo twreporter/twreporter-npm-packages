@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.2...@twreporter/react-article-components@1.2.3-rc.0) (2020-09-08)
+
+
+### Bug Fixes
+
+* **react-article-components:** provide h1 string as anchor id ([c2ee6e4](https://github.com/twreporter/twreporter-npm-packages/commit/c2ee6e45e1234c6dab599e493c788f500af0fc63))
+
+
+
+
+
 ## [1.2.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.2-rc.2...@twreporter/react-article-components@1.2.2) (2020-09-04)
 
 **Note:** Version bump only for package @twreporter/react-article-components
