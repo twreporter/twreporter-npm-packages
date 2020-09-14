@@ -19,11 +19,11 @@ const _ = {
  * @param {Function} dispatch - dispatch of redux
  * @param {string} origin - URL origin
  * @param {string} path - URL path
- * @param {Object} params - URL query params
+ * @param {number} timeout - request timeout to api
  * @return {Promise} resolve with success action or reject with fail action
  **/
-function _fetch(dispatch, origin, path, params) {
-  const url = formURL(origin, path, params)
+function _fetch(dispatch, origin, path, timeout) {
+  const url = formURL(origin, path)
   // Start to get content
   dispatch({
     type: types.indexPage.read.request,
@@ -33,7 +33,7 @@ function _fetch(dispatch, origin, path, params) {
   return (
     axios
       .get(url, {
-        timeout: apiConfig.timeout,
+        timeout,
       })
       // Get content successfully
       .then(response => {
@@ -66,9 +66,11 @@ function _fetch(dispatch, origin, path, params) {
  * on the index page,
  * including latest_section, editor_picks_section, latest_topic_section,
  * infographics_section, reviews_section, and photos_section.
+ *
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchIndexPageContent() {
+export function fetchIndexPageContent(timeout = apiConfig.timeout) {
   return (dispatch, getState) => {
     /** @type {import('../typedef').ReduxState} */
     const state = getState()
@@ -84,6 +86,6 @@ export function fetchIndexPageContent() {
     }
 
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    return _fetch(dispatch, apiOrigin, `/v2/${apiEndpoints.indexPage}`, {})
+    return _fetch(dispatch, apiOrigin, `/v2/${apiEndpoints.indexPage}`, timeout)
   }
 }

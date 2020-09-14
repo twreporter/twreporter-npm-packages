@@ -22,9 +22,10 @@ const { entities, postsInEntities } = stateFieldNames
 /**
  * Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of post
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchAFullPost(slug) {
+export function fetchAFullPost(slug, timeout = apiConfig.timeout) {
   return (dispatch, getState) => {
     const state = getState()
     const postId = _.get(
@@ -75,7 +76,7 @@ export function fetchAFullPost(slug) {
 
     return axios
       .get(url, {
-        timeout: apiConfig.timeout,
+        timeout,
       })
       .then(response => {
         const successAction = {
@@ -105,6 +106,7 @@ export function fetchAFullPost(slug) {
  * @param {string} successActionType - action type
  * @param {string} failureActionType - action type
  * @param {Object} defaultPayload
+ * @param {number} timeout - request api timeout
  * @return {Promise} resolve with success action or reject with fail action
  **/
 function _fetchPosts(
@@ -112,11 +114,12 @@ function _fetchPosts(
   url,
   successActionType,
   failureActionType,
-  defaultPayload = {}
+  defaultPayload = {},
+  timeout
 ) {
   return axios
     .get(url, {
-      timeout: apiConfig.timeout,
+      timeout,
     })
     .then(response => {
       const successAction = {
@@ -145,9 +148,14 @@ function _fetchPosts(
  *  of that target entity.
  *  @param {import('../typedef').ObjectID} entityId - ObjectID of a entity, which could be a post or topic
  *  @param {number} limit - specify how many posts to load
+ *  @param {number} [timeout=apiConfig.timeout] - request api timeout
  *  @return {import('../typedef').Thunk} async action creator
  */
-export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
+export function fetchRelatedPostsOfAnEntity(
+  entityId,
+  limit = 6,
+  timeout = apiConfig.timeout
+) {
   return (dispatch, getState) => {
     /** @type {import('../typedef').ReduxState} */
     const state = getState()
@@ -222,7 +230,8 @@ export function fetchRelatedPostsOfAnEntity(entityId, limit = 6) {
       url,
       types.relatedPosts.read.success,
       types.relatedPosts.read.failure,
-      { targetEntityId: entityId, targetRelatedPostsIds }
+      { targetEntityId: entityId, targetRelatedPostsIds },
+      timeout
     )
   }
 }
@@ -236,9 +245,16 @@ const startPage = 1
  * @param {string} listType - tag_id or category_id
  * @param {number} [limit=10] - the number of posts you want to get in one request
  * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @param {number} timeout - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
+function fetchPostsByListId(
+  listId,
+  listType,
+  limit = 10,
+  page = startPage,
+  timeout
+) {
   return (dispatch, getState) => {
     if (typeof listId !== 'string' || !listId) {
       const action = {
@@ -305,7 +321,8 @@ function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
       url,
       types.postsByListId.read.success,
       types.postsByListId.read.failure,
-      { listId, page }
+      { listId, page },
+      timeout
     )
   }
 }
@@ -315,11 +332,17 @@ function fetchPostsByListId(listId, listType, limit = 10, page = startPage) {
  * @param {string} listId - id of category
  * @param {number} [limit=10] - the number of posts you want to get in one request
  * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchPostsByCategoryListId(listId, limit = 10, page = 0) {
+export function fetchPostsByCategoryListId(
+  listId,
+  limit = 10,
+  page = 0,
+  timeout = apiConfig.timeout
+) {
   return (dispatch, getState) => {
-    return fetchPostsByListId(listId, 'category_id', limit, page)(
+    return fetchPostsByListId(listId, 'category_id', limit, page, timeout)(
       dispatch,
       getState
     )
@@ -331,10 +354,19 @@ export function fetchPostsByCategoryListId(listId, limit = 10, page = 0) {
  * @param {string} listId - id of tag
  * @param {number} [limit=10] - the number of posts you want to get in one request
  * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchPostsByTagListId(listId, limit = 10, page = 0) {
+export function fetchPostsByTagListId(
+  listId,
+  limit = 10,
+  page = 0,
+  timeout = apiConfig.timeout
+) {
   return (dispatch, getState) => {
-    return fetchPostsByListId(listId, 'tag_id', limit, page)(dispatch, getState)
+    return fetchPostsByListId(listId, 'tag_id', limit, page, timeout)(
+      dispatch,
+      getState
+    )
   }
 }

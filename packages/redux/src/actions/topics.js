@@ -21,9 +21,10 @@ const { pageToOffset } = pagination
 /**
  * Fetch a full topic, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of topic
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchAFullTopic(slug) {
+export function fetchAFullTopic(slug, timeout = apiConfig.timeout) {
   return (dispatch, getState) => {
     const { entities, topicsInEntities } = stateFieldNames
     const state = getState()
@@ -63,7 +64,7 @@ export function fetchAFullTopic(slug) {
 
     return axios
       .get(formURL(apiOrigin, path, params), {
-        timeout: apiConfig.timeout,
+        timeout,
       })
       .then(response => {
         const successAction = {
@@ -93,9 +94,17 @@ export function fetchAFullTopic(slug) {
  *  @param {string} path - URL path
  *  @param {object} params - URL params
  *  @param {string} successActionType
+ *  @param {number} timeout - request api timeout
  *  @return {Promise} resolve with success action or reject with fail action
  */
-function _fetchTopics(dispatch, origin, path, params, successActionType) {
+function _fetchTopics(
+  dispatch,
+  origin,
+  path,
+  params,
+  successActionType,
+  timeout
+) {
   // Start to get topics
   const url = formURL(origin, path, params)
   dispatch({
@@ -105,7 +114,7 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
 
   return axios
     .get(url, {
-      timeout: apiConfig.timeout,
+      timeout,
     })
     .then(response => {
       const meta = _.get(response, 'data.data.meta', {})
@@ -138,9 +147,14 @@ function _fetchTopics(dispatch, origin, path, params, successActionType) {
  *
  * @param {number} [page=1]
  * @param {number} [nPerPage=5]
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchTopics(page = 1, nPerPage = 5) {
+export function fetchTopics(
+  page = 1,
+  nPerPage = 5,
+  timeout = apiConfig.timeout
+) {
   return (dispatch, getState) => {
     /* If nPerPage number is invalid, return a Promise.reject(err) */
     if (!_.isInteger(nPerPage) || nPerPage <= 0) {
@@ -193,7 +207,8 @@ export function fetchTopics(page = 1, nPerPage = 5) {
       apiOrigin,
       path,
       params,
-      types.topics.read.success
+      types.topics.read.success,
+      timeout
     )
   }
 }
@@ -203,9 +218,10 @@ export function fetchTopics(page = 1, nPerPage = 5) {
  *  and three related posts, sorted by `published_date` in descending order,
  *  of that topic.
  *
+ *  @param {number} [timeout=apiConfig.timeout] - request api timeout
  *  @return {import('../typedef').Thunk} async action creator
  */
-export function fetchFeatureTopic() {
+export function fetchFeatureTopic(timeout = apiConfig.timeout) {
   return (dispatch, getState) => {
     const state = getState()
 
@@ -232,7 +248,7 @@ export function fetchFeatureTopic() {
       axios
         // fetch the latest topic as feature topic
         .get(url, {
-          timeout: apiConfig.timeout,
+          timeout,
         })
         .then(response => {
           const topic = _.get(response, 'data.data.records.0', {})
@@ -253,7 +269,7 @@ export function fetchFeatureTopic() {
               topic,
               axios
                 .get(url, {
-                  timeout: apiConfig.timeout,
+                  timeout,
                 })
                 .then(res => _.get(res, 'data.data.records', [])),
             ])
