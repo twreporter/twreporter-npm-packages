@@ -4,20 +4,14 @@ import types from '../constants/action-types'
 
 // lodash
 import concat from 'lodash/concat'
-import filter from 'lodash/filter'
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
-import map from 'lodash/map'
-import merge from 'lodash/merge'
 import values from 'lodash/values'
 
 const _ = {
   concat,
-  filter,
   forEach,
   get,
-  map,
-  merge,
   values,
 }
 
@@ -117,10 +111,30 @@ function entities(state = defaultState, action = {}) {
         }
       })
 
-      return _.merge({}, state, {
-        [fieldNames.postsInEntities]: _buildState(allPostIds, posts),
-        [fieldNames.topicsInEntities]: _buildState(allTopicIds, topics),
-      })
+      const newStateForPosts = _buildState(allPostIds, posts)
+      const newStateForTopics = _buildState(allTopicIds, topics)
+
+      return {
+        ...state,
+        [fieldNames.postsInEntities]: {
+          allIds: newStateForPosts.allIds,
+          byId: Object.assign({}, state.posts.byId, newStateForPosts.byId),
+          slugToId: Object.assign(
+            {},
+            state.posts.slugToId,
+            newStateForPosts.slugToId
+          ),
+        },
+        [fieldNames.topicsInEntities]: {
+          allIds: newStateForTopics.allIds,
+          byId: Object.assign({}, state.topics.byId, newStateForTopics.byId),
+          slugToId: Object.assign(
+            {},
+            state.topics.slugToId,
+            newStateForTopics.slugToId
+          ),
+        },
+      }
     }
 
     case types.topics.read.success: {
@@ -131,9 +145,16 @@ function entities(state = defaultState, action = {}) {
       )
       const topics = _.get(action, 'payload.items', [])
 
-      return _.merge({}, state, {
-        [fieldNames.topicsInEntities]: _buildState(allTopicIds, topics),
-      })
+      const { allIds, byId, slugToId } = _buildState(allTopicIds, topics)
+
+      return {
+        ...state,
+        [fieldNames.topicsInEntities]: {
+          allIds,
+          byId: Object.assign({}, state.topics.byId, byId),
+          slugToId: Object.assign({}, state.topics.slugToId, slugToId),
+        },
+      }
     }
 
     case types.selectedPost.read.success: {
@@ -144,9 +165,16 @@ function entities(state = defaultState, action = {}) {
       )
       const post = _.get(action, 'payload.post', {})
 
-      return _.merge({}, state, {
-        [fieldNames.postsInEntities]: _buildState(allPostIds, post, true),
-      })
+      const { allIds, byId, slugToId } = _buildState(allPostIds, post, true)
+
+      return {
+        ...state,
+        [fieldNames.postsInEntities]: {
+          allIds,
+          byId: Object.assign({}, state.posts.byId, byId),
+          slugToId: Object.assign({}, state.posts.slugToId, slugToId),
+        },
+      }
     }
 
     case types.selectedTopic.read.success: {
@@ -157,9 +185,16 @@ function entities(state = defaultState, action = {}) {
       )
       const topic = _.get(action, 'payload.topic', {})
 
-      return _.merge({}, state, {
-        [fieldNames.topicsInEntities]: _buildState(allTopicIds, topic, true),
-      })
+      const { allIds, byId, slugToId } = _buildState(allTopicIds, topic, true)
+
+      return {
+        ...state,
+        [fieldNames.topicsInEntities]: {
+          allIds,
+          byId: Object.assign({}, state.topics.byId, byId),
+          slugToId: Object.assign({}, state.topics.slugToId, slugToId),
+        },
+      }
     }
 
     case types.postsByListId.read.success:
@@ -171,9 +206,16 @@ function entities(state = defaultState, action = {}) {
       )
       const posts = _.get(action, 'payload.items', [])
 
-      return _.merge({}, state, {
-        [fieldNames.postsInEntities]: _buildState(allPostIds, posts),
-      })
+      const { allIds, byId, slugToId } = _buildState(allPostIds, posts)
+
+      return {
+        ...state,
+        [fieldNames.postsInEntities]: {
+          allIds,
+          byId: Object.assign({}, state.posts.byId, byId),
+          slugToId: Object.assign({}, state.posts.slugToId, slugToId),
+        },
+      }
     }
 
     case types.featureTopic.read.success: {
@@ -192,10 +234,30 @@ function entities(state = defaultState, action = {}) {
       const posts = _.get(action, 'payload.lastThreeRelatedPosts', [])
       const topics = [_.get(action, 'payload.topic', {})]
 
-      return _.merge({}, state, {
-        [fieldNames.postsInEntities]: _buildState(allPostIds, posts),
-        [fieldNames.topicsInEntities]: _buildState(allTopicIds, topics),
-      })
+      const newStateForPosts = _buildState(allPostIds, posts)
+      const newStateForTopics = _buildState(allTopicIds, topics)
+
+      return {
+        ...state,
+        [fieldNames.postsInEntities]: {
+          allIds: newStateForPosts.allIds,
+          byId: Object.assign({}, state.posts.byId, newStateForPosts.byId),
+          slugToId: Object.assign(
+            {},
+            state.posts.slugToId,
+            newStateForPosts.slugToId
+          ),
+        },
+        [fieldNames.topicsInEntities]: {
+          allIds: newStateForTopics.allIds,
+          byId: Object.assign({}, state.topics.byId, newStateForTopics.byId),
+          slugToId: Object.assign(
+            {},
+            state.topics.slugToId,
+            newStateForTopics.slugToId
+          ),
+        },
+      }
     }
 
     default: {
