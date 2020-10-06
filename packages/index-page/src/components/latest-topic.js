@@ -189,19 +189,19 @@ class LatestTopic extends React.PureComponent {
 
       const isExternal = _.get(post, 'is_external', false)
       const href = getHref(_.get(post, 'slug', 'error'), isExternal)
+      const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
       relatedsJsx.push(
         <FlexItem key={_.get(post, 'id')} mobileWidth={mobileWidth}>
           <TRLink href={href} redirect={isExternal}>
             <ImgFrame>
               <ImgWrapper
-                alt={_.get(post, 'hero_image.description')}
-                src={_.get(post, [
-                  'hero_image',
+                alt={_.get(imgObj, 'description')}
+                src={_.get(imgObj, [
                   'resized_targets',
                   useTinyImg ? 'tiny' : 'mobile',
                   'url',
                 ])}
-                srcSet={_.get(post, 'hero_image.resized_targets', '')}
+                srcSet={_.get(imgObj, 'resized_targets')}
                 sizes={
                   `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
                   `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +

@@ -386,7 +386,7 @@ class EditorPicks extends React.Component {
     })()
 
     const Images = swappedData.map((post, index) => {
-      const heroImg = _.get(post, 'hero_image')
+      const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
       const isExternal = _.get(post, 'is_external', false)
       const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       const fadingStyle = {
@@ -396,7 +396,7 @@ class EditorPicks extends React.Component {
       }
       return (
         <FadeInFadeOut
-          key={_.get(heroImg, 'id')}
+          key={_.get(imgObj, 'id')}
           isSelected={index === this.state.selected}
         >
           <TRLink href={href} redirect={isExternal} plain>
@@ -408,9 +408,9 @@ class EditorPicks extends React.Component {
                 style={fadingStyle}
               >
                 <ImgWrapper
-                  alt={_.get(heroImg, 'description')}
-                  src={_.get(heroImg, 'resized_targets.tablet.url')}
-                  srcSet={_.get(heroImg, 'resized_targets', '')}
+                  alt={_.get(imgObj, 'description')}
+                  src={_.get(imgObj, 'resized_targets.tablet.url')}
+                  srcSet={_.get(imgObj, 'resized_targets')}
                   sizes={
                     `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
                     `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +

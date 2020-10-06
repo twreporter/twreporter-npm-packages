@@ -106,14 +106,14 @@ class EditorPicksMobile extends SwipableMixin {
     const ImageComp = post => {
       const isExternal = _.get(post, 'is_external', false)
       const href = getHref(_.get(post, 'slug', 'error'), isExternal)
-      const heroImg = _.get(post, 'hero_image')
+      const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
       return (
         <TRLink href={href} redirect={isExternal}>
           <ImgFrame>
             <ImgWrapper
-              alt={_.get(heroImg, 'description')}
-              src={_.get(heroImg, 'resized_targets.mobile.url')}
-              srcSet={_.get(heroImg, 'resized_targets', '')}
+              alt={_.get(imgObj, 'description')}
+              src={_.get(imgObj, 'resized_targets.mobile.url')}
+              srcSet={_.get(imgObj, 'resized_targets')}
               sizes={
                 `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
                 `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
