@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.0.10...@twreporter/index-page@1.1.0-rc.0) (2020-10-08)
+
+
+### Features
+
+* **index-page:** use `og_image` object as image fallback ([6482227](https://github.com/twreporter/twreporter-npm-packages/commit/6482227e2d87ed0523bd3c380469516f0d238065))
+
+
+
+
+
 ## [1.0.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.0.10-rc.0...@twreporter/index-page@1.0.10) (2020-09-10)
 
 **Note:** Version bump only for package @twreporter/index-page
