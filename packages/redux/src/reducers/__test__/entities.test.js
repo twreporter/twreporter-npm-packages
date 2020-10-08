@@ -181,15 +181,12 @@ describe('entities reducer', () => {
 
   test('should handle types.postsByListId.read.success', () => {
     expect(
-      reducer(
-        {},
-        {
-          type: types.postsByListId.read.success,
-          payload: {
-            items: [metaPost2],
-          },
-        }
-      )
+      reducer(undefined, {
+        type: types.postsByListId.read.success,
+        payload: {
+          items: [metaPost2],
+        },
+      })
     ).toEqual({
       posts: {
         byId: {
@@ -200,20 +197,18 @@ describe('entities reducer', () => {
         },
         allIds: [metaPost2.id],
       },
+      topics: initialState.topics,
     })
   })
 
   test('should handle types.topics.read.success', () => {
     expect(
-      reducer(
-        {},
-        {
-          type: types.topics.read.success,
-          payload: {
-            items: [metaTopic1, metaTopic2],
-          },
-        }
-      )
+      reducer(undefined, {
+        type: types.topics.read.success,
+        payload: {
+          items: [metaTopic1, metaTopic2],
+        },
+      })
     ).toEqual({
       topics: {
         byId: {
@@ -226,6 +221,7 @@ describe('entities reducer', () => {
         },
         allIds: [metaTopic1.id, metaTopic2.id],
       },
+      posts: initialState.posts,
     })
   })
 
@@ -242,6 +238,7 @@ describe('entities reducer', () => {
             },
             allIds: [metaPost1.id],
           },
+          topics: initialState.topics,
         },
         {
           type: types.selectedPost.read.success,
@@ -260,6 +257,7 @@ describe('entities reducer', () => {
         },
         allIds: [fullPost1.id],
       },
+      topics: initialState.topics,
     })
   })
 
@@ -276,6 +274,7 @@ describe('entities reducer', () => {
             },
             allIds: [metaTopic1.id],
           },
+          posts: initialState.posts,
         },
         {
           type: types.selectedTopic.read.success,
@@ -294,6 +293,7 @@ describe('entities reducer', () => {
         },
         allIds: [fullTopic1.id],
       },
+      posts: initialState.posts,
     })
   })
 

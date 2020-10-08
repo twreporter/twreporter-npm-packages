@@ -145,14 +145,15 @@ class LatestSection extends React.Component {
     const latestItems = this.props.data.map(item => {
       const isExternal = _.get(item, 'is_external', false)
       const href = getHref(_.get(item, 'slug', 'error'), isExternal)
+      const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
       return (
         <ItemFrame key={_.get(item, 'id')}>
           <TRLink href={href} redirect={isExternal}>
             <ImageFrame>
               <ImgWrapper
-                alt={_.get(item, 'hero_image.description', '')}
-                src={_.get(item, 'hero_image.resized_targets.mobile.url', '')}
-                srcSet={_.get(item, 'hero_image.resized_targets', '')}
+                alt={_.get(imgObj, 'description')}
+                src={_.get(imgObj, 'resized_targets.mobile.url')}
+                srcSet={_.get(imgObj, 'resized_targets')}
                 sizes={
                   `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
                   `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +

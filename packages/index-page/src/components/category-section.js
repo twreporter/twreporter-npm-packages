@@ -154,20 +154,20 @@ class Category extends React.PureComponent {
     const items = data.map(item => {
       const isExternal = _.get(item, 'is_external', false)
       const href = getHref(_.get(item, 'slug', 'error'), isExternal)
+      const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
       return (
         <FlexItem key={_.get(item, 'id')}>
           <CategoryName>{_.get(item, 'listName')}</CategoryName>
           <TRLink href={href} redirect={isExternal}>
             <ImgFrame>
               <ImgWrapper
-                alt={_.get(item, 'hero_image.description')}
-                src={_.get(item, [
-                  'hero_image',
+                alt={_.get(imgObj, 'description')}
+                src={_.get(imgObj, [
                   'resized_targets',
                   useTinyImg ? 'tiny' : 'mobile',
                   'url',
                 ])}
-                srcSet={_.get(item, 'hero_image.resized_targets', '')}
+                srcSet={_.get(imgObj, 'resized_targets')}
                 sizes={
                   `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
                   `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +

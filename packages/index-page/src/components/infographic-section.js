@@ -231,7 +231,7 @@ class InfographicSection extends React.PureComponent {
 
     const postComps = data.slice(0, 6).map((item, index) => {
       const portraitImg = _.get(item, 'leading_image_portrait')
-      let imgObj = _.get(item, 'hero_image')
+      let imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
 
       if (index === 0 || index === 4 || index === 5) {
         if (typeof _.get(portraitImg, 'resized_targets') === 'object') {
