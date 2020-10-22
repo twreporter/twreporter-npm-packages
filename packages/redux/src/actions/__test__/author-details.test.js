@@ -22,7 +22,7 @@ const searchParas = {
 describe('Test action creators of author-details', () => {
   test('Test action creator `requestFetchAuthorDetails`', () => {
     const expected = {
-      type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
+      type: actionTypes.authorDetails.read.request,
       payload: {
         keywords: authorId,
       },
@@ -41,7 +41,7 @@ describe('Test action creators of author-details', () => {
     }
     const createdAction = actions.receiveFetchAuthorDetails(normalizedData)
     const expected = {
-      type: actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS,
+      type: actionTypes.authorDetails.read.success,
       payload: {
         normalizedData,
       },
@@ -77,13 +77,13 @@ describe('Test action creators of author-details', () => {
         .then(function() {
           const expected = [
             {
-              type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
+              type: actionTypes.authorDetails.read.request,
               payload: {
                 keywords: authorId,
               },
             },
             {
-              type: actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS,
+              type: actionTypes.authorDetails.read.success,
               payload: {
                 normalizedData,
               },
@@ -108,13 +108,13 @@ describe('Test action creators of author-details', () => {
         .catch(function(failAction) {
           const expected = [
             {
-              type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
+              type: actionTypes.authorDetails.read.request,
               payload: {
                 keywords: authorId,
               },
             },
             {
-              type: actionTypes.FETCH_AUTHOR_DETAILS_FAILURE,
+              type: actionTypes.authorDetails.read.failure,
               payload: {
                 error: expect.any(Error),
               },
