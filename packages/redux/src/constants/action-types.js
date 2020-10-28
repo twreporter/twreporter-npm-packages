@@ -5,9 +5,21 @@ export default {
   AUTH_FAILURE: 'grant_authorization_failure',
   AUTH_CLEAR: 'clear_authorization',
 
+  /**
+   * @deprecated
+   * keep these three action types here for backward compatibility.
+   */
   FETCH_AUTHOR_DETAILS_REQUEST: 'FETCH_AUTHOR_DETAILS_REQUEST',
   FETCH_AUTHOR_DETAILS_SUCCESS: 'FETCH_AUTHOR_DETAILS_SUCCESS',
   FETCH_AUTHOR_DETAILS_FAILURE: 'FETCH_AUTHOR_DETAILS_FAILURE',
+
+  authorDetails: {
+    read: {
+      request: 'request to fetch details of the certain author',
+      success: 'success to fetch details of the certain author',
+      failure: 'fail to fetch details of the certain author',
+    },
+  },
 
   SEARCH_AUTHORS_REQUEST: 'SEARCH_AUTHORS_REQUEST',
   SEARCH_AUTHORS_SUCCESS: 'SEARCH_AUTHORS_SUCCESS',
