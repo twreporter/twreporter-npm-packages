@@ -86,7 +86,7 @@ export default function relatedPostsOf(state = initialState, action = {}) {
       }
 
       // deduplicate related posts according to their ids
-      more = _.uniq(more)
+      more = _.uniq(more).filter(relatedId => relatedId !== entityId)
 
       const allIds = _.get(state, 'allIds', [])
       const ids = []
