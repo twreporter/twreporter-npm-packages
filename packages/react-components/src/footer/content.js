@@ -43,7 +43,6 @@ function getItemGroups(mainOrigin) {
         text: '影響力報告',
         link: `${mainOrigin}${entityPaths.article}impact-and-annual-report`,
         target: '_self',
-        newFlag: true,
       },
     ],
     [
@@ -84,6 +83,13 @@ function getItemGroups(mainOrigin) {
         text: '訂閱電子報',
         link: externalLinks.newsLetter,
         target: '_blank',
+      },
+      {
+        slug: 'podcast-list',
+        text: 'Podcast節目列表',
+        link: `${mainOrigin}${entityPaths.article}podcast-list`,
+        target: '_blank',
+        newFlag: true,
       },
       {
         slug: 'media-center',
