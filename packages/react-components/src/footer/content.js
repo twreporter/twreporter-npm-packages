@@ -209,6 +209,8 @@ const Item = styled.a`
   p {
     display: inline;
     font-size: 14px;
+    /* ff-tisa-web-prop is for english text */
+    font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
     font-weight: ${fontWeight.medium};
     letter-spacing: 1.3px;
     color: #9c9c9c;
