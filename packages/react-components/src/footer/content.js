@@ -43,7 +43,6 @@ function getItemGroups(mainOrigin) {
         text: '影響力報告',
         link: `${mainOrigin}${entityPaths.article}impact-and-annual-report`,
         target: '_self',
-        newFlag: true,
       },
     ],
     [
@@ -84,6 +83,13 @@ function getItemGroups(mainOrigin) {
         text: '訂閱電子報',
         link: externalLinks.newsLetter,
         target: '_blank',
+      },
+      {
+        slug: 'podcast-list',
+        text: 'Podcast節目列表',
+        link: `${mainOrigin}${entityPaths.article}podcast-list`,
+        target: '_blank',
+        newFlag: true,
       },
       {
         slug: 'media-center',
@@ -203,6 +209,8 @@ const Item = styled.a`
   p {
     display: inline;
     font-size: 14px;
+    /* ff-tisa-web-prop is for english text */
+    font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
     font-weight: ${fontWeight.medium};
     letter-spacing: 1.3px;
     color: #9c9c9c;
