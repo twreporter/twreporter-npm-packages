@@ -1,8 +1,7 @@
-/* eslint node/no-deprecated-api: "warn" */
 import PropTypes from 'prop-types'
 import React from 'react'
-import url from 'url'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
+import linkWithParams from './utils/link-with-params'
 
 export default class DonationLinkWithUtm extends React.PureComponent {
   static propTypes = {
@@ -23,27 +22,28 @@ export default class DonationLinkWithUtm extends React.PureComponent {
     })
   }
 
+  setSearchParams(originalUrl) {
+    const { utmSource, utmMedium, utmCampaign } = this.props
+    try {
+      const params = {
+        utm_source: utmSource || window.location.host,
+        utm_medium: utmMedium,
+        utm_campaign: utmCampaign || window.location.pathname,
+      }
+      return linkWithParams(originalUrl, params)
+    } catch (e) {
+      console.warn('Can not get donation url with utm param', e)
+    }
+  }
+
   render() {
-    const { className, children, utmMedium } = this.props
+    const { className, children } = this.props
     const { isClient } = this.state
     let donationURL = externalLinks.donation
 
     if (isClient) {
       // client side rendering
-      try {
-        const utmSource = this.props.utmSource || window.location.host
-        const utmCampaign = this.props.utmCampaign || window.location.pathname
-        const parseQueryString = true
-        const urlObj = url.parse(donationURL, parseQueryString)
-
-        urlObj.query.utm_source = utmSource
-        urlObj.query.utm_medium = utmMedium
-        urlObj.query.utm_campaign = utmCampaign
-
-        donationURL = url.format(urlObj)
-      } catch (e) {
-        console.warn('Can not get donation url with utm param', e)
-      }
+      donationURL = this.setSearchParams(donationURL)
     }
 
     return (
