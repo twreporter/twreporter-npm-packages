@@ -1,61 +1,10 @@
 import { finalMedia } from '../utils/style-utils'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
-import PropTypes from 'prop-types'
+import PodcastLandingPageLinkWithUtm from '@twreporter/react-components/lib/podcast-link-with-utm'
 import React from 'react'
 import app from '../constants/app'
 import styled from 'styled-components'
-import url from 'url'
-
-// TODO(taylrj): update to the topic landing page link
-const podcastTopicLandingPageLink = 'https://www.twreporter.org/a/podcast-list'
-
-class PodcastLandingPageLinkWithUtm extends React.PureComponent {
-  static propTypes = {
-    children: PropTypes.node,
-    utmMedium: PropTypes.string,
-    utmSource: PropTypes.string,
-    utmCampaign: PropTypes.string,
-  }
-
-  state = {
-    isClient: false,
-  }
-
-  componentDidMount() {
-    this.setState({
-      isClient: true,
-    })
-  }
-
-  render() {
-    const { children, utmMedium, utmCampaign } = this.props
-    const { isClient } = this.state
-    let podcastLandingPageURL = podcastTopicLandingPageLink
-
-    if (isClient) {
-      // client side rendering
-      try {
-        const utmSource = this.props.utmSource || window.location.host
-        const urlObj = new URL(podcastLandingPageURL)
-
-        urlObj.searchParams.set('utm_source', utmSource)
-        urlObj.searchParams.set('utm_medium', utmMedium)
-        urlObj.searchParams.set('utm_campaign', utmCampaign)
-
-        podcastLandingPageURL = url.format(urlObj)
-      } catch (e) {
-        console.warn('Can not get podcast landing page url with utm param', e)
-      }
-    }
-
-    return (
-      <a href={podcastLandingPageURL} target="_blank" rel="noopener noreferrer">
-        {children}
-      </a>
-    )
-  }
-}
 
 const mockup = {
   defaultWidth: 320,
