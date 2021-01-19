@@ -29,7 +29,7 @@ class PodcastLandingPageLinkWithUtm extends React.PureComponent {
   }
 
   render() {
-    const { children, utmMedium } = this.props
+    const { children, utmMedium, utmCampaign } = this.props
     const { isClient } = this.state
     let podcastLandingPageURL = podcastTopicLandingPageLink
 
@@ -37,7 +37,6 @@ class PodcastLandingPageLinkWithUtm extends React.PureComponent {
       // client side rendering
       try {
         const utmSource = this.props.utmSource || window.location.host
-        const utmCampaign = this.props.utmCampaign || window.location.pathname
         const urlObj = new URL(podcastLandingPageURL)
 
         urlObj.searchParams.set('utm_source', utmSource)
