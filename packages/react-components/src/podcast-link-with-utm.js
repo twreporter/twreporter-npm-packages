@@ -34,6 +34,7 @@ class PodcastLandingPageLinkWithUtm extends React.PureComponent {
       return linkWithParams(originalUrl, params)
     } catch (e) {
       console.warn('Can not get podcast landing page url with utm param', e)
+      return originalUrl
     }
   }
 

@@ -33,6 +33,7 @@ export default class DonationLinkWithUtm extends React.PureComponent {
       return linkWithParams(originalUrl, params)
     } catch (e) {
       console.warn('Can not get donation url with utm param', e)
+      return originalUrl
     }
   }
 
