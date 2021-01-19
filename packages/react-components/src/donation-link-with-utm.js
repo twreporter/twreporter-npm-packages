@@ -22,7 +22,7 @@ export default class DonationLinkWithUtm extends React.PureComponent {
     })
   }
 
-  setSearchParams(originalUrl) {
+  getLinkWithSearchParams(originalUrl) {
     const { utmSource, utmMedium, utmCampaign } = this.props
     try {
       const params = {
@@ -43,7 +43,7 @@ export default class DonationLinkWithUtm extends React.PureComponent {
 
     if (isClient) {
       // client side rendering
-      donationURL = this.setSearchParams(donationURL)
+      donationURL = this.getLinkWithSearchParams(donationURL)
     }
 
     return (

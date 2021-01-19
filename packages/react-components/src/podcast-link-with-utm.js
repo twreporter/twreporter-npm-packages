@@ -23,7 +23,7 @@ class PodcastLandingPageLinkWithUtm extends React.PureComponent {
     })
   }
 
-  setSearchParams(originalUrl) {
+  getLinkWithSearchParams(originalUrl) {
     const { utmSource, utmMedium, utmCampaign } = this.props
     try {
       const params = {
@@ -44,7 +44,9 @@ class PodcastLandingPageLinkWithUtm extends React.PureComponent {
 
     if (isClient) {
       // client side rendering
-      podcastLandingPageURL = this.setSearchParams(podcastLandingPageURL)
+      podcastLandingPageURL = this.getLinkWithSearchParams(
+        podcastLandingPageURL
+      )
     }
 
     return (
