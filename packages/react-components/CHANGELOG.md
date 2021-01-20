@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.9-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.3.8...@twreporter/react-components@8.3.9-rc.0) (2021-01-19)
+
+
+### Bug Fixes
+
+* **react-components:** return original url when exception occurs ([b0ac4be](https://github.com/twreporter/twreporter-npm-packages/commit/b0ac4be88a9501c7b2e9edd9f7526a6423d6c640))
+
+
+
+
+
 ## [8.3.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.3.8-rc.0...@twreporter/react-components@8.3.8) (2021-01-13)
 
 **Note:** Version bump only for package @twreporter/react-components

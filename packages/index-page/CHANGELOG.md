@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.1.0...@twreporter/index-page@1.2.0-rc.0) (2021-01-19)
+
+
+### Features
+
+* **index-page:** add podcast box section ([915e5b0](https://github.com/twreporter/twreporter-npm-packages/commit/915e5b07b5f83ac94a443d4b3cc86b9a586f0b28))
+
+
+
+
+
 # [1.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.1.0-rc.0...@twreporter/index-page@1.1.0) (2020-10-08)
 
 **Note:** Version bump only for package @twreporter/index-page
