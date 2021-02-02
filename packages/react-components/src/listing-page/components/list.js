@@ -101,7 +101,11 @@ class List extends PureComponent {
           desc={_.get(item, 'og_description', '')}
           img={{
             alt: _.get(item, 'hero_image.description'),
-            src: _.get(item, 'hero_image.resized_targets.mobile.url'),
+            // Displaying `hero_image` is a default setting for listing.
+            // In cases which do not have `hero_image`, display `og_image` as fallback.
+            src:
+              _.get(item, 'hero_image.resized_targets.mobile.url') ||
+              _.get(item, 'og_image.resized_targets.mobile.url'),
           }}
           category={_.get(item, 'categories.0.name', '')}
           pubDate={date2yyyymmdd(_.get(item, 'published_date', ''), '.')}
