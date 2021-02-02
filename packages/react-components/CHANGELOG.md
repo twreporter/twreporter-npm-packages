@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.3.9...@twreporter/react-components@8.4.0-rc.0) (2021-02-02)
+
+
+### Features
+
+* use `og_image` as image fallback for listing pages ([#168](https://github.com/twreporter/twreporter-npm-packages/issues/168)) ([5daaf54](https://github.com/twreporter/twreporter-npm-packages/commit/5daaf543be109939aaa94495ce62b149d554a57b))
+
+
+
+
+
 ## [8.3.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.3.9-rc.0...@twreporter/react-components@8.3.9) (2021-01-20)
 
 **Note:** Version bump only for package @twreporter/react-components
