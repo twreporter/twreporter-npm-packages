@@ -14,9 +14,7 @@ const mockStore = configureStore([thunk])
 
 const authorId = 'mock-author-id'
 const searchParas = {
-  keywords: authorId,
-  hitsPerPage: 1,
-  page: 0,
+  author_id: authorId,
 }
 
 describe('Test action creators of author-details', () => {
@@ -24,7 +22,7 @@ describe('Test action creators of author-details', () => {
     const expected = {
       type: actionTypes.authorDetails.read.request,
       payload: {
-        keywords: authorId,
+        authorId,
       },
     }
     const createdAction = actions.requestFetchAuthorDetails(authorId)
@@ -62,16 +60,24 @@ describe('Test action creators of author-details', () => {
       const mockAuthorData = {
         id: authorId,
         email: 'mock-email',
+        job_title: 'mock-job',
         thumbnail: {},
+        bio: `大家好，我是王小明`,
+        name: `王小明`,
+        updated_at: `2021-01-27T12:00:00Z`,
       }
       const normalizedData = normalize(
         camelizeKeys(mockAuthorData),
         authorSchema
       )
+      const responseObj = {
+        status: 'success',
+        data: mockAuthorData,
+      }
       nock('http://localhost:8080')
-        .get('/v1/search/authors')
+        .get(`/v2/authors/${authorId}`)
         .query(searchParas)
-        .reply(200, { hits: [mockAuthorData] })
+        .reply(200, responseObj)
       return store
         .dispatch(actions.fetchAuthorDetails(authorId))
         .then(function() {
@@ -79,7 +85,7 @@ describe('Test action creators of author-details', () => {
             {
               type: actionTypes.authorDetails.read.request,
               payload: {
-                keywords: authorId,
+                authorId,
               },
             },
             {
@@ -96,11 +102,11 @@ describe('Test action creators of author-details', () => {
     test('should dispatch an action created by `failToFetchAuthorDetails` if fetching failed', () => {
       const mockStatusCode = 500
       const mockAPIRes = {
-        message: 'mock internal server error',
         status: 'error',
+        message: 'Unexpected error.',
       }
       nock('http://localhost:8080')
-        .get('/v1/search/authors')
+        .get(`/v2/authors/${authorId}`)
         .query(searchParas)
         .reply(mockStatusCode, mockAPIRes)
       return store
@@ -110,7 +116,7 @@ describe('Test action creators of author-details', () => {
             {
               type: actionTypes.authorDetails.read.request,
               payload: {
-                keywords: authorId,
+                authorId,
               },
             },
             {

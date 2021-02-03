@@ -19,7 +19,7 @@ export function requestFetchAuthorDetails(authorId) {
   return {
     type: actionTypes.authorDetails.read.request,
     payload: {
-      keywords: authorId,
+      authorId,
     },
   }
 }
@@ -59,18 +59,15 @@ export function fetchAuthorDetails(authorId) {
    */
   return function(dispatch, getState) {
     const searchParas = {
-      keywords: authorId,
-      hitsPerPage: 1,
-      page: 0,
+      author_id: authorId,
     }
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const url = formURL(apiOrigin, '/v1/search/authors', searchParas)
+    const url = formURL(apiOrigin, `/v2/authors/${authorId}`, searchParas)
     dispatch(requestFetchAuthorDetails(authorId))
     return axios.get(url).then(
-      response => {
-        const author = _.assign({}, _.get(response, 'data.hits.0'))
-        delete author._highlightResult
+      ({ data }) => {
+        const author = _.assign({}, _.get(data, 'data'))
 
         /** type {NormalizedDataOfAuthorDetails} */
         const normalizedData = normalize(camelizeKeys(author), authorSchema)
