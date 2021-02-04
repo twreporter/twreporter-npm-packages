@@ -58,34 +58,38 @@ export function fetchAuthorCollection({ targetPage, authorId, returnDelay }) {
   return (dispatch, getState) => {
     // eslint-disable-line no-unused-vars
     const searchParas = {
-      keywords: authorId,
-      hitsPerPage: MAX_ARTICLES_PER_FETCH,
-      page: targetPage,
+      limit: MAX_ARTICLES_PER_FETCH,
+      offset: targetPage * MAX_ARTICLES_PER_FETCH,
     }
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const url = formURL(apiOrigin, `/v1/search/posts`, searchParas, false)
+    const url = formURL(
+      apiOrigin,
+      `/v2/authors/${authorId}/posts`,
+      searchParas,
+      false
+    )
     dispatch(requestAuthorCollection(authorId))
     // Call our API server to fetch the data
     return axios
       .get(url)
-      .then(response => {
-        const responseItems = _.get(response, 'data.hits', {})
+      .then(({ data }) => {
+        const articles = _.get(data, 'data.records', {})
+        const offset = _.get(data, 'data.meta.offset', 0)
+        const limit = _.get(data, 'data.meta.limit', 10)
+        const total = _.get(data, 'data.meta.total', 0)
+
         const receiveAuthorCollectionAction = {
           type: actionTypes.FETCH_AUTHOR_COLLECTION_SUCCESS,
           payload: {
             authorId,
             normalizedData: normalize(
-              camelizeKeys(responseItems),
+              camelizeKeys(articles),
               new schema.Array(articleSchema)
             ),
-            currentPage: _.get(
-              response,
-              'data.page',
-              NUMBER_OF_FIRST_RESPONSE_PAGE - 1
-            ),
-            totalPages: _.get(response, 'data.nbPages', 0),
-            totalResults: _.get(response, 'data.nbHits', 0),
+            currentPage: Math.ceil(offset / limit),
+            totalPages: Math.ceil(total / limit),
+            totalResults: total,
             receivedAt: Date.now(),
           },
         }
