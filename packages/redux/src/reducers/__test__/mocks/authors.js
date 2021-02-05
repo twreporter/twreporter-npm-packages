@@ -8,37 +8,56 @@ export const MOCK_KEYWORDS = 'mock keyworkds'
 const CURRENT_DATE = Date.now()
 const ERROR_MSG = new Error('mock search authors failure')
 
-function theNormalize(hits) {
-  const camelizedJson = camelizeKeys(hits)
+function theNormalize(hit) {
+  const camelizedJson = camelizeKeys(hit)
   return normalize(camelizedJson, new schema.Array(authorSchema))
 }
 
-const mockResponseHits = ['1', '2', '3', '4', '5'].map(function(v) {
-  return {
-    _id: 'id_' + v,
-    name: 'name_' + v,
-    articlesCount: 156,
-    type: 1,
-    objectID: 'objId_' + v,
-    _highlightResult: [],
+function generateMockAuthors(authors) {
+  if (Array.isArray(authors)) {
+    return authors.map(function(v) {
+      return {
+        id: `id_${v}`,
+        email: `contact_${v}@twreporter.org`,
+        job_title: `job_${v}`,
+        bio: 'hello world',
+        name: `name_${v}`,
+        thumbnail: 'mock thumbnails',
+        updated_at: '2021-01-27T12:00:00Z',
+      }
+    })
   }
-})
+  return authors
+}
 
-const singleAuthorHits = [
+const mockAuthors = generateMockAuthors(['1', '2', '3', '4', '5'])
+const mockMoreAuthors = generateMockAuthors(['6', '7', '8', '9', '10'])
+
+const singleAuthorHit = [
   {
-    _id: 'id_single',
-    name: 'name_single',
-    articlesCount: 50,
-    type: 1,
-    objectID: 'objId_single',
-    _highlightResult: [],
+    id: `id_single`,
+    email: `contact_single@twreporter.org`,
+    job_title: `job_single`,
+    bio: 'hello world',
+    name: `name_single`,
+    thumbnail: 'mock thumbnails',
+    updated_at: '2021-01-27T12:00:00Z',
   },
 ]
 
-// console.log(theNormalize(singleAuthorHits).entities.authors.id_single)
+export const normalizedMockAuthors = theNormalize(mockAuthors)
+export const normalizedMockMoreAuthors = theNormalize(mockMoreAuthors)
+export const normalizedSingleAuthorHit = theNormalize(singleAuthorHit)
 
-// console.log(types.SEARCH_AUTHORS_REQUEST)
-
+export const FETCH_MORE_AUTHORS_SUCCESS = {
+  payload: {
+    keywords: '',
+    normalizedData: normalizedMockMoreAuthors,
+    totalPages: 8,
+    currentPage: 0,
+    receivedAt: CURRENT_DATE,
+  },
+}
 export const mockActionsSet = {
   [types.SEARCH_AUTHORS_REQUEST]: {
     type: types.SEARCH_AUTHORS_REQUEST,
@@ -51,7 +70,7 @@ export const mockActionsSet = {
     type: types.SEARCH_AUTHORS_SUCCESS,
     payload: {
       keywords: MOCK_KEYWORDS,
-      normalizedData: theNormalize(singleAuthorHits),
+      normalizedData: normalizedSingleAuthorHit,
       totalPages: 1,
       currentPage: 0,
       receivedAt: CURRENT_DATE,
@@ -77,7 +96,7 @@ export const mockActionsSet = {
     type: types.LIST_ALL_AUTHORS_SUCCESS,
     payload: {
       keywords: '',
-      normalizedData: theNormalize(mockResponseHits),
+      normalizedData: normalizedMockAuthors,
       totalPages: 8,
       currentPage: 0,
       receivedAt: CURRENT_DATE,
