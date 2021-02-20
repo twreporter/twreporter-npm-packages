@@ -20,7 +20,7 @@ describe('Entities For Authors Reducer Testing', () => {
         test('should return expected state when previous state is initial state', () => {
           const initialState = mockStates.InitialState
           const expectedState =
-            mockStates.ExpectedStateSuccessWithFetchArthorCollection
+            mockStates.ExpectedStateSuccessWithFetchAuthorCollection
           expect(
             reducer(initialState, mockActions.FETCH_AUTHOR_COLLECTION_SUCCESS)
           ).toEqual(expectedState)
@@ -29,18 +29,18 @@ describe('Entities For Authors Reducer Testing', () => {
       describe('Previous State: Exist. Two Cases: `Same Author` and `Different Author`', () => {
         test('should return expected state when previous state exist in case `Same Author`', () => {
           const preState =
-            mockStates.ExpectedStateSuccessWithFetchArthorCollection
+            mockStates.ExpectedStateSuccessWithFetchAuthorCollection
           const expectedState =
-            mockStates.ExpectedStateSuccessWithFetchArthorCollectionsMore
+            mockStates.ExpectedStateSuccessWithFetchAuthorCollectionsMore
           const theMockAction =
             mockActions.fetchSameAuthorCollectionTwiceSuccess
           expect(reducer(preState, theMockAction)).toEqual(expectedState)
         })
         test('should return expected state when previous state exist in case `Different Author`', () => {
           const preState =
-            mockStates.ExpectedStateSuccessWithFetchArthorCollection
+            mockStates.ExpectedStateSuccessWithFetchAuthorCollection
           const expectedState =
-            mockStates.ExpectedStateSuccessWithFetchArthorCollection
+            mockStates.ExpectedStateSuccessWithFetchAuthorCollection
           const theMockAction =
             mockActions.fetchDifferentAuthorCollectionSameArticlesSuccess
           expect(reducer(preState, theMockAction)).toEqual(expectedState)
@@ -57,9 +57,9 @@ describe('Entities For Authors Reducer Testing', () => {
       })
       test('should return expected state when previous state exist', () => {
         const preState =
-          mockStates.ExpectedStateSuccessWithFetchArthorCollection
+          mockStates.ExpectedStateSuccessWithFetchAuthorCollection
         const expectedState =
-          mockStates.ExpectedStateSuccessWithFetchArthorCollection
+          mockStates.ExpectedStateSuccessWithFetchAuthorCollection
         expect(
           reducer(preState, mockActions.FETCH_AUTHOR_COLLECTION_FAILURE)
         ).toEqual(expectedState)
@@ -99,9 +99,9 @@ describe('Entities For Authors Reducer Testing', () => {
       })
       test('should return expected state when previous state exist', () => {
         const preState =
-          mockStates.ExpectedStateSuccessWithFetchArthorCollection
+          mockStates.ExpectedStateSuccessWithFetchAuthorCollection
         const expectedState =
-          mockStates.ExpectedStateSuccessWithFetchArthorCollection
+          mockStates.ExpectedStateSuccessWithFetchAuthorCollection
         expect(
           reducer(preState, mockActions.FETCH_AUTHOR_COLLECTION_FAILURE)
         ).toEqual(expectedState)

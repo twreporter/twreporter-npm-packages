@@ -59,12 +59,12 @@ export const mockStates = {
     authors: {},
   },
 
-  ExpectedStateSuccessWithFetchArthorCollection: {
+  ExpectedStateSuccessWithFetchAuthorCollection: {
     articles: { articleId1: {}, articleId2: {}, articleId3: {} },
     authors: { authorId1: {}, authorId2: {}, authorId3: {} },
   },
 
-  ExpectedStateSuccessWithFetchArthorCollectionsMore: {
+  ExpectedStateSuccessWithFetchAuthorCollectionsMore: {
     articles: {
       articleId1: {},
       articleId2: {},
