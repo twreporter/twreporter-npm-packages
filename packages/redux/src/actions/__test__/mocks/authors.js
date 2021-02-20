@@ -17,7 +17,12 @@ const mockResponseData = ['1', '2', '3', '4', '5'].map(function(v) {
     job_title: `job_${v}`,
     bio: 'hello world',
     name: `name_${v}`,
-    thumbnail: 'mock thumbnails',
+    thumbnail: {
+      id: `image_id_${v}`,
+      description: `some descriptions for ${v}`,
+      filetype: 'image/jpeg',
+      resized_targets: {},
+    },
     updated_at: '2021-01-27T12:00:00Z',
   }
 })
