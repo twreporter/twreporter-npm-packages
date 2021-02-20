@@ -81,7 +81,7 @@ export const mockStates = {
       isFetching: true,
       error: null,
       collectIndexList: [],
-      currentPage: NUMBER_OF_FIRST_RESPONSE_PAGE - 1, // Initial currentPage equals -1 which means no data has been fetched.
+      currentPage: -1, // Initial currentPage equals -1 which means no data has been fetched.
       totalResults: 0,
       hasMore: false,
       lastUpdated: 0,
@@ -157,7 +157,7 @@ export const mockStates = {
       isFetching: false,
       error: ERROR_MSG,
       collectIndexList: [],
-      currentPage: NUMBER_OF_FIRST_RESPONSE_PAGE - 1, // Initial currentPage equals -1 which means no data has been fetched.
+      currentPage: -1, // Initial currentPage equals -1 which means no data has been fetched.
       totalResults: 0,
       hasMore: false,
       lastUpdated: CURRENT_DATE,
