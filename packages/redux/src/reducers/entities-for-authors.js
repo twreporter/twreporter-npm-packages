@@ -21,7 +21,10 @@ export default function entitiesForAuthors(state = {}, action) {
   if (entities) {
     switch (action.type) {
       case actionTypes.FETCH_AUTHOR_COLLECTION_SUCCESS:
-        return _.merge({}, state, { articles: entities.articles })
+        return _.merge({}, state, {
+          articles: entities.articles,
+          authors: entities.authors,
+        })
       default:
         return _.merge({}, state, entities)
     }

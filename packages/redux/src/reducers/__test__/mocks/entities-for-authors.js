@@ -61,6 +61,7 @@ export const mockStates = {
 
   ExpectedStateSuccessWithFetchArthorCollection: {
     articles: { articleId1: {}, articleId2: {}, articleId3: {} },
+    authors: { authorId1: {}, authorId2: {}, authorId3: {} },
   },
 
   ExpectedStateSuccessWithFetchArthorCollectionsMore: {
@@ -72,6 +73,7 @@ export const mockStates = {
       articleId5: {},
       articleId6: {},
     },
+    authors: { authorId1: {}, authorId2: {}, authorId3: {} },
   },
 
   ExpectedStateSuccessWithFetchAuthors: {
