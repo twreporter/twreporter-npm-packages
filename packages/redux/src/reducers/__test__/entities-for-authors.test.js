@@ -48,13 +48,6 @@ describe('Entities For Authors Reducer Testing', () => {
       })
     })
     describe('The Action: FETCH_AUTHOR_COLLECTION_FAILURE', () => {
-      test('should return expected state when previous state is initial state', () => {
-        const initialState = mockStates.InitialState
-        const expectedState = mockStates.InitialState
-        expect(
-          reducer(initialState, mockActions.FETCH_AUTHOR_COLLECTION_FAILURE)
-        ).toEqual(expectedState)
-      })
       test('should return expected state when previous state exist', () => {
         const preState =
           mockStates.ExpectedStateSuccessWithFetchAuthorCollection
@@ -130,13 +123,6 @@ describe('Entities For Authors Reducer Testing', () => {
     })
 
     describe('The Action: SEARCH_AUTHORS_FAILURE', () => {
-      test('should return expected state when previous state is initial state', () => {
-        const initialState = mockStates.InitialState
-        const expectedState = mockStates.InitialState
-        expect(
-          reducer(initialState, mockActions.SEARCH_AUTHORS_FAILURE)
-        ).toEqual(expectedState)
-      })
       test('should return expected state when previous state exist', () => {
         const preState = mockStates.ExpectedStateSuccessWithFetchAuthors
         const expectedState = mockStates.ExpectedStateSuccessWithFetchAuthors
