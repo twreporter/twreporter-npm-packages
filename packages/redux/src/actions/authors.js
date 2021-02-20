@@ -88,7 +88,7 @@ export function searchAuthors({ keywords, targetPage, returnDelay }) {
             normalizedData: Array.isArray(authors)
               ? normalize(camelizeKeys(authors), new schema.Array(authorSchema))
               : normalize(camelizeKeys(authors), authorSchema),
-            currentPage: Math.ceil(offset / limit),
+            currentPage: Math.floor(offset / limit),
             totalPages: Math.ceil(total / limit),
             receivedAt: Date.now(),
           },

@@ -87,7 +87,7 @@ export function fetchAuthorCollection({ targetPage, authorId, returnDelay }) {
               camelizeKeys(articles),
               new schema.Array(articleSchema)
             ),
-            currentPage: Math.ceil(offset / limit),
+            currentPage: Math.floor(offset / limit),
             totalPages: Math.ceil(total / limit),
             totalResults: total,
             receivedAt: Date.now(),
