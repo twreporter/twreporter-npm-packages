@@ -39,7 +39,18 @@ export const responseObjSet = {
       records: mockResponseData,
     },
   },
-  keyWithVlaueResponse: {
+  keyNullSecondResponse: {
+    status: 'success',
+    data: {
+      meta: {
+        offset: 24,
+        limit: 24,
+        total: mockResponseData.length,
+      },
+      records: mockResponseData,
+    },
+  },
+  keyWithValueResponse: {
     status: 'success',
     data: {
       meta: {
@@ -91,6 +102,19 @@ export const mockDefaultStates = {
     authorsList: {
       isFetching: false,
       currentPage: 0,
+      hasMore: true,
+      items: [],
+      error: null,
+      lastUpdated: currentDate,
+    },
+    [fieldNames.origins]: {
+      api: 'http://localhost:8080',
+    },
+  },
+  afterSecondPageState: {
+    authorsList: {
+      isFetching: false,
+      currentPage: 1,
       hasMore: true,
       items: [],
       error: null,

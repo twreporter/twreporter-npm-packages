@@ -95,13 +95,16 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
       describe('After loaded first page, now we want to load more', () => {
         test('Actual actions should be same as expected actions', () => {
           const keywords = ''
-          const mockDefaultState = mockDefaultStates.afterFirstPageState
+          const mockDefaultState = mockDefaultStates.afterSecondPageState
           const { limit } = mockSearchParasSet.keyNullSearchParas
           const searchParas = {
             ...mockSearchParasSet.keyNullSearchParas,
             offset: (mockDefaultState.authorsList.currentPage + 1) * limit,
           }
-          const mockResponse = mockResponseSet.keyNullResponse
+          const mockResponse = {
+            ...mockResponseSet.keyNullResponse,
+            currentPage: 1,
+          }
           const apiOrigin = _.get(mockDefaultState, [
             stateFieldNames.origins,
             'api',
@@ -110,7 +113,7 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
           nock(apiOrigin)
             .get(`/v2/authors`)
             .query(searchParas)
-            .reply(200, responseObjSet.keyNullResponse)
+            .reply(200, responseObjSet.keyNullSecondResponse)
 
           const checkerParas = {
             mockDefaultState,
@@ -245,7 +248,7 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
           nock(apiOrigin)
             .get(`/v2/authors`)
             .query(searchParas)
-            .reply(200, responseObjSet.keyWithVlaueResponse)
+            .reply(200, responseObjSet.keyWithValueResponse)
 
           const checkerParas = {
             mockDefaultState,
