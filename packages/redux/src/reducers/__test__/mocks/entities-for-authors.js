@@ -80,23 +80,19 @@ export const mockStates = {
     ...normalizedMockAuthors.entities,
   },
 
-  ExpectedStateSuccessWithFetchMoreAuthors: {
-    ..._.merge(
-      {},
-      normalizedMockAuthors.entities,
-      normalizedMockMoreAuthors.entities
-    ),
-  },
+  ExpectedStateSuccessWithFetchMoreAuthors: _.merge(
+    {},
+    normalizedMockAuthors.entities,
+    normalizedMockMoreAuthors.entities
+  ),
 
   ExpectedStateSuccessWithSearchSpecificAuthor: {
     ...normalizedSingleAuthorHit.entities,
   },
 
-  ExpectedStateSuccessWithSpecificAuthorAppended: {
-    ..._.merge(
-      {},
-      normalizedMockAuthors.entities,
-      normalizedSingleAuthorHit.entities
-    ),
-  },
+  ExpectedStateSuccessWithSpecificAuthorAppended: _.merge(
+    {},
+    normalizedMockAuthors.entities,
+    normalizedSingleAuthorHit.entities
+  ),
 }
