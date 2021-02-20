@@ -16,6 +16,7 @@ const authorId = 'mock-author-id'
 const searchParas = {
   author_id: authorId,
 }
+const apiOrigin = 'http://localhost:8080'
 
 describe('Test action creators of author-details', () => {
   test('Test action creator `requestFetchAuthorDetails`', () => {
@@ -49,7 +50,7 @@ describe('Test action creators of author-details', () => {
   describe('Test action creator `fetchAuthorDetails`', () => {
     const store = mockStore({
       [fieldNames.origins]: {
-        api: 'http://localhost:8080',
+        api: apiOrigin,
       },
     })
     afterEach(function() {
@@ -74,7 +75,7 @@ describe('Test action creators of author-details', () => {
         status: 'success',
         data: mockAuthorData,
       }
-      nock('http://localhost:8080')
+      nock(apiOrigin)
         .get(`/v2/authors/${authorId}`)
         .query(searchParas)
         .reply(200, responseObj)
@@ -105,7 +106,7 @@ describe('Test action creators of author-details', () => {
         status: 'error',
         message: 'Unexpected error.',
       }
-      nock('http://localhost:8080')
+      nock(apiOrigin)
         .get(`/v2/authors/${authorId}`)
         .query(searchParas)
         .reply(mockStatusCode, mockAPIRes)

@@ -11,6 +11,7 @@ import thunk from 'redux-thunk'
 // all constants
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
+const apiOrigin = 'http://localhost:8080'
 const mockDefaultState = {
   articlesByAuthor: {},
   entities: {
@@ -20,7 +21,7 @@ const mockDefaultState = {
     articles: {},
   },
   [fieldNames.origins]: {
-    api: 'http://localhost:8080',
+    api: apiOrigin,
   },
 }
 const authorId = 'theArthorId'
@@ -38,7 +39,7 @@ describe('Author Collections Action Testing', () => {
       message: 'Unexpected error',
       status: 'error',
     }
-    nock('http://localhost:8080')
+    nock(apiOrigin)
       .get(`/v2/authors/${authorId}/posts?limit=5&offset=0`)
       .reply(mockStatusCode, mockAPIRes)
 
@@ -74,7 +75,7 @@ describe('Author Collections Action Testing', () => {
   })
 
   test('The Actions: FETCH_AUTHOR_COLLECTION_REQUEST && FETCH_AUTHOR_COLLECTION_SUCCESS', () => {
-    nock('http://localhost:8080')
+    nock(apiOrigin)
       .get(`/v2/authors/${authorId}/posts?limit=5&offset=0`)
       .reply(200, mockResponse)
 
@@ -108,7 +109,7 @@ describe('Author Collections Action Testing', () => {
   })
 
   test('The Actions: dataAlreadyExists', () => {
-    nock('http://localhost:8080')
+    nock(apiOrigin)
       .get(`/v2/authors/${authorId}/posts`)
       .reply(200, mockResponse)
 
