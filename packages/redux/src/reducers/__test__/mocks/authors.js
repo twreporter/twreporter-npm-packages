@@ -8,8 +8,8 @@ export const MOCK_KEYWORDS = 'mock keyworkds'
 const CURRENT_DATE = Date.now()
 const ERROR_MSG = new Error('mock search authors failure')
 
-function theNormalize(hit) {
-  const camelizedJson = camelizeKeys(hit)
+function theNormalize(records) {
+  const camelizedJson = camelizeKeys(records)
   return normalize(camelizedJson, new schema.Array(authorSchema))
 }
 
