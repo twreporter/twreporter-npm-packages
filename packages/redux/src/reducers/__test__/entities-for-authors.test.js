@@ -26,7 +26,7 @@ describe('Entities For Authors Reducer Testing', () => {
           ).toEqual(expectedState)
         })
       })
-      describe('Previous State: Exist. Two Cases: `Same Author` and `Different Authors`', () => {
+      describe('Previous State: Exist. Two Cases: `Same Author` and `Different Author`', () => {
         test('should return expected state when previous state exist in case `Same Author`', () => {
           const preState =
             mockStates.ExpectedStateSuccessWithFetchArthorCollection
@@ -36,7 +36,7 @@ describe('Entities For Authors Reducer Testing', () => {
             mockActions.fetchSameAuthorCollectionTwiceSuccess
           expect(reducer(preState, theMockAction)).toEqual(expectedState)
         })
-        test('should return expected state when previous state exist in case `Different Authors`', () => {
+        test('should return expected state when previous state exist in case `Different Author`', () => {
           const preState =
             mockStates.ExpectedStateSuccessWithFetchArthorCollection
           const expectedState =
