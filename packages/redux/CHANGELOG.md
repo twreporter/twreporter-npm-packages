@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.0.5...@twreporter/redux@7.1.0-rc.0) (2021-03-31)
+
+
+### Bug Fixes
+
+* **redux:** current page computation ([0787eea](https://github.com/twreporter/twreporter-npm-packages/commit/0787eea673e9576300e6faffdf6335f2beb05f40))
+* **redux:** update authors state when fetching articles of an author ([76e4052](https://github.com/twreporter/twreporter-npm-packages/commit/76e40529d1f1b6a5db79d9a1c5941a2bd2fd7518))
+
+
+### Features
+
+* **redux:** add tests for reducer `entities-for-authors` ([5458c27](https://github.com/twreporter/twreporter-npm-packages/commit/5458c271d4fd2404793586950a47ef19e7b78a8e))
+
+
+
+
+
 ## [7.0.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.0.5-rc.0...@twreporter/redux@7.0.5) (2020-11-13)
 
 **Note:** Version bump only for package @twreporter/redux
