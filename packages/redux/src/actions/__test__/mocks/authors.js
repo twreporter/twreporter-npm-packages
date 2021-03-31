@@ -4,46 +4,67 @@ import { camelizeKeys } from 'humps'
 import {
   NUMBER_OF_FIRST_RESPONSE_PAGE,
   MAX_RESULTS_PER_FETCH,
-  MAX_RESULTS_PER_SEARCH,
 } from '../../../constants/authors-list'
 import fieldNames from '../../../constants/redux-state-field-names'
 
 export const currentDate = Date.now()
 export const constKeywords = 'testKeywords'
 
-const mockResponseHits = ['1', '2', '3', '4', '5'].map(function(v) {
+const mockResponseData = ['1', '2', '3', '4', '5'].map(function(v) {
   return {
-    _id: 'id_' + v,
-    name: 'name_' + v,
-    articlesCount: 156,
-    type: 1,
-    objectID: 'objId_' + v,
-    _highlightResult: [],
+    id: `id_${v}`,
+    email: `contact_${v}@twreporter.org`,
+    job_title: `job_${v}`,
+    bio: 'hello world',
+    name: `name_${v}`,
+    thumbnail: {
+      id: `image_id_${v}`,
+      description: `some descriptions for ${v}`,
+      filetype: 'image/jpeg',
+      resized_targets: {},
+    },
+    updated_at: '2021-01-27T12:00:00Z',
   }
+})
+
+const filteredMockResponseData = mockResponseData.filter(function(item) {
+  return item.name === 'name_5'
 })
 
 // this is for fetch request
 export const responseObjSet = {
   keyNullResponse: {
-    hits: mockResponseHits,
-    page: 0,
-    nbPages: 8,
-    nbHits: 189,
-  },
-
-  keyWithVlaueResponse: {
-    hits: {
-      _id: 'id_single',
-      name: 'name_single',
-      articlesCount: 50,
-      type: 1,
-      objectID: 'objId_single',
-      _highlightResult: [],
+    status: 'success',
+    data: {
+      meta: {
+        offset: 0,
+        limit: 24,
+        total: mockResponseData.length,
+      },
+      records: mockResponseData,
     },
-    hitsPerPage: MAX_RESULTS_PER_SEARCH,
-    page: 0,
-    nbPages: 1,
-    nbHits: 1,
+  },
+  keyNullSecondResponse: {
+    status: 'success',
+    data: {
+      meta: {
+        offset: 24,
+        limit: 24,
+        total: mockResponseData.length,
+      },
+      records: mockResponseData,
+    },
+  },
+  keyWithValueResponse: {
+    status: 'success',
+    data: {
+      meta: {
+        offset: 0,
+        limit: 24,
+        total: filteredMockResponseData.length,
+      },
+      records: filteredMockResponseData,
+    },
   },
 }
 
@@ -51,17 +72,17 @@ export const responseObjSet = {
 export const mockResponseSet = {
   keyNullResponse: {
     normalizedData: normalize(
-      camelizeKeys(mockResponseHits),
+      camelizeKeys(mockResponseData),
       new schema.Array(authorSchema)
     ),
-    totalPages: 8,
+    totalPages: 1,
     currentPage: 0,
   },
 
   keyWithValueResponse: {
     normalizedData: normalize(
-      camelizeKeys(responseObjSet.keyWithVlaueResponse.hits),
-      authorSchema
+      camelizeKeys(filteredMockResponseData),
+      new schema.Array(authorSchema)
     ),
     totalPages: 1,
     currentPage: 0,
@@ -86,6 +107,19 @@ export const mockDefaultStates = {
     authorsList: {
       isFetching: false,
       currentPage: 0,
+      hasMore: true,
+      items: [],
+      error: null,
+      lastUpdated: currentDate,
+    },
+    [fieldNames.origins]: {
+      api: 'http://localhost:8080',
+    },
+  },
+  afterSecondPageState: {
+    authorsList: {
+      isFetching: false,
+      currentPage: 1,
       hasMore: true,
       items: [],
       error: null,
@@ -142,15 +176,13 @@ export const mockDefaultStates = {
 export const mockSearchParasSet = {
   keyNullSearchParas: {
     keywords: '',
-    filters: 'articlesCount>0',
-    hitsPerPage: MAX_RESULTS_PER_FETCH,
-    page: 'this is variable',
+    offset: 0,
+    limit: MAX_RESULTS_PER_FETCH,
   },
 
   keyWithValueParas: {
     keywords: constKeywords,
-    filters: 'articlesCount>0',
-    hitsPerPage: MAX_RESULTS_PER_SEARCH,
-    page: 'this is variable',
+    offset: 0,
+    limit: MAX_RESULTS_PER_FETCH,
   },
 }

@@ -3,25 +3,23 @@ import { article as articleSchema } from '../../../schemas/article-schema'
 import { camelizeKeys } from 'humps'
 
 const authorId = 'theAurhtorId'
-const parametersquery = 'query=theAurhtorId&hitsPerPage=5&page=0'
 const writers = ['1', '2', '3'].map(v => {
   return {
-    _id: 'theWriterId' + v,
+    id: 'theWriterId' + v,
     bio: {},
     email: 'writer' + v + '@twreporter.org',
     name: 'name of writer ' + v,
   }
 })
 
-// the simluated situation is that the requested author is a photographer
 const author = {
-  _id: authorId,
+  id: authorId,
   bio: {},
   email: 'photographer@twreporter.org',
   name: 'name of photographer',
 }
 
-const hits = [
+const records = [
   {
     designers: [],
     engineers: [],
@@ -74,24 +72,18 @@ const hits = [
   },
 ]
 
-// this is just a simple mock response from Argolia
-// I only choose few necessary properties/nested properties from the origianl response
-// so it is good and easy for code review
-/**
- * hits: first five top articles for the author
- * page: current page (in Algolia server) for the author-page
- * nbHist: total number of articles of the author
- * nbPages: total pages of articles of the aurhtor (start from 0)
- * each page contains 5 articles (set in stringfy query)
- */
 export const mockResponse = {
-  hits,
-  page: 0,
-  nbHits: 145,
-  nbPages: 28,
-  parametersquery,
+  status: 'success',
+  data: {
+    meta: {
+      offset: 0,
+      limit: 5,
+      total: 145,
+    },
+    records,
+  },
 }
 
 // mock properties of action after normalize
-const camelizedJson = camelizeKeys(mockResponse.hits)
+const camelizedJson = camelizeKeys(mockResponse.data.records)
 export const items = normalize(camelizedJson, new schema.Array(articleSchema))

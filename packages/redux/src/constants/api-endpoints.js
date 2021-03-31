@@ -4,4 +4,5 @@ export default {
   indexPageCategories: 'index_page_categories',
   posts: 'posts',
   users: 'users',
+  authors: 'authors',
 }
