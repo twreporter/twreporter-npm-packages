@@ -51,8 +51,12 @@ export default {}
  *  Author type definition
  *  @typedef {Object} Author
  *  @property {string} id
- *  @property {string} name
+ *  @property {string} email
  *  @property {string} job_title
+ *  @property {string} bio
+ *  @property {string} name
+ *  @property {Image} thumbnail
+ *  @property {string} updated_at
  */
 
 /**
@@ -202,6 +206,13 @@ export default {}
  */
 
 /**
+ * EntitiesForAuthors type definition
+ * @typeof {Object} EntitiesForAuthors
+ * @property {Object.<ObjectID, Author>} authors
+ * @property {Object.<ObjectID, MetaOfPost>} articles
+ */
+
+/**
  *  ReduxState type definition
  *  @typedef {Object} ReduxState
  *
@@ -242,12 +253,13 @@ export default {}
  *
  *  @property {FeatureTopic} featureTopic
  *
+ *  @property {EntitiesForAuthors} enititiesForAuthors
+ *
  *  @property {Object} articlesByAuthor
  *  @property {Object} auth
  *  @property {Object} authorsList
  *  @property {Object} bookmarkWidget
  *  @property {Object} bookmarks
- *  @property {Object} enititiesForAuthors
  *  @property {Object} origins
  *  @property {Object} searchedAuthorsList
  *  @property {number} nextNotifyPopupTS

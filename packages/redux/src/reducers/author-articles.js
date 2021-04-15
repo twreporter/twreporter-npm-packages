@@ -15,7 +15,7 @@ const initialSubState = {
   isFetching: false,
   error: null,
   collectIndexList: [],
-  currentPage: NUMBER_OF_FIRST_RESPONSE_PAGE - 1, // Means no data has been fetched. Ex.: Initial currentPage equals -1 because the response of Algolia start from page 0.
+  currentPage: -1, // Initial currentPage equals -1 which means no data has been fetched.
   totalResults: 0,
   hasMore: false,
   lastUpdated: 0,

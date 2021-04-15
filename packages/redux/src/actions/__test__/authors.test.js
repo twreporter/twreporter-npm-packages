@@ -1,4 +1,11 @@
 /* global expect, test, describe, afterEach */
+import * as actions from '../../../src/actions/authors'
+import configureMockStore from 'redux-mock-store'
+import nock from 'nock'
+import stateFieldNames from '../../constants/redux-state-field-names'
+import thunk from 'redux-thunk'
+import types from '../../constants/action-types'
+import { expectActionErrorObj } from './expect-utils'
 import {
   responseObjSet,
   mockResponseSet,
@@ -6,13 +13,12 @@ import {
   mockSearchParasSet,
   constKeywords,
 } from './mocks/authors.js'
-import { expectActionErrorObj } from './expect-utils'
-import { NUMBER_OF_FIRST_RESPONSE_PAGE } from '../../constants/authors-list'
-import * as actions from '../../../src/actions/authors'
-import types from '../../constants/action-types'
-import configureMockStore from 'redux-mock-store'
-import nock from 'nock'
-import thunk from 'redux-thunk'
+// lodash
+import get from 'lodash/get'
+
+const _ = {
+  get,
+}
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -63,13 +69,15 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
         test('Actual actions should be same as expected actions', () => {
           const keywords = ''
           const mockDefaultState = mockDefaultStates.initialState
-          const searchParas = {
-            ...mockSearchParasSet.keyNullSearchParas,
-            page: NUMBER_OF_FIRST_RESPONSE_PAGE,
-          }
+          const searchParas = mockSearchParasSet.keyNullSearchParas
           const mockResponse = mockResponseSet.keyNullResponse
-          nock('http://localhost:8080')
-            .get('/v1/search/authors')
+          const apiOrigin = _.get(mockDefaultState, [
+            stateFieldNames.origins,
+            'api',
+          ])
+
+          nock(apiOrigin)
+            .get(`/v2/authors`)
             .query(searchParas)
             .reply(200, responseObjSet.keyNullResponse)
 
@@ -87,16 +95,25 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
       describe('After loaded first page, now we want to load more', () => {
         test('Actual actions should be same as expected actions', () => {
           const keywords = ''
-          const mockDefaultState = mockDefaultStates.afterFirstPageState
+          const mockDefaultState = mockDefaultStates.afterSecondPageState
+          const { limit } = mockSearchParasSet.keyNullSearchParas
           const searchParas = {
             ...mockSearchParasSet.keyNullSearchParas,
-            page: mockDefaultState.authorsList.currentPage + 1,
+            offset: (mockDefaultState.authorsList.currentPage + 1) * limit,
           }
-          const mockResponse = mockResponseSet.keyNullResponse
-          nock('http://localhost:8080')
-            .get('/v1/search/authors')
+          const mockResponse = {
+            ...mockResponseSet.keyNullResponse,
+            currentPage: 1,
+          }
+          const apiOrigin = _.get(mockDefaultState, [
+            stateFieldNames.origins,
+            'api',
+          ])
+
+          nock(apiOrigin)
+            .get(`/v2/authors`)
             .query(searchParas)
-            .reply(200, responseObjSet.keyNullResponse)
+            .reply(200, responseObjSet.keyNullSecondResponse)
 
           const checkerParas = {
             mockDefaultState,
@@ -109,7 +126,7 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
         })
       })
 
-      describe('Want to load more pages but Algolia has no more', () => {
+      describe('Want to load more pages but it has no more', () => {
         test('should handle the resolved promise (the running test should be finished)', () => {
           const keywords = ''
           const mockDefaultState = mockDefaultStates.gotNothing
@@ -167,17 +184,19 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
       test('Actual actions should be same as expected actions', () => {
         const keywords = ''
         const mockDefaultState = mockDefaultStates.initialState
-        const searchParas = {
-          ...mockSearchParasSet.keyNullSearchParas,
-          page: NUMBER_OF_FIRST_RESPONSE_PAGE,
-        }
+        const searchParas = mockSearchParasSet.keyNullSearchParas
         const mockStatusCode = 500
         const mockAPIRes = {
-          message: 'internal server error',
+          message: 'Unexpected error.',
           status: 'error',
         }
-        nock('http://localhost:8080')
-          .get('/v1/search/authors')
+        const apiOrigin = _.get(mockDefaultState, [
+          stateFieldNames.origins,
+          'api',
+        ])
+
+        nock(apiOrigin)
+          .get(`/v2/authors`)
           .query(searchParas)
           .reply(mockStatusCode, mockAPIRes)
 
@@ -219,16 +238,17 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
         test('Actual actions should be same as expected actions', () => {
           const keywords = constKeywords
           const mockDefaultState = mockDefaultStates.hasNoPreviousKeywords
-          const searchParas = {
-            ...mockSearchParasSet.keyWithValueParas,
-            page: NUMBER_OF_FIRST_RESPONSE_PAGE,
-          }
+          const searchParas = mockSearchParasSet.keyWithValueParas
           const mockResponse = mockResponseSet.keyWithValueResponse
-          // console.log(searchParas)
-          nock('http://localhost:8080')
-            .get('/v1/search/authors')
+
+          const apiOrigin = _.get(mockDefaultState, [
+            stateFieldNames.origins,
+            'api',
+          ])
+          nock(apiOrigin)
+            .get(`/v2/authors`)
             .query(searchParas)
-            .reply(200, responseObjSet.keyWithVlaueResponse)
+            .reply(200, responseObjSet.keyWithValueResponse)
 
           const checkerParas = {
             mockDefaultState,
@@ -271,17 +291,18 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
       test('Actual actions should be same as expected actions', () => {
         const keywords = constKeywords
         const mockDefaultState = mockDefaultStates.hasNoPreviousKeywords
-        const searchParas = {
-          ...mockSearchParasSet.keyWithValueParas,
-          page: NUMBER_OF_FIRST_RESPONSE_PAGE,
-        }
+        const searchParas = mockSearchParasSet.keyWithValueParas
         const mockStatusCode = 500
         const mockAPIRes = {
-          message: 'internal server error',
+          message: 'Unexpected error.',
           status: 'error',
         }
-        nock('http://localhost:8080')
-          .get('/v1/search/authors')
+        const apiOrigin = _.get(mockDefaultState, [
+          stateFieldNames.origins,
+          'api',
+        ])
+        nock(apiOrigin)
+          .get(`/v2/authors`)
           .query(searchParas)
           .reply(mockStatusCode, mockAPIRes)
 
@@ -317,21 +338,20 @@ describe('Two main situations in authors.js file: 1) Keywords is null and list a
     })
   })
 
-  describe('Server error 404', () => {
+  describe('Server returns 204 no content', () => {
     test('Actual actions should be same as expected actions', () => {
       const keywords = ''
       const mockDefaultState = mockDefaultStates.initialState
-      const searchParas = {
-        ...mockSearchParasSet.keyNullSearchParas,
-        page: NUMBER_OF_FIRST_RESPONSE_PAGE,
-      }
-      const mockStatusCode = 404
-      const mockAPIRes = {
-        status: 'fail',
-        data: null,
-      }
-      nock('http://localhost:8080')
-        .get('/v1/search/authors')
+      const searchParas = mockSearchParasSet.keyNullSearchParas
+      const mockStatusCode = 204
+      const mockAPIRes = null
+
+      const apiOrigin = _.get(mockDefaultState, [
+        stateFieldNames.origins,
+        'api',
+      ])
+      nock(apiOrigin)
+        .get(`/v2/authors`)
         .query(searchParas)
         .reply(mockStatusCode, mockAPIRes)
 

@@ -4,24 +4,16 @@ import { post, posts } from './posts'
 import { searchedAuthorsList, authorsList } from './authors'
 import { topic, topics } from './topics'
 import authReducer from './auth'
-import bookmarks from './bookmarks'
 import bookmarkWidget from './bookmark-widget'
+import bookmarks from './bookmarks'
 import entities from './entities'
+import entitiesForAuthors from './entities-for-authors'
 import featureTopic from './feature-topic'
 import indexPage from './index-page'
 import origins from './origins'
 import reduxStatePropKey from '../constants/redux-state-field-names'
 import relatedPostsOf from './related-posts-of'
 import settings from './settings'
-import types from '../constants/action-types'
-// lodash
-import get from 'lodash/get'
-import merge from 'lodash/merge'
-
-const _ = {
-  get,
-  merge,
-}
 
 const rootReducer = combineReducers({
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
@@ -38,21 +30,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.topicList]: topics,
   [reduxStatePropKey.relatedPostsOf]: relatedPostsOf,
   [reduxStatePropKey.featureTopic]: featureTopic,
-
-  [reduxStatePropKey.entitiesForAuthors]: (state = {}, action) => {
-    const entities = _.get(action, 'payload.normalizedData.entities')
-    if (entities) {
-      // WORKAROUND:
-      // When the data of an author is updated, we have not build the function to synchronize the author data saved in old post records on Algolia.
-      // So the author data in post records that already existed will be outdated.
-      // The temporarily solution is that we do not update authors in entities when fetching articles of an author.
-      if (action.type === types.FETCH_AUTHOR_COLLECTION_SUCCESS) {
-        return _.merge({}, state, { articles: entities.articles })
-      }
-      return _.merge({}, state, entities)
-    }
-    return state
-  },
+  [reduxStatePropKey.entitiesForAuthors]: entitiesForAuthors,
   [reduxStatePropKey.origins]: origins,
   [reduxStatePropKey.settings]: settings,
 })
