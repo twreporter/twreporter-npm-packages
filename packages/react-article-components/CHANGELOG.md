@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [1.2.14-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.14-rc.0...@twreporter/react-article-components@1.2.14-rc.1) (2021-03-31)
 
 **Note:** Version bump only for package @twreporter/react-article-components
