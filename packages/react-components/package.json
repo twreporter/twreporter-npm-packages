@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.4.1-rc.0",
+  "version": "8.4.1",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@twreporter/core": "^1.2.1",
-    "@twreporter/redux": "^7.1.0-rc.0",
+    "@twreporter/redux": "^7.1.0",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",
     "memoize-one": "^5.0.5",

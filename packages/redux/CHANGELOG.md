@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.1.0-rc.0...@twreporter/redux@7.1.0) (2021-04-15)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
 # [7.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.0.5...@twreporter/redux@7.1.0-rc.0) (2021-03-31)
 
 
