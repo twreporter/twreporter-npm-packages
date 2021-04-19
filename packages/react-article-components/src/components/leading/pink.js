@@ -176,6 +176,7 @@ export default class LeadingBlock extends PureComponent {
     topicHref: '',
     shortTitle: '',
     paddingTop: '',
+    isTopicPublished: false,
   }
 
   render() {
@@ -186,13 +187,14 @@ export default class LeadingBlock extends PureComponent {
       title,
       topicHref,
       shortTitle,
+      isTopicPublished,
     } = this.props
 
     return (
       <BackgroundBlock paddingTop={paddingTop}>
         <ContentBlock>
           <TextBlock>
-            {shortTitle ? (
+            {isTopicPublished && shortTitle ? (
               <DynamicComponentsContext.Consumer>
                 {components => {
                   return (

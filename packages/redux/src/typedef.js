@@ -123,6 +123,7 @@ export default {}
  *  @property {string} topic.slug
  *  @property {string} topic.title
  *  @property {string} topic.short_title
+ *  @property {string} topic.state
  *  @property {Object} brief
  *  @property {Object[]} brief.api_data
  *  @property {Object} content
