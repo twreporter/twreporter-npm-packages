@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.15...@twreporter/react-article-components@1.3.0-rc.0) (2021-04-19)
+
+
+### Features
+
+* **react-article-components:** show topic link when it is published ([52bebaf](https://github.com/twreporter/twreporter-npm-packages/commit/52bebaf91fecff589eef0dc856228fa9a0a3dc3e))
+
+
+
+
+
 ## [1.2.15](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.2.15-rc.1...@twreporter/react-article-components@1.2.15) (2021-04-15)
 
 **Note:** Version bump only for package @twreporter/react-article-components

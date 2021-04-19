@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.1.0...@twreporter/redux@7.2.0-rc.0) (2021-04-19)
+
+
+### Features
+
+* **redux:** add state of topic field to full post ([c4c9aad](https://github.com/twreporter/twreporter-npm-packages/commit/c4c9aad9a9ebd4649d978383b3d89056fb3632b5))
+
+
+
+
+
 # [7.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.1.0-rc.0...@twreporter/redux@7.1.0) (2021-04-15)
 
 **Note:** Version bump only for package @twreporter/redux
