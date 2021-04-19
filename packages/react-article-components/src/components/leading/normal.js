@@ -152,6 +152,7 @@ export default class NormalLeading extends React.PureComponent {
     subtitle: '',
     topicHref: '',
     shortTitle: '',
+    isTopicPublished: false,
   }
 
   constructor(props) {
@@ -192,13 +193,14 @@ export default class NormalLeading extends React.PureComponent {
       title,
       topicHref,
       shortTitle,
+      isTopicPublished,
     } = this.props
 
     return (
       <BackgroundBlock>
         <ContentBlock>
           <TextBlock>
-            {shortTitle ? (
+            {isTopicPublished && shortTitle ? (
               <DynamicComponentsContext.Consumer>
                 {components => {
                   return (
