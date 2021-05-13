@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Waypoint } from 'react-waypoint'
 import hoistStatics from 'hoist-non-react-statics'
 import smoothScroll from 'smoothscroll'
+import { Waypoint } from 'react-waypoint'
 // lodash
 import get from 'lodash/get'
 
@@ -22,6 +22,22 @@ function getDisplayName(DecoratedComponent) {
   )
 }
 
+function AnchorWrapper({ children }) {
+  return React.Children.only(children)
+}
+
+AnchorWrapper.defaultProps = {
+  anchorLabel: '',
+  showAnchor: false,
+}
+
+AnchorWrapper.propTypes = {
+  anchorId: PropTypes.string.isRequired,
+  anchorLabel: PropTypes.string,
+  showAnchor: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+}
+
 /**
  * `decorateSideBar`
  * returns a High Order Component adding the side bar functionalities onto `DecoratedComponent`.
@@ -32,17 +48,6 @@ function getDisplayName(DecoratedComponent) {
  *
  * For example,
  * ```
- * const anchors = [{
- *  id: 'section-1',
- *  label: 'Section One'
- * }, {
- *  id: 'section-2',
- *  label: 'Section Two'
- * }, {
- *  id: 'section-3',
- *  label: 'Section Three'
- * }]
- *
  * // react component to render side bar
  * const SideBar = ({anchors, currentAnchorId, handleClickAnchor}) => {
  *  const anchorsJSX = []
@@ -68,15 +73,20 @@ function getDisplayName(DecoratedComponent) {
  *
  * const SideBarWithContent = () => {
  *  return (
- *    <DecoratedSideBar
- *      anchors={anchors}
- *    >
- *      <SectionOne />
- *      <SectionTwo />
- *      <SectionThree />
+ *    <DecoratedSideBar>
+ *      <AnchorWrapper anchorId="section-1" anchorLabel="Section One">
+ *        <SectionOne />
+ *      </AnchorWrapper>
+ *      <AnchorWrapper anchorId="section-2" anchorLabel="Section Two">
+ *        <SectionTwo />
+ *      </AnchorWrapper>
+ *      <AnchorWrapper anchorId="section-3" anchorLabel="Section Three">
+ *        <SectionThree />
+ *      </AnchorWrapper>
  *    </DecoratedSideBar>
  *  )
  * }
+ *
  *
  * The above codes will render three sections and side bar on the same page.
  * When the section, like `SectionTwo`, scrolls into the viewport,
@@ -84,12 +94,13 @@ function getDisplayName(DecoratedComponent) {
  *
  * And when user click the anchor, say if `Secetion Two`, the browser will auto scroll to `SectionTwo`,
  * and anchor `Section Two` will be black.
+ *
  * ```
  *
  * @param {Object} DecoratedComponent A React component wants to have side bar functionality
  * @returns {Object} A React component with side bar functionalities
  */
-export default function decorateSideBar(DecoratedComponent) {
+function decorateSideBar(DecoratedComponent) {
   const firstSection = 'first'
   const lastSection = 'last'
   const secondLastSection = 'second-last'
@@ -166,7 +177,7 @@ export default function decorateSideBar(DecoratedComponent) {
     }
 
     render() {
-      const { anchors, children, ...passThroughProps } = this.props
+      const { children, ...passThroughProps } = this.props
 
       let modules
       if (!children) {
@@ -176,6 +187,17 @@ export default function decorateSideBar(DecoratedComponent) {
       } else {
         modules = [children]
       }
+
+      const anchors = modules.map(module => {
+        const anchorObj = {
+          id: _.get(module.props, 'anchorId'),
+          label: _.get(module.props, 'anchorLabel', ''),
+          show: _.get(module.props, 'showAnchor', false),
+        }
+        if (anchorObj.id) {
+          return anchorObj
+        }
+      })
 
       const webSiteContent = modules.map((module, index) => {
         const moduleID = _.get(
@@ -235,18 +257,14 @@ export default function decorateSideBar(DecoratedComponent) {
     DecoratedComponent
   )})`
   DecoratedSideBar.defaultProps = {
-    anchors: [],
     children: [],
   }
   DecoratedSideBar.propTypes = {
-    anchors: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        label: PropTypes.string,
-      })
-    ),
     children: PropTypes.arrayOf(PropTypes.element),
   }
 
   return hoistStatics(DecoratedSideBar, DecoratedComponent)
 }
+
+export { AnchorWrapper }
+export default decorateSideBar
