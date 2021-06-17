@@ -187,7 +187,7 @@ function FBShareBT(props) {
   }
 
   return (
-    <ShareIconBlock>
+    <ShareIconBlock id="fb-share">
       <FBIcon width="30px" onClick={handleClick} />
     </ShareIconBlock>
   )
@@ -208,7 +208,7 @@ function TwitterShareBT(props) {
   }
 
   return (
-    <ShareIconBlock>
+    <ShareIconBlock id="twitter-share">
       <TwitterIcon width="30px" onClick={handleClick} />
     </ShareIconBlock>
   )
@@ -225,7 +225,7 @@ function LineShareBT(props) {
   }
 
   return (
-    <ShareIconBlock>
+    <ShareIconBlock id="line-share">
       <LineIcon width="30px" onClick={handleClick} />
     </ShareIconBlock>
   )
