@@ -1,7 +1,7 @@
 import { finalMedia } from '../utils/style-utils'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
-import DonationLink from '@twreporter/react-components/lib/donation-link-with-utm'
+import DonationLink from '@twreporter/react-components/lib/donation-link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -130,7 +130,7 @@ class DonationBoxSection extends React.PureComponent {
             </p>
           </TextColumn>
           <DonateButton>
-            <DonationLink utmMedium="index">{DonateInfo}</DonationLink>
+            <DonationLink>{DonateInfo}</DonationLink>
           </DonateButton>
         </ContentContainer>
       </Container>
