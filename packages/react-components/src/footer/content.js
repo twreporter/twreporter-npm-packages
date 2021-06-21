@@ -1,4 +1,4 @@
-import DonationLink from '../donation-link-with-utm'
+import DonationLink from '../donation-link'
 import Logo from './logo'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -320,11 +320,7 @@ class Content extends React.PureComponent {
           <ItemList>{buildList(getItemGroups(mainOrigin))}</ItemList>
         </LinksColumn>
         <DonateButton>
-          <DonationLink
-            utmMedium="footer"
-            utmCampaign={pathname}
-            utmSource={host}
-          >
+          <DonationLink>
             <p>贊助我們</p>
           </DonationLink>
         </DonateButton>
