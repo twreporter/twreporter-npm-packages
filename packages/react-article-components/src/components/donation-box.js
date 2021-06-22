@@ -1,4 +1,4 @@
-import DonationLink from '@twreporter/react-components/lib/donation-link-with-utm'
+import DonationLink from '@twreporter/react-components/lib/donation-link'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedCss from '../constants/css'
 import React, { PureComponent } from 'react'
@@ -93,7 +93,7 @@ export default class DonationBox extends PureComponent {
           return <Text key={`donation-box-desc-${index + 1}`}>{p}</Text>
         })}
         <Donate>
-          <DonationLink utmMedium="article">
+          <DonationLink>
             <p>{_content.bt}</p>
           </DonationLink>
         </Donate>

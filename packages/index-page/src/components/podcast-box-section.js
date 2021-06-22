@@ -1,7 +1,7 @@
 import { finalMedia } from '../utils/style-utils'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
-import PodcastLandingPageLinkWithUtm from '@twreporter/react-components/lib/podcast-link-with-utm'
+import PodcastLandingPageLink from '@twreporter/react-components/lib/podcast-link'
 import React from 'react'
 import app from '../constants/app'
 import styled from 'styled-components'
@@ -141,9 +141,9 @@ class PodcastBoxSection extends React.PureComponent {
             </p>
           </TextColumn>
           <ListenButton>
-            <PodcastLandingPageLinkWithUtm utmMedium="index">
+            <PodcastLandingPageLink>
               {listenNow}
-            </PodcastLandingPageLinkWithUtm>
+            </PodcastLandingPageLink>
           </ListenButton>
         </ContentContainer>
       </Container>
