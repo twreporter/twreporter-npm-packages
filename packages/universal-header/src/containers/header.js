@@ -111,6 +111,7 @@ class Container extends React.PureComponent {
     })
 
     if (isAuthed) {
+      const bookmarkKey = serviceConst.serviceKeys.bookmarks
       const logoutKey = serviceConst.serviceKeys.logout
       desktopServiceProps.push({ key: logoutKey })
       mobileServiceProps.unshift({
