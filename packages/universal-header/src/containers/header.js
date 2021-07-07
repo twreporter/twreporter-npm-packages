@@ -98,7 +98,8 @@ class Container extends React.PureComponent {
       releaseBranch
     )
 
-    const serviceProps = serviceConst.serviceOrder.map(key => {
+    const desktopServiceProps = serviceConst.serviceOrder.desktop.map(key => ({ key }));
+    const mobileServiceProps = serviceConst.serviceOrder.mobile.map(key => {
       return {
         key,
         label: serviceConst.serviceLabels[key],
@@ -108,8 +109,11 @@ class Container extends React.PureComponent {
     })
 
     if (isAuthed) {
+      const bookmarkKey = serviceConst.serviceKeys.bookmarks
       const logoutKey = serviceConst.serviceKeys.logout
-      serviceProps.unshift({
+      desktopServiceProps.push({ key: bookmarkKey })
+      desktopServiceProps.push({ key: logoutKey })
+      mobileServiceProps.unshift({
         key: logoutKey,
         label: serviceConst.serviceLabels[logoutKey],
         link: serviceLinks[logoutKey],
@@ -117,7 +121,8 @@ class Container extends React.PureComponent {
       })
     } else {
       const loginKey = serviceConst.serviceKeys.login
-      serviceProps.unshift({
+      desktopServiceProps.push({ key: loginKey })
+      mobileServiceProps.unshift({
         key: loginKey,
         label: serviceConst.serviceLabels[loginKey],
         link: serviceLinks[loginKey],
@@ -125,7 +130,7 @@ class Container extends React.PureComponent {
       })
     }
 
-    return serviceProps
+    return { desktop: desktopServiceProps, mobile: mobileServiceProps }
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
@@ -179,7 +184,7 @@ class Container extends React.PureComponent {
       releaseBranch,
       isLinkExternal
     )
-    const mobileMenu = mergeTwoArraysInOrder(channelProps, serviceProps)
+    const mobileMenu = mergeTwoArraysInOrder(channelProps, serviceProps.mobile)
 
     this.__prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps)
 
@@ -189,7 +194,7 @@ class Container extends React.PureComponent {
           <MobileHeader menu={mobileMenu} {...passThrough} />
         </MobileOnly>
         <NonMobileOnly>
-          <Header channels={channelProps} {...passThrough} />
+          <Header channels={channelProps} services={serviceProps.desktop} {...passThrough} />
         </NonMobileOnly>
       </HeaderContext.Provider>
     )
