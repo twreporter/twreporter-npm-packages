@@ -20,9 +20,11 @@ import { connect } from 'react-redux'
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
+import map from 'lodash/map'
 
 const _ = {
   get,
+  map,
 }
 
 const MobileOnly = styled.div`
@@ -98,8 +100,8 @@ class Container extends React.PureComponent {
       releaseBranch
     )
 
-    const desktopServiceProps = serviceConst.serviceOrder.desktop.map(key => ({ key }));
-    const mobileServiceProps = serviceConst.serviceOrder.mobile.map(key => {
+    const desktopServiceProps = _.map(serviceConst.serviceOrder.desktop, key => ({ key }));
+    const mobileServiceProps = _.map(serviceConst.serviceOrder.mobile, (key) => {
       return {
         key,
         label: serviceConst.serviceLabels[key],
@@ -109,9 +111,7 @@ class Container extends React.PureComponent {
     })
 
     if (isAuthed) {
-      const bookmarkKey = serviceConst.serviceKeys.bookmarks
       const logoutKey = serviceConst.serviceKeys.logout
-      desktopServiceProps.push({ key: bookmarkKey })
       desktopServiceProps.push({ key: logoutKey })
       mobileServiceProps.unshift({
         key: logoutKey,
@@ -134,7 +134,7 @@ class Container extends React.PureComponent {
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
-    const channelProps = channelConst.channelOrder.map(key => {
+    const channelProps = _.map(channelConst.channelOrder, (key) => {
       return {
         key,
         label: channelConst.channelLabels[key],
@@ -150,7 +150,7 @@ class Container extends React.PureComponent {
   __prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps) {
     channelProps[
       channelProps.length - 1
-    ].dropDownMenu = categoryConst.categoryOrder.map(key => {
+    ].dropDownMenu = _.map(categoryConst.categoryOrder, (key) => {
       return {
         key,
         label: categoryConst.categoryLabels[key],

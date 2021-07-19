@@ -34,6 +34,7 @@ export const serviceOrder = {
     serviceKeys.support,
     serviceKeys.newsLetter,
     serviceKeys.search,
+    serviceKeys.bookmarks,
   ],
 }
 
