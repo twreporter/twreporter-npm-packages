@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.1.8...@twreporter/universal-header@2.2.0-rc.0) (2021-07-21)
+
+
+### Bug Fixes
+
+* **universal-header:** remove useless variable ([086b95a](https://github.com/twreporter/twreporter-npm-packages/commit/086b95a811c50f2ba17f2afc1443f1d717772295))
+
+
+### Features
+
+* **universal-header:** bookmark icon only show when login & modify desktop icon show/hide flow ([a97f727](https://github.com/twreporter/twreporter-npm-packages/commit/a97f727fb0c0966067bc7dae543353a774fb7b34))
+* **universal-header:** bookmark icon only show when login & modify desktop icon show/hide flow ([009cf4c](https://github.com/twreporter/twreporter-npm-packages/commit/009cf4cea4bf8e180f1db6a5dc530e978530a8be))
+* **universal-header:** remove TWREPORTER-73 ([6e077f3](https://github.com/twreporter/twreporter-npm-packages/commit/6e077f30f6bcd211533f9bc1e559ad3fe8edb4de))
+
+
+
+
+
 ## [2.1.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.1.8-rc.0...@twreporter/universal-header@2.1.8) (2020-09-10)
 
 **Note:** Version bump only for package @twreporter/universal-header
