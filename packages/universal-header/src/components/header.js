@@ -14,11 +14,9 @@ import mq from '@twreporter/core/lib/utils/media-query'
 const styles = {
   headerHeight: 109, // px
   topRowPadding: {
-    tablet: [34, 20, 35, 35], // px
-    desktop: [34, 58, 35, 70], // px
+    desktop: [22, 60], // px
   },
   topRowMaxWidth: {
-    tablet: 768, // px
     desktop: 1024,
     hd: 1440, // px
   },
@@ -42,14 +40,8 @@ const TopRow = styled.div`
 `
 
 const TopRowContent = styled.div`
-  ${mq.tabletOnly`
-    padding: ${arrayToCssShorthand(styles.topRowPadding.tablet)};
-    max-width: ${styles.topRowMaxWidth.tablet}px;
-  `}
-  ${mq.desktopAndAbove`
-    padding: ${arrayToCssShorthand(styles.topRowPadding.desktop)};
-    max-width: ${styles.topRowMaxWidth.hd}px;
-  `}
+  padding: ${arrayToCssShorthand(styles.topRowPadding.desktop)};
+  max-width: ${styles.topRowMaxWidth.hd}px;
   box-sizing: border-box;
   height: ${styles.headerHeight}px;
   display: flex;

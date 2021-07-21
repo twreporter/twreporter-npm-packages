@@ -1,15 +1,8 @@
 import colorsConst from '../constants/colors'
 import themeConst from '../constants/theme'
+import { ServiceIcons, Icons } from './icon'
 import LogoLightGray from '../../static/twreporter-logo-light-gray.svg'
 import Logo from '../../static/twreporter-logo.svg'
-import BookmarkIcon from '../../static/bookmark-list-icon.svg'
-import BookmarkIconLightGray from '../../static/bookmark-list-icon-light-gray.svg'
-import MemberIcon from '../../static/member-icon.svg'
-import MemberIconLightGray from '../../static/member-icon-light-gray.svg'
-import LogoutIcon from '../../static/logout.svg'
-import LogoutIconLightGray from '../../static/logout-light-gray.svg'
-import SearchIcon from '../../static/search-icon.svg'
-import SearchIconLightGray from '../../static/search-icon-light-gray.svg'
 
 const lightGrayBgColor = colorsConst.grayBg
 
@@ -27,22 +20,32 @@ function selectLogoComponent(theme) {
 
 function selectServiceIcons(theme) {
   switch (theme) {
-    case themeConst.photography:
-    case themeConst.transparent: {
-      return {
-        bookmark: BookmarkIconLightGray,
-        member: MemberIconLightGray,
-        search: SearchIconLightGray,
-        logout: LogoutIconLightGray,
-      }
+    case themeConst.photography: {
+      return ServiceIcons.photography
     }
+    case themeConst.transparent: {
+      return ServiceIcons.transparent
+    }
+    case themeConst.index:
+    case themeConst.normal:
     default: {
-      return {
-        bookmark: BookmarkIcon,
-        member: MemberIcon,
-        search: SearchIcon,
-        logout: LogoutIcon,
-      }
+      return ServiceIcons.normal
+    }
+  }
+}
+
+function selectIcons(theme) {
+  switch (theme) {
+    case themeConst.photography: {
+      return Icons.photography
+    }
+    case themeConst.transparent: {
+      return Icons.transparent
+    }
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return Icons.normal
     }
   }
 }
@@ -52,9 +55,21 @@ function selectFontColor(theme) {
     case themeConst.transparent: {
       return colorsConst.white
     }
-    case themeConst.photography: {
+    case themeConst.photography:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
       return '#808080'
     }
+  }
+}
+
+function selectHoverFontColor(theme) {
+  switch (theme) {
+    case themeConst.photography: {
+      return colorsConst.white
+    }
+    case themeConst.transparent:
     case themeConst.index:
     case themeConst.normal:
     default: {
@@ -63,18 +78,18 @@ function selectFontColor(theme) {
   }
 }
 
-function selectHoverFontColor(theme) {
+function selectHoverBgColor(theme) {
   switch (theme) {
     case themeConst.transparent: {
-      return '#808080'
+      return colorsConst.white
     }
     case themeConst.photography: {
-      return colorsConst.secondary
+      return 'rgba(255, 255, 255, 0.1)'
     }
     case themeConst.index:
     case themeConst.normal:
     default: {
-      return '#808080'
+      return 'rgba(0, 0, 0, 0.1)'
     }
   }
 }
@@ -125,11 +140,32 @@ function selectMobileSlideDownMenuBgColor(theme) {
 
 function selectChannelsBgColor(theme) {
   switch (theme) {
+    case themeConst.photography: {
+      return colorsConst.photography
+    }
     case themeConst.transparent: {
       return 'transparent'
     }
+    case themeConst.index: {
+      return colorsConst.white;
+    }
+    case themeConst.normal:
     default: {
-      return colorsConst.white
+      return lightGrayBgColor
+    }
+  }
+}
+
+function selectChannelBorderColor(theme) {
+  switch (theme) {
+    case themeConst.photography:
+    case themeConst.transparent: {
+      return 'rgba(128, 128, 128, 0.2)'
+    }
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return colorsConst.gray
     }
   }
 }
@@ -140,7 +176,10 @@ export default {
   selectChannelsBgColor,
   selectFontColor,
   selectHoverFontColor,
+  selectHoverBgColor,
   selectLogoComponent,
   selectMobileSlideDownMenuBgColor,
   selectServiceIcons,
+  selectIcons,
+  selectChannelBorderColor,
 }

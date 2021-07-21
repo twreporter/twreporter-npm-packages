@@ -1,14 +1,8 @@
-import BookmarkIcon from '../../static/bookmark-list-icon.svg'
-import DonationIcon from '../../static/donate-icon.svg'
 import Header from '../components/header'
 import HeaderContext from '../contexts/header-context'
-import LoginIcon from '../../static/member-icon.svg'
-import LogoutIcon from '../../static/logout.svg'
 import MobileHeader from '../components/mobile-header'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SearchIcon from '../../static/search-icon.svg'
-import SubscriptionIcon from '../../static/subscribe-icon.svg'
 import categoryConst from '../constants/categories'
 import channelConst from '../constants/channels'
 import linkUtils from '../utils/links'
@@ -35,11 +29,19 @@ const MobileOnly = styled.div`
   `}
 `
 
-const NonMobileOnly = styled.div`
-  display: block;
+const TabletOnly = styled.div`
+  display: none;
 
-  ${mq.mobileOnly`
-    display: none;
+  ${mq.tabletOnly`
+    display: block;
+  `}
+`
+
+const DesktopAndAbove = styled.div`
+  display: none;
+
+  ${mq.desktopAndAbove`
+    display: block;
   `}
 `
 
@@ -57,31 +59,6 @@ function mergeTwoArraysInOrder(arr1 = [], arr2 = []) {
   }
 
   return rtn
-}
-
-function selectIconElement(serviceKey) {
-  switch (serviceKey) {
-    case 'login': {
-      return <LoginIcon />
-    }
-    case 'logout': {
-      return <LogoutIcon />
-    }
-    case 'search': {
-      return <SearchIcon />
-    }
-    case 'bookmarks': {
-      return <BookmarkIcon />
-    }
-    case 'support': {
-      return <DonationIcon />
-    }
-    case 'newsLetter': {
-      return <SubscriptionIcon />
-    }
-    default:
-      return null
-  }
 }
 
 class Container extends React.PureComponent {
@@ -106,7 +83,6 @@ class Container extends React.PureComponent {
         key,
         label: serviceConst.serviceLabels[key],
         link: serviceLinks[key],
-        icon: selectIconElement(key),
       }
     })
 
@@ -117,7 +93,6 @@ class Container extends React.PureComponent {
         key: logoutKey,
         label: serviceConst.serviceLabels[logoutKey],
         link: serviceLinks[logoutKey],
-        icon: selectIconElement(logoutKey),
       })
     } else {
       const loginKey = serviceConst.serviceKeys.login
@@ -126,7 +101,6 @@ class Container extends React.PureComponent {
         key: loginKey,
         label: serviceConst.serviceLabels[loginKey],
         link: serviceLinks[loginKey],
-        icon: selectIconElement(loginKey),
       })
     }
 
@@ -193,9 +167,12 @@ class Container extends React.PureComponent {
         <MobileOnly>
           <MobileHeader menu={mobileMenu} {...passThrough} />
         </MobileOnly>
-        <NonMobileOnly>
+        <TabletOnly>
+          <MobileHeader menu={mobileMenu} {...passThrough} />
+        </TabletOnly>
+        <DesktopAndAbove>
           <Header channels={channelProps} services={serviceProps.desktop} {...passThrough} />
-        </NonMobileOnly>
+        </DesktopAndAbove>
       </HeaderContext.Provider>
     )
   }
