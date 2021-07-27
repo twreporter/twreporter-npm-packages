@@ -3,10 +3,22 @@ import Link from './customized-link'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SlideDownMenu from './mobile-slide-down-menu'
+import ActionButton from './action-button'
+import Slogan from './slogan'
 import colors from '../constants/colors'
 import linkUtils from '../utils/links'
 import styled from 'styled-components'
 import themeUtils from '../utils/theme'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+
+const TabletOnly = styled.div`
+  display: none;
+
+  ${mq.tabletOnly`
+    display: flex;
+  `}
+`
 
 const FlexBox = styled.div`
   background-color: ${props => props.bgColor};
@@ -19,26 +31,30 @@ const FlexBox = styled.div`
   padding: 30px 10px 35px 24px;
 `
 
+const FlexGroup = styled.div`
+  display: flex;
+`
+
+const FlexItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 14px;
+`
+
 const Hamburger = styled.div`
   cursor: pointer;
 `
 
-const Stroke = styled.div`
-  background-color: ${colors.primary};
-  border-radius: 10px;
-  height: 4px;
-  margin-bottom: 5px;
-  width: 25px;
-`
-
 export default class MobileHeader extends React.PureComponent {
   static propTypes = {
-    pathname: PropTypes.string,
-    menu: SlideDownMenu.propTypes.data,
+    channels: PropTypes.array,
+    services: PropTypes.array,
+    actions: PropTypes.array,
   }
   static defaultProps = {
-    pathname: '',
-    menu: SlideDownMenu.defaultProps.data,
+    channels: [],
+    services: [],
+    actions: [],
   }
 
   constructor(props) {
@@ -63,14 +79,14 @@ export default class MobileHeader extends React.PureComponent {
   }
 
   render() {
-    const { menu } = this.props
+    const { channels, services, actions } = this.props
 
     const { toSlideDown } = this.state
 
     const slideDownPanelJSX = (
       <SlideDownMenu
         toSlideDown={toSlideDown}
-        data={menu}
+        data={channels}
         handleClick={this.closeMenu}
       />
     )
@@ -82,18 +98,29 @@ export default class MobileHeader extends React.PureComponent {
           {({ releaseBranch, isLinkExternal, theme }) => {
             const Logo = themeUtils.selectLogoComponent(theme)
             const bgColor = themeUtils.selectBgColor(theme)
+            const MenuIcon = themeUtils.selectIcons(theme).menu
             return (
               <FlexBox bgColor={bgColor}>
-                <Link
-                  {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
-                  onClick={this.closeMenu}
-                >
-                  <Logo />
-                </Link>
+                <FlexGroup>
+                  <FlexItem>
+                    <Link
+                      {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
+                      onClick={this.closeMenu}
+                    >
+                      <Logo />
+                    </Link>
+                  </FlexItem>
+                  <FlexItem>
+                    <ActionButton actions={actions} />
+                  </FlexItem>
+                  <TabletOnly>
+                    <FlexItem>
+                      <Slogan />
+                    </FlexItem>
+                  </TabletOnly>
+                </FlexGroup>
                 <Hamburger onClick={this.handleOnHamburgerClick}>
-                  <Stroke />
-                  <Stroke />
-                  <Stroke />
+                  <MenuIcon />
                 </Hamburger>
               </FlexBox>
             )

@@ -316,11 +316,7 @@ class Channels extends React.PureComponent {
       return (
         <HeaderContext.Consumer key={channelItem.key}>
           {({ theme }) => {
-            const fontColor = themeUtils.selectFontColor(theme)
-            const hoverFontColor = themeUtils.selectHoverFontColor(theme)
-            const hoverBgColor = themeUtils.selectHoverBgColor(theme)
-            const textShadow = themeUtils.selectChannelTextShadow(theme)
-            const borderColor = themeUtils.selectChannelBorderColor(theme)
+            const { fontColor, hoverFontColor, hoverBgColor, textShadow, borderColor } = themeUtils.selectChannelTheme(theme)
             const channelItemJSX = this._prepareChannelItemJSX(channelItem, dataIndex, theme)
             return (
               <ListItem

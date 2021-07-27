@@ -1,6 +1,7 @@
 import { categoryPathnames } from '../constants/categories'
 import { channelPathnames } from '../constants/channels'
 import { servicePathnames, serviceKeys } from '../constants/services'
+import { actionKeys } from '../constants/actions'
 import externalLinks from '../constants/external-links'
 // @twreporter
 import origins from '@twreporter/core/lib/constants/request-origins'
@@ -147,11 +148,16 @@ function getServiceLinks(
     [serviceKeys.login]: getLoginLink(releaseBranch),
     [serviceKeys.logout]: getLogoutLink(releaseBranch),
     [serviceKeys.search]: getSearchLink(isExternal, releaseBranch),
-    [serviceKeys.support]: {
+  }
+}
+
+function getActionLinks() {
+  return {
+    [actionKeys.support]: {
       to: __getExternalLinks().monthlyDonation,
       isExternal: true,
     },
-    [serviceKeys.newsLetter]: {
+    [actionKeys.newsLetter]: {
       to: __getExternalLinks().newsLetter,
       isExternal: true,
     },
@@ -163,6 +169,7 @@ export default {
   getCategoryLinks,
   getChannelLinks,
   getServiceLinks,
+  getActionLinks,
   getLogoLink,
   getLoginLink,
   getLogoutLink,
