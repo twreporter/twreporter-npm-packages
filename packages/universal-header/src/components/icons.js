@@ -30,12 +30,6 @@ const IconsContainer = styled.div`
   `}
 `
 
-const ShowOnHover = styled.div`
-`
-
-const HideOnHover = styled.div`
-`
-
 const IconContainer = styled.div`
   font-size: ${fonts.size.base};
   cursor: pointer;
@@ -43,14 +37,9 @@ const IconContainer = styled.div`
   width: ${styles.iconContainerSize}em;
   height: ${styles.iconContainerSize}em;
   line-height: 1;
-  vertical-align: middle;
-  text-align: center;
   position: relative;
   opacity: ${props => (props.isSearchOpened ? '0' : '1')};
   transition: opacity 600ms ease;
-  span {
-    display: none;
-  }
   svg {
     opacity: 1;
     position: absolute;
@@ -59,22 +48,22 @@ const IconContainer = styled.div`
     left: 30%;
     z-index: 1;
   }
+`
 
-  ${ShowOnHover} {
-    display: none;
-  }
+const ShowOnHover = styled.div`
+   display: none;
 
-  &:hover ${ShowOnHover} {
-    display: block;
-  }
+   ${IconContainer}:hover & {
+     display: block;
+   }
+`
 
-  ${HideOnHover} {
-    display: block;
-  }
+const HideOnHover = styled.div`
+   display: block;
 
-  &:hover ${HideOnHover} {
-    display: none;
-  }
+   ${IconContainer}:hover & {
+     display: none;
+   }
 `
 
 class Icons extends React.PureComponent {
@@ -125,7 +114,7 @@ class Icons extends React.PureComponent {
   _prepareIconJsx(service) {
     const { isSearchOpened } = this.state
     const Login = (
-      <IconContainer isSearchOpened={isSearchOpened}>
+      <IconContainer isSearchOpened={isSearchOpened} key="login">
         <HeaderContext.Consumer>
           {({ releaseBranch, theme }) => {
             const [LogInIcon, LogInHoverIcon] = themeUtils.selectServiceIcons(theme).login
@@ -150,7 +139,7 @@ class Icons extends React.PureComponent {
       </IconContainer>
     )
     const Logout = (
-      <IconContainer isSearchOpened={isSearchOpened}>
+      <IconContainer isSearchOpened={isSearchOpened} key="logout">
         <HeaderContext.Consumer>
           {({ releaseBranch, theme }) => {
             const [LogOutIcon, LogOutHoverIcon] = themeUtils.selectServiceIcons(theme).logout
@@ -175,7 +164,7 @@ class Icons extends React.PureComponent {
       </IconContainer>
     )
     const Search = (
-      <React.Fragment>
+      <React.Fragment key="search">
         <IconContainer
           onClick={this._handleClickSearch}
           isSearchOpened={isSearchOpened}
@@ -195,7 +184,6 @@ class Icons extends React.PureComponent {
               )
             }}
           </HeaderContext.Consumer>
-          <span>{serviceConst.serviceLabels.search}</span>
         </IconContainer>
         <SearchBox
           isSearchOpened={isSearchOpened}
@@ -204,7 +192,7 @@ class Icons extends React.PureComponent {
       </React.Fragment>
     )
     const Bookmark = (
-      <IconContainer isSearchOpened={isSearchOpened}>
+      <IconContainer isSearchOpened={isSearchOpened} key="bookmark">
         <HeaderContext.Consumer>
           {({ releaseBranch, isLinkExternal, theme }) => {
             const [BookmarkIcon, BookmarkHoverIcon] = themeUtils.selectServiceIcons(theme).bookmark
@@ -236,8 +224,6 @@ class Icons extends React.PureComponent {
         return Search
       case 'bookmarks':
         return Bookmark
-      case 'newsletter':
-      case 'support':
       default:
         return null;
     }

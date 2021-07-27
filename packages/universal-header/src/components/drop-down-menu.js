@@ -17,12 +17,6 @@ const _ = {
   map,
 }
 
-const styles = {
-  itemPadding: {
-    desktop: [12, 16], // px
-  },
-}
-
 const ViewPort = styled.div`
   width: 100%;
   height: 100%;
@@ -69,7 +63,7 @@ const SubMenuBox = styled.li`
   a,
   a:link,
   a:visited {
-    padding: ${arrayToCssShorthand(styles.itemPadding.desktop)};
+    padding: 12px 16px;
     width: 100%;
     border: 0;
   }

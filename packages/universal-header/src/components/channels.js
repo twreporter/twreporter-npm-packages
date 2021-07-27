@@ -98,12 +98,6 @@ const List = styled.ul`
   margin: auto;
 `
 
-const ShowOnHover = styled.div`
-`
-
-const HideOnHover = styled.div`
-`
-
 const ListItem = styled.li`
   display: flex;
   position: relative;
@@ -137,22 +131,22 @@ const ListItem = styled.li`
       color: ${props => props.hoverFontColor};
     }
   }
+`
 
-  ${ShowOnHover} {
-    display: none;
-  }
+const ShowOnHover = styled.div`
+   display: none;
 
-  &:hover ${ShowOnHover} {
-    display: flex;
-  }
+   ${ListItem}:hover & {
+     display: flex;
+   }
+`
 
-  ${HideOnHover} {
-    display: flex;
-  }
+const HideOnHover = styled.div`
+   display: flex;
 
-  &:hover ${HideOnHover} {
-    display: none;
-  }
+   ${ListItem}:hover & {
+     display: none;
+   }
 `
 
 const invalidDataIndex = -1
