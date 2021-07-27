@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.0...@twreporter/universal-header@2.2.0-rc.1) (2021-07-27)
+
+
+### Bug Fixes
+
+* **universal-header:** fix code review & warning ([7478483](https://github.com/twreporter/twreporter-npm-packages/commit/7478483ee3ca573dab24d8769e38a81bd0222fec))
+
+
+### Features
+
+* **universal-header:** adjust desktop category style & update icons ([21e5126](https://github.com/twreporter/twreporter-npm-packages/commit/21e5126bb7dbdd425e292315395a8327d9985d8c))
+
+
+
+
+
 # [2.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.1.8...@twreporter/universal-header@2.2.0-rc.0) (2021-07-21)
 
 
