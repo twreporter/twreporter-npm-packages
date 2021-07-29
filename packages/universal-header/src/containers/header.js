@@ -78,8 +78,8 @@ class Container extends React.PureComponent {
       releaseBranch
     )
 
-    const desktopServiceProps = _.map(serviceConst.serviceOrder.desktop, key => ({ key }));
-    const mobileServiceProps = _.map(serviceConst.serviceOrder.mobile, (key) => {
+    const desktopServiceProps = _.map(serviceConst.serviceOrder, key => ({ key }));
+    const mobileServiceProps = _.map(serviceConst.serviceOrder, (key) => {
       return {
         key,
         label: serviceConst.serviceLabels[key],
@@ -105,7 +105,7 @@ class Container extends React.PureComponent {
       })
     }
 
-    return { desktop: desktopServiceProps, mobile: mobileServiceProps }
+    return { desktop: desktopServiceProps, tablet: mobileServiceProps, mobile: mobileServiceProps }
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
@@ -187,7 +187,7 @@ class Container extends React.PureComponent {
         <TabletOnly>
           <MobileHeader
             channels={channelProps}
-            services={serviceProps.desktop}
+            services={serviceProps.tablet}
             actions={actionProps.tablet}
             {...passThrough}
           />

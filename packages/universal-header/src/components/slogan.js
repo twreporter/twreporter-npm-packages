@@ -13,7 +13,7 @@ const style = {
 }
 
 const SloganContainer = styled.div`
-  color: ${props => props.color || colors.gray15};
+  color: ${props => props.color || colors.grayDark};
   text-decoration: underline;
   font-size: ${style.fontSize.desktop};
   display: flex;

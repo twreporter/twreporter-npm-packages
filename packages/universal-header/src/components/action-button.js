@@ -1,6 +1,5 @@
 import HeaderContext from '../contexts/header-context'
 import Link from './customized-link'
-import PropTypes from 'prop-types'
 import React from 'react'
 import fonts from '../constants/fonts'
 import colors from '../constants/colors'
@@ -60,54 +59,37 @@ const ActionItem = styled.div`
   }
 `
 
-class ActionButton extends React.PureComponent {
-  static propTypes = {
-    actions: PropTypes.array,
-  }
+const ActionButtonItem = ({ action={} }) => {
+  const actionKey = action.key
+  const actionLabel = actionConst.actionLabels[actionKey]
+  const actionLink = linkUtils.getActionLinks()[actionKey]
+  return (
+    <HeaderContext.Consumer key={actionKey}>
+      {({ theme }) => {
+        const { color, bgColor, hoverBgColor } = themeUtils.selectActionButtonTheme(theme)
+        return (
+          <ActionContainer color={color}>
+            <Link {...actionLink}>
+              <ActionItem
+                bgColor={bgColor}
+                hoverBgColor={hoverBgColor}
+              >
+                {actionLabel}
+              </ActionItem>
+            </Link>
+          </ActionContainer>
+        )
+      }}
+    </HeaderContext.Consumer>
+  )
+}
 
-  static defaultProps = {
-    actions: [],
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-    }
-  }
-
-  _prepareActionJSX(action) {
-    const actionKey = action.key
-    const actionLabel = actionConst.actionLabels[actionKey]
-    const actionLink = linkUtils.getActionLinks()[actionKey]
-    return (
-      <HeaderContext.Consumer key={actionKey}>
-        {({ theme }) => {
-          const { color, bgColor, hoverBgColor } = themeUtils.selectActionButtonTheme(theme)
-          return (
-            <ActionContainer color={color}>
-              <Link {...actionLink}>
-                <ActionItem
-                  bgColor={bgColor}
-                  hoverBgColor={hoverBgColor}
-                >
-                  {actionLabel}
-                </ActionItem>
-              </Link>
-            </ActionContainer>
-          )
-        }}
-      </HeaderContext.Consumer>
-    )
-  }
-
-  render() {
-    const { actions } = this.props
-    return (
-      <ActionsContainer>
-        { _.map(actions, action => this._prepareActionJSX(action)) }
-      </ActionsContainer>
-    )
-  }
+const ActionButton = ({ actions=[] }) => {
+  return (
+    <ActionsContainer>
+      { _.map(actions, action => (<ActionButtonItem action={action} />)) }
+    </ActionsContainer>
+  )
 }
 
 export default ActionButton

@@ -4,8 +4,6 @@ import { ServiceIcons, Icons } from './icon'
 import LogoLightGray from '../../static/twreporter-logo-light-gray.svg'
 import Logo from '../../static/twreporter-logo.svg'
 
-const lightGrayBgColor = colorsConst.grayBg
-
 function selectLogoComponent(theme) {
   switch (theme) {
     case themeConst.photography:
@@ -54,7 +52,7 @@ function selectChannelTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return {
-        fontColor: #808080,
+        fontColor: '#808080',
         hoverFontColor: colorsConst.white,
         hoverBgColor: 'rgba(255, 255, 255, 0.1)',
         textShadow: 'none',
@@ -64,7 +62,7 @@ function selectChannelTheme(theme) {
     case themeConst.transparent: {
       return {
         fontColor: colorsConst.white,
-        hoverFontColor: colorsConst.gray15,
+        hoverFontColor: colorsConst.grayDark,
         hoverBgColor: colorsConst.white,
         textShadow: '0 2px 2px rgba(0, 0, 0, 0.22)',
         borderColor: 'rgba(128, 128, 128, 0.2)',
@@ -74,8 +72,8 @@ function selectChannelTheme(theme) {
     case themeConst.normal:
     default: {
       return {
-        fontColor: #808080,
-        hoverFontColor: colorsConst.gray15,
+        fontColor: '#808080',
+        hoverFontColor: colorsConst.grayDark,
         hoverBgColor: 'rgba(0, 0, 0, 0.1)',
         textShadow: 'none',
         borderColor: colorsConst.gray,
@@ -97,7 +95,7 @@ function selectBgColor(theme) {
     }
     case themeConst.normal:
     default: {
-      return lightGrayBgColor
+      return colorsConst.grayLight
     }
   }
 }
@@ -111,7 +109,7 @@ function selectMobileSlideDownMenuBgColor(theme) {
     case themeConst.photography:
     case themeConst.transparent:
     default: {
-      return lightGrayBgColor
+      return colorsConst.grayLight
     }
   }
 }
@@ -129,7 +127,7 @@ function selectChannelsBgColor(theme) {
     }
     case themeConst.normal:
     default: {
-      return lightGrayBgColor
+      return colorsConst.grayLight
     }
   }
 }
@@ -139,13 +137,13 @@ function selectActionButtonTheme(theme) {
     case themeConst.photography: {
       return {
         color: colorsConst.white,
-        bgColor: colorsConst.secondary,
+        bgColor: colorsConst.brown,
         hoverBgColor: '#856236',
       }
     }
     case themeConst.transparent: {
       return {
-        color: colorsConst.secondary,
+        color: colorsConst.brown,
         bgColor: colorsConst.white,
         hoverBgColor: '#d8d8d8',
       }
@@ -173,7 +171,7 @@ function selectSloganColor(theme) {
     case themeConst.index:
     case themeConst.normal:
     default: {
-      return colorsConst.gray15
+      return colorsConst.grayDark
     }
   }
 }

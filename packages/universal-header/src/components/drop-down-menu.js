@@ -57,7 +57,7 @@ const SubMenuBox = styled.li`
   border-bottom: 0.2px solid #808080;
   width: 100%;
   &:hover {
-    color: ${colors.gray15};
+    color: ${colors.grayDark};
     background-color: rgba(0,0,0,0.1);
   }
   a,
