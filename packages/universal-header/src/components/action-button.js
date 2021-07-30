@@ -1,14 +1,13 @@
-import HeaderContext from '../contexts/header-context'
-import Link from './customized-link'
 import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import HeaderContext from '../contexts/header-context'
 import fonts from '../constants/fonts'
 import colors from '../constants/colors'
-import linkUtils from '../utils/links'
 import actionConst from '../constants/actions'
-import styled from 'styled-components'
+import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
-// @twreporter
-import mq from '@twreporter/core/lib/utils/media-query'
+import Link from './customized-link'
 // lodash
 import map from 'lodash/map'
 
@@ -64,7 +63,7 @@ const ActionButtonItem = ({ action={} }) => {
   const actionLabel = actionConst.actionLabels[actionKey]
   const actionLink = linkUtils.getActionLinks()[actionKey]
   return (
-    <HeaderContext.Consumer key={actionKey}>
+    <HeaderContext.Consumer>
       {({ theme }) => {
         const { color, bgColor, hoverBgColor } = themeUtils.selectActionButtonTheme(theme)
         return (
@@ -84,12 +83,22 @@ const ActionButtonItem = ({ action={} }) => {
   )
 }
 
+ActionButtonItem.propTypes = {
+  action: PropTypes.shape({
+    key: PropTypes.string
+  }),
+}
+
 const ActionButton = ({ actions=[] }) => {
   return (
     <ActionsContainer>
-      { _.map(actions, action => (<ActionButtonItem action={action} />)) }
+      { _.map(actions, action => (<ActionButtonItem action={action} key={action.key} />)) }
     </ActionsContainer>
   )
+}
+
+ActionButton.propTypes = {
+  actions: PropTypes.arrayOf(PropTypes.shape(ActionButtonItem.propTypes)),
 }
 
 export default ActionButton
