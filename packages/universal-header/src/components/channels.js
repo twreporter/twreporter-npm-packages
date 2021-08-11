@@ -24,7 +24,8 @@ const _ = {
 
 const styles = {
   channelsPadding: {
-    desktop: [0, 60], // px
+    row: [0, 60], // px
+    column: [0, 0], // px
   },
   channelsMaxWidth: {
     desktop: 1024, // px
@@ -34,8 +35,21 @@ const styles = {
     desktop: 0,
   },
   itemPadding: {
-    desktop: [8, 16], // px
+    row: [8, 16], // px
+    column: [20, 32], // px
   },
+  itemWidth: {
+    row: 'initial',
+    column: '100%',
+  },
+  dropdownPosition: {
+    row: 'absolute',
+    column: 'relative',
+  },
+  dropdownTop: {
+    row: 36, // px
+    column: 0, //px
+  }
 }
 
 const changeOpacity = (valueFrom, valueTo) => keyframes`
@@ -71,11 +85,11 @@ const linkUnderline = css`
 `
 
 const DropDownMenuWrapper = styled.div`
-  position: absolute;
+  position: ${props => styles.dropdownPosition[props.direction]};
   z-index: 999;
   width: 100%;
   left: 0;
-  top: 36px;
+  top: ${props => styles.dropdownTop[props.direction]}px;
   ${dropDownMenuEffectCSS}
 `
 
@@ -85,13 +99,13 @@ const Box = styled.div`
 
 const List = styled.ul`
   justify-content: space-between;
-  padding: ${arrayToCssShorthand(styles.channelsPadding.desktop)};
+  padding: ${props => arrayToCssShorthand(styles.channelsPadding[props.direction])};
   max-width: ${styles.channelsMaxWidth.hd}px;
   background-color: ${props => props.bgColor || colors.white};
   user-select: none;
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => props.direction};
   flex-wrap: nowrap;
   align-items: center;
   list-style-type: none;
@@ -100,7 +114,9 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   display: flex;
+  flex-direction: ${props => props.direction};
   position: relative;
+  width: ${props => styles.itemWidth[props.direction]};
   font-size: ${fonts.size.base};
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -113,7 +129,7 @@ const ListItem = styled.li`
     border-left: 0;
   }
   &::after {
-    ${props => (props.isActive ? linkUnderline : '')}
+    ${props => (props.isActive && props.direction === 'row' ? linkUnderline : '')}
   }
   a,
   a:link,
@@ -121,7 +137,8 @@ const ListItem = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: ${arrayToCssShorthand(styles.itemPadding.desktop)};
+    font-size: ${fonts.size.base};
+    padding: ${props => arrayToCssShorthand(styles.itemPadding[props.direction])};
     width: 100%;
     color: ${props => props.fontColor};
     border: 0;
@@ -168,10 +185,14 @@ class Channels extends React.PureComponent {
         [dropDownMenuKey]: DropDownMenu.propTypes.data,
       })
     ),
+    direction: PropTypes.string,
+    callback: PropTypes.func,
   }
 
   static defaultProps = {
     data: [],
+    direction: 'row',
+    callback: ()=> {},
   }
 
   constructor(props) {
@@ -237,6 +258,7 @@ class Channels extends React.PureComponent {
 
   _handleChannelClick() {
     this.closeDropDownMenu()
+    this.props.callback()
   }
 
   _prepareChannelItemJSX(channelItem, dataIndex, theme) {
@@ -245,12 +267,12 @@ class Channels extends React.PureComponent {
     const channelLink = channelItem.link
 
     if (channelType === channelConst.channelDropDownType) {
-      const { data } = this.props
+      const { data, direction } = this.props
       const { indexToDropDown } = this.state
       const toShowDropdownMenu = indexToDropDown > invalidDataIndex
       const dropdownMenuData = _.get(data, [indexToDropDown, dropDownMenuKey], [])
       const dropdownMenuJSX = (
-        <DropDownMenuWrapper>
+        <DropDownMenuWrapper direction={direction}>
           <CSSTransition
             in={toShowDropdownMenu}
             classNames="effect"
@@ -304,7 +326,7 @@ class Channels extends React.PureComponent {
   }
 
   render() {
-    const { currentPathname, data } = this.props
+    const { currentPathname, data, direction } = this.props
     const { indexToDropDown } = this.state
     const toShowDropDownMenu = indexToDropDown > invalidDataIndex
     const activeChannelIndex = toShowDropDownMenu
@@ -320,6 +342,7 @@ class Channels extends React.PureComponent {
             const channelItemJSX = this._prepareChannelItemJSX(channelItem, dataIndex, theme)
             return (
               <ListItem
+                direction={direction}
                 isActive={isActive}
                 onClick={this.handleClickChannel}
                 fontColor={fontColor}
@@ -341,7 +364,7 @@ class Channels extends React.PureComponent {
           <HeaderContext.Consumer>
             {({ theme }) => {
               const bgColor = themeUtils.selectChannelsBgColor(theme)
-              return <List bgColor={bgColor}>{channelsJSX}</List>
+              return <List bgColor={bgColor} direction={direction}>{channelsJSX}</List>
             }}
           </HeaderContext.Consumer>
         </Box>

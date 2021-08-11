@@ -32,6 +32,20 @@ function selectServiceIcons(theme) {
   }
 }
 
+function selectHamburgerServiceIcons(theme) {
+  switch (theme) {
+    case themeConst.photography: {
+      return ServiceIcons.photography
+    }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return ServiceIcons.normal
+    }
+  }
+}
+
 function selectIcons(theme) {
   switch (theme) {
     case themeConst.photography: {
@@ -100,20 +114,6 @@ function selectBgColor(theme) {
   }
 }
 
-function selectMobileSlideDownMenuBgColor(theme) {
-  switch (theme) {
-    case themeConst.normal: {
-      return colorsConst.white
-    }
-    case themeConst.index:
-    case themeConst.photography:
-    case themeConst.transparent:
-    default: {
-      return colorsConst.grayLight
-    }
-  }
-}
-
 function selectChannelsBgColor(theme) {
   switch (theme) {
     case themeConst.photography: {
@@ -160,6 +160,42 @@ function selectActionButtonTheme(theme) {
   }
 }
 
+function selectHamburgerMenuTheme(theme) {
+  switch (theme) {
+    case themeConst.photography: {
+      return {
+        bgColor: colorsConst.photography,
+      }
+    }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return {
+        bgColor: colorsConst.grayLight,
+      }
+    }
+  }
+}
+
+function selectHamburgerServiceTheme(theme) {
+  switch (theme) {
+    case themeConst.photography: {
+      return {
+        borderColor: 'rgba(128, 128, 128, 0.5)',
+      }
+    }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return {
+        borderColor: 'rgba(128, 128, 128, 0.2)',
+      }
+    }
+  }
+}
+
 function selectSloganColor(theme) {
   switch (theme) {
     case themeConst.photography: {
@@ -182,9 +218,11 @@ export default {
   selectChannelTheme,
   selectChannelsBgColor,
   selectLogoComponent,
-  selectMobileSlideDownMenuBgColor,
   selectServiceIcons,
+  selectHamburgerServiceIcons,
   selectIcons,
   selectActionButtonTheme,
+  selectHamburgerMenuTheme,
+  selectHamburgerServiceTheme,
   selectSloganColor,
 }

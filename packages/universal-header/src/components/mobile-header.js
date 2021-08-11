@@ -2,7 +2,8 @@ import HeaderContext from '../contexts/header-context'
 import Link from './customized-link'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SlideDownMenu from './mobile-slide-down-menu'
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import HamburgerMenu from './hamburger-menu'
 import ActionButton from './action-button'
 import Slogan from './slogan'
 import colors from '../constants/colors'
@@ -11,6 +12,28 @@ import styled from 'styled-components'
 import themeUtils from '../utils/theme'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+
+const styles = {
+  headerPadding: {
+    mobile: [24],
+    tablet: [24, 30, 24, 50],
+  },
+  logoHeight: {
+    mobile: 26, // px
+    tablet: 40, // px
+  },
+  logoWidth: {
+    mobile: 142, // px
+    tablet: 190, // px
+  },
+  actionMarginLeft: {
+    mobile: 30, // px
+    tablet: 22, // px
+  },
+  sloganMarginLeft: {
+    tablet: 14, // px
+  }
+}
 
 const TabletOnly = styled.div`
   display: none;
@@ -28,33 +51,65 @@ const FlexBox = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 10px 35px 24px;
+  padding: ${arrayToCssShorthand(styles.headerPadding.mobile)};
+  ${mq.tabletOnly`
+    padding: ${arrayToCssShorthand(styles.headerPadding.tablet)};
+  `}
 `
 
 const FlexGroup = styled.div`
   display: flex;
 `
 
-const FlexItem = styled.div`
+const LogoContainer = styled.div`
+  a {
+    display: flex;
+  }
+  svg {
+    height: ${styles.logoHeight.mobile}px;
+    width: ${styles.logoWidth.mobile}px;
+    ${mq.tabletOnly`
+      height: ${styles.logoHeight.tablet}px;
+      width: ${styles.logoWidth.tablet}px;
+    `}
+  }
+`
+
+const ActionContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 14px;
+  margin-left: ${styles.actionMarginLeft.mobile}px;
+  ${mq.tabletOnly`
+    margin-left: ${styles.actionMarginLeft.tablet}px;
+  `}
+`
+
+const SloganContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: ${styles.sloganMarginLeft.tablet}px;
+`
+
+const HamburgerContainer = styled.div`
+  display: ${props => props.isOpen ? 'block' : 'none'}
 `
 
 const Hamburger = styled.div`
-  cursor: pointer;
+  display: flex;
 `
 
 export default class MobileHeader extends React.PureComponent {
   static propTypes = {
-    channels: PropTypes.array,
-    services: PropTypes.array,
     actions: PropTypes.array,
+    menuChannels: PropTypes.array,
+    menuServices: PropTypes.array,
+    menuActions: PropTypes.array,
   }
   static defaultProps = {
-    channels: [],
-    services: [],
     actions: [],
+    menuChannels: [],
+    menuServices: [],
+    menuActions: [],
   }
 
   constructor(props) {
@@ -79,21 +134,24 @@ export default class MobileHeader extends React.PureComponent {
   }
 
   render() {
-    const { channels, services, actions } = this.props
+    const { actions, menuChannels, menuServices, menuActions } = this.props
 
     const { toSlideDown } = this.state
 
-    const slideDownPanelJSX = (
-      <SlideDownMenu
-        toSlideDown={toSlideDown}
-        data={channels}
-        handleClick={this.closeMenu}
+    const hamburgerJSX = (
+      <HamburgerMenu
+        channels={menuChannels}
+        services={menuServices}
+        actions={menuActions}
+        handleClose={this.closeMenu}
       />
     )
 
     return (
       <React.Fragment>
-        {slideDownPanelJSX}
+        <HamburgerContainer isOpen={toSlideDown}>
+          {hamburgerJSX}
+        </HamburgerContainer>
         <HeaderContext.Consumer>
           {({ releaseBranch, isLinkExternal, theme }) => {
             const Logo = themeUtils.selectLogoComponent(theme)
@@ -102,21 +160,21 @@ export default class MobileHeader extends React.PureComponent {
             return (
               <FlexBox bgColor={bgColor}>
                 <FlexGroup>
-                  <FlexItem>
+                  <LogoContainer>
                     <Link
                       {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
                       onClick={this.closeMenu}
                     >
                       <Logo />
                     </Link>
-                  </FlexItem>
-                  <FlexItem>
+                  </LogoContainer>
+                  <ActionContainer>
                     <ActionButton actions={actions} />
-                  </FlexItem>
+                  </ActionContainer>
                   <TabletOnly>
-                    <FlexItem>
+                    <SloganContainer>
                       <Slogan />
-                    </FlexItem>
+                    </SloganContainer>
                   </TabletOnly>
                 </FlexGroup>
                 <Hamburger onClick={this.handleOnHamburgerClick}>
