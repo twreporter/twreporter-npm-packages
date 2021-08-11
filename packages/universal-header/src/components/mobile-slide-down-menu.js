@@ -27,7 +27,7 @@ const FlexBox = styled.div`
   a:hover,
   a:active {
     text-decoration: none;
-    color: ${colors.gray15};
+    color: ${colors.grayDark};
   }
   display: none;
   ${mq.mobileOnly`

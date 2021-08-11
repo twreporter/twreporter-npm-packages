@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import categoryConst from '../constants/categories'
 import channelConst from '../constants/channels'
+import actionConst from '../constants/actions'
 import linkUtils from '../utils/links'
 import serviceConst from '../constants/services'
 import styled from 'styled-components'
@@ -77,8 +78,8 @@ class Container extends React.PureComponent {
       releaseBranch
     )
 
-    const desktopServiceProps = _.map(serviceConst.serviceOrder.desktop, key => ({ key }));
-    const mobileServiceProps = _.map(serviceConst.serviceOrder.mobile, (key) => {
+    const desktopServiceProps = _.map(serviceConst.serviceOrder, key => ({ key }));
+    const mobileServiceProps = _.map(serviceConst.serviceOrder, (key) => {
       return {
         key,
         label: serviceConst.serviceLabels[key],
@@ -104,7 +105,7 @@ class Container extends React.PureComponent {
       })
     }
 
-    return { desktop: desktopServiceProps, mobile: mobileServiceProps }
+    return { desktop: desktopServiceProps, tablet: mobileServiceProps, mobile: mobileServiceProps }
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
@@ -134,6 +135,17 @@ class Container extends React.PureComponent {
     })
   }
 
+  __prepareActionProps() {
+    const mobileActionProps = _.map(actionConst.actionOrder.mobile, (key) => ({ key }))
+    const desktopAndTabletActionProps = _.map(actionConst.actionOrder.desktop, (key) => ({ key }))
+
+    return {
+      mobile: mobileActionProps,
+      tablet: desktopAndTabletActionProps,
+      desktop: desktopAndTabletActionProps,
+    }
+  }
+
   render() {
     const {
       releaseBranch,
@@ -158,20 +170,35 @@ class Container extends React.PureComponent {
       releaseBranch,
       isLinkExternal
     )
-    const mobileMenu = mergeTwoArraysInOrder(channelProps, serviceProps.mobile)
+    const actionProps = this.__prepareActionProps();
 
     this.__prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps)
 
     return (
       <HeaderContext.Provider value={contextValue}>
         <MobileOnly>
-          <MobileHeader menu={mobileMenu} {...passThrough} />
+          <MobileHeader
+            channels={channelProps}
+            services={serviceProps.mobile}
+            actions={actionProps.mobile}
+            {...passThrough}
+          />
         </MobileOnly>
         <TabletOnly>
-          <MobileHeader menu={mobileMenu} {...passThrough} />
+          <MobileHeader
+            channels={channelProps}
+            services={serviceProps.tablet}
+            actions={actionProps.tablet}
+            {...passThrough}
+          />
         </TabletOnly>
         <DesktopAndAbove>
-          <Header channels={channelProps} services={serviceProps.desktop} {...passThrough} />
+          <Header
+            channels={channelProps}
+            services={serviceProps.desktop}
+            actions={actionProps.desktop}
+            {...passThrough}
+          />
         </DesktopAndAbove>
       </HeaderContext.Provider>
     )

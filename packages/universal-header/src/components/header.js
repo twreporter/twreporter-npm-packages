@@ -1,7 +1,9 @@
-import Channels from './channels'
 import HeaderContext from '../contexts/header-context'
+import Channels from './channels'
+import ActionButton from './action-button'
 import Icons from './icons'
 import Link from './customized-link'
+import Slogan from './slogan'
 import PropTypes from 'prop-types'
 import React from 'react'
 import linkUtils from '../utils/links'
@@ -37,9 +39,6 @@ const Box = styled.div`
 const TopRow = styled.div`
   background-color: ${props => props.bgColor};
   height: ${styles.headerHeight}px;
-`
-
-const TopRowContent = styled.div`
   padding: ${arrayToCssShorthand(styles.topRowPadding.desktop)};
   max-width: ${styles.topRowMaxWidth.hd}px;
   box-sizing: border-box;
@@ -52,20 +51,32 @@ const TopRowContent = styled.div`
   margin: 0 auto;
 `
 
+const FlexGroup = styled.div`
+  display: flex;
+`
+
+const FlexItem = styled.div`
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+`
+
 class Header extends React.PureComponent {
   static propTypes = {
     pathname: PropTypes.string,
     channels: Channels.propTypes.data,
     services: PropTypes.array,
+    actions: PropTypes.array,
   }
   static defaultProps = {
     pathname: '',
     channels: Channels.defaultProps.data,
     services: [],
+    actions: [],
   }
 
   render() {
-    const { pathname, channels, services } = this.props
+    const { pathname, channels, services, actions } = this.props
 
     const channelJSX = <Channels currentPathname={pathname} data={channels} />
     return (
@@ -76,14 +87,22 @@ class Header extends React.PureComponent {
             const Logo = themeUtils.selectLogoComponent(theme)
             return (
               <TopRow bgColor={bgColor}>
-                <TopRowContent>
-                  <Link
-                    {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
-                  >
-                    <Logo />
-                  </Link>
-                  <Icons services={services} />
-                </TopRowContent>
+                <FlexGroup>
+                  <FlexItem>
+                    <Link
+                      {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
+                    >
+                      <Logo />
+                    </Link>
+                  </FlexItem>
+                  <FlexItem>
+                    <ActionButton actions={actions} />
+                  </FlexItem>
+                  <FlexItem>
+                    <Slogan />
+                  </FlexItem>
+                </FlexGroup>
+                <Icons services={services} />
               </TopRow>
             )
           }}

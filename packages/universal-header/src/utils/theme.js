@@ -4,8 +4,6 @@ import { ServiceIcons, Icons } from './icon'
 import LogoLightGray from '../../static/twreporter-logo-light-gray.svg'
 import Logo from '../../static/twreporter-logo.svg'
 
-const lightGrayBgColor = colorsConst.grayBg
-
 function selectLogoComponent(theme) {
   switch (theme) {
     case themeConst.photography:
@@ -50,58 +48,36 @@ function selectIcons(theme) {
   }
 }
 
-function selectFontColor(theme) {
-  switch (theme) {
-    case themeConst.transparent: {
-      return colorsConst.white
-    }
-    case themeConst.photography:
-    case themeConst.index:
-    case themeConst.normal:
-    default: {
-      return '#808080'
-    }
-  }
-}
-
-function selectHoverFontColor(theme) {
+function selectChannelTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
-      return colorsConst.white
+      return {
+        fontColor: '#808080',
+        hoverFontColor: colorsConst.white,
+        hoverBgColor: 'rgba(255, 255, 255, 0.1)',
+        textShadow: 'none',
+        borderColor: 'rgba(128, 128, 128, 0.2)',
+      }
     }
-    case themeConst.transparent:
+    case themeConst.transparent: {
+      return {
+        fontColor: colorsConst.white,
+        hoverFontColor: colorsConst.grayDark,
+        hoverBgColor: colorsConst.white,
+        textShadow: '0 2px 2px rgba(0, 0, 0, 0.22)',
+        borderColor: 'rgba(128, 128, 128, 0.2)',
+      }
+    }
     case themeConst.index:
     case themeConst.normal:
     default: {
-      return colorsConst.gray15
-    }
-  }
-}
-
-function selectHoverBgColor(theme) {
-  switch (theme) {
-    case themeConst.transparent: {
-      return colorsConst.white
-    }
-    case themeConst.photography: {
-      return 'rgba(255, 255, 255, 0.1)'
-    }
-    case themeConst.index:
-    case themeConst.normal:
-    default: {
-      return 'rgba(0, 0, 0, 0.1)'
-    }
-  }
-}
-
-function selectChannelTextShadow(theme) {
-  switch (theme) {
-    case themeConst.transparent: {
-      return '0 2px 2px rgba(0, 0, 0, 0.22)'
-    }
-
-    default: {
-      return 'none'
+      return {
+        fontColor: '#808080',
+        hoverFontColor: colorsConst.grayDark,
+        hoverBgColor: 'rgba(0, 0, 0, 0.1)',
+        textShadow: 'none',
+        borderColor: colorsConst.gray,
+      }
     }
   }
 }
@@ -119,7 +95,7 @@ function selectBgColor(theme) {
     }
     case themeConst.normal:
     default: {
-      return lightGrayBgColor
+      return colorsConst.grayLight
     }
   }
 }
@@ -133,7 +109,7 @@ function selectMobileSlideDownMenuBgColor(theme) {
     case themeConst.photography:
     case themeConst.transparent:
     default: {
-      return lightGrayBgColor
+      return colorsConst.grayLight
     }
   }
 }
@@ -151,35 +127,64 @@ function selectChannelsBgColor(theme) {
     }
     case themeConst.normal:
     default: {
-      return lightGrayBgColor
+      return colorsConst.grayLight
     }
   }
 }
 
-function selectChannelBorderColor(theme) {
+function selectActionButtonTheme(theme) {
   switch (theme) {
-    case themeConst.photography:
+    case themeConst.photography: {
+      return {
+        color: colorsConst.white,
+        bgColor: colorsConst.brown,
+        hoverBgColor: '#856236',
+      }
+    }
     case themeConst.transparent: {
-      return 'rgba(128, 128, 128, 0.2)'
+      return {
+        color: colorsConst.brown,
+        bgColor: colorsConst.white,
+        hoverBgColor: '#d8d8d8',
+      }
     }
     case themeConst.index:
     case themeConst.normal:
     default: {
-      return colorsConst.gray
+      return {
+        color: colorsConst.white,
+        bgColor: colorsConst.red,
+        hoverBgColor: '#9e1b22',
+      }
     }
   }
 }
 
+function selectSloganColor(theme) {
+  switch (theme) {
+    case themeConst.photography: {
+      return '#c9af8e'
+    }
+    case themeConst.transparent: {
+      return colorsConst.white
+    }
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return colorsConst.grayDark
+    }
+  }
+}
+
+
 export default {
   selectBgColor,
-  selectChannelTextShadow,
+  selectChannelTheme,
   selectChannelsBgColor,
-  selectFontColor,
-  selectHoverFontColor,
-  selectHoverBgColor,
   selectLogoComponent,
   selectMobileSlideDownMenuBgColor,
   selectServiceIcons,
   selectIcons,
-  selectChannelBorderColor,
+  selectActionButtonTheme,
+  selectSloganColor,
 }
