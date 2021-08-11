@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.1...@twreporter/universal-header@2.2.0-rc.2) (2021-08-11)
+
+
+### Bug Fixes
+
+* **universal-header:** add prop types check to ActionButton component ([352eaba](https://github.com/twreporter/twreporter-npm-packages/commit/352eaba9a030894471661aeb91536a87d69d2cd2))
+* **universal-header:** code review ([4620715](https://github.com/twreporter/twreporter-npm-packages/commit/46207156199667ec0f0f6a273291d580605c0324))
+
+
+### Features
+
+* **universal-header:** add ActionButtom component & Slogan component (TWREPORTER-1) ([06ea138](https://github.com/twreporter/twreporter-npm-packages/commit/06ea1382368a1773f0433ef8b3c1fad2864a1ad4))
+
+
+
+
+
 # [2.2.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.0...@twreporter/universal-header@2.2.0-rc.1) (2021-07-27)
 
 
