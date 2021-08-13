@@ -51,7 +51,7 @@ const IconsContainer = styled.div`
   }
 `
 
-const Login = ({callback}) => {
+const Login = ({ callback }) => {
   const handleLogin = (releaseBranch) => {
     const redirectURL = window.location.href
     const query = querystring.stringify({
@@ -72,11 +72,11 @@ const Login = ({callback}) => {
         {({ releaseBranch, theme }) => {
           const [LogInIcon] = themeUtils.selectHamburgerServiceIcons(theme).login
           return (
-            <a
+            <Link
               onClick={e => handleClick(e, releaseBranch)}
             >
               <LogInIcon />
-            </a>
+            </Link>
           )
         }}
       </HeaderContext.Consumer>
@@ -92,7 +92,7 @@ Login.defaultProps = {
   callback: () => {},
 }
 
-const Logout = ({callback}) => {
+const Logout = ({ callback }) => {
   const handleLogout = (releaseBranch) => {
     const redirectURL = window.location.href
     const query = querystring.stringify({
@@ -113,11 +113,11 @@ const Logout = ({callback}) => {
         {({ releaseBranch, theme }) => {
           const [LogOutIcon] = themeUtils.selectHamburgerServiceIcons(theme).logout
           return (
-            <a
+            <Link
               onClick={e => handleClick(e, releaseBranch)}
             >
               <LogOutIcon />
-            </a>
+            </Link>
           )
         }}
       </HeaderContext.Consumer>
@@ -133,7 +133,7 @@ Logout.defaultProps = {
   callback: () => {},
 }
 
-const Search = ({callback}) => {
+const Search = ({ callback }) => {
   return (
     <IconContainer>
       <HeaderContext.Consumer>
@@ -162,7 +162,7 @@ Search.defaultProps = {
   callback: () => {},
 }
 
-const Bookmark = ({callback}) => {
+const Bookmark = ({ callback }) => {
   return (
     <IconContainer>
       <HeaderContext.Consumer>

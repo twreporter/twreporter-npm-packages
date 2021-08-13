@@ -119,20 +119,18 @@ class Icons extends React.PureComponent {
           {({ releaseBranch, theme }) => {
             const [LogInIcon, LogInHoverIcon] = themeUtils.selectServiceIcons(theme).login
             return (
-              <a
+              <Link
                 onClick={e => {
                   this._handleLogIconClick(e, false, releaseBranch)
                 }}
               >
-                <React.Fragment>
-                  <HideOnHover>
-                    <LogInIcon />
-                  </HideOnHover>
-                  <ShowOnHover>
-                    <LogInHoverIcon />
-                  </ShowOnHover>
-                </React.Fragment>
-              </a>
+                <HideOnHover>
+                  <LogInIcon />
+                </HideOnHover>
+                <ShowOnHover>
+                  <LogInHoverIcon />
+                </ShowOnHover>
+              </Link>
             )
           }}
         </HeaderContext.Consumer>
@@ -144,20 +142,18 @@ class Icons extends React.PureComponent {
           {({ releaseBranch, theme }) => {
             const [LogOutIcon, LogOutHoverIcon] = themeUtils.selectServiceIcons(theme).logout
             return (
-              <a
+              <Link
                 onClick={e => {
                   this._handleLogIconClick(e, true, releaseBranch)
                 }}
               >
-                <React.Fragment>
-                  <HideOnHover>
-                    <LogOutIcon />
-                  </HideOnHover>
-                  <ShowOnHover>
-                    <LogOutHoverIcon />
-                  </ShowOnHover>
-                </React.Fragment>
-              </a>
+                <HideOnHover>
+                  <LogOutIcon />
+                </HideOnHover>
+                <ShowOnHover>
+                  <LogOutHoverIcon />
+                </ShowOnHover>
+              </Link>
             )
           }}
         </HeaderContext.Consumer>

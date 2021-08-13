@@ -115,7 +115,7 @@ export default class MobileHeader extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      toSlideDown: false,
+      isMenuOpen: false,
     }
     this.handleOnHamburgerClick = this._handleOnHamburgerClick.bind(this)
     this.closeMenu = this._closeMenu.bind(this)
@@ -123,20 +123,20 @@ export default class MobileHeader extends React.PureComponent {
 
   _handleOnHamburgerClick() {
     this.setState({
-      toSlideDown: !this.state.toSlideDown,
+      isMenuOpen: !this.state.isMenuOpen,
     })
   }
 
   _closeMenu() {
     this.setState({
-      toSlideDown: false,
+      isMenuOpen: false,
     })
   }
 
   render() {
     const { actions, menuChannels, menuServices, menuActions } = this.props
 
-    const { toSlideDown } = this.state
+    const { isMenuOpen } = this.state
 
     const hamburgerJSX = (
       <HamburgerMenu
@@ -149,7 +149,7 @@ export default class MobileHeader extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <HamburgerContainer isOpen={toSlideDown}>
+        <HamburgerContainer isOpen={isMenuOpen}>
           {hamburgerJSX}
         </HamburgerContainer>
         <HeaderContext.Consumer>
