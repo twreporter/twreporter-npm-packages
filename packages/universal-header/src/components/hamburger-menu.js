@@ -112,6 +112,82 @@ class HamburgerMenu extends React.PureComponent {
     handleClose: () => {},
   }
 
+  constructor(props) {
+    super(props)
+    this.startY = 0
+    this.panel = null
+    this.handlePreventTouchstartWhenPanning = this._handlePreventTouchstartWhenPanning.bind(this)
+    this.handlePreventTouchendWhenPanning = this._handlePreventTouchendWhenPanning.bind(this)
+    this.handlePreventTouchmoveWhenPanning = this._handlePreventTouchmoveWhenPanning.bind(this)
+  }
+
+  componentDidMount() {
+    window.document.body.addEventListener(
+      'touchstart',
+      this.handlePreventTouchstartWhenPanning,
+      {
+        passive: false,
+      }
+    )
+    window.document.body.addEventListener(
+      'touchend',
+      this.handlePreventTouchendWhenPanning,
+      {
+        passive: false,
+      }
+    )
+    window.document.body.addEventListener(
+      'touchmove',
+      this.handlePreventTouchmoveWhenPanning,
+      {
+        passive: false,
+      }
+    )
+  }
+
+  componentWillUnmount() {
+    this.panel = null
+    window.document.body.removeEventListener(
+      'touchstart',
+      this.handlePreventTouchstartWhenPanning,
+      {
+        passive: false,
+      }
+    )
+    window.document.body.removeEventListener(
+      'touchend',
+      this.handlePreventTouchendWhenPanning,
+      {
+        passive: false,
+      }
+    )
+    window.document.body.removeEventListener(
+      'touchmove',
+      this.handlePreventTouchmoveWhenPanning,
+      {
+        passive: false,
+      }
+    )
+  }
+
+  _handlePreventTouchstartWhenPanning(event) {
+    this.startY = event.touches[0].screenY
+  }
+
+  _handlePreventTouchendWhenPanning(event) {
+    console.log('P', this.panel)
+    this.panel.scrollTop =
+      this.panel.scrollTop + (this.startY - event.changedTouches[0].screenY)
+  }
+
+  _handlePreventTouchmoveWhenPanning = event => {
+    event.preventDefault()
+    console.log('PP', this.panel)
+    this.panel.scrollTop =
+      this.panel.scrollTop + (this.startY - event.changedTouches[0].screenY)
+    this.startY = event.changedTouches[0].screenY
+  }
+
   render() {
     const { channels, services, actions, handleClose } = this.props
 
@@ -128,6 +204,9 @@ class HamburgerMenu extends React.PureComponent {
           return (
             <MenuContainer
               bgColor={bgColor}
+              ref={node => {
+                this.panel = node
+              }}
             >
               {closeJSX}
               <FlexBox>
