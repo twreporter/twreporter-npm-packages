@@ -91,11 +91,12 @@ const SloganContainer = styled.div`
 `
 
 const HamburgerContainer = styled.div`
-  display: ${props => props.isOpen ? 'block' : 'none'}
+  display: ${props => props.isOpen ? 'block' : 'none'};
 `
 
 const Hamburger = styled.div`
   display: flex;
+  cursor: pointer;
 `
 
 export default class MobileHeader extends React.PureComponent {
