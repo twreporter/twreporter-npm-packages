@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import Modal from '@twreporter/react-components/lib/mobile-pop-up-modal'
 import HeaderContext from '../contexts/header-context'
 import themeUtils from '../utils/theme'
 import colors from '../constants/colors'
@@ -34,14 +35,11 @@ const styles = {
 
 const MenuContainer = styled.div`
   background-color: ${props => props.bgColor};
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: 101;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: auto;
+  min-height: 100%;
 `
 
 const CloseContainer = styled.div`
@@ -97,116 +95,21 @@ const ServiceContainer = styled.div`
   `}
 `
 
-class HamburgerMenu extends React.PureComponent {
-  static propTypes = {
-    channels: PropTypes.array,
-    services: PropTypes.array,
-    actions: PropTypes.array,
-    handleClose: PropTypes.func,
-  }
-
-  static defaultProps = {
-    channels: [],
-    services: [],
-    actions: [],
-    handleClose: () => {},
-  }
-
-  constructor(props) {
-    super(props)
-    this.startY = 0
-    this.panel = null
-    this.handlePreventTouchstartWhenPanning = this._handlePreventTouchstartWhenPanning.bind(this)
-    this.handlePreventTouchendWhenPanning = this._handlePreventTouchendWhenPanning.bind(this)
-    this.handlePreventTouchmoveWhenPanning = this._handlePreventTouchmoveWhenPanning.bind(this)
-  }
-
-  componentDidMount() {
-    window.document.body.addEventListener(
-      'touchstart',
-      this.handlePreventTouchstartWhenPanning,
-      {
-        passive: false,
-      }
-    )
-    window.document.body.addEventListener(
-      'touchend',
-      this.handlePreventTouchendWhenPanning,
-      {
-        passive: false,
-      }
-    )
-    window.document.body.addEventListener(
-      'touchmove',
-      this.handlePreventTouchmoveWhenPanning,
-      {
-        passive: false,
-      }
-    )
-  }
-
-  componentWillUnmount() {
-    this.panel = null
-    window.document.body.removeEventListener(
-      'touchstart',
-      this.handlePreventTouchstartWhenPanning,
-      {
-        passive: false,
-      }
-    )
-    window.document.body.removeEventListener(
-      'touchend',
-      this.handlePreventTouchendWhenPanning,
-      {
-        passive: false,
-      }
-    )
-    window.document.body.removeEventListener(
-      'touchmove',
-      this.handlePreventTouchmoveWhenPanning,
-      {
-        passive: false,
-      }
-    )
-  }
-
-  _handlePreventTouchstartWhenPanning(event) {
-    this.startY = event.touches[0].screenY
-  }
-
-  _handlePreventTouchendWhenPanning(event) {
-    console.log('P', this.panel)
-    this.panel.scrollTop =
-      this.panel.scrollTop + (this.startY - event.changedTouches[0].screenY)
-  }
-
-  _handlePreventTouchmoveWhenPanning = event => {
-    event.preventDefault()
-    console.log('PP', this.panel)
-    this.panel.scrollTop =
-      this.panel.scrollTop + (this.startY - event.changedTouches[0].screenY)
-    this.startY = event.changedTouches[0].screenY
-  }
-
-  render() {
-    const { channels, services, actions, handleClose } = this.props
-
-    return (
-      <HeaderContext.Consumer>
-        {({ theme }) => {
-          const { bgColor } = themeUtils.selectHamburgerMenuTheme(theme)
-          const CloseIcon = themeUtils.selectIcons(theme).close
-          const closeJSX = (
-            <CloseContainer onClick={handleClose}>
-              <CloseIcon />
-            </CloseContainer>
-          )
-          return (
+const HamburgerMenu = ({ channels, services, actions, handleClose }) => {
+  return (
+    <HeaderContext.Consumer>
+      {({ theme }) => {
+        const { bgColor } = themeUtils.selectHamburgerMenuTheme(theme)
+        const CloseIcon = themeUtils.selectIcons(theme).close
+        const closeJSX = (
+          <CloseContainer onClick={handleClose}>
+            <CloseIcon />
+          </CloseContainer>
+        )
+        return (
+          <Modal>
             <MenuContainer
               bgColor={bgColor}
-              ref={node => {
-                this.panel = node
-              }}
             >
               {closeJSX}
               <FlexBox>
@@ -224,11 +127,25 @@ class HamburgerMenu extends React.PureComponent {
                 <HamburgerService services={services} callback={handleClose} />
               </ServiceContainer>
             </MenuContainer>
-          )
-        }}
-      </HeaderContext.Consumer>
-    )
-  }
+          </Modal>
+        )
+      }}
+    </HeaderContext.Consumer>
+  )
+}
+
+HamburgerMenu.propTypes = {
+  channels: PropTypes.array,
+  services: PropTypes.array,
+  actions: PropTypes.array,
+  handleClose: PropTypes.func,
+}
+
+HamburgerMenu.defaultProps = {
+  channels: [],
+  services: [],
+  actions: [],
+  handleClose: () => {},
 }
 
 export default HamburgerMenu
