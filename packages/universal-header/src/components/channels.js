@@ -283,7 +283,7 @@ class Channels extends React.PureComponent {
           >
             <DropDownMenu
               data={dropdownMenuData}
-              onClick={this.closeDropDownMenu}
+              onClick={this.handleChannelClick}
             />
           </CSSTransition>
         </DropDownMenuWrapper>

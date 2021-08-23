@@ -8,6 +8,7 @@ const Modal = styled.div`
   position: fixed;
   z-index: 999;
   overflow-y: scroll;
+  max-height: -webkit-fill-available;
 `
 
 class MobileModal extends React.PureComponent {

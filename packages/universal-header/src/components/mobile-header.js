@@ -91,7 +91,7 @@ const SloganContainer = styled.div`
 `
 
 const HamburgerContainer = styled.div`
-  display: ${props => props.isOpen ? 'block' : 'none'};
+  display: block;
 `
 
 const Hamburger = styled.div`
@@ -136,7 +136,6 @@ export default class MobileHeader extends React.PureComponent {
 
   render() {
     const { actions, menuChannels, menuServices, menuActions } = this.props
-
     const { isMenuOpen } = this.state
 
     const hamburgerJSX = (
@@ -148,10 +147,12 @@ export default class MobileHeader extends React.PureComponent {
       />
     )
 
+    const hamburgerMenu = isMenuOpen ? hamburgerJSX : ''
+
     return (
       <React.Fragment>
-        <HamburgerContainer isOpen={isMenuOpen}>
-          {hamburgerJSX}
+        <HamburgerContainer>
+          {hamburgerMenu}
         </HamburgerContainer>
         <HeaderContext.Consumer>
           {({ releaseBranch, isLinkExternal, theme }) => {
