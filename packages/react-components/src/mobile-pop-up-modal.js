@@ -25,7 +25,7 @@ class MobileModal extends React.PureComponent {
   constructor(props) {
     super(props)
     this.startY = 0
-    this.panel = null
+    this.panel = React.createRef()
     this.handleTouchstartWhenPanning = this._handleTouchstartWhenPanning.bind(this)
     this.handleTouchendWhenPanning = this._handleTouchendWhenPanning.bind(this)
     this.handleTouchmoveWhenPanning = this._handleTouchmoveWhenPanning.bind(this)
@@ -56,7 +56,6 @@ class MobileModal extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.panel = null
     window.document.body.removeEventListener(
       'touchstart',
       this.handleTouchstartWhenPanning,
@@ -85,7 +84,7 @@ class MobileModal extends React.PureComponent {
   }
 
   _updateScrollY(endY) {
-    this.panel.scrollTop += (this.startY - endY)
+    this.panel.current.scrollTop += (this.startY - endY)
   }
 
   _handleTouchstartWhenPanning(event) {
@@ -109,9 +108,7 @@ class MobileModal extends React.PureComponent {
       <Modal
         height={modalHeight}
         width={modalWidth}
-        ref={node => {
-          this.panel = node
-        }}
+        ref={this.panel}
         {...rest}
       />
     )
