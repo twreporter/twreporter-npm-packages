@@ -63,7 +63,6 @@ const SubMenuBox = styled.li`
   a,
   a:link,
   a:visited {
-    padding: 12px 16px;
     width: 100%;
     border: 0;
   }

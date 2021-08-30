@@ -72,40 +72,18 @@ class Container extends React.PureComponent {
     pathname: PropTypes.string,
   }
 
-  __prepareServiceProps(releaseBranch, isAuthed, isLinkExternal) {
-    const serviceLinks = linkUtils.getServiceLinks(
-      isLinkExternal,
-      releaseBranch
-    )
-
-    const desktopServiceProps = _.map(serviceConst.serviceOrder, key => ({ key }));
-    const mobileServiceProps = _.map(serviceConst.serviceOrder, (key) => {
-      return {
-        key,
-        label: serviceConst.serviceLabels[key],
-        link: serviceLinks[key],
-      }
-    })
+  __prepareServiceProps(isAuthed) {
+    const serviceProps = _.map(serviceConst.serviceOrder, key => ({ key }));
 
     if (isAuthed) {
       const logoutKey = serviceConst.serviceKeys.logout
-      desktopServiceProps.push({ key: logoutKey })
-      mobileServiceProps.unshift({
-        key: logoutKey,
-        label: serviceConst.serviceLabels[logoutKey],
-        link: serviceLinks[logoutKey],
-      })
+      serviceProps.push({ key: logoutKey })
     } else {
       const loginKey = serviceConst.serviceKeys.login
-      desktopServiceProps.push({ key: loginKey })
-      mobileServiceProps.unshift({
-        key: loginKey,
-        label: serviceConst.serviceLabels[loginKey],
-        link: serviceLinks[loginKey],
-      })
+      serviceProps.push({ key: loginKey })
     }
 
-    return { desktop: desktopServiceProps, tablet: mobileServiceProps, mobile: mobileServiceProps }
+    return serviceProps
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
@@ -142,6 +120,7 @@ class Container extends React.PureComponent {
     return {
       mobile: mobileActionProps,
       tablet: desktopAndTabletActionProps,
+      hamburger: desktopAndTabletActionProps,
       desktop: desktopAndTabletActionProps,
     }
   }
@@ -162,9 +141,7 @@ class Container extends React.PureComponent {
     }
 
     const serviceProps = this.__prepareServiceProps(
-      releaseBranch,
       isAuthed,
-      isLinkExternal
     )
     const channelProps = this.__prepareChannelProps(
       releaseBranch,
@@ -178,24 +155,26 @@ class Container extends React.PureComponent {
       <HeaderContext.Provider value={contextValue}>
         <MobileOnly>
           <MobileHeader
-            channels={channelProps}
-            services={serviceProps.mobile}
             actions={actionProps.mobile}
+            menuChannels={channelProps}
+            menuServices={serviceProps}
+            menuActions={actionProps.hamburger}
             {...passThrough}
           />
         </MobileOnly>
         <TabletOnly>
           <MobileHeader
-            channels={channelProps}
-            services={serviceProps.tablet}
             actions={actionProps.tablet}
+            menuChannels={channelProps}
+            menuServices={serviceProps}
+            menuActions={actionProps.hamburger}
             {...passThrough}
           />
         </TabletOnly>
         <DesktopAndAbove>
           <Header
             channels={channelProps}
-            services={serviceProps.desktop}
+            services={serviceProps}
             actions={actionProps.desktop}
             {...passThrough}
           />
