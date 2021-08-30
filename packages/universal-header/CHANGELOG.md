@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.2...@twreporter/universal-header@2.2.0-rc.3) (2021-08-30)
+
+
+### Bug Fixes
+
+* **universal-header:** adress review comment ([cb94bfa](https://github.com/twreporter/twreporter-npm-packages/commit/cb94bfa1f1bccda0e8d7255eb42d6ff778c4e9f8))
+* **universal-header:** fix click on ios & missing semi column ([1535641](https://github.com/twreporter/twreporter-npm-packages/commit/1535641c00613055e0c32ae9ab563c6932fe1958))
+* **universal-header:** fix code review ([e5d3d08](https://github.com/twreporter/twreporter-npm-packages/commit/e5d3d08ee62685c0a49c8c746421ce68b3fa4693))
+* **universal-header:** modal scroll problem ([c909c4d](https://github.com/twreporter/twreporter-npm-packages/commit/c909c4d224d3ae57d5ebc38287d78f4ad22e224d))
+* **universal-header:** use @twreporter/react-components mobile-pop-up-modal to deal with scrolling problem ([5797493](https://github.com/twreporter/twreporter-npm-packages/commit/5797493c7bdd761cef0d284685f21db201f29ea3))
+
+
+### Features
+
+* **universal-header:** add new hamburger menu ([d42d296](https://github.com/twreporter/twreporter-npm-packages/commit/d42d2966619c822883d1f6deeac89cbef68138a3))
+
+
+
+
+
 # [2.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.1...@twreporter/universal-header@2.2.0-rc.2) (2021-08-11)
 
 

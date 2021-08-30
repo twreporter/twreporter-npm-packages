@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.4.4...@twreporter/react-components@8.5.0-rc.0) (2021-08-30)
+
+
+### Bug Fixes
+
+* **react-components:** use createRef to assign node ref instead of function assign ([1c881da](https://github.com/twreporter/twreporter-npm-packages/commit/1c881da8b9e845858edc436191a68ee86aa49f0e))
+* **universal-header:** fix code review ([e5d3d08](https://github.com/twreporter/twreporter-npm-packages/commit/e5d3d08ee62685c0a49c8c746421ce68b3fa4693))
+
+
+### Features
+
+* **react-components:** add mobile-pop-up-modal component ([b5e7088](https://github.com/twreporter/twreporter-npm-packages/commit/b5e7088e548d124a20f1679da3a091bf071a5a24))
+
+
+
+
+
 ## [8.4.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.4.4-rc.0...@twreporter/react-components@8.4.4) (2021-06-22)
 
 **Note:** Version bump only for package @twreporter/react-components
