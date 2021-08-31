@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.3...@twreporter/universal-header@2.2.0-rc.4) (2021-08-31)
+
+
+### Bug Fixes
+
+* **universal-header:** update @twreporter/react-component dependency version ([f5d5a22](https://github.com/twreporter/twreporter-npm-packages/commit/f5d5a2255de72c27f91cc09b734242e7b17fd91e))
+
+
+
+
+
 # [2.2.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.2...@twreporter/universal-header@2.2.0-rc.3) (2021-08-30)
 
 
