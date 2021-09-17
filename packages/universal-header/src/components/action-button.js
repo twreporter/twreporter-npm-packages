@@ -66,6 +66,9 @@ const ActionsContainer = styled.div`
 `
 
 const ActionContainer = styled.div`
+  transition: opacity 0.3s;
+  transition-delay: 400ms;
+  opacity: ${props => props.isActive ? 1 : 0};
   margin : ${props => arrayToCssShorthand(styles.itemMargin[props.direction])};
   width: 100%;
 
@@ -115,6 +118,7 @@ const ActionItem = styled.div`
 
 const ActionButtonItem = ({ action, direction, callback }) => {
   const actionKey = action.key
+  const isActive = action.active === undefined ? true : action.active
   const actionLabel = actionConst.actionLabels[actionKey]
   const actionLink = linkUtils.getActionLinks()[actionKey]
   return (
@@ -122,7 +126,12 @@ const ActionButtonItem = ({ action, direction, callback }) => {
       {({ theme }) => {
         const { color, bgColor, hoverBgColor } = themeUtils.selectActionButtonTheme(theme)
         return (
-          <ActionContainer color={color} direction={direction} onClick={callback}>
+          <ActionContainer
+            color={color}
+            direction={direction}
+            isActive={isActive}
+            onClick={callback}
+          >
             <Link {...actionLink}>
               <ActionItem
                 direction={direction}
@@ -141,7 +150,8 @@ const ActionButtonItem = ({ action, direction, callback }) => {
 
 ActionButtonItem.propTypes = {
   action: PropTypes.shape({
-    key: PropTypes.string
+    key: PropTypes.string,
+    active: PropTypes.boolean,
   }),
   direction: PropTypes.string,
   callback: PropTypes.func,

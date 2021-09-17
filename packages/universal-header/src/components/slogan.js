@@ -14,8 +14,8 @@ const style = {
 
 const SloganContainer = styled.div`
   color: ${props => props.color || colors.grayDark};
-  text-decoration: underline;
   font-size: ${style.fontSize.desktop};
+  font-family: Noto Serif TC;
   display: flex;
   align-items: center;
 `

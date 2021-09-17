@@ -1,15 +1,16 @@
-import CSSTransition from 'react-transition-group/CSSTransition'
-import DropDownMenu from './drop-down-menu'
-import HeaderContext from '../contexts/header-context'
-import Link from './customized-link'
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
+import CSSTransition from 'react-transition-group/CSSTransition'
+import styled, { css, keyframes } from 'styled-components'
+import HeaderContext from '../contexts/header-context'
+import themeUtils from '../utils/theme'
+import animationUtils from '../utils/animations'
+import wellDefinedPropTypes from '../constants/prop-types'
 import channelConst from '../constants/channels'
 import colors from '../constants/colors'
 import fonts from '../constants/fonts'
-import styled, { css, keyframes } from 'styled-components'
-import themeUtils from '../utils/theme'
-import wellDefinedPropTypes from '../constants/prop-types'
+import DropDownMenu from './drop-down-menu'
+import Link from './customized-link'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -23,14 +24,6 @@ const _ = {
 }
 
 const styles = {
-  channelsPadding: {
-    row: [0, 60], // px
-    column: [0, 0], // px
-  },
-  channelsMaxWidth: {
-    desktop: 1024, // px
-    hd: 1440, // px
-  },
   itemMargin: {
     desktop: 0,
   },
@@ -42,6 +35,14 @@ const styles = {
     row: 'initial',
     column: '100%',
   },
+  itemBorderWidth: {
+    row: [0, 0, 0, 1],
+    column: [0, 0, 1, 0],
+  },
+  itemBorderWidthFirstChild: {
+    row: [0, 0, 0, 0],
+    column: [1, 0, 1, 0],
+  },
   dropdownPosition: {
     row: 'absolute',
     column: 'relative',
@@ -51,15 +52,6 @@ const styles = {
     column: 0, //px
   }
 }
-
-const changeOpacity = (valueFrom, valueTo) => keyframes`
-  from {
-    opacity: ${valueFrom};
-  }
-  to {
-    opacity: ${valueTo};
-  }
-`
 
 const dropDownMenuEffectCSS = css`
   .effect-enter {
@@ -73,7 +65,7 @@ const dropDownMenuEffectCSS = css`
 `
 
 const linkUnderline = css`
-  animation: ${changeOpacity('0', '1')} 0.5s linear;
+  animation: ${animationUtils.changeOpacity('0', '1')} 0.5s linear;
   position: absolute;
   left: 0;
   bottom: -1px;
@@ -99,8 +91,6 @@ const Box = styled.div`
 
 const List = styled.ul`
   justify-content: space-between;
-  padding: ${props => arrayToCssShorthand(styles.channelsPadding[props.direction])};
-  max-width: ${styles.channelsMaxWidth.hd}px;
   background-color: ${props => props.bgColor || colors.white};
   user-select: none;
   box-sizing: border-box;
@@ -110,6 +100,10 @@ const List = styled.ul`
   align-items: center;
   list-style-type: none;
   margin: auto;
+  padding-inline-start: 0;
+  border-color: ${props => props.borderColor || colors.gray};
+  border-width: ${props => arrayToCssShorthand(props.borderWidth)};
+  border-style: solid;
 `
 
 const ListItem = styled.li`
@@ -123,10 +117,11 @@ const ListItem = styled.li`
   margin: ${arrayToCssShorthand(styles.itemMargin.desktop)};
   flex: 1;
   text-shadow: ${props => props.textShadow};
-  border: 1px solid ${props => props.borderColor || colors.gray};
-  border-right: 0;
+  border-style: solid;
+  border-color: inherit;
+  border-width: ${props => arrayToCssShorthand(styles.itemBorderWidth[props.direction])};
   &:first-child {
-    border-left: 0;
+    border-width: ${props => arrayToCssShorthand(styles.itemBorderWidthFirstChild[props.direction])};
   }
   &::after {
     ${props => (props.isActive && props.direction === 'row' ? linkUnderline : '')}
@@ -187,12 +182,14 @@ class Channels extends React.PureComponent {
     ),
     direction: PropTypes.string,
     callback: PropTypes.func,
+    borderWidth: PropTypes.array,
   }
 
   static defaultProps = {
     data: [],
     direction: 'row',
     callback: ()=> {},
+    borderWidth: [0, 0, 0, 0],
   }
 
   constructor(props) {
@@ -326,7 +323,7 @@ class Channels extends React.PureComponent {
   }
 
   render() {
-    const { currentPathname, data, direction } = this.props
+    const { currentPathname, data, direction, borderWidth } = this.props
     const { indexToDropDown } = this.state
     const toShowDropDownMenu = indexToDropDown > invalidDataIndex
     const activeChannelIndex = toShowDropDownMenu
@@ -349,7 +346,6 @@ class Channels extends React.PureComponent {
                 textShadow={textShadow}
                 hoverFontColor={hoverFontColor}
                 hoverBgColor={hoverBgColor}
-                borderColor={borderColor}
               >
                 {channelItemJSX}
               </ListItem>
@@ -363,8 +359,17 @@ class Channels extends React.PureComponent {
         <Box>
           <HeaderContext.Consumer>
             {({ theme }) => {
-              const bgColor = themeUtils.selectChannelsBgColor(theme)
-              return <List bgColor={bgColor} direction={direction}>{channelsJSX}</List>
+              const { bgColor, borderColor } = themeUtils.selectChannelTheme(theme)
+              return (
+                <List
+                  bgColor={bgColor}
+                  direction={direction}
+                  borderColor={borderColor}
+                  borderWidth={borderWidth}
+                >
+                  {channelsJSX}
+                </List>
+              )
             }}
           </HeaderContext.Consumer>
         </Box>
