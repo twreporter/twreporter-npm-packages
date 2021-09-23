@@ -3,8 +3,12 @@ import helpers from './general'
 function trimLinesFromTheBottom(string, trimmedCount) {
   if (!trimmedCount || !string) return string
   const array = string.split(/\r?\n|\r/)
-  array.splice(array.length - trimmedCount, trimmedCount)
-  return array.join('\n')
+  if (array.length > trimmedCount) {
+    array.splice(array.length - trimmedCount, trimmedCount);
+  } else {
+    array.splice(1, array.length - 1);
+  }
+  return array.join('\n');
 }
 
 /**
