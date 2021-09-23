@@ -33,7 +33,7 @@ const styles = {
   channelMaxWidth: {
     hd: 1320, // px
   },
-  channelBottomBorderWidth: [1, 0, 1, 0], // px
+  channelBottomBorderWidth: [1, 0, 0, 0], // px
 }
 
 const headerWide = animationUtils.changeHeight(`${styles.headerHeight.narrow}px`, `${styles.headerHeight.wide}px`)

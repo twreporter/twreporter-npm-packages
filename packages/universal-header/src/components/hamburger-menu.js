@@ -114,13 +114,24 @@ const HamburgerMenu = ({ channels, services, actions, handleClose }) => {
               {closeJSX}
               <FlexBox>
                 <SloganContainer>
-                  <Slogan />
+                  <Slogan themeFunction={themeUtils.selectSloganHBTheme} />
                 </SloganContainer>
                 <ActionContainer>
-                  <ActionButton actions={actions} direction='column' callback={handleClose} />
+                  <ActionButton
+                    actions={actions}
+                    direction='column'
+                    themeFunction={themeUtils.selectActionButtonHBTheme}
+                    callback={handleClose}
+                  />
                 </ActionContainer>
                 <ChannelContainer>
-                  <Channel data={channels} direction='column' currentPathname='' callback={handleClose}/>
+                  <Channel
+                    data={channels}
+                    direction='column'
+                    currentPathname=''
+                    themeFunction={themeUtils.selectChannelHBTheme}
+                    callback={handleClose}
+                  />
                 </ChannelContainer>
               </FlexBox>
               <ServiceContainer>

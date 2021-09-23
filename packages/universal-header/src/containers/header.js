@@ -30,7 +30,7 @@ const TRANSFORM_DURATION = 700
 const stickyTop = css`
   position: sticky;
   top: 0;
-  z-index: 9;
+  z-index: 101; // there is another component in @twreporter/twreporter-react having z-index 100
 `
 
 const MobileOnly = styled.div`
@@ -92,16 +92,17 @@ class Container extends React.PureComponent {
       toUseNarrow: false,
       hideHeader: false,
     }
-    this.handleScroll = this.__handleScroll.bind(this)
+    this.handleScroll = _.throttle(this.__handleScroll, 350).bind(this)
 
-    let currentY = 0
-    let readyY = 0;
-    let isTransformDone = false
-    let transformTimer = null
+    // Below parameters are used to calculate scroll transform status.
+    this.currentY = 0
+    this.readyY = 0;
+    this.isTransformDone = false
+    this.transformTimer = null
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', _.throttle(this.handleScroll, 350), { passive: true })
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
   }
 
   componentWillUnmount() {
@@ -150,6 +151,7 @@ class Container extends React.PureComponent {
   }
 
   __getScrollState(scrollTop) {
+    // wide header and narrow header transform threshold is designed as 20 px
     const toUseNarrow = scrollTop > 20 ? true : false
     return { toUseNarrow }
   }

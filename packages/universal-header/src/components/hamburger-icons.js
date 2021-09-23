@@ -33,6 +33,9 @@ const IconContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 17px;
+  a {
+    display: flex;
+  }
 
   ${mq.tabletOnly`
     height: ${styles.iconHeight.tablet}px;
