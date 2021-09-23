@@ -48,7 +48,7 @@ const styles = {
     column: 'relative',
   },
   dropdownTop: {
-    row: 36, // px
+    row: 35, // px
     column: 0, //px
   }
 }
@@ -133,6 +133,7 @@ const ListItem = styled.li`
     justify-content: space-between;
     align-items: center;
     font-size: ${fonts.size.base};
+    font-weight: ${fonts.weight.bold};
     padding: ${props => arrayToCssShorthand(styles.itemPadding[props.direction])};
     width: 100%;
     color: ${props => props.fontColor};
@@ -181,15 +182,17 @@ class Channels extends React.PureComponent {
       })
     ),
     direction: PropTypes.string,
-    callback: PropTypes.func,
     borderWidth: PropTypes.array,
+    themeFunction: PropTypes.func,
+    callback: PropTypes.func,
   }
 
   static defaultProps = {
     data: [],
     direction: 'row',
-    callback: ()=> {},
     borderWidth: [0, 0, 0, 0],
+    themeFunction: themeUtils.selectChannelTheme,
+    callback: ()=> {},
   }
 
   constructor(props) {
@@ -323,7 +326,7 @@ class Channels extends React.PureComponent {
   }
 
   render() {
-    const { currentPathname, data, direction, borderWidth } = this.props
+    const { currentPathname, data, direction, borderWidth, themeFunction } = this.props
     const { indexToDropDown } = this.state
     const toShowDropDownMenu = indexToDropDown > invalidDataIndex
     const activeChannelIndex = toShowDropDownMenu
@@ -335,7 +338,7 @@ class Channels extends React.PureComponent {
       return (
         <HeaderContext.Consumer key={channelItem.key}>
           {({ theme }) => {
-            const { fontColor, hoverFontColor, hoverBgColor, textShadow, borderColor } = themeUtils.selectChannelTheme(theme)
+            const { fontColor, hoverFontColor, hoverBgColor, borderColor } = themeFunction(theme)
             const channelItemJSX = this._prepareChannelItemJSX(channelItem, dataIndex, theme)
             return (
               <ListItem
@@ -343,7 +346,6 @@ class Channels extends React.PureComponent {
                 isActive={isActive}
                 onClick={this.handleClickChannel}
                 fontColor={fontColor}
-                textShadow={textShadow}
                 hoverFontColor={hoverFontColor}
                 hoverBgColor={hoverBgColor}
               >
@@ -359,7 +361,7 @@ class Channels extends React.PureComponent {
         <Box>
           <HeaderContext.Consumer>
             {({ theme }) => {
-              const { bgColor, borderColor } = themeUtils.selectChannelTheme(theme)
+              const { bgColor, borderColor } = themeFunction(theme)
               return (
                 <List
                   bgColor={bgColor}

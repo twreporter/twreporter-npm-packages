@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 import sloganText from '../constants/slogan'
 import colors from '../constants/colors'
 import fonts from '../constants/fonts'
-import styled from 'styled-components'
 import themeUtils from '../utils/theme'
 
 const style = {
@@ -20,11 +21,11 @@ const SloganContainer = styled.div`
   align-items: center;
 `
 
-const Slogan = () => {
+const Slogan = ({ themeFunction }) => {
   return (
     <HeaderContext.Consumer>
       {({ theme }) => {
-        const color = themeUtils.selectSloganColor(theme)
+        const color = themeFunction(theme)
         return (
           <SloganContainer color={color}>
             {sloganText}
@@ -33,6 +34,14 @@ const Slogan = () => {
       }}
     </HeaderContext.Consumer>
   )
+}
+
+Slogan.propTypes = {
+  themeFunction: PropTypes.func,
+}
+
+Slogan.defaultProps = {
+  themeFunction: themeUtils.selectSloganTheme,
 }
 
 export default Slogan

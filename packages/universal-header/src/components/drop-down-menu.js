@@ -53,18 +53,18 @@ const SubMenuBox = styled.li`
   white-space: nowrap;
   position: relative;
   margin: 0;
-  color: #818283;
-  border-bottom: 0.2px solid #808080;
+  border-bottom: 1px solid #e2e2e2;
   width: 100%;
-  &:hover {
-    color: ${colors.grayDark};
-    background-color: rgba(0,0,0,0.1);
-  }
   a,
   a:link,
   a:visited {
     width: 100%;
     border: 0;
+    color: #808080;
+    &:hover {
+      color: ${colors.grayDark};
+      background-color: rgba(0,0,0,0.1);
+    }
   }
 `
 
