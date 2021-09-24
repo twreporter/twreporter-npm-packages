@@ -30,7 +30,7 @@ const TRANSFORM_DURATION = 700
 const stickyTop = css`
   position: sticky;
   top: 0;
-  z-index: 101; // there is another component in @twreporter/twreporter-react having z-index 100
+  z-index: 999;
 `
 
 const MobileOnly = styled.div`
@@ -97,7 +97,7 @@ class Container extends React.PureComponent {
     // Below parameters are used to calculate scroll transform status.
     this.currentY = 0
     this.readyY = 0;
-    this.isTransformDone = false
+    this.isTransforming = false
     this.transformTimer = null
   }
 
@@ -114,46 +114,45 @@ class Container extends React.PureComponent {
     const scrollDirection = currentScrollTop > this.currentY ? 'down' : 'up'
     this.currentY = currentScrollTop
 
-    const updateState = this.__getScrollState(currentScrollTop)
-    // use wide header
-    if (!updateState.toUseNarrow) {
-      if (this.transformTimer) {
-        clearTimeout(this.transformTimer)
-      }
-      this.isTransformDone = false
-      this.readyY = 0
-      updateState.hideHeader = false
-    } else {
-      if (scrollDirection === 'up') {
-        if (this.isTransformDone) {
-          this.readyY = this.currentY
-          updateState.hideHeader = false
-        }
-      }
-      if (scrollDirection === 'down') {
-        // header transform: wide -> narrow
-        if (!this.isTransformDone && !this.transformTimer) {
-          this.transformTimer = setTimeout(() => {
-            this.isTransformDone = true
-            this.readyY = this.currentY
-            this.transformTimer = null
-          }, TRANSFORM_DURATION)
-        }
-        // after header transform done, header should hide when scroll down
-        if (this.isTransformDone &&
-            ((currentScrollTop - this.readyY) > HIDE_HEADER_THRESHOLD)
-        ) {
-          updateState.hideHeader = true
-        }
-      }
-    }
+    const updateState = this.__getScrollState(currentScrollTop, scrollDirection)
     this.setState(updateState)
   }
 
-  __getScrollState(scrollTop) {
+  __getScrollState(scrollTop, scrollDirection) {
+    let scrollState = {}
+
+    if (this.isTransforming) {
+      return scrollState
+    }
+
     // wide header and narrow header transform threshold is designed as 20 px
-    const toUseNarrow = scrollTop > 20 ? true : false
-    return { toUseNarrow }
+    scrollState.toUseNarrow = scrollTop > 20 ? true : false
+
+    if (scrollDirection === 'up') {
+      this.readyY = scrollTop
+      scrollState.hideHeader = false
+    }
+
+    if (scrollDirection === 'down') {
+      // after transforming to narrow header, header should hide when scroll down
+      if (scrollState.toUseNarrow && (scrollTop - this.readyY) > HIDE_HEADER_THRESHOLD) {
+        scrollState.hideHeader = true
+      }
+    }
+
+    // register transform timer to mark header transform status
+    if (this.state.toUseNarrow !== scrollState.toUseNarrow) {
+      if (!this.transformTimer) {
+        this.isTransforming = true
+        this.transformTimer = setTimeout(() => {
+          this.isTransforming = false
+          this.readyY = this.currentY
+          this.transformTimer = null
+        }, TRANSFORM_DURATION)
+      }
+    }
+
+    return scrollState
   }
 
   __prepareServiceProps(isAuthed) {
