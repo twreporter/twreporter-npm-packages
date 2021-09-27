@@ -210,7 +210,7 @@ const ChannelTopContainer = styled.div`
   width: calc(100% - 530px);
   min-width: 480px;
   max-width: 910px;
-  right: 180px;
+  right: calc(50% - 540px);
   ${FlexItem}
   ${ChannelEffect}
 `

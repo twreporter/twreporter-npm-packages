@@ -198,11 +198,12 @@ class Channels extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      indexToDropDown: invalidDataIndex,
+      activeDataIndex: this._checkWhichChannelActive(props.currentPathname),
     }
     this.handleDropDownMenuClick = this._handleDropDownMenuClick.bind(this)
     this.closeDropDownMenu = this._closeDropDownMenu.bind(this)
-    this.handleChannelClick = this._handleChannelClick.bind(this)
+    this.setActiveData = this._setActiveData.bind(this)
+    this.resetUI = this._resetUI.bind(this)
   }
 
   _checkWhichChannelActive(currentPathname) {
@@ -241,22 +242,27 @@ class Channels extends React.PureComponent {
   _handleDropDownMenuClick(e, channelIndex) {
     e.preventDefault()
 
-    if (channelIndex !== this.state.indexToDropDown) {
-      this.setState({
-        indexToDropDown: channelIndex,
-      })
-      return
+    const { activeDataIndex } = this.state
+    if (channelIndex === activeDataIndex) {
+      this.closeDropDownMenu()
+    } else {
+      this.setActiveData(channelIndex)
     }
-    this.closeDropDownMenu()
   }
 
   _closeDropDownMenu() {
     this.setState({
-      indexToDropDown: invalidDataIndex,
+      activeDataIndex: invalidDataIndex,
     })
   }
 
-  _handleChannelClick() {
+  _setActiveData(dataIndex) {
+    this.setState({
+      activeDataIndex: dataIndex
+    })
+  }
+
+  _resetUI() {
     this.closeDropDownMenu()
     this.props.callback()
   }
@@ -268,9 +274,9 @@ class Channels extends React.PureComponent {
 
     if (channelType === channelConst.channelDropDownType) {
       const { data, direction } = this.props
-      const { indexToDropDown } = this.state
-      const toShowDropdownMenu = indexToDropDown > invalidDataIndex
-      const dropdownMenuData = _.get(data, [indexToDropDown, dropDownMenuKey], [])
+      const { activeDataIndex } = this.state
+      const toShowDropdownMenu = activeDataIndex === dataIndex
+      const dropdownMenuData = _.get(data, [dataIndex, dropDownMenuKey], [])
       const dropdownMenuJSX = (
         <DropDownMenuWrapper direction={direction}>
           <CSSTransition
@@ -283,12 +289,12 @@ class Channels extends React.PureComponent {
           >
             <DropDownMenu
               data={dropdownMenuData}
-              onClick={this.handleChannelClick}
+              onClick={this.resetUI}
             />
           </CSSTransition>
         </DropDownMenuWrapper>
       )
-      const isActive = indexToDropDown === dataIndex
+      const isActive = activeDataIndex === dataIndex
       const status = isActive ? 'collapse' : 'expand'
       const [ StatusIcon, StatusHoverIcon ] = themeUtils.selectIcons(theme)[status]
       const statusIconJSX = (
@@ -316,7 +322,7 @@ class Channels extends React.PureComponent {
     } else {
       return (
         <Link
-          onClick={this.handleChannelClick}
+          onClick={() => this.setActiveData(dataIndex)}
           {...channelLink}
         >
           {channelLabel}
@@ -327,14 +333,9 @@ class Channels extends React.PureComponent {
 
   render() {
     const { currentPathname, data, direction, borderWidth, themeFunction } = this.props
-    const { indexToDropDown } = this.state
-    const toShowDropDownMenu = indexToDropDown > invalidDataIndex
-    const activeChannelIndex = toShowDropDownMenu
-      ? indexToDropDown
-      : this._checkWhichChannelActive(currentPathname)
-
+    const { activeDataIndex } = this.state
     const channelsJSX = _.map(data, (channelItem, dataIndex) => {
-      const isActive = activeChannelIndex === dataIndex
+      const isActive = activeDataIndex === dataIndex
       return (
         <HeaderContext.Consumer key={channelItem.key}>
           {({ theme }) => {
