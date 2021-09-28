@@ -40,6 +40,9 @@ const IconContainer = styled.div`
   position: relative;
   opacity: ${props => (props.isSearchOpened ? '0' : '1')};
   transition: opacity 600ms ease;
+  a {
+    display: flex;
+  }
   svg {
     opacity: 1;
     position: absolute;

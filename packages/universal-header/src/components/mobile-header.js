@@ -1,22 +1,28 @@
-import HeaderContext from '../contexts/header-context'
-import Link from './customized-link'
-import PropTypes from 'prop-types'
 import React from 'react'
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import PropTypes from 'prop-types'
+import CSSTransition from 'react-transition-group/CSSTransition'
+import styled, { css } from 'styled-components'
+import HeaderContext from '../contexts/header-context'
+import linkUtils from '../utils/links'
+import themeUtils from '../utils/theme'
+import animationUtils from '../utils/animations'
+import colors from '../constants/colors'
+import Link from './customized-link'
 import HamburgerMenu from './hamburger-menu'
 import ActionButton from './action-button'
 import Slogan from './slogan'
-import colors from '../constants/colors'
-import linkUtils from '../utils/links'
-import styled from 'styled-components'
-import themeUtils from '../utils/theme'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 
 const styles = {
+  headerHeight: {
+    mobile: 74, // px
+    tablet: 88, // px
+  },
   headerPadding: {
-    mobile: [24],
-    tablet: [24, 30, 24, 50],
+    mobile: [24], // px
+    tablet: [24, 30, 24, 50], //px
   },
   logoHeight: {
     mobile: 26, // px
@@ -35,6 +41,23 @@ const styles = {
   }
 }
 
+const SloganEffect = css`
+  .slogan-effect-enter {
+    opacity: 0;
+  }
+  .slogagn-effect-enter-active {
+    animation: ${animationUtils.changeOpacity('0', '1')} 0.3s;
+    animation-delay: 400ms;
+  }
+  .slogan-effect-exit-active {
+    animation: ${animationUtils.changeOpacity('1', '0')} 0.3s;
+    animation-delay: 400ms;
+  }
+  .slogan-effect-exit-done {
+    opacity: 0;
+  }
+`
+
 const TabletOnly = styled.div`
   display: none;
 
@@ -44,6 +67,8 @@ const TabletOnly = styled.div`
 `
 
 const FlexBox = styled.div`
+  transform: translateY(${props => props.isHide ? `${-styles.headerHeight.mobile}px` : 0});
+  transition: transform 0.3s linear;
   background-color: ${props => props.bgColor};
   display: flex;
   box-sizing: border-box;
@@ -53,6 +78,7 @@ const FlexBox = styled.div`
   align-items: center;
   padding: ${arrayToCssShorthand(styles.headerPadding.mobile)};
   ${mq.tabletOnly`
+    transform: translateY(${props => props.isHide ? `${-styles.headerHeight.tablet}px` : 0});
     padding: ${arrayToCssShorthand(styles.headerPadding.tablet)};
   `}
 `
@@ -88,6 +114,7 @@ const SloganContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: ${styles.sloganMarginLeft.tablet}px;
+  ${SloganEffect}
 `
 
 const HamburgerContainer = styled.div`
@@ -135,7 +162,7 @@ export default class MobileHeader extends React.PureComponent {
   }
 
   render() {
-    const { actions, menuChannels, menuServices, menuActions } = this.props
+    const { actions, narrowActions, menuChannels, menuServices, menuActions } = this.props
     const { isMenuOpen } = this.state
 
     const hamburgerJSX = (
@@ -155,12 +182,12 @@ export default class MobileHeader extends React.PureComponent {
           {hamburgerMenu}
         </HamburgerContainer>
         <HeaderContext.Consumer>
-          {({ releaseBranch, isLinkExternal, theme }) => {
+          {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
             const Logo = themeUtils.selectLogoComponent(theme)
             const bgColor = themeUtils.selectBgColor(theme)
             const MenuIcon = themeUtils.selectIcons(theme).menu
             return (
-              <FlexBox bgColor={bgColor}>
+              <FlexBox bgColor={bgColor} isHide={hideHeader}>
                 <FlexGroup>
                   <LogoContainer>
                     <Link
@@ -171,11 +198,17 @@ export default class MobileHeader extends React.PureComponent {
                     </Link>
                   </LogoContainer>
                   <ActionContainer>
-                    <ActionButton actions={actions} />
+                    <ActionButton actions={toUseNarrow ? narrowActions : actions} />
                   </ActionContainer>
                   <TabletOnly>
                     <SloganContainer>
-                      <Slogan />
+                      <CSSTransition
+                        in={!toUseNarrow}
+                        classNames="slogan-effect"
+                        timeout={{appear: 0, enter: 700, exit: 700}}
+                      >
+                        <Slogan />
+                      </CSSTransition>
                     </SloganContainer>
                   </TabletOnly>
                 </FlexGroup>

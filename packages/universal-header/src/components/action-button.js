@@ -66,6 +66,9 @@ const ActionsContainer = styled.div`
 `
 
 const ActionContainer = styled.div`
+  transition: opacity 0.3s;
+  transition-delay: 400ms;
+  opacity: ${props => props.isActive ? 1 : 0};
   margin : ${props => arrayToCssShorthand(styles.itemMargin[props.direction])};
   width: 100%;
 
@@ -79,6 +82,7 @@ const ActionContainer = styled.div`
   a:visited {
     color: ${props => props.color || colors.white};
     font-size: ${styles.fontSize.desktop};
+    font-weight: ${fonts.weight.bold};
     ${mq.tabletOnly`
       font-size: ${props => styles.fontSize.tablet[props.direction]};
     `}
@@ -113,16 +117,22 @@ const ActionItem = styled.div`
   `}
 `
 
-const ActionButtonItem = ({ action, direction, callback }) => {
+const ActionButtonItem = ({ action, direction, themeFunction, callback }) => {
   const actionKey = action.key
+  const isActive = action.active ?? true
   const actionLabel = actionConst.actionLabels[actionKey]
   const actionLink = linkUtils.getActionLinks()[actionKey]
   return (
     <HeaderContext.Consumer>
       {({ theme }) => {
-        const { color, bgColor, hoverBgColor } = themeUtils.selectActionButtonTheme(theme)
+        const { color, bgColor, hoverBgColor } = themeFunction(theme)
         return (
-          <ActionContainer color={color} direction={direction} onClick={callback}>
+          <ActionContainer
+            color={color}
+            direction={direction}
+            isActive={isActive}
+            onClick={callback}
+          >
             <Link {...actionLink}>
               <ActionItem
                 direction={direction}
@@ -141,27 +151,30 @@ const ActionButtonItem = ({ action, direction, callback }) => {
 
 ActionButtonItem.propTypes = {
   action: PropTypes.shape({
-    key: PropTypes.string
+    key: PropTypes.string,
+    active: PropTypes.boolean,
   }),
   direction: PropTypes.string,
+  themeFunction: PropTypes.func,
   callback: PropTypes.func,
 }
 
 ActionButtonItem.defaultProps = {
   action: {},
   direction: 'row',
+  themeFunction: themeUtils.selectActionButtonTheme,
   callback: () => {},
 }
 
-const ActionButton = ({ actions, direction, callback }) => {
+const ActionButton = ({ actions, direction, ...rest }) => {
   return (
     <ActionsContainer direction={direction}>
       { _.map(actions, action => {
           return <ActionButtonItem
                    action={action}
                    direction={direction}
-                   callback={callback}
                    key={action.key}
+                   {...rest}
                  />
         })
       }
@@ -172,12 +185,14 @@ const ActionButton = ({ actions, direction, callback }) => {
 ActionButton.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape(ActionButtonItem.propTypes)),
   direction: PropTypes.string,
+  themeFunction: PropTypes.func,
   callback: PropTypes.func,
 }
 
 ActionButton.defaultProps = {
   actions: [],
   direction: 'row',
+  themeFunction: themeUtils.selectActionButtonTheme,
   callback: () => {},
 }
 

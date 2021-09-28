@@ -66,30 +66,38 @@ function selectChannelTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return {
+        bgColor: colorsConst.photography,
         fontColor: '#808080',
         hoverFontColor: colorsConst.white,
         hoverBgColor: 'rgba(255, 255, 255, 0.1)',
-        textShadow: 'none',
         borderColor: 'rgba(128, 128, 128, 0.2)',
       }
     }
     case themeConst.transparent: {
       return {
+        bgColor: 'transparent',
         fontColor: colorsConst.white,
         hoverFontColor: colorsConst.grayDark,
         hoverBgColor: colorsConst.white,
-        textShadow: '0 2px 2px rgba(0, 0, 0, 0.22)',
         borderColor: 'rgba(128, 128, 128, 0.2)',
       }
     }
-    case themeConst.index:
-    case themeConst.normal:
-    default: {
+    case themeConst.index: {
       return {
+        bgColor: colorsConst.white,
         fontColor: '#808080',
         hoverFontColor: colorsConst.grayDark,
         hoverBgColor: 'rgba(0, 0, 0, 0.1)',
-        textShadow: 'none',
+        borderColor: colorsConst.gray,
+      }
+    }
+    case themeConst.normal:
+    default: {
+      return {
+        bgColor: colorsConst.grayLight,
+        fontColor: '#808080',
+        hoverFontColor: colorsConst.grayDark,
+        hoverBgColor: 'rgba(0, 0, 0, 0.1)',
         borderColor: colorsConst.gray,
       }
     }
@@ -106,24 +114,6 @@ function selectBgColor(theme) {
     }
     case themeConst.index: {
       return colorsConst.white
-    }
-    case themeConst.normal:
-    default: {
-      return colorsConst.grayLight
-    }
-  }
-}
-
-function selectChannelsBgColor(theme) {
-  switch (theme) {
-    case themeConst.photography: {
-      return colorsConst.photography
-    }
-    case themeConst.transparent: {
-      return 'transparent'
-    }
-    case themeConst.index: {
-      return colorsConst.white;
     }
     case themeConst.normal:
     default: {
@@ -196,7 +186,7 @@ function selectHamburgerServiceTheme(theme) {
   }
 }
 
-function selectSloganColor(theme) {
+function selectSloganTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return '#c9af8e'
@@ -212,17 +202,64 @@ function selectSloganColor(theme) {
   }
 }
 
+/*
+ * HB is the abbreviation of hamburger.
+ * The HB series of theme functions are used in hamburger menu.
+ */
+function selectActionButtonHBTheme(theme) {
+  switch(theme) {
+    case themeConst.transparent: {
+      return selectActionButtonTheme('normal')
+    }
+    case themeConst.photography:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return selectActionButtonTheme(theme)
+    }
+  }
+}
+
+function selectChannelHBTheme(theme) {
+  switch(theme) {
+    case themeConst.transparent: {
+      return selectChannelTheme('normal')
+    }
+    case themeConst.photography:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return selectChannelTheme(theme)
+    }
+  }
+}
+
+function selectSloganHBTheme(theme) {
+  switch(theme) {
+    case themeConst.transparent: {
+      return selectSloganTheme('normal')
+    }
+    case themeConst.photography:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return selectSloganTheme(theme)
+    }
+  }
+}
 
 export default {
   selectBgColor,
-  selectChannelTheme,
-  selectChannelsBgColor,
   selectLogoComponent,
   selectServiceIcons,
   selectHamburgerServiceIcons,
   selectIcons,
+  selectChannelTheme,
   selectActionButtonTheme,
+  selectSloganTheme,
+  selectChannelHBTheme,
+  selectActionButtonHBTheme,
+  selectSloganHBTheme,
   selectHamburgerMenuTheme,
   selectHamburgerServiceTheme,
-  selectSloganColor,
 }

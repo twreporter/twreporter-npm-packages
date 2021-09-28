@@ -18,8 +18,20 @@ export const actionOrder = {
   ],
 }
 
+export const actionActive = {
+  wide: {
+    [actionKeys.support]: true,
+    [actionKeys.newsLetter]: true,
+  },
+  narrow: {
+    [actionKeys.support]: true,
+    [actionKeys.newsLetter]: false,
+  },
+}
+
 export default {
   actionKeys,
   actionLabels,
   actionOrder,
+  actionActive,
 }
