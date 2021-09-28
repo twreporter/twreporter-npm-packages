@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.5...@twreporter/universal-header@2.2.0-rc.6) (2021-09-28)
+
+
+### Bug Fixes
+
+* address review comment & lint error ([#212](https://github.com/twreporter/twreporter-npm-packages/issues/212)) ([c02800d](https://github.com/twreporter/twreporter-npm-packages/commit/c02800dd410ae08abbe617d31509ad18ba7cd3aa))
+
+
+
+
+
 # [2.2.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.4...@twreporter/universal-header@2.2.0-rc.5) (2021-09-28)
 
 
