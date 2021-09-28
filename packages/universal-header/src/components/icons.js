@@ -6,7 +6,6 @@ import SearchBox from './search-box'
 import fonts from '../constants/fonts'
 import linkUtils from '../utils/links'
 import querystring from 'querystring'
-import serviceConst from '../constants/services'
 import styled from 'styled-components'
 import themeUtils from '../utils/theme'
 // @twreporter

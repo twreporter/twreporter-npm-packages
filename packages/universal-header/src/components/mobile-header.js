@@ -6,7 +6,6 @@ import HeaderContext from '../contexts/header-context'
 import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
 import animationUtils from '../utils/animations'
-import colors from '../constants/colors'
 import Link from './customized-link'
 import HamburgerMenu from './hamburger-menu'
 import ActionButton from './action-button'
@@ -22,7 +21,7 @@ const styles = {
   },
   headerPadding: {
     mobile: [24], // px
-    tablet: [24, 30, 24, 50], //px
+    tablet: [24, 30, 24, 50], // px
   },
   logoHeight: {
     mobile: 26, // px
@@ -129,12 +128,14 @@ const Hamburger = styled.div`
 export default class MobileHeader extends React.PureComponent {
   static propTypes = {
     actions: PropTypes.array,
+    narrowActions: PropTypes.array,
     menuChannels: PropTypes.array,
     menuServices: PropTypes.array,
     menuActions: PropTypes.array,
   }
   static defaultProps = {
     actions: [],
+    narrowActions: [],
     menuChannels: [],
     menuServices: [],
     menuActions: [],
