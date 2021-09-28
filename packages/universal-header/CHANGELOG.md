@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.4...@twreporter/universal-header@2.2.0-rc.5) (2021-09-28)
+
+
+### Bug Fixes
+
+* **universal-header:** fix channel top position in hd & channel active index logic ([12ff6bb](https://github.com/twreporter/twreporter-npm-packages/commit/12ff6bb125c90ef789297c9435222abac285a152))
+* **universal-header:** fix code review ([8b5ff1c](https://github.com/twreporter/twreporter-npm-packages/commit/8b5ff1c1c18b7bb503641797f715cc3dd0c1b524))
+* **universal-header:** fix infinite header transforming ([dab3463](https://github.com/twreporter/twreporter-npm-packages/commit/dab3463d2f9c1035a27a45cff97e39e622b58fc6))
+* **universal-header:** fix ui defect & code review comment ([ada3578](https://github.com/twreporter/twreporter-npm-packages/commit/ada357865e24d3813557850724c2fbd2fc99a494))
+
+
+### Features
+
+* **universal-header:** add narrow type header & header transform animation ([32b26bc](https://github.com/twreporter/twreporter-npm-packages/commit/32b26bcb213da38ec972eb972e3c648494cbcc50))
+
+
+
+
+
 # [2.2.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.3...@twreporter/universal-header@2.2.0-rc.4) (2021-08-31)
 
 
