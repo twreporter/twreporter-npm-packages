@@ -61,22 +61,6 @@ const DesktopAndAbove = styled.div`
   `}
 `
 
-function mergeTwoArraysInOrder(arr1 = [], arr2 = []) {
-  const rtn = []
-  const maxLength = Math.max(arr1.length, arr2.length)
-
-  for (let i = 0; i < maxLength; i++) {
-    if (arr1[i]) {
-      rtn.push(arr1[i])
-    }
-    if (arr2[i]) {
-      rtn.push(arr2[i])
-    }
-  }
-
-  return rtn
-}
-
 class Container extends React.PureComponent {
   static defaultProps = {
     ...wellDefinedPropTypes.context.defaultProps,
@@ -97,8 +81,8 @@ class Container extends React.PureComponent {
 
     // Below parameters are used to calculate scroll transform status.
     this.currentY = 0
-    this.readyY = 0;
-    this.isTransformfasle = false
+    this.readyY = 0
+    this.isTransforming = false
     this.transformTimer = null
   }
 
@@ -108,6 +92,11 @@ class Container extends React.PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
+    this.handleScroll = null
+    this.currentY = null
+    this.readyY = null
+    this.isTransforming = null
+    this.transformTimer = null
   }
 
   __handleScroll(event) {
@@ -127,7 +116,7 @@ class Container extends React.PureComponent {
       return scrollState
     }
 
-    scrollState.toUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD ? true : false
+    scrollState.toUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD
 
     if (scrollDirection === 'up') {
       this.readyY = scrollTop
@@ -136,7 +125,7 @@ class Container extends React.PureComponent {
 
     if (scrollDirection === 'down') {
       // after transforming to narrow header, header should hide when scroll down
-      if (isCurrentNarrow && (scrollTop - this.readyY) > HIDE_HEADER_THRESHOLD) {
+      if (isCurrentNarrow && scrollTop - this.readyY > HIDE_HEADER_THRESHOLD) {
         scrollState.hideHeader = true
       }
     }
@@ -157,7 +146,7 @@ class Container extends React.PureComponent {
   }
 
   __prepareServiceProps(isAuthed) {
-    const serviceProps = _.map(serviceConst.serviceOrder, key => ({ key }));
+    const serviceProps = _.map(serviceConst.serviceOrder, key => ({ key }))
 
     if (isAuthed) {
       const logoutKey = serviceConst.serviceKeys.logout
@@ -171,7 +160,7 @@ class Container extends React.PureComponent {
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
-    const channelProps = _.map(channelConst.channelOrder, (key) => {
+    const channelProps = _.map(channelConst.channelOrder, key => {
       return {
         key,
         label: channelConst.channelLabels[key],
@@ -185,23 +174,29 @@ class Container extends React.PureComponent {
   }
 
   __prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps) {
-    channelProps[
-      channelProps.length - 1
-    ].dropDownMenu = _.map(categoryConst.categoryOrder, (key) => {
-      return {
-        key,
-        label: categoryConst.categoryLabels[key],
-        pathname: categoryConst.categoryPathnames[key],
-        link: linkUtils.getCategoryLinks(isLinkExternal, releaseBranch)[key],
+    channelProps[channelProps.length - 1].dropDownMenu = _.map(
+      categoryConst.categoryOrder,
+      key => {
+        return {
+          key,
+          label: categoryConst.categoryLabels[key],
+          pathname: categoryConst.categoryPathnames[key],
+          link: linkUtils.getCategoryLinks(isLinkExternal, releaseBranch)[key],
+        }
       }
-    })
+    )
   }
 
   __prepareActionProps() {
-    const isActive = actionConst.actionActive;
-    const mobileActionProps = _.map(actionConst.actionOrder.mobile, (key) => ({ key }))
-    const desktopAndTabletActionProps = _.map(actionConst.actionOrder.desktop, (key) => ({ key }))
-    const narrowActionProps = _.map(actionConst.actionOrder.desktop, (key) => {
+    const isActive = actionConst.actionActive
+    const mobileActionProps = _.map(actionConst.actionOrder.mobile, key => ({
+      key,
+    }))
+    const desktopAndTabletActionProps = _.map(
+      actionConst.actionOrder.desktop,
+      key => ({ key })
+    )
+    const narrowActionProps = _.map(actionConst.actionOrder.desktop, key => {
       return { key, active: isActive.narrow[key] }
     })
 
@@ -222,10 +217,7 @@ class Container extends React.PureComponent {
       theme,
       ...passThrough
     } = this.props
-    const {
-      toUseNarrow,
-      hideHeader,
-    } = this.state
+    const { toUseNarrow, hideHeader } = this.state
     const contextValue = {
       releaseBranch,
       isAuthed,
@@ -235,14 +227,12 @@ class Container extends React.PureComponent {
       hideHeader,
     }
 
-    const serviceProps = this.__prepareServiceProps(
-      isAuthed,
-    )
+    const serviceProps = this.__prepareServiceProps(isAuthed)
     const channelProps = this.__prepareChannelProps(
       releaseBranch,
       isLinkExternal
     )
-    const actionProps = this.__prepareActionProps();
+    const actionProps = this.__prepareActionProps()
 
     this.__prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps)
 
