@@ -26,7 +26,7 @@ const _ = {
 
 const HIDE_HEADER_THRESHOLD = 46
 const TRANSFORM_HEADER_THRESHOLD = 20
-const TRANSFORM_DURATION = 700
+const TRANSFORM_TIMEOUT = 800
 
 const stickyTop = css`
   position: sticky;
@@ -98,7 +98,7 @@ class Container extends React.PureComponent {
     // Below parameters are used to calculate scroll transform status.
     this.currentY = 0
     this.readyY = 0;
-    this.isTransforming = false
+    this.isTransformfasle = false
     this.transformTimer = null
   }
 
@@ -120,6 +120,7 @@ class Container extends React.PureComponent {
   }
 
   __getScrollState(scrollTop, scrollDirection) {
+    const isCurrentNarrow = this.state.toUseNarrow
     let scrollState = {}
 
     if (this.isTransforming) {
@@ -135,20 +136,20 @@ class Container extends React.PureComponent {
 
     if (scrollDirection === 'down') {
       // after transforming to narrow header, header should hide when scroll down
-      if (scrollState.toUseNarrow && (scrollTop - this.readyY) > HIDE_HEADER_THRESHOLD) {
+      if (isCurrentNarrow && (scrollTop - this.readyY) > HIDE_HEADER_THRESHOLD) {
         scrollState.hideHeader = true
       }
     }
 
     // register transform timer to mark header transform status
-    if (this.state.toUseNarrow !== scrollState.toUseNarrow) {
+    if (isCurrentNarrow !== scrollState.toUseNarrow) {
       if (!this.transformTimer) {
         this.isTransforming = true
         this.transformTimer = setTimeout(() => {
           this.isTransforming = false
           this.readyY = this.currentY
           this.transformTimer = null
-        }, TRANSFORM_DURATION)
+        }, TRANSFORM_TIMEOUT)
       }
     }
 

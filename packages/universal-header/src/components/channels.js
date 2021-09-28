@@ -200,10 +200,12 @@ class Channels extends React.PureComponent {
     this.state = {
       activeDataIndex: this._checkWhichChannelActive(props.currentPathname),
     }
+    this.handleDropDownChannelClick = this._handleDropDownChannelClick.bind(this)
+    this.handleNormalChannelClick = this._handleNormalChannelClick.bind(this)
     this.handleDropDownMenuClick = this._handleDropDownMenuClick.bind(this)
-    this.closeDropDownMenu = this._closeDropDownMenu.bind(this)
     this.setActiveData = this._setActiveData.bind(this)
-    this.resetUI = this._resetUI.bind(this)
+    this.resetActiveData = this._resetActiveDataIndex.bind(this)
+    this.callback = this._callback.bind(this)
   }
 
   _checkWhichChannelActive(currentPathname) {
@@ -239,31 +241,37 @@ class Channels extends React.PureComponent {
     return activeChannelIndex
   }
 
-  _handleDropDownMenuClick(e, channelIndex) {
+  _handleDropDownChannelClick(e, channelIndex) {
     e.preventDefault()
+    this.setActiveData(channelIndex, true)
+  }
 
+  _handleNormalChannelClick(channelIndex) {
+    this.setActiveData(channelIndex, false)
+    this.callback()
+  }
+
+  _handleDropDownMenuClick() {
+    this.resetActiveData(invalidDataIndex)
+    this.callback()
+  }
+
+  _setActiveData(dataIndex, clickTwiceInactive) {
     const { activeDataIndex } = this.state
-    if (channelIndex === activeDataIndex) {
-      this.closeDropDownMenu()
-    } else {
-      this.setActiveData(channelIndex)
-    }
-  }
+    const nextActiveIndex = clickTwiceInactive && (activeDataIndex === dataIndex)
+      ? invalidDataIndex
+      : dataIndex
 
-  _closeDropDownMenu() {
     this.setState({
-      activeDataIndex: invalidDataIndex,
+      activeDataIndex: nextActiveIndex
     })
   }
 
-  _setActiveData(dataIndex) {
-    this.setState({
-      activeDataIndex: dataIndex
-    })
+  _resetActiveDataIndex() {
+    this.setActiveData(invalidDataIndex)
   }
 
-  _resetUI() {
-    this.closeDropDownMenu()
+  _callback() {
     this.props.callback()
   }
 
@@ -289,7 +297,7 @@ class Channels extends React.PureComponent {
           >
             <DropDownMenu
               data={dropdownMenuData}
-              onClick={this.resetUI}
+              onClick={this.handleDropDownMenuClick}
             />
           </CSSTransition>
         </DropDownMenuWrapper>
@@ -310,7 +318,7 @@ class Channels extends React.PureComponent {
       return (
         <React.Fragment>
           <Link
-            onClick={e => this.handleDropDownMenuClick(e, dataIndex)}
+            onClick={e => this.handleDropDownChannelClick(e, dataIndex)}
             {...channelLink}
           >
             {channelLabel}
@@ -322,7 +330,7 @@ class Channels extends React.PureComponent {
     } else {
       return (
         <Link
-          onClick={() => this.setActiveData(dataIndex)}
+          onClick={() => this.handleNormalChannelClick(dataIndex)}
           {...channelLink}
         >
           {channelLabel}
@@ -358,25 +366,23 @@ class Channels extends React.PureComponent {
       )
     })
     return (
-      <React.Fragment>
-        <Box>
-          <HeaderContext.Consumer>
-            {({ theme }) => {
-              const { bgColor, borderColor } = themeFunction(theme)
-              return (
-                <List
-                  bgColor={bgColor}
-                  direction={direction}
-                  borderColor={borderColor}
-                  borderWidth={borderWidth}
-                >
-                  {channelsJSX}
-                </List>
-              )
-            }}
-          </HeaderContext.Consumer>
-        </Box>
-      </React.Fragment>
+      <Box>
+        <HeaderContext.Consumer>
+          {({ theme }) => {
+            const { bgColor, borderColor } = themeFunction(theme)
+            return (
+              <List
+                bgColor={bgColor}
+                direction={direction}
+                borderColor={borderColor}
+                borderWidth={borderWidth}
+              >
+                {channelsJSX}
+              </List>
+            )
+          }}
+        </HeaderContext.Consumer>
+      </Box>
     )
   }
 }
