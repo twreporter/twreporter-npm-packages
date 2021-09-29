@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CSSTransition from 'react-transition-group/CSSTransition'
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 import themeUtils from '../utils/theme'
 import animationUtils from '../utils/animations'
@@ -13,7 +13,6 @@ import DropDownMenu from './drop-down-menu'
 import Link from './customized-link'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
-import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -49,7 +48,7 @@ const styles = {
   },
   dropdownTop: {
     row: 35, // px
-    column: 0, //px
+    column: 0, // px
   }
 }
 
@@ -248,12 +247,12 @@ class Channels extends React.PureComponent {
 
   _handleNormalChannelClick(channelIndex) {
     this.setActiveData(channelIndex, false)
-    this.callback()
+    this.callback(channelIndex)
   }
 
   _handleDropDownMenuClick() {
     this.resetActiveData(invalidDataIndex)
-    this.callback()
+    this.callback(invalidDataIndex)
   }
 
   _setActiveData(dataIndex, clickTwiceInactive) {
@@ -271,8 +270,11 @@ class Channels extends React.PureComponent {
     this.setActiveData(invalidDataIndex)
   }
 
-  _callback() {
-    this.props.callback()
+  _callback(dataIndex) {
+    const currentActivePathname = dataIndex === invalidDataIndex
+      ? ''
+      : this.props.data[dataIndex].pathname
+    this.props.callback(currentActivePathname)
   }
 
   _prepareChannelItemJSX(channelItem, dataIndex, theme) {
@@ -340,14 +342,14 @@ class Channels extends React.PureComponent {
   }
 
   render() {
-    const { currentPathname, data, direction, borderWidth, themeFunction } = this.props
+    const { data, direction, borderWidth, themeFunction } = this.props
     const { activeDataIndex } = this.state
     const channelsJSX = _.map(data, (channelItem, dataIndex) => {
       const isActive = activeDataIndex === dataIndex
       return (
         <HeaderContext.Consumer key={channelItem.key}>
           {({ theme }) => {
-            const { fontColor, hoverFontColor, hoverBgColor, borderColor } = themeFunction(theme)
+            const { fontColor, hoverFontColor, hoverBgColor } = themeFunction(theme)
             const channelItemJSX = this._prepareChannelItemJSX(channelItem, dataIndex, theme)
             return (
               <ListItem

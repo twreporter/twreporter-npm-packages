@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import styled, { css, keyframes } from 'styled-components'
@@ -6,7 +6,6 @@ import HeaderContext from '../contexts/header-context'
 import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
 import animationUtils from '../utils/animations'
-import colors from '../constants/colors'
 import Channels from './channels'
 import ActionButton from './action-button'
 import Icons from './icons'
@@ -14,7 +13,6 @@ import Link from './customized-link'
 import Slogan from './slogan'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
-import mq from '@twreporter/core/lib/utils/media-query'
 
 const CHANNEL_HEIGHT = 37 // px
 
@@ -216,6 +214,7 @@ const ChannelTopContainer = styled.div`
 `
 
 const Header = ({ pathname, channels, services, actions, narrowActions }) => {
+  const [ currentPathname, setPathname ] = useState(pathname)
   return (
     <HeaderContext.Consumer>
       {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
@@ -269,7 +268,11 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                     timeout={{appear: 0, enter: 700, exit: 300}}
                     unmountOnExit
                   >
-                    <Channels currentPathname={pathname} data={channels} />
+                    <Channels
+                      currentPathname={currentPathname}
+                      data={channels}
+                      callback={setPathname}
+                    />
                   </CSSTransition>
                 </ChannelTopContainer>
                 <Icons services={services} />
@@ -283,9 +286,10 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                 unmountOnExit
               >
                 <Channels
-                  currentPathname={pathname}
+                  currentPathname={currentPathname}
                   data={channels}
                   borderWidth={styles.channelBottomBorderWidth}
+                  callback={setPathname}
                 />
               </CSSTransition>
             </ChannelContainer>
