@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.6...@twreporter/universal-header@2.2.0-rc.7) (2021-09-29)
+
+
+### Bug Fixes
+
+* **universal-header:** fix active state should remain after transforming & eslint error ([f942be7](https://github.com/twreporter/twreporter-npm-packages/commit/f942be7f4d4c1b9a5d84ed4dd96dbff16cf4ca10))
+* **universal-header:** refactor function assignment ([0629392](https://github.com/twreporter/twreporter-npm-packages/commit/062939250aaaab2ffaf70c839d2893a508122d4c))
+
+
+
+
+
 # [2.2.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.5...@twreporter/universal-header@2.2.0-rc.6) (2021-09-28)
 
 
