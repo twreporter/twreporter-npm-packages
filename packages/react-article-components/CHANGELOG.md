@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.3.3-rc.7...@twreporter/react-article-components@1.4.0-rc.0) (2021-09-29)
+
+
+### Features
+
+* **react-article-components:** remove back to top button ([82693e1](https://github.com/twreporter/twreporter-npm-packages/commit/82693e1871ddb4ab2112bfe6217657c00859c83f))
+
+
+
+
+
 ## [1.3.3-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.3.3-rc.6...@twreporter/react-article-components@1.3.3-rc.7) (2021-09-29)
 
 **Note:** Version bump only for package @twreporter/react-article-components
