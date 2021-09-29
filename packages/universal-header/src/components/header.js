@@ -289,7 +289,7 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                   currentPathname={currentPathname}
                   data={channels}
                   borderWidth={styles.channelBottomBorderWidth}
-                  callback={(pathname) => setPathname(pathname)}
+                  callback={setPathname}
                 />
               </CSSTransition>
             </ChannelContainer>
