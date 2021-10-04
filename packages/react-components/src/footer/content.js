@@ -309,7 +309,7 @@ const buildList = itemGroups =>
 
 class Content extends React.PureComponent {
   render() {
-    const { mainOrigin, pathname, host } = this.props
+    const { mainOrigin } = this.props
     return (
       <ContentRow>
         <IntroColumn>
@@ -331,14 +331,10 @@ class Content extends React.PureComponent {
 
 Content.propTypes = {
   mainOrigin: PropTypes.string,
-  pathname: PropTypes.string,
-  host: PropTypes.string,
 }
 
 Content.defaultProps = {
   mainOrigin: '',
-  pathname: '',
-  host: '',
 }
 
 export default Content
