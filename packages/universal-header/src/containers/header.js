@@ -31,7 +31,7 @@ const TRANSFORM_TIMEOUT = 800
 const stickyTop = css`
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000; // other components in twreporter-react has z-index 999
 `
 
 const MobileOnly = styled.div`

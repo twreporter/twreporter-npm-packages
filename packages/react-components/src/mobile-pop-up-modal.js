@@ -6,7 +6,8 @@ const Modal = styled.div`
   height: ${props => props.height};
   width: ${props => props.width};
   position: fixed;
-  z-index: 999;
+  top: 0;
+  z-index: 1000; // other component in twreporter-react has z-index 999
   overflow-y: scroll;
   max-height: -webkit-fill-available;
 `
@@ -26,9 +27,13 @@ class MobileModal extends React.PureComponent {
     super(props)
     this.startY = 0
     this.panel = React.createRef()
-    this.handleTouchstartWhenPanning = this._handleTouchstartWhenPanning.bind(this)
+    this.handleTouchstartWhenPanning = this._handleTouchstartWhenPanning.bind(
+      this
+    )
     this.handleTouchendWhenPanning = this._handleTouchendWhenPanning.bind(this)
-    this.handleTouchmoveWhenPanning = this._handleTouchmoveWhenPanning.bind(this)
+    this.handleTouchmoveWhenPanning = this._handleTouchmoveWhenPanning.bind(
+      this
+    )
   }
 
   componentDidMount() {
@@ -84,7 +89,7 @@ class MobileModal extends React.PureComponent {
   }
 
   _updateScrollY(endY) {
-    this.panel.current.scrollTop += (this.startY - endY)
+    this.panel.current.scrollTop += this.startY - endY
   }
 
   _handleTouchstartWhenPanning(event) {

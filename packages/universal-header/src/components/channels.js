@@ -49,7 +49,7 @@ const styles = {
   dropdownTop: {
     row: 35, // px
     column: 0, // px
-  }
+  },
 }
 
 const dropDownMenuEffectCSS = css`
@@ -72,7 +72,7 @@ const linkUnderline = css`
   content: '';
   width: 100%;
   height: 4px;
-  background-color: #A67A44;
+  background-color: #a67a44;
 `
 
 const DropDownMenuWrapper = styled.div`
@@ -86,9 +86,11 @@ const DropDownMenuWrapper = styled.div`
 
 const Box = styled.div`
   width: 100%;
+  height: 100%;
 `
 
 const List = styled.ul`
+  height: 100%;
   justify-content: space-between;
   background-color: ${props => props.bgColor || colors.white};
   user-select: none;
@@ -110,6 +112,7 @@ const ListItem = styled.li`
   flex-direction: ${props => props.direction};
   position: relative;
   width: ${props => styles.itemWidth[props.direction]};
+  height: 100%;
   font-size: ${fonts.size.base};
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -118,12 +121,15 @@ const ListItem = styled.li`
   text-shadow: ${props => props.textShadow};
   border-style: solid;
   border-color: inherit;
-  border-width: ${props => arrayToCssShorthand(styles.itemBorderWidth[props.direction])};
+  border-width: ${props =>
+    arrayToCssShorthand(styles.itemBorderWidth[props.direction])};
   &:first-child {
-    border-width: ${props => arrayToCssShorthand(styles.itemBorderWidthFirstChild[props.direction])};
+    border-width: ${props =>
+      arrayToCssShorthand(styles.itemBorderWidthFirstChild[props.direction])};
   }
   &::after {
-    ${props => (props.isActive && props.direction === 'row' ? linkUnderline : '')}
+    ${props =>
+      props.isActive && props.direction === 'row' ? linkUnderline : ''}
   }
   a,
   a:link,
@@ -133,7 +139,8 @@ const ListItem = styled.li`
     align-items: center;
     font-size: ${fonts.size.base};
     font-weight: ${fonts.weight.bold};
-    padding: ${props => arrayToCssShorthand(styles.itemPadding[props.direction])};
+    padding: ${props =>
+      arrayToCssShorthand(styles.itemPadding[props.direction])};
     width: 100%;
     color: ${props => props.fontColor};
     border: 0;
@@ -146,19 +153,19 @@ const ListItem = styled.li`
 `
 
 const ShowOnHover = styled.div`
-   display: none;
+  display: none;
 
-   ${ListItem}:hover & {
-     display: flex;
-   }
+  ${ListItem}:hover & {
+    display: flex;
+  }
 `
 
 const HideOnHover = styled.div`
-   display: flex;
+  display: flex;
 
-   ${ListItem}:hover & {
-     display: none;
-   }
+  ${ListItem}:hover & {
+    display: none;
+  }
 `
 
 const invalidDataIndex = -1
@@ -191,19 +198,20 @@ class Channels extends React.PureComponent {
     direction: 'row',
     borderWidth: [0, 0, 0, 0],
     themeFunction: themeUtils.selectChannelTheme,
-    callback: ()=> {},
+    callback: () => {},
   }
 
   constructor(props) {
     super(props)
     this.state = {
       activeDataIndex: this._checkWhichChannelActive(props.currentPathname),
+      activeDropdownIndex: invalidDataIndex,
     }
-    this.handleDropDownChannelClick = this._handleDropDownChannelClick.bind(this)
+    this.handleDropDownChannelClick = this._handleDropDownChannelClick.bind(
+      this
+    )
     this.handleNormalChannelClick = this._handleNormalChannelClick.bind(this)
     this.handleDropDownMenuClick = this._handleDropDownMenuClick.bind(this)
-    this.setActiveData = this._setActiveData.bind(this)
-    this.resetActiveData = this._resetActiveDataIndex.bind(this)
     this.callback = this._callback.bind(this)
   }
 
@@ -242,38 +250,33 @@ class Channels extends React.PureComponent {
 
   _handleDropDownChannelClick(e, channelIndex) {
     e.preventDefault()
-    this.setActiveData(channelIndex, true)
-  }
-
-  _handleNormalChannelClick(channelIndex) {
-    this.setActiveData(channelIndex, false)
-    this.callback(channelIndex)
-  }
-
-  _handleDropDownMenuClick() {
-    this.resetActiveData(invalidDataIndex)
-    this.callback(invalidDataIndex)
-  }
-
-  _setActiveData(dataIndex, clickTwiceInactive) {
-    const { activeDataIndex } = this.state
-    const nextActiveIndex = clickTwiceInactive && (activeDataIndex === dataIndex)
-      ? invalidDataIndex
-      : dataIndex
-
+    const { activeDropdownIndex } = this.state
+    const nextActiveDropdownIndex =
+      channelIndex === activeDropdownIndex ? invalidDataIndex : channelIndex
     this.setState({
-      activeDataIndex: nextActiveIndex
+      activeDropdownIndex: nextActiveDropdownIndex,
     })
   }
 
-  _resetActiveDataIndex() {
-    this.setActiveData(invalidDataIndex)
+  _handleNormalChannelClick(channelIndex) {
+    this.setState({
+      activeDataIndex: channelIndex,
+      activeDropdownIndex: invalidDataIndex,
+    })
+    this.callback(channelIndex)
+  }
+
+  _handleDropDownMenuClick(parentIndex) {
+    this.setState({
+      activeDataIndex: parentIndex,
+      activeDropdownIndex: invalidDataIndex,
+    })
+    this.callback(parentIndex)
   }
 
   _callback(dataIndex) {
-    const currentActivePathname = dataIndex === invalidDataIndex
-      ? ''
-      : this.props.data[dataIndex].pathname
+    const currentActivePathname =
+      dataIndex === invalidDataIndex ? '' : this.props.data[dataIndex].pathname
     this.props.callback(currentActivePathname)
   }
 
@@ -284,8 +287,8 @@ class Channels extends React.PureComponent {
 
     if (channelType === channelConst.channelDropDownType) {
       const { data, direction } = this.props
-      const { activeDataIndex } = this.state
-      const toShowDropdownMenu = activeDataIndex === dataIndex
+      const { activeDropdownIndex } = this.state
+      const toShowDropdownMenu = activeDropdownIndex === dataIndex
       const dropdownMenuData = _.get(data, [dataIndex, dropDownMenuKey], [])
       const dropdownMenuJSX = (
         <DropDownMenuWrapper direction={direction}>
@@ -299,14 +302,15 @@ class Channels extends React.PureComponent {
           >
             <DropDownMenu
               data={dropdownMenuData}
-              onClick={this.handleDropDownMenuClick}
+              onClick={e => this.handleDropDownMenuClick(dataIndex)}
             />
           </CSSTransition>
         </DropDownMenuWrapper>
       )
-      const isActive = activeDataIndex === dataIndex
-      const status = isActive ? 'collapse' : 'expand'
-      const [ StatusIcon, StatusHoverIcon ] = themeUtils.selectIcons(theme)[status]
+      const status = toShowDropdownMenu ? 'collapse' : 'expand'
+      const [StatusIcon, StatusHoverIcon] = themeUtils.selectIcons(theme)[
+        status
+      ]
       const statusIconJSX = (
         <React.Fragment>
           <HideOnHover>
@@ -349,8 +353,14 @@ class Channels extends React.PureComponent {
       return (
         <HeaderContext.Consumer key={channelItem.key}>
           {({ theme }) => {
-            const { fontColor, hoverFontColor, hoverBgColor } = themeFunction(theme)
-            const channelItemJSX = this._prepareChannelItemJSX(channelItem, dataIndex, theme)
+            const { fontColor, hoverFontColor, hoverBgColor } = themeFunction(
+              theme
+            )
+            const channelItemJSX = this._prepareChannelItemJSX(
+              channelItem,
+              dataIndex,
+              theme
+            )
             return (
               <ListItem
                 direction={direction}

@@ -12,6 +12,7 @@ import Icons from './icons'
 import Link from './customized-link'
 import Slogan from './slogan'
 // @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 
 const CHANNEL_HEIGHT = 37 // px
@@ -34,19 +35,25 @@ const styles = {
   channelBottomBorderWidth: [1, 0, 1, 0], // px
 }
 
-const headerWide = animationUtils.changeHeight(`${styles.headerHeight.narrow}px`, `${styles.headerHeight.wide}px`)
-const headerNarrow = animationUtils.changeHeight(`${styles.headerHeight.wide}px`, `${styles.headerHeight.narrow}px`)
+const headerWide = animationUtils.changeHeight(
+  `${styles.headerHeight.narrow}px`,
+  `${styles.headerHeight.wide}px`
+)
+const headerNarrow = animationUtils.changeHeight(
+  `${styles.headerHeight.wide}px`,
+  `${styles.headerHeight.narrow}px`
+)
 const HeaderEffect = css`
   .header-effect-enter {
     height: ${styles.headerHeight.narrow}px;
   }
   .header-effect-enter-active {
-    animation: ${headerWide} 0.3s linear;
-    animation-delay: 400ms;
+    animation: ${headerWide} 0.2s linear;
+    animation-delay: 300ms;
   }
   .header-effect-exit-active {
-    animation: ${headerNarrow} 0.3s linear;
-    animation-delay: 400ms;
+    animation: ${headerNarrow} 0.2s linear;
+    animation-delay: 300ms;
   }
   .header-effect-exit-done {
     height: ${styles.headerHeight.narrow}px;
@@ -58,12 +65,12 @@ const ActionEffect = css`
     transform: translateX(-40px);
   }
   .action-effect-enter-active {
-    animation: ${animationUtils.changeTranslateX('-40px', 0)} 0.3s;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeTranslateX('-40px', 0)} 0.2s;
+    animation-delay: 300ms;
   }
   .action-effect-exit-active {
-    animation: ${animationUtils.changeTranslateX(0, '-40px')} 0.3s;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeTranslateX(0, '-40px')} 0.2s;
+    animation-delay: 300ms;
   }
   .action-effect-exit-done {
     transform: translateX(-40px);
@@ -75,12 +82,12 @@ const SloganEffect = css`
     opacity: 0;
   }
   .slogagn-effect-enter-active {
-    animation: ${animationUtils.changeOpacity('0', '1')} 0.3s;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeOpacity('0', '1')} 0.2s;
+    animation-delay: 300ms;
   }
   .slogan-effect-exit-active {
-    animation: ${animationUtils.changeOpacity('1', '0')} 0.3s;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeOpacity('1', '0')} 0.2s;
+    animation-delay: 300ms;
   }
   .slogan-effect-exit-done {
     opacity: 0;
@@ -113,10 +120,10 @@ const ChannelEffect = css`
   }
   .channel-effect-enter-active {
     animation: ${channelSlideIn} 0.2s linear;
-    animation-delay: 500ms;
+    animation-delay: 400ms;
   }
   .channel-effect-exit-active {
-    animation: ${channelSlideOut} 0.2s linear;
+    animation: ${channelSlideOut} 0.1s linear;
     animation-delay: 100ms;
   }
 `
@@ -126,12 +133,12 @@ const LogoEffect = css`
     width: 80%;
   }
   .logo-effect-enter-active {
-    animation: ${animationUtils.changeWidth('80%', '100%')} 0.3s linear;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeWidth('80%', '100%')} 0.2s linear;
+    animation-delay: 300ms;
   }
   .logo-effect-exit-active {
-    animation: ${animationUtils.changeWidth('100%', '80%')} 0.3s linear;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeWidth('100%', '80%')} 0.2s linear;
+    animation-delay: 300ms;
   }
   .logo-effect-exit-done {
     width: 80%;
@@ -139,7 +146,9 @@ const LogoEffect = css`
 `
 
 const Box = styled.div`
-  transform: translateY(${props => props.isHide ? `${-styles.headerHeight.narrow}px` : 0});
+  transform: translateY(
+    ${props => (props.isHide ? `${-styles.headerHeight.narrow}px` : 0)}
+  );
   transition: transform 0.3s linear;
   background-color: ${props => props.bgColor};
   box-sizing: border-box;
@@ -208,13 +217,16 @@ const ChannelTopContainer = styled.div`
   width: calc(100% - 530px);
   min-width: 480px;
   max-width: 910px;
-  right: calc(50% - 540px);
+  right: 186px;
   ${FlexItem}
   ${ChannelEffect}
+  ${mq.hdOnly`
+    right: calc(50% - 540px);
+  `}
 `
 
 const Header = ({ pathname, channels, services, actions, narrowActions }) => {
-  const [ currentPathname, setPathname ] = useState(pathname)
+  const [currentPathname, setPathname] = useState(pathname)
   return (
     <HeaderContext.Consumer>
       {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
@@ -225,7 +237,7 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
             <CSSTransition
               in={!toUseNarrow}
               classNames="header-effect"
-              timeout={{appear: 0, enter: 700, exit: 700}}
+              timeout={{ appear: 0, enter: 500, exit: 500 }}
             >
               <TopRow>
                 <FlexGroup>
@@ -236,7 +248,7 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                       <CSSTransition
                         in={!toUseNarrow}
                         classNames="logo-effect"
-                        timeout={{appear: 0, enter: 700, exit: 700}}
+                        timeout={{ appear: 0, enter: 500, exit: 500 }}
                       >
                         <Logo />
                       </CSSTransition>
@@ -246,16 +258,18 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                     <CSSTransition
                       in={!toUseNarrow}
                       classNames="action-effect"
-                      timeout={{appear: 0, enter: 700, exit: 700}}
+                      timeout={{ appear: 0, enter: 500, exit: 500 }}
                     >
-                      <ActionButton actions={toUseNarrow ? narrowActions : actions} />
+                      <ActionButton
+                        actions={toUseNarrow ? narrowActions : actions}
+                      />
                     </CSSTransition>
                   </ActionContainer>
                   <SloganContainer>
                     <CSSTransition
                       in={!toUseNarrow}
                       classNames="slogan-effect"
-                      timeout={{appear: 0, enter: 700, exit: 700}}
+                      timeout={{ appear: 0, enter: 500, exit: 500 }}
                     >
                       <Slogan />
                     </CSSTransition>
@@ -265,7 +279,7 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                   <CSSTransition
                     in={toUseNarrow}
                     classNames="channel-effect"
-                    timeout={{appear: 0, enter: 700, exit: 300}}
+                    timeout={{ appear: 0, enter: 600, exit: 200 }}
                     unmountOnExit
                   >
                     <Channels
@@ -282,7 +296,7 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
               <CSSTransition
                 in={!toUseNarrow}
                 classNames="channel-effect"
-                timeout={{appear: 0, enter: 700, exit: 300}}
+                timeout={{ appear: 0, enter: 600, exit: 200 }}
                 unmountOnExit
               >
                 <Channels
