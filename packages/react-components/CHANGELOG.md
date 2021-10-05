@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.5.0-rc.0...@twreporter/react-components@8.5.0-rc.1) (2021-10-05)
+
+
+### Bug Fixes
+
+* fix ui defect ([2ab85e2](https://github.com/twreporter/twreporter-npm-packages/commit/2ab85e2eabd9ae33b857353712358777b50a9f9a))
+* **react-components:** fix eslint error ([c0d6d42](https://github.com/twreporter/twreporter-npm-packages/commit/c0d6d428a773762d1284cba2eb5d9ca20b2a221f))
+
+
+
+
+
 # [8.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.4.4...@twreporter/react-components@8.5.0-rc.0) (2021-08-30)
 
 
