@@ -47,8 +47,8 @@ const styles = {
     column: 'relative',
   },
   dropdownTop: {
-    row: 35, // px
-    column: 0, // px
+    row: `calc(100% + 1px)`,
+    column: 0,
   },
 }
 
@@ -80,7 +80,7 @@ const DropDownMenuWrapper = styled.div`
   z-index: 999;
   width: 100%;
   left: 0;
-  top: ${props => styles.dropdownTop[props.direction]}px;
+  top: ${props => styles.dropdownTop[props.direction]};
   ${dropDownMenuEffectCSS}
 `
 
@@ -201,6 +201,8 @@ class Channels extends React.PureComponent {
     callback: () => {},
   }
 
+  static contextType = HeaderContext
+
   constructor(props) {
     super(props)
     this.state = {
@@ -213,6 +215,12 @@ class Channels extends React.PureComponent {
     this.handleNormalChannelClick = this._handleNormalChannelClick.bind(this)
     this.handleDropDownMenuClick = this._handleDropDownMenuClick.bind(this)
     this.callback = this._callback.bind(this)
+  }
+
+  componentDidUpdate() {
+    if (this.context.hideHeader) {
+      this.setState({ activeDropdownIndex: invalidDataIndex })
+    }
   }
 
   _checkWhichChannelActive(currentPathname) {

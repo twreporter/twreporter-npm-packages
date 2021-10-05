@@ -15,7 +15,7 @@ import Slogan from './slogan'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 
-const CHANNEL_HEIGHT = 37 // px
+const CHANNEL_HEIGHT = 36 // px
 
 const styles = {
   headerHeight: {
@@ -32,7 +32,12 @@ const styles = {
   channelMaxWidth: {
     hd: 1320, // px
   },
+  channelTopBorderWidth: [0, 1, 1, 0], // px
   channelBottomBorderWidth: [1, 0, 1, 0], // px
+  iconBorderWidth: {
+    wide: [0, 0, 0, 0], // px
+    narrow: [0, 0, 1, 0], // px
+  },
 }
 
 const headerWide = animationUtils.changeHeight(
@@ -212,11 +217,24 @@ const ActionContainer = styled.div`
   ${ActionEffect}
 `
 
+const IconContainer = styled.div`
+  ${FlexItem}
+  height: ${styles.headerHeight.narrow}px;
+  margin: 0;
+  padding-left: 14px; // for border-bottom connect with channel top component
+  border-color: #e2e2e2;
+  border-style: solid;
+  border-width: ${props =>
+    arrayToCssShorthand(styles.iconBorderWidth[props.headerType])};
+  transition: border-width 0.1s linear 0.2s;
+`
+
 const ChannelTopContainer = styled.div`
   position: absolute;
   width: calc(100% - 530px);
   min-width: 480px;
   max-width: 910px;
+  height: ${styles.headerHeight.narrow}px;
   right: 186px;
   ${FlexItem}
   ${ChannelEffect}
@@ -285,11 +303,14 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                     <Channels
                       currentPathname={currentPathname}
                       data={channels}
+                      borderWidth={styles.channelTopBorderWidth}
                       callback={setPathname}
                     />
                   </CSSTransition>
                 </ChannelTopContainer>
-                <Icons services={services} />
+                <IconContainer headerType={toUseNarrow ? 'narrow' : 'wide'}>
+                  <Icons services={services} />
+                </IconContainer>
               </TopRow>
             </CSSTransition>
             <ChannelContainer>

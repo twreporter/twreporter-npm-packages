@@ -25,7 +25,7 @@ const _ = {
 }
 
 const HIDE_HEADER_THRESHOLD = 46
-const TRANSFORM_HEADER_THRESHOLD = 20
+const TRANSFORM_HEADER_THRESHOLD = 40
 const TRANSFORM_TIMEOUT = 800
 
 const stickyTop = css`
@@ -110,13 +110,12 @@ class Container extends React.PureComponent {
 
   __getScrollState(scrollTop, scrollDirection) {
     const isCurrentNarrow = this.state.toUseNarrow
+    const nextToUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD
     let scrollState = {}
 
     if (this.isTransforming) {
       return scrollState
     }
-
-    scrollState.toUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD
 
     if (scrollDirection === 'up') {
       this.readyY = scrollTop
@@ -128,6 +127,16 @@ class Container extends React.PureComponent {
       if (isCurrentNarrow && scrollTop - this.readyY > HIDE_HEADER_THRESHOLD) {
         scrollState.hideHeader = true
       }
+    }
+
+    if (isCurrentNarrow) {
+      // after transforming to narrow header, always remain narrow when scroll down
+      scrollState.toUseNarrow =
+        scrollDirection === 'down' ? true : nextToUseNarrow
+    } else {
+      // after transfroming to wide header, always remain wide when scroll up
+      scrollState.toUseNarrow =
+        scrollDirection === 'up' ? false : nextToUseNarrow
     }
 
     // register transform timer to mark header transform status
