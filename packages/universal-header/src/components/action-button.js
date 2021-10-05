@@ -43,7 +43,7 @@ const styles = {
   },
   itemMargin: {
     row: [0, 0, 0, 10], // px
-    column: [7, 0, 0, 0] // px
+    column: [7, 0, 0, 0], // px
   },
   fontSize: {
     mobile: {
@@ -66,10 +66,10 @@ const ActionsContainer = styled.div`
 `
 
 const ActionContainer = styled.div`
-  transition: opacity 0.3s;
-  transition-delay: 400ms;
-  opacity: ${props => props.isActive ? 1 : 0};
-  margin : ${props => arrayToCssShorthand(styles.itemMargin[props.direction])};
+  transition: opacity 0.1s;
+  transition-delay: 300ms;
+  opacity: ${props => (props.isActive ? 1 : 0)};
+  margin: ${props => arrayToCssShorthand(styles.itemMargin[props.direction])};
   width: 100%;
 
   &:first-child {
@@ -169,15 +169,16 @@ ActionButtonItem.defaultProps = {
 const ActionButton = ({ actions, direction, ...rest }) => {
   return (
     <ActionsContainer direction={direction}>
-      { _.map(actions, action => {
-          return <ActionButtonItem
-                   action={action}
-                   direction={direction}
-                   key={action.key}
-                   {...rest}
-                 />
-        })
-      }
+      {_.map(actions, action => {
+        return (
+          <ActionButtonItem
+            action={action}
+            direction={direction}
+            key={action.key}
+            {...rest}
+          />
+        )
+      })}
     </ActionsContainer>
   )
 }

@@ -9,14 +9,14 @@ import themeUtils from '../utils/theme'
 
 const style = {
   fontSize: {
-    desktop: fonts.size.base
-  }
+    desktop: fonts.size.base,
+  },
 }
 
 const SloganContainer = styled.div`
   color: ${props => props.color || colors.grayDark};
   font-size: ${style.fontSize.desktop};
-  font-family: Noto Serif TC;
+  font-family: ${fonts.family.serif};
   display: flex;
   align-items: center;
 `
@@ -26,11 +26,7 @@ const Slogan = ({ themeFunction }) => {
     <HeaderContext.Consumer>
       {({ theme }) => {
         const color = themeFunction(theme)
-        return (
-          <SloganContainer color={color}>
-            {sloganText}
-          </SloganContainer>
-        )
+        return <SloganContainer color={color}>{sloganText}</SloganContainer>
       }}
     </HeaderContext.Consumer>
   )
