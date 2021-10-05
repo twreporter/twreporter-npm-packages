@@ -37,7 +37,7 @@ const styles = {
   },
   sloganMarginLeft: {
     tablet: 14, // px
-  }
+  },
 }
 
 const SloganEffect = css`
@@ -66,7 +66,9 @@ const TabletOnly = styled.div`
 `
 
 const FlexBox = styled.div`
-  transform: translateY(${props => props.isHide ? `${-styles.headerHeight.mobile}px` : 0});
+  transform: translateY(
+    ${props => (props.isHide ? `${-styles.headerHeight.mobile}px` : 0)}
+  );
   transition: transform 0.3s linear;
   background-color: ${props => props.bgColor};
   display: flex;
@@ -77,7 +79,8 @@ const FlexBox = styled.div`
   align-items: center;
   padding: ${arrayToCssShorthand(styles.headerPadding.mobile)};
   ${mq.tabletOnly`
-    transform: translateY(${props => props.isHide ? `${-styles.headerHeight.tablet}px` : 0});
+    transform: translateY(${props =>
+      props.isHide ? `${-styles.headerHeight.tablet}px` : 0});
     padding: ${arrayToCssShorthand(styles.headerPadding.tablet)};
   `}
 `
@@ -163,7 +166,13 @@ export default class MobileHeader extends React.PureComponent {
   }
 
   render() {
-    const { actions, narrowActions, menuChannels, menuServices, menuActions } = this.props
+    const {
+      actions,
+      narrowActions,
+      menuChannels,
+      menuServices,
+      menuActions,
+    } = this.props
     const { isMenuOpen } = this.state
 
     const hamburgerJSX = (
@@ -179,13 +188,17 @@ export default class MobileHeader extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <HamburgerContainer>
-          {hamburgerMenu}
-        </HamburgerContainer>
+        <HamburgerContainer>{hamburgerMenu}</HamburgerContainer>
         <HeaderContext.Consumer>
-          {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
+          {({
+            releaseBranch,
+            isLinkExternal,
+            theme,
+            toUseNarrow,
+            hideHeader,
+          }) => {
             const Logo = themeUtils.selectLogoComponent(theme)
-            const bgColor = themeUtils.selectBgColor(theme)
+            const { bgColor } = themeUtils.selectHeaderTheme(theme)
             const MenuIcon = themeUtils.selectIcons(theme).menu
             return (
               <FlexBox bgColor={bgColor} isHide={hideHeader}>
@@ -199,14 +212,16 @@ export default class MobileHeader extends React.PureComponent {
                     </Link>
                   </LogoContainer>
                   <ActionContainer>
-                    <ActionButton actions={toUseNarrow ? narrowActions : actions} />
+                    <ActionButton
+                      actions={toUseNarrow ? narrowActions : actions}
+                    />
                   </ActionContainer>
                   <TabletOnly>
                     <SloganContainer>
                       <CSSTransition
                         in={!toUseNarrow}
                         classNames="slogan-effect"
-                        timeout={{appear: 0, enter: 700, exit: 700}}
+                        timeout={{ appear: 0, enter: 700, exit: 700 }}
                       >
                         <Slogan />
                       </CSSTransition>

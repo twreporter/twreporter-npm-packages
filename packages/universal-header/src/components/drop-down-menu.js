@@ -5,6 +5,8 @@ import colors from '../constants/colors'
 import fonts from '../constants/fonts'
 import styled from 'styled-components'
 import wellDefinedPropTypes from '../constants/prop-types'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -12,6 +14,13 @@ import map from 'lodash/map'
 const _ = {
   get,
   map,
+}
+
+const styles = {
+  subMenuHeight: {
+    mobile: 58, // px
+    desktop: 46, // px
+  },
 }
 
 const ViewPort = styled.div`
@@ -52,6 +61,10 @@ const SubMenuBox = styled.li`
   margin: 0;
   border-bottom: 1px solid #e2e2e2;
   width: 100%;
+  height: ${styles.subMenuHeight.mobile}px;
+  ${mq.desktopAndAbove`
+    height: ${styles.subMenuHeight.desktop}px;
+  `}
   a,
   a:link,
   a:visited {
@@ -60,14 +73,14 @@ const SubMenuBox = styled.li`
     color: #808080;
     &:hover {
       color: ${colors.grayDark};
-      background-color: rgba(0,0,0,0.1);
+      background-color: rgba(0, 0, 0, 0.1);
     }
   }
 `
 
 const SubMenuContent = styled.span`
   font-size: ${fonts.size.base};
-  font-weight: ${fonts.weight.normal};
+  font-weight: ${fonts.weight.bold};
   cursor: pointer;
 `
 

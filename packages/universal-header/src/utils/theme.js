@@ -104,20 +104,32 @@ function selectChannelTheme(theme) {
   }
 }
 
-function selectBgColor(theme) {
+function selectHeaderTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
-      return colorsConst.photography
+      return {
+        bgColor: colorsConst.photography,
+        borderColor: 'rgba(128, 128, 128, 0.2)',
+      }
     }
     case themeConst.transparent: {
-      return 'rgba(0, 0, 0, 0.1)'
+      return {
+        bgColor: 'rgba(0, 0, 0, 0.1)',
+        borderColor: 'rgba(128, 128, 128, 0.2)',
+      }
     }
     case themeConst.index: {
-      return colorsConst.white
+      return {
+        bgColor: colorsConst.white,
+        borderColor: colorsConst.gray,
+      }
     }
     case themeConst.normal:
     default: {
-      return colorsConst.grayLight
+      return {
+        bgColor: colorsConst.grayLight,
+        borderColor: colorsConst.gray,
+      }
     }
   }
 }
@@ -207,7 +219,7 @@ function selectSloganTheme(theme) {
  * The HB series of theme functions are used in hamburger menu.
  */
 function selectActionButtonHBTheme(theme) {
-  switch(theme) {
+  switch (theme) {
     case themeConst.transparent: {
       return selectActionButtonTheme('normal')
     }
@@ -221,7 +233,7 @@ function selectActionButtonHBTheme(theme) {
 }
 
 function selectChannelHBTheme(theme) {
-  switch(theme) {
+  switch (theme) {
     case themeConst.transparent: {
       return selectChannelTheme('normal')
     }
@@ -235,7 +247,7 @@ function selectChannelHBTheme(theme) {
 }
 
 function selectSloganHBTheme(theme) {
-  switch(theme) {
+  switch (theme) {
     case themeConst.transparent: {
       return selectSloganTheme('normal')
     }
@@ -249,11 +261,11 @@ function selectSloganHBTheme(theme) {
 }
 
 export default {
-  selectBgColor,
   selectLogoComponent,
   selectServiceIcons,
   selectHamburgerServiceIcons,
   selectIcons,
+  selectHeaderTheme,
   selectChannelTheme,
   selectActionButtonTheme,
   selectSloganTheme,
