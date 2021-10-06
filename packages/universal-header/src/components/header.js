@@ -38,6 +38,12 @@ const styles = {
     wide: [0, 0, 0, 0], // px
     narrow: [0, 0, 1, 0], // px
   },
+  zIndex: {
+    topRow: 3,
+    channelBottom: 1,
+    channelTop: 4,
+    actionButton: 5,
+  },
 }
 
 const headerWide = animationUtils.changeHeight(
@@ -182,13 +188,13 @@ const TopRow = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  z-index: 3;
+  z-index: ${styles.zIndex.topRow};
 `
 
 const ChannelContainer = styled.div`
   width: calc(100% - 120px);
   max-width: ${styles.channelMaxWidth.hd}px;
-  z-index: 1;
+  z-index: ${styles.zIndex.channelBottom};
   ${ChannelEffect}
 `
 
@@ -213,6 +219,7 @@ const SloganContainer = styled.div`
 `
 
 const ActionContainer = styled.div`
+  z-index: ${styles.zIndex.actionButton};
   ${FlexItem}
   ${ActionEffect}
 `
@@ -222,7 +229,7 @@ const IconContainer = styled.div`
   height: ${styles.headerHeight.narrow}px;
   margin: 0;
   padding-left: 14px; // for border-bottom connect with channel top component
-  border-color: #e2e2e2;
+  border-color: ${props => props.borderColor};
   border-style: solid;
   border-width: ${props =>
     arrayToCssShorthand(styles.iconBorderWidth[props.headerType])};
@@ -236,6 +243,7 @@ const ChannelTopContainer = styled.div`
   max-width: 910px;
   height: ${styles.headerHeight.narrow}px;
   right: 186px;
+  z-index: ${styles.zIndex.channelTop};
   ${FlexItem}
   ${ChannelEffect}
   ${mq.hdOnly`
@@ -248,7 +256,7 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
   return (
     <HeaderContext.Consumer>
       {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
-        const bgColor = themeUtils.selectBgColor(theme)
+        const { bgColor, borderColor } = themeUtils.selectHeaderTheme(theme)
         const Logo = themeUtils.selectLogoComponent(theme)
         return (
           <Box bgColor={bgColor} isHide={hideHeader}>
@@ -308,7 +316,10 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                     />
                   </CSSTransition>
                 </ChannelTopContainer>
-                <IconContainer headerType={toUseNarrow ? 'narrow' : 'wide'}>
+                <IconContainer
+                  headerType={toUseNarrow ? 'narrow' : 'wide'}
+                  borderColor={borderColor}
+                >
                   <Icons services={services} />
                 </IconContainer>
               </TopRow>
