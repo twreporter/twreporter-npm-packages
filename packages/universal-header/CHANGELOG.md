@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.8...@twreporter/universal-header@2.2.0-rc.9) (2021-10-06)
+
+
+### Bug Fixes
+
+* **universal-header:** fix tablet slogan animation delay & duration ([50027da](https://github.com/twreporter/twreporter-npm-packages/commit/50027da20ea34bfc656412803d6b772d25e7f3d7))
+* **universal-header:** fix ui defect ([8d8c20a](https://github.com/twreporter/twreporter-npm-packages/commit/8d8c20a558f4bdcf4f76480125bd0b2426ed53be))
+
+
+
+
+
 # [2.2.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.7...@twreporter/universal-header@2.2.0-rc.8) (2021-10-05)
 
 
