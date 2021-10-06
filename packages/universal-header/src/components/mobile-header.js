@@ -45,12 +45,12 @@ const SloganEffect = css`
     opacity: 0;
   }
   .slogagn-effect-enter-active {
-    animation: ${animationUtils.changeOpacity('0', '1')} 0.3s;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeOpacity('0', '1')} 0.1s;
+    animation-delay: 300ms;
   }
   .slogan-effect-exit-active {
-    animation: ${animationUtils.changeOpacity('1', '0')} 0.3s;
-    animation-delay: 400ms;
+    animation: ${animationUtils.changeOpacity('1', '0')} 0.1s;
+    animation-delay: 300ms;
   }
   .slogan-effect-exit-done {
     opacity: 0;
@@ -221,7 +221,7 @@ export default class MobileHeader extends React.PureComponent {
                       <CSSTransition
                         in={!toUseNarrow}
                         classNames="slogan-effect"
-                        timeout={{ appear: 0, enter: 700, exit: 700 }}
+                        timeout={{ appear: 0, enter: 400, exit: 400 }}
                       >
                         <Slogan />
                       </CSSTransition>
