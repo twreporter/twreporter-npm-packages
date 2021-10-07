@@ -9,7 +9,6 @@ const Modal = styled.div`
   top: 0;
   z-index: 1000; // other component in twreporter-react has z-index 999
   overflow-y: scroll;
-  max-height: -webkit-fill-available;
 `
 
 class MobileModal extends React.PureComponent {
@@ -25,6 +24,15 @@ class MobileModal extends React.PureComponent {
 
   constructor(props) {
     super(props)
+    // fix ios device not update vh value when toolbar show/hide
+    // ref: https://developers.google.com/web/updates/2016/12/url-bar-resizing
+    // ref: https://nicolas-hoizey.com/articles/2015/02/18/viewport-height-is-taller-than-the-visible-part-of-the-document-in-some-mobile-browsers/
+    this.state = {
+      modalHeight:
+        props.modalHeight === '100vh'
+          ? `${window.innerHeight}px`
+          : props.modalHeight,
+    }
     this.startY = 0
     this.panel = React.createRef()
     this.handleTouchstartWhenPanning = this._handleTouchstartWhenPanning.bind(
@@ -100,14 +108,15 @@ class MobileModal extends React.PureComponent {
     this._updateScrollY(event.changedTouches[0].screenY)
   }
 
-  _handleTouchmoveWhenPanning = event => {
+  _handleTouchmoveWhenPanning(event) {
     event.preventDefault()
     this._updateScrollY(event.changedTouches[0].screenY)
     this._updateStartY(event.changedTouches[0].screenY)
   }
 
   render() {
-    const { modalHeight, modalWidth, ...rest } = this.props
+    const { modalWidth, ...rest } = this.props
+    const { modalHeight } = this.state
 
     return (
       <Modal
