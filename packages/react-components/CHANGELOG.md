@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.5.0-rc.1...@twreporter/react-components@8.5.0-rc.2) (2021-10-07)
+
+
+### Bug Fixes
+
+* **react-components:** fix ios not update vh value when toolbar ([5bea9f2](https://github.com/twreporter/twreporter-npm-packages/commit/5bea9f2ca0820b3d889cff1a832a892ba135d4ac))
+
+
+
+
+
 # [8.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.5.0-rc.0...@twreporter/react-components@8.5.0-rc.1) (2021-10-05)
 
 
