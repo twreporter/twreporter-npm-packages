@@ -69,6 +69,7 @@ const ActionContainer = styled.div`
   transition: opacity 0.1s;
   transition-delay: 300ms;
   opacity: ${props => (props.isActive ? 1 : 0)};
+  pointer-events: ${props => (props.isActive ? 'auto' : 'none')};
   margin: ${props => arrayToCssShorthand(styles.itemMargin[props.direction])};
   width: 100%;
 
@@ -84,9 +85,11 @@ const ActionContainer = styled.div`
     font-size: ${styles.fontSize.desktop};
     font-weight: ${fonts.weight.bold};
     ${mq.tabletOnly`
+      cursor: default;
       font-size: ${props => styles.fontSize.tablet[props.direction]};
     `}
     ${mq.mobileOnly`
+      cursor: default;
       font-size: ${props => styles.fontSize.mobile[props.direction]};
     `}
   }

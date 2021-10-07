@@ -35,6 +35,7 @@ const IconContainer = styled.div`
   margin-right: 17px;
   a {
     display: flex;
+    cursor: default;
   }
 
   ${mq.tabletOnly`
@@ -55,7 +56,7 @@ const IconsContainer = styled.div`
 `
 
 const Login = ({ callback }) => {
-  const handleLogin = (releaseBranch) => {
+  const handleLogin = releaseBranch => {
     const redirectURL = window.location.href
     const query = querystring.stringify({
       destination: redirectURL,
@@ -73,11 +74,11 @@ const Login = ({ callback }) => {
     <IconContainer>
       <HeaderContext.Consumer>
         {({ releaseBranch, theme }) => {
-          const [LogInIcon] = themeUtils.selectHamburgerServiceIcons(theme).login
+          const [LogInIcon] = themeUtils.selectHamburgerServiceIcons(
+            theme
+          ).login
           return (
-            <Link
-              onClick={e => handleClick(e, releaseBranch)}
-            >
+            <Link onClick={e => handleClick(e, releaseBranch)}>
               <LogInIcon />
             </Link>
           )
@@ -96,7 +97,7 @@ Login.defaultProps = {
 }
 
 const Logout = ({ callback }) => {
-  const handleLogout = (releaseBranch) => {
+  const handleLogout = releaseBranch => {
     const redirectURL = window.location.href
     const query = querystring.stringify({
       destination: redirectURL,
@@ -114,11 +115,11 @@ const Logout = ({ callback }) => {
     <IconContainer>
       <HeaderContext.Consumer>
         {({ releaseBranch, theme }) => {
-          const [LogOutIcon] = themeUtils.selectHamburgerServiceIcons(theme).logout
+          const [LogOutIcon] = themeUtils.selectHamburgerServiceIcons(
+            theme
+          ).logout
           return (
-            <Link
-              onClick={e => handleClick(e, releaseBranch)}
-            >
+            <Link onClick={e => handleClick(e, releaseBranch)}>
               <LogOutIcon />
             </Link>
           )
@@ -141,11 +142,10 @@ const Search = ({ callback }) => {
     <IconContainer>
       <HeaderContext.Consumer>
         {({ releaseBranch, isLinkExternal, theme }) => {
-          const [SearchIcon] = themeUtils.selectHamburgerServiceIcons(theme).search
-          const link = linkUtils.getSearchLink(
-            isLinkExternal,
-            releaseBranch
-          )
+          const [SearchIcon] = themeUtils.selectHamburgerServiceIcons(
+            theme
+          ).search
+          const link = linkUtils.getSearchLink(isLinkExternal, releaseBranch)
           return (
             <Link {...link} onClick={callback}>
               <SearchIcon />
@@ -170,11 +170,10 @@ const Bookmark = ({ callback }) => {
     <IconContainer>
       <HeaderContext.Consumer>
         {({ releaseBranch, isLinkExternal, theme }) => {
-          const [BookmarkIcon] = themeUtils.selectHamburgerServiceIcons(theme).bookmark
-          const link = linkUtils.getBookmarksLink(
-            isLinkExternal,
-            releaseBranch
-          )
+          const [BookmarkIcon] = themeUtils.selectHamburgerServiceIcons(
+            theme
+          ).bookmark
+          const link = linkUtils.getBookmarksLink(isLinkExternal, releaseBranch)
           return (
             <Link {...link} onClick={callback}>
               <BookmarkIcon />
@@ -195,9 +194,9 @@ Bookmark.defaultProps = {
 }
 
 const HamburgerService = ({ services, callback }) => {
-  const _prepareIconJsx = (service) => {
+  const _prepareIconJsx = service => {
     const serviceKey = service.key
-    switch(serviceKey) {
+    switch (serviceKey) {
       case 'login':
         return <Login callback={callback} key={serviceKey} />
       case 'logout':
@@ -207,7 +206,7 @@ const HamburgerService = ({ services, callback }) => {
       case 'bookmarks':
         return <Bookmark callback={callback} key={serviceKey} />
       default:
-        return null;
+        return null
     }
   }
 
@@ -217,7 +216,7 @@ const HamburgerService = ({ services, callback }) => {
         const { borderColor } = themeUtils.selectHamburgerServiceTheme(theme)
         return (
           <IconsContainer borderColor={borderColor}>
-            { _.map(services, service => _prepareIconJsx(service)) }
+            {_.map(services, service => _prepareIconJsx(service))}
           </IconsContainer>
         )
       }}
