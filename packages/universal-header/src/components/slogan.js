@@ -19,6 +19,7 @@ const SloganContainer = styled.div`
   font-family: ${fonts.family.serif};
   display: flex;
   align-items: center;
+  cursor: default;
 `
 
 const Slogan = ({ themeFunction }) => {

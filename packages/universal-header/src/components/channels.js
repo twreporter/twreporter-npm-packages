@@ -12,6 +12,7 @@ import fonts from '../constants/fonts'
 import DropDownMenu from './drop-down-menu'
 import Link from './customized-link'
 // @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 // lodash
 import get from 'lodash/get'
@@ -115,7 +116,6 @@ const ListItem = styled.li`
   height: 100%;
   font-size: ${fonts.size.base};
   letter-spacing: 0.5px;
-  cursor: pointer;
   margin: ${arrayToCssShorthand(styles.itemMargin.desktop)};
   flex: 1;
   text-shadow: ${props => props.textShadow};
@@ -149,6 +149,9 @@ const ListItem = styled.li`
       background-color: ${props => props.hoverBgColor};
       color: ${props => props.hoverFontColor};
     }
+    ${mq.tabletAndBelow`
+      cursor: default;
+    `}
   }
 `
 

@@ -23,6 +23,10 @@ const styles = {
     mobile: [24], // px
     tablet: [24, 30, 24, 50], // px
   },
+  hamburgerPadding: {
+    mobile: [24], // px
+    tablet: [24, 30], // px
+  },
   logoHeight: {
     mobile: 26, // px
     tablet: 40, // px
@@ -125,7 +129,12 @@ const HamburgerContainer = styled.div`
 
 const Hamburger = styled.div`
   display: flex;
-  cursor: pointer;
+  position: absolute;
+  right: 0;
+  padding: ${arrayToCssShorthand(styles.hamburgerPadding.mobile)};
+  ${mq.tabletOnly`
+    padding: ${arrayToCssShorthand(styles.hamburgerPadding.tablet)};
+  `}
 `
 
 export default class MobileHeader extends React.PureComponent {
