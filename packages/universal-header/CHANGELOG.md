@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.12](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.11...@twreporter/universal-header@2.2.0-rc.12) (2021-10-12)
+
+
+### Bug Fixes
+
+* **universal-header:** remove channel underline active UI ([87dfdb8](https://github.com/twreporter/twreporter-npm-packages/commit/87dfdb80f02807ac24b7781a6b9459127d31817e))
+
+
+
+
+
 # [2.2.0-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.10...@twreporter/universal-header@2.2.0-rc.11) (2021-10-08)
 
 
