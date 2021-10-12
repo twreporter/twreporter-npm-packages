@@ -1,18 +1,18 @@
-import CSSTransition from 'react-transition-group/CSSTransition'
-import DropDownMenu from './drop-down-menu'
-import HeaderContext from '../contexts/header-context'
-import Link from './customized-link'
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
+import CSSTransition from 'react-transition-group/CSSTransition'
+import styled, { css } from 'styled-components'
+import HeaderContext from '../contexts/header-context'
+import themeUtils from '../utils/theme'
+import wellDefinedPropTypes from '../constants/prop-types'
 import channelConst from '../constants/channels'
 import colors from '../constants/colors'
 import fonts from '../constants/fonts'
-import styled, { css, keyframes } from 'styled-components'
-import themeUtils from '../utils/theme'
-import wellDefinedPropTypes from '../constants/prop-types'
+import DropDownMenu from './drop-down-menu'
+import Link from './customized-link'
 // @twreporter
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -23,39 +23,34 @@ const _ = {
 }
 
 const styles = {
-  channelsPositionTop: {
-    desktop: 30, // px
-  },
-  channelsPositionLeft: {
-    desktop: 352, // px
-    hd: 389, // px
-  },
-  channelsPadding: {
-    mobile: [5, 24], // px
-    tablet: [5, 220], // px
-  },
   itemMargin: {
-    mobile: 0, // px
-    tablet: 0, // px
-    desktop: [0, 41, 0, 0], // px
-    hd: [0, 68, 0, 0], // px
+    desktop: 0,
   },
   itemPadding: {
-    mobile: [5, 1], // px
-    tablet: [5, 1], // px
-    desktop: [8, 1], // px
+    row: [8, 16], // px
+    column: [20, 32], // px
   },
-  channelsContainerMaxWidth: 1440, // px
+  itemWidth: {
+    row: 'initial',
+    column: '100%',
+  },
+  itemBorderWidth: {
+    row: [0, 0, 0, 1],
+    column: [0, 0, 1, 0],
+  },
+  itemBorderWidthFirstChild: {
+    row: [0, 0, 0, 0],
+    column: [1, 0, 1, 0],
+  },
+  dropdownPosition: {
+    row: 'absolute',
+    column: 'relative',
+  },
+  dropdownTop: {
+    row: `calc(100% + 1px)`,
+    column: 0,
+  },
 }
-
-const changeOpacity = (valueFrom, valueTo) => keyframes`
-  from {
-    opacity: ${valueFrom};
-  }
-  to {
-    opacity: ${valueTo};
-  }
-`
 
 const dropDownMenuEffectCSS = css`
   .effect-enter {
@@ -64,99 +59,98 @@ const dropDownMenuEffectCSS = css`
 
   .effect-enter-active {
     max-height: 400px;
-    transition: max-height 600ms ease-in 100ms;
+    transition: max-height 400ms ease-in 100ms;
   }
 `
 
-const linkUnderline = css`
-  animation: ${changeOpacity('0', '1')} 0.5s linear;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 3px;
-  background-color: red;
-`
-
 const DropDownMenuWrapper = styled.div`
-  position: absolute;
+  position: ${props => styles.dropdownPosition[props.direction]};
   z-index: 999;
   width: 100%;
   left: 0;
+  top: ${props => styles.dropdownTop[props.direction]};
   ${dropDownMenuEffectCSS}
 `
 
 const Box = styled.div`
   width: 100%;
-  ${mq.hdOnly`
-    max-width: ${styles.channelsContainerMaxWidth}px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  `}
-  ${mq.mobileOnly`
-    display: none;
-  `}
+  height: 100%;
 `
 
 const List = styled.ul`
+  height: 100%;
   justify-content: space-between;
-  padding: ${arrayToCssShorthand(styles.channelsPadding.mobile)};
   background-color: ${props => props.bgColor || colors.white};
-  ${mq.tabletOnly`
-    justify-content: space-around;
-    padding: ${arrayToCssShorthand(styles.channelsPadding.tablet)};
-  `}
-  ${mq.desktopAndAbove`
-    justify-content: space-around;
-    position: absolute;
-    top: ${styles.channelsPositionTop.desktop}px;
-    left: ${styles.channelsPositionLeft.desktop}px;
-    background-color: transparent;
-  `}
-  ${mq.hdOnly`
-    left: ${styles.channelsPositionLeft.hd}px;
-  `}
   user-select: none;
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => props.direction};
   flex-wrap: nowrap;
   align-items: center;
   list-style-type: none;
-  margin: 0;
+  margin: auto;
+  padding-inline-start: 0;
+  border-color: ${props => props.borderColor || colors.gray};
+  border-width: ${props => arrayToCssShorthand(props.borderWidth)};
+  border-style: solid;
 `
 
 const ListItem = styled.li`
-  padding: ${arrayToCssShorthand(styles.itemPadding.mobile)};
-  margin: ${arrayToCssShorthand(styles.itemMargin.mobile)};
+  display: flex;
+  flex-direction: ${props => props.direction};
+  position: relative;
+  width: ${props => styles.itemWidth[props.direction]};
+  height: 100%;
+  font-size: ${fonts.size.base};
+  letter-spacing: 0.5px;
+  margin: ${arrayToCssShorthand(styles.itemMargin.desktop)};
+  flex: 1;
   text-shadow: ${props => props.textShadow};
+  border-style: solid;
+  border-color: inherit;
+  border-width: ${props =>
+    arrayToCssShorthand(styles.itemBorderWidth[props.direction])};
+  &:first-child {
+    border-width: ${props =>
+      arrayToCssShorthand(styles.itemBorderWidthFirstChild[props.direction])};
+  }
   a,
   a:link,
   a:visited {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: ${fonts.size.base};
+    font-weight: ${fonts.weight.bold};
+    padding: ${props =>
+      arrayToCssShorthand(styles.itemPadding[props.direction])};
+    width: 100%;
     color: ${props => props.fontColor};
+    border: 0;
+    line-height: 18px;
     &:hover {
-      color: ${props => props.hoverFontColor} !important;
+      background-color: ${props => props.hoverBgColor};
+      color: ${props => props.hoverFontColor};
     }
+    ${mq.tabletAndBelow`
+      cursor: default;
+    `}
   }
-  ${mq.tabletOnly`
-    padding: ${arrayToCssShorthand(styles.itemPadding.tablet)};
-    margin: ${arrayToCssShorthand(styles.itemMargin.tablet)};
-  `}
-  ${mq.desktopAndAbove`
-    padding: ${arrayToCssShorthand(styles.itemPadding.desktop)};
-    margin: ${arrayToCssShorthand(styles.itemMargin.desktop)};
-  `}
-  position: relative;
-  font-size: ${fonts.size.medium};
-  font-weight: ${fonts.weight.bold};
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  &::after {
-    ${props => (props.isActive ? linkUnderline : '')}
+`
+
+const ShowOnHover = styled.div`
+  display: none;
+
+  ${ListItem}:hover & {
+    display: flex;
+  }
+`
+
+const HideOnHover = styled.div`
+  display: flex;
+
+  ${ListItem}:hover & {
+    display: none;
   }
 `
 
@@ -179,20 +173,40 @@ class Channels extends React.PureComponent {
         [dropDownMenuKey]: DropDownMenu.propTypes.data,
       })
     ),
+    direction: PropTypes.string,
+    borderWidth: PropTypes.array,
+    themeFunction: PropTypes.func,
+    callback: PropTypes.func,
   }
 
   static defaultProps = {
     data: [],
+    direction: 'row',
+    borderWidth: [0, 0, 0, 0],
+    themeFunction: themeUtils.selectChannelTheme,
+    callback: () => {},
   }
+
+  static contextType = HeaderContext
 
   constructor(props) {
     super(props)
     this.state = {
-      indexToDropDown: invalidDataIndex,
+      activeDataIndex: this._checkWhichChannelActive(props.currentPathname),
+      activeDropdownIndex: invalidDataIndex,
     }
+    this.handleDropDownChannelClick = this._handleDropDownChannelClick.bind(
+      this
+    )
+    this.handleNormalChannelClick = this._handleNormalChannelClick.bind(this)
     this.handleDropDownMenuClick = this._handleDropDownMenuClick.bind(this)
-    this.closeDropDownMenu = this._closeDropDownMenu.bind(this)
-    this.handleChannelClick = this._handleChannelClick.bind(this)
+    this.callback = this._callback.bind(this)
+  }
+
+  componentDidUpdate() {
+    if (this.context.hideHeader) {
+      this.setState({ activeDropdownIndex: invalidDataIndex })
+    }
   }
 
   _checkWhichChannelActive(currentPathname) {
@@ -228,66 +242,126 @@ class Channels extends React.PureComponent {
     return activeChannelIndex
   }
 
-  _handleDropDownMenuClick(e, channelIndex) {
+  _handleDropDownChannelClick(e, channelIndex) {
     e.preventDefault()
-
-    if (channelIndex !== this.state.indexToDropDown) {
-      this.setState({
-        indexToDropDown: channelIndex,
-      })
-      return
-    }
-    this.closeDropDownMenu()
-  }
-
-  _closeDropDownMenu() {
+    const { activeDropdownIndex } = this.state
+    const nextActiveDropdownIndex =
+      channelIndex === activeDropdownIndex ? invalidDataIndex : channelIndex
     this.setState({
-      indexToDropDown: invalidDataIndex,
+      activeDropdownIndex: nextActiveDropdownIndex,
     })
   }
 
-  _handleChannelClick() {
-    this.closeDropDownMenu()
+  _handleNormalChannelClick(channelIndex) {
+    this.setState({
+      activeDataIndex: channelIndex,
+      activeDropdownIndex: invalidDataIndex,
+    })
+    this.callback(channelIndex)
+  }
+
+  _handleDropDownMenuClick(parentIndex) {
+    this.setState({
+      activeDataIndex: parentIndex,
+      activeDropdownIndex: invalidDataIndex,
+    })
+    this.callback(parentIndex)
+  }
+
+  _callback(dataIndex) {
+    const currentActivePathname =
+      dataIndex === invalidDataIndex ? '' : this.props.data[dataIndex].pathname
+    this.props.callback(currentActivePathname)
+  }
+
+  _prepareChannelItemJSX(channelItem, dataIndex, theme) {
+    const channelLabel = channelItem.label
+    const channelType = channelItem.type
+    const channelLink = channelItem.link
+
+    if (channelType === channelConst.channelDropDownType) {
+      const { data, direction } = this.props
+      const { activeDropdownIndex } = this.state
+      const toShowDropdownMenu = activeDropdownIndex === dataIndex
+      const dropdownMenuData = _.get(data, [dataIndex, dropDownMenuKey], [])
+      const dropdownMenuJSX = (
+        <DropDownMenuWrapper direction={direction}>
+          <CSSTransition
+            in={toShowDropdownMenu}
+            classNames="effect"
+            timeout={400}
+            exit={false}
+            mountOnEnter
+            unmountOnExit
+          >
+            <DropDownMenu
+              data={dropdownMenuData}
+              onClick={e => this.handleDropDownMenuClick(dataIndex)}
+            />
+          </CSSTransition>
+        </DropDownMenuWrapper>
+      )
+      const status = toShowDropdownMenu ? 'collapse' : 'expand'
+      const [StatusIcon, StatusHoverIcon] = themeUtils.selectIcons(theme)[
+        status
+      ]
+      const statusIconJSX = (
+        <React.Fragment>
+          <HideOnHover>
+            <StatusIcon />
+          </HideOnHover>
+          <ShowOnHover>
+            <StatusHoverIcon />
+          </ShowOnHover>
+        </React.Fragment>
+      )
+      return (
+        <React.Fragment>
+          <Link
+            onClick={e => this.handleDropDownChannelClick(e, dataIndex)}
+            {...channelLink}
+          >
+            {channelLabel}
+            {statusIconJSX}
+          </Link>
+          {dropdownMenuJSX}
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <Link
+          onClick={() => this.handleNormalChannelClick(dataIndex)}
+          {...channelLink}
+        >
+          {channelLabel}
+        </Link>
+      )
+    }
   }
 
   render() {
-    const { currentPathname, data } = this.props
-    const { indexToDropDown } = this.state
-    const toShowDropDownMenu = indexToDropDown > invalidDataIndex
-    const dropDownMenu = _.get(data, [indexToDropDown, dropDownMenuKey], [])
-    const activeChannelIndex = toShowDropDownMenu
-      ? indexToDropDown
-      : this._checkWhichChannelActive(currentPathname)
-
+    const { data, direction, borderWidth, themeFunction } = this.props
     const channelsJSX = _.map(data, (channelItem, dataIndex) => {
-      const channelLabel = channelItem.label
-      const channelType = channelItem.type
-      const isActive = activeChannelIndex === dataIndex
-      const channelLink = channelItem.link
       return (
         <HeaderContext.Consumer key={channelItem.key}>
           {({ theme }) => {
-            const fontColor = themeUtils.selectFontColor(theme)
-            const hoverFontColor = themeUtils.selectHoverFontColor(theme)
-            const textShadow = themeUtils.selectChannelTextShadow(theme)
+            const { fontColor, hoverFontColor, hoverBgColor } = themeFunction(
+              theme
+            )
+            const channelItemJSX = this._prepareChannelItemJSX(
+              channelItem,
+              dataIndex,
+              theme
+            )
             return (
               <ListItem
-                isActive={isActive}
+                direction={direction}
                 onClick={this.handleClickChannel}
                 fontColor={fontColor}
-                textShadow={textShadow}
                 hoverFontColor={hoverFontColor}
+                hoverBgColor={hoverBgColor}
               >
-                <Link
-                  onClick={
-                    channelType === channelConst.channelDropDownType
-                      ? e => this.handleDropDownMenuClick(e, dataIndex)
-                      : this.handleChannelClick
-                  }
-                  {...channelLink}
-                >
-                  {channelLabel}
-                </Link>
+                {channelItemJSX}
               </ListItem>
             )
           }}
@@ -295,31 +369,23 @@ class Channels extends React.PureComponent {
       )
     })
     return (
-      <React.Fragment>
-        <Box>
-          <HeaderContext.Consumer>
-            {({ theme }) => {
-              const bgColor = themeUtils.selectChannelsBgColor(theme)
-              return <List bgColor={bgColor}>{channelsJSX}</List>
-            }}
-          </HeaderContext.Consumer>
-        </Box>
-        <DropDownMenuWrapper>
-          <CSSTransition
-            in={toShowDropDownMenu}
-            classNames="effect"
-            timeout={600}
-            exit={false}
-            mountOnEnter
-            unmountOnExit
-          >
-            <DropDownMenu
-              data={dropDownMenu}
-              onClick={this.closeDropDownMenu}
-            />
-          </CSSTransition>
-        </DropDownMenuWrapper>
-      </React.Fragment>
+      <Box>
+        <HeaderContext.Consumer>
+          {({ theme }) => {
+            const { bgColor, borderColor } = themeFunction(theme)
+            return (
+              <List
+                bgColor={bgColor}
+                direction={direction}
+                borderColor={borderColor}
+                borderWidth={borderWidth}
+              >
+                {channelsJSX}
+              </List>
+            )
+          }}
+        </HeaderContext.Consumer>
+      </Box>
     )
   }
 }

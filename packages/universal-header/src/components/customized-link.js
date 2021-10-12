@@ -2,20 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-class CustomizedLink extends React.PureComponent {
-  static propTypes = {
-    isExternal: PropTypes.bool.isRequired,
-    to: PropTypes.string.isRequired,
+const CustomizedLink = ({ isExternal, to, ...rest }) => {
+  if (isExternal) {
+    return <a href={to} {...rest} />
   }
+  return <Link to={to} {...rest} />
+}
 
-  render() {
-    const { isExternal, to, ...rest } = this.props
+CustomizedLink.propTypes = {
+  isExternal: PropTypes.bool,
+  to: PropTypes.string,
+}
 
-    if (isExternal) {
-      return <a href={to} {...rest} />
-    }
-    return <Link to={to} {...rest} />
-  }
+CustomizedLink.defaultProps = {
+  isExternal: true,
+  to: '',
 }
 
 export default CustomizedLink

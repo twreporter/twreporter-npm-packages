@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
-import smoothScroll from 'smoothscroll'
 import styled from 'styled-components'
 // icons
 import BackToTopicIcon from '../../assets/aside/back-to-topic-mobile.svg'
-import BackToTopIcon from '../../assets/aside/back-to-top-mobile.svg'
 // bookmark icons
 import ToAddBookmarkIcon from '../../assets/aside/add-bookmark-mobile.svg'
 import AddedBookmarkIcon from '../../assets/aside/added-bookmark-mobile.svg'
@@ -47,12 +45,6 @@ const IconContainer = styled.div`
 const SubsequentIconContainer = styled(IconContainer)`
   margin-bottom: 20px;
 `
-
-const BackToTopBtn = () => (
-  <IconContainer onClick={() => smoothScroll(0)}>
-    <BackToTopIcon />
-  </IconContainer>
-)
 
 const BackToTopicBtn = props => (
   <DynamicComponentsContext.Consumer>
@@ -99,15 +91,12 @@ class MobileAside extends React.PureComponent {
           articleMeta={articleMetaForBookmark}
           renderIcon={(isBookmarked, addAction, removeAction) => {
             return (
-              <SubsequentIconContainer
-                onClick={isBookmarked ? removeAction : addAction}
-              >
+              <IconContainer onClick={isBookmarked ? removeAction : addAction}>
                 {isBookmarked ? <AddedBookmarkIcon /> : <ToAddBookmarkIcon />}
-              </SubsequentIconContainer>
+              </IconContainer>
             )
           }}
         />
-        <BackToTopBtn key="back_to_top" />
       </Container>
     )
   }

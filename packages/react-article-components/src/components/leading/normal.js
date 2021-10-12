@@ -103,7 +103,7 @@ const FigCaption = styled.figcaption`
 
 const BackgroundBlock = styled.div`
   ${props => getBackgroundBlockStyles(props.theme.name)}
-  padding-top: 10px;
+  padding-top: 30px;
   ${mq.tabletOnly`
     padding-top: 30px;
   `}

@@ -6,7 +6,6 @@ import fonts from '../constants/fonts'
 import styled from 'styled-components'
 import wellDefinedPropTypes from '../constants/prop-types'
 // @twreporter
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
@@ -18,17 +17,10 @@ const _ = {
 }
 
 const styles = {
-  contentMaxWidth: 320, // px
-  containerPadding: {
-    desktop: [10, 0], // px
+  subMenuHeight: {
+    mobile: 58, // px
+    desktop: 46, // px
   },
-  itemPadding: {
-    mobile: [30, 27], // px
-    tablet: [30, 33], // px
-    desktop: [9, 22], // px
-    hd: [9, 46], // px
-  },
-  containerBorder: 24, // px
 }
 
 const ViewPort = styled.div`
@@ -47,84 +39,49 @@ const MenuBox = styled.div`
   box-sizing: border-box;
   background-color: ${colors.white};
   user-select: none;
-  ${mq.tabletAndBelow`
-    border: ${arrayToCssShorthand(styles.containerBorder)} solid ${
-    colors.grayBg
-  };
-  `}
-  ${mq.desktopAndAbove`
-    padding: ${arrayToCssShorthand(styles.containerPadding.desktop)};
-  `}
 `
 
 const MenuContent = styled.ul`
-  flex-wrap: wrap;
-  ${mq.tabletAndBelow`
-    max-width: ${styles.contentMaxWidth}px;
-  `}
-  ${mq.desktopAndAbove`
-    flex-wrap: nowrap;
-  `}
   margin: 0 auto;
   padding: 0;
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   list-style-type: none;
 `
 
 const SubMenuBox = styled.li`
-  padding: ${arrayToCssShorthand(styles.itemPadding.mobile)};
-  ${mq.tabletOnly`
-    padding: ${arrayToCssShorthand(styles.itemPadding.tablet)};
-  `}
-  ${mq.desktopAndAbove`
-    padding: ${arrayToCssShorthand(styles.itemPadding.desktop)};
-  `}
-  ${mq.hdOnly`
-    padding: ${arrayToCssShorthand(styles.itemPadding.hd)};
-  `}
-  display: block;
+  display: flex;
   box-sizing: border-box;
   white-space: nowrap;
   position: relative;
   margin: 0;
-`
-
-const SubMenuContent = styled.span`
-  color: #818283;
-  font-size: ${fonts.size.medium};
-  font-weight: ${fonts.weight.normal};
-  cursor: pointer;
-  &:hover {
-    color: ${colors.gray15};
+  border-bottom: 1px solid #e2e2e2;
+  width: 100%;
+  height: ${styles.subMenuHeight.mobile}px;
+  ${mq.desktopAndAbove`
+    height: ${styles.subMenuHeight.desktop}px;
+  `}
+  a,
+  a:link,
+  a:visited {
+    width: 100%;
+    border: 0;
+    color: #808080;
+    &:hover {
+      color: ${colors.grayDark};
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 `
 
-const Seperator = styled.div`
-  ${mq.tabletAndBelow`
-    display: ${props => (props.last > 2 ? 'block' : 'none')};
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-  `}
-  ${mq.desktopAndAbove`
-    top: 50%;
-    transform: translateY(-40%);
-    right: 0;
-    width: 2px;
-    height: 1em;
-    display: ${props => (props.last > 1 ? 'block' : 'none')};
-  `}
-  position: absolute;
-  box-sizing: border-box;
-  background-color: #979797;
-  content: '';
+const SubMenuContent = styled.span`
+  font-size: ${fonts.size.base};
+  font-weight: ${fonts.weight.bold};
+  cursor: pointer;
 `
 
 class DropDownMenu extends React.PureComponent {
@@ -147,14 +104,12 @@ class DropDownMenu extends React.PureComponent {
   render() {
     const { data, onClick } = this.props
 
-    const subMenuCount = data.length
     const menuJSX = _.map(data, (subMenuItem, index) => {
       return (
         <SubMenuBox key={subMenuItem.key}>
           <Link onClick={onClick} {...subMenuItem.link}>
             <SubMenuContent>{subMenuItem.label}</SubMenuContent>
           </Link>
-          <Seperator last={subMenuCount - index} />
         </SubMenuBox>
       )
     })

@@ -1,86 +1,65 @@
-import BookmarkIcon from '../../static/bookmark-list-icon.svg'
-import DonationIcon from '../../static/donate-icon.svg'
 import Header from '../components/header'
 import HeaderContext from '../contexts/header-context'
-import LoginIcon from '../../static/member-icon.svg'
-import LogoutIcon from '../../static/logout.svg'
 import MobileHeader from '../components/mobile-header'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SearchIcon from '../../static/search-icon.svg'
-import SubscriptionIcon from '../../static/subscribe-icon.svg'
 import categoryConst from '../constants/categories'
 import channelConst from '../constants/channels'
+import actionConst from '../constants/actions'
 import linkUtils from '../utils/links'
 import serviceConst from '../constants/services'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import wellDefinedPropTypes from '../constants/prop-types'
 import { connect } from 'react-redux'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
+import map from 'lodash/map'
+import throttle from 'lodash/throttle'
 
 const _ = {
   get,
+  map,
+  throttle,
 }
+
+const HIDE_HEADER_THRESHOLD = 46
+const TRANSFORM_HEADER_THRESHOLD = 40
+const TRANSFORM_TIMEOUT = 800
+
+const stickyTop = css`
+  position: sticky;
+  top: 0;
+  z-index: 1000; // other components in twreporter-react has z-index 999
+`
 
 const MobileOnly = styled.div`
   display: none;
 
   ${mq.mobileOnly`
     display: block;
+    ${stickyTop}
   `}
 `
 
-const NonMobileOnly = styled.div`
-  display: block;
+const TabletOnly = styled.div`
+  display: none;
 
-  ${mq.mobileOnly`
-    display: none;
+  ${mq.tabletOnly`
+    display: block;
+    ${stickyTop}
   `}
 `
 
-function mergeTwoArraysInOrder(arr1 = [], arr2 = []) {
-  const rtn = []
-  const maxLength = Math.max(arr1.length, arr2.length)
+const DesktopAndAbove = styled.div`
+  display: none;
 
-  for (let i = 0; i < maxLength; i++) {
-    if (arr1[i]) {
-      rtn.push(arr1[i])
-    }
-    if (arr2[i]) {
-      rtn.push(arr2[i])
-    }
-  }
-
-  return rtn
-}
-
-function selectIconElement(serviceKey) {
-  switch (serviceKey) {
-    case 'login': {
-      return <LoginIcon />
-    }
-    case 'logout': {
-      return <LogoutIcon />
-    }
-    case 'search': {
-      return <SearchIcon />
-    }
-    case 'bookmarks': {
-      return <BookmarkIcon />
-    }
-    case 'support': {
-      return <DonationIcon />
-    }
-    case 'newsLetter': {
-      return <SubscriptionIcon />
-    }
-    default:
-      return null
-  }
-}
+  ${mq.desktopAndAbove`
+    display: block;
+    ${stickyTop}
+  `}
+`
 
 class Container extends React.PureComponent {
   static defaultProps = {
@@ -92,44 +71,105 @@ class Container extends React.PureComponent {
     pathname: PropTypes.string,
   }
 
-  __prepareServiceProps(releaseBranch, isAuthed, isLinkExternal) {
-    const serviceLinks = linkUtils.getServiceLinks(
-      isLinkExternal,
-      releaseBranch
-    )
+  constructor(props) {
+    super(props)
+    this.state = {
+      toUseNarrow: false,
+      hideHeader: false,
+    }
+    this.handleScroll = _.throttle(this.__handleScroll, 450).bind(this)
 
-    const serviceProps = serviceConst.serviceOrder.map(key => {
-      return {
-        key,
-        label: serviceConst.serviceLabels[key],
-        link: serviceLinks[key],
-        icon: selectIconElement(key),
+    // Below parameters are used to calculate scroll transform status.
+    this.currentY = 0
+    this.readyY = 0
+    this.isTransforming = false
+    this.transformTimer = null
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+    this.handleScroll = null
+    this.currentY = null
+    this.readyY = null
+    this.isTransforming = null
+    this.transformTimer = null
+  }
+
+  __handleScroll(event) {
+    const currentScrollTop = window.pageYOffset
+    const scrollDirection = currentScrollTop > this.currentY ? 'down' : 'up'
+    this.currentY = currentScrollTop
+
+    const updateState = this.__getScrollState(currentScrollTop, scrollDirection)
+    this.setState(updateState)
+  }
+
+  __getScrollState(scrollTop, scrollDirection) {
+    const isCurrentNarrow = this.state.toUseNarrow
+    const nextToUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD
+    let scrollState = {}
+
+    if (this.isTransforming) {
+      return scrollState
+    }
+
+    if (scrollDirection === 'up') {
+      this.readyY = scrollTop
+      scrollState.hideHeader = false
+    }
+
+    if (scrollDirection === 'down') {
+      // after transforming to narrow header, header should hide when scroll down
+      if (isCurrentNarrow && scrollTop - this.readyY > HIDE_HEADER_THRESHOLD) {
+        scrollState.hideHeader = true
       }
-    })
+    }
+
+    if (isCurrentNarrow) {
+      // after transforming to narrow header, always remain narrow when scroll down
+      scrollState.toUseNarrow =
+        scrollDirection === 'down' ? true : nextToUseNarrow
+    } else {
+      // after transfroming to wide header, always remain wide when scroll up
+      scrollState.toUseNarrow =
+        scrollDirection === 'up' ? false : nextToUseNarrow
+    }
+
+    // register transform timer to mark header transform status
+    if (isCurrentNarrow !== scrollState.toUseNarrow) {
+      if (!this.transformTimer) {
+        this.isTransforming = true
+        this.transformTimer = setTimeout(() => {
+          this.isTransforming = false
+          this.readyY = this.currentY
+          this.transformTimer = null
+        }, TRANSFORM_TIMEOUT)
+      }
+    }
+
+    return scrollState
+  }
+
+  __prepareServiceProps(isAuthed) {
+    const serviceProps = _.map(serviceConst.serviceOrder, key => ({ key }))
 
     if (isAuthed) {
       const logoutKey = serviceConst.serviceKeys.logout
-      serviceProps.unshift({
-        key: logoutKey,
-        label: serviceConst.serviceLabels[logoutKey],
-        link: serviceLinks[logoutKey],
-        icon: selectIconElement(logoutKey),
-      })
+      serviceProps.push({ key: logoutKey })
     } else {
       const loginKey = serviceConst.serviceKeys.login
-      serviceProps.unshift({
-        key: loginKey,
-        label: serviceConst.serviceLabels[loginKey],
-        link: serviceLinks[loginKey],
-        icon: selectIconElement(loginKey),
-      })
+      serviceProps.push({ key: loginKey })
     }
 
     return serviceProps
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
-    const channelProps = channelConst.channelOrder.map(key => {
+    const channelProps = _.map(channelConst.channelOrder, key => {
       return {
         key,
         label: channelConst.channelLabels[key],
@@ -143,16 +183,39 @@ class Container extends React.PureComponent {
   }
 
   __prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps) {
-    channelProps[
-      channelProps.length - 1
-    ].dropDownMenu = categoryConst.categoryOrder.map(key => {
-      return {
-        key,
-        label: categoryConst.categoryLabels[key],
-        pathname: categoryConst.categoryPathnames[key],
-        link: linkUtils.getCategoryLinks(isLinkExternal, releaseBranch)[key],
+    channelProps[channelProps.length - 1].dropDownMenu = _.map(
+      categoryConst.categoryOrder,
+      key => {
+        return {
+          key,
+          label: categoryConst.categoryLabels[key],
+          pathname: categoryConst.categoryPathnames[key],
+          link: linkUtils.getCategoryLinks(isLinkExternal, releaseBranch)[key],
+        }
       }
+    )
+  }
+
+  __prepareActionProps() {
+    const isActive = actionConst.actionActive
+    const mobileActionProps = _.map(actionConst.actionOrder.mobile, key => ({
+      key,
+    }))
+    const desktopAndTabletActionProps = _.map(
+      actionConst.actionOrder.desktop,
+      key => ({ key })
+    )
+    const narrowActionProps = _.map(actionConst.actionOrder.desktop, key => {
+      return { key, active: isActive.narrow[key] }
     })
+
+    return {
+      mobile: mobileActionProps,
+      tablet: desktopAndTabletActionProps,
+      hamburger: desktopAndTabletActionProps,
+      desktop: desktopAndTabletActionProps,
+      narrow: narrowActionProps,
+    }
   }
 
   render() {
@@ -163,34 +226,56 @@ class Container extends React.PureComponent {
       theme,
       ...passThrough
     } = this.props
+    const { toUseNarrow, hideHeader } = this.state
     const contextValue = {
       releaseBranch,
       isAuthed,
       isLinkExternal,
       theme,
+      toUseNarrow,
+      hideHeader,
     }
 
-    const serviceProps = this.__prepareServiceProps(
-      releaseBranch,
-      isAuthed,
-      isLinkExternal
-    )
+    const serviceProps = this.__prepareServiceProps(isAuthed)
     const channelProps = this.__prepareChannelProps(
       releaseBranch,
       isLinkExternal
     )
-    const mobileMenu = mergeTwoArraysInOrder(channelProps, serviceProps)
+    const actionProps = this.__prepareActionProps()
 
     this.__prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps)
 
     return (
       <HeaderContext.Provider value={contextValue}>
         <MobileOnly>
-          <MobileHeader menu={mobileMenu} {...passThrough} />
+          <MobileHeader
+            actions={actionProps.mobile}
+            menuChannels={channelProps}
+            menuServices={serviceProps}
+            menuActions={actionProps.hamburger}
+            narrowActions={actionProps.narrow}
+            {...passThrough}
+          />
         </MobileOnly>
-        <NonMobileOnly>
-          <Header channels={channelProps} {...passThrough} />
-        </NonMobileOnly>
+        <TabletOnly>
+          <MobileHeader
+            actions={actionProps.tablet}
+            menuChannels={channelProps}
+            menuServices={serviceProps}
+            menuActions={actionProps.hamburger}
+            narrowActions={actionProps.narrow}
+            {...passThrough}
+          />
+        </TabletOnly>
+        <DesktopAndAbove>
+          <Header
+            channels={channelProps}
+            services={serviceProps}
+            actions={actionProps.desktop}
+            narrowActions={actionProps.narrow}
+            {...passThrough}
+          />
+        </DesktopAndAbove>
       </HeaderContext.Provider>
     )
   }

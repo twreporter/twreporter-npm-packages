@@ -3,6 +3,184 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.12](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.11...@twreporter/universal-header@2.2.0-rc.12) (2021-10-12)
+
+
+### Bug Fixes
+
+* **universal-header:** remove channel underline active UI ([87dfdb8](https://github.com/twreporter/twreporter-npm-packages/commit/87dfdb80f02807ac24b7781a6b9459127d31817e))
+
+
+
+
+
+# [2.2.0-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.10...@twreporter/universal-header@2.2.0-rc.11) (2021-10-08)
+
+
+### Bug Fixes
+
+* **universal-header:** fix ui defect ([a1592da](https://github.com/twreporter/twreporter-npm-packages/commit/a1592da85a0f3f9e38fe86b0f5ef86a8a1c83ba6))
+
+
+
+
+
+# [2.2.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.9...@twreporter/universal-header@2.2.0-rc.10) (2021-10-07)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.2.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.8...@twreporter/universal-header@2.2.0-rc.9) (2021-10-06)
+
+
+### Bug Fixes
+
+* **universal-header:** fix tablet slogan animation delay & duration ([50027da](https://github.com/twreporter/twreporter-npm-packages/commit/50027da20ea34bfc656412803d6b772d25e7f3d7))
+* **universal-header:** fix ui defect ([8d8c20a](https://github.com/twreporter/twreporter-npm-packages/commit/8d8c20a558f4bdcf4f76480125bd0b2426ed53be))
+
+
+
+
+
+# [2.2.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.7...@twreporter/universal-header@2.2.0-rc.8) (2021-10-05)
+
+
+### Bug Fixes
+
+* fix ui defect ([2ab85e2](https://github.com/twreporter/twreporter-npm-packages/commit/2ab85e2eabd9ae33b857353712358777b50a9f9a))
+* **universal-header:** fix ui defect ([c1be79f](https://github.com/twreporter/twreporter-npm-packages/commit/c1be79f6ab811b0c44d9a8753230f73486be57cc))
+
+
+
+
+
+# [2.2.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.6...@twreporter/universal-header@2.2.0-rc.7) (2021-09-29)
+
+
+### Bug Fixes
+
+* **universal-header:** fix active state should remain after transforming & eslint error ([f942be7](https://github.com/twreporter/twreporter-npm-packages/commit/f942be7f4d4c1b9a5d84ed4dd96dbff16cf4ca10))
+* **universal-header:** refactor function assignment ([0629392](https://github.com/twreporter/twreporter-npm-packages/commit/062939250aaaab2ffaf70c839d2893a508122d4c))
+
+
+
+
+
+# [2.2.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.5...@twreporter/universal-header@2.2.0-rc.6) (2021-09-28)
+
+
+### Bug Fixes
+
+* address review comment & lint error ([#212](https://github.com/twreporter/twreporter-npm-packages/issues/212)) ([c02800d](https://github.com/twreporter/twreporter-npm-packages/commit/c02800dd410ae08abbe617d31509ad18ba7cd3aa))
+
+
+
+
+
+# [2.2.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.4...@twreporter/universal-header@2.2.0-rc.5) (2021-09-28)
+
+
+### Bug Fixes
+
+* **universal-header:** fix channel top position in hd & channel active index logic ([12ff6bb](https://github.com/twreporter/twreporter-npm-packages/commit/12ff6bb125c90ef789297c9435222abac285a152))
+* **universal-header:** fix code review ([8b5ff1c](https://github.com/twreporter/twreporter-npm-packages/commit/8b5ff1c1c18b7bb503641797f715cc3dd0c1b524))
+* **universal-header:** fix infinite header transforming ([dab3463](https://github.com/twreporter/twreporter-npm-packages/commit/dab3463d2f9c1035a27a45cff97e39e622b58fc6))
+* **universal-header:** fix ui defect & code review comment ([ada3578](https://github.com/twreporter/twreporter-npm-packages/commit/ada357865e24d3813557850724c2fbd2fc99a494))
+
+
+### Features
+
+* **universal-header:** add narrow type header & header transform animation ([32b26bc](https://github.com/twreporter/twreporter-npm-packages/commit/32b26bcb213da38ec972eb972e3c648494cbcc50))
+
+
+
+
+
+# [2.2.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.3...@twreporter/universal-header@2.2.0-rc.4) (2021-08-31)
+
+
+### Bug Fixes
+
+* **universal-header:** update @twreporter/react-component dependency version ([f5d5a22](https://github.com/twreporter/twreporter-npm-packages/commit/f5d5a2255de72c27f91cc09b734242e7b17fd91e))
+
+
+
+
+
+# [2.2.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.2...@twreporter/universal-header@2.2.0-rc.3) (2021-08-30)
+
+
+### Bug Fixes
+
+* **universal-header:** adress review comment ([cb94bfa](https://github.com/twreporter/twreporter-npm-packages/commit/cb94bfa1f1bccda0e8d7255eb42d6ff778c4e9f8))
+* **universal-header:** fix click on ios & missing semi column ([1535641](https://github.com/twreporter/twreporter-npm-packages/commit/1535641c00613055e0c32ae9ab563c6932fe1958))
+* **universal-header:** fix code review ([e5d3d08](https://github.com/twreporter/twreporter-npm-packages/commit/e5d3d08ee62685c0a49c8c746421ce68b3fa4693))
+* **universal-header:** modal scroll problem ([c909c4d](https://github.com/twreporter/twreporter-npm-packages/commit/c909c4d224d3ae57d5ebc38287d78f4ad22e224d))
+* **universal-header:** use @twreporter/react-components mobile-pop-up-modal to deal with scrolling problem ([5797493](https://github.com/twreporter/twreporter-npm-packages/commit/5797493c7bdd761cef0d284685f21db201f29ea3))
+
+
+### Features
+
+* **universal-header:** add new hamburger menu ([d42d296](https://github.com/twreporter/twreporter-npm-packages/commit/d42d2966619c822883d1f6deeac89cbef68138a3))
+
+
+
+
+
+# [2.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.1...@twreporter/universal-header@2.2.0-rc.2) (2021-08-11)
+
+
+### Bug Fixes
+
+* **universal-header:** add prop types check to ActionButton component ([352eaba](https://github.com/twreporter/twreporter-npm-packages/commit/352eaba9a030894471661aeb91536a87d69d2cd2))
+* **universal-header:** code review ([4620715](https://github.com/twreporter/twreporter-npm-packages/commit/46207156199667ec0f0f6a273291d580605c0324))
+
+
+### Features
+
+* **universal-header:** add ActionButtom component & Slogan component (TWREPORTER-1) ([06ea138](https://github.com/twreporter/twreporter-npm-packages/commit/06ea1382368a1773f0433ef8b3c1fad2864a1ad4))
+
+
+
+
+
+# [2.2.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.0-rc.0...@twreporter/universal-header@2.2.0-rc.1) (2021-07-27)
+
+
+### Bug Fixes
+
+* **universal-header:** fix code review & warning ([7478483](https://github.com/twreporter/twreporter-npm-packages/commit/7478483ee3ca573dab24d8769e38a81bd0222fec))
+
+
+### Features
+
+* **universal-header:** adjust desktop category style & update icons ([21e5126](https://github.com/twreporter/twreporter-npm-packages/commit/21e5126bb7dbdd425e292315395a8327d9985d8c))
+
+
+
+
+
+# [2.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.1.8...@twreporter/universal-header@2.2.0-rc.0) (2021-07-21)
+
+
+### Bug Fixes
+
+* **universal-header:** remove useless variable ([086b95a](https://github.com/twreporter/twreporter-npm-packages/commit/086b95a811c50f2ba17f2afc1443f1d717772295))
+
+
+### Features
+
+* **universal-header:** bookmark icon only show when login & modify desktop icon show/hide flow ([a97f727](https://github.com/twreporter/twreporter-npm-packages/commit/a97f727fb0c0966067bc7dae543353a774fb7b34))
+* **universal-header:** bookmark icon only show when login & modify desktop icon show/hide flow ([009cf4c](https://github.com/twreporter/twreporter-npm-packages/commit/009cf4cea4bf8e180f1db6a5dc530e978530a8be))
+* **universal-header:** remove TWREPORTER-73 ([6e077f3](https://github.com/twreporter/twreporter-npm-packages/commit/6e077f30f6bcd211533f9bc1e559ad3fe8edb4de))
+
+
+
+
+
 ## [2.1.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.1.8-rc.0...@twreporter/universal-header@2.1.8) (2020-09-10)
 
 **Note:** Version bump only for package @twreporter/universal-header
