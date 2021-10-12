@@ -39,10 +39,12 @@ const styles = {
     narrow: [0, 0, 1, 0], // px
   },
   zIndex: {
-    topRow: 3,
+    flexGroup: 3,
     channelBottom: 1,
-    channelTop: 4,
-    actionButton: 5,
+    channelTop: {
+      wide: 2,
+      narrow: 4,
+    },
   },
 }
 
@@ -188,7 +190,6 @@ const TopRow = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  z-index: ${styles.zIndex.topRow};
 `
 
 const ChannelContainer = styled.div`
@@ -200,6 +201,7 @@ const ChannelContainer = styled.div`
 
 const FlexGroup = styled.div`
   display: flex;
+  z-index: ${styles.zIndex.flexGroup};
 `
 
 const FlexItem = css`
@@ -219,7 +221,6 @@ const SloganContainer = styled.div`
 `
 
 const ActionContainer = styled.div`
-  z-index: ${styles.zIndex.actionButton};
   ${FlexItem}
   ${ActionEffect}
 `
@@ -243,7 +244,7 @@ const ChannelTopContainer = styled.div`
   max-width: 910px;
   height: ${styles.headerHeight.narrow}px;
   right: 186px;
-  z-index: ${styles.zIndex.channelTop};
+  z-index: ${props => styles.zIndex.channelTop[props.headerType]};
   ${FlexItem}
   ${ChannelEffect}
   ${mq.hdOnly`
@@ -300,7 +301,9 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                     </CSSTransition>
                   </SloganContainer>
                 </FlexGroup>
-                <ChannelTopContainer>
+                <ChannelTopContainer
+                  headerType={toUseNarrow ? 'narrow' : 'wide'}
+                >
                   <CSSTransition
                     in={toUseNarrow}
                     classNames="channel-effect"
