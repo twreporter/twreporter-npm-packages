@@ -4,7 +4,6 @@ import CSSTransition from 'react-transition-group/CSSTransition'
 import styled, { css } from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 import themeUtils from '../utils/theme'
-import animationUtils from '../utils/animations'
 import wellDefinedPropTypes from '../constants/prop-types'
 import channelConst from '../constants/channels'
 import colors from '../constants/colors'
@@ -64,18 +63,6 @@ const dropDownMenuEffectCSS = css`
   }
 `
 
-const linkUnderline = css`
-  animation: ${animationUtils.changeOpacity('0', '1')} 0.5s linear;
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  display: block;
-  content: '';
-  width: 100%;
-  height: 4px;
-  background-color: #a67a44;
-`
-
 const DropDownMenuWrapper = styled.div`
   position: ${props => styles.dropdownPosition[props.direction]};
   z-index: 999;
@@ -126,10 +113,6 @@ const ListItem = styled.li`
   &:first-child {
     border-width: ${props =>
       arrayToCssShorthand(styles.itemBorderWidthFirstChild[props.direction])};
-  }
-  &::after {
-    ${props =>
-      props.isActive && props.direction === 'row' ? linkUnderline : ''}
   }
   a,
   a:link,
@@ -358,9 +341,7 @@ class Channels extends React.PureComponent {
 
   render() {
     const { data, direction, borderWidth, themeFunction } = this.props
-    const { activeDataIndex } = this.state
     const channelsJSX = _.map(data, (channelItem, dataIndex) => {
-      const isActive = activeDataIndex === dataIndex
       return (
         <HeaderContext.Consumer key={channelItem.key}>
           {({ theme }) => {
@@ -375,7 +356,6 @@ class Channels extends React.PureComponent {
             return (
               <ListItem
                 direction={direction}
-                isActive={isActive}
                 onClick={this.handleClickChannel}
                 fontColor={fontColor}
                 hoverFontColor={hoverFontColor}

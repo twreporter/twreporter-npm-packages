@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import styled, { css, keyframes } from 'styled-components'
@@ -252,7 +252,6 @@ const ChannelTopContainer = styled.div`
 `
 
 const Header = ({ pathname, channels, services, actions, narrowActions }) => {
-  const [currentPathname, setPathname] = useState(pathname)
   return (
     <HeaderContext.Consumer>
       {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
@@ -309,10 +308,9 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                     unmountOnExit
                   >
                     <Channels
-                      currentPathname={currentPathname}
+                      currentPathname={pathname}
                       data={channels}
                       borderWidth={styles.channelTopBorderWidth}
-                      callback={setPathname}
                     />
                   </CSSTransition>
                 </ChannelTopContainer>
@@ -332,10 +330,9 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                 unmountOnExit
               >
                 <Channels
-                  currentPathname={currentPathname}
+                  currentPathname={pathname}
                   data={channels}
                   borderWidth={styles.channelBottomBorderWidth}
-                  callback={setPathname}
                 />
               </CSSTransition>
             </ChannelContainer>
