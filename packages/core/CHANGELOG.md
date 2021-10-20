@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.2.1...@twreporter/core@1.3.0-rc.0) (2021-10-20)
+
+
+### Features
+
+* **react-components, core:** add twitter entry in footer icon list ([9a3369d](https://github.com/twreporter/twreporter-npm-packages/commit/9a3369d033f324626545e120f1287a5a4cf53717))
+
+
+
+
+
 ## [1.2.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.2.1-rc.0...@twreporter/core@1.2.1) (2020-09-10)
 
 **Note:** Version bump only for package @twreporter/core
