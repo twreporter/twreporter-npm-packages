@@ -27,41 +27,21 @@ function getItemGroups(mainOrigin) {
         target: '_blank',
       },
       {
-        slug: 'contact',
-        text: '聯絡我們',
-        link: `${mainOrigin}${entityPaths.article}contact-footer`,
-        target: '_blank',
-      },
-      {
         slug: 'authors',
         text: '作者群',
         link: `${mainOrigin}/authors`,
         target: '_self',
       },
       {
-        slug: 'impact-and-annual-report',
-        text: '影響力報告',
-        link: `${mainOrigin}${entityPaths.article}impact-and-annual-report`,
-        target: '_self',
-      },
-    ],
-    [
-      {
-        slug: 'privacy',
-        text: '隱私政策',
-        link: `${mainOrigin}${entityPaths.article}privacy-footer`,
+        slug: 'contact',
+        text: '聯絡我們',
+        link: `${mainOrigin}${entityPaths.article}contact-footer`,
         target: '_blank',
       },
       {
-        slug: 'license',
-        text: '許可協議',
-        link: `${mainOrigin}${entityPaths.article}license-footer`,
-        target: '_blank',
-      },
-      {
-        slug: 'donate',
-        text: '捐款徵信',
-        link: `${mainOrigin}${entityPaths.article}credit-donate`,
+        slug: 'about',
+        text: '加入我們',
+        link: `${mainOrigin}${entityPaths.article}hiring-job-description`,
         target: '_blank',
       },
       {
@@ -73,11 +53,37 @@ function getItemGroups(mainOrigin) {
     ],
     [
       {
-        slug: 'about',
-        text: '加入我們',
-        link: `${mainOrigin}${entityPaths.article}hiring-job-description`,
+        slug: 'media-center',
+        text: '最新消息',
+        link: `${mainOrigin}${entityPaths.topics}media-center`,
         target: '_blank',
       },
+      {
+        slug: 'privacy',
+        text: '隱私政策',
+        link: `${mainOrigin}${entityPaths.article}privacy-footer`,
+        target: '_blank',
+      },
+      {
+        slug: 'donate',
+        text: '捐款徵信',
+        link: `${mainOrigin}${entityPaths.article}credit-donate`,
+        target: '_blank',
+      },
+      {
+        slug: 'license',
+        text: '許可協議',
+        link: `${mainOrigin}${entityPaths.article}license-footer`,
+        target: '_blank',
+      },
+      {
+        slug: 'impact-and-annual-report',
+        text: '影響力報告',
+        link: `${mainOrigin}${entityPaths.article}impact-and-annual-report`,
+        target: '_self',
+      },
+    ],
+    [
       {
         slug: 'subcribe',
         text: '訂閱電子報',
@@ -89,13 +95,20 @@ function getItemGroups(mainOrigin) {
         text: 'Podcast節目列表',
         link: `${mainOrigin}${entityPaths.article}podcast-list`,
         target: '_blank',
-        newFlag: true,
       },
       {
-        slug: 'media-center',
-        text: '報導者基金會新聞專區',
-        link: `${mainOrigin}${entityPaths.topics}media-center`,
+        slug: 'twreporter-lab',
+        text: '開放實驗室',
+        link: 'https://medium.com/twreporter',
         target: '_blank',
+      },
+      {
+        slug: 'branding-design',
+        text: '品牌辨識系統',
+        link:
+          'https://twreporter.gitbook.io/the-reporter-brand-guidelines/-Mkp5ci3KEsre0wOPYer/',
+        target: '_blank',
+        newFlag: true,
       },
     ],
   ]
@@ -162,6 +175,7 @@ const LinksColumn = styled(Column)`
   ${mq.tabletAndAbove`
     float: right;
     border-left: solid 0.25px #d8d8d8;
+    margin-bottom: 50px;
   `}
   ${mq.tabletOnly`
     width: 270px;
@@ -221,7 +235,7 @@ const Item = styled.a`
     color: #ffffff;
     font-size: 9px;
     font-family: Roboto;
-    margin-right: 5px;
+    margin-left: 5px;
     padding: 2px 5px;
     vertical-align: middle;
     animation: ${flickerAnimation} 0.7s infinite;
@@ -298,8 +312,8 @@ const buildList = itemGroups =>
               href={item.link}
               target={item.target}
             >
-              <span>New</span>
               <p>{item.text}</p>
+              <span>New</span>
             </Item>
           )
         })}
