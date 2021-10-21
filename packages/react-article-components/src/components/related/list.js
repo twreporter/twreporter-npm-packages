@@ -1,17 +1,20 @@
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import Card from './card'
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
-import mockup from './mockup'
-import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
-import predefinedProps from '../../constants/prop-types/related'
 import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
+import mockup from './mockup'
+// components
+import Card from './card'
+// constants
 import themeConsts from '../../constants/theme'
+import color from '../../constants/color'
+import predefinedProps from '../../constants/prop-types/related'
+// @twreporter
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
-
 const _ = {
   get,
   map,
@@ -30,22 +33,22 @@ const selectButtonColors = theme => {
   switch (theme) {
     case themeConsts.article.v2.photo:
       return css`
-        color: rgba(255, 255, 255, 0.8);
-        background-color: rgba(255, 255, 255, 0.1);
+        color: ${color.notSoWhite};
+        background-color: ${color.gray25};
         &:hover {
-          color: #ffffff;
-          background-color: rgba(255, 255, 255, 0.15);
+          color: ${color.white};
+          background-color: ${color.gray10};
         }
       `
     case themeConsts.article.v2.pink:
     case themeConsts.article.v2.default:
     default:
       return css`
-        color: #808080;
-        background-color: rgba(0, 0, 0, 0.08);
+        color: ${color.gray80};
+        background-color: ${color.gray45};
         &:hover {
-          color: #404040;
-          background-color: rgba(0, 0, 0, 0.13);
+          color: ${color.gray90};
+          background-color: ${color.gray53};
         }
       `
   }
@@ -94,9 +97,9 @@ const Item = styled.div`
   border-color: ${props => {
     switch (props.theme.name) {
       case themeConsts.article.v2.photo:
-        return 'rgba(255, 255, 255, 0.2)'
+        return color.gray10
       default:
-        return '#d8d8d8'
+        return color.gray50
     }
   }};
   margin-bottom: 40px;

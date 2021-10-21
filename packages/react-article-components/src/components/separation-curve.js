@@ -3,6 +3,7 @@ import React from 'react'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled from 'styled-components'
 import themeConst from '../constants/theme'
+import colorConst from '../constants/color'
 
 const Separation = styled.div`
   width: 192px;
@@ -15,12 +16,12 @@ const Separation = styled.div`
     fill: ${props => {
       switch (props.theme.name) {
         case themeConst.article.v2.pink:
-          return '#fbafef'
+          return colorConst.pink
         case themeConst.article.v2.photo:
-          return '#a67a44'
+          return colorConst.brown
         case themeConst.article.v2.default:
         default:
-          return '#d0a67d'
+          return colorConst.milkTea
       }
     }};
   }

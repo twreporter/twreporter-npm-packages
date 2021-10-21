@@ -1,11 +1,11 @@
-import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedProps from '../../constants/prop-types/aside'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { css } from 'styled-components'
+// constants
 import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
+import predefinedProps from '../../constants/prop-types/aside'
 // icons
 import BackToTopicIcon from '../../assets/aside/back-to-topic.svg'
 import FBIcon from '../../assets/aside/share-fb.svg'
@@ -16,6 +16,9 @@ import TwitterIcon from '../../assets/aside/share-twitter.svg'
 // bookmark icons
 import ToAddBookmarkIcon from '../../assets/aside/add-bookmark.svg'
 import AddedBookmarkIcon from '../../assets/aside/added-bookmark.svg'
+// @twreporter
+import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
+import mq from '@twreporter/core/lib/utils/media-query'
 
 function changeFontSizeOffsetToPct(fontSizeOffset) {
   switch (fontSizeOffset) {
@@ -45,7 +48,7 @@ const iconBlockCSS = css`
   &::after {
     position: absolute;
     top: 5px;
-    color: #262626;
+    color: ${colorConst.gray95};
     font-size: 14px;
     line-height: 23px;
     visibility: hidden;
@@ -141,29 +144,29 @@ const ToolsBlock = styled.div`
         return css`
           ${ShareIconBlock} {
             svg circle:first-child {
-              fill: rgba(255, 255, 255, 0.08);
+              fill: ${colorConst.gray25};
             }
             svg path {
-              fill: rgba(255, 255, 255, 0.8);
+              fill: ${colorConst.notSoWhite};
             }
           }
           ${TextIconBlock}, ${BackToTopicBlock}, ${PrintIconBlock}, ${BookmarkIconBlock} {
             svg circle:first-child {
-              fill: #08192d;
+              fill: ${colorConst.darkBlue};
             }
 
             svg path {
-              fill: rgba(255, 255, 255, 0.8);
+              fill: ${colorConst.notSoWhite};
             }
 
             &::after {
-              color: rgba(255, 255, 255, 0.8);
+              color: ${colorConst.notSoWhite};
             }
           }
 
           ${BackToTopicBlock} {
             svg circle:not(:first-child) {
-              fill: rgba(255, 255, 255, 0.8);
+              fill: ${colorConst.notSoWhite};
             }
           }
         `
@@ -202,7 +205,9 @@ function TwitterShareBT(props) {
     const currentURL = window.location.href
     const location =
       'https://twitter.com/intent/tweet?' +
-      `url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(document.title + ' #報導者')}`
+      `url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(
+        document.title + ' #報導者'
+      )}`
 
     window.open(location, '_blank')
   }

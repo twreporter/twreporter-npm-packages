@@ -6,6 +6,7 @@ import React, { PureComponent } from 'react'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -17,15 +18,15 @@ function getQuoteStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        color: rgba(255, 255, 255, 0.4);
-        border-left: rgba(255, 255, 255, 0.2);
+        color: ${color.gray5};
+        border-left: ${color.gray10};
       `
     case themeConst.article.v2.pink:
     case themeConst.article.v2.default:
     default:
       return css`
-        color: #808080;
-        border-left: #afafaf;
+        color: ${color.gray80};
+        border-left: ${color.gray60};
       `
   }
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -33,11 +34,11 @@ export const Caption = styled.div`
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return 'rgba(255, 255, 255, 0.7)'
+        return colorConst.notSoWhite
       case themeConst.article.v2.pink:
       case themeConst.article.v2.default:
       default:
-        return '#808080'
+        return colorConst.gray80
     }
   }};
   padding: 15px 15px 0 15px;

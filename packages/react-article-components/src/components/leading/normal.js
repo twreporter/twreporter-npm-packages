@@ -1,12 +1,16 @@
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
-import Img from '../img-with-placeholder'
 import React from 'react'
-import mq from '@twreporter/core/lib/utils/media-query'
-import get from 'lodash/get'
-import predefinedPropTypes from '../../constants/prop-types/leading'
 import styled, { css } from 'styled-components'
+// components
+import Img from '../img-with-placeholder'
+// constants
+import predefinedPropTypes from '../../constants/prop-types/leading'
 import themeConst from '../../constants/theme'
-
+import color from '../../constants/color'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -113,31 +117,31 @@ function getBackgroundBlockStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        background-color: #08192d;
+        background-color: ${color.darkBlue};
         ${FigCaption} {
-          color: rgba(255, 255, 255, 0.4);
+          color: ${color.gray5};
         }
         ${Topic} {
-          color: #d0a67d;
-          border-color: #a67a44;
+          color: ${color.milkTea};
+          border-color: ${color.brown};
         }
         ${Subtitle}, ${Title} {
-          color: rgba(255, 255, 255, 0.9);
+          color: ${color.notSoWhite};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        background-color: #f1f1f1;
+        background-color: ${color.gray30};
         ${FigCaption} {
-          color: #808080;
+          color: ${color.gray80};
         }
         ${Topic} {
-          color: #a67a44;
-          border-color: #d0a67d;
+          color: ${color.brown};
+          border-color: ${color.milkTea};
         }
         ${Subtitle}, ${Title} {
-          color: #404040;
+          color: ${color.gray90};
         }
       `
   }

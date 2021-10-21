@@ -7,6 +7,7 @@ import predefinedProps from '../../constants/prop-types/aside'
 import sortBy from 'lodash/sortBy'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
 import { idToPathSegment } from '../../constants/category'
 
 const _ = {
@@ -16,9 +17,9 @@ const _ = {
 }
 
 const createLine = (topOrBottom, themeName) => {
-  let borderColor = '#d8d8d8'
+  let borderColor = colorConst.gray50
   if (themeName === themeConst.article.v2.photo) {
-    borderColor = 'rgba(255, 255, 255, 0.2)'
+    borderColor = colorConst.gray10
   }
 
   return css`
@@ -73,7 +74,7 @@ const CategoryText = styled.div`
 const DateSection = styled.div`
   ${props => createLine('top', props.theme.name)}
   font-size: 14px;
-  color: #9c9c9c;
+  color: ${colorConst.gray70};
   margin-left: 5px;
   margin-top: 15px;
 
@@ -96,7 +97,7 @@ const AuthorRow = styled.div`
 
 const AuthorJobTitle = styled.div`
   font-size: 14px;
-  color: #808080;
+  color: ${colorConst.gray80};
   margin-left: 5px;
   padding-top: 2px;
   line-height: 1;
@@ -129,7 +130,7 @@ const AuthorName = styled.div`
 
 const RawAuthorText = styled.div`
   font-size: 14px;
-  color: #808080;
+  color: ${colorConst.gray80};
   padding-left: 5px;
 `
 
@@ -184,39 +185,39 @@ function getMetadataContainerStyles(themeName) {
     case themeConst.article.v2.photo:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: #d0a67d;
+          color: ${colorConst.milkTea};
           &:hover {
-            border-color: #d0a67d;
+            border-color: ${colorConst.milkTea};
           }
         }
         ${AngledSeparationLine} {
-          border-color: #a67a44;
+          border-color: ${colorConst.brown};
         }
         ${TagButton} {
-          border-color: #808080;
-          color: #808080;
+          border-color: ${colorConst.gray80};
+          color: ${colorConst.gray80};
           &:hover {
-            color: #fff;
-            border-color: #fff;
+            color: ${colorConst.white};
+            border-color: ${colorConst.white};
           }
         }
       `
     case themeConst.article.v2.pink:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: #355ed3;
+          color: ${colorConst.blue};
           &:hover {
-            border-color: #355ed3;
+            border-color: ${colorConst.blue};
           }
         }
         ${AngledSeparationLine} {
-          border-color: #fbafef;
+          border-color: ${colorConst.pink};
         }
         ${TagButton} {
-          border-color: #808080;
-          color: #808080;
+          border-color: ${colorConst.gray80};
+          color: ${colorConst.gray80};
           &:hover {
-            background-color: #fff;
+            background-color: ${colorConst.white};
           }
         }
       `
@@ -224,19 +225,19 @@ function getMetadataContainerStyles(themeName) {
     default:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: #a67a44;
+          color: ${colorConst.brown};
           &:hover {
-            border-color: #a67a44;
+            border-color: ${colorConst.brown};
           }
         }
         ${AngledSeparationLine} {
-          border-color: #d0a67d;
+          border-color: ${colorConst.milkTea};
         }
         ${TagButton} {
-          border-color: #808080;
-          color: #808080;
+          border-color: ${colorConst.gray80};
+          color: ${colorConst.gray80};
           &:hover {
-            background-color: #fff;
+            background-color: ${colorConst.white};
           }
         }
       `

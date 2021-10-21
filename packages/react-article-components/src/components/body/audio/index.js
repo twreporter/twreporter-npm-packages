@@ -9,6 +9,7 @@ import SeekBar from './seek-bar'
 import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
 import typography from '../../../constants/typography'
+import color from '../../../constants/color'
 
 const TimeRow = styled.div`
   width: 100%;
@@ -105,43 +106,43 @@ function getContainerStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        border-color: rgba(255, 255, 255, 0.2);
+        border-color: ${color.gray10};
 
         ${TimeRow} {
-          color: rgba(255, 255, 255, 0.8);
+          color: ${color.notSoWhite};
         }
 
         ${Title} {
-          color: #fff;
+          color: ${color.white};
         }
 
         ${Desc} {
-          color: rgba(255, 255, 255, 0.8);
+          color: ${color.notSoWhite};
         }
       `
     case themeConst.article.v2.pink:
       return css`
-        border-color: #d8d8d8;
+        border-color: ${color.gray50};
 
         ${TimeRow} {
-          color: #808080;
+          color: ${color.gray80};
         }
 
         ${Title}, ${Desc} {
-          color: #494949;
+          color: ${color.gray85};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        border-color: #d8d8d8;
+        border-color: ${color.gray50};
 
         ${TimeRow} {
-          color: #808080;
+          color: ${color.gray80};
         }
 
         ${Title}, ${Desc} {
-          color: #404040;
+          color: ${color.gray90};
         }
       `
   }

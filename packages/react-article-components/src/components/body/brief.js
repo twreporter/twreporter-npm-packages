@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -22,11 +23,11 @@ const Content = styled.div`
     color: ${props => {
       switch (props.theme.name) {
         case themeConst.article.v2.photo:
-          return 'rgba(255, 255, 255, 0.9)'
+          return color.notSoWhite
         case themeConst.article.v2.pink:
         case themeConst.article.v2.default:
         default:
-          return '#808080'
+          return color.gray80
       }
     }};
 

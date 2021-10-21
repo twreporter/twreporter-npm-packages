@@ -1,18 +1,19 @@
 import { css } from 'styled-components'
 import themeConst from './theme'
 import typography from './typography'
+import color from './color'
 
 function getParagraphTextStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        color: rgba(255, 255, 255, 0.7);
+        color: ${color.notSoWhite};
       `
     case themeConst.article.v2.pink:
     case themeConst.article.v2.default:
     default:
       return css`
-        color: #404040;
+        color: ${color.gray90};
       `
   }
 }
@@ -35,12 +36,12 @@ function getLinkChildrenStyles(themeName) {
         a:link,
         a:visited,
         a:active {
-          color: #d0a67d;
+          color: ${color.milkTea};
           text-decoration: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          border-bottom: 1px solid ${color.gray10};
         }
         a:hover {
-          border-color: #d0a67d;
+          border-color: ${color.milkTea};
         }
       `
     case themeConst.article.v2.pink:
@@ -48,12 +49,12 @@ function getLinkChildrenStyles(themeName) {
         a:link,
         a:visited,
         a:active {
-          color: #355ed3;
+          color: ${color.blue};
           text-decoration: none;
-          border-bottom: 1px solid #d8d8d8;
+          border-bottom: 1px solid ${color.gray50};
         }
         a:hover {
-          border-color: #355ed3;
+          border-color: ${color.blue};
         }
       `
     case themeConst.article.v2.default:
@@ -62,12 +63,12 @@ function getLinkChildrenStyles(themeName) {
         a:link,
         a:visited,
         a:active {
-          color: #a67a44;
+          color: ${color.brown};
           text-decoration: none;
-          border-bottom: 1px solid #d8d8d8;
+          border-bottom: 1px solid ${color.gray50};
         }
         a:hover {
-          border-color: #a67a44;
+          border-color: ${color.brown};
         }
       `
   }

@@ -1,11 +1,15 @@
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
-import Img from '../img-with-placeholder'
 import React, { PureComponent } from 'react'
-import get from 'lodash/get'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedPropTypes from '../../constants/prop-types/leading'
 import styled from 'styled-components'
-
+// components
+import Img from '../img-with-placeholder'
+// constants
+import predefinedPropTypes from '../../constants/prop-types/leading'
+import color from '../../constants/color'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -69,7 +73,7 @@ const TextBlock = styled.div`
 
 const TopicTextBlock = styled.div`
   background-color: ${props => props.theme.colors.primary.support};
-  border: solid 2px #fff;
+  border: solid 2px ${color.white};
   display: inline-block;
 
   position: relative;
@@ -84,7 +88,7 @@ const TopicTextBlock = styled.div`
   line-height: 1.8;
   letter-spacing: 0.4px;
 
-  box-shadow: 5px 5px #fff;
+  box-shadow: 5px 5px ${color.white};
 `
 
 const TitleTextBlock = styled.h1`
@@ -117,8 +121,8 @@ const TitleTextBlock = styled.h1`
     font-size: 34px;
     > span {
       line-height: 1.6;
-      background-color: #fff;
-      box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
+      background-color: ${color.white};
+      box-shadow: 10px 0 0 ${color.white}, -10px 0 0 ${color.white};
     }
   `}
 
@@ -140,7 +144,7 @@ const SubtitleTextBlock = styled.h2`
 
   ${mq.desktopAndAbove`
     > span {
-      background-color: #fff;
+      background-color: ${color.white};
     }
   `}
 `
