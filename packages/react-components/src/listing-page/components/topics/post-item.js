@@ -10,6 +10,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import color from '../../constants/color'
 
 const styles = {
   imgLandscape: {
@@ -49,7 +50,7 @@ const PostBox = styled(Link)`
     width: ${styles.imgLandscape.desktop.width}px;
   `}
   ${mq.tabletAndAbove`
-    border: solid .5px #d8d8d8;
+    border: solid .5px ${color.gray};
     overflow: hidden;
     flex-direction: column;
   `}
@@ -79,7 +80,7 @@ const PostImage = styled.div`
   }
 `
 const PostText = styled.div`
-  color: #4a4949;
+  color: ${color.darkGray};
   font-weight: ${fontWeight.bold};
   font-size: 16px;
   line-height: 1.5;

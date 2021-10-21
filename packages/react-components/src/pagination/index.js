@@ -1,11 +1,15 @@
-import { absoluteCentering } from '@twreporter/core/lib/constants/predefined-css'
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
-import PageDownIcon from './assets/page-down.svg'
-import PageUpIcon from './assets/page-up.svg'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+// assets
+import PageDownIcon from './assets/page-down.svg'
+import PageUpIcon from './assets/page-up.svg'
+// constants
+import color from './constants/color'
+// @twreporter
+import { absoluteCentering } from '@twreporter/core/lib/constants/predefined-css'
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 // lodash
 import concat from 'lodash/concat'
 import get from 'lodash/get'
@@ -48,7 +52,7 @@ const Box = styled.div`
   display: inline-block;
   font-size: 14px;
   cursor: pointer;
-  color: #a67a44;
+  color: ${color.brown};
   position: relative;
   > :first-child {
     ${absoluteCentering}
@@ -56,12 +60,12 @@ const Box = styled.div`
 `
 
 const PageNumberBox = styled(Box)`
-  border: solid 1px #a67a44;
+  border: solid 1px ${color.brown};
   border-radius: 50%;
   line-height: ${styles.btnBoxSize.desktop}px;
-  background-color: ${props => (props.isCurrent ? '#a67a44' : 'transparent')};
+  background-color: ${props => (props.isCurrent ? color.brown : 'transparent')};
   > span {
-    color: ${props => (props.isCurrent ? '#ffffff' : '#a67a44')};
+    color: ${props => (props.isCurrent ? color.white : color.brown)};
   }
   ${mq.mobileOnly`
     display: ${props => (props.isCurrent ? '' : 'none')};
@@ -80,7 +84,7 @@ const PrevNextBtn = styled(Box)`
   padding: ${arrayToCssShorthand(styles.prevNextBtnPadding)};
   cursor: pointer;
   path {
-    stroke: #a67a44;
+    stroke: ${color.brown};
   }
 `
 

@@ -1,12 +1,16 @@
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
-import { resetLinkStyle } from '../../constants/predefined-css'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { Link } from 'react-router-dom'
-import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React from 'react'
-import RightArrowIcon from '../../assets/arrow-right.svg'
 import styled from 'styled-components'
+// assets
+import RightArrowIcon from '../../assets/arrow-right.svg'
+// constants
+import { resetLinkStyle } from '../../constants/predefined-css'
+import color from '../../constants/color'
+// @twreporter
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const styles = {
   goToTopicMargin: [20, 'auto', 0, 'auto'],
@@ -31,9 +35,9 @@ const StyledLink = styled(Link)`
 
 const SectionTitle = styled.div`
   width: 100%;
-  border-bottom: 2px solid #d8d8d8;
+  border-bottom: 2px solid ${color.gray};
   padding: ${arrayToCssShorthand(styles.titlePadding)};
-  color: #4a4949;
+  color: ${color.darkGray};
   font-size: 18px;
   font-weight: ${fontWeight.bold};
   line-height: 1;
@@ -54,7 +58,7 @@ const SectionContent = styled.div`
 `
 
 const GoToTopic = styled.div`
-  color: #5eb2fd;
+  color: ${color.blue};
   text-align: center;
   line-height: 1;
   padding: ${arrayToCssShorthand(styles.goToTopicPadding)};

@@ -1,4 +1,5 @@
 import styles from './constants/styles'
+import color from './constants/color'
 import Content from './content'
 import IconList from './icon-list'
 import PropTypes from 'prop-types'
@@ -13,7 +14,7 @@ import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 const FooterContainer = styled.div`
-  border-top: solid 0.5px #d8d8d8;
+  border-top: solid 0.5px ${color.lightGray};
   width: 100%;
   background-color: ${props => props.bgColor};
   padding: 0;
@@ -52,7 +53,7 @@ const CopyRight = styled.p`
   font-size: 12px;
   font-weight: ${fontWeight.medium};
   letter-spacing: 0.4px;
-  color: #9c9c9c;
+  color: ${color.gray};
   ${mq.mobileOnly`
     text-align: center;
     margin-top: 10px;
@@ -93,7 +94,7 @@ Footer.propTypes = {
 }
 
 Footer.defaultProps = {
-  bgColor: '#ffffff',
+  bgColor: color.white,
   releaseBranch: releaseBranchConsts.release,
   host: '',
   pathname: '',

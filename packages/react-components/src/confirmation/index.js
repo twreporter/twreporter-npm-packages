@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import WarningSign from './assets/delete-warning-sign.svg'
+import color from './constants/color'
 
 const Container = styled.div`
   width: 100%;
@@ -12,7 +13,7 @@ const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 5;
-  background-color: rgba(115, 115, 115, 0.8);
+  background-color: ${color.gray};
 `
 
 const Dialog = styled.div`
@@ -58,13 +59,13 @@ const FunctionButton = styled.button`
 `
 
 const Cancel = styled(FunctionButton)`
-  border: solid 2px #3e3f3f;
+  border: solid 2px ${color.darkGray};
   margin-right: 25px;
 `
 
 const Confirm = styled(FunctionButton)`
-  border: solid 2px #e60013;
-  color: #c7000d;
+  border: solid 2px ${color.lightRed};
+  color: ${color.red};
 `
 
 const IconContainer = styled.div`

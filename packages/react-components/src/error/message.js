@@ -3,6 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 // core
 import mq from '@twreporter/core/lib/utils/media-query'
+// constants
+import color from './constants/color'
 // assets
 import Building from './assets/building.svg'
 import Dot from './assets/dot.svg'
@@ -73,14 +75,14 @@ const ChineseText = styled.div`
     font-size: 13px;
     line-height: 1.62;
     text-align: left;
-    color: #000000;
+    color: ${color.black};
     font-weight: 900;
     ::after {
       content: "";
       display: block;
       width: 14px;
       height: 1px;
-      background-color: #000000;
+      background-color: ${color.black};
       position: relative;
       top: 6px;
       left: 7px;
@@ -93,14 +95,14 @@ const ChineseText = styled.div`
     font-size: 18px;
     line-height: 1.5;
     text-align: left;
-    color: #000000;
+    color: ${color.black};
     font-weight: 900;
     ::after {
       content: "";
       display: block;
       width: 20px;
       height: 1px;
-      background-color: #000000;
+      background-color: ${color.black};
       position: relative;
       top: 19px;
       left: 11px;
@@ -186,11 +188,11 @@ const BackToHomeBtn = styled.a`
   display: block;
   cursor: pointer;
   text-align: center;
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: ${color.black};
+  color: ${color.white};
   text-decoration: none;
   &:hover, &:active, &:focus, &:visited {
-    color: #FFFFFF;
+    color: ${color.white};
     text-decoration: none;
   }
   ${mq.mobileOnly`

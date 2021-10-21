@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import styles from './constants/styles'
+import color from './constants/color'
 // core
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
@@ -120,7 +121,7 @@ const Intro = styled.p`
   font-weight: ${fontWeight.medium};
   line-height: 1.5;
   letter-spacing: 0.4px;
-  color: #9c9c9c;
+  color: ${color.gray};
   ${mq.mobileOnly`
     font-size: 16px;
     line-height: 1.63;
@@ -174,7 +175,7 @@ const LinksColumn = styled(Column)`
   `}
   ${mq.tabletAndAbove`
     float: right;
-    border-left: solid 0.25px #d8d8d8;
+    border-left: solid 0.25px ${color.lightGray};
     margin-bottom: 50px;
   `}
   ${mq.tabletOnly`
@@ -227,12 +228,12 @@ const Item = styled.a`
     font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
     font-weight: ${fontWeight.medium};
     letter-spacing: 1.3px;
-    color: #9c9c9c;
+    color: ${color.gray};
   }
   span {
     visibility: ${props => (props.visible ? 'visible' : 'hidden')};
-    background: #c7000a;
-    color: #ffffff;
+    background: ${color.red};
+    color: ${color.white};
     font-size: 9px;
     font-family: Roboto;
     margin-left: 5px;
@@ -242,7 +243,7 @@ const Item = styled.a`
   }
   &:hover {
     p {
-      color: #262626;
+      color: ${color.notSoBlack};
     }
   }
   ${mq.desktopAndAbove`
@@ -262,22 +263,22 @@ const DonateButton = styled.div`
     text-decoration: none !important;
     width: 140px;
     height: 55px;
-    background-color: #ffffff;
-    border: solid 0.5px #a67a44;
+    background-color: ${color.white};
+    border: solid 0.5px ${color.gold};
     display: table;
     &:hover{
-      background-color: #a67a44;
+      background-color: ${color.gold};
     }
     p {
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-      color: #a67a44;
+      color: ${color.gold};
       font-size: 14px;
       font-weight: ${fontWeight.medium};
       letter-spacing: 1.3px;
       &:hover{
-        color: #ffffff;
+        color: ${color.white};
       }
     }
     ${mq.tabletAndAbove`

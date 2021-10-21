@@ -1,14 +1,18 @@
-import { TEXT } from '../../constants/topics'
-import { TopSectionContent, ListSectionContent, SectionTitle } from './section'
-import FetchingWrapper from '../../../is-fetching-wrapper'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import PageContent from './page-content'
-import PostItem from './post-item'
-import PostsContainer from './posts'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import styled from 'styled-components'
+// components
+import FetchingWrapper from '../../../is-fetching-wrapper'
+import PostsContainer from './posts'
+import PostItem from './post-item'
 import TopicItem from './topic-item'
+import PageContent from './page-content'
+import { TopSectionContent, ListSectionContent, SectionTitle } from './section'
+// constants
+import { TEXT } from '../../constants/topics'
+import color from '../../constants/color'
+// @twreporter
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -21,7 +25,7 @@ const _ = {
 const NoData = styled.div`
   width: 100%;
   font-size: 16px;
-  color: #4a4949;
+  color: ${color.darkGray};
   font-weight: ${fontWeight.normal};
   text-align: center;
 `
