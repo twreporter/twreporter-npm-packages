@@ -54,12 +54,6 @@ function getItemGroups(mainOrigin) {
     ],
     [
       {
-        slug: 'media-center',
-        text: '最新消息',
-        link: `${mainOrigin}${entityPaths.topics}media-center`,
-        target: '_blank',
-      },
-      {
         slug: 'privacy',
         text: '隱私政策',
         link: `${mainOrigin}${entityPaths.article}privacy-footer`,
@@ -75,6 +69,12 @@ function getItemGroups(mainOrigin) {
         slug: 'license',
         text: '許可協議',
         link: `${mainOrigin}${entityPaths.article}license-footer`,
+        target: '_blank',
+      },
+      {
+        slug: 'media-center',
+        text: '基金會新聞',
+        link: `${mainOrigin}${entityPaths.topics}media-center`,
         target: '_blank',
       },
       {
@@ -99,7 +99,7 @@ function getItemGroups(mainOrigin) {
       },
       {
         slug: 'twreporter-lab',
-        text: '開放實驗室',
+        text: '報導者開放實驗室',
         link: 'https://medium.com/twreporter',
         target: '_blank',
       },
