@@ -16,6 +16,7 @@ import styled from 'styled-components'
 import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
+import color from '../constants/color'
 
 const _ = {
   get,
@@ -36,7 +37,7 @@ const mockup = {
 }
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
 `
 
 const UpperList = styled.div`
@@ -113,7 +114,7 @@ const Item = styled.div`
   }
 `
 const WordBlock = styled.div`
-  background-color: #fff;
+  background-color: ${color.white};
   width: 430px;
   min-height: 115px;
   padding: 8px 20px 15px 12px;
@@ -137,14 +138,14 @@ const Title = styled.h3`
   margin: 0;
   font-weight: ${fontWeight.bold};
   font-size: 20px;
-  color: #4a4a4a;
+  color: ${color.darkGray};
   @media (min-width: ${breakPoints.desktopMinWidth}) {
-    ${truncate('relative', 1.4, 2, '#fff')};
+    ${truncate('relative', 1.4, 2, color.white)};
   }
 
   ${finalMedia.tablet`
     font-size: 16px;
-    ${truncate('relative', 1.4, 3, '#fff')};
+    ${truncate('relative', 1.4, 3, color.white)};
   `}
 `
 

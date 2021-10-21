@@ -20,11 +20,12 @@ import SectionName from './common-utils/section-name'
 import sectionStrings from '../constants/section-strings'
 import smoothScroll from 'smoothscroll'
 import styled from 'styled-components'
+import color from '../constants/color'
 
 const mobileWidth = breakPoints.mobileMaxWidth
 const ContentContainer = styled(Section)`
   padding-bottom: 123px;
-  color: #4a4949;
+  color: ${color.darkGray};
   ${finalMedia.mobile`
     padding-bottom: 0px;
   `}
@@ -94,7 +95,7 @@ const ItemTitle = styled.h3`
   ${finalMedia.mobile`
     margin: 6px;
   `}
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 const ItemIconContainer = styled.div`

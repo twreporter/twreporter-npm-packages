@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
 import { breakPoints, finalMedia } from '../utils/style-utils'
+import color from '../constants/color'
 
 const _ = {
   get,
@@ -39,7 +40,7 @@ const headerPadding = {
 }
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
   position: relative;
   ${finalMedia.mobile`
     padding: 0;
@@ -137,7 +138,7 @@ const Title = styled.div`
   height: auto;
   font-size: 16px;
   font-weight: ${fontWeight.bold};
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 class LatestSection extends React.Component {

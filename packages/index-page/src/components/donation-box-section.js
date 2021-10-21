@@ -4,6 +4,7 @@ import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
 import DonationLink from '@twreporter/react-components/lib/donation-link'
 import React from 'react'
 import styled from 'styled-components'
+import color from '../constants/color'
 
 const mockup = {
   defaultWidth: 320,
@@ -13,7 +14,7 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-color: #a67a44;
+  background-color: ${color.brown};
   padding-top: 30px;
   padding-bottom: 30px;
   ${finalMedia.mobile`
@@ -29,7 +30,7 @@ const ContentContainer = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 100px;
-  color: #ffffff;
+  color: ${color.white};
   h3{
     margin: 0;
     font-size: 32px;
@@ -73,9 +74,9 @@ const DonateButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: #ffffff;
+    background: ${color.white};
     border: none;
-    color: #a67a44;
+    color: ${color.brown};
     font-size: 16px;
     cursor: pointer;
     display: table;

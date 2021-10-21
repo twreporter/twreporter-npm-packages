@@ -1,21 +1,26 @@
+import React from 'react'
+import { Waypoint } from 'react-waypoint'
+import PropTypes from 'prop-types'
+import postPropType from './prop-types/post'
+import styled from 'styled-components'
+import SectionAnimationWrapper from './animations/section-animation-wrapper'
+// utils
+import { breakPoints, finalMedia } from '../utils/style-utils'
+import { getHref } from '../utils/getHref'
+// components
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
-import PropTypes from 'prop-types'
-import React from 'react'
-import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
-import { Waypoint } from 'react-waypoint'
-import categoryStrings from '../constants/category-strings'
-import get from 'lodash/get'
-import postPropType from './prop-types/post'
+// constants
 import sectionStrings from '../constants/section-strings'
-import styled from 'styled-components'
-import { breakPoints, finalMedia } from '../utils/style-utils'
+import categoryStrings from '../constants/category-strings'
+import color from '../constants/color'
+// @twreporter
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
-
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -38,7 +43,7 @@ const oneColumnWidthInt = 768
 const Section = styled.div`
   position: relative;
   background-color: ${props => {
-    return props.isAutoHover ? '#fff' : '#08192d'
+    return props.isAutoHover ? color.white : color.darkBlue
   }};
   padding-bottom: ${props => {
     return props.isAutoHover ? '40px' : '80px'
@@ -94,7 +99,7 @@ const Item = styled.li`
 `
 const Title = styled.div`
   position: absolute;
-  color: #fff;
+  color: ${color.white};
   font-size: 14px;
   position: absolute;
   top: 50%;
@@ -139,7 +144,7 @@ const Overlay = styled.div`
     return props.isHover ? 1 : 0
   }};
   transition: 0.5s ease;
-  background-color: rgba(21, 54, 84, 0.7);
+  background-color: ${color.ashBlue};
 
   @media (min-width: ${oneColumnWidth}) {
     &:hover {

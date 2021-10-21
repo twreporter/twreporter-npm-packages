@@ -15,6 +15,7 @@ import styled from 'styled-components'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
 import { truncate, breakPoints, finalMedia } from '../utils/style-utils'
+import color from '../constants/color'
 
 const mockup = {
   img: {
@@ -155,7 +156,7 @@ const MiddleCategory = styled(CategoryName)`
 const Title = styled.div`
   font-size: ${props => (props.middle ? `32px` : `16px`)};
   font-weight: ${fontWeight.bold};
-  color: #4a4949;
+  color: ${color.darkGray};
   width: ${props => (props.middle ? '450px' : '150px')};
   position: absolute;
   text-align: center;
@@ -178,7 +179,7 @@ const Description = styled.div`
   width: 450px;
   top: ${props => (props.top ? props.top : '0')};
   left: ${props => (props.left ? props.left : '0')};
-  color: #4a4949;
+  color: ${color.darkGray};
   transform: translateX(-50%);
   ${truncate('absolute', 1.43, 2, 'white')};
   @media (min-width: ${breakPoints.tabletMinWidth}) {
@@ -191,7 +192,7 @@ const Description = styled.div`
 const HoverEffect = styled.div`
   cursor: pointer;
   text-decoration: none;
-  color: #4a4949;
+  color: ${color.darkGray};
   @media (min-width: ${breakPoints.tabletMinWidth}) {
     ${props => (props.ifHover ? 'opacity: 0.7;' : 'opacity: 1;')}
     transition: .2s opacity linear;

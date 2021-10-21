@@ -11,6 +11,7 @@ import TRLink from './common-utils/twreporter-link'
 import get from 'lodash/get'
 import postPropType from './prop-types/post'
 import sectionStrings from '../constants/section-strings'
+import color from '../constants/color'
 import styled from 'styled-components'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
@@ -35,7 +36,7 @@ const mockup = {
 
 const CarouselContainer = styled(Section)`
   padding-top: 0;
-  background: #ffffff;
+  background: ${color.white};
   @media (min-width: ${breakPoints.tabletMinWidth}) {
     display: none;
   }
@@ -62,14 +63,14 @@ const Title = styled.div`
   width: ${itemWidthPct}%;
   font-size: 24px;
   font-weight: ${fontWeight.bold};
-  color: #4a4949;
+  color: ${color.darkGray};
   position: absolute;
 `
 
 const TitleSpan = styled.span`
   width: 100%;
   height: 3.99;
-  ${truncate('absolute', 1.33, 3, `#ffffff`, 'center')};
+  ${truncate('absolute', 1.33, 3, color.white, 'center')};
 `
 
 const Description = styled.div`
@@ -79,7 +80,7 @@ const Description = styled.div`
   transform: translateX(-50%);
   width: ${itemWidthPct}%;
   text-align: left;
-  color: #4a4949;
+  color: ${color.darkGray};
   ${truncate('absolute', 1.43, 3, 'white')};
 `
 

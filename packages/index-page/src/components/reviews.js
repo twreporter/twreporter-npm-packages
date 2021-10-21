@@ -16,6 +16,7 @@ import styled from 'styled-components'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import { getHref } from '../utils/getHref'
 import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+import color from '../constants/color'
 
 const _ = {
   get,
@@ -122,13 +123,13 @@ const Title = styled.div`
   ${finalMedia.tablet`
     width: 144px;
   `}
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 const Description = styled.div`
   margin-top: 8px;
   font-size: 16px;
-  color: #4a4949;
+  color: ${color.darkGray};
   ${finalMedia.tablet`
     width: 144px;
   `}

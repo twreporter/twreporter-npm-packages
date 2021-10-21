@@ -16,6 +16,7 @@ import strings from '../constants/strings'
 import styled from 'styled-components'
 import topicPropType from './prop-types/topic'
 import TRLink from './common-utils/twreporter-link'
+import color from '../constants/color'
 
 const _ = {
   forEach,
@@ -49,7 +50,7 @@ const mockup = {
 }
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
 `
 
 const Rows = styled.div`
@@ -112,7 +113,7 @@ const Column = styled.div`
 const TopicNameColumn = styled(Column)`
   margin-bottom: 0;
   font-size: 12px;
-  color: #c4333e;
+  color: ${color.red};
 `
 
 const TitleColumn = styled(Column)`
@@ -121,7 +122,7 @@ const TitleColumn = styled(Column)`
 `
 
 const Title = styled.div`
-  color: #4a4949;
+  color: ${color.darkGray};
   line-height: 1.25;
 `
 
@@ -146,7 +147,7 @@ const DescColumn = styled(Column)`
 const Desc = styled.div`
   width: ${(mockup.desktop.width.desc / mockup.desktop.width.default) * 100}%;
   margin: 0 auto;
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 const Mobile = {
@@ -178,7 +179,7 @@ const Mobile = {
   Desc: styled(Desc)`
     width: 100%;
     font-size: 18px;
-    ${truncate('relative', 1.5, 6, '#f2f2f2')}
+    ${truncate('relative', 1.5, 6, color.lightGray)}
     margin-left: 0;
   `,
 }
