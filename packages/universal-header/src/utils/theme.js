@@ -1,17 +1,15 @@
 import colorsConst from '../constants/colors'
 import themeConst from '../constants/theme'
 import { ServiceIcons, Icons } from './icon'
-import LogoLightGray from '../../static/twreporter-logo-light-gray.svg'
-import Logo from '../../static/twreporter-logo.svg'
 
-function selectLogoComponent(theme) {
+function selectLogoType(theme) {
   switch (theme) {
     case themeConst.photography:
     case themeConst.transparent: {
-      return LogoLightGray
+      return 'white'
     }
     default: {
-      return Logo
+      return 'default'
     }
   }
 }
@@ -261,7 +259,7 @@ function selectSloganHBTheme(theme) {
 }
 
 export default {
-  selectLogoComponent,
+  selectLogoType,
   selectServiceIcons,
   selectHamburgerServiceIcons,
   selectIcons,

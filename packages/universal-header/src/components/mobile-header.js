@@ -10,6 +10,7 @@ import Link from './customized-link'
 import HamburgerMenu from './hamburger-menu'
 import ActionButton from './action-button'
 import Slogan from './slogan'
+import Logo from './logo'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
@@ -32,8 +33,8 @@ const styles = {
     tablet: 40, // px
   },
   logoWidth: {
-    mobile: 142, // px
-    tablet: 190, // px
+    mobile: 160, // px
+    tablet: 200, // px
   },
   actionMarginLeft: {
     mobile: 30, // px
@@ -97,7 +98,7 @@ const LogoContainer = styled.div`
   a {
     display: flex;
   }
-  svg {
+  img {
     height: ${styles.logoHeight.mobile}px;
     width: ${styles.logoWidth.mobile}px;
     ${mq.tabletOnly`
@@ -206,7 +207,6 @@ export default class MobileHeader extends React.PureComponent {
             toUseNarrow,
             hideHeader,
           }) => {
-            const Logo = themeUtils.selectLogoComponent(theme)
             const { bgColor } = themeUtils.selectHeaderTheme(theme)
             const MenuIcon = themeUtils.selectIcons(theme).menu
             return (
