@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.2-rc.1...@twreporter/universal-header@2.2.2-rc.2) (2021-10-25)
+
+
+### Bug Fixes
+
+* **react-components, universal-header:** update twreporter logo ([d2324cd](https://github.com/twreporter/twreporter-npm-packages/commit/d2324cd93ea8e66621ce7aa7969e6500ed77c2a3))
+
+
+
+
+
 ## [2.2.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.2-rc.0...@twreporter/universal-header@2.2.2-rc.1) (2021-10-20)
 
 **Note:** Version bump only for package @twreporter/universal-header

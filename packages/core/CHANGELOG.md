@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.3.0-rc.0...@twreporter/core@1.3.0-rc.1) (2021-10-25)
+
+
+### Bug Fixes
+
+* **react-components:** fix spec change ([29468e1](https://github.com/twreporter/twreporter-npm-packages/commit/29468e1b10da13a1a506b5625f957bc5280e9960))
+
+
+
+
+
 # [1.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.2.1...@twreporter/core@1.3.0-rc.0) (2021-10-20)
 
 

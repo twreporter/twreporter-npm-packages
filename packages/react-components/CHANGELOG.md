@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.6.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.0-rc.1...@twreporter/react-components@8.6.0-rc.2) (2021-10-25)
+
+
+### Bug Fixes
+
+* **react-components:** fix spec change ([29468e1](https://github.com/twreporter/twreporter-npm-packages/commit/29468e1b10da13a1a506b5625f957bc5280e9960))
+* **react-components, universal-header:** update twreporter logo ([d2324cd](https://github.com/twreporter/twreporter-npm-packages/commit/d2324cd93ea8e66621ce7aa7969e6500ed77c2a3))
+
+
+
+
+
 # [8.6.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.0-rc.0...@twreporter/react-components@8.6.0-rc.1) (2021-10-20)
 
 
