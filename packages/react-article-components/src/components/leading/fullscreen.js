@@ -6,6 +6,7 @@ import Img from '../img-with-placeholder'
 // constants
 import color from '../../constants/color'
 import predefinedPropTypes from '../../constants/prop-types/leading'
+import typography from '../../constants/typography'
 // @twerporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
@@ -53,7 +54,8 @@ const TextBlock = styled.div`
 
 const Title = styled.h1`
   margin: 0;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
+  font-family: ${typography.font.family.title};
   line-height: 1.4;
   color: ${color.white};
   font-size: 50px;
@@ -68,7 +70,7 @@ const Subtitle = styled.div`
   color: ${color.white};
   text-shadow: 0 2px 4px ${color.gray75};
   font-size: 40px;
-  font-weight: 100;
+  font-weight: ${typography.font.weight.normal};
   ${mq.tabletAndAbove`
     font-size: 40px;
   `}
@@ -83,7 +85,7 @@ const Topic = styled.div`
   background-color: ${color.paleBrown};
   color: ${color.white};
   font-size: 16px;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
 `
 
 const RightArrow = styled.div`

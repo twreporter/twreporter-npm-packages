@@ -17,8 +17,7 @@ const _ = {
 }
 
 const Content = styled.div`
-  /* ff-tisa-web-pro is for english text */
-  font-family: ff-tisa-web-pro, source-han-serif-tc, serif;
+  font-family: ${typography.font.family.title};
   p {
     color: ${props => {
       switch (props.theme.name) {
@@ -33,7 +32,7 @@ const Content = styled.div`
 
     line-height: 1.7;
     letter-spacing: 0.7px;
-    font-weight: ${typography.font.weight.semiBold};
+    font-weight: ${typography.font.weight.bold};
     font-size: ${props => props.theme.fontSizeOffset + 20}px;
     margin: 0 0 1em 0;
     &:last-child {

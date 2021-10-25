@@ -6,6 +6,7 @@ import Img from '../img-with-placeholder'
 // constants
 import predefinedPropTypes from '../../constants/prop-types/leading'
 import color from '../../constants/color'
+import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
@@ -84,7 +85,7 @@ const TopicTextBlock = styled.div`
   /* through ThemeProvider of styled-components */
   color: ${props => props.theme.colors.primary.text};
   font-size: 20px;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
   line-height: 1.8;
   letter-spacing: 0.4px;
 
@@ -95,7 +96,8 @@ const TitleTextBlock = styled.h1`
   /* through ThemeProvider of styled-components */
   color: ${props => props.theme.colors.primary.text};
 
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
+  font-family: ${typography.font.family.title};
   padding-left: 10px;
 
   /* overwrite h1 default margin*/
@@ -134,7 +136,7 @@ const SubtitleTextBlock = styled.h2`
   display: block;
 
   font-size: 20px;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
   margin: 0 0 10px 0;
 
   > span {

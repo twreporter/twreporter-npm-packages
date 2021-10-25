@@ -74,6 +74,7 @@ const Info = styled.div`
 const Title = styled.div`
   font-size: 16px;
   font-weight: ${typography.font.weight.bold};
+  font-family: ${typography.font.family.title};
   line-height: 1.5;
   letter-spacing: 0.4px;
   ${mq.desktopAndAbove`

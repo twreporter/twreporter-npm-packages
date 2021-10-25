@@ -88,7 +88,7 @@ const Descriptor = styled.div`
   ${mq.desktopAndAbove`
     flex-shrink: 0;
     font-size: 16px;
-    font-weight: bold;
+    font-weigth: ${typography.font.weight.bold};
     line-height: 1.5;
     letter-spacing: 0.4px;
     margin-right: auto;

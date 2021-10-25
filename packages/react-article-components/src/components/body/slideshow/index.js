@@ -11,6 +11,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
 import colorConst from '../../../constants/color'
+import typography from '../../../constants/typography'
 
 const _ = {
   get,
@@ -227,8 +228,7 @@ const ImageNumber = styled.span`
   top: 25px;
   left: 9px;
   font-size: 24px;
-  font-family: BioRhyme;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
   line-height: 0.79;
 
   ${mq.hdOnly`

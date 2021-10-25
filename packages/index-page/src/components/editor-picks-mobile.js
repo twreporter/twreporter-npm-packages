@@ -1,23 +1,26 @@
+import React from 'react'
+import Swipeable from 'react-swipeable'
+import PropTypes from 'prop-types'
+import postPropType from './prop-types/post'
+import styled from 'styled-components'
+// utils
+import { getHref } from '../utils/getHref'
+import { truncate, breakPoints } from '../utils/style-utils'
+// components
+import MobileFlexSwipeable from './mobile-flex-swipeable'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import PropTypes from 'prop-types'
-import React from 'react'
 import Section from './common-utils/section'
 import SectionName from './common-utils/section-name'
 import SwipableMixin from './common-utils/swipable-mixin'
-import Swipeable from 'react-swipeable'
 import TRLink from './common-utils/twreporter-link'
-import get from 'lodash/get'
-import postPropType from './prop-types/post'
+// constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
-import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
+import font from '../constants/font'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
-import { truncate, breakPoints } from '../utils/style-utils'
-
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -62,7 +65,8 @@ const Title = styled.div`
   transform: translateX(-50%);
   width: ${itemWidthPct}%;
   font-size: 24px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title};
   color: ${color.darkGray};
   position: absolute;
 `

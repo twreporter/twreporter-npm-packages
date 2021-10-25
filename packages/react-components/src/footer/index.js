@@ -1,13 +1,15 @@
-import styles from './constants/styles'
-import color from './constants/color'
-import Content from './content'
-import IconList from './icon-list'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-// core
+// components
+import Content from './content'
+import IconList from './icon-list'
+// constants
+import styles from './constants/styles'
+import color from './constants/color'
+import font from './constants/font'
+// @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import mq from '@twreporter/core/lib/utils/media-query'
 import origins from '@twreporter/core/lib/constants/request-origins'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
@@ -51,7 +53,7 @@ const FooterContent = styled.div`
 
 const CopyRight = styled.p`
   font-size: 12px;
-  font-weight: ${fontWeight.medium};
+  font-weight: ${font.weight.normal};
   letter-spacing: 0.4px;
   color: ${color.gray};
   ${mq.mobileOnly`

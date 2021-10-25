@@ -1,17 +1,20 @@
-import CategoryName from './common-utils/category-name'
-import ImgWrapper from './common-utils/img-wrapper'
-import PropTypes from 'prop-types'
 import React from 'react'
-import ContentWrapper from './common-utils/section-content-wrapper'
-import TRLink from './common-utils/twreporter-link'
-import get from 'lodash/get'
+import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+// utils
 import { getHref } from '../utils/getHref'
 import { breakPoints, finalMedia } from '../utils/style-utils'
+// components
+import CategoryName from './common-utils/category-name'
+import ImgWrapper from './common-utils/img-wrapper'
+import ContentWrapper from './common-utils/section-content-wrapper'
+import TRLink from './common-utils/twreporter-link'
+// constants
 import color from '../constants/color'
-
+import font from '../constants/font'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -137,7 +140,8 @@ const Category = styled(CategoryName)`
 const Title = styled.div`
   height: auto;
   font-size: 16px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title};
   color: ${color.darkGray};
 `
 

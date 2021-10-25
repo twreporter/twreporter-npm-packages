@@ -7,6 +7,7 @@ import Img from '../img-with-placeholder'
 import predefinedPropTypes from '../../constants/prop-types/leading'
 import themeConst from '../../constants/theme'
 import color from '../../constants/color'
+import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
@@ -42,7 +43,8 @@ const TextBlock = styled.div`
 const Title = styled.h1`
   /* clear h1 default style */
   letter-spacing: 0.4px;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
+  font-family: ${typography.font.family.title};
   margin: 0 0 40px 0;
 
   ${mq.mobileOnly`
@@ -56,7 +58,7 @@ const Title = styled.h1`
 `
 
 const Subtitle = styled.h2`
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
   margin: 0 0 10px 0;
   ${mq.mobileOnly`
     font-size: 16px;

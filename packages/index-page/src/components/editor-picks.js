@@ -1,21 +1,30 @@
 /* eslint-disable no-param-reassign */
-import CategoryName from './common-utils/category-name'
-import ContentWrapper from './common-utils/section-content-wrapper'
-import EditorPicksMobile from './editor-picks-mobile'
-import ImgWrapper from './common-utils/img-wrapper'
-import LeftArrowIcon from '../static/left-arrow.svg'
-import PropTypes from 'prop-types'
 import React from 'react'
-import RightArrowIcon from '../static/right-arrow.svg'
-import TRLink from './common-utils/twreporter-link'
-import clone from 'lodash/clone'
-import get from 'lodash/get'
+import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+// utils
 import { getHref } from '../utils/getHref'
 import { truncate, breakPoints, finalMedia } from '../utils/style-utils'
+// components
+import EditorPicksMobile from './editor-picks-mobile'
+import ImgWrapper from './common-utils/img-wrapper'
+import CategoryName from './common-utils/category-name'
+import ContentWrapper from './common-utils/section-content-wrapper'
+import TRLink from './common-utils/twreporter-link'
+// constants
 import color from '../constants/color'
+import font from '../constants/font'
+// assets
+import LeftArrowIcon from '../static/left-arrow.svg'
+import RightArrowIcon from '../static/right-arrow.svg'
+// lodash
+import clone from 'lodash/clone'
+import get from 'lodash/get'
+const _ = {
+  get,
+  clone,
+}
 
 const mockup = {
   img: {
@@ -25,11 +34,6 @@ const mockup = {
       mobile: '307px',
     },
   },
-}
-
-const _ = {
-  get,
-  clone,
 }
 
 const swapArrayElements = (arr, indexA, indexB) => {
@@ -155,7 +159,8 @@ const MiddleCategory = styled(CategoryName)`
 
 const Title = styled.div`
   font-size: ${props => (props.middle ? `32px` : `16px`)};
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title};
   color: ${color.darkGray};
   width: ${props => (props.middle ? '450px' : '150px')};
   position: absolute;

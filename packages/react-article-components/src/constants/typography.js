@@ -4,14 +4,12 @@ export default {
       base: '18px',
     },
     weight: {
-      extraLight: '100',
-      light: '200',
-      normal: '300',
-      regular: '400',
-      medium: '500',
-      semiBold: '600',
+      normal: '400',
       bold: '700',
-      heavy: '900',
+    },
+    family: {
+      title: 'merriweather, source-han-serif-tc, serif',
+      default: 'rosario, source-han-sans-traditional, sans-serif',
     },
   },
 }

@@ -17,8 +17,7 @@ import ImgWrapper from './common-utils/img-wrapper'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
-// @twreporter
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+import font from '../constants/font'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -114,7 +113,7 @@ const CategoryName = styled.div`
   background-color: ${backgroundColor};
   width: 100%;
   color: ${color.darkGray};
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
   line-height: 1.4;
   text-align: center;
   font-size: 20px;
@@ -128,7 +127,8 @@ const TextFrame = styled.div`
 `
 
 const Title = styled.div`
-  font-weight: ${fontWeight.bold};
+  font-family: ${font.family.title};
+  font-weight: ${font.weight.bold};
   font-size: 20px;
   color: ${color.darkGray};
   line-height: 1.4;

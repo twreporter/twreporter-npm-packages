@@ -76,7 +76,7 @@ const Donate = styled.div`
       vertical-align: middle;
       font-size: 14px;
       color: ${color.white};
-      font-weight: 500;
+      font-weight: ${typography.font.weight.normal};
       letter-spacing: 1.3px;
     }
     &:hover {

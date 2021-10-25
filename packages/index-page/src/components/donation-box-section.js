@@ -1,10 +1,10 @@
 import { finalMedia } from '../utils/style-utils'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
 import DonationLink from '@twreporter/react-components/lib/donation-link'
 import React from 'react'
 import styled from 'styled-components'
 import color from '../constants/color'
+import font from '../constants/font'
 
 const mockup = {
   defaultWidth: 320,
@@ -34,7 +34,8 @@ const ContentContainer = styled.div`
   h3{
     margin: 0;
     font-size: 32px;
-    font-weight: ${fontWeight.bold};
+    font-weight: ${font.weight.bold};
+    font-family: ${font.family.title};
     line-height: 1.63;
   }
   p{
@@ -92,7 +93,7 @@ const DonateButton = styled.div`
       display: table-cell;
       vertical-align: middle;
       text-align: center;
-      font-weight: ${fontWeight.bold};
+      font-weight: ${font.weight.bold};
     }
   }
 `

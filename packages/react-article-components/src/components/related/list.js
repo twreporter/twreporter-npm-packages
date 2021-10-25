@@ -9,8 +9,8 @@ import Card from './card'
 import themeConsts from '../../constants/theme'
 import color from '../../constants/color'
 import predefinedProps from '../../constants/prop-types/related'
+import typography from '../../constants/typography'
 // @twreporter
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
@@ -61,7 +61,7 @@ const LoadMoreButton = styled.div`
   padding-top: 26px;
   border-radius: 4px;
   height: 72px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${typography.font.weight.bold};
   cursor: pointer;
   ${props => selectButtonColors(props.theme.name)}
   transition: color 100ms ease;

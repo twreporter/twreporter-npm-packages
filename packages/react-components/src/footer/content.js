@@ -5,9 +5,9 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import styles from './constants/styles'
 import color from './constants/color'
+import font from './constants/font'
 // core
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -118,7 +118,7 @@ function getItemGroups(mainOrigin) {
 const Intro = styled.p`
   width: 100%;
   font-size: 12px;
-  font-weight: ${fontWeight.medium};
+  font-weight: ${font.weight.normal};
   line-height: 1.5;
   letter-spacing: 0.4px;
   color: ${color.gray};
@@ -224,9 +224,8 @@ const Item = styled.a`
   p {
     display: inline;
     font-size: 14px;
-    /* ff-tisa-web-prop is for english text */
-    font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
-    font-weight: ${fontWeight.medium};
+    font-family: ${font.family.default};
+    font-weight: ${font.weight.normal};
     letter-spacing: 1.3px;
     color: ${color.gray};
   }
@@ -235,7 +234,7 @@ const Item = styled.a`
     background: ${color.red};
     color: ${color.white};
     font-size: 9px;
-    font-family: Roboto;
+    font-family: ${font.family.default};
     margin-left: 5px;
     padding: 2px 5px;
     vertical-align: middle;
@@ -275,7 +274,7 @@ const DonateButton = styled.div`
       vertical-align: middle;
       color: ${color.gold};
       font-size: 14px;
-      font-weight: ${fontWeight.medium};
+      font-weight: ${font.weight.normal};
       letter-spacing: 1.3px;
       &:hover{
         color: ${color.white};

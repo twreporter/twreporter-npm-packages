@@ -1,26 +1,31 @@
+import React from 'react'
+import smoothScroll from 'smoothscroll'
+import styled from 'styled-components'
+// utils
 import { centerBlock, finalMedia, breakPoints } from '../utils/style-utils'
-import { itemPlusPaddingWidthPct } from '../constants/mobile-mockup-specification'
-import AboutAuthorIcon from '../static/about-author.svg'
-import AboutDonateIcon from '../static/about-donate.svg'
-import AboutHiringIcon from '../static/about-hiring.svg'
-import AboutSubscribeIcon from '../static/about-subscribe.svg'
-import appConfig from '../constants/app'
+// components
+import Section from './common-utils/section'
+import SectionAnimationWrapper from './animations/section-animation-wrapper'
+import SectionName from './common-utils/section-name'
 import BottomLink, {
   Wrapper as BTWrapper,
   TextSpan as BTText,
   LinkIcon,
 } from './common-utils/bottom-link'
-import externalLinks from '@twreporter/core/lib/constants/external-links'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import React from 'react'
-import ReporterIcon from '../static/reporter-large.svg'
-import Section from './common-utils/section'
-import SectionAnimationWrapper from './animations/section-animation-wrapper'
-import SectionName from './common-utils/section-name'
+// constants
+import appConfig from '../constants/app'
 import sectionStrings from '../constants/section-strings'
-import smoothScroll from 'smoothscroll'
-import styled from 'styled-components'
+import { itemPlusPaddingWidthPct } from '../constants/mobile-mockup-specification'
 import color from '../constants/color'
+import font from '../constants/font'
+// assets
+import AboutAuthorIcon from '../static/about-author.svg'
+import AboutDonateIcon from '../static/about-donate.svg'
+import AboutHiringIcon from '../static/about-hiring.svg'
+import AboutSubscribeIcon from '../static/about-subscribe.svg'
+import ReporterIcon from '../static/reporter-large.svg'
+// @twreporter
+import externalLinks from '@twreporter/core/lib/constants/external-links'
 
 const mobileWidth = breakPoints.mobileMaxWidth
 const ContentContainer = styled(Section)`
@@ -91,7 +96,7 @@ const Item = styled.div`
 const ItemTitle = styled.h3`
   margin: 0;
   font-size: 20px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
   ${finalMedia.mobile`
     margin: 6px;
   `}

@@ -37,7 +37,6 @@ const sharedStyleOfIndicatorPointer = css`
   padding-top: 4px;
   text-align: center;
   font-size: 12px;
-  font-family: arial, sans-serif;
   display: block;
   position: absolute;
   top: 0;

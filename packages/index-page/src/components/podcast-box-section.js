@@ -1,11 +1,15 @@
-import { finalMedia } from '../utils/style-utils'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
-import PodcastLandingPageLink from '@twreporter/react-components/lib/podcast-link'
 import React from 'react'
-import app from '../constants/app'
 import styled from 'styled-components'
+// utils
+import { finalMedia } from '../utils/style-utils'
+// constants
+import app from '../constants/app'
 import color from '../constants/color'
+import font from '../constants/font'
+// assets
+import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
+// @twreporter
+import PodcastLandingPageLink from '@twreporter/react-components/lib/podcast-link'
 
 const mockup = {
   defaultWidth: 320,
@@ -40,15 +44,15 @@ const ContentContainer = styled.div`
   margin: 0 auto;
   padding: 0 100px;
   color: ${color.black};
-  /* ff-tisa-web-prop is for english text */
-  font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
-  h3{
+  font-family: ${font.family.default};
+  h3 {
     margin: 0;
     font-size: 32px;
-    font-weight: ${fontWeight.bold};
+    font-weight: ${font.weight.bold};
+    font-family: ${font.family.title};
     line-height: 1.63;
   }
-  p{
+  p {
     margin-top: 10px;
     font-size: 14px;
     line-height: 1.57;
@@ -103,7 +107,7 @@ const ListenButton = styled.div`
       display: table-cell;
       vertical-align: middle;
       text-align: center;
-      font-weight: ${fontWeight.bold};
+      font-weight: ${font.weight.bold};
     }
   }
 `

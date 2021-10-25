@@ -1,23 +1,27 @@
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import topicPropType from './prop-types/topic'
+// utils
 import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+// components
 import BottomTRLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
-import forEach from 'lodash/forEach'
-import get from 'lodash/get'
 import ImgWrapper from './common-utils/img-wrapper'
 import MobileFlexSwipeable from './mobile-flex-swipeable'
 import MobileList from './common-utils/mobile-list'
-import PropTypes from 'prop-types'
-import React from 'react'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
+import TRLink from './common-utils/twreporter-link'
+// constants
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
-import styled from 'styled-components'
-import topicPropType from './prop-types/topic'
-import TRLink from './common-utils/twreporter-link'
 import color from '../constants/color'
-
+import font from '../constants/font'
+// lodash
+import forEach from 'lodash/forEach'
+import get from 'lodash/get'
 const _ = {
   forEach,
   get,
@@ -118,7 +122,8 @@ const TopicNameColumn = styled(Column)`
 
 const TitleColumn = styled(Column)`
   font-size: 32px;
-  font-weight: 600;
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title};
 `
 
 const Title = styled.div`
@@ -161,7 +166,8 @@ const Mobile = {
   Title: styled(Title)`
     line-height: 1.33;
     text-align: center;
-    font-weight: 600;
+    font-family: ${font.family.title};
+    font-weight: ${font.weight.bold};
     font-size: 24px;
     margin-bottom: 15px;
     margin-top: 4px;

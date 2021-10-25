@@ -1,23 +1,26 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import postPropType from './prop-types/post'
+import styled from 'styled-components'
+// utils
+import { getHref } from '../utils/getHref'
+import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+// components
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import MobileFlexSwipeable from './mobile-flex-swipeable'
 import MobileListUtils from './common-utils/mobile-list'
-import PropTypes from 'prop-types'
-import React from 'react'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
-import sectionStrings from '../constants/section-strings'
 import Section from './common-utils/section'
 import TRLink from './common-utils/twreporter-link'
-import get from 'lodash/get'
-import postPropType from './prop-types/post'
-import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+// constants
+import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
-
+import font from '../constants/font'
+// @twreporter
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -118,7 +121,8 @@ const Category = styled(CategoryName)`
 const Title = styled.div`
   margin-top: 2px;
   font-size: 20px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title}
   line-height: 1.5;
   ${finalMedia.tablet`
     width: 144px;

@@ -17,6 +17,7 @@ import Tools from './aside/tools'
 // constants
 import themeConst from '../constants/theme'
 import colorConst from '../constants/color'
+import typography from '../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
@@ -33,8 +34,7 @@ const _ = {
 }
 
 const fontFamilyCss = css`
-  /* ff-tisa-web-prop is for english text */
-  font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
+  font-family: ${typography.font.family.default};
 `
 
 const shiftLeftCss = css`

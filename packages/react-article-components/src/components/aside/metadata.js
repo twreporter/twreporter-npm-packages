@@ -8,6 +8,7 @@ import sortBy from 'lodash/sortBy'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
 import colorConst from '../../constants/color'
+import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
 
 const _ = {
@@ -148,7 +149,7 @@ const TagButton = styled.div`
   border-radius: 50px;
   padding: 5px 10px 5px 10px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: ${typography.font.weight.normal};
   margin-bottom: 10px;
   margin-right: 10px;
 
