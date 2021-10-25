@@ -2,6 +2,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 
 const mockup = {
   mobile: {
@@ -48,24 +49,24 @@ function getCaptionStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        color: rgba(255, 255, 255, 0.7);
+        color: ${color.notSoWhite};
         &::after {
-          border-color: rgba(255, 255, 255, 0.2);
+          border-color: ${color.gray10};
         }
       `
     case themeConst.article.v2.pink:
       return css`
-        color: #494949;
+        color: ${color.gray85};
         &::after {
-          border-color: #fbafef;
+          border-color: ${color.pink};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        color: #494949;
+        color: ${color.gray85};
         &::after {
-          border-color: #d0a67d;
+          border-color: ${color.milkTea};
         }
       `
   }

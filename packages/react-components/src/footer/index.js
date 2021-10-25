@@ -1,19 +1,22 @@
-import styles from './constants/styles'
-import Content from './content'
-import IconList from './icon-list'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-// core
+// components
+import Content from './content'
+import IconList from './icon-list'
+// constants
+import styles from './constants/styles'
+import color from './constants/color'
+import font from './constants/font'
+// @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import mq from '@twreporter/core/lib/utils/media-query'
 import origins from '@twreporter/core/lib/constants/request-origins'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 const FooterContainer = styled.div`
-  border-top: solid 0.5px #d8d8d8;
+  border-top: solid 0.5px ${color.lightGray};
   width: 100%;
   background-color: ${props => props.bgColor};
   padding: 0;
@@ -50,9 +53,9 @@ const FooterContent = styled.div`
 
 const CopyRight = styled.p`
   font-size: 12px;
-  font-weight: ${fontWeight.medium};
+  font-weight: ${font.weight.normal};
   letter-spacing: 0.4px;
-  color: #9c9c9c;
+  color: ${color.gray};
   ${mq.mobileOnly`
     text-align: center;
     margin-top: 10px;
@@ -93,7 +96,7 @@ Footer.propTypes = {
 }
 
 Footer.defaultProps = {
-  bgColor: '#ffffff',
+  bgColor: color.white,
   releaseBranch: releaseBranchConsts.release,
   host: '',
   pathname: '',

@@ -1,5 +1,6 @@
 import { finalMedia } from '../../utils/style-utils'
 import styled from 'styled-components'
+import color from '../../constants/color'
 
 const SectionName = styled.div`
   display: none;
@@ -14,10 +15,10 @@ const SectionName = styled.div`
     right: 0;
     text-align: center;
     >span {
-      color: #fff;
+      color: ${color.white};
       padding-left: 5px;
       padding-right: 5px;
-      background-color: #c3000b;
+      background-color: ${color.red};
     }
   `}
 `

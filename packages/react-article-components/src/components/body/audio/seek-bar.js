@@ -3,37 +3,38 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import Slider, { Indicator, Rail, Progress } from '../slider'
 import themeConst from '../../../constants/theme'
+import colorConst from '../../../constants/color'
 
 function getContainerStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.pink:
       return css`
         ${Indicator} {
-          background-color: #ef7ede;
+          background-color: ${colorConst.darkPink};
         }
 
         ${Progress} {
-          background-color: #fbafef;
+          background-color: ${colorConst.pink};
         }
       `
     case themeConst.article.v2.photo:
       return css`
         ${Indicator} {
-          background-color: #a67a44;
+          background-color: ${colorConst.brown};
         }
 
         ${Progress} {
-          background-color: #d0a67d;
+          background-color: ${colorConst.milkTea};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${Indicator} {
-          background-color: #a67a44;
+          background-color: ${colorConst.brown};
         }
         ${Progress} {
-          background-color: #d0a67d;
+          background-color: ${colorConst.milkTea};
         }
       `
   }
@@ -53,7 +54,7 @@ const Container = styled.div`
     transform: translateY(-50%);
   }
   ${Rail} {
-    background: #d8d8d8;
+    background: ${colorConst.gray50};
   }
 `
 let resumePlayingAfterSeek = false

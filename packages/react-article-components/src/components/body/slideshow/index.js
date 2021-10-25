@@ -10,6 +10,8 @@ import memoize from 'memoize-one'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
+import colorConst from '../../../constants/color'
+import typography from '../../../constants/typography'
 
 const _ = {
   get,
@@ -226,8 +228,7 @@ const ImageNumber = styled.span`
   top: 25px;
   left: 9px;
   font-size: 24px;
-  font-family: BioRhyme;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
   line-height: 0.79;
 
   ${mq.hdOnly`
@@ -430,56 +431,56 @@ function getSlideshowFlexBoxStyles(themeName) {
     case themeConst.article.v2.photo:
       return css`
         ${PrevButton} {
-          border-color: rgba(255, 255, 255, 0.2);
+          border-color: ${colorConst.gray10};
         }
         ${ImageNumberCircle} {
-          background-color: #d0a67d;
+          background-color: ${colorConst.milkTea};
           &::after {
-            border-color: #08192d;
+            border-color: ${colorConst.darkBlue};
           }
         }
         ${ImageNumber} {
-          color: #08192d;
+          color: ${colorConst.darkBlue};
         }
         ${SlideMask} {
-          background-color: #d0a67d;
+          background-color: ${colorConst.milkTea};
         }
       `
     case themeConst.article.v2.pink:
       return css`
         ${PrevButton} {
-          border-color: #d8d8d8;
+          border-color: ${colorConst.gray50};
         }
         ${ImageNumberCircle} {
-          background-color: #fbafef;
+          background-color: ${colorConst.pink};
           &::after {
-            border-color: #fff;
+            border-color: ${colorConst.white};
           }
         }
         ${ImageNumber} {
-          color: #fff;
+          color: ${colorConst.white};
         }
         ${SlideMask} {
-          background-color: #2440fb;
+          background-color: ${colorConst.lightBlue};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${PrevButton} {
-          border-color: #d8d8d8;
+          border-color: ${colorConst.gray50};
         }
         ${ImageNumberCircle} {
-          background-color: #d0a67d;
+          background-color: ${colorConst.milkTea};
           &::after {
-            border-color: #fff;
+            border-color: ${colorConst.white};
           }
         }
         ${ImageNumber} {
-          color: #fff;
+          color: ${colorConst.white};
         }
         ${SlideMask} {
-          background-color: #d0a67d;
+          background-color: ${colorConst.milkTea};
         }
       `
   }

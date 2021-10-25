@@ -4,6 +4,7 @@ import React from 'react'
 import SearchIcon from '../static/search.svg'
 import styled from 'styled-components'
 import { withRouter } from 'react-router-dom'
+import color from '../constants/color'
 
 const mobileWidth = '400px'
 
@@ -26,9 +27,10 @@ const SearchIconContainer = styled.div`
 const Input = styled.input`
   width: ${props => (props.display ? '140px' : '0px')};
   border: none;
-  border-bottom: ${props => (props.display ? '1px solid #808080' : 'none')};
+  border-bottom: ${props =>
+    props.display ? `1px solid ${color.gray80}` : 'none'};
   box-shadow: none;
-  color: #4a4949;
+  color: ${color.darkGray};
   @media (max-width: ${mobileWidth}) {
     width: ${props => (props.display ? '130px' : '0px')};
   }

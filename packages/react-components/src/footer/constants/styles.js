@@ -1,8 +1,8 @@
 export default {
   reporterLogo: {
     width: {
-      mobile: 300, // px
-      desktop: 258, // px
+      mobile: 250, // px
+      desktop: 210, // px
       hd: 300, // px
     },
     height: {

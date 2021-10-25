@@ -1,7 +1,6 @@
 import DynamicComponentsContext from '../contexts/dynamic-components-context'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { ThemeProvider, css } from 'styled-components'
 // components
 import Body from './body'
@@ -15,7 +14,12 @@ import Related from './related'
 import SeparationCurve from './separation-curve'
 import UIManager from '../managers/ui-manager'
 import Tools from './aside/tools'
+// constants
 import themeConst from '../constants/theme'
+import colorConst from '../constants/color'
+import typography from '../constants/typography'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -30,8 +34,7 @@ const _ = {
 }
 
 const fontFamilyCss = css`
-  /* ff-tisa-web-prop is for english text */
-  font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
+  font-family: ${typography.font.family.default};
 `
 
 const shiftLeftCss = css`
@@ -57,7 +60,7 @@ const SeprationLine = styled.div`
       props.visible
         ? css`
             width: 100%;
-            border-bottom: solid 1px #e2e2e2;
+            border-bottom: solid 1px ${colorConst.gray40};
             padding-bottom: 60px;
           `
         : css`
@@ -198,24 +201,24 @@ function getBackgroundBlockStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.pink:
       return css`
-        background-color: #fadaf5;
+        background-color: ${colorConst.lightPink};
         ${BodyBackground} {
-          background-color: #f4f4f4;
+          background-color: ${colorConst.gray20};
         }
       `
     case themeConst.article.v2.photo:
       return css`
-        background-color: #08192d;
+        background-color: ${colorConst.darkBlue};
         ${BodyBackground} {
-          background-color: #08192d;
+          background-color: ${colorConst.darkBlue};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        background-color: #f1f1f1;
+        background-color: ${colorConst.gray30};
         ${BodyBackground} {
-          background-color: #f1f1f1;
+          background-color: ${colorConst.gray30};
         }
       `
   }

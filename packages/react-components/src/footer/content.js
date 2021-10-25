@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import styles from './constants/styles'
+import color from './constants/color'
+import font from './constants/font'
 // core
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -53,12 +54,6 @@ function getItemGroups(mainOrigin) {
     ],
     [
       {
-        slug: 'media-center',
-        text: '最新消息',
-        link: `${mainOrigin}${entityPaths.topics}media-center`,
-        target: '_blank',
-      },
-      {
         slug: 'privacy',
         text: '隱私政策',
         link: `${mainOrigin}${entityPaths.article}privacy-footer`,
@@ -74,6 +69,12 @@ function getItemGroups(mainOrigin) {
         slug: 'license',
         text: '許可協議',
         link: `${mainOrigin}${entityPaths.article}license-footer`,
+        target: '_blank',
+      },
+      {
+        slug: 'media-center',
+        text: '基金會新聞',
+        link: `${mainOrigin}${entityPaths.topics}media-center`,
         target: '_blank',
       },
       {
@@ -98,7 +99,7 @@ function getItemGroups(mainOrigin) {
       },
       {
         slug: 'twreporter-lab',
-        text: '開放實驗室',
+        text: '報導者開放實驗室',
         link: 'https://medium.com/twreporter',
         target: '_blank',
       },
@@ -117,10 +118,10 @@ function getItemGroups(mainOrigin) {
 const Intro = styled.p`
   width: 100%;
   font-size: 12px;
-  font-weight: ${fontWeight.medium};
+  font-weight: ${font.weight.normal};
   line-height: 1.5;
   letter-spacing: 0.4px;
-  color: #9c9c9c;
+  color: ${color.gray};
   ${mq.mobileOnly`
     font-size: 16px;
     line-height: 1.63;
@@ -174,7 +175,7 @@ const LinksColumn = styled(Column)`
   `}
   ${mq.tabletAndAbove`
     float: right;
-    border-left: solid 0.25px #d8d8d8;
+    border-left: solid 0.25px ${color.lightGray};
     margin-bottom: 50px;
   `}
   ${mq.tabletOnly`
@@ -223,18 +224,17 @@ const Item = styled.a`
   p {
     display: inline;
     font-size: 14px;
-    /* ff-tisa-web-prop is for english text */
-    font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
-    font-weight: ${fontWeight.medium};
+    font-family: ${font.family.default};
+    font-weight: ${font.weight.normal};
     letter-spacing: 1.3px;
-    color: #9c9c9c;
+    color: ${color.gray};
   }
   span {
     visibility: ${props => (props.visible ? 'visible' : 'hidden')};
-    background: #c7000a;
-    color: #ffffff;
+    background: ${color.red};
+    color: ${color.white};
     font-size: 9px;
-    font-family: Roboto;
+    font-family: ${font.family.default};
     margin-left: 5px;
     padding: 2px 5px;
     vertical-align: middle;
@@ -242,7 +242,7 @@ const Item = styled.a`
   }
   &:hover {
     p {
-      color: #262626;
+      color: ${color.notSoBlack};
     }
   }
   ${mq.desktopAndAbove`
@@ -262,22 +262,22 @@ const DonateButton = styled.div`
     text-decoration: none !important;
     width: 140px;
     height: 55px;
-    background-color: #ffffff;
-    border: solid 0.5px #a67a44;
+    background-color: ${color.white};
+    border: solid 0.5px ${color.gold};
     display: table;
     &:hover{
-      background-color: #a67a44;
+      background-color: ${color.gold};
     }
     p {
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-      color: #a67a44;
+      color: ${color.gold};
       font-size: 14px;
-      font-weight: ${fontWeight.medium};
+      font-weight: ${font.weight.normal};
       letter-spacing: 1.3px;
       &:hover{
-        color: #ffffff;
+        color: ${color.white};
       }
     }
     ${mq.tabletAndAbove`

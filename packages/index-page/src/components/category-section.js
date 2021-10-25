@@ -1,21 +1,25 @@
-import { breakPoints, finalMedia } from '../utils/style-utils'
-import { getHref } from '../utils/getHref'
-import BottomLink from './common-utils/bottom-link'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import get from 'lodash/get'
-import ImgWrapper from './common-utils/img-wrapper'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import MobileListUtils from './common-utils/mobile-list'
 import postPropType from './prop-types/post'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Section from './common-utils/section'
-import SectionAnimationWrapper from './animations/section-animation-wrapper'
-import SectionName from './common-utils/section-name'
-import sectionStrings from '../constants/section-strings'
 import styled from 'styled-components'
+import SectionAnimationWrapper from './animations/section-animation-wrapper'
+// utils
+import { breakPoints, finalMedia } from '../utils/style-utils'
+import { getHref } from '../utils/getHref'
+// components
+import MobileFlexSwipeable from './mobile-flex-swipeable'
+import BottomLink from './common-utils/bottom-link'
+import MobileListUtils from './common-utils/mobile-list'
+import Section from './common-utils/section'
+import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
-
+import ImgWrapper from './common-utils/img-wrapper'
+// constants
+import sectionStrings from '../constants/section-strings'
+import color from '../constants/color'
+import font from '../constants/font'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -23,7 +27,7 @@ const _ = {
 const desktopMinWidth = breakPoints.desktopMinWidth
 const tabletMinWidth = breakPoints.tabletMinWidth
 const mobileWidth = breakPoints.mobileMaxWidth
-const backgroundColor = '#e2e2e2'
+const backgroundColor = color.gray
 
 const mockup = {
   mobile: {
@@ -108,8 +112,8 @@ const ImgFrame = styled.div`
 const CategoryName = styled.div`
   background-color: ${backgroundColor};
   width: 100%;
-  color: #4a4949;
-  font-weight: ${fontWeight.bold};
+  color: ${color.darkGray};
+  font-weight: ${font.weight.bold};
   line-height: 1.4;
   text-align: center;
   font-size: 20px;
@@ -123,9 +127,10 @@ const TextFrame = styled.div`
 `
 
 const Title = styled.div`
-  font-weight: ${fontWeight.bold};
+  font-family: ${font.family.title};
+  font-weight: ${font.weight.bold};
   font-size: 20px;
-  color: #4a4949;
+  color: ${color.darkGray};
   line-height: 1.4;
   width: 92%;
   margin: 0 auto;

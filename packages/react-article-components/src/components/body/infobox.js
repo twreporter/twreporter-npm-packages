@@ -6,6 +6,7 @@ import cssConsts from '../../constants/css'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -33,7 +34,7 @@ const widthCSS = css`
 
 const Title = styled.div`
   ${widthCSS}
-  color: #494949;
+  color: ${color.gray85};
   line-height: 1.9;
   letter-spacing: 0.7px;
   font-weight: ${typography.font.weight.bold};
@@ -44,7 +45,7 @@ const Title = styled.div`
 const Content = styled.div`
   ${widthCSS}
 
-  color: #494949;
+  color: ${color.gray85};
   line-height: 1.75;
   letter-spacing: 0.5px;
   font-weight: ${typography.font.weight.normal};
@@ -58,14 +59,14 @@ function getContainerStyles(themeName) {
       return css`
         &::before,
         &::after {
-          background: #a67a44;
+          background: ${color.brown};
         }
       `
     case themeConst.article.v2.pink:
       return css`
         &::before,
         &::after {
-          background: #fbafef;
+          background: ${color.pink};
         }
       `
     case themeConst.article.v2.default:
@@ -73,7 +74,7 @@ function getContainerStyles(themeName) {
       return css`
         &::before,
         &::after {
-          background: #d0a67d;
+          background: ${color.milkTea};
         }
       `
   }
@@ -87,7 +88,7 @@ const Container = styled.div`
   /* line breaks */
   white-space: pre-wrap;
 
-  background: #fff;
+  background: ${color.white};
   position: relative;
   margin: 60px auto 0 auto;
   ${mq.tabletAndBelow`

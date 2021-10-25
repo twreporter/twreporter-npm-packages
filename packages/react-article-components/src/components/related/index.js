@@ -1,15 +1,19 @@
-import List from './list'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled, { css } from 'styled-components'
+// components
+import List from './list'
+// constants
+import themeConst from '../../constants/theme'
+import typography from '../../constants/typography'
+import color from '../../constants/color'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
 import debounce from 'lodash/debounce'
 import get from 'lodash/get'
 import map from 'lodash/map'
-import mq from '@twreporter/core/lib/utils/media-query'
 import sortBy from 'lodash/sortBy'
-import styled, { css } from 'styled-components'
-import themeConst from '../../constants/theme'
-import typography from '../../constants/typography'
-
 const _ = {
   debounce,
   get,
@@ -40,11 +44,11 @@ const Descriptor = styled.div`
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
         return css`
-          color: rgba(255, 255, 255, 0.4);
+          color: ${color.gray5};
           ${mq.desktopAndAbove`
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: ${color.gray10};
             &::after {
-              border-color: rgba(255, 255, 255, 0.2);
+              border-color: ${color.gray10};
             }
           `}
         `
@@ -52,11 +56,11 @@ const Descriptor = styled.div`
       case themeConst.article.v2.default:
       default:
         return css`
-          color: #808080;
+          color: ${color.gray80};
           ${mq.desktopAndAbove`
-            border-color: #d8d8d8;
+            border-color: ${color.gray50};
             &::after {
-              border-color: #d8d8d8;
+              border-color: ${color.gray50};
             }
           `}
         `
@@ -84,7 +88,7 @@ const Descriptor = styled.div`
   ${mq.desktopAndAbove`
     flex-shrink: 0;
     font-size: 16px;
-    font-weight: bold;
+    font-weigth: ${typography.font.weight.bold};
     line-height: 1.5;
     letter-spacing: 0.4px;
     margin-right: auto;

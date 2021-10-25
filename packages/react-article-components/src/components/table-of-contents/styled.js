@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import mq from '@twreporter/core/lib/utils/media-query'
 import zIndexConst from '../../constants/position-z-index'
+import typography from '../../constants/typography'
 
 const tocWidth = 190 // px
 
@@ -13,7 +14,7 @@ export const TOCBlock = styled.div`
 
 export const TOCText = styled.div`
   font-size: 14px;
-  font-weight: 500;
+  font-weight: ${typography.font.weight.normal};
   line-height: 1.29;
   letter-spacing: 0.1px;
   color: ${props =>

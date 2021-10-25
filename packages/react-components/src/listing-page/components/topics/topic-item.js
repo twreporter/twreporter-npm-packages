@@ -3,6 +3,7 @@ import {
   resetLinkStyle,
 } from '../../constants/predefined-css'
 import { TEXT } from '../../constants/topics'
+import color from '../../constants/color'
 import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import Image from '../image'
 import { Link } from 'react-router-dom'
@@ -116,7 +117,7 @@ const TextBlock = styled.div`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 const TopicTitle = styled.h2`

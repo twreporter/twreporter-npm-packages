@@ -1,22 +1,26 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import postPropType from './prop-types/post'
+import styled from 'styled-components'
+// utils
+import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+import { getHref } from '../utils/getHref'
+// components
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import MobileFlexSwipeable from './mobile-flex-swipeable'
 import MobileListBase from './common-utils/mobile-list'
-import PropTypes from 'prop-types'
-import React from 'react'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
-import get from 'lodash/get'
-import postPropType from './prop-types/post'
+// constants
 import sectionStrings from '../constants/section-strings'
-import styled from 'styled-components'
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
-
+import color from '../constants/color'
+import font from '../constants/font'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -36,7 +40,7 @@ const mockup = {
 }
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
 `
 
 const UpperList = styled.div`
@@ -113,7 +117,7 @@ const Item = styled.div`
   }
 `
 const WordBlock = styled.div`
-  background-color: #fff;
+  background-color: ${color.white};
   width: 430px;
   min-height: 115px;
   padding: 8px 20px 15px 12px;
@@ -135,16 +139,17 @@ const WordBlock = styled.div`
 
 const Title = styled.h3`
   margin: 0;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title};
   font-size: 20px;
-  color: #4a4a4a;
+  color: ${color.darkGray};
   @media (min-width: ${breakPoints.desktopMinWidth}) {
-    ${truncate('relative', 1.4, 2, '#fff')};
+    ${truncate('relative', 1.4, 2, color.white)};
   }
 
   ${finalMedia.tablet`
     font-size: 16px;
-    ${truncate('relative', 1.4, 3, '#fff')};
+    ${truncate('relative', 1.4, 3, color.white)};
   `}
 `
 

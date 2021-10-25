@@ -4,6 +4,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -20,7 +21,7 @@ const P = styled.p`
       case themeConst.article.v2.photo:
         return css`
           strong {
-            color: rgba(255, 255, 255, 0.9);
+            color: ${colorConst.notSoWhite};
           }
         `
       default:

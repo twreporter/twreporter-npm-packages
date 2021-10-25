@@ -4,6 +4,7 @@ import predefinedCss from '../constants/css'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import typography from '../constants/typography'
+import color from '../constants/color'
 
 const _content = {
   title: '用行動支持報導者',
@@ -20,7 +21,7 @@ const Container = styled.div`
   padding: 40px 30px 30px 30px;
   width: 502px;
   min-height: 284px;
-  background: #fff;
+  background: ${color.white};
   border-left: solid 1px ${props => props.theme.colors.secondary.support};
   ${mq.mobileOnly`
     margin: 40px auto;
@@ -33,10 +34,10 @@ const Title = styled.p`
   display: inline-block;
   background: ${props => props.theme.colors.secondary.background};
   padding-right: 2px;
-  box-shadow: 5px 15px 0 #fff inset;
+  box-shadow: 5px 15px 0 ${color.white} inset;
   font-size: 22px;
   font-weight: ${typography.font.weight.bold};
-  color: #262626;
+  color: ${color.gray95};
   margin-bottom: 15px;
   ${mq.mobileOnly`
     margin-bottom: 18px;
@@ -46,7 +47,7 @@ const Title = styled.p`
 const Text = styled.p`
   font-size: 16px;
   line-height: 1.75;
-  color: #262626;
+  color: ${color.gray95};
   margin-bottom: 0.5em;
   &:last-of-type {
     margin-bottom: 0;
@@ -64,7 +65,7 @@ const Donate = styled.div`
   a {
     width: 140px;
     height: 55px;
-    background: #000;
+    background: ${color.black};
     display: table;
     float: right;
     cursor: pointer;
@@ -74,8 +75,8 @@ const Donate = styled.div`
       text-align: center;
       vertical-align: middle;
       font-size: 14px;
-      color: #fff;
-      font-weight: 500;
+      color: ${color.white};
+      font-weight: ${typography.font.weight.normal};
       letter-spacing: 1.3px;
     }
     &:hover {
