@@ -1,13 +1,16 @@
-import entityPaths from '@twreporter/core/lib/constants/entity-path'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import ImgWrapper from './image'
 import { Link } from 'react-router-dom'
-import mockup from '../constants/mockup-spec'
-import color from '../constants/color'
-import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+// components
+import ImgWrapper from './image'
+// constants
+import mockup from '../constants/mockup-spec'
+import color from '../constants/color'
+import font from '../constants/font'
+// @twreporter
+import entityPaths from '@twreporter/core/lib/constants/entity-path'
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -75,7 +78,8 @@ const Category = styled.div`
 
 const Title = styled.div`
   font-size: 20px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title};
   line-height: 1.4;
   color: ${color.darkGray};
   margin-bottom: 10px;
@@ -122,7 +126,7 @@ const Tag = styled.li`
   text-decoration: none;
   line-height: 1.45;
   font-size: 12px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
   padding: 2px 10px;
   margin-right: 13px;
   margin-bottom: 10px;

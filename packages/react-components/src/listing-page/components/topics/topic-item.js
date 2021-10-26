@@ -4,7 +4,7 @@ import {
 } from '../../constants/predefined-css'
 import { TEXT } from '../../constants/topics'
 import color from '../../constants/color'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+import font from '../../constants/font'
 import Image from '../image'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -126,7 +126,8 @@ const TopicTitle = styled.h2`
     margin-bottom: ${styles.textBlock.mobile.titleMarginBottom}px;
   `}
   font-size: ${styles.fontSize.title.mobile}px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
+  font-family: ${font.family.title};
   letter-spacing: .2px;
   line-height: 1.43;
   ${mq.tabletOnly`
@@ -145,7 +146,7 @@ const TopicDate = styled.div`
     padding-bottom: 12px;
   `}
   font-size: 14px;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${font.weight.bold};
   letter-spacing: 0.5px;
 `
 const TopicDescription = styled.div`
