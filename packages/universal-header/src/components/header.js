@@ -144,18 +144,26 @@ const ChannelEffect = css`
 
 const LogoEffect = css`
   .logo-effect-enter {
-    width: 80%;
+    img {
+      width: 80%;
+    }
   }
   .logo-effect-enter-active {
-    animation: ${animationUtils.changeWidth('80%', '100%')} 0.2s linear;
-    animation-delay: 300ms;
+    img {
+      animation: ${animationUtils.changeWidth('80%', '100%')} 0.2s linear;
+      animation-delay: 300ms;
+    }
   }
   .logo-effect-exit-active {
-    animation: ${animationUtils.changeWidth('100%', '80%')} 0.2s linear;
-    animation-delay: 300ms;
+    img {
+      animation: ${animationUtils.changeWidth('100%', '80%')} 0.2s linear;
+      animation-delay: 300ms;
+    }
   }
   .logo-effect-exit-done {
-    width: 80%;
+    img {
+      width: 80%;
+    }
   }
 `
 
@@ -271,17 +279,20 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
               <TopRow>
                 <FlexGroup>
                   <LogoContainer>
-                    <Link
-                      {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
+                    <CSSTransition
+                      in={!toUseNarrow}
+                      classNames="logo-effect"
+                      timeout={{ appear: 0, enter: 500, exit: 500 }}
                     >
-                      <CSSTransition
-                        in={!toUseNarrow}
-                        classNames="logo-effect"
-                        timeout={{ appear: 0, enter: 500, exit: 500 }}
+                      <Link
+                        {...linkUtils.getLogoLink(
+                          isLinkExternal,
+                          releaseBranch
+                        )}
                       >
                         <Logo />
-                      </CSSTransition>
-                    </Link>
+                      </Link>
+                    </CSSTransition>
                   </LogoContainer>
                   <ActionContainer>
                     <CSSTransition

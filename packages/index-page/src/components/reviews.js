@@ -122,7 +122,7 @@ const Title = styled.div`
   margin-top: 2px;
   font-size: 20px;
   font-weight: ${font.weight.bold};
-  font-family: ${font.family.title}
+  font-family: ${font.family.title};
   line-height: 1.5;
   ${finalMedia.tablet`
     width: 144px;

@@ -173,6 +173,9 @@ const LinksColumn = styled(Column)`
   ${mq.desktopOnly`
     width: 392px;
   `}
+  ${mq.desktopAndAbove`
+    padding-left: 80px;
+  `}
   ${mq.tabletAndAbove`
     float: right;
     border-left: solid 0.25px ${color.lightGray};
@@ -190,6 +193,12 @@ const LinksColumn = styled(Column)`
 
 const ItemList = styled.div`
   width: 100%;
+  ${mq.hdOnly`
+    width: 397px;
+  `}
+  ${mq.desktopOnly`
+    width: 380px;
+  `}
 `
 
 const ItemGroup = styled.div`
