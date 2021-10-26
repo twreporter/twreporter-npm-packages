@@ -18,11 +18,10 @@ export default {
     },
   },
   weight: {
-    normal: '300',
-    medium: '500',
+    normal: '400',
     bold: '700',
   },
   family: {
-    serif: 'source-han-serif-tc,serif',
+    serif: 'source-han-serif-tc, serif',
   },
 }

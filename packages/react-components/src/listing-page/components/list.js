@@ -1,13 +1,17 @@
-import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
-import entityPaths from '@twreporter/core/lib/constants/entity-path'
-import FetchingWrapper from '../../is-fetching-wrapper'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import ListItem from './list-item'
-import mockup from '../constants/mockup-spec'
-import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+// @twreporter
+import entityPaths from '@twreporter/core/lib/constants/entity-path'
+import mq from '@twreporter/core/lib/utils/media-query'
+import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
+import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+// constants
+import mockup from '../constants/mockup-spec'
+import color from '../constants/color'
+// components
+import ListItem from './list-item'
+import FetchingWrapper from '../../is-fetching-wrapper'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -26,7 +30,7 @@ const Container = styled.div`
 const Header = styled.div`
   font-size: 36px;
   font-weight: ${fontWeight.bold};
-  color: #404040;
+  color: ${color.darkDarkGray};
   margin: 0 auto 45px auto;
   text-align: center;
 

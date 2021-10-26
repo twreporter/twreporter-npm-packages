@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import themeConst from '../constants/theme'
+import colorConst from '../constants/color'
 
 const Text = styled.p`
   /* clear default browser styles */
@@ -10,11 +11,11 @@ const Text = styled.p`
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return 'rgba(255, 255, 255, 0.4)'
+        return colorConst.gray5
       case themeConst.article.v2.pink:
       case themeConst.article.v2.default:
       default:
-        return '#808080'
+        return colorConst.gray80
     }
   }};
 

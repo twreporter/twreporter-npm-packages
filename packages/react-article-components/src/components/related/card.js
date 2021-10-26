@@ -7,6 +7,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import themeConsts from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 
 const StyledImg = styled(Img)``
 
@@ -29,7 +30,7 @@ const Desc = styled.p`
   display: block;
   font-size: 14px;
   line-height: 1.43;
-  color: #808080;
+  color: ${color.gray80};
   padding: 15px 0 15px 0;
   transition: opacity 200ms ease 100ms;
 `
@@ -98,6 +99,7 @@ const Category = styled.span`
 const Title = styled.h3`
   font-size: 16px;
   font-weight: ${typography.font.weight.bold};
+  font-family: ${typography.font.family.title};
   line-height: 1.5;
   margin: 5px 0 10px 0;
 
@@ -112,7 +114,7 @@ const PublishedDate = styled.p`
   margin: 0;
   font-size: 12px;
   line-height: 2;
-  color: #afafaf;
+  color: ${color.gray60};
 
   ${mq.desktopAndAbove`
     position: absolute;
@@ -156,38 +158,38 @@ function getBlockStyles(themeName) {
     case themeConsts.article.v2.photo:
       return css`
         ${Category} {
-          color: #d0a67d;
+          color: ${color.milkTea};
         }
         ${Title} {
-          color: rgba(255, 255, 255, 0.9);
+          color: ${color.notSoWhite};
         }
         ${StyledImg} {
-          background-color: rgba(255, 255, 255, 0.2);
+          background-color: ${color.gray10};
         }
       `
     case themeConsts.article.v2.pink:
       return css`
         ${Category} {
-          color: #ef7ede;
+          color: ${color.darkPink};
         }
         ${Title} {
-          color: #404040;
+          color: ${color.gray90};
         }
         ${StyledImg} {
-          background-color: #e2e2e2;
+          background-color: ${color.gray40};
         }
       `
     case themeConsts.article.v2.default:
     default:
       return css`
         ${Category} {
-          color: #a67a44;
+          color: ${color.brown};
         }
         ${Title} {
-          color: #404040;
+          color: ${color.gray90};
         }
         ${StyledImg} {
-          background-color: #e2e2e2;
+          background-color: ${color.gray40};
         }
       `
   }

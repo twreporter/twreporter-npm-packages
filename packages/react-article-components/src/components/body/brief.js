@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -16,23 +17,22 @@ const _ = {
 }
 
 const Content = styled.div`
-  /* ff-tisa-web-pro is for english text */
-  font-family: ff-tisa-web-pro, source-han-serif-tc, serif;
+  font-family: ${typography.font.family.title};
   p {
     color: ${props => {
       switch (props.theme.name) {
         case themeConst.article.v2.photo:
-          return 'rgba(255, 255, 255, 0.9)'
+          return color.notSoWhite
         case themeConst.article.v2.pink:
         case themeConst.article.v2.default:
         default:
-          return '#808080'
+          return color.gray80
       }
     }};
 
     line-height: 1.7;
     letter-spacing: 0.7px;
-    font-weight: ${typography.font.weight.semiBold};
+    font-weight: ${typography.font.weight.bold};
     font-size: ${props => props.theme.fontSizeOffset + 20}px;
     margin: 0 0 1em 0;
     &:last-child {

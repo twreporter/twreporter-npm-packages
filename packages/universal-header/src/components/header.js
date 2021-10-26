@@ -11,6 +11,7 @@ import ActionButton from './action-button'
 import Icons from './icons'
 import Link from './customized-link'
 import Slogan from './slogan'
+import Logo from './logo'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
@@ -143,18 +144,26 @@ const ChannelEffect = css`
 
 const LogoEffect = css`
   .logo-effect-enter {
-    width: 80%;
+    img {
+      width: 80%;
+    }
   }
   .logo-effect-enter-active {
-    animation: ${animationUtils.changeWidth('80%', '100%')} 0.2s linear;
-    animation-delay: 300ms;
+    img {
+      animation: ${animationUtils.changeWidth('80%', '100%')} 0.2s linear;
+      animation-delay: 300ms;
+    }
   }
   .logo-effect-exit-active {
-    animation: ${animationUtils.changeWidth('100%', '80%')} 0.2s linear;
-    animation-delay: 300ms;
+    img {
+      animation: ${animationUtils.changeWidth('100%', '80%')} 0.2s linear;
+      animation-delay: 300ms;
+    }
   }
   .logo-effect-exit-done {
-    width: 80%;
+    img {
+      width: 80%;
+    }
   }
 `
 
@@ -213,6 +222,9 @@ const FlexItem = css`
 const LogoContainer = styled.div`
   ${FlexItem}
   ${LogoEffect}
+  img {
+    width: 210px;
+  }
 `
 
 const SloganContainer = styled.div`
@@ -257,7 +269,6 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
     <HeaderContext.Consumer>
       {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
         const { bgColor, borderColor } = themeUtils.selectHeaderTheme(theme)
-        const Logo = themeUtils.selectLogoComponent(theme)
         return (
           <Box bgColor={bgColor} isHide={hideHeader}>
             <CSSTransition
@@ -268,17 +279,20 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
               <TopRow>
                 <FlexGroup>
                   <LogoContainer>
-                    <Link
-                      {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
+                    <CSSTransition
+                      in={!toUseNarrow}
+                      classNames="logo-effect"
+                      timeout={{ appear: 0, enter: 500, exit: 500 }}
                     >
-                      <CSSTransition
-                        in={!toUseNarrow}
-                        classNames="logo-effect"
-                        timeout={{ appear: 0, enter: 500, exit: 500 }}
+                      <Link
+                        {...linkUtils.getLogoLink(
+                          isLinkExternal,
+                          releaseBranch
+                        )}
                       >
                         <Logo />
-                      </CSSTransition>
-                    </Link>
+                      </Link>
+                    </CSSTransition>
                   </LogoContainer>
                   <ActionContainer>
                     <CSSTransition

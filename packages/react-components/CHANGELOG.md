@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.6.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.0-rc.2...@twreporter/react-components@8.6.0-rc.3) (2021-10-26)
+
+
+### Bug Fixes
+
+* fix defect ([7896d12](https://github.com/twreporter/twreporter-npm-packages/commit/7896d12ca192ea1d552574ca2cccf07990cdffd0)), closes [#170](https://github.com/twreporter/twreporter-npm-packages/issues/170) [#171](https://github.com/twreporter/twreporter-npm-packages/issues/171) [#172](https://github.com/twreporter/twreporter-npm-packages/issues/172) [#173](https://github.com/twreporter/twreporter-npm-packages/issues/173) [#177](https://github.com/twreporter/twreporter-npm-packages/issues/177) [#178](https://github.com/twreporter/twreporter-npm-packages/issues/178) [#179](https://github.com/twreporter/twreporter-npm-packages/issues/179)
+
+
+
+
+
+# [8.6.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.0-rc.1...@twreporter/react-components@8.6.0-rc.2) (2021-10-25)
+
+
+### Bug Fixes
+
+* **react-components:** fix spec change ([29468e1](https://github.com/twreporter/twreporter-npm-packages/commit/29468e1b10da13a1a506b5625f957bc5280e9960))
+* **react-components, universal-header:** update twreporter logo ([d2324cd](https://github.com/twreporter/twreporter-npm-packages/commit/d2324cd93ea8e66621ce7aa7969e6500ed77c2a3))
+
+
+
+
+
+# [8.6.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.0-rc.0...@twreporter/react-components@8.6.0-rc.1) (2021-10-20)
+
+
+### Features
+
+* **react-components:** rebranding footer ([3cbba5e](https://github.com/twreporter/twreporter-npm-packages/commit/3cbba5eebec743b2854e00b5b250253b58aeeff3))
+
+
+
+
+
+# [8.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.5.0...@twreporter/react-components@8.6.0-rc.0) (2021-10-20)
+
+
+### Features
+
+* **react-components, core:** add twitter entry in footer icon list ([9a3369d](https://github.com/twreporter/twreporter-npm-packages/commit/9a3369d033f324626545e120f1287a5a4cf53717))
+
+
+
+
+
 # [8.5.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.5.0-rc.2...@twreporter/react-components@8.5.0) (2021-10-12)
 
 **Note:** Version bump only for package @twreporter/react-components

@@ -3,6 +3,7 @@ import get from 'lodash/get'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 
 const _ = {
   get,
@@ -17,11 +18,11 @@ const heading = css`
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return 'rgba(255, 255, 255, 0.9)'
+        return color.notSoWhite
       case themeConst.article.v2.pink:
       case themeConst.article.v2.default:
       default:
-        return '#404040'
+        return color.gray90
     }
   }};
 `

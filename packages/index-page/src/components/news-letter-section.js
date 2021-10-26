@@ -1,9 +1,10 @@
 import { finalMedia } from '../utils/style-utils'
-import delay from 'lodash/delay'
 import EmailIcon from '../static/subscribe-icon.svg'
 import React from 'react'
 import styled from 'styled-components'
-
+import color from '../constants/color'
+// lodash
+import delay from 'lodash/delay'
 const _ = {
   delay,
 }
@@ -20,7 +21,7 @@ const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 const mobileInputWidthPct = (mockup.inputWidth / mockup.contentWidth) * 100
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
   padding-top: 70px;
   padding-bottom: 70px;
   ${finalMedia.mobile`
@@ -62,7 +63,7 @@ const Icon = styled.div`
 
 const SignupForm = styled.div`
   width: 100%;
-  background-color: #ffffff;
+  background-color: ${color.white};
   height: 40px;
 
   input {
@@ -102,9 +103,9 @@ const EmailInput = styled.input`
 
 const SubscribeInput = styled.input`
   display: block;
-  background-color: #ffffff;
+  background-color: ${color.white};
   padding-right: 10px;
-  color: #c4333e;
+  color: ${color.red};
   font-size: 16px;
   outline: none;
   box-shadow: none;

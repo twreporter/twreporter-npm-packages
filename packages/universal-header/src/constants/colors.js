@@ -6,5 +6,5 @@ export default {
   photography: '#08192d',
   brown: '#a67a44',
   white: '#ffffff',
-  red: '#c5222a',
+  red: '#c40c23',
 }

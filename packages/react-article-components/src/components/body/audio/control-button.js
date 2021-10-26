@@ -5,16 +5,17 @@ import PlayIcon from '../../../assets/body/audio/play.svg'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
+import colorConst from '../../../constants/color'
 
 function getIconColor(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
-      return '#d0a67d'
+      return colorConst.milkTea
     case themeConst.article.v2.pink:
-      return '#ef7ede'
+      return colorConst.darkPink
     case themeConst.article.v2.default:
     default:
-      return '#a67a44'
+      return colorConst.brown
   }
 }
 
@@ -22,19 +23,19 @@ function getIconWrapperStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        background-color: #08192d;
-        border-color: rgba(255, 255, 255, 0.25);
+        background-color: ${colorConst.darkBlue};
+        border-color: ${colorConst.gray10};
       `
     case themeConst.article.v2.pink:
       return css`
-        background-color: #f4f4f4;
-        border-color: #d8d8d8;
+        background-color: ${colorConst.gray20};
+        border-color: ${colorConst.gray50};
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        background-color: #f1f1f1;
-        border-color: #d8d8d8;
+        background-color: ${colorConst.gray30};
+        border-color: ${colorConst.gray50};
       `
   }
 }

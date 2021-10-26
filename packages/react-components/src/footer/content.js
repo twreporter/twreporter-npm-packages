@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import styles from './constants/styles'
+import color from './constants/color'
+import font from './constants/font'
 // core
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -27,41 +28,21 @@ function getItemGroups(mainOrigin) {
         target: '_blank',
       },
       {
-        slug: 'contact',
-        text: '聯絡我們',
-        link: `${mainOrigin}${entityPaths.article}contact-footer`,
-        target: '_blank',
-      },
-      {
         slug: 'authors',
         text: '作者群',
         link: `${mainOrigin}/authors`,
         target: '_self',
       },
       {
-        slug: 'impact-and-annual-report',
-        text: '影響力報告',
-        link: `${mainOrigin}${entityPaths.article}impact-and-annual-report`,
-        target: '_self',
-      },
-    ],
-    [
-      {
-        slug: 'privacy',
-        text: '隱私政策',
-        link: `${mainOrigin}${entityPaths.article}privacy-footer`,
+        slug: 'contact',
+        text: '聯絡我們',
+        link: `${mainOrigin}${entityPaths.article}contact-footer`,
         target: '_blank',
       },
       {
-        slug: 'license',
-        text: '許可協議',
-        link: `${mainOrigin}${entityPaths.article}license-footer`,
-        target: '_blank',
-      },
-      {
-        slug: 'donate',
-        text: '捐款徵信',
-        link: `${mainOrigin}${entityPaths.article}credit-donate`,
+        slug: 'about',
+        text: '加入我們',
+        link: `${mainOrigin}${entityPaths.article}hiring-job-description`,
         target: '_blank',
       },
       {
@@ -73,11 +54,37 @@ function getItemGroups(mainOrigin) {
     ],
     [
       {
-        slug: 'about',
-        text: '加入我們',
-        link: `${mainOrigin}${entityPaths.article}hiring-job-description`,
+        slug: 'privacy',
+        text: '隱私政策',
+        link: `${mainOrigin}${entityPaths.article}privacy-footer`,
         target: '_blank',
       },
+      {
+        slug: 'donate',
+        text: '捐款徵信',
+        link: `${mainOrigin}${entityPaths.article}credit-donate`,
+        target: '_blank',
+      },
+      {
+        slug: 'license',
+        text: '許可協議',
+        link: `${mainOrigin}${entityPaths.article}license-footer`,
+        target: '_blank',
+      },
+      {
+        slug: 'media-center',
+        text: '基金會新聞',
+        link: `${mainOrigin}${entityPaths.topics}media-center`,
+        target: '_blank',
+      },
+      {
+        slug: 'impact-and-annual-report',
+        text: '影響力報告',
+        link: `${mainOrigin}${entityPaths.article}impact-and-annual-report`,
+        target: '_self',
+      },
+    ],
+    [
       {
         slug: 'subcribe',
         text: '訂閱電子報',
@@ -89,13 +96,20 @@ function getItemGroups(mainOrigin) {
         text: 'Podcast節目列表',
         link: `${mainOrigin}${entityPaths.article}podcast-list`,
         target: '_blank',
-        newFlag: true,
       },
       {
-        slug: 'media-center',
-        text: '報導者基金會新聞專區',
-        link: `${mainOrigin}${entityPaths.topics}media-center`,
+        slug: 'twreporter-lab',
+        text: '報導者開放實驗室',
+        link: 'https://medium.com/twreporter',
         target: '_blank',
+      },
+      {
+        slug: 'branding-design',
+        text: '品牌辨識系統',
+        link:
+          'https://twreporter.gitbook.io/the-reporter-brand-guidelines/-Mkp5ci3KEsre0wOPYer/',
+        target: '_blank',
+        newFlag: true,
       },
     ],
   ]
@@ -104,10 +118,10 @@ function getItemGroups(mainOrigin) {
 const Intro = styled.p`
   width: 100%;
   font-size: 12px;
-  font-weight: ${fontWeight.medium};
+  font-weight: ${font.weight.normal};
   line-height: 1.5;
   letter-spacing: 0.4px;
-  color: #9c9c9c;
+  color: ${color.gray};
   ${mq.mobileOnly`
     font-size: 16px;
     line-height: 1.63;
@@ -159,9 +173,13 @@ const LinksColumn = styled(Column)`
   ${mq.desktopOnly`
     width: 392px;
   `}
+  ${mq.desktopAndAbove`
+    padding-left: 80px;
+  `}
   ${mq.tabletAndAbove`
     float: right;
-    border-left: solid 0.25px #d8d8d8;
+    border-left: solid 0.25px ${color.lightGray};
+    margin-bottom: 50px;
   `}
   ${mq.tabletOnly`
     width: 270px;
@@ -175,6 +193,12 @@ const LinksColumn = styled(Column)`
 
 const ItemList = styled.div`
   width: 100%;
+  ${mq.hdOnly`
+    width: 397px;
+  `}
+  ${mq.desktopOnly`
+    width: 380px;
+  `}
 `
 
 const ItemGroup = styled.div`
@@ -209,26 +233,25 @@ const Item = styled.a`
   p {
     display: inline;
     font-size: 14px;
-    /* ff-tisa-web-prop is for english text */
-    font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
-    font-weight: ${fontWeight.medium};
+    font-family: ${font.family.default};
+    font-weight: ${font.weight.normal};
     letter-spacing: 1.3px;
-    color: #9c9c9c;
+    color: ${color.gray};
   }
   span {
     visibility: ${props => (props.visible ? 'visible' : 'hidden')};
-    background: #c7000a;
-    color: #ffffff;
+    background: ${color.red};
+    color: ${color.white};
     font-size: 9px;
-    font-family: Roboto;
-    margin-right: 5px;
+    font-family: ${font.family.default};
+    margin-left: 5px;
     padding: 2px 5px;
     vertical-align: middle;
     animation: ${flickerAnimation} 0.7s infinite;
   }
   &:hover {
     p {
-      color: #262626;
+      color: ${color.notSoBlack};
     }
   }
   ${mq.desktopAndAbove`
@@ -248,22 +271,22 @@ const DonateButton = styled.div`
     text-decoration: none !important;
     width: 140px;
     height: 55px;
-    background-color: #ffffff;
-    border: solid 0.5px #a67a44;
+    background-color: ${color.white};
+    border: solid 0.5px ${color.gold};
     display: table;
     &:hover{
-      background-color: #a67a44;
+      background-color: ${color.gold};
     }
     p {
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-      color: #a67a44;
+      color: ${color.gold};
       font-size: 14px;
-      font-weight: ${fontWeight.medium};
+      font-weight: ${font.weight.normal};
       letter-spacing: 1.3px;
       &:hover{
-        color: #ffffff;
+        color: ${color.white};
       }
     }
     ${mq.tabletAndAbove`
@@ -298,8 +321,8 @@ const buildList = itemGroups =>
               href={item.link}
               target={item.target}
             >
-              <span>New</span>
               <p>{item.text}</p>
+              <span>New</span>
             </Item>
           )
         })}

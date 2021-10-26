@@ -1,9 +1,10 @@
 import { finalMedia } from '../utils/style-utils'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
 import DonationLink from '@twreporter/react-components/lib/donation-link'
 import React from 'react'
 import styled from 'styled-components'
+import color from '../constants/color'
+import font from '../constants/font'
 
 const mockup = {
   defaultWidth: 320,
@@ -13,7 +14,7 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-color: #a67a44;
+  background-color: ${color.brown};
   padding-top: 30px;
   padding-bottom: 30px;
   ${finalMedia.mobile`
@@ -29,11 +30,12 @@ const ContentContainer = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 100px;
-  color: #ffffff;
+  color: ${color.white};
   h3{
     margin: 0;
     font-size: 32px;
-    font-weight: ${fontWeight.bold};
+    font-weight: ${font.weight.bold};
+    font-family: ${font.family.title};
     line-height: 1.63;
   }
   p{
@@ -73,9 +75,9 @@ const DonateButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: #ffffff;
+    background: ${color.white};
     border: none;
-    color: #a67a44;
+    color: ${color.brown};
     font-size: 16px;
     cursor: pointer;
     display: table;
@@ -91,7 +93,7 @@ const DonateButton = styled.div`
       display: table-cell;
       vertical-align: middle;
       text-align: center;
-      font-weight: ${fontWeight.bold};
+      font-weight: ${font.weight.bold};
     }
   }
 `
