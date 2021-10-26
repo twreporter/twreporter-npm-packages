@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.2-rc.2...@twreporter/universal-header@2.2.2-rc.3) (2021-10-26)
+
+
+### Bug Fixes
+
+* fix defect ([7896d12](https://github.com/twreporter/twreporter-npm-packages/commit/7896d12ca192ea1d552574ca2cccf07990cdffd0)), closes [#170](https://github.com/twreporter/twreporter-npm-packages/issues/170) [#171](https://github.com/twreporter/twreporter-npm-packages/issues/171) [#172](https://github.com/twreporter/twreporter-npm-packages/issues/172) [#173](https://github.com/twreporter/twreporter-npm-packages/issues/173) [#177](https://github.com/twreporter/twreporter-npm-packages/issues/177) [#178](https://github.com/twreporter/twreporter-npm-packages/issues/178) [#179](https://github.com/twreporter/twreporter-npm-packages/issues/179)
+
+
+
+
+
 ## [2.2.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.2-rc.1...@twreporter/universal-header@2.2.2-rc.2) (2021-10-25)
 
 
