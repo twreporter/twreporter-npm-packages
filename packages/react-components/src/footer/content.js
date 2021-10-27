@@ -106,8 +106,7 @@ function getItemGroups(mainOrigin) {
       {
         slug: 'branding-design',
         text: '品牌設計規範',
-        link:
-          'https://twreporter.gitbook.io/the-reporter-brand-guidelines/-Mkp5ci3KEsre0wOPYer/',
+        link: 'https://twreporter.gitbook.io/the-reporter-brand-guidelines',
         target: '_blank',
         newFlag: true,
       },
