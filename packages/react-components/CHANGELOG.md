@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.6.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.0...@twreporter/react-components@8.6.1-rc.0) (2021-10-27)
+
+
+### Bug Fixes
+
+* **react-components:** update footer branding text ([06f7800](https://github.com/twreporter/twreporter-npm-packages/commit/06f780028ba2e2c6442e9f118bc3d2ae525ebae3))
+
+
+
+
+
 # [8.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.0-rc.3...@twreporter/react-components@8.6.0) (2021-10-26)
 
 **Note:** Version bump only for package @twreporter/react-components
