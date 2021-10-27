@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.6.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.1...@twreporter/react-components@8.6.2-rc.0) (2021-10-27)
+
+
+### Bug Fixes
+
+* **react-components:** fix gitbook link ([6c6e555](https://github.com/twreporter/twreporter-npm-packages/commit/6c6e5558b5299079dbebe9ec287328c9d3e376cf))
+
+
+
+
+
 ## [8.6.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.1-rc.0...@twreporter/react-components@8.6.1) (2021-10-27)
 
 **Note:** Version bump only for package @twreporter/react-components
