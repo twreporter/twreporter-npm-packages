@@ -11,7 +11,6 @@ import font from './constants/font'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
-import origins from '@twreporter/core/lib/constants/request-origins'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
@@ -76,9 +75,9 @@ class Footer extends React.PureComponent {
       <FooterContainer bgColor={bgColor}>
         <FooterContent>
           <Content
-            mainOrigin={origins.forClientSideRendering[releaseBranch].main}
             pathname={pathname}
             host={host}
+            releaseBranch={releaseBranch}
           />
           <IconList />
           <CopyRight>{`Copyright © ${currentYear} The Reporter.`}</CopyRight>

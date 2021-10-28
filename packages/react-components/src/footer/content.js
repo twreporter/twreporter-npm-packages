@@ -1,16 +1,20 @@
-import DonationLink from '../donation-link'
-import Logo from './logo'
-import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+// components
+import DonationLink from '../donation-link'
+import Logo from './logo'
+// constants
 import styles from './constants/styles'
 import color from './constants/color'
 import font from './constants/font'
-// core
+// @twreporter
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
+import origins from '@twreporter/core/lib/constants/request-origins'
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 // lodash
 import map from 'lodash/map'
 
@@ -106,8 +110,7 @@ function getItemGroups(mainOrigin) {
       {
         slug: 'branding-design',
         text: '品牌設計規範',
-        link:
-          'https://twreporter.gitbook.io/the-reporter-brand-guidelines/-Mkp5ci3KEsre0wOPYer/',
+        link: 'https://twreporter.gitbook.io/the-reporter-brand-guidelines',
         target: '_blank',
         newFlag: true,
       },
@@ -330,34 +333,32 @@ const buildList = itemGroups =>
     )
   })
 
-class Content extends React.PureComponent {
-  render() {
-    const { mainOrigin } = this.props
-    return (
-      <ContentRow>
-        <IntroColumn>
-          <Logo mainOrigin={mainOrigin} />
-          <Intro>{siteIntro}</Intro>
-        </IntroColumn>
-        <LinksColumn>
-          <ItemList>{buildList(getItemGroups(mainOrigin))}</ItemList>
-        </LinksColumn>
-        <DonateButton>
-          <DonationLink>
-            <p>贊助我們</p>
-          </DonationLink>
-        </DonateButton>
-      </ContentRow>
-    )
-  }
+const Content = ({ releaseBranch }) => {
+  const mainOrigin = origins.forClientSideRendering[releaseBranch].main
+  return (
+    <ContentRow>
+      <IntroColumn>
+        <Logo mainOrigin={mainOrigin} releaseBranch={releaseBranch} />
+        <Intro>{siteIntro}</Intro>
+      </IntroColumn>
+      <LinksColumn>
+        <ItemList>{buildList(getItemGroups(mainOrigin))}</ItemList>
+      </LinksColumn>
+      <DonateButton>
+        <DonationLink>
+          <p>贊助我們</p>
+        </DonationLink>
+      </DonateButton>
+    </ContentRow>
+  )
 }
 
 Content.propTypes = {
-  mainOrigin: PropTypes.string,
+  releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
 Content.defaultProps = {
-  mainOrigin: '',
+  releaseBranch: releaseBranchConsts.release,
 }
 
 export default Content
