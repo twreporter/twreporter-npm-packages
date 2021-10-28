@@ -10,10 +10,10 @@ import Link from './customized-link'
 import HamburgerMenu from './hamburger-menu'
 import ActionButton from './action-button'
 import Slogan from './slogan'
-import Logo from './logo'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import { LogoHeader } from '@twreporter/react-components/lib/logo'
 
 const styles = {
   headerHeight: {
@@ -209,6 +209,7 @@ export default class MobileHeader extends React.PureComponent {
           }) => {
             const { bgColor } = themeUtils.selectHeaderTheme(theme)
             const MenuIcon = themeUtils.selectIcons(theme).menu
+            const logoType = themeUtils.selectLogoType(theme)
             return (
               <FlexBox bgColor={bgColor} isHide={hideHeader}>
                 <FlexGroup>
@@ -217,7 +218,10 @@ export default class MobileHeader extends React.PureComponent {
                       {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
                       onClick={this.closeMenu}
                     >
-                      <Logo />
+                      <LogoHeader
+                        type={logoType}
+                        releaseBranch={releaseBranch}
+                      />
                     </Link>
                   </LogoContainer>
                   <ActionContainer>

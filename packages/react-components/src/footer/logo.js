@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+// components
+import { LogoFooter } from '../logo'
+// constants
 import styles from './constants/styles'
-// core
-import { assets as assetsPath } from './constants/paths'
+// @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 const Link = styled.a`
   position: relative;
@@ -15,15 +19,6 @@ const Link = styled.a`
 const StyledReporterLogo = styled.div`
   width: ${styles.reporterLogo.width.mobile}px;
   height: ${styles.reporterLogo.height.mobile}px;
-  img {
-    width: 100%;
-    filter: grayscale(100%);
-    opacity: ${styles.grayScaleOpacity.pureBlackWhiteSrc};
-  }
-  img:hover {
-    filter: none;
-    opacity: 1;
-  }
   ${mq.tabletAndAbove`
     width: ${styles.reporterLogo.width.desktop}px;
     height: ${styles.reporterLogo.height.desktop}px;
@@ -34,28 +29,24 @@ const StyledReporterLogo = styled.div`
   `}
 `
 
-class Logo extends React.PureComponent {
-  render() {
-    const { mainOrigin } = this.props
-    return (
-      <Link href={mainOrigin}>
-        <StyledReporterLogo>
-          <img
-            alt="The Reporter Logo"
-            src={`${assetsPath}logo-horizontal.svg`}
-          />
-        </StyledReporterLogo>
-      </Link>
-    )
-  }
+const Logo = ({ mainOrigin, releaseBranch }) => {
+  return (
+    <Link href={mainOrigin}>
+      <StyledReporterLogo>
+        <LogoFooter releaseBranch={releaseBranch} />
+      </StyledReporterLogo>
+    </Link>
+  )
 }
 
 Logo.propTypes = {
   mainOrigin: PropTypes.string.isRequired,
+  releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
 Logo.defaultProps = {
   mainOrigin: '',
+  releaseBranch: releaseBranchConsts.release,
 }
 
 export default Logo

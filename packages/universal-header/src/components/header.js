@@ -11,10 +11,10 @@ import ActionButton from './action-button'
 import Icons from './icons'
 import Link from './customized-link'
 import Slogan from './slogan'
-import Logo from './logo'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import { LogoHeader } from '@twreporter/react-components/lib/logo'
 
 const CHANNEL_HEIGHT = 36 // px
 
@@ -269,6 +269,7 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
     <HeaderContext.Consumer>
       {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
         const { bgColor, borderColor } = themeUtils.selectHeaderTheme(theme)
+        const logoType = themeUtils.selectLogoType(theme)
         return (
           <Box bgColor={bgColor} isHide={hideHeader}>
             <CSSTransition
@@ -290,7 +291,10 @@ const Header = ({ pathname, channels, services, actions, narrowActions }) => {
                           releaseBranch
                         )}
                       >
-                        <Logo />
+                        <LogoHeader
+                          type={logoType}
+                          releaseBranch={releaseBranch}
+                        />
                       </Link>
                     </CSSTransition>
                   </LogoContainer>
