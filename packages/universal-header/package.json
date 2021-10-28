@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/universal-header",
-  "version": "2.2.4-rc.1",
+  "version": "2.2.4",
   "description": "Universal header of TWReporter sites",
   "main": "lib/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@twreporter/core": "^1.3.0",
-    "@twreporter/react-components": "^8.6.2-rc.1",
+    "@twreporter/react-components": "^8.6.2",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "querystring": "^0.2.0",
