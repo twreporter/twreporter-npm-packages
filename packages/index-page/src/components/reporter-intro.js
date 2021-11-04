@@ -17,7 +17,6 @@ import appConfig from '../constants/app'
 import sectionStrings from '../constants/section-strings'
 import { itemPlusPaddingWidthPct } from '../constants/mobile-mockup-specification'
 import color from '../constants/color'
-import font from '../constants/font'
 // assets
 import AboutAuthorIcon from '../static/about-author.svg'
 import AboutDonateIcon from '../static/about-donate.svg'
@@ -26,6 +25,7 @@ import AboutSubscribeIcon from '../static/about-subscribe.svg'
 import ReporterIcon from '../static/reporter-large.svg'
 // @twreporter
 import externalLinks from '@twreporter/core/lib/constants/external-links'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 
 const mobileWidth = breakPoints.mobileMaxWidth
 const ContentContainer = styled(Section)`
@@ -96,7 +96,7 @@ const Item = styled.div`
 const ItemTitle = styled.h3`
   margin: 0;
   font-size: 20px;
-  font-weight: ${font.weight.bold};
+  font-weight: ${fontWeight.bold};
   ${finalMedia.mobile`
     margin: 6px;
   `}

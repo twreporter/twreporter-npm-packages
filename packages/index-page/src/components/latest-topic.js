@@ -20,7 +20,8 @@ import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
 import color from '../constants/color'
-import font from '../constants/font'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -60,8 +61,8 @@ const TopicFrame = styled.div`
 const Title = styled.div`
   width: 374px;
   font-size: 32px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   line-height: 1.25;
   color: ${color.darkGray};
   text-align: center;
@@ -145,8 +146,8 @@ const RelatedCategory = styled(CategoryName)`
 
 const RelatedTitle = styled.div`
   font-size: 20px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   color: ${color.darkGray};
   line-height: 1.5;
 `

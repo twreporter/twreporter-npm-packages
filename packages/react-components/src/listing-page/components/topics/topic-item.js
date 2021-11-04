@@ -1,16 +1,19 @@
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
+import styled from 'styled-components'
+// components
+import Image from '../image'
+// constants
 import {
   linkHoverFadeOut,
   resetLinkStyle,
 } from '../../constants/predefined-css'
 import { TEXT } from '../../constants/topics'
 import color from '../../constants/color'
-import font from '../../constants/font'
-import Image from '../image'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
-import styled from 'styled-components'
+// @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const styles = {
   imgPortrait: {
@@ -126,8 +129,8 @@ const TopicTitle = styled.h2`
     margin-bottom: ${styles.textBlock.mobile.titleMarginBottom}px;
   `}
   font-size: ${styles.fontSize.title.mobile}px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   letter-spacing: .2px;
   line-height: 1.43;
   ${mq.tabletOnly`
@@ -146,7 +149,7 @@ const TopicDate = styled.div`
     padding-bottom: 12px;
   `}
   font-size: 14px;
-  font-weight: ${font.weight.bold};
+  font-weight: ${fontWeight.bold};
   letter-spacing: 0.5px;
 `
 const TopicDescription = styled.div`

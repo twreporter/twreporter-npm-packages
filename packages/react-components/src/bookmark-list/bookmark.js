@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 import BookmarkIcon from './assets/bookmark.svg'
 import CustomizedLink from './customized-link'
 import ImgWrapper from './image-wrapper'
@@ -203,7 +203,7 @@ const ReadMore = styled.div`
 const Date = styled.span`
   vertical-align: top;
   font-size: 16px;
-  font-weight: ${fontWeight.light};
+  font-weight: ${fontWeight.default};
   color: ${color.gray};
   float: right;
 `

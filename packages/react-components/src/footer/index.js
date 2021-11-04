@@ -7,12 +7,12 @@ import IconList from './icon-list'
 // constants
 import styles from './constants/styles'
 import color from './constants/color'
-import font from './constants/font'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 
 const FooterContainer = styled.div`
   border-top: solid 0.5px ${color.lightGray};
@@ -52,7 +52,7 @@ const FooterContent = styled.div`
 
 const CopyRight = styled.p`
   font-size: 12px;
-  font-weight: ${font.weight.normal};
+  font-weight: ${fontWeight.normal};
   letter-spacing: 0.4px;
   color: ${color.gray};
   ${mq.mobileOnly`

@@ -17,7 +17,8 @@ import TRLink from './common-utils/twreporter-link'
 import sectionStrings from '../constants/section-strings'
 import categoryStrings from '../constants/category-strings'
 import color from '../constants/color'
-import font from '../constants/font'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -106,8 +107,8 @@ const Title = styled.div`
   transform: translate(-50%, -50%);
   line-height: 1.5;
   text-align: justify;
-  font-weight: ${font.weight.normal};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.normal};
+  font-family: ${fontFamily.title};
 `
 
 const Img = styled.div`
