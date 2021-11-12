@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 // constants
 import mockup from '../constants/mockup-spec'
 import color from '../constants/color'

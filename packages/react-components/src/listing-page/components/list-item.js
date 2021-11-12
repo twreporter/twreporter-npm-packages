@@ -7,10 +7,10 @@ import ImgWrapper from './image'
 // constants
 import mockup from '../constants/mockup-spec'
 import color from '../constants/color'
-import font from '../constants/font'
 // @twreporter
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -78,8 +78,8 @@ const Category = styled.div`
 
 const Title = styled.div`
   font-size: 20px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   line-height: 1.4;
   color: ${color.darkGray};
   margin-bottom: 10px;
@@ -126,7 +126,7 @@ const Tag = styled.li`
   text-decoration: none;
   line-height: 1.45;
   font-size: 12px;
-  font-weight: ${font.weight.bold};
+  font-weight: ${fontWeight.bold};
   padding: 2px 10px;
   margin-right: 13px;
   margin-bottom: 10px;

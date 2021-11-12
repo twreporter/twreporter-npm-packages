@@ -12,7 +12,8 @@ import ContentWrapper from './common-utils/section-content-wrapper'
 import TRLink from './common-utils/twreporter-link'
 // constants
 import color from '../constants/color'
-import font from '../constants/font'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -140,8 +141,8 @@ const Category = styled(CategoryName)`
 const Title = styled.div`
   height: auto;
   font-size: 16px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   color: ${color.darkGray};
 `
 

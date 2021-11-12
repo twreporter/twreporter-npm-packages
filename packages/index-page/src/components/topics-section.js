@@ -18,7 +18,8 @@ import TRLink from './common-utils/twreporter-link'
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
 import color from '../constants/color'
-import font from '../constants/font'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -122,8 +123,8 @@ const TopicNameColumn = styled(Column)`
 
 const TitleColumn = styled(Column)`
   font-size: 32px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
 `
 
 const Title = styled.div`
@@ -166,8 +167,8 @@ const Mobile = {
   Title: styled(Title)`
     line-height: 1.33;
     text-align: center;
-    font-family: ${font.family.title};
-    font-weight: ${font.weight.bold};
+    font-family: ${fontFamily.title};
+    font-weight: ${fontWeight.bold};
     font-size: 24px;
     margin-bottom: 15px;
     margin-top: 4px;

@@ -5,11 +5,11 @@ import { finalMedia } from '../utils/style-utils'
 // constants
 import app from '../constants/app'
 import color from '../constants/color'
-import font from '../constants/font'
 // assets
 import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
 // @twreporter
 import PodcastLandingPageLink from '@twreporter/react-components/lib/podcast-link'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const mockup = {
   defaultWidth: 320,
@@ -44,12 +44,12 @@ const ContentContainer = styled.div`
   margin: 0 auto;
   padding: 0 100px;
   color: ${color.black};
-  font-family: ${font.family.default};
+  font-family: ${fontFamily.default};
   h3 {
     margin: 0;
     font-size: 32px;
-    font-weight: ${font.weight.bold};
-    font-family: ${font.family.title};
+    font-weight: ${fontWeight.bold};
+    font-family: ${fontFamily.title};
     line-height: 1.63;
   }
   p {
@@ -107,7 +107,7 @@ const ListenButton = styled.div`
       display: table-cell;
       vertical-align: middle;
       text-align: center;
-      font-weight: ${font.weight.bold};
+      font-weight: ${fontWeight.bold};
     }
   }
 `

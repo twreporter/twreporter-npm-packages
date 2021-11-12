@@ -18,8 +18,9 @@ import TRLink from './common-utils/twreporter-link'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
-import font from '../constants/font'
 // @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+// lodash
 import get from 'lodash/get'
 const _ = {
   get,
@@ -121,8 +122,8 @@ const Category = styled(CategoryName)`
 const Title = styled.div`
   margin-top: 2px;
   font-size: 20px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   line-height: 1.5;
   ${finalMedia.tablet`
     width: 144px;

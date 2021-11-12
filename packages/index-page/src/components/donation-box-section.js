@@ -1,10 +1,14 @@
-import { finalMedia } from '../utils/style-utils'
-import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
-import DonationLink from '@twreporter/react-components/lib/donation-link'
 import React from 'react'
 import styled from 'styled-components'
+// utils
+import { finalMedia } from '../utils/style-utils'
+// constants
 import color from '../constants/color'
-import font from '../constants/font'
+// assets
+import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
+// @twreporter
+import DonationLink from '@twreporter/react-components/lib/donation-link'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const mockup = {
   defaultWidth: 320,
@@ -34,8 +38,8 @@ const ContentContainer = styled.div`
   h3{
     margin: 0;
     font-size: 32px;
-    font-weight: ${font.weight.bold};
-    font-family: ${font.family.title};
+    font-weight: ${fontWeight.bold};
+    font-family: ${fontFamily.title};
     line-height: 1.63;
   }
   p{
@@ -93,7 +97,7 @@ const DonateButton = styled.div`
       display: table-cell;
       vertical-align: middle;
       text-align: center;
-      font-weight: ${font.weight.bold};
+      font-weight: ${fontWeight.bold};
     }
   }
 `

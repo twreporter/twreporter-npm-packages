@@ -17,8 +17,9 @@ import TRLink from './common-utils/twreporter-link'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
-import font from '../constants/font'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -65,8 +66,8 @@ const Title = styled.div`
   transform: translateX(-50%);
   width: ${itemWidthPct}%;
   font-size: 24px;
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   color: ${color.darkGray};
   position: absolute;
 `

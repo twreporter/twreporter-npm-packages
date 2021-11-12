@@ -1,16 +1,19 @@
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
+import styled from 'styled-components'
+// components
+import Image from '../image'
+// constants
 import {
   linkHoverFadeOut,
   resetLinkStyle,
 } from '../../constants/predefined-css'
-import Image from '../image'
-import { Link } from 'react-router-dom'
-import mq from '@twreporter/core/lib/utils/media-query'
-import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
-import styled from 'styled-components'
 import color from '../../constants/color'
-import font from '../../constants/font'
+// @twreporter
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import mq from '@twreporter/core/lib/utils/media-query'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const styles = {
   imgLandscape: {
@@ -81,8 +84,8 @@ const PostImage = styled.div`
 `
 const PostText = styled.div`
   color: ${color.darkGray};
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   font-size: 16px;
   line-height: 1.5;
   flex: 1 1 auto;

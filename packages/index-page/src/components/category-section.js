@@ -17,7 +17,8 @@ import ImgWrapper from './common-utils/img-wrapper'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
-import font from '../constants/font'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -113,7 +114,7 @@ const CategoryName = styled.div`
   background-color: ${backgroundColor};
   width: 100%;
   color: ${color.darkGray};
-  font-weight: ${font.weight.bold};
+  font-weight: ${fontWeight.bold};
   line-height: 1.4;
   text-align: center;
   font-size: 20px;
@@ -127,8 +128,8 @@ const TextFrame = styled.div`
 `
 
 const Title = styled.div`
-  font-family: ${font.family.title};
-  font-weight: ${font.weight.bold};
+  font-family: ${fontFamily.title};
+  font-weight: ${fontWeight.bold};
   font-size: 20px;
   color: ${color.darkGray};
   line-height: 1.4;
