@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import wellDefinedPropTypes from '../constants/prop-types'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -37,7 +38,7 @@ const MenuBox = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  background-color: ${colors.white};
+  background-color: ${colorGrayscale.white};
   user-select: none;
 `
 
@@ -59,7 +60,7 @@ const SubMenuBox = styled.li`
   white-space: nowrap;
   position: relative;
   margin: 0;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid ${colorGrayscale.gray200};
   width: 100%;
   height: ${styles.subMenuHeight.mobile}px;
   ${mq.desktopAndAbove`
@@ -70,10 +71,10 @@ const SubMenuBox = styled.li`
   a:visited {
     width: 100%;
     border: 0;
-    color: #808080;
+    color: ${colorGrayscale.gray600};
     &:hover {
-      color: ${colors.grayDark};
-      background-color: rgba(0, 0, 0, 0.1);
+      color: ${colorGrayscale.gray900};
+      background-color: ${colors.gray150};
     }
   }
 `
