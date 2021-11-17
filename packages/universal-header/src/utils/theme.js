@@ -1,6 +1,12 @@
-import colorsConst from '../constants/colors'
+import colors from '../constants/colors'
 import themeConst from '../constants/theme'
 import { ServiceIcons, Icons } from './icon'
+import {
+  colorBrand,
+  colorPhoto,
+  colorSupportive,
+  colorGrayscale,
+} from '@twreporter/core/lib/constants/color'
 
 function selectLogoType(theme) {
   switch (theme) {
@@ -64,39 +70,39 @@ function selectChannelTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return {
-        bgColor: colorsConst.photography,
-        fontColor: '#808080',
-        hoverFontColor: colorsConst.white,
-        hoverBgColor: 'rgba(255, 255, 255, 0.1)',
-        borderColor: 'rgba(128, 128, 128, 0.2)',
+        bgColor: colorPhoto.dark,
+        fontColor: colorGrayscale.gray600,
+        hoverFontColor: colorGrayscale.white,
+        hoverBgColor: colors.gray50,
+        borderColor: colors.gray250,
       }
     }
     case themeConst.transparent: {
       return {
         bgColor: 'transparent',
-        fontColor: colorsConst.white,
-        hoverFontColor: colorsConst.grayDark,
-        hoverBgColor: colorsConst.white,
-        borderColor: 'rgba(128, 128, 128, 0.2)',
+        fontColor: colorGrayscale.white,
+        hoverFontColor: colorGrayscale.gray900,
+        hoverBgColor: colorGrayscale.white,
+        borderColor: colors.gray250,
       }
     }
     case themeConst.index: {
       return {
-        bgColor: colorsConst.white,
-        fontColor: '#808080',
-        hoverFontColor: colorsConst.grayDark,
-        hoverBgColor: 'rgba(0, 0, 0, 0.1)',
-        borderColor: colorsConst.gray,
+        bgColor: colorGrayscale.white,
+        fontColor: colorGrayscale.gray600,
+        hoverFontColor: colorGrayscale.gray900,
+        hoverBgColor: colors.gray150,
+        borderColor: colorGrayscale.gray200,
       }
     }
     case themeConst.normal:
     default: {
       return {
-        bgColor: colorsConst.grayLight,
-        fontColor: '#808080',
-        hoverFontColor: colorsConst.grayDark,
-        hoverBgColor: 'rgba(0, 0, 0, 0.1)',
-        borderColor: colorsConst.gray,
+        bgColor: colorGrayscale.gray100,
+        fontColor: colorGrayscale.gray600,
+        hoverFontColor: colorGrayscale.gray900,
+        hoverBgColor: colors.gray150,
+        borderColor: colorGrayscale.gray200,
       }
     }
   }
@@ -106,27 +112,27 @@ function selectHeaderTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return {
-        bgColor: colorsConst.photography,
-        borderColor: 'rgba(128, 128, 128, 0.2)',
+        bgColor: colorPhoto.dark,
+        borderColor: colors.gray250,
       }
     }
     case themeConst.transparent: {
       return {
-        bgColor: 'rgba(0, 0, 0, 0.1)',
-        borderColor: 'rgba(128, 128, 128, 0.2)',
+        bgColor: colors.gray150,
+        borderColor: colors.gray250,
       }
     }
     case themeConst.index: {
       return {
-        bgColor: colorsConst.white,
-        borderColor: colorsConst.gray,
+        bgColor: colorGrayscale.white,
+        borderColor: colorGrayscale.gray200,
       }
     }
     case themeConst.normal:
     default: {
       return {
-        bgColor: colorsConst.grayLight,
-        borderColor: colorsConst.gray,
+        bgColor: colorGrayscale.gray100,
+        borderColor: colorGrayscale.gray200,
       }
     }
   }
@@ -136,25 +142,25 @@ function selectActionButtonTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return {
-        color: colorsConst.white,
-        bgColor: colorsConst.brown,
-        hoverBgColor: '#856236',
+        color: colorGrayscale.white,
+        bgColor: colorSupportive.main,
+        hoverBgColor: colors.brownDark,
       }
     }
     case themeConst.transparent: {
       return {
-        color: colorsConst.brown,
-        bgColor: colorsConst.white,
-        hoverBgColor: '#d8d8d8',
+        color: colorSupportive.main,
+        bgColor: colorGrayscale.white,
+        hoverBgColor: colorGrayscale.gray300,
       }
     }
     case themeConst.index:
     case themeConst.normal:
     default: {
       return {
-        color: colorsConst.white,
-        bgColor: colorsConst.red,
-        hoverBgColor: '#9e1b22',
+        color: colorGrayscale.white,
+        bgColor: colorBrand.heavy,
+        hoverBgColor: colors.redDark,
       }
     }
   }
@@ -164,7 +170,7 @@ function selectHamburgerMenuTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return {
-        bgColor: colorsConst.photography,
+        bgColor: colorPhoto.dark,
       }
     }
     case themeConst.transparent:
@@ -172,7 +178,7 @@ function selectHamburgerMenuTheme(theme) {
     case themeConst.normal:
     default: {
       return {
-        bgColor: colorsConst.grayLight,
+        bgColor: colorGrayscale.gray100,
       }
     }
   }
@@ -182,7 +188,7 @@ function selectHamburgerServiceTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
       return {
-        borderColor: 'rgba(128, 128, 128, 0.5)',
+        borderColor: colors.gray450,
       }
     }
     case themeConst.transparent:
@@ -190,7 +196,7 @@ function selectHamburgerServiceTheme(theme) {
     case themeConst.normal:
     default: {
       return {
-        borderColor: 'rgba(128, 128, 128, 0.2)',
+        borderColor: colors.gray250,
       }
     }
   }
@@ -199,15 +205,15 @@ function selectHamburgerServiceTheme(theme) {
 function selectSloganTheme(theme) {
   switch (theme) {
     case themeConst.photography: {
-      return '#c9af8e'
+      return colorSupportive.main
     }
     case themeConst.transparent: {
-      return colorsConst.white
+      return colorGrayscale.white
     }
     case themeConst.index:
     case themeConst.normal:
     default: {
-      return colorsConst.grayDark
+      return colorGrayscale.gray900
     }
   }
 }

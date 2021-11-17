@@ -1,10 +1,9 @@
 export default {
-  black: '#000000',
-  grayDark: '#262626',
-  grayLight: '#f1f1f1',
-  gray: '#e2e2e2',
-  photography: '#08192d',
-  brown: '#a67a44',
-  white: '#ffffff',
-  red: '#c40c23',
+  redDark: '#9a1b22',
+  brownDark: '#856236',
+  gray50: 'rgba(255, 255, 255, 0.1)',
+  gray150: 'rgba(0, 0, 0, 0.1)',
+  gray250: 'rgba(128, 128, 128, 0.2)',
+  gray450: 'rgba(128, 128, 128, 0.5)',
+  gray550: '#8c8c8c',
 }
