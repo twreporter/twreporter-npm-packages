@@ -1,3 +1,5 @@
+import { fontWeight } from '@twreporter/core/lib/constants/font'
+
 export default {
   size: {
     xsmall: '9px',
@@ -17,10 +19,7 @@ export default {
       base: '20px',
     },
   },
-  weight: {
-    normal: '400',
-    bold: '700',
-  },
+  weight: fontWeight,
   family: {
     serif: 'source-han-serif-tc, serif',
   },

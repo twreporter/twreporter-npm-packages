@@ -6,13 +6,13 @@ import HeaderContext from '../contexts/header-context'
 import themeUtils from '../utils/theme'
 import wellDefinedPropTypes from '../constants/prop-types'
 import channelConst from '../constants/channels'
-import colors from '../constants/colors'
 import fonts from '../constants/fonts'
 import DropDownMenu from './drop-down-menu'
 import Link from './customized-link'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -80,7 +80,7 @@ const Box = styled.div`
 const List = styled.ul`
   height: 100%;
   justify-content: space-between;
-  background-color: ${props => props.bgColor || colors.white};
+  background-color: ${props => props.bgColor || 'white'};
   user-select: none;
   box-sizing: border-box;
   display: flex;
@@ -90,7 +90,7 @@ const List = styled.ul`
   list-style-type: none;
   margin: auto;
   padding-inline-start: 0;
-  border-color: ${props => props.borderColor || colors.gray};
+  border-color: ${props => props.borderColor || colorGrayscale.gray200};
   border-width: ${props => arrayToCssShorthand(props.borderWidth)};
   border-style: solid;
 `

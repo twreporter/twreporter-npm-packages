@@ -11,7 +11,8 @@ import { TopSectionContent, ListSectionContent, SectionTitle } from './section'
 // constants
 import { TEXT } from '../../constants/topics'
 import color from '../../constants/color'
-import font from '../../constants/font'
+// @twreporter
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -25,7 +26,7 @@ const NoData = styled.div`
   width: 100%;
   font-size: 16px;
   color: ${color.darkGray};
-  font-weight: ${font.weight.normal};
+  font-weight: ${fontWeight.normal};
   text-align: center;
 `
 

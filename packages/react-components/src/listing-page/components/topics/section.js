@@ -7,10 +7,10 @@ import RightArrowIcon from '../../assets/arrow-right.svg'
 // constants
 import { resetLinkStyle } from '../../constants/predefined-css'
 import color from '../../constants/color'
-import font from '../../constants/font'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 
 const styles = {
   goToTopicMargin: [20, 'auto', 0, 'auto'],
@@ -39,7 +39,7 @@ const SectionTitle = styled.div`
   padding: ${arrayToCssShorthand(styles.titlePadding)};
   color: ${color.darkGray};
   font-size: 18px;
-  font-weight: ${font.weight.bold};
+  font-weight: ${fontWeight.bold};
   line-height: 1;
   margin: ${arrayToCssShorthand(styles.titleMargin.mobile)};
   ${mq.tabletAndAbove`
@@ -73,7 +73,7 @@ const GoToTopic = styled.div`
     text-overflow: ellipsis;
     letter-spacing: 0.1px;
     font-size: 16px;
-    font-weight: ${font.weight.normal};
+    font-weight: ${fontWeight.normal};
   }
   svg {
     height: 16px;

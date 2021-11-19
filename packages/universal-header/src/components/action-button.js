@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import HeaderContext from '../contexts/header-context'
 import fonts from '../constants/fonts'
-import colors from '../constants/colors'
 import actionConst from '../constants/actions'
 import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
 import Link from './customized-link'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorBrand } from '@twreporter/core/lib/constants/color'
 // lodash
 import map from 'lodash/map'
 
@@ -81,7 +81,7 @@ const ActionContainer = styled.div`
   a,
   a:link,
   a:visited {
-    color: ${props => props.color || colors.white};
+    color: ${props => props.color || 'white'};
     font-size: ${styles.fontSize.desktop};
     font-weight: ${fonts.weight.bold};
     ${mq.tabletOnly`
@@ -96,7 +96,7 @@ const ActionContainer = styled.div`
 `
 
 const ActionItem = styled.div`
-  background-color: ${props => props.bgColor || colors.red};
+  background-color: ${props => props.bgColor || colorBrand.heavy};
   width: ${styles.itemWidth.desktop};
   max-width: 316px;
   height: ${styles.itemHeight.desktop}px;
@@ -107,7 +107,7 @@ const ActionItem = styled.div`
   margin: 0 auto;
 
   &:hover {
-    background-color: ${props => props.hoverBgColor || colors.red};
+    background-color: ${props => props.hoverBgColor || colorBrand.heavy};
   }
 
   ${mq.tabletOnly`

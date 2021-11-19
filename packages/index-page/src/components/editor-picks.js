@@ -14,10 +14,11 @@ import ContentWrapper from './common-utils/section-content-wrapper'
 import TRLink from './common-utils/twreporter-link'
 // constants
 import color from '../constants/color'
-import font from '../constants/font'
 // assets
 import LeftArrowIcon from '../static/left-arrow.svg'
 import RightArrowIcon from '../static/right-arrow.svg'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
 import clone from 'lodash/clone'
 import get from 'lodash/get'
@@ -159,8 +160,8 @@ const MiddleCategory = styled(CategoryName)`
 
 const Title = styled.div`
   font-size: ${props => (props.middle ? `32px` : `16px`)};
-  font-weight: ${font.weight.bold};
-  font-family: ${font.family.title};
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   color: ${color.darkGray};
   width: ${props => (props.middle ? '450px' : '150px')};
   position: absolute;

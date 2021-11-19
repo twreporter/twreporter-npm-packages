@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 import sloganText from '../constants/slogan'
-import colors from '../constants/colors'
 import fonts from '../constants/fonts'
 import themeUtils from '../utils/theme'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const style = {
   fontSize: {
@@ -14,7 +14,7 @@ const style = {
 }
 
 const SloganContainer = styled.div`
-  color: ${props => props.color || colors.grayDark};
+  color: ${props => props.color || colorGrayscale.gray900};
   font-size: ${style.fontSize.desktop};
   font-family: ${fonts.family.serif};
   display: flex;
