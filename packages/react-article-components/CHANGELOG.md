@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.6-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.5...@twreporter/react-article-components@1.4.6-rc.0) (2021-11-24)
+
+
+### Bug Fixes
+
+* article table of content should be top of everything ([975396a](https://github.com/twreporter/twreporter-npm-packages/commit/975396a5252bcaed675593578659932b7624d0ea))
+
+
+
+
+
 ## [1.4.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.5-rc.1...@twreporter/react-article-components@1.4.5) (2021-11-19)
 
 **Note:** Version bump only for package @twreporter/react-article-components
