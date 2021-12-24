@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.3.1...@twreporter/core@1.4.0-rc.0) (2021-12-24)
+
+
+### Bug Fixes
+
+* **core:** update fund-raising id ([618219f](https://github.com/twreporter/twreporter-npm-packages/commit/618219f4f5b06b6292cb0a4fa178ee1201c90cf7))
+
+
+### Features
+
+* **core, react-components:** add fund-raising number ([a3ae8ac](https://github.com/twreporter/twreporter-npm-packages/commit/a3ae8ac3bd52bc7897e8e85c3723a48f40ec13a6))
+
+
+
+
+
 ## [1.3.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.3.1-rc.1...@twreporter/core@1.3.1) (2021-11-19)
 
 **Note:** Version bump only for package @twreporter/core
