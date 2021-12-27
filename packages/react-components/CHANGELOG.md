@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.3...@twreporter/react-components@8.7.0-rc.0) (2021-12-24)
+
+
+### Features
+
+* **core, react-components:** add fund-raising number ([a3ae8ac](https://github.com/twreporter/twreporter-npm-packages/commit/a3ae8ac3bd52bc7897e8e85c3723a48f40ec13a6))
+
+
+
+
+
 ## [8.6.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.6.3-rc.1...@twreporter/react-components@8.6.3) (2021-11-19)
 
 **Note:** Version bump only for package @twreporter/react-components

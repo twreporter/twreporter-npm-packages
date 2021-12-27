@@ -13,6 +13,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import { fontWeight } from '@twreporter/core/lib/constants/font'
+import fundraisingId from '@twreporter/core/lib/constants/fundraising'
 
 const FooterContainer = styled.div`
   border-top: solid 0.5px ${color.lightGray};
@@ -50,27 +51,55 @@ const FooterContent = styled.div`
   width: 100%;
 `
 
-const CopyRight = styled.p`
+const CompanyInfo = styled.div`
+  display: flex;
+  align-items: center;
+  ${mq.tabletAndBelow`
+    flex-direction: column;
+    p:last-child {
+      margin-top: 10px;
+    }
+  `}
+  ${mq.mobileOnly`
+    width: 100%;
+    margin-top: 30px;
+  `}
+  ${mq.tabletOnly`
+    align-items: baseline;
+    margin-top: 50px;
+  `}
+  ${mq.desktopAndAbove`
+    width: 100%;
+    margin-top: 30px;
+    justify-content: space-between;
+  `}
+`
+
+const InfoContainer = styled.p`
   font-size: 12px;
   font-weight: ${fontWeight.normal};
   letter-spacing: 0.4px;
   color: ${color.gray};
   ${mq.mobileOnly`
     text-align: center;
-    margin-top: 10px;
   `}
-  ${mq.tabletAndAbove`
-    margin-top: 40px;
-  `}
-  ${mq.hdOnly`
-    margin-top: 60px;
-  `}  
 `
+
+const Copyright = () => {
+  const currentYear = new Date().getFullYear()
+  return (
+    <InfoContainer>{`Copyright © ${currentYear} The Reporter.`}</InfoContainer>
+  )
+}
+
+const Fundraising = () => {
+  if (!fundraisingId) return null
+  return <InfoContainer>{fundraisingId}</InfoContainer>
+}
 
 class Footer extends React.PureComponent {
   render() {
     const { bgColor, releaseBranch, pathname, host } = this.props
-    const currentYear = new Date().getFullYear()
     return (
       <FooterContainer bgColor={bgColor}>
         <FooterContent>
@@ -80,7 +109,10 @@ class Footer extends React.PureComponent {
             releaseBranch={releaseBranch}
           />
           <IconList />
-          <CopyRight>{`Copyright © ${currentYear} The Reporter.`}</CopyRight>
+          <CompanyInfo>
+            <Fundraising />
+            <Copyright />
+          </CompanyInfo>
         </FooterContent>
       </FooterContainer>
     )

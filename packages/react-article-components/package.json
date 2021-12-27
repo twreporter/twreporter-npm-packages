@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-article-components",
-  "version": "1.4.5",
+  "version": "1.4.6-rc.1",
   "description": "The Reporter react article components, which are used in article page",
   "main": "lib/components/article-page.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
@@ -24,10 +24,10 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "@twreporter/core": "^1.3.1",
-    "@twreporter/react-components": "^8.6.3",
+    "@twreporter/core": "^1.4.0-rc.0",
+    "@twreporter/react-components": "^8.7.0-rc.0",
     "@twreporter/redux": "^7.2.0",
-    "@twreporter/universal-header": "^2.2.5",
+    "@twreporter/universal-header": "^2.2.6-rc.0",
     "howler": "^2.1.1",
     "lodash": "^4.17.11",
     "memoize-one": "^5.0.5",
