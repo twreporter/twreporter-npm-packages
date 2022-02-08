@@ -131,11 +131,21 @@ $ yalc publish
 3. add published package into test environment
 
 ```bash
-// goto test repo
-// $ cd <path to twreporter-react>
+# go to test directory
+# $ cd <path to twreporter-react>
 $ cd twreporter-react
 
 $ yalc add @twreporter/universal-header
+```
+
+4. remove added package from test environment
+
+```bash
+$ cd twreporter-react
+
+# you can also use following cmd to clean all
+# $ yalc remove --all
+$ yalc remove @twreporter/universal-header
 ```
 
 ## CI/CD
