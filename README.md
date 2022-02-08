@@ -11,7 +11,7 @@ This repository is a monorepo containing several npm packages used by the websit
     - [Develop all Packages](#develop-all-packages)
     - [Develop Single Package](#develop-single-package)
     - [Add A New Package to This Repo](#add-a-new-package-to-this-repo)
-  - [Test Package With Other Repo](#test-with-other-repo)
+  - [Test Package With Other Repo](#test-package-with-other-repo)
     - [Yalc](#yalc)
   - [CI/CD](#cicd)
 
