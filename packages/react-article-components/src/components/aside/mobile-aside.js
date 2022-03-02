@@ -12,6 +12,12 @@ import ToAddBookmarkIcon from '../../assets/aside/add-bookmark-mobile.svg'
 import AddedBookmarkIcon from '../../assets/aside/added-bookmark-mobile.svg'
 
 const Container = styled.div`
+  @media print {
+    .hidden-print {
+      display: none !important;
+    }
+  }
+
   ${mq.tabletAndBelow`
     display: inline-block;
     position: fixed;
@@ -84,7 +90,7 @@ class MobileAside extends React.PureComponent {
 
     const { toShow } = this.state
     return (
-      <Container toShow={toShow}>
+      <Container className="hidden-print" toShow={toShow}>
         {backToTopic ? <BackToTopicBtn href={backToTopic} /> : null}
         <BookmarkWidget
           toAutoCheck
