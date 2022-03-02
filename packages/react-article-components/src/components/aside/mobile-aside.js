@@ -14,7 +14,7 @@ import AddedBookmarkIcon from '../../assets/aside/added-bookmark-mobile.svg'
 const Container = styled.div`
   @media print {
     .hidden-print {
-      display: none !important;
+      display: none;
     }
   }
 
