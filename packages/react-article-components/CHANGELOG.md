@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.6...@twreporter/react-article-components@1.4.7-rc.0) (2022-03-03)
+
+
+### Bug Fixes
+
+* disappear mobile aside/index in print mode ([#249](https://github.com/twreporter/twreporter-npm-packages/issues/249)) ([c6f114d](https://github.com/twreporter/twreporter-npm-packages/commit/c6f114d34ba68bba47415cc0e44407f0daf81928))
+
+
+
+
+
 ## [1.4.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.6-rc.1...@twreporter/react-article-components@1.4.6) (2021-12-27)
 
 **Note:** Version bump only for package @twreporter/react-article-components
