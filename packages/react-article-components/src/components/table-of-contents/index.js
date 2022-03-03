@@ -1,13 +1,22 @@
-import * as Styled from './styled'
-import PropTypes from 'prop-types'
 import React from 'react'
-import TOC from '@twreporter/react-components/lib/table-of-contents'
+import PropTypes from 'prop-types'
 import map from 'lodash/map'
+import styled from 'styled-components'
+import * as Styled from './styled'
+import TOC from '@twreporter/react-components/lib/table-of-contents'
 import Tab from '../../assets/table-of-contents/long-form-tab.svg'
 
 const _ = {
   map,
 }
+
+const TOCContainer = styled.div`
+  @media print {
+    .hidden-print {
+      display: none;
+    }
+  }
+`
 
 class TableOfContents extends React.PureComponent {
   static propTypes = {
@@ -77,7 +86,7 @@ class TableOfContents extends React.PureComponent {
     const { isExpanded } = this.state
 
     return (
-      <div ref={this._ref}>
+      <TOCContainer className="hidden-print" ref={this._ref}>
         <TOC.React.TableOfContents
           className={className}
           manager={manager}
@@ -121,7 +130,7 @@ class TableOfContents extends React.PureComponent {
             )
           }}
         />
-      </div>
+      </TOCContainer>
     )
   }
 }
