@@ -84,7 +84,7 @@ class MobileAside extends React.PureComponent {
 
     const { toShow } = this.state
     return (
-      <Container toShow={toShow}>
+      <Container className="hidden-print" toShow={toShow}>
         {backToTopic ? <BackToTopicBtn href={backToTopic} /> : null}
         <BookmarkWidget
           toAutoCheck

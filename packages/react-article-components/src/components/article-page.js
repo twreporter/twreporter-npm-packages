@@ -85,6 +85,13 @@ const BodyBackground = styled.div`
 const BodyBlock = styled.div`
   position: relative;
   width: 100%;
+
+  @media print {
+    .hidden-print {
+      display: none;
+    }
+  }
+
   ${mq.desktopOnly`
     max-width: 1024px;
     margin: 0 auto;
