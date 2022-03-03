@@ -77,7 +77,7 @@ class TableOfContents extends React.PureComponent {
     const { isExpanded } = this.state
 
     return (
-      <div ref={this._ref}>
+      <div className="hidden-print" ref={this._ref}>
         <TOC.React.TableOfContents
           className={className}
           manager={manager}
