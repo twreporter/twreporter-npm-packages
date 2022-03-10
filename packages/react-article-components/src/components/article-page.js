@@ -90,6 +90,10 @@ const BodyBlock = styled.div`
     .hidden-print {
       display: none;
     }
+
+    .avoid-break {
+      break-inside: avoid;
+    }
   }
 
   ${mq.desktopOnly`
