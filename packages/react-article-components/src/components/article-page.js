@@ -86,16 +86,6 @@ const BodyBlock = styled.div`
   position: relative;
   width: 100%;
 
-  @media print {
-    .hidden-print {
-      display: none;
-    }
-
-    .avoid-break {
-      break-inside: avoid;
-    }
-  }
-
   ${mq.desktopOnly`
     max-width: 1024px;
     margin: 0 auto;
@@ -198,10 +188,17 @@ const RelatedBlock = styled.div`
 
 const BackgroundBlock = styled(BorderBox)`
   ${fontFamilyCss}
-  ${props =>
-    getBackgroundBlockStyles(
-      props.theme.name
-    )}
+  ${props => getBackgroundBlockStyles(props.theme.name)}
+
+  @media print {
+    .hidden-print {
+      display: none;
+    }
+
+    .avoid-break {
+      break-inside: avoid;
+    }
+  }
 
   /* boreder-(right|left) of articlePage */
   padding-left: 10px;
