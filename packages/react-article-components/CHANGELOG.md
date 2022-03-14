@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.7-rc.2...@twreporter/react-article-components@1.4.7-rc.3) (2022-03-14)
+
+
+### Bug Fixes
+
+* revert hidden print with flag ([#254](https://github.com/twreporter/twreporter-npm-packages/issues/254)) ([a2ae991](https://github.com/twreporter/twreporter-npm-packages/commit/a2ae9914471761a27994208c59403ba01dff6852))
+
+
+
+
+
 ## [1.4.7-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.7-rc.0...@twreporter/react-article-components@1.4.7-rc.2) (2022-03-07)
 
 **Note:** Version bump only for package @twreporter/react-article-components
