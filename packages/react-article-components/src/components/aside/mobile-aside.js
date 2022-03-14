@@ -11,6 +11,8 @@ import BackToTopicIcon from '../../assets/aside/back-to-topic-mobile.svg'
 import ToAddBookmarkIcon from '../../assets/aside/add-bookmark-mobile.svg'
 import AddedBookmarkIcon from '../../assets/aside/added-bookmark-mobile.svg'
 
+import featureFlags from '../../constants/feature-flags'
+
 const Container = styled.div`
   ${mq.tabletAndBelow`
     display: inline-block;
@@ -84,7 +86,10 @@ class MobileAside extends React.PureComponent {
 
     const { toShow } = this.state
     return (
-      <Container className="hidden-print" toShow={toShow}>
+      <Container
+        className={featureFlags.disableHiddenPrint ? '' : 'hidden-print'}
+        toShow={toShow}
+      >
         {backToTopic ? <BackToTopicBtn href={backToTopic} /> : null}
         <BookmarkWidget
           toAutoCheck
