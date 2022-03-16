@@ -5,6 +5,8 @@ import TOC from '@twreporter/react-components/lib/table-of-contents'
 import map from 'lodash/map'
 import Tab from '../../assets/table-of-contents/long-form-tab.svg'
 
+import featureFlags from '../../constants/feature-flags'
+
 const _ = {
   map,
 }
@@ -77,7 +79,10 @@ class TableOfContents extends React.PureComponent {
     const { isExpanded } = this.state
 
     return (
-      <div ref={this._ref}>
+      <div
+        className={featureFlags.disableHiddenPrint ? '' : 'hidden-print'}
+        ref={this._ref}
+      >
         <TOC.React.TableOfContents
           className={className}
           manager={manager}

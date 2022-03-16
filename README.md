@@ -11,6 +11,8 @@ This repository is a monorepo containing several npm packages used by the websit
     - [Develop all Packages](#develop-all-packages)
     - [Develop Single Package](#develop-single-package)
     - [Add A New Package to This Repo](#add-a-new-package-to-this-repo)
+  - [Test Package With Other Repo](#test-package-with-other-repo)
+    - [Yalc](#yalc)
   - [CI/CD](#cicd)
 
 ## Packages
@@ -104,6 +106,47 @@ make dev
    ```
 
 5. Remember to set `"publishConfig.access"` to `"public"` in `package.json` of the package
+
+## Test Package With Other Repo
+
+To test packages with twreporter-react on local, you would need to pack & install packages into other repo's developing environment.
+Following section shows how to use yalc to test universal-header on twreporter-react.
+(You can also refer to [this doc](https://github.com/twreporter/between-you-and-me/blob/master/dev-notes/how-to-dev-npm-packages-comfortably.md) for other methods.)
+
+### Yalc
+
+1. install [yalc](https://github.com/wclr/yalc)
+
+```bash
+$ yarn global add yalc
+```
+
+2. publish package
+
+```bash
+$ cd packages/universal-header
+$ yalc publish
+```
+
+3. add published package into test environment
+
+```bash
+# go to test directory
+# $ cd <path to twreporter-react>
+$ cd twreporter-react
+
+$ yalc add @twreporter/universal-header
+```
+
+4. remove added package from test environment
+
+```bash
+$ cd twreporter-react
+
+# you can also use following cmd to clean all
+# $ yalc remove --all
+$ yalc remove @twreporter/universal-header
+```
 
 ## CI/CD
 

@@ -85,6 +85,13 @@ const BodyBackground = styled.div`
 const BodyBlock = styled.div`
   position: relative;
   width: 100%;
+
+  @media print {
+    .hidden-print {
+      display: none;
+    }
+  }
+
   ${mq.desktopOnly`
     max-width: 1024px;
     margin: 0 auto;
@@ -424,7 +431,10 @@ export default class Article extends PureComponent {
     const uiManager = new UIManager(post, relatedTopic)
     const LeadingComponent = uiManager.getLeadingComponent()
     const leadingProps = uiManager.getLeadingComponentProps()
-    const backToTopic = leadingProps.topicHref
+    const backToTopic =
+      leadingProps && leadingProps.isTopicPublished
+        ? leadingProps.topicHref
+        : ''
 
     // only for tablet and below
     const metadataAndToolsJSX = (

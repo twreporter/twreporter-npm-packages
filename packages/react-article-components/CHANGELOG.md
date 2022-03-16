@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.7-rc.3...@twreporter/react-article-components@1.4.7-rc.4) (2022-03-15)
+
+
+### Bug Fixes
+
+* **react-article-components:** show back to topic when published ([#255](https://github.com/twreporter/twreporter-npm-packages/issues/255)) ([ddfcfa5](https://github.com/twreporter/twreporter-npm-packages/commit/ddfcfa59bc7539ccffb8f4c257cb09a470b6992a))
+
+
+
+
+
+## [1.4.7-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.7-rc.2...@twreporter/react-article-components@1.4.7-rc.3) (2022-03-14)
+
+
+### Bug Fixes
+
+* revert hidden print with flag ([#254](https://github.com/twreporter/twreporter-npm-packages/issues/254)) ([a2ae991](https://github.com/twreporter/twreporter-npm-packages/commit/a2ae9914471761a27994208c59403ba01dff6852))
+
+
+
+
+
+## [1.4.7-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.7-rc.0...@twreporter/react-article-components@1.4.7-rc.2) (2022-03-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.4.7-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.6...@twreporter/react-article-components@1.4.7-rc.0) (2022-03-03)
+
+
+### Bug Fixes
+
+* disappear mobile aside/index in print mode ([#249](https://github.com/twreporter/twreporter-npm-packages/issues/249)) ([c6f114d](https://github.com/twreporter/twreporter-npm-packages/commit/c6f114d34ba68bba47415cc0e44407f0daf81928))
+
+
+
+
+
 ## [1.4.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.6-rc.1...@twreporter/react-article-components@1.4.6) (2021-12-27)
 
 **Note:** Version bump only for package @twreporter/react-article-components
