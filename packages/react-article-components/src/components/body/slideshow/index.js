@@ -697,9 +697,10 @@ export default class Slideshow extends PureComponent {
 
     const slides = this.buildSlides(images)
     const desc = _.get(images, [curSlideIndex, 'description'])
+    const appendedClassName = className + ' avoid-break'
 
     return (
-      <SlideshowFlexBox className={className}>
+      <SlideshowFlexBox className={appendedClassName}>
         <SlidesSection>
           <SlidesFlexBox
             translateXUint={translateXUint}
