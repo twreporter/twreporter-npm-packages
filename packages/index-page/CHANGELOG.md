@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.12](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.12-rc.0...@twreporter/index-page@1.2.12) (2022-03-23)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.2.12-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.11...@twreporter/index-page@1.2.12-rc.0) (2022-03-23)
+
+
+### Bug Fixes
+
+* update line-break property to avoid unexpected line break ([#258](https://github.com/twreporter/twreporter-npm-packages/issues/258)) ([d92fac8](https://github.com/twreporter/twreporter-npm-packages/commit/d92fac8c1e419e80059e354f96467ae6240966f2))
+
+
+
+
+
 ## [1.2.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.11-rc.0...@twreporter/index-page@1.2.11) (2021-12-27)
 
 **Note:** Version bump only for package @twreporter/index-page
