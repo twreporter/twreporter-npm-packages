@@ -60,7 +60,7 @@ const sharedStyleOfIndicatorPointer = css`
   }};
 `
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -149,7 +149,7 @@ export default class ImageDiff extends PureComponent {
     )
     return (
       <Container>
-        <Image
+        <ImageContainer
           className={'avoid-break'}
           heightWidthRatio={renderedHeightWidthRation}
           leftImageSet={leftImageSet}
@@ -158,7 +158,7 @@ export default class ImageDiff extends PureComponent {
           <div>
             <Slider defaultValue={50} min={1} max={100} />
           </div>
-        </Image>
+        </ImageContainer>
         {caption ? <Multimedia.Caption>{caption}</Multimedia.Caption> : null}
       </Container>
     )
