@@ -172,6 +172,7 @@ const Title = styled.div`
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
+  line-break: anywhere;
   ${finalMedia.desktop`
     width: ${props => (props.middle ? '450px' : '120px')};
   `}
