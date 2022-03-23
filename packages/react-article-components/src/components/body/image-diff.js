@@ -31,6 +31,10 @@ const getResponsiveBackground = imageSetPropKey => css`
     background-image: url(${props =>
       replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'mobile', 'url']))});
   `}
+  @media print {
+    background-image: url(${props =>
+      replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'desktop', 'url']))});
+  }
 `
 
 const sharedStyleOfIndicatorPointer = css`
@@ -146,6 +150,7 @@ export default class ImageDiff extends PureComponent {
     return (
       <Container>
         <Image
+          className={'avoid-break'}
           heightWidthRatio={renderedHeightWidthRation}
           leftImageSet={leftImageSet}
           rightImageSet={rightImageSet}
