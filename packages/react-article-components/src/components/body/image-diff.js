@@ -150,7 +150,7 @@ export default class ImageDiff extends PureComponent {
     return (
       <Container>
         <ImageContainer
-          className={'avoid-break'}
+          className="avoid-break"
           heightWidthRatio={renderedHeightWidthRation}
           leftImageSet={leftImageSet}
           rightImageSet={rightImageSet}
