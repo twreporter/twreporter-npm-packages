@@ -31,6 +31,10 @@ const getResponsiveBackground = imageSetPropKey => css`
     background-image: url(${props =>
       replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'mobile', 'url']))});
   `}
+  @media print {
+    background-image: url(${props =>
+      replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'desktop', 'url']))});
+  }
 `
 
 const sharedStyleOfIndicatorPointer = css`
@@ -56,7 +60,7 @@ const sharedStyleOfIndicatorPointer = css`
   }};
 `
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -145,7 +149,8 @@ export default class ImageDiff extends PureComponent {
     )
     return (
       <Container>
-        <Image
+        <ImageContainer
+          className="avoid-break"
           heightWidthRatio={renderedHeightWidthRation}
           leftImageSet={leftImageSet}
           rightImageSet={rightImageSet}
@@ -153,7 +158,7 @@ export default class ImageDiff extends PureComponent {
           <div>
             <Slider defaultValue={50} min={1} max={100} />
           </div>
-        </Image>
+        </ImageContainer>
         {caption ? <Multimedia.Caption>{caption}</Multimedia.Caption> : null}
       </Container>
     )
