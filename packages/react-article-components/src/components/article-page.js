@@ -191,6 +191,10 @@ const BackgroundBlock = styled(BorderBox)`
   ${props => getBackgroundBlockStyles(props.theme.name)}
 
   @media print {
+    // Fix background-image printing issue
+    -webkit-print-color-adjust: exact; // Chrome/Safari/Edge
+    color-adjust: exact; // Firefox
+
     .hidden-print {
       display: none;
     }
