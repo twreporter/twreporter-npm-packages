@@ -130,6 +130,13 @@ commands:
             - packages/universal-header/node_modules
             - packages/errors/node_modules
 
+  deploy-storybook:
+    description: "Deploy storybook on chromatic"
+    steps:
+      - run:
+          name: 'run chromatic cli in twreporter-npm-packages'
+          command: yarn chromatic --project-token=${CHROMATIC_TOKEN} --exit-zero-on-changes
+
 jobs:
 
   test:
@@ -143,6 +150,12 @@ jobs:
       - run:
           name: "Run unit tests of changed packages"
           command: make changed-packages-unit-test
+  storybook:
+    executor: node-executor
+    steps:
+      - checkout
+      - install-deps
+      - deploy-storybook
 
   version:
     executor: node-executor
@@ -184,6 +197,9 @@ workflows:
   version_and_publish:
     jobs:
       - test
+      - storybook
+        requires:
+          - test
       - sync_with_remote_master:
           name: sync_with_remote_master_release 
           requires:
