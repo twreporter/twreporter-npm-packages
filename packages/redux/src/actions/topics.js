@@ -263,7 +263,6 @@ export function fetchFeatureTopic(timeout = apiConfig.timeout) {
             const url = formURL(apiOrigin, `/v2/${apiEndpoints.posts}`, {
               id: lastThreeRelatedIds,
             })
-            console.log('url', url)
             return Promise.all([
               topic,
               axios
