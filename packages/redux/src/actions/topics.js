@@ -272,7 +272,7 @@ export function fetchFeatureTopic(timeout = apiConfig.timeout) {
                 .then(res => {
                   const relatedPosts = _.get(res, 'data.data.records', [])
 
-                  // Ensure the order of retured related posts is the same with topic landing page's order,
+                  // Ensure the order of returned related posts is the same with topic landing page's order,
                   // since API endpoint /v2/posts will sort the posts automatically by `published_date` in descending order.
                   return relatedPosts.length < 2
                     ? relatedPosts
