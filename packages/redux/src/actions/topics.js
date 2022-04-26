@@ -214,9 +214,7 @@ export function fetchTopics(
 }
 
 /**
- *  This function fetch the latest topic,
- *  and three related posts, sorted by `published_date` in descending order,
- *  of that topic.
+ *  This function fetch the latest topic, and three related posts of that topic.
  *
  *  @param {number} [timeout=apiConfig.timeout] - request api timeout
  *  @return {import('../typedef').Thunk} async action creator
@@ -258,20 +256,31 @@ export function fetchFeatureTopic(timeout = apiConfig.timeout) {
         .then(topic => {
           const allRelatedIds = _.get(topic, 'relateds', [])
           const lastThreeRelatedIds = Array.isArray(allRelatedIds)
-            ? allRelatedIds.slice(-3)
+            ? allRelatedIds.slice(0, 3)
             : []
 
           if (lastThreeRelatedIds.length > 0) {
             const url = formURL(apiOrigin, `/v2/${apiEndpoints.posts}`, {
               id: lastThreeRelatedIds,
             })
+            console.log('url', url)
             return Promise.all([
               topic,
               axios
                 .get(url, {
                   timeout,
                 })
-                .then(res => _.get(res, 'data.data.records', [])),
+                .then(res => {
+                  const relatedPosts = _.get(res, 'data.data.records', [])
+
+                  // Ensure the order of retured related posts is the same with topic landing page's order,
+                  // since API endpoint /v2/posts will sort the posts automatically by `published_date` in descending order.
+                  return relatedPosts.length < 2
+                    ? relatedPosts
+                    : lastThreeRelatedIds.map(id =>
+                        relatedPosts.find(post => post.id === id)
+                      )
+                }),
             ])
           }
 
