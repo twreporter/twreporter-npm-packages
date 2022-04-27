@@ -214,9 +214,7 @@ export function fetchTopics(
 }
 
 /**
- *  This function fetch the latest topic,
- *  and three related posts, sorted by `published_date` in descending order,
- *  of that topic.
+ *  This function fetch the latest topic, and three related posts of that topic.
  *
  *  @param {number} [timeout=apiConfig.timeout] - request api timeout
  *  @return {import('../typedef').Thunk} async action creator
@@ -257,13 +255,13 @@ export function fetchFeatureTopic(timeout = apiConfig.timeout) {
         // fetch feature topic's latest three related posts
         .then(topic => {
           const allRelatedIds = _.get(topic, 'relateds', [])
-          const lastThreeRelatedIds = Array.isArray(allRelatedIds)
-            ? allRelatedIds.slice(-3)
+          const threeRelatedIds = Array.isArray(allRelatedIds)
+            ? allRelatedIds.slice(0, 3)
             : []
 
-          if (lastThreeRelatedIds.length > 0) {
+          if (threeRelatedIds.length > 0) {
             const url = formURL(apiOrigin, `/v2/${apiEndpoints.posts}`, {
-              id: lastThreeRelatedIds,
+              id: threeRelatedIds,
             })
             return Promise.all([
               topic,
@@ -271,7 +269,17 @@ export function fetchFeatureTopic(timeout = apiConfig.timeout) {
                 .get(url, {
                   timeout,
                 })
-                .then(res => _.get(res, 'data.data.records', [])),
+                .then(res => {
+                  const relatedPosts = _.get(res, 'data.data.records', [])
+
+                  // Ensure the order of returned related posts is the same with topic landing page's order,
+                  // since API endpoint /v2/posts will sort the posts automatically by `published_date` in descending order.
+                  return relatedPosts.length < 2
+                    ? relatedPosts
+                    : threeRelatedIds.map(id =>
+                        relatedPosts.find(post => post.id === id)
+                      )
+                }),
             ])
           }
 

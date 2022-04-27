@@ -400,7 +400,7 @@ describe('Test function `fetchFeatureTopic`', () => {
         id: mockFeatureTopic.id,
         error: null,
         isFetching: false,
-        lastThreeRelatedPostIds: mockFeatureTopic.relateds.slice(-3),
+        lastThreeRelatedPostIds: mockFeatureTopic.relateds.slice(0, 3),
       },
     })
 
@@ -495,7 +495,7 @@ describe('Test function `fetchFeatureTopic`', () => {
       nock(mockApiHost)
         .get('/v2/posts')
         .query({
-          id: [mockPost2.id, mockPost3.id, mockPost4.id],
+          id: [mockPost1.id, mockPost2.id, mockPost3.id],
         })
         .reply(200, {
           status: 'success',
@@ -505,7 +505,7 @@ describe('Test function `fetchFeatureTopic`', () => {
               offset: 0,
               total: 3,
             },
-            records: [mockPost2, mockPost3, mockPost4],
+            records: [mockPost1, mockPost2, mockPost3],
           },
         })
 
@@ -519,7 +519,7 @@ describe('Test function `fetchFeatureTopic`', () => {
         type: types.featureTopic.read.success,
         payload: {
           topic: mockFeatureTopic,
-          lastThreeRelatedPosts: [mockPost2, mockPost3, mockPost4],
+          lastThreeRelatedPosts: [mockPost1, mockPost2, mockPost3],
         },
       }
 
