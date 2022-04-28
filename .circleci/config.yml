@@ -202,7 +202,10 @@ workflows:
             - test
           filters:
             branches:
-              only: master
+              ignore:
+                - master
+                - staging
+                - release
       - sync_with_remote_master:
           name: sync_with_remote_master_release 
           requires:
