@@ -1,19 +1,21 @@
 import React from 'react'
-import { Bookmark } from './index'
+import { Bookmark } from '../index'
+import releaseBranch from '@twreporter/core/lib/constants/release-branch'
+const { master, staging, preview, release } = releaseBranch
 
 export default {
   title: 'Icon/Bookmark',
   component: Bookmark,
   argTypes: {
     releaseBranch: {
-      defaultValue: 'master',
-      options: ['master', 'staging', 'preview', 'release'],
+      defaultValue: master,
+      options: [master, staging, preview, release],
       control: { type: 'radio' },
     },
   },
 }
 
-const Template = (args) => <Bookmark {...args} />
+const Template = args => <Bookmark {...args} />
 export const bookmark = Template.bind({})
 bookmark.args = { type: 'basic' }
 

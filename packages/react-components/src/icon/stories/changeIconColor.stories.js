@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Article } from './index'
+import { Article } from '../index'
 
 const IconContainer = styled.div`
   svg {
-    background-color: ${(props) => props.color};
+    background-color: ${props => props.color};
   }
 `
 
@@ -28,4 +28,4 @@ export default {
   },
 }
 
-export const changeIconColor = (args) => <ChangeIconColor {...args} />
+export const changeIconColor = args => <ChangeIconColor {...args} />

@@ -1,19 +1,21 @@
 import React from 'react'
-import { Arrow } from './index'
+import { Arrow } from '../index'
+import releaseBranch from '@twreporter/core/lib/constants/release-branch'
+const { master, staging, preview, release } = releaseBranch
 
 export default {
   title: 'Icon/Arrow',
   component: Arrow,
   argTypes: {
     releaseBranch: {
-      defaultValue: 'master',
-      options: ['master', 'staging', 'preview', 'release'],
+      defaultValue: master,
+      options: [master, staging, preview, release],
       control: { type: 'radio' },
     },
   },
 }
 
-const Template = (args) => <Arrow {...args} />
+const Template = args => <Arrow {...args} />
 export const arrow = Template.bind({})
 arrow.args = { direction: 'right' }
 

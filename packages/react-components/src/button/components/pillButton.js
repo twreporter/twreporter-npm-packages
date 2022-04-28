@@ -14,50 +14,48 @@ const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   border-radius: 40px;
-  background-color: ${(props) =>
-    props.type === 'filled' ? props.bgColor : 'transparent'};
-  border-color: ${(props) => props.bgColor};
+  background-color: ${props =>
+    props.type === 'primary' ? props.bgColor : 'transparent'};
+  border-color: ${props => props.bgColor};
   border-style: solid;
   border-width: 1px;
-  font-size: ${(props) => props.fontSize};
-  color: ${(props) => props.color};
-  padding: ${(props) => props.padding};
+  font-size: ${props => props.fontSize};
+  color: ${props => props.color};
+  padding: ${props => props.padding};
   cursor: pointer;
   svg {
-    height: ${(props) => props.iconSize};
-    width: ${(props) => props.iconSize};
-    background-color: ${(props) => props.color};
+    margin-left: 4px;
+    height: ${props => props.iconSize};
+    width: ${props => props.iconSize};
+    background-color: ${props => props.color};
   }
   &:hover {
-    color: ${(props) => props.hoverColor};
-    background-color: ${(props) =>
-      props.type === 'filled' ? props.hoverBgColor : 'transparent'};
-    border-color: ${(props) => props.hoverBgColor};
+    color: ${props => props.hoverColor};
+    background-color: ${props =>
+      props.type === 'primary' ? props.hoverBgColor : 'transparent'};
+    border-color: ${props => props.hoverBgColor};
     svg {
-      background-color: ${(props) => props.hoverColor};
+      background-color: ${props => props.hoverColor};
     }
   }
-`
-
-const TextContainer = styled.div`
-  font-size: inherit;
-  margin-right: 4px;
 `
 
 const PillButton = ({
   text = '',
   size = 'S',
   theme = 'normal',
-  type = 'filled',
+  type = 'primary',
+  withIcon = false,
   disabled = false,
 }) => {
   const themeFunc =
-    type === 'filled' ? getFilledPillButtonTheme : getOutlinePillButtonTheme
+    type === 'primary' ? getFilledPillButtonTheme : getOutlinePillButtonTheme
   const { color, bgColor, hoverColor, hoverBgColor } = themeFunc(
     theme,
     disabled
   )
   const { fontSize, padding, iconSize } = getSizeStyle(size)
+  const iconJSX = withIcon ? <Arrow direction="right" /> : ''
   return (
     <ButtonContainer
       type={type}
@@ -69,8 +67,8 @@ const PillButton = ({
       hoverColor={hoverColor}
       hoverBgColor={hoverBgColor}
     >
-      <TextContainer>{text}</TextContainer>
-      <Arrow direction="right" />
+      {text}
+      {iconJSX}
     </ButtonContainer>
   )
 }
@@ -78,7 +76,8 @@ PillButton.propTypes = {
   text: PropTypes.string,
   size: PropTypes.oneOf(['S', 'L']),
   theme: PropTypes.oneOf(['transparent', 'normal', 'photography', 'index']),
-  type: PropTypes.oneOf(['filled', 'outline']),
+  type: PropTypes.oneOf(['primary', 'secondary']),
+  withIcon: PropTypes.bool,
   disabled: PropTypes.bool,
 }
 

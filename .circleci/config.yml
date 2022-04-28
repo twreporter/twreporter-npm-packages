@@ -135,7 +135,7 @@ commands:
     steps:
       - run:
           name: 'run chromatic cli in twreporter-npm-packages'
-          command: yarn chromatic --project-token=${CHROMATIC_TOKEN} --exit-zero-on-changes
+          command: cd packages/react-components && yarn chromatic --project-token=${CHROMATIC_TOKEN}
 
 jobs:
 
@@ -197,9 +197,12 @@ workflows:
   version_and_publish:
     jobs:
       - test
-      - storybook
-        requires:
-          - test
+      - storybook:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
       - sync_with_remote_master:
           name: sync_with_remote_master_release 
           requires:

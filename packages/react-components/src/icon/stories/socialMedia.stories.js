@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
-import { Icon } from './index'
+import { Icon } from '../index'
+import releaseBranch from '@twreporter/core/lib/constants/release-branch'
+const { master, staging, preview, release } = releaseBranch
 
 const SocialMedia = ({ mediaType, releaseBranch }) => (
   <Icon filename={mediaType} releaseBranch={releaseBranch} />
@@ -35,11 +37,11 @@ export default {
       control: { type: 'radio' },
     },
     releaseBranch: {
-      defaultValue: 'master',
-      options: ['master', 'staging', 'preview', 'release'],
+      defaultValue: master,
+      options: [master, staging, preview, release],
       control: { type: 'radio' },
     },
   },
 }
 
-export const socialMedia = (args) => <SocialMedia {...args} />
+export const socialMedia = args => <SocialMedia {...args} />
