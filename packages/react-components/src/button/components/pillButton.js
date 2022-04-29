@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Arrow } from '../../icon'
+import { P1, P2 } from '../../text/paragraph'
 // utils
 import {
   getFilledPillButtonTheme,
@@ -19,7 +20,6 @@ const ButtonContainer = styled.div`
   border-color: ${props => props.bgColor};
   border-style: solid;
   border-width: 1px;
-  font-size: ${props => props.fontSize};
   color: ${props => props.color};
   padding: ${props => props.padding};
   cursor: pointer;
@@ -54,20 +54,25 @@ const PillButton = ({
     theme,
     disabled
   )
-  const { fontSize, padding, iconSize } = getSizeStyle(size)
+  const { padding, iconSize } = getSizeStyle(size)
   const iconJSX = withIcon ? <Arrow direction="right" /> : ''
+  const textJSX =
+    size === 'S' ? (
+      <P2 text={text} weight="bold" />
+    ) : (
+      <P1 text={text} weight="bold" />
+    )
   return (
     <ButtonContainer
       type={type}
       padding={padding}
       color={color}
       bgColor={bgColor}
-      fontSize={fontSize}
       iconSize={iconSize}
       hoverColor={hoverColor}
       hoverBgColor={hoverBgColor}
     >
-      {text}
+      {textJSX}
       {iconJSX}
     </ButtonContainer>
   )
