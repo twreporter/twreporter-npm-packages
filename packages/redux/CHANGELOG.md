@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.2.0...@twreporter/redux@7.2.1-rc.0) (2022-04-27)
+
+
+### Bug Fixes
+
+* fix corresponding test ([234b11f](https://github.com/twreporter/twreporter-npm-packages/commit/234b11fa647bfa151657b9112df0e39dc035644a))
+* fix relateds order issue ([cbc3287](https://github.com/twreporter/twreporter-npm-packages/commit/cbc3287f9da820c39411f0bfc07c1365a493a9a8))
+* fix typo ([44fe1d0](https://github.com/twreporter/twreporter-npm-packages/commit/44fe1d05d88f9b9dc326eb2ce12625b83aca471a))
+* remove log ([38a08a1](https://github.com/twreporter/twreporter-npm-packages/commit/38a08a1863d663dbf84cd85034f43ea0e59392a8))
+* rename variable ([2e77a46](https://github.com/twreporter/twreporter-npm-packages/commit/2e77a46067c94a06b2ae22ef41f618bd8ec7c219))
+
+
+
+
+
 # [7.2.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.2.0-rc.0...@twreporter/redux@7.2.0) (2021-04-19)
 
 **Note:** Version bump only for package @twreporter/redux
