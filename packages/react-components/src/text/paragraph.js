@@ -4,8 +4,9 @@ import styled from 'styled-components'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const defaultContainer = styled.div`
-  font-weight: ${(props) => fontWeight[props.weight]};
+  font-weight: ${props => fontWeight[props.weight]};
   font-family: ${fontFamily.default};
+  line-height: 150%;
 `
 
 const P1Container = styled(defaultContainer)`
