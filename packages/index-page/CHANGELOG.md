@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.13](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.13-rc.0...@twreporter/index-page@1.2.13) (2022-04-29)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
 ## [1.2.13-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.12...@twreporter/index-page@1.2.13-rc.0) (2022-04-27)
 
 **Note:** Version bump only for package @twreporter/index-page
