@@ -45,6 +45,7 @@ export const colorGrayscale = {
   gray800: '#404040',
   gray900: '#262626',
   black: '#000000',
+  verywhite: '#fff'
 }
 
 export default {
