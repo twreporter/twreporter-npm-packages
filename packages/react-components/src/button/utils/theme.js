@@ -22,20 +22,22 @@ export const getFilledPillButtonTheme = (theme, disabled) => {
         bgColor: colorSupportive.main,
         hoverColor: colorGrayscale.white,
         hoverBgColor: colorSupportive.heavy,
-        disableColor: colorGrayscale.white,
-        disableBgColor: colorGrayscale.gray400,
+      }
+    case 'transparent':
+      return {
+        color: colorGrayscale.gray600,
+        bgColor: colorGrayscale.white,
+        hoverColor: colorGrayscale.white,
+        hoverBgColor: colorGrayscale.gray200,
       }
     case 'normal':
     case 'index':
-    case 'transparent':
     default:
       return {
         color: colorGrayscale.white,
         bgColor: colorBrand.heavy,
         hoverColor: colorGrayscale.white,
         hoverBgColor: colorBrand.dark,
-        disableColor: colorGrayscale.white,
-        disableBgColor: colorGrayscale.gray400,
       }
   }
 }
@@ -57,9 +59,15 @@ export const getOutlinePillButtonTheme = (theme, disabled) => {
         hoverColor: colorSupportive.heavy,
         hoverBgColor: colorSupportive.heavy,
       }
+    case 'transparent':
+      return {
+        color: colorGrayscale.white,
+        bgColor: colorGrayscale.white,
+        hoverColor: colorGrayscale.white,
+        hoverBgColor: colorGrayscale.white,
+      }
     case 'normal':
     case 'index':
-    case 'transparent':
     default:
       return {
         color: colorBrand.heavy,
