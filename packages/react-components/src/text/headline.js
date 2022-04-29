@@ -10,8 +10,9 @@ const titleDefaultFont = css`
 
 const H1Container = styled.div`
   ${titleDefaultFont}
+  line-height: 125%;
   font-size: 36px;
-  font-family: ${(props) =>
+  font-family: ${props =>
     props.type === 'default' ? fontFamily.default : fontFamily.title};
   ${mq.tabletAndBelow`
     font-size: 32px;
@@ -20,8 +21,9 @@ const H1Container = styled.div`
 
 const H2Container = styled.div`
   ${titleDefaultFont}
+  line-height: 125%;
   font-size: 32px;
-  font-family: ${(props) =>
+  font-family: ${props =>
     props.type === 'default' ? fontFamily.default : fontFamily.title};
   ${mq.tabletAndBelow`
     font-size: 24px;
@@ -30,8 +32,9 @@ const H2Container = styled.div`
 
 const H3Container = styled.div`
   ${titleDefaultFont}
+  line-height: 150%;
   font-size: 28px;
-  font-family: ${(props) =>
+  font-family: ${props =>
     props.type === 'default' ? fontFamily.default : fontFamily.title};
   ${mq.tabletAndBelow`
     font-size: 20px;
@@ -40,8 +43,9 @@ const H3Container = styled.div`
 
 const H4Container = styled.div`
   ${titleDefaultFont}
+  line-height: 150%;
   font-size: 22px;
-  font-family: ${(props) =>
+  font-family: ${props =>
     props.type === 'default' ? fontFamily.default : fontFamily.title};
   ${mq.tabletAndBelow`
     font-size: 18px;
@@ -50,8 +54,9 @@ const H4Container = styled.div`
 
 const H5Container = styled.div`
   ${titleDefaultFont}
+  line-height: 150%;
   font-size: 18px;
-  font-family: ${(props) =>
+  font-family: ${props =>
     props.type === 'default' ? fontFamily.default : fontFamily.title};
   ${mq.tabletAndBelow`
     font-size: 16px;
@@ -60,8 +65,9 @@ const H5Container = styled.div`
 
 const H6Container = styled.div`
   ${titleDefaultFont}
+  line-height: 150%;
   font-size: 16px;
-  font-family: ${(props) =>
+  font-family: ${props =>
     props.type === 'default' ? fontFamily.default : fontFamily.title};
   ${mq.tabletAndBelow`
     font-size: 14px;
