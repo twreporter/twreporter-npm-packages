@@ -25,7 +25,7 @@ LogoFooter.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-LogoFooter.deafaultProps = {
+LogoFooter.defaultProps = {
   releaseBranch: releaseBranchConsts.master,
 }
 

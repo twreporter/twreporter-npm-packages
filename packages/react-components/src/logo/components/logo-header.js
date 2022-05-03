@@ -8,7 +8,7 @@ import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 const LogoContainer = styled.img`
-  ${props => (props.isHide ? 'display: none;' : '')}
+  ${(props) => (props.isHide ? 'display: none;' : '')}
 `
 
 const LogoHeader = ({ type, releaseBranch }) => {
@@ -33,11 +33,11 @@ const LogoHeader = ({ type, releaseBranch }) => {
 }
 
 LogoHeader.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['default', 'white']),
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-LogoHeader.deafaultProps = {
+LogoHeader.defaultProps = {
   type: 'default',
   releaseBranch: releaseBranchConsts.master,
 }

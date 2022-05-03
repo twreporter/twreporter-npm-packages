@@ -3,7 +3,7 @@ version: 2.1
 executors:
   node-executor:
     docker:
-      - image: circleci/node:10.15
+      - image: cimg/node:16.14.2
     working_directory: ~/repo
     environment:
       - NODE_BIN_DIR: "node_modules/.bin"
