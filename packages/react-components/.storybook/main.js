@@ -10,4 +10,11 @@ module.exports = {
     '@storybook/addon-viewport',
   ],
   framework: '@storybook/react',
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias['@twreporter/core/lib'] = path.resolve(
+      __dirname,
+      '../core/src/'
+    )
+    return config
+  },
 }
