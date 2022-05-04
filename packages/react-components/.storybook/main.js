@@ -15,7 +15,7 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias['@twreporter/core/lib'] = path.resolve(
       __dirname,
-      '../core/src/'
+      '../../core/src/'
     )
     return config
   },
