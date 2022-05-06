@@ -115,6 +115,8 @@ export default class AudioProvider extends PureComponent {
       src: this.props.src,
       autoplay: false,
       loop: false,
+      html5: true,
+      preload: 'metadata',
       onload: () => {
         this.setState({
           duration: this._sound.duration(),
