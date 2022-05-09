@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.8.0-rc.0...@twreporter/react-components@8.8.0-rc.1) (2022-05-09)
+
+
+### Bug Fixes
+
+* cannot resolve [@twreporter](https://github.com/twreporter) module while build-storybook ([4e0ee0f](https://github.com/twreporter/twreporter-npm-packages/commit/4e0ee0f7f13c255c67e23c7dd05f89f6a5cac129))
+* fix resolve path ([10d8c19](https://github.com/twreporter/twreporter-npm-packages/commit/10d8c19d21029a673351b8ce02706411e7951906))
+* path is not defined ([8e03b13](https://github.com/twreporter/twreporter-npm-packages/commit/8e03b130799a3ae9ba000a703b863a8f3c22d396))
+
+
+
+
+
 # [8.8.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.7.1...@twreporter/react-components@8.8.0-rc.0) (2022-05-03)
 
 
