@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.11-rc.2...@twreporter/react-article-components@1.4.11) (2022-05-09)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.4.11-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.11-rc.1...@twreporter/react-article-components@1.4.11-rc.2) (2022-05-09)
 
 **Note:** Version bump only for package @twreporter/react-article-components
