@@ -28,7 +28,7 @@
     "@twreporter/react-components": "^8.8.0-rc.0",
     "@twreporter/redux": "^7.2.1",
     "@twreporter/universal-header": "^2.2.8-rc.0",
-    "howler": "^2.1.1",
+    "howler": "^2.2.3",
     "lodash": "^4.17.11",
     "memoize-one": "^5.0.5",
     "prop-types": "^15.0.0",
