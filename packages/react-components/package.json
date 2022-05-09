@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.7.1",
+  "version": "8.8.0-rc.1",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -9,7 +9,10 @@
     "clean": "make clean",
     "build": "make build",
     "dev": "make dev",
-    "prepublishOnly": "make build"
+    "prepublishOnly": "make build",
+    "storybook": "start-storybook -p 3000",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "@twreporter/core": "^1.4.0",
@@ -28,5 +31,17 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@storybook/addon-actions": "^6.4.21",
+    "@storybook/addon-essentials": "^6.4.21",
+    "@storybook/addon-interactions": "^6.4.21",
+    "@storybook/addon-links": "^6.4.21",
+    "@storybook/addon-viewport": "^6.4.21",
+    "@storybook/react": "^6.4.21",
+    "@storybook/testing-library": "^0.0.9",
+    "babel-loader": "^8.2.4",
+    "chromatic": "^6.5.4"
+  }
 }

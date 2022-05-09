@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.8.0-rc.0...@twreporter/react-components@8.8.0-rc.1) (2022-05-09)
+
+
+### Bug Fixes
+
+* cannot resolve [@twreporter](https://github.com/twreporter) module while build-storybook ([4e0ee0f](https://github.com/twreporter/twreporter-npm-packages/commit/4e0ee0f7f13c255c67e23c7dd05f89f6a5cac129))
+* fix resolve path ([10d8c19](https://github.com/twreporter/twreporter-npm-packages/commit/10d8c19d21029a673351b8ce02706411e7951906))
+* path is not defined ([8e03b13](https://github.com/twreporter/twreporter-npm-packages/commit/8e03b130799a3ae9ba000a703b863a8f3c22d396))
+
+
+
+
+
+# [8.8.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.7.1...@twreporter/react-components@8.8.0-rc.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* add line height setting to paragraph component ([1390dcf](https://github.com/twreporter/twreporter-npm-packages/commit/1390dcf811b5475337381ce99f2b9b5a1bfe05bc))
+* add transparent theme ([cc149fe](https://github.com/twreporter/twreporter-npm-packages/commit/cc149feafaab69924f4152cf34b869b58710ec6d))
+* fix code review ([462795c](https://github.com/twreporter/twreporter-npm-packages/commit/462795c4bf9259e8896db41117e2d7354e435848))
+* fix headline line height ([0dc0834](https://github.com/twreporter/twreporter-npm-packages/commit/0dc0834d771e9795ec77d55585a4957712d6efa4))
+* fix text syle to use P1, P2 component ([026b47e](https://github.com/twreporter/twreporter-npm-packages/commit/026b47e8e355967f6d1a281670ee3f5aaf57640c))
+
+
+### Features
+
+* add storybook & designed component ([a6fa216](https://github.com/twreporter/twreporter-npm-packages/commit/a6fa2168f10298f40de425316df79e16bb68d325))
+
+
+
+
+
 ## [8.7.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.7.1-rc.0...@twreporter/react-components@8.7.1) (2022-04-29)
 
 **Note:** Version bump only for package @twreporter/react-components
