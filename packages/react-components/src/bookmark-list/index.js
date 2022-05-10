@@ -1,16 +1,18 @@
 import { connect } from 'react-redux'
-import { getSignInHref } from '@twreporter/core/lib/utils/sign-in-href'
-import Bookmarks from './bookmarks'
-import Confirmation from '../confirmation'
-import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import CSSTransition from 'react-transition-group/CSSTransition'
-import More from '../more'
 import PropTypes from 'prop-types'
 import React from 'react'
-import RedirectToSignIn from './redirect-to-sign-in'
 import styled, { css } from 'styled-components'
+// components
+import Bookmarks from './bookmarks'
+import Confirmation from '../confirmation'
+import More from '../more'
+import RedirectToSignIn from './redirect-to-sign-in'
+// @twreporter
 import twreporterRedux from '@twreporter/redux'
-
+import { getSignInHref } from '@twreporter/core/lib/utils/sign-in-href'
+import corePropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 // lodash
 import findIndex from 'lodash/findIndex'
 import get from 'lodash/get'
@@ -171,13 +173,14 @@ class BookmarkList extends React.Component {
     const { isAuthed, jwt } = this.props
     if (!isAuthed || !jwt)
       return <RedirectToSignIn>您尚未登入，將跳轉至登入頁</RedirectToSignIn>
-    const { bookmarks, total } = this.props
+    const { bookmarks, total, releaseBranch } = this.props
     return (
       <Container>
         <Bookmarks
           bookmarks={bookmarks}
           handleDelete={this.handleDeleteButtonClicked}
           total={total}
+          releaseBranch={releaseBranch}
         />
         <MoreContainer hasMore={bookmarks.length < total}>
           <More loadMore={this.loadMoreBookmarks}>
@@ -208,6 +211,7 @@ class BookmarkList extends React.Component {
 }
 
 BookmarkList.propTypes = {
+  releaseBranch: corePropTypes.releaseBranch,
   // Props below are provided by redux
   bookmarks: PropTypes.arrayOf(corePropTypes.bookmark).isRequired,
   total: PropTypes.number.isRequired,
@@ -216,6 +220,10 @@ BookmarkList.propTypes = {
   isAuthed: PropTypes.bool.isRequired,
   jwt: PropTypes.string.isRequired,
   userID: PropTypes.number.isRequired,
+}
+
+BookmarkList.defaultProps = {
+  releaseBranch: releaseBranchConsts.master,
 }
 
 const mapStateToProps = state => {
