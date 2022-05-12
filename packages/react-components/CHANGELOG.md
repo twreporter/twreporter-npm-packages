@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.8.0...@twreporter/react-components@8.9.0-rc.0) (2022-05-12)
+
+
+### Bug Fixes
+
+* expand guideJSX ([a417972](https://github.com/twreporter/twreporter-npm-packages/commit/a4179721bbe1e9bd4f0829b144fe3f449bb12968))
+
+
+### Features
+
+* add bookmark list empty guide ([0f32a4a](https://github.com/twreporter/twreporter-npm-packages/commit/0f32a4afa0848793622b9d0878121111d875d634))
+
+
+
+
+
 # [8.8.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.8.0-rc.1...@twreporter/react-components@8.8.0) (2022-05-09)
 
 **Note:** Version bump only for package @twreporter/react-components
