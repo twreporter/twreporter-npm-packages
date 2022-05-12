@@ -43,19 +43,16 @@ const GuideContainer = styled.div`
 const EmptyGuide = ({ releaseBranch = releaseBranchConsts.master }) => {
   const homepageUrl = requestOrigin.forClientSideRendering[releaseBranch].main
   const seekImageUrl = `https://www.twreporter.org/assets/bookmark/${releaseBranch}/seek.png`
-  const guideJSX = (
-    <GuideContainer>
-      <P2 text="點擊" />
-      <Bookmark type="add" releaseBranch={releaseBranch} />
-      <P2 text="將喜愛的文章加入我的書籤" />
-    </GuideContainer>
-  )
   return (
     <Container>
       <img alt="Seek Bookmark" src={seekImageUrl} width="170" />
       <TextContainer>
         <P1 text="你還沒有儲存任何文章！" weight="bold" />
-        {guideJSX}
+        <GuideContainer>
+          <P2 text="點擊" />
+          <Bookmark type="add" releaseBranch={releaseBranch} />
+          <P2 text="將喜愛的文章加入我的書籤" />
+        </GuideContainer>
       </TextContainer>
       <ButtonContainer href={homepageUrl}>
         <PillButton text="開始探索" size="L" releaseBranch={releaseBranch} />
