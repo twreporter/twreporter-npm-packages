@@ -32,12 +32,13 @@ const ButtonContainer = styled.a`
 
 const GuideContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   color: ${colorGrayscale.gray600};
   img {
     width: 18px;
     height: 16px;
     margin: 0 4px;
+    padding-bottom: 4px;
   }
 `
 

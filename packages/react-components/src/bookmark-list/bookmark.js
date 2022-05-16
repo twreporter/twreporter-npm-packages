@@ -58,7 +58,6 @@ const BookmarkContentContainer = styled.li`
   position: relative;
   width: 100%;
   background-color: ${color.white};
-
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -137,6 +136,9 @@ const TextBox = styled.div`
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  a {
+    width: 100%;
+  }
 `
 
 const Category = styled.span`
