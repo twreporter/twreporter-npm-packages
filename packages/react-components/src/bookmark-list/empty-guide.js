@@ -6,7 +6,7 @@ import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import requestOrigin from '@twreporter/core/lib/constants/request-origins'
 // components
-import BookmarkIcon from './assets/bookmark-add.svg'
+import { Bookmark } from '../icon'
 import { P1, P2 } from '../text/paragraph'
 import { PillButton } from '../button'
 
@@ -32,11 +32,12 @@ const ButtonContainer = styled.a`
 
 const GuideContainer = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   color: ${colorGrayscale.gray600};
-  img {
-    width: 18px;
-    height: 16px;
+  svg {
+    background-color: ${colorGrayscale.gray600};
+    width: 14px;
+    height: 14px;
     margin: 0 4px;
     padding-bottom: 4px;
   }
@@ -52,7 +53,7 @@ const EmptyGuide = ({ releaseBranch = releaseBranchConsts.master }) => {
         <P1 text="你還沒有儲存任何文章！" weight="bold" />
         <GuideContainer>
           <P2 text="點擊" />
-          <img src={BookmarkIcon} alt="Add Bookmark" />
+          <Bookmark type="add" releaseBranch={releaseBranch} />
           <P2 text="將喜愛的文章加入我的書籤" />
         </GuideContainer>
       </TextContainer>
