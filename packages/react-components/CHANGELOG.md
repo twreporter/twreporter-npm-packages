@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.2...@twreporter/react-components@8.9.0-rc.3) (2022-05-25)
+
+
+### Bug Fixes
+
+* vercel build fail problem & missing bookmark-add icon ([e1f0668](https://github.com/twreporter/twreporter-npm-packages/commit/e1f0668c7d96a61444100fe0cccc0108e0334ea2))
+
+
+
+
+
 # [8.9.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.1...@twreporter/react-components@8.9.0-rc.2) (2022-05-25)
 
 
