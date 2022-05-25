@@ -11,7 +11,7 @@ const IconContainer = styled.svg`
   height: 24px;
   width: 24px;
   background-color: black;
-  mask-image: url(${(props) => props.src});
+  mask-image: url(${props => props.src});
   mask-size: cover;
 `
 
@@ -45,92 +45,97 @@ Bookmark.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Hamburger = (args) => <Icon filename="hamburger" {...args} />
+export const Hamburger = args => <Icon filename="hamburger" {...args} />
 Hamburger.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Cross = (args) => <Icon filename="cross" {...args} />
+export const Cross = args => <Icon filename="cross" {...args} />
 Cross.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Search = (args) => <Icon filename="search" {...args} />
+export const Search = args => <Icon filename="search" {...args} />
 Search.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Member = (args) => <Icon filename="member" {...args} />
+export const Member = args => <Icon filename="member" {...args} />
 Member.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Home = (args) => <Icon filename="home" {...args} />
+export const Home = args => <Icon filename="home" {...args} />
 Home.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Share = (args) => <Icon filename="share" {...args} />
+export const Share = args => <Icon filename="share" {...args} />
 Share.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Text = (args) => <Icon filename="text" {...args} />
+export const Text = args => <Icon filename="text" {...args} />
 Text.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Clock = (args) => <Icon filename="clock" {...args} />
+export const Clock = args => <Icon filename="clock" {...args} />
 Clock.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Article = (args) => <Icon filename="article" {...args} />
+export const Article = args => <Icon filename="article" {...args} />
 Article.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Topic = (args) => <Icon filename="topic" {...args} />
+export const Topic = args => <Icon filename="topic" {...args} />
 Topic.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Copy = (args) => <Icon filename="copy" {...args} />
+export const Copy = args => <Icon filename="copy" {...args} />
 Copy.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Loading = (args) => <Icon filename="loading" {...args} />
+export const Loading = args => <Icon filename="loading" {...args} />
 Loading.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Facebook = (args) => <Icon filename="facebook" {...args} />
+export const Printer = args => <Icon filename="printer" {...args} />
+Loading.propTypes = {
+  releaseBranch: predefinedPropTypes.releaseBranch,
+}
+
+export const Facebook = args => <Icon filename="facebook" {...args} />
 Facebook.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Instagram = (args) => <Icon filename="instagram" {...args} />
+export const Instagram = args => <Icon filename="instagram" {...args} />
 Instagram.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Medium = (args) => <Icon filename="medium" {...args} />
+export const Medium = args => <Icon filename="medium" {...args} />
 Medium.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Twitter = (args) => <Icon filename="twitter" />
+export const Twitter = args => <Icon filename="twitter" />
 Twitter.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Youtube = (args) => <Icon filename="youtube" />
+export const Youtube = args => <Icon filename="youtube" />
 Youtube.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Line = (args) => <Icon filename="line" />
+export const Line = args => <Icon filename="line" />
 Line.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
@@ -148,6 +153,7 @@ export default {
   Instagram,
   Line,
   Loading,
+  Printer,
   Medium,
   Member,
   Search,
