@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.0...@twreporter/react-components@8.9.0-rc.1) (2022-05-25)
+
+
+### Bug Fixes
+
+* fix defect & pill button style ([7148d42](https://github.com/twreporter/twreporter-npm-packages/commit/7148d4295aaf4b76098c5130a80d29d742b46906))
+* fix problems ([0ab61ad](https://github.com/twreporter/twreporter-npm-packages/commit/0ab61ad04f5a147c2628b8d2735b56841ecf53d4))
+
+
+
+
+
 # [8.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.8.0...@twreporter/react-components@8.9.0-rc.0) (2022-05-12)
 
 
