@@ -11,6 +11,7 @@ import Divider from '../divider'
 import mq from '@twreporter/core/lib/utils/media-query'
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -21,11 +22,15 @@ const _ = {
 }
 
 const PageContainer = styled.div`
-  padding: 50px 0;
+  padding: 64px 0 120px 0;
   margin: 0;
 
+  ${mq.tabletOnly`
+    padding: 32px 0 120px 0;
+  `}
+
   ${mq.mobileOnly`
-    padding: 25px 0;
+    padding: 24px 0 120px 0;
   `}
 `
 
@@ -53,6 +58,7 @@ const StatusBar = styled.div`
 
 const TitleContainer = styled.div`
   margin-bottom: 16px;
+  color: ${colorGrayscale.gray800};
 `
 
 const CountContainer = styled.div`
