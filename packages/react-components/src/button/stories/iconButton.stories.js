@@ -1,6 +1,6 @@
 import React from 'react'
 import IconButton from '../components/iconButton'
-import { Share } from '../../icon'
+import { Share, Arrow } from '../../icon'
 
 export default {
   title: 'Button/Icon Button',
@@ -11,6 +11,7 @@ const Template = args => <IconButton {...args} />
 
 export const iconButton = Template.bind({})
 iconButton.args = {
+  iconComponent: <Arrow direction="down" />,
   theme: 'normal',
   type: 'primary',
   disabled: false,

@@ -106,7 +106,7 @@ Loading.propTypes = {
 }
 
 export const Printer = args => <Icon filename="printer" {...args} />
-Loading.propTypes = {
+Printer.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 

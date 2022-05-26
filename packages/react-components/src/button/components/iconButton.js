@@ -6,10 +6,8 @@ import {
   getPrimaryIconButtonTheme,
   getSecondaryIconButtonTheme,
 } from '../utils/theme'
-// components
-import { Arrow } from '../../icon'
-
-const DefaultIcon = () => <Arrow direction="down" releaseBranch="release" />
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const ButtonContainer = styled.div`
   cursor: pointer;
@@ -20,13 +18,15 @@ const ButtonContainer = styled.div`
     background-color: ${props => props.color};
   }
 
-  &:hover svg {
-    background-color: ${props => props.hoverColor};
-  }
+  ${mq.desktopAndAbove`
+    &:hover svg {
+      background-color: ${props => props.hoverColor};
+    }
+  `}
 `
 
 const IconButton = ({
-  iconComponent = <DefaultIcon />,
+  iconComponent,
   theme = 'normal',
   type = 'primary',
   disabled = false,
@@ -43,7 +43,7 @@ const IconButton = ({
   )
 }
 IconButton.propTypes = {
-  iconComponent: PropTypes.elementType,
+  iconComponent: PropTypes.elementType.isRequired,
   theme: PropTypes.oneOf(['normal', 'photography', 'transparent', 'index']),
   type: PropTypes.oneOf(['primary', 'secondary']),
   disabled: PropTypes.bool,

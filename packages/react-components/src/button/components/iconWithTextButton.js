@@ -4,12 +4,9 @@ import styled from 'styled-components'
 // utils
 import { getIconWithTextButtonTheme } from '../utils/theme'
 // components
-import { Arrow } from '../../icon'
 import { P4 } from '../../text/paragraph'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-
-const DefaultIcon = () => <Arrow direction="down" releaseBranch="release" />
 
 const ButtonContainer = styled.div`
   cursor: pointer;
@@ -35,7 +32,7 @@ const ButtonContainer = styled.div`
 
 const IconWithTextButton = ({
   text = '',
-  iconComponent = <DefaultIcon />,
+  iconComponent,
   theme = 'normal',
   disabled = false,
   active = false,
@@ -55,7 +52,7 @@ const IconWithTextButton = ({
 }
 IconWithTextButton.propTypes = {
   text: PropTypes.string,
-  iconComponent: PropTypes.elementType,
+  iconComponent: PropTypes.elementType.isRequired,
   theme: PropTypes.oneOf(['normal', 'photography', 'transparent', 'index']),
   disabled: PropTypes.bool,
   active: PropTypes.bool,
