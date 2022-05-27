@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Arrow } from '../../icon'
 import { P1, P2 } from '../../text/paragraph'
 // utils
 import {
@@ -42,10 +41,10 @@ const ButtonContainer = styled.div`
 
 const PillButton = ({
   text = '',
+  iconComponent,
   size = 'S',
   theme = 'normal',
   type = 'primary',
-  withIcon = false,
   disabled = false,
 }) => {
   const themeFunc =
@@ -55,7 +54,6 @@ const PillButton = ({
     disabled
   )
   const { padding, iconSize } = getSizeStyle(size)
-  const iconJSX = withIcon ? <Arrow direction="right" /> : ''
   const textJSX =
     size === 'S' ? (
       <P2 text={text} weight="bold" />
@@ -73,16 +71,16 @@ const PillButton = ({
       hoverBgColor={hoverBgColor}
     >
       {textJSX}
-      {iconJSX}
+      {iconComponent}
     </ButtonContainer>
   )
 }
 PillButton.propTypes = {
+  iconComponent: PropTypes.element,
   text: PropTypes.string,
   size: PropTypes.oneOf(['S', 'L']),
   theme: PropTypes.oneOf(['transparent', 'normal', 'photography', 'index']),
   type: PropTypes.oneOf(['primary', 'secondary']),
-  withIcon: PropTypes.bool,
   disabled: PropTypes.bool,
 }
 

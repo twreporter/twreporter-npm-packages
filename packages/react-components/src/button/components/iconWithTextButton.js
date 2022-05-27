@@ -52,7 +52,7 @@ const IconWithTextButton = ({
 }
 IconWithTextButton.propTypes = {
   text: PropTypes.string,
-  iconComponent: PropTypes.elementType.isRequired,
+  iconComponent: PropTypes.element.isRequired,
   theme: PropTypes.oneOf(['normal', 'photography', 'transparent', 'index']),
   disabled: PropTypes.bool,
   active: PropTypes.bool,
