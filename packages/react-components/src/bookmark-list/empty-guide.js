@@ -32,14 +32,14 @@ const ButtonContainer = styled.a`
 
 const GuideContainer = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   color: ${colorGrayscale.gray600};
   svg {
     background-color: ${colorGrayscale.gray600};
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     margin: 0 4px;
-    padding-bottom: 4px;
+    transform: translateY(3px);
   }
 `
 
@@ -58,7 +58,7 @@ const EmptyGuide = ({ releaseBranch = releaseBranchConsts.master }) => {
         </GuideContainer>
       </TextContainer>
       <ButtonContainer href={homepageUrl}>
-        <PillButton text="開始探索" size="L" releaseBranch={releaseBranch} />
+        <PillButton text="開始探索" size="L" />
       </ButtonContainer>
     </Container>
   )

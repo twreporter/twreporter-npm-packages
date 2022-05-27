@@ -43,7 +43,7 @@ const IconButton = ({
   )
 }
 IconButton.propTypes = {
-  iconComponent: PropTypes.elementType.isRequired,
+  iconComponent: PropTypes.element.isRequired,
   theme: PropTypes.oneOf(['normal', 'photography', 'transparent', 'index']),
   type: PropTypes.oneOf(['primary', 'secondary']),
   disabled: PropTypes.bool,
