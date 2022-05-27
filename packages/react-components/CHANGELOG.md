@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.4...@twreporter/react-components@8.9.0-rc.5) (2022-05-27)
+
+
+### Bug Fixes
+
+* add pillButton iconComponent prop & fix empty bookmark style ([54f0e52](https://github.com/twreporter/twreporter-npm-packages/commit/54f0e52b97eb97616bbb83864810acc80101647e))
+
+
+
+
+
 # [8.9.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.3...@twreporter/react-components@8.9.0-rc.4) (2022-05-27)
 
 
