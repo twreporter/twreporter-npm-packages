@@ -1,5 +1,6 @@
 import React from 'react'
 import PillButton from '../components/pillButton'
+import { Arrow } from '../../icon'
 
 export default {
   title: 'Button/Pill Button',
@@ -14,6 +15,15 @@ pillButton.args = {
   size: 'S',
   theme: 'normal',
   type: 'primary',
-  withIcon: true,
+  disabled: false,
+}
+
+export const withArrowIcon = Template.bind({})
+withArrowIcon.args = {
+  iconComponent: <Arrow direction="right" />,
+  text: '文字',
+  size: 'S',
+  theme: 'normal',
+  type: 'primary',
   disabled: false,
 }
