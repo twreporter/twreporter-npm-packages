@@ -339,8 +339,8 @@ export default class Article extends PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll)
-    this.lastKnownScrollPosition = 0
-    this.ticking = false
+    this.lastKnownScrollPosition = null
+    this.ticking = null
     this.scrollPosition = {
       y: 0,
     }

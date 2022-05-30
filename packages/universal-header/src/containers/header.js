@@ -92,8 +92,8 @@ class Container extends React.PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
-    this.lastKnownPageYOffset = 0
-    this.ticking = false
+    this.lastKnownPageYOffset = null
+    this.ticking = null
     this.handleScroll = null
     this.currentY = null
     this.readyY = null
