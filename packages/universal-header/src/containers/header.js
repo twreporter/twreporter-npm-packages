@@ -16,12 +16,10 @@ import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
-import throttle from 'lodash/throttle'
 
 const _ = {
   get,
   map,
-  throttle,
 }
 
 const HIDE_HEADER_THRESHOLD = 46
@@ -77,7 +75,9 @@ class Container extends React.PureComponent {
       toUseNarrow: false,
       hideHeader: false,
     }
-    this.handleScroll = _.throttle(this.__handleScroll, 450).bind(this)
+    this.lastKnownPageYOffset = 0
+    this.ticking = false
+    this.handleScroll = this.__handleScroll.bind(this)
 
     // Below parameters are used to calculate scroll transform status.
     this.currentY = 0
@@ -92,6 +92,8 @@ class Container extends React.PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
+    this.lastKnownPageYOffset = null
+    this.ticking = null
     this.handleScroll = null
     this.currentY = null
     this.readyY = null
@@ -99,11 +101,24 @@ class Container extends React.PureComponent {
     this.transformTimer = null
   }
 
-  __handleScroll(event) {
-    const currentScrollTop = window.pageYOffset
+  /**
+   * Wrap __handleScroll() with requestAnimationFrame() to avoid triggering browser reflow due to reading window.pageYOffset.
+   * ref: https://developer.mozilla.org/en-US/docs/web/api/document/scroll_event#Example
+   */
+  __handleScroll() {
+    this.lastKnownPageYOffset = window.pageYOffset
+    if (!this.ticking) {
+      window.requestAnimationFrame(() => {
+        this.__updateScrollState(this.lastKnownPageYOffset)
+        this.ticking = false
+      })
+      this.ticking = true
+    }
+  }
+
+  __updateScrollState(currentScrollTop) {
     const scrollDirection = currentScrollTop > this.currentY ? 'down' : 'up'
     this.currentY = currentScrollTop
-
     const updateState = this.__getScrollState(currentScrollTop, scrollDirection)
     this.setState(updateState)
   }
