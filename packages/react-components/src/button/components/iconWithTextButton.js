@@ -30,12 +30,19 @@ const ButtonContainer = styled.div`
   `}
 `
 
+const StyledP4 = styled(P4)`
+  max-height: ${props => (props.hideText ? '0px' : 'none')};
+  opacity: ${props => (props.hideText ? '0' : '1')};
+  transition: opacity 100ms;
+`
+
 const IconWithTextButton = ({
   text = '',
   iconComponent,
   theme = 'normal',
   disabled = false,
   active = false,
+  hideText = false,
 }) => {
   const { color, hoverColor } = getIconWithTextButtonTheme(
     theme,
@@ -46,7 +53,7 @@ const IconWithTextButton = ({
   return (
     <ButtonContainer color={color} hoverColor={hoverColor}>
       {iconComponent}
-      <P4 text={text} weight="bold" />
+      <StyledP4 text={text} weight="bold" hideText={hideText} />
     </ButtonContainer>
   )
 }
@@ -56,6 +63,7 @@ IconWithTextButton.propTypes = {
   theme: PropTypes.oneOf(['normal', 'photography', 'transparent', 'index']),
   disabled: PropTypes.bool,
   active: PropTypes.bool,
+  hideText: PropTypes.bool,
 }
 
 export default IconWithTextButton

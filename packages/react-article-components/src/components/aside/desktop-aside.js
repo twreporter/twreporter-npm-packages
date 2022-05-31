@@ -1,6 +1,6 @@
 import Metadata from './metadata'
 import React from 'react'
-import Tools from './tools'
+import Tools from './desktop-tools'
 import predefinedProps from '../../constants/prop-types/aside'
 import styled from 'styled-components'
 import { Waypoint } from 'react-waypoint'
@@ -106,7 +106,7 @@ export default class Aside extends React.PureComponent {
   }
 
   render() {
-    const toolsHeight = 304 // px
+    const toolsHeight = 258 // px
 
     const {
       articleMetaForBookmark,

@@ -9,11 +9,11 @@ import DonationBox from './donation-box'
 import License from './license'
 import Link from './link'
 import Metadata from './aside/metadata'
-import MobileAside from './aside/mobile-aside'
+import ToolBar from './aside/mobile-tool-bar'
 import Related from './related'
 import SeparationCurve from './separation-curve'
 import UIManager from '../managers/ui-manager'
-import Tools from './aside/tools'
+import Tools from './aside/desktop-tools'
 // constants
 import themeConst from '../constants/theme'
 import colorConst from '../constants/color'
@@ -22,13 +22,8 @@ import typography from '../constants/typography'
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
-import map from 'lodash/map'
-import merge from 'lodash/merge'
-
 const _ = {
   get,
-  map,
-  merge,
 }
 
 const fontFamilyCss = css`
@@ -143,6 +138,12 @@ const ToolsBlock = styled.div`
 
   ${mq.tabletOnly`
     margin-top: 30px;
+  `}
+`
+
+const StyledToolBar = styled(ToolBar)`
+  ${mq.desktopAndAbove`
+    display: none;
   `}
 `
 
@@ -320,32 +321,6 @@ export default class Article extends PureComponent {
     loadMoreRelateds: noop,
   }
 
-  constructor(props) {
-    super(props)
-
-    this.mobileAsideRef = React.createRef()
-    this.lastKnownScrollPosition = 0
-    this.ticking = false
-    this.scrollPosition = {
-      y: 0,
-    }
-    this.onScroll = this._onScroll.bind(this)
-    this.toggleMobileAside = this._toggleMobileAside.bind(this)
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.onScroll)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll)
-    this.lastKnownScrollPosition = null
-    this.ticking = null
-    this.scrollPosition = {
-      y: 0,
-    }
-  }
-
   changeFontLevel = () => {
     const { fontLevel, onFontLevelChange } = this.props
     let nextFontLevel = ''
@@ -381,44 +356,6 @@ export default class Article extends PureComponent {
       case _fontLevel.small:
       default: {
         return 0
-      }
-    }
-  }
-
-  /**
-   * Wrap toggleMobileAside() with requestAnimationFrame() to avoid triggering browser reflow due to reading window.scrollY.
-   * ref: https://developer.mozilla.org/en-US/docs/web/api/document/scroll_event#Example
-   */
-  _onScroll() {
-    this.lastKnownScrollPosition = window.scrollY
-    if (!this.ticking) {
-      window.requestAnimationFrame(() => {
-        this.toggleMobileAside(this.lastKnownScrollPosition)
-        this.ticking = false
-      })
-      this.ticking = true
-    }
-  }
-
-  /**
-   * If users scroll up, and the scrolling distance is more than a certain distance as well, show mobile aside.
-   * Otherwise, if users scroll down, hide the mobile aside.
-   */
-  _toggleMobileAside(currentTopY) {
-    if (this.mobileAsideRef) {
-      const mAside = this.mobileAsideRef
-
-      // Calculate scrolling distance to determine whether to display aside
-      const lastY = this.scrollPosition.y
-      const distance = currentTopY - lastY
-      if (distance > 30) {
-        this.scrollPosition.y = currentTopY
-        mAside.current.toShow = false
-      } else {
-        if (Math.abs(distance) > 150) {
-          this.scrollPosition.y = currentTopY
-          mAside.current.toShow = true
-        }
       }
     }
   }
@@ -496,10 +433,10 @@ export default class Article extends PureComponent {
             </LeadingBlock>
             <BodyBackground>
               <BodyBlock>
-                <MobileAside
+                <StyledToolBar
                   backToTopic={backToTopic}
                   articleMetaForBookmark={articleMetaForBookmark}
-                  ref={this.mobileAsideRef}
+                  onFontLevelChange={this.changeFontLevel}
                 />
                 <DesktopAsideBlock>
                   <DesktopAside
@@ -530,6 +467,7 @@ export default class Article extends PureComponent {
               <License
                 license={post.copyright}
                 publishedDate={post.published_date}
+                id="related-post-anchor"
               />
               <StyledSeparationCurve />
               <RelatedBlock>

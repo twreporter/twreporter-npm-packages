@@ -4,21 +4,25 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 // constants
 import themeConst from '../../constants/theme'
-import colorConst from '../../constants/color'
 import predefinedProps from '../../constants/prop-types/aside'
 // icons
-import BackToTopicIcon from '../../assets/aside/back-to-topic.svg'
-import FBIcon from '../../assets/aside/share-fb.svg'
-import LineIcon from '../../assets/aside/share-line.svg'
-import PrintIcon from '../../assets/aside/tool-print.svg'
-import TextIcon from '../../assets/aside/tool-text.svg'
-import TwitterIcon from '../../assets/aside/share-twitter.svg'
-// bookmark icons
-import ToAddBookmarkIcon from '../../assets/aside/add-bookmark.svg'
-import AddedBookmarkIcon from '../../assets/aside/added-bookmark.svg'
+import {
+  Topic,
+  Bookmark,
+  Text,
+  Printer,
+  Facebook,
+  Twitter,
+  Line,
+} from '@twreporter/react-components/lib/icon'
 // @twreporter
 import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
 import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorPhoto,
+  colorSupportive,
+} from '@twreporter/core/lib/constants/color'
 
 function changeFontSizeOffsetToPct(fontSizeOffset) {
   switch (fontSizeOffset) {
@@ -39,23 +43,29 @@ const iconBlockCSS = css`
   position: relative;
   cursor: pointer;
   line-height: 1;
+  padding: 6px;
 
   svg {
-    width: 36px;
-    height: 36px;
+    width: 18px;
+    height: 18px;
+    background-color: ${colorGrayscale.gray600};
   }
 
   &::after {
     position: absolute;
-    top: 5px;
-    color: ${colorConst.gray95};
-    font-size: 14px;
-    line-height: 23px;
+    top: 10px;
+    left: 34px;
+    color: ${colorGrayscale.gray800};
+    font-size: 10px;
     visibility: hidden;
     width: 100px;
   }
 
   &:hover {
+    svg {
+      background-color: ${colorGrayscale.gray800};
+    }
+
     &::after {
       visibility: visible;
     }
@@ -101,10 +111,16 @@ const BookmarkIconBlock = styled.div`
 `
 
 const ShareIconBlock = styled.div`
-  width: 36px;
-  height: 36px;
-  padding: 3px;
+  svg {
+    width: 18px;
+    height: 18px;
+    background-color: ${colorGrayscale.gray800};
+  }
+  background-color: ${colorGrayscale.white};
+  border-radius: 50%;
+  padding: 6px;
   cursor: pointer;
+  display: flex;
 `
 
 const ToolsBlock = styled.div`
@@ -134,7 +150,7 @@ const ToolsBlock = styled.div`
     width: 36px;
     height: ${props => props.height || 'auto'};
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
   `}
 
@@ -143,30 +159,22 @@ const ToolsBlock = styled.div`
       case themeConst.article.v2.photo:
         return css`
           ${ShareIconBlock} {
-            svg circle:first-child {
-              fill: ${colorConst.gray25};
-            }
-            svg path {
-              fill: ${colorConst.notSoWhite};
+            background-color: ${colorPhoto.heavy};
+            svg {
+              background-color: ${colorGrayscale.gray100};
             }
           }
           ${TextIconBlock}, ${BackToTopicBlock}, ${PrintIconBlock}, ${BookmarkIconBlock} {
-            svg circle:first-child {
-              fill: ${colorConst.darkBlue};
-            }
-
-            svg path {
-              fill: ${colorConst.notSoWhite};
+            svg {
+              background-color: ${colorGrayscale.gray100};
             }
 
             &::after {
-              color: ${colorConst.notSoWhite};
+              color: ${colorSupportive.main};
             }
-          }
 
-          ${BackToTopicBlock} {
-            svg circle:not(:first-child) {
-              fill: ${colorConst.notSoWhite};
+            &:hover svg{
+              background-color: ${colorSupportive.main};
             }
           }
         `
@@ -191,7 +199,7 @@ function FBShareBT(props) {
 
   return (
     <ShareIconBlock id="fb-share">
-      <FBIcon width="30px" onClick={handleClick} />
+      <Facebook onClick={handleClick} />
     </ShareIconBlock>
   )
 }
@@ -214,7 +222,7 @@ function TwitterShareBT(props) {
 
   return (
     <ShareIconBlock id="twitter-share">
-      <TwitterIcon width="30px" onClick={handleClick} />
+      <Twitter onClick={handleClick} />
     </ShareIconBlock>
   )
 }
@@ -231,68 +239,70 @@ function LineShareBT(props) {
 
   return (
     <ShareIconBlock id="line-share">
-      <LineIcon width="30px" onClick={handleClick} />
+      <Line onClick={handleClick} />
     </ShareIconBlock>
   )
 }
 
 const defaultFbAppID = '962589903815787'
 
-export default class Tools extends React.PureComponent {
-  static propTypes = predefinedProps.tools
+const Tools = ({
+  backToTopic,
+  fbAppID,
+  height,
+  onFontLevelChange,
+  articleMetaForBookmark,
+}) => {
+  const backToTopicJSX = backToTopic ? (
+    <DynamicComponentsContext.Consumer>
+      {components => {
+        return (
+          <components.Link to={backToTopic} target="_self">
+            <BackToTopicBlock>
+              <Topic />
+            </BackToTopicBlock>
+          </components.Link>
+        )
+      }}
+    </DynamicComponentsContext.Consumer>
+  ) : (
+    ''
+  )
 
-  render() {
-    const {
-      backToTopic,
-      fbAppID,
-      height,
-      onFontLevelChange,
-      articleMetaForBookmark,
-    } = this.props
-
-    return (
-      <ToolsBlock height={height}>
-        {backToTopic ? (
-          <DynamicComponentsContext.Consumer>
-            {components => {
-              return (
-                <components.Link to={backToTopic} target="_self">
-                  <BackToTopicBlock>
-                    <BackToTopicIcon />
-                  </BackToTopicBlock>
-                </components.Link>
-              )
-            }}
-          </DynamicComponentsContext.Consumer>
-        ) : null}
-        <BookmarkWidget
-          toAutoCheck={false}
-          articleMeta={articleMetaForBookmark}
-          renderIcon={(isBookmarked, addAction, removeAction) => {
-            return (
-              <BookmarkIconBlock
-                onClick={isBookmarked ? removeAction : addAction}
-                isBookmarked={isBookmarked}
-              >
-                {isBookmarked ? <AddedBookmarkIcon /> : <ToAddBookmarkIcon />}
-              </BookmarkIconBlock>
-            )
+  return (
+    <ToolsBlock height={height}>
+      {backToTopicJSX}
+      <BookmarkWidget
+        toAutoCheck={false}
+        articleMeta={articleMetaForBookmark}
+        renderIcon={(isBookmarked, addAction, removeAction) => {
+          const iconType = isBookmarked ? 'saved' : 'add'
+          return (
+            <BookmarkIconBlock
+              onClick={isBookmarked ? removeAction : addAction}
+              isBookmarked={isBookmarked}
+            >
+              <Bookmark type={iconType} />
+            </BookmarkIconBlock>
+          )
+        }}
+      />
+      <TextIconBlock>
+        <Text onClick={onFontLevelChange} />
+      </TextIconBlock>
+      <PrintIconBlock>
+        <Printer
+          onClick={() => {
+            window.print()
           }}
         />
-        <TextIconBlock>
-          <TextIcon onClick={onFontLevelChange} />
-        </TextIconBlock>
-        <PrintIconBlock>
-          <PrintIcon
-            onClick={() => {
-              window.print()
-            }}
-          />
-        </PrintIconBlock>
-        <FBShareBT appID={fbAppID || defaultFbAppID} />
-        <TwitterShareBT />
-        <LineShareBT />
-      </ToolsBlock>
-    )
-  }
+      </PrintIconBlock>
+      <FBShareBT appID={fbAppID || defaultFbAppID} />
+      <TwitterShareBT />
+      <LineShareBT />
+    </ToolsBlock>
+  )
 }
+Tools.propTypes = predefinedProps.tools
+
+export default Tools
