@@ -244,6 +244,18 @@ function LineShareBT(props) {
   )
 }
 
+function BookmarkIcon(isBookmarked, addAction, removeAction) {
+  const iconType = isBookmarked ? 'saved' : 'add'
+  return (
+    <BookmarkIconBlock
+      onClick={isBookmarked ? removeAction : addAction}
+      isBookmarked={isBookmarked}
+    >
+      <Bookmark type={iconType} />
+    </BookmarkIconBlock>
+  )
+}
+
 const defaultFbAppID = '962589903815787'
 
 const Tools = ({
@@ -265,9 +277,8 @@ const Tools = ({
         )
       }}
     </DynamicComponentsContext.Consumer>
-  ) : (
-    ''
-  )
+  ) : null
+  const onPrinterClick = () => window.print()
 
   return (
     <ToolsBlock height={height}>
@@ -275,27 +286,13 @@ const Tools = ({
       <BookmarkWidget
         toAutoCheck={false}
         articleMeta={articleMetaForBookmark}
-        renderIcon={(isBookmarked, addAction, removeAction) => {
-          const iconType = isBookmarked ? 'saved' : 'add'
-          return (
-            <BookmarkIconBlock
-              onClick={isBookmarked ? removeAction : addAction}
-              isBookmarked={isBookmarked}
-            >
-              <Bookmark type={iconType} />
-            </BookmarkIconBlock>
-          )
-        }}
+        renderIcon={BookmarkIcon}
       />
       <TextIconBlock>
         <Text onClick={onFontLevelChange} />
       </TextIconBlock>
       <PrintIconBlock>
-        <Printer
-          onClick={() => {
-            window.print()
-          }}
-        />
+        <Printer onClick={onPrinterClick} />
       </PrintIconBlock>
       <FBShareBT appID={fbAppID || defaultFbAppID} />
       <TwitterShareBT />

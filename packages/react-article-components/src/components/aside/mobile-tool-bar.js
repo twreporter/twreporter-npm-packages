@@ -91,6 +91,7 @@ const FbShare = ({ appID }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
   const shareToFb = () => {
     const currentURL = window.location.href
     const location =
@@ -105,7 +106,10 @@ const FbShare = ({ appID }) => {
 
   return (
     <ShareContainer id="fb-share" onClick={shareToFb}>
-      <IconButton iconComponent=<Facebook /> theme={theme} />
+      <IconButton
+        iconComponent={<Facebook releaseBranch={releaseBranch} />}
+        theme={theme}
+      />
     </ShareContainer>
   )
 }
@@ -117,6 +121,7 @@ const LineShare = () => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
   const shareToLine = () => {
     const currentURL = window.location.href
     const location = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(
@@ -128,7 +133,10 @@ const LineShare = () => {
 
   return (
     <ShareContainer id="line-share" onClick={shareToLine}>
-      <IconButton iconComponent=<Line /> theme={theme} />
+      <IconButton
+        iconComponent={<Line releaseBranch={releaseBranch} />}
+        theme={theme}
+      />
     </ShareContainer>
   )
 }
@@ -137,6 +145,7 @@ const TwitterShare = () => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
   const shareToTwitter = () => {
     const currentURL = window.location.href
     const location =
@@ -150,7 +159,10 @@ const TwitterShare = () => {
 
   return (
     <ShareContainer id="twitter-share" onClick={shareToTwitter}>
-      <IconButton iconComponent=<Twitter /> theme={theme} />
+      <IconButton
+        iconComponent={<Twitter releaseBranch={releaseBranch} />}
+        theme={theme}
+      />
     </ShareContainer>
   )
 }
@@ -159,6 +171,7 @@ const CopyUrl = ({ onclick = defaultFunc }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
   const copyUrl = async () => {
     try {
       const currentURL = window.location.href
@@ -171,7 +184,10 @@ const CopyUrl = ({ onclick = defaultFunc }) => {
 
   return (
     <ShareContainer onClick={copyUrl}>
-      <IconButton iconComponent=<Copy /> theme={theme} />
+      <IconButton
+        iconComponent={<Copy releaseBranch={releaseBranch} />}
+        theme={theme}
+      />
     </ShareContainer>
   )
 }
@@ -186,6 +202,7 @@ const ShareBy = ({ fbAppID }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
   const onCopyUrl = isCopied => {
     if (!isCopied) {
       return
@@ -195,12 +212,13 @@ const ShareBy = ({ fbAppID }) => {
       setSnackBar(false)
     }, 3000)
   }
+  const onButtonClick = () => setShowState(prevValue => !prevValue)
 
   return (
-    <ButtonContainer onClick={() => setShowState(prevValue => !prevValue)}>
+    <ButtonContainer onClick={onButtonClick}>
       <IconWithTextButton
         text="分享"
-        iconComponent=<Share />
+        iconComponent={<Share releaseBranch={releaseBranch} />}
         theme={theme}
         hideText={hideText}
       />
@@ -225,12 +243,13 @@ const FontLevel = ({ changeFontLevel }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
 
   return (
     <ButtonContainer onClick={changeFontLevel}>
       <IconWithTextButton
         text="文字大小"
-        iconComponent=<Text />
+        iconComponent={<Text releaseBranch={releaseBranch} />}
         theme={theme}
         hideText={hideText}
       />
@@ -246,13 +265,16 @@ const BookmarkBlock = ({ articleMeta }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
   const renderIcon = (isBookmarked, addAction, removeAction) => {
     const iconType = isBookmarked ? 'saved' : 'add'
     return (
       <ButtonContainer onClick={isBookmarked ? removeAction : addAction}>
         <IconWithTextButton
           text="加入書籤"
-          iconComponent=<Bookmark type={iconType} />
+          iconComponent={
+            <Bookmark type={iconType} releaseBranch={releaseBranch} />
+          }
           theme={theme}
           hideText={hideText}
         />
@@ -277,6 +299,7 @@ const BackToTopic = ({ backToTopic }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
 
   return (
     <DynamicComponentsContext.Consumer>
@@ -285,7 +308,7 @@ const BackToTopic = ({ backToTopic }) => {
           <ButtonContainer>
             <IconWithTextButton
               text="專題"
-              iconComponent=<Topic />
+              iconComponent={<Topic releaseBranch={releaseBranch} />}
               theme={theme}
               hideText={hideText}
             />
@@ -304,6 +327,7 @@ const RelatedPost = () => {
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+  const { releaseBranch } = themeContext
   const scrollToBottom = () => {
     document.getElementById('related-post-anchor').scrollIntoView()
   }
@@ -312,7 +336,7 @@ const RelatedPost = () => {
     <ButtonContainer onClick={scrollToBottom}>
       <IconWithTextButton
         text="相關文章"
-        iconComponent=<Article />
+        iconComponent={<Article releaseBranch={releaseBranch} />}
         theme={theme}
         hideText={hideText}
       />
@@ -322,7 +346,7 @@ const RelatedPost = () => {
 
 const ToolBar = ({
   backToTopic,
-  fbAppID,
+  fbAppID = defaultFbAppID,
   articleMetaForBookmark,
   onFontLevelChange,
   className,
@@ -374,7 +398,7 @@ const ToolBar = ({
         className={className}
       >
         <FontLevel changeFontLevel={onFontLevelChange} />
-        <ShareBy fbAppID={fbAppID || defaultFbAppID} />
+        <ShareBy fbAppID={fbAppID} />
         <BookmarkBlock articleMeta={articleMetaForBookmark} />
         <RelatedPost />
         {backToTopicJSX}

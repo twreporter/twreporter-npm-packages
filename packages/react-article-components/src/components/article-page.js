@@ -20,6 +20,8 @@ import colorConst from '../constants/color'
 import typography from '../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -141,7 +143,7 @@ const ToolsBlock = styled.div`
   `}
 `
 
-const StyledToolBar = styled(ToolBar)`
+const MobileToolBar = styled(ToolBar)`
   ${mq.desktopAndAbove`
     display: none;
   `}
@@ -310,6 +312,7 @@ export default class Article extends PureComponent {
     onFontLevelChange: PropTypes.func,
     hasMoreRelateds: PropTypes.bool,
     loadMoreRelateds: PropTypes.func,
+    releaseBranch: predefinedPropTypes.releaseBranch,
   }
 
   static defaultProps = {
@@ -319,6 +322,7 @@ export default class Article extends PureComponent {
     relatedTopic: {},
     hasMoreRelateds: false,
     loadMoreRelateds: noop,
+    releaseBranch: releaseBranchConsts.master,
   }
 
   changeFontLevel = () => {
@@ -369,6 +373,7 @@ export default class Article extends PureComponent {
       relatedTopic,
       hasMoreRelateds,
       loadMoreRelateds,
+      releaseBranch,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -421,6 +426,7 @@ export default class Article extends PureComponent {
           name: _.get(post, 'style', themeConst.article.v2.default),
           colors: uiManager.getThemeColors(),
           fontSizeOffset: this.getFontSizeOffset(fontLevel),
+          releaseBranch,
         }}
       >
         <DynamicComponentsContext.Provider value={{ Link: LinkComponent }}>
@@ -433,7 +439,7 @@ export default class Article extends PureComponent {
             </LeadingBlock>
             <BodyBackground>
               <BodyBlock>
-                <StyledToolBar
+                <MobileToolBar
                   backToTopic={backToTopic}
                   articleMetaForBookmark={articleMetaForBookmark}
                   onFontLevelChange={this.changeFontLevel}
@@ -467,7 +473,7 @@ export default class Article extends PureComponent {
               <License
                 license={post.copyright}
                 publishedDate={post.published_date}
-                id="related-post-anchor"
+                id="related-post-anchor" // current scroll to releated post anchor
               />
               <StyledSeparationCurve />
               <RelatedBlock>
