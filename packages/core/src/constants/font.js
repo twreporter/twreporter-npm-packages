@@ -5,8 +5,8 @@ const fontWeight = {
 }
 
 const fontFamily = {
-  title: 'merriweather, source-han-serif-tc, serif',
-  default: 'rosario, source-han-sans-traditional, sans-serif',
+  title: 'merriweather, Noto Serif TC, serif',
+  default: 'rosario, Noto Sans TC, sans-serif',
 }
 
 export default { fontWeight, fontFamily }
