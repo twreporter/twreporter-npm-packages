@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.9.0-rc.6",
+  "version": "8.9.0",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -15,7 +15,7 @@
     "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@twreporter/core": "^1.4.1-rc.0",
+    "@twreporter/core": "^1.4.1",
     "@twreporter/redux": "^7.2.1",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",
