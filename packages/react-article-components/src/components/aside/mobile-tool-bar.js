@@ -6,6 +6,7 @@ import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 // constant
 import predefinedProps from '../../constants/prop-types/aside'
 import themeConst from '../../constants/theme'
+import { relatedPostAnchor } from '../../constants/anchor'
 // util
 import { getToolBarTheme } from './utils/theme'
 // @twreporter
@@ -55,7 +56,8 @@ const OptionContainer = styled.div`
   transition: opacity 100ms;
   position: absolute;
   top: -55px;
-  left: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
 `
 
@@ -73,17 +75,19 @@ const ToolBarContainer = styled.div`
   align-items: center;
   width: fit-content;
   background-color: ${props => props.bgColor};
-  padding: 4px 16px;
+  padding: 8px 16px;
   border-radius: 60px;
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
   bottom: 8px;
-  z-index: 1000;
-  height: ${props => (props.hideText ? '38px' : '48px')};
+  z-index: 999; // header hamburger menu has z-index 1000
+  height: ${props => (props.hideText ? '46px' : '56px')};
   transition: height 100ms;
+  box-shadow: ${props => props.shadow};
   ${ShareContainer} {
     background-color: ${props => props.bgColor};
+    box-shadow: ${props => props.shadow};
   }
 `
 
@@ -329,7 +333,7 @@ const RelatedPost = () => {
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const scrollToBottom = () => {
-    document.getElementById('related-post-anchor').scrollIntoView()
+    document.getElementById(relatedPostAnchor).scrollIntoView()
   }
 
   return (
@@ -353,7 +357,7 @@ const ToolBar = ({
 }) => {
   const [scrollDirection, setScrollDirection] = useState('init')
   useEffect(() => {
-    const threshold = 0
+    const threshold = 8
     let lastScrollY = window.pageYOffset
     let ticking = false
 
@@ -386,7 +390,7 @@ const ToolBar = ({
     }
   }, [scrollDirection])
   const themeContext = useContext(ThemeContext)
-  const { bgColor } = getToolBarTheme(themeContext.name)
+  const { bgColor, shadow } = getToolBarTheme(themeContext.name)
   const backToTopicJSX = backToTopic ? <BackToTopic /> : ''
   const hideText = scrollDirection === 'down'
 
@@ -394,6 +398,7 @@ const ToolBar = ({
     <HideTextContext.Provider value={hideText}>
       <ToolBarContainer
         bgColor={bgColor}
+        shadow={shadow}
         hideText={hideText}
         className={className}
       >

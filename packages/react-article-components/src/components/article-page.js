@@ -18,6 +18,7 @@ import Tools from './aside/desktop-tools'
 import themeConst from '../constants/theme'
 import colorConst from '../constants/color'
 import typography from '../constants/typography'
+import { relatedPostAnchor } from '../constants/anchor'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
@@ -473,7 +474,7 @@ export default class Article extends PureComponent {
               <License
                 license={post.copyright}
                 publishedDate={post.published_date}
-                id="related-post-anchor" // current scroll to releated post anchor
+                id={relatedPostAnchor} // current scroll to releated post anchor
               />
               <StyledSeparationCurve />
               <RelatedBlock>
