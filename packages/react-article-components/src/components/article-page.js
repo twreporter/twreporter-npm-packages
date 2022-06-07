@@ -24,13 +24,11 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import merge from 'lodash/merge'
-import throttle from 'lodash/throttle'
 
 const _ = {
   get,
   map,
   merge,
-  throttle,
 }
 
 const fontFamilyCss = css`
@@ -326,21 +324,23 @@ export default class Article extends PureComponent {
     super(props)
 
     this.mobileAsideRef = React.createRef()
+    this.lastKnownScrollPosition = 0
+    this.ticking = false
     this.scrollPosition = {
       y: 0,
     }
+    this.onScroll = this._onScroll.bind(this)
     this.toggleMobileAside = this._toggleMobileAside.bind(this)
-    this.onScroll = _.throttle(this.toggleMobileAside, 300).bind(this)
   }
 
   componentDidMount() {
-    // detect sroll position
     window.addEventListener('scroll', this.onScroll)
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll)
-
+    this.lastKnownScrollPosition = null
+    this.ticking = null
     this.scrollPosition = {
       y: 0,
     }
@@ -386,13 +386,27 @@ export default class Article extends PureComponent {
   }
 
   /**
+   * Wrap toggleMobileAside() with requestAnimationFrame() to avoid triggering browser reflow due to reading window.scrollY.
+   * ref: https://developer.mozilla.org/en-US/docs/web/api/document/scroll_event#Example
+   */
+  _onScroll() {
+    this.lastKnownScrollPosition = window.scrollY
+    if (!this.ticking) {
+      window.requestAnimationFrame(() => {
+        this.toggleMobileAside(this.lastKnownScrollPosition)
+        this.ticking = false
+      })
+      this.ticking = true
+    }
+  }
+
+  /**
    * If users scroll up, and the scrolling distance is more than a certain distance as well, show mobile aside.
    * Otherwise, if users scroll down, hide the mobile aside.
    */
-  _toggleMobileAside() {
+  _toggleMobileAside(currentTopY) {
     if (this.mobileAsideRef) {
       const mAside = this.mobileAsideRef
-      const currentTopY = window.scrollY
 
       // Calculate scrolling distance to determine whether to display aside
       const lastY = this.scrollPosition.y

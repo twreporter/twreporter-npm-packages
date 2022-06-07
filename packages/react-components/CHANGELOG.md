@@ -3,6 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.5...@twreporter/react-components@8.9.0-rc.6) (2022-06-06)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.9.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.4...@twreporter/react-components@8.9.0-rc.5) (2022-05-27)
+
+
+### Bug Fixes
+
+* add pillButton iconComponent prop & fix empty bookmark style ([54f0e52](https://github.com/twreporter/twreporter-npm-packages/commit/54f0e52b97eb97616bbb83864810acc80101647e))
+
+
+
+
+
+# [8.9.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.3...@twreporter/react-components@8.9.0-rc.4) (2022-05-27)
+
+
+### Bug Fixes
+
+* address code review ([a0d5515](https://github.com/twreporter/twreporter-npm-packages/commit/a0d5515c4f1e8c11cbd1bd23880d4302af37b816))
+
+
+### Features
+
+* add IconButton, IconWithTextButton, Printer components ([819f246](https://github.com/twreporter/twreporter-npm-packages/commit/819f2461e0235826333544cae0d6e3a6115a1f8d))
+
+
+
+
+
+# [8.9.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.2...@twreporter/react-components@8.9.0-rc.3) (2022-05-25)
+
+
+### Bug Fixes
+
+* vercel build fail problem & missing bookmark-add icon ([e1f0668](https://github.com/twreporter/twreporter-npm-packages/commit/e1f0668c7d96a61444100fe0cccc0108e0334ea2))
+
+
+
+
+
+# [8.9.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.1...@twreporter/react-components@8.9.0-rc.2) (2022-05-25)
+
+
+### Bug Fixes
+
+* fix missing bookmark-add.svg file ([3949a63](https://github.com/twreporter/twreporter-npm-packages/commit/3949a633084146ae7952cf0f349e0223ea3d0d0e))
+
+
+
+
+
+# [8.9.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.0...@twreporter/react-components@8.9.0-rc.1) (2022-05-25)
+
+
+### Bug Fixes
+
+* fix defect & pill button style ([7148d42](https://github.com/twreporter/twreporter-npm-packages/commit/7148d4295aaf4b76098c5130a80d29d742b46906))
+* fix problems ([0ab61ad](https://github.com/twreporter/twreporter-npm-packages/commit/0ab61ad04f5a147c2628b8d2735b56841ecf53d4))
+
+
+
+
+
+# [8.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.8.0...@twreporter/react-components@8.9.0-rc.0) (2022-05-12)
+
+
+### Bug Fixes
+
+* expand guideJSX ([a417972](https://github.com/twreporter/twreporter-npm-packages/commit/a4179721bbe1e9bd4f0829b144fe3f449bb12968))
+
+
+### Features
+
+* add bookmark list empty guide ([0f32a4a](https://github.com/twreporter/twreporter-npm-packages/commit/0f32a4afa0848793622b9d0878121111d875d634))
+
+
+
+
+
 # [8.8.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.8.0-rc.1...@twreporter/react-components@8.8.0) (2022-05-09)
 
 **Note:** Version bump only for package @twreporter/react-components

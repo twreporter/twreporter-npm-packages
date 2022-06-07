@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.15-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.15-rc.5...@twreporter/index-page@1.2.15-rc.6) (2022-06-06)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.2.15-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.15-rc.4...@twreporter/index-page@1.2.15-rc.5) (2022-05-27)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.2.15-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.15-rc.3...@twreporter/index-page@1.2.15-rc.4) (2022-05-27)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.2.15-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.15-rc.2...@twreporter/index-page@1.2.15-rc.3) (2022-05-25)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.2.15-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.15-rc.1...@twreporter/index-page@1.2.15-rc.2) (2022-05-25)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.2.15-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.15-rc.0...@twreporter/index-page@1.2.15-rc.1) (2022-05-25)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.2.15-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.14...@twreporter/index-page@1.2.15-rc.0) (2022-05-12)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
 ## [1.2.14](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.14-rc.1...@twreporter/index-page@1.2.14) (2022-05-09)
 
 **Note:** Version bump only for package @twreporter/index-page

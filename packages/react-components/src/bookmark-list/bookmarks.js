@@ -1,10 +1,17 @@
-import { fontWeight } from '@twreporter/core/lib/constants/font'
-import Bookmark from './bookmark'
-import corePropTypes from '@twreporter/core/lib/constants/prop-types'
-import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+// components
+import Bookmark from './bookmark'
+import EmptyGuide from './empty-guide'
+import { H1 } from '../text/headline'
+import { P1 } from '../text/paragraph'
+import Divider from '../divider'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+import corePropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -15,11 +22,15 @@ const _ = {
 }
 
 const PageContainer = styled.div`
-  padding: 50px 0;
+  padding: 64px 0 120px 0;
   margin: 0;
 
+  ${mq.tabletOnly`
+    padding: 32px 0 120px 0;
+  `}
+
   ${mq.mobileOnly`
-    padding: 25px 0;
+    padding: 24px 0 120px 0;
   `}
 `
 
@@ -39,33 +50,32 @@ const Column = styled.div`
 const StatusBar = styled.div`
   ${mq.mobileOnly`
     padding-left: 1em;
+    padding-right: 1em;
   `}
-  padding-bottom: 25px;
-  width: 100%;
+  padding-bottom: 64px;
+  width: stretch;
 `
 
-const CountTitle = styled.span`
-  font-size: 20px;
-  ${mq.mobileOnly`
-    font-size: 18px;
-  `}
-  margin-right: 1em;
-`
-const CountNumber = styled.span`
-  font-size: 20px;
-  ${mq.mobileOnly`
-    font-size: 18px;
-  `}
-  font-weight: ${fontWeight.bold};
+const TitleContainer = styled.div`
+  margin-bottom: 16px;
+  color: ${colorGrayscale.gray800};
 `
 
+const CountContainer = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+`
+
+const CountTitle = styled.div`
+  margin-right: 8px;
+`
 const BookmarksContainer = styled.ul`
   margin: 0;
   width: 100%;
   padding: 0;
 `
 
-function Bookmarks({ total, bookmarks, handleDelete }) {
+function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
   const buildBookmark = bookmark => (
     <Bookmark
       key={`bookmark_${_.get(bookmark, 'id')}`}
@@ -73,16 +83,34 @@ function Bookmarks({ total, bookmarks, handleDelete }) {
       handleDelete={handleDelete}
     />
   )
+  const counterJSX =
+    total === 0 ? (
+      ''
+    ) : (
+      <CountContainer>
+        <CountTitle>
+          <P1 text="全部" weight="bold" />
+        </CountTitle>
+        <P1 text={total} weight="bold" />
+      </CountContainer>
+    )
+  const contentJSX =
+    total === 0 ? (
+      <EmptyGuide releaseBranch={releaseBranch} />
+    ) : (
+      <BookmarksContainer>{_.map(bookmarks, buildBookmark)}</BookmarksContainer>
+    )
   return (
     <PageContainer>
       <Column>
         <StatusBar>
-          <CountTitle>全部</CountTitle>
-          <CountNumber>{total}</CountNumber>
+          <TitleContainer>
+            <H1 text="我的書籤" />
+          </TitleContainer>
+          {counterJSX}
+          <Divider />
         </StatusBar>
-        <BookmarksContainer>
-          {_.map(bookmarks, buildBookmark)}
-        </BookmarksContainer>
+        {contentJSX}
       </Column>
     </PageContainer>
   )
@@ -91,12 +119,14 @@ function Bookmarks({ total, bookmarks, handleDelete }) {
 Bookmarks.defaultProps = {
   bookmarks: [],
   total: 0,
+  releaseBranch: releaseBranchConsts.master,
 }
 
 Bookmarks.propTypes = {
-  bookmarks: PropTypes.arrayOf(corePropTypes).isRequired,
+  bookmarks: PropTypes.arrayOf(corePropTypes.bookmark).isRequired,
   handleDelete: PropTypes.func.isRequired,
   total: PropTypes.number,
+  releaseBranch: corePropTypes.releaseBranch,
 }
 
 export default Bookmarks
