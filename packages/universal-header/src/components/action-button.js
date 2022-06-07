@@ -1,14 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import HeaderContext from '../contexts/header-context'
-import fonts from '../constants/fonts'
-import actionConst from '../constants/actions'
+// util
 import linkUtils from '../utils/links'
 import themeUtils from '../utils/theme'
+// constant
+import fonts from '../constants/fonts'
+import { actionLabels } from '../constants/actions'
+// component
 import Link from './customized-link'
 // @twreporter
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { colorBrand } from '@twreporter/core/lib/constants/color'
 // lodash
@@ -123,7 +126,7 @@ const ActionItem = styled.div`
 const ActionButtonItem = ({ action, direction, themeFunction, callback }) => {
   const actionKey = action.key
   const isActive = action.active ?? true
-  const actionLabel = actionConst.actionLabels[actionKey]
+  const actionLabel = actionLabels[actionKey]
   const actionLink = linkUtils.getActionLinks()[actionKey]
   return (
     <HeaderContext.Consumer>
