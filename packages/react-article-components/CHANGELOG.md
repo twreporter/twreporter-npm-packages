@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.12...@twreporter/react-article-components@1.5.0-rc.0) (2022-06-08)
+
+
+### Bug Fixes
+
+* adjustment style & animation ([1694069](https://github.com/twreporter/twreporter-npm-packages/commit/1694069e769e685b6ec892e0d736111023c1319a))
+* fix defect ([a1cdd55](https://github.com/twreporter/twreporter-npm-packages/commit/a1cdd5504676563ad8816a4b8aebc79dbe774821))
+
+
+### Features
+
+* add article tool bar & snackbar component ([942328d](https://github.com/twreporter/twreporter-npm-packages/commit/942328d7f9175a39bf74f3650f148e29e5d12274))
+
+
+
+
+
 ## [1.4.12](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.4.12-rc.7...@twreporter/react-article-components@1.4.12) (2022-06-07)
 
 **Note:** Version bump only for package @twreporter/react-article-components

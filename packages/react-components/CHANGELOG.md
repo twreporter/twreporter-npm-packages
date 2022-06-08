@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0...@twreporter/react-components@8.10.0-rc.0) (2022-06-08)
+
+
+### Bug Fixes
+
+* adjustment style & animation ([1694069](https://github.com/twreporter/twreporter-npm-packages/commit/1694069e769e685b6ec892e0d736111023c1319a))
+
+
+### Features
+
+* add article tool bar & snackbar component ([942328d](https://github.com/twreporter/twreporter-npm-packages/commit/942328d7f9175a39bf74f3650f148e29e5d12274))
+
+
+
+
+
 # [8.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.6...@twreporter/react-components@8.9.0) (2022-06-07)
 
 **Note:** Version bump only for package @twreporter/react-components
