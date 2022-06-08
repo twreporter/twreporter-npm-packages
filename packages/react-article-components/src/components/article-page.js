@@ -9,26 +9,24 @@ import DonationBox from './donation-box'
 import License from './license'
 import Link from './link'
 import Metadata from './aside/metadata'
-import MobileAside from './aside/mobile-aside'
+import ToolBar from './aside/mobile-tool-bar'
 import Related from './related'
 import SeparationCurve from './separation-curve'
 import UIManager from '../managers/ui-manager'
-import Tools from './aside/tools'
+import Tools from './aside/desktop-tools'
 // constants
 import themeConst from '../constants/theme'
 import colorConst from '../constants/color'
 import typography from '../constants/typography'
+import { relatedPostAnchor } from '../constants/anchor'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 // lodash
 import get from 'lodash/get'
-import map from 'lodash/map'
-import merge from 'lodash/merge'
-
 const _ = {
   get,
-  map,
-  merge,
 }
 
 const fontFamilyCss = css`
@@ -143,6 +141,12 @@ const ToolsBlock = styled.div`
 
   ${mq.tabletOnly`
     margin-top: 30px;
+  `}
+`
+
+const MobileToolBar = styled(ToolBar)`
+  ${mq.desktopAndAbove`
+    display: none;
   `}
 `
 
@@ -309,6 +313,7 @@ export default class Article extends PureComponent {
     onFontLevelChange: PropTypes.func,
     hasMoreRelateds: PropTypes.bool,
     loadMoreRelateds: PropTypes.func,
+    releaseBranch: predefinedPropTypes.releaseBranch,
   }
 
   static defaultProps = {
@@ -318,32 +323,7 @@ export default class Article extends PureComponent {
     relatedTopic: {},
     hasMoreRelateds: false,
     loadMoreRelateds: noop,
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.mobileAsideRef = React.createRef()
-    this.lastKnownScrollPosition = 0
-    this.ticking = false
-    this.scrollPosition = {
-      y: 0,
-    }
-    this.onScroll = this._onScroll.bind(this)
-    this.toggleMobileAside = this._toggleMobileAside.bind(this)
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.onScroll)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll)
-    this.lastKnownScrollPosition = null
-    this.ticking = null
-    this.scrollPosition = {
-      y: 0,
-    }
+    releaseBranch: releaseBranchConsts.master,
   }
 
   changeFontLevel = () => {
@@ -385,44 +365,6 @@ export default class Article extends PureComponent {
     }
   }
 
-  /**
-   * Wrap toggleMobileAside() with requestAnimationFrame() to avoid triggering browser reflow due to reading window.scrollY.
-   * ref: https://developer.mozilla.org/en-US/docs/web/api/document/scroll_event#Example
-   */
-  _onScroll() {
-    this.lastKnownScrollPosition = window.scrollY
-    if (!this.ticking) {
-      window.requestAnimationFrame(() => {
-        this.toggleMobileAside(this.lastKnownScrollPosition)
-        this.ticking = false
-      })
-      this.ticking = true
-    }
-  }
-
-  /**
-   * If users scroll up, and the scrolling distance is more than a certain distance as well, show mobile aside.
-   * Otherwise, if users scroll down, hide the mobile aside.
-   */
-  _toggleMobileAside(currentTopY) {
-    if (this.mobileAsideRef) {
-      const mAside = this.mobileAsideRef
-
-      // Calculate scrolling distance to determine whether to display aside
-      const lastY = this.scrollPosition.y
-      const distance = currentTopY - lastY
-      if (distance > 30) {
-        this.scrollPosition.y = currentTopY
-        mAside.current.toShow = false
-      } else {
-        if (Math.abs(distance) > 150) {
-          this.scrollPosition.y = currentTopY
-          mAside.current.toShow = true
-        }
-      }
-    }
-  }
-
   render() {
     const {
       LinkComponent,
@@ -432,6 +374,7 @@ export default class Article extends PureComponent {
       relatedTopic,
       hasMoreRelateds,
       loadMoreRelateds,
+      releaseBranch,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -484,6 +427,7 @@ export default class Article extends PureComponent {
           name: _.get(post, 'style', themeConst.article.v2.default),
           colors: uiManager.getThemeColors(),
           fontSizeOffset: this.getFontSizeOffset(fontLevel),
+          releaseBranch,
         }}
       >
         <DynamicComponentsContext.Provider value={{ Link: LinkComponent }}>
@@ -496,10 +440,10 @@ export default class Article extends PureComponent {
             </LeadingBlock>
             <BodyBackground>
               <BodyBlock>
-                <MobileAside
+                <MobileToolBar
                   backToTopic={backToTopic}
                   articleMetaForBookmark={articleMetaForBookmark}
-                  ref={this.mobileAsideRef}
+                  onFontLevelChange={this.changeFontLevel}
                 />
                 <DesktopAsideBlock>
                   <DesktopAside
@@ -530,6 +474,7 @@ export default class Article extends PureComponent {
               <License
                 license={post.copyright}
                 publishedDate={post.published_date}
+                id={relatedPostAnchor} // current scroll to releated post anchor
               />
               <StyledSeparationCurve />
               <RelatedBlock>

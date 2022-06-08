@@ -3,10 +3,13 @@ import PropTypes from 'prop-types'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import styled, { css } from 'styled-components'
 import HeaderContext from '../contexts/header-context'
+// util
 import themeUtils from '../utils/theme'
+// constant
 import wellDefinedPropTypes from '../constants/prop-types'
-import channelConst from '../constants/channels'
+import { channelDropDownType, channelLinkType } from '../constants/channels'
 import fonts from '../constants/fonts'
+// component
 import DropDownMenu from './drop-down-menu'
 import Link from './customized-link'
 // @twreporter
@@ -166,10 +169,7 @@ class Channels extends React.PureComponent {
         label: PropTypes.string,
         link: PropTypes.shape(wellDefinedPropTypes.link.propTypes),
         pathname: PropTypes.string,
-        type: PropTypes.oneOf([
-          channelConst.channelDropDownType,
-          channelConst.channelLinkType,
-        ]),
+        type: PropTypes.oneOf([channelDropDownType, channelLinkType]),
         [dropDownMenuKey]: DropDownMenu.propTypes.data,
       })
     ),
@@ -279,7 +279,7 @@ class Channels extends React.PureComponent {
     const channelType = channelItem.type
     const channelLink = channelItem.link
 
-    if (channelType === channelConst.channelDropDownType) {
+    if (channelType === channelDropDownType) {
       const { data, direction } = this.props
       const { activeDropdownIndex } = this.state
       const toShowDropdownMenu = activeDropdownIndex === dataIndex

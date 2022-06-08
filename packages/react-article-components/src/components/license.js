@@ -32,10 +32,12 @@ export default class License extends React.PureComponent {
   static defaultProps = {
     license: 'Creative-Commons',
     publishedDate: '',
+    id: '',
   }
   static propTypes = {
     license: PropTypes.string,
     publishedDate: PropTypes.string,
+    id: PropTypes.string,
   }
 
   _extractYear(publishedDate) {
@@ -44,7 +46,7 @@ export default class License extends React.PureComponent {
   }
 
   render() {
-    const { license, publishedDate } = this.props
+    const { license, publishedDate, id } = this.props
     const year = this._extractYear(publishedDate)
     let licenseJSX = ''
 
@@ -59,6 +61,6 @@ export default class License extends React.PureComponent {
       )
     }
 
-    return <Container>{licenseJSX}</Container>
+    return <Container id={id}>{licenseJSX}</Container>
   }
 }

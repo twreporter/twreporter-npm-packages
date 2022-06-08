@@ -1,16 +1,28 @@
-import Header from '../components/header'
-import HeaderContext from '../contexts/header-context'
-import MobileHeader from '../components/mobile-header'
 import PropTypes from 'prop-types'
 import React from 'react'
-import categoryConst from '../constants/categories'
-import channelConst from '../constants/channels'
-import actionConst from '../constants/actions'
-import linkUtils from '../utils/links'
-import serviceConst from '../constants/services'
 import styled, { css } from 'styled-components'
-import wellDefinedPropTypes from '../constants/prop-types'
 import { connect } from 'react-redux'
+import HeaderContext from '../contexts/header-context'
+// util
+import linkUtils from '../utils/links'
+// constant
+import {
+  categoryLabels,
+  categoryPathnames,
+  categoryOrder,
+} from '../constants/categories'
+import {
+  channelOrder,
+  channelLabels,
+  channelTypes,
+  channelPathnames,
+} from '../constants/channels'
+import { actionOrder, actionActive } from '../constants/actions'
+import { serviceOrder, serviceKeys } from '../constants/services'
+import wellDefinedPropTypes from '../constants/prop-types'
+// component
+import Header from '../components/header'
+import MobileHeader from '../components/mobile-header'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
@@ -22,7 +34,7 @@ const _ = {
   map,
 }
 
-const HIDE_HEADER_THRESHOLD = 46
+const HIDE_HEADER_THRESHOLD = 8
 const TRANSFORM_HEADER_THRESHOLD = 40
 const TRANSFORM_TIMEOUT = 800
 
@@ -170,13 +182,13 @@ class Container extends React.PureComponent {
   }
 
   __prepareServiceProps(isAuthed) {
-    const serviceProps = _.map(serviceConst.serviceOrder, key => ({ key }))
+    const serviceProps = _.map(serviceOrder, key => ({ key }))
 
     if (isAuthed) {
-      const logoutKey = serviceConst.serviceKeys.logout
+      const logoutKey = serviceKeys.logout
       serviceProps.push({ key: logoutKey })
     } else {
-      const loginKey = serviceConst.serviceKeys.login
+      const loginKey = serviceKeys.login
       serviceProps.push({ key: loginKey })
     }
 
@@ -184,12 +196,12 @@ class Container extends React.PureComponent {
   }
 
   __prepareChannelProps(releaseBranch, isLinkExternal) {
-    const channelProps = _.map(channelConst.channelOrder, key => {
+    const channelProps = _.map(channelOrder, key => {
       return {
         key,
-        label: channelConst.channelLabels[key],
-        type: channelConst.channelTypes[key],
-        pathname: channelConst.channelPathnames[key],
+        label: channelLabels[key],
+        type: channelTypes[key],
+        pathname: channelPathnames[key],
         link: linkUtils.getChannelLinks(isLinkExternal, releaseBranch)[key],
       }
     })
@@ -199,12 +211,12 @@ class Container extends React.PureComponent {
 
   __prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps) {
     channelProps[channelProps.length - 1].dropDownMenu = _.map(
-      categoryConst.categoryOrder,
+      categoryOrder,
       key => {
         return {
           key,
-          label: categoryConst.categoryLabels[key],
-          pathname: categoryConst.categoryPathnames[key],
+          label: categoryLabels[key],
+          pathname: categoryPathnames[key],
           link: linkUtils.getCategoryLinks(isLinkExternal, releaseBranch)[key],
         }
       }
@@ -212,15 +224,14 @@ class Container extends React.PureComponent {
   }
 
   __prepareActionProps() {
-    const isActive = actionConst.actionActive
-    const mobileActionProps = _.map(actionConst.actionOrder.mobile, key => ({
+    const isActive = actionActive
+    const mobileActionProps = _.map(actionOrder.mobile, key => ({
       key,
     }))
-    const desktopAndTabletActionProps = _.map(
-      actionConst.actionOrder.desktop,
-      key => ({ key })
-    )
-    const narrowActionProps = _.map(actionConst.actionOrder.desktop, key => {
+    const desktopAndTabletActionProps = _.map(actionOrder.desktop, key => ({
+      key,
+    }))
+    const narrowActionProps = _.map(actionOrder.desktop, key => {
       return { key, active: isActive.narrow[key] }
     })
 

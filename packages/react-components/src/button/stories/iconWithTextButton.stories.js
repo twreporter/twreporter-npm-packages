@@ -16,6 +16,7 @@ iconWithTextButton.args = {
   theme: 'normal',
   disabled: false,
   active: false,
+  hideText: false,
 }
 
 export const shareButton = Template.bind({})
@@ -25,4 +26,5 @@ shareButton.args = {
   theme: 'normal',
   disabled: false,
   active: false,
+  hideText: false,
 }

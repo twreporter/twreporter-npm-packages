@@ -25,36 +25,56 @@ const P4Container = styled(defaultContainer)`
   font-size: 10px;
 `
 
-export const P1 = ({ text = '', weight = 'normal' }) => {
-  return <P1Container weight={weight}>{text}</P1Container>
+export const P1 = ({ text = '', weight = 'normal', className = '' }) => {
+  return (
+    <P1Container weight={weight} className={className}>
+      {text}
+    </P1Container>
+  )
 }
 P1.propTypes = {
   text: PropTypes.string,
   weight: PropTypes.oneOf(['extraLight', 'normal', 'bold']),
+  className: PropTypes.string,
 }
 
-export const P2 = ({ text = '', weight = 'normal' }) => {
-  return <P2Container weight={weight}>{text}</P2Container>
+export const P2 = ({ text = '', weight = 'normal', className = '' }) => {
+  return (
+    <P2Container weight={weight} className={className}>
+      {text}
+    </P2Container>
+  )
 }
 P2.propTypes = {
   text: PropTypes.string,
   weight: PropTypes.oneOf(['extraLight', 'normal', 'bold']),
+  className: PropTypes.string,
 }
 
-export const P3 = ({ text = '', weight = 'normal' }) => {
-  return <P3Container weight={weight}>{text}</P3Container>
+export const P3 = ({ text = '', weight = 'normal', className = '' }) => {
+  return (
+    <P3Container weight={weight} className={className}>
+      {text}
+    </P3Container>
+  )
 }
 P3.propTypes = {
   text: PropTypes.string,
   weight: PropTypes.oneOf(['extraLight', 'normal', 'bold']),
+  className: PropTypes.string,
 }
 
-export const P4 = ({ text = '', weight = 'normal' }) => {
-  return <P4Container weight={weight}>{text}</P4Container>
+export const P4 = ({ text = '', weight = 'normal', className = '' }) => {
+  return (
+    <P4Container weight={weight} className={className}>
+      {text}
+    </P4Container>
+  )
 }
 P4.propTypes = {
   text: PropTypes.string,
   weight: PropTypes.oneOf(['extraLight', 'normal', 'bold']),
+  className: PropTypes.string,
 }
 
 export default { P1, P2, P3, P4 }
