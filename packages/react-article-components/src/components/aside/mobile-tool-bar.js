@@ -27,6 +27,11 @@ import {
   IconWithTextButton,
 } from '@twreporter/react-components/lib/button'
 import { SnackBar } from '@twreporter/react-components/lib/snack-bar'
+// lodash
+import isNil from 'lodash/isNil'
+const _ = {
+  isNil,
+}
 // global var
 const HideTextContext = createContext()
 const defaultFbAppID = '962589903815787'
@@ -47,8 +52,11 @@ const ShareContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 8px;
-  margin-right: 8px;
   border-radius: 50%;
+  margin-right: 8px;
+  &:last-child {
+    margin-right: 0;
+  }
 `
 
 const OptionContainer = styled.div`
@@ -65,7 +73,6 @@ const SnackBarContainer = styled.div`
   opacity: ${props => (props.showSnackBar ? '1' : '0')};
   position: absolute;
   left: 50%;
-  bottom: 56px; // toolbar height + padding 8px
   transform: translateX(-50%);
   transition: opacity 100ms;
 `
@@ -75,21 +82,45 @@ const ToolBarContainer = styled.div`
   align-items: center;
   width: fit-content;
   background-color: ${props => props.bgColor};
-  padding: 8px 16px;
+  padding: 0 16px;
   border-radius: 60px;
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
-  bottom: 8px;
+  bottom: calc(env(safe-area-inset-bottom, 0) + 8px);
   z-index: 999; // header hamburger menu has z-index 1000
-  height: ${props => (props.hideText ? '46px' : '56px')};
+  height: ${props => (props.hideText ? '38px' : '56px')};
   transition: height 100ms;
   box-shadow: ${props => props.shadow};
   ${ShareContainer} {
     background-color: ${props => props.bgColor};
     box-shadow: ${props => props.shadow};
   }
+  ${SnackBarContainer} {
+    bottom: ${props =>
+      props.hideText ? '46px' : '64px'}; //toolbar height + padding 8px
+  }
 `
+
+const useOutsideClick = callback => {
+  const ref = React.useRef()
+
+  React.useEffect(() => {
+    const handleClick = event => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        callback(event)
+      }
+    }
+
+    document.addEventListener('click', handleClick)
+
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [ref])
+
+  return ref
+}
 
 const FbShare = ({ appID }) => {
   const themeContext = useContext(ThemeContext)
@@ -217,9 +248,11 @@ const ShareBy = ({ fbAppID }) => {
     }, 3000)
   }
   const onButtonClick = () => setShowState(prevValue => !prevValue)
+  const onClickOutside = () => setShowState(false)
+  const ref = useOutsideClick(onClickOutside)
 
   return (
-    <ButtonContainer onClick={onButtonClick}>
+    <ButtonContainer ref={ref} onClick={onButtonClick}>
       <IconWithTextButton
         text="分享"
         iconComponent={<Share releaseBranch={releaseBranch} />}
@@ -272,10 +305,11 @@ const BookmarkBlock = ({ articleMeta }) => {
   const { releaseBranch } = themeContext
   const renderIcon = (isBookmarked, addAction, removeAction) => {
     const iconType = isBookmarked ? 'saved' : 'add'
+    const text = isBookmarked ? '已儲存' : '加入書籤'
     return (
       <ButtonContainer onClick={isBookmarked ? removeAction : addAction}>
         <IconWithTextButton
-          text="加入書籤"
+          text={text}
           iconComponent={
             <Bookmark type={iconType} releaseBranch={releaseBranch} />
           }
@@ -333,7 +367,9 @@ const RelatedPost = () => {
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const scrollToBottom = () => {
-    document.getElementById(relatedPostAnchor).scrollIntoView()
+    document
+      .getElementById(relatedPostAnchor)
+      .scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -363,6 +399,10 @@ const ToolBar = ({
 
     const updateScrollDirection = () => {
       const scrollY = window.pageYOffset
+      if (_.isNil(lastScrollY)) {
+        ticking = false
+        return
+      }
 
       if (Math.abs(scrollY - lastScrollY) < threshold) {
         ticking = false
@@ -391,7 +431,9 @@ const ToolBar = ({
   }, [scrollDirection])
   const themeContext = useContext(ThemeContext)
   const { bgColor, shadow } = getToolBarTheme(themeContext.name)
-  const backToTopicJSX = backToTopic ? <BackToTopic /> : ''
+  const backToTopicJSX = backToTopic ? (
+    <BackToTopic backToTopic={backToTopic} />
+  ) : null
   const hideText = scrollDirection === 'down'
 
   return (

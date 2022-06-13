@@ -130,17 +130,9 @@ const MetadataAndToolsBlock = styled.div`
   `}
 `
 
-const ToolsBlock = styled.div`
+const DesktopToolsBlock = styled.div`
   ${mq.tabletAndBelow`
-    ${shiftLeftCss}
-  `}
-
-  ${mq.mobileOnly`
-    margin-top: 20px;
-  `}
-
-  ${mq.tabletOnly`
-    margin-top: 30px;
+    display: none;
   `}
 `
 
@@ -411,13 +403,13 @@ export default class Article extends PureComponent {
           engineers={post.engineers}
           rawAutherText={post.extend_byline}
         />
-        <ToolsBlock>
+        <DesktopToolsBlock>
           <Tools
             articleMetaForBookmark={articleMetaForBookmark}
             backToTopic={backToTopic}
             onFontLevelChange={this.changeFontLevel}
           />
-        </ToolsBlock>
+        </DesktopToolsBlock>
       </MetadataAndToolsBlock>
     )
 
