@@ -1,4 +1,10 @@
-import React, { useState, useContext, useEffect, createContext } from 'react'
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  useRef,
+  createContext,
+} from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeContext } from 'styled-components'
 // context
@@ -103,9 +109,9 @@ const ToolBarContainer = styled.div`
 `
 
 const useOutsideClick = callback => {
-  const ref = React.useRef()
+  const ref = useRef()
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClick = event => {
       if (ref.current && !ref.current.contains(event.target)) {
         callback(event)
