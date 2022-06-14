@@ -97,11 +97,9 @@ class BookmarkList extends React.Component {
       this._defaultBodyOverflow
     )
     const { bookmarks } = this.props
-    if (!bookmarks.length) {
-      const { jwt, userID, getMultipleBookmarks } = this.props
-      const offset = 0
-      getMultipleBookmarks(jwt, userID, offset, defaultLimit, defaultSort)
-    }
+    const { jwt, userID, getMultipleBookmarks } = this.props
+    const offset = bookmarks.length
+    getMultipleBookmarks(jwt, userID, offset, defaultLimit, defaultSort)
   }
 
   // Redirect to singin page if user has not been authorized
