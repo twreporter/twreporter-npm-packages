@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.5.0-rc.1...@twreporter/react-article-components@1.5.0-rc.2) (2022-06-16)
+
+
+### Bug Fixes
+
+* address review comment ([839e625](https://github.com/twreporter/twreporter-npm-packages/commit/839e625f0986212e415850f6c9db629be301f817))
+* fix defect ([9345fc3](https://github.com/twreporter/twreporter-npm-packages/commit/9345fc3996427e90b6a3759ab7fd68efaa5f054b))
+
+
+
+
+
 # [1.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.5.0-rc.0...@twreporter/react-article-components@1.5.0-rc.1) (2022-06-14)
 
 **Note:** Version bump only for package @twreporter/react-article-components
