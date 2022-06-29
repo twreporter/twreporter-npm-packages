@@ -1,13 +1,16 @@
-import predefinedPropTypes from '../../constants/prop-types/body'
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import themeConst from '../../constants/theme'
-import colorConst from '../../constants/color'
+
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
+
+// twreporter
+import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
+import predefinedPropTypes from '../../constants/prop-types/body'
 
 const _ = {
   forEach,
