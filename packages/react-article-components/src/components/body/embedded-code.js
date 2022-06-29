@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Waypoint } from 'react-waypoint'
 
 // lodash
 import forEach from 'lodash/forEach'
@@ -58,6 +59,8 @@ function dispatchWindowLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
+const INFOGRAM_EMBED = 'infogram-embed'
+
 export default class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
@@ -74,6 +77,20 @@ export default class EmbeddedCode extends React.PureComponent {
   }
 
   componentDidMount() {
+    const embeddedCodeWithoutScript = _.get(this.props, [
+      'data',
+      'content',
+      0,
+      'embeddedCodeWithoutScript',
+    ])
+    if (!embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
+      this.executeScript()
+    } else {
+      console.log('componentDidMount ', INFOGRAM_EMBED)
+    }
+  }
+
+  executeScript = () => {
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
     if (node && Array.isArray(scripts)) {
@@ -117,6 +134,10 @@ export default class EmbeddedCode extends React.PureComponent {
     }
   }
 
+  onEnter = () => {
+    console.log('onEnter')
+  }
+
   render() {
     const { className } = this.props
     const { caption, embeddedCodeWithoutScript } = _.get(
@@ -124,7 +145,7 @@ export default class EmbeddedCode extends React.PureComponent {
       ['data', 'content', 0],
       {}
     )
-    return (
+    const embed = (
       <div className={className}>
         <Block
           ref={this._embedded}
@@ -132,6 +153,13 @@ export default class EmbeddedCode extends React.PureComponent {
         />
         {caption ? <Caption>{caption}</Caption> : null}
       </div>
+    )
+    return embeddedCodeWithoutScript.includes(INFOGRAM_EMBED) ? (
+      <Waypoint onEnter={this.onEnter} fireOnRapidScroll={false}>
+        {embed}
+      </Waypoint>
+    ) : (
+      embed
     )
   }
 }
