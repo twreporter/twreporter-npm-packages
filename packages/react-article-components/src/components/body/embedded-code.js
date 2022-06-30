@@ -15,6 +15,24 @@ const _ = {
   merge,
 }
 
+const Embed = ({ className, children }) => (
+  <div className={className}>{children}</div>
+)
+Embed.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+}
+const StyledEmbed = styled(Embed)`
+  display: flex;
+  justify-content: center;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
 export const Block = styled.div`
   position: relative;
 
@@ -122,13 +140,15 @@ export default class EmbeddedCode extends React.PureComponent {
       {}
     )
     return (
-      <div className={className}>
-        <Block
-          ref={this._embedded}
-          dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
-        />
-        {caption ? <Caption>{caption}</Caption> : null}
-      </div>
+      <StyledEmbed className={className}>
+        <Container>
+          <Block
+            ref={this._embedded}
+            dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
+          />
+          {caption ? <Caption>{caption}</Caption> : null}
+        </Container>
+      </StyledEmbed>
     )
   }
 }
