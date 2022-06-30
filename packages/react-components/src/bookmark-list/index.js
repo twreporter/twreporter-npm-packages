@@ -124,11 +124,7 @@ const BookmarkList = ({
 
   useEffect(() => {
     setBookmarkToShow(_.slice(bookmarks, 0, numberToShow))
-  }, [numberToShow])
-
-  useEffect(() => {
-    setBookmarkToShow(_.slice(bookmarks, 0, numberToShow))
-  }, [bookmarks])
+  }, [numberToShow, bookmarks])
 
   useEffect(() => {
     if (total - numberToShow < defaultLimit) {
