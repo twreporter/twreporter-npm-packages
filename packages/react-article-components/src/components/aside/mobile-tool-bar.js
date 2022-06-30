@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useContext,
-  useEffect,
-  useRef,
-  createContext,
-} from 'react'
+import React, { useState, useContext, useEffect, createContext } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeContext } from 'styled-components'
 import { scroller } from 'react-scroll'
@@ -17,6 +11,7 @@ import { relatedPostAnchor } from '../../constants/anchor'
 // util
 import { getToolBarTheme } from './utils/theme'
 // @twreporter
+import { useOutsideClick } from '@twreporter/react-components/lib/hook'
 import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
 import {
   Topic,
@@ -108,26 +103,6 @@ const ToolBarContainer = styled.div`
       props.hideText ? '46px' : '64px'}; //toolbar height + padding 8px
   }
 `
-
-const useOutsideClick = callback => {
-  const ref = useRef()
-
-  useEffect(() => {
-    const handleClick = event => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        callback(event)
-      }
-    }
-
-    document.addEventListener('click', handleClick)
-
-    return () => {
-      document.removeEventListener('click', handleClick)
-    }
-  }, [ref])
-
-  return ref
-}
 
 const FbShare = ({ appID }) => {
   const themeContext = useContext(ThemeContext)
