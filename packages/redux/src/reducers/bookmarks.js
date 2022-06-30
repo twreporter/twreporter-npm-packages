@@ -4,12 +4,16 @@ import get from 'lodash/get'
 import assign from 'lodash/assign'
 import findIndex from 'lodash/findIndex'
 import uniq from 'lodash/uniq'
+import orderBy from 'lodash/orderBy'
+import map from 'lodash/map'
 
 const _ = {
   assign,
   findIndex,
   get,
   uniq,
+  orderBy,
+  map,
 }
 
 const defaultLimit = 10
@@ -39,18 +43,20 @@ export default function bookmarks(state = initState, action) {
       const fetchedRecords = _.get(action, 'payload.data.records', [])
       const meta = _.get(action, 'payload.data.meta')
       const { offset, total, limit } = meta
-      const bookmarkIDList = [...state.bookmarkIDList]
       const entities = { ...state.entities }
       // Push new fetched records to stored ones and push ids to id list
       fetchedRecords.forEach(record => {
         const id = _.get(record, 'id')
-        if (id) {
-          if (!bookmarkIDList.some(idInList => idInList === id)) {
-            bookmarkIDList.push(id)
-          } // prevent duplicate items in list
-          entities[`${id}`] = record
+        if (!id) {
+          return
         }
+        entities[`${id}`] = record
       })
+      const bookmarkIDList = _.map(
+        _.orderBy(entities, ['added_at'], ['desc']),
+        'id'
+      )
+
       return {
         ...state,
         actionType: action.type,
