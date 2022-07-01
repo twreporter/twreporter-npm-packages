@@ -281,7 +281,7 @@ FontLevel.propTypes = {
 
 const BookmarkBlock = ({ articleMeta }) => {
   const [showSnackBar, setSnackBar] = useState(false)
-  const [snackbarText, setSnackbarText] = useState('哈哈哈')
+  const [snackbarText, setSnackbarText] = useState('')
   const hideText = useContext(HideTextContext)
   const themeContext = useContext(ThemeContext)
   const theme =
