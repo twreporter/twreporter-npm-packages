@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.1...@twreporter/react-components@8.10.0-rc.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* new bookmark should be fetched when mount ([9bb438f](https://github.com/twreporter/twreporter-npm-packages/commit/9bb438f81bd321fee47f55c872589091d8db8be6))
+* remove redundant code ([7468cfa](https://github.com/twreporter/twreporter-npm-packages/commit/7468cfab10a51d092548191d14ab7eeb7839c871))
+
+
+
+
+
 # [8.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.0...@twreporter/react-components@8.10.0-rc.1) (2022-06-14)
 
 
