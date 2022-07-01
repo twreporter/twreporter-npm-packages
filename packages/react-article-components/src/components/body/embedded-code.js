@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Waypoint } from 'react-waypoint'
@@ -61,7 +61,7 @@ function dispatchWindowLoadEvent() {
 
 const INFOGRAM_EMBED = 'infogram-embed'
 
-export default class EmbeddedCode extends React.PureComponent {
+class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData,
@@ -69,6 +69,10 @@ export default class EmbeddedCode extends React.PureComponent {
 
   static defaultProps = {
     className: '',
+  }
+
+  state = {
+    isLoaded: false,
   }
 
   constructor(props) {
@@ -85,8 +89,6 @@ export default class EmbeddedCode extends React.PureComponent {
     ])
     if (!embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
       this.executeScript()
-    } else {
-      console.log('componentDidMount ', INFOGRAM_EMBED)
     }
   }
 
@@ -134,8 +136,9 @@ export default class EmbeddedCode extends React.PureComponent {
     }
   }
 
-  onEnter = () => {
-    console.log('onEnter')
+  loadEmbed = () => {
+    console.log('loadEmbed')
+    this.setState({ isLoaded: true }, this.executeScript)
   }
 
   render() {
@@ -154,12 +157,30 @@ export default class EmbeddedCode extends React.PureComponent {
         {caption ? <Caption>{caption}</Caption> : null}
       </div>
     )
-    return embeddedCodeWithoutScript.includes(INFOGRAM_EMBED) ? (
-      <Waypoint onEnter={this.onEnter} fireOnRapidScroll={false}>
-        {embed}
-      </Waypoint>
-    ) : (
-      embed
-    )
+
+    if (embeddedCodeWithoutScript.includes(INFOGRAM_EMBED)) {
+      return this.state.isLoaded ? { embed } : null
+    }
+
+    return embed
   }
 }
+
+const WayPointWrapper = () => {
+  const embedRef = useRef(null)
+
+  const onEnter = () => {
+    console.log('onEnter')
+    embedRef.current.loadEmbed()
+  }
+
+  return (
+    <Waypoint onEnter={onEnter} fireOnRapidScroll={false}>
+      <div>
+        <EmbeddedCode ref={embedRef} />
+      </div>
+    </Waypoint>
+  )
+}
+
+export default WayPointWrapper
