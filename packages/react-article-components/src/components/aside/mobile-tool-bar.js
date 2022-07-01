@@ -1,12 +1,7 @@
-import React, {
-  useState,
-  useContext,
-  useEffect,
-  useRef,
-  createContext,
-} from 'react'
+import React, { useState, useContext, useEffect, createContext } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeContext } from 'styled-components'
+import { scroller } from 'react-scroll'
 // context
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 // constant
@@ -16,6 +11,7 @@ import { relatedPostAnchor } from '../../constants/anchor'
 // util
 import { getToolBarTheme } from './utils/theme'
 // @twreporter
+import { useOutsideClick } from '@twreporter/react-components/lib/hook'
 import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
 import {
   Topic,
@@ -107,26 +103,6 @@ const ToolBarContainer = styled.div`
       props.hideText ? '46px' : '64px'}; //toolbar height + padding 8px
   }
 `
-
-const useOutsideClick = callback => {
-  const ref = useRef()
-
-  useEffect(() => {
-    const handleClick = event => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        callback(event)
-      }
-    }
-
-    document.addEventListener('click', handleClick)
-
-    return () => {
-      document.removeEventListener('click', handleClick)
-    }
-  }, [ref])
-
-  return ref
-}
 
 const FbShare = ({ appID }) => {
   const themeContext = useContext(ThemeContext)
@@ -304,6 +280,8 @@ FontLevel.propTypes = {
 }
 
 const BookmarkBlock = ({ articleMeta }) => {
+  const [showSnackBar, setSnackBar] = useState(false)
+  const [snackbarText, setSnackbarText] = useState('')
   const hideText = useContext(HideTextContext)
   const themeContext = useContext(ThemeContext)
   const theme =
@@ -312,8 +290,13 @@ const BookmarkBlock = ({ articleMeta }) => {
   const renderIcon = (isBookmarked, addAction, removeAction) => {
     const iconType = isBookmarked ? 'saved' : 'add'
     const text = isBookmarked ? '已儲存' : '加入書籤'
+    const handleClick = () => {
+      const action = isBookmarked ? removeAction : addAction
+      action()
+      toastr(isBookmarked)
+    }
     return (
-      <ButtonContainer onClick={isBookmarked ? removeAction : addAction}>
+      <ButtonContainer onClick={handleClick}>
         <IconWithTextButton
           text={text}
           iconComponent={
@@ -325,13 +308,25 @@ const BookmarkBlock = ({ articleMeta }) => {
       </ButtonContainer>
     )
   }
+  const toastr = isBookmarked => {
+    setSnackbarText(isBookmarked ? '已取消書籤' : '已儲存')
+    setSnackBar(true)
+    setTimeout(() => {
+      setSnackBar(false)
+    }, 3000)
+  }
 
   return (
-    <BookmarkWidget
-      toAutoCheck={false}
-      articleMeta={articleMeta}
-      renderIcon={renderIcon}
-    />
+    <React.Fragment>
+      <BookmarkWidget
+        toAutoCheck={false}
+        articleMeta={articleMeta}
+        renderIcon={renderIcon}
+      />
+      <SnackBarContainer showSnackBar={showSnackBar}>
+        <SnackBar text={snackbarText} theme={theme} />
+      </SnackBarContainer>
+    </React.Fragment>
   )
 }
 BookmarkBlock.propTypes = {
@@ -351,7 +346,7 @@ const BackToTopic = ({ backToTopic }) => {
         <components.Link to={backToTopic} target="_self">
           <ButtonContainer>
             <IconWithTextButton
-              text="專題"
+              text="前往專題"
               iconComponent={<Topic releaseBranch={releaseBranch} />}
               theme={theme}
               hideText={hideText}
@@ -373,9 +368,10 @@ const RelatedPost = () => {
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const scrollToBottom = () => {
-    document
-      .getElementById(relatedPostAnchor)
-      .scrollIntoView({ behavior: 'smooth' })
+    scroller.scrollTo(relatedPostAnchor, {
+      duration: 800,
+      smooth: 'easeInOutQuint',
+    })
   }
 
   return (

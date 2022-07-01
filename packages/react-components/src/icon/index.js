@@ -18,9 +18,10 @@ const IconContainer = styled.svg`
 export const Icon = ({
   filename = '',
   releaseBranch = releaseBranchConsts.master,
+  ...restProps
 }) => {
   const src = `${baseGCSDir}${releaseBranch}/${filename}.svg`
-  return <IconContainer alt={filename} src={src} />
+  return <IconContainer alt={filename} src={src} {...restProps} />
 }
 Icon.propTypes = {
   filename: PropTypes.string,
