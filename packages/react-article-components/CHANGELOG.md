@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.5.0-rc.3...@twreporter/react-article-components@1.5.0-rc.4) (2022-07-01)
+
+
+### Bug Fixes
+
+* fix tool bar defect ([e66c4d7](https://github.com/twreporter/twreporter-npm-packages/commit/e66c4d7eeb87ca61f16f1dede8a191aaf2c8ed80))
+* set snackbarText initial value as empty string ([e750c16](https://github.com/twreporter/twreporter-npm-packages/commit/e750c1636f26c837c6d96f8a7296e8e1c0ce7964))
+
+
+
+
+
+# [1.5.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.5.0-rc.2...@twreporter/react-article-components@1.5.0-rc.3) (2022-06-30)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 # [1.5.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.5.0-rc.1...@twreporter/react-article-components@1.5.0-rc.2) (2022-06-16)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.2.1...@twreporter/redux@7.2.2-rc.0) (2022-06-30)
+
+
+### Bug Fixes
+
+* new bookmark should be fetched when mount ([9bb438f](https://github.com/twreporter/twreporter-npm-packages/commit/9bb438f81bd321fee47f55c872589091d8db8be6))
+
+
+
+
+
 ## [7.2.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.2.1-rc.0...@twreporter/redux@7.2.1) (2022-04-29)
 
 **Note:** Version bump only for package @twreporter/redux

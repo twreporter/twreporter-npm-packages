@@ -2,6 +2,7 @@ import DynamicComponentsContext from '../contexts/dynamic-components-context'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled, { ThemeProvider, css } from 'styled-components'
+import { Element } from 'react-scroll'
 // components
 import Body from './body'
 import DesktopAside from './aside/desktop-aside'
@@ -463,11 +464,13 @@ export default class Article extends PureComponent {
                 {metadataAndToolsJSX}
               </BodyBlock>
               <DonationBox />
-              <License
-                license={post.copyright}
-                publishedDate={post.published_date}
-                id={relatedPostAnchor} // current scroll to releated post anchor
-              />
+              <Element name={relatedPostAnchor}>
+                <License
+                  license={post.copyright}
+                  publishedDate={post.published_date}
+                  id={relatedPostAnchor} // current scroll to releated post anchor
+                />
+              </Element>
               <StyledSeparationCurve />
               <RelatedBlock>
                 <Related
