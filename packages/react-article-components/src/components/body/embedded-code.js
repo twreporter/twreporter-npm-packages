@@ -78,16 +78,15 @@ class EmbeddedCode extends React.PureComponent {
   constructor(props) {
     super(props)
     this._embedded = React.createRef()
+    this.embeddedCodeWithoutScript = _.get(
+      this.props,
+      ['data', 'content', 0, 'embeddedCodeWithoutScript'],
+      {}
+    )
   }
 
   componentDidMount() {
-    const embeddedCodeWithoutScript = _.get(this.props, [
-      'data',
-      'content',
-      0,
-      'embeddedCodeWithoutScript',
-    ])
-    if (!embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
+    if (!this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
       this.executeScript()
     }
   }
@@ -137,8 +136,11 @@ class EmbeddedCode extends React.PureComponent {
   }
 
   loadEmbed = () => {
-    console.log('loadEmbed')
-    this.setState({ isLoaded: true }, this.executeScript)
+    this.setState({ isLoaded: true }, () => {
+      if (this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
+        this.executeScript()
+      }
+    })
   }
 
   render() {
@@ -158,26 +160,25 @@ class EmbeddedCode extends React.PureComponent {
       </div>
     )
 
-    if (embeddedCodeWithoutScript.includes(INFOGRAM_EMBED)) {
-      return this.state.isLoaded ? { embed } : null
+    if (this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
+      return this.state.isLoaded ? embed : null
     }
 
     return embed
   }
 }
 
-const WayPointWrapper = () => {
+const WayPointWrapper = props => {
   const embedRef = useRef(null)
 
   const onEnter = () => {
-    console.log('onEnter')
     embedRef.current.loadEmbed()
   }
 
   return (
     <Waypoint onEnter={onEnter} fireOnRapidScroll={false}>
       <div>
-        <EmbeddedCode ref={embedRef} />
+        <EmbeddedCode {...props} ref={embedRef} />
       </div>
     </Waypoint>
   )
