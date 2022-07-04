@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.10.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.3...@twreporter/react-components@8.10.0-rc.4) (2022-07-04)
+
+
+### Bug Fixes
+
+* fix tool bar defect ([afc4a56](https://github.com/twreporter/twreporter-npm-packages/commit/afc4a568c27c0614ff2bec460cb07813fbfdfe5a))
+
+
+
+
+
 # [8.10.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.2...@twreporter/react-components@8.10.0-rc.3) (2022-07-01)
 
 
