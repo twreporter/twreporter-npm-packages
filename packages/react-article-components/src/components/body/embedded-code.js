@@ -136,11 +136,12 @@ class EmbeddedCode extends React.PureComponent {
   }
 
   loadEmbed = () => {
-    this.setState({ isLoaded: true }, () => {
-      if (this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
-        this.executeScript()
-      }
-    })
+    if (
+      this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED) &&
+      !this.state.isLoaded
+    ) {
+      this.setState({ isLoaded: true }, this.executeScript)
+    }
   }
 
   render() {
