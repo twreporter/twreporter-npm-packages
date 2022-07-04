@@ -62,6 +62,7 @@ const ShareContainer = styled.div`
 `
 
 const OptionContainer = styled.div`
+  z-index: 6;
   opacity: ${props => (props.isShow ? '1' : '0')};
   transition: opacity 100ms;
   position: absolute;
@@ -72,6 +73,7 @@ const OptionContainer = styled.div`
 `
 
 const SnackBarContainer = styled.div`
+  z-index: 5; // should be less than OptionsContainer in order to click line & twitter icon
   opacity: ${props => (props.showSnackBar ? '1' : '0')};
   position: absolute;
   left: 50%;
@@ -293,7 +295,9 @@ const BookmarkBlock = ({ articleMeta }) => {
     const handleClick = () => {
       const action = isBookmarked ? removeAction : addAction
       action()
-      toastr(isBookmarked)
+      setTimeout(() => {
+        toastr(isBookmarked)
+      }, 500)
     }
     return (
       <ButtonContainer onClick={handleClick}>
