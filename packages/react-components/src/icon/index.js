@@ -126,17 +126,17 @@ Medium.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Twitter = args => <Icon filename="twitter" />
+export const Twitter = args => <Icon filename="twitter" {...args} />
 Twitter.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Youtube = args => <Icon filename="youtube" />
+export const Youtube = args => <Icon filename="youtube" {...args} />
 Youtube.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Line = args => <Icon filename="line" />
+export const Line = args => <Icon filename="line" {...args} />
 Line.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
