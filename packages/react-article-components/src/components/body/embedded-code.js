@@ -59,7 +59,7 @@ function dispatchWindowLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
-const INFOGRAM_EMBED = 'infogram-embed'
+const infogramEmbed = 'infogram-embed'
 
 class EmbeddedCode extends React.PureComponent {
   static propTypes = {
@@ -86,7 +86,7 @@ class EmbeddedCode extends React.PureComponent {
   }
 
   componentDidMount() {
-    if (!this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
+    if (!this.embeddedCodeWithoutScript?.includes(infogramEmbed)) {
       this.executeScript()
     }
   }
@@ -137,7 +137,7 @@ class EmbeddedCode extends React.PureComponent {
 
   loadEmbed = () => {
     if (
-      this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED) &&
+      this.embeddedCodeWithoutScript?.includes(infogramEmbed) &&
       !this.state.isLoaded
     ) {
       this.setState({ isLoaded: true }, this.executeScript)
@@ -161,7 +161,7 @@ class EmbeddedCode extends React.PureComponent {
       </div>
     )
 
-    if (this.embeddedCodeWithoutScript?.includes(INFOGRAM_EMBED)) {
+    if (this.embeddedCodeWithoutScript?.includes(infogramEmbed)) {
       return this.state.isLoaded ? embed : null
     }
 
