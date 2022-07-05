@@ -78,15 +78,17 @@ class EmbeddedCode extends React.PureComponent {
   constructor(props) {
     super(props)
     this._embedded = React.createRef()
-    this.embeddedCodeWithoutScript = _.get(
+    const { caption, embeddedCodeWithoutScript } = _.get(
       this.props,
-      ['data', 'content', 0, 'embeddedCodeWithoutScript'],
+      ['data', 'content', 0],
       {}
     )
+    this._caption = caption
+    this._embeddedCodeWithoutScript = embeddedCodeWithoutScript
   }
 
   componentDidMount() {
-    if (!this.embeddedCodeWithoutScript?.includes(infogramEmbed)) {
+    if (!this._embeddedCodeWithoutScript?.includes(infogramEmbed)) {
       this.executeScript()
     }
   }
@@ -137,7 +139,7 @@ class EmbeddedCode extends React.PureComponent {
 
   loadEmbed = () => {
     if (
-      this.embeddedCodeWithoutScript?.includes(infogramEmbed) &&
+      this._embeddedCodeWithoutScript?.includes(infogramEmbed) &&
       !this.state.isLoaded
     ) {
       this.setState({ isLoaded: true }, this.executeScript)
@@ -146,22 +148,17 @@ class EmbeddedCode extends React.PureComponent {
 
   render() {
     const { className } = this.props
-    const { caption, embeddedCodeWithoutScript } = _.get(
-      this.props,
-      ['data', 'content', 0],
-      {}
-    )
     const embed = (
       <div className={className}>
         <Block
           ref={this._embedded}
-          dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
+          dangerouslySetInnerHTML={{ __html: this._embeddedCodeWithoutScript }}
         />
-        {caption ? <Caption>{caption}</Caption> : null}
+        {this._caption ? <Caption>{this._caption}</Caption> : null}
       </div>
     )
 
-    if (this.embeddedCodeWithoutScript?.includes(infogramEmbed)) {
+    if (this._embeddedCodeWithoutScript?.includes(infogramEmbed)) {
       return this.state.isLoaded ? embed : null
     }
 
