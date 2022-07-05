@@ -93,6 +93,12 @@ class EmbeddedCode extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    this._embedded = null
+    this._caption = null
+    this._embeddedCodeWithoutScript = null
+  }
+
   executeScript = () => {
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
