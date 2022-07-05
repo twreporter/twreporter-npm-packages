@@ -172,6 +172,9 @@ class EmbeddedCode extends React.PureComponent {
   }
 }
 
+// Serious layout shifts show up when loading bunch of infograms due to lack of heights,
+// so here we apply waypoint wrapper to load infogram dynamically to avoid layout shifts for anchors.
+// https://twreporter-org.atlassian.net/browse/TWREPORTER-60
 const WayPointWrapper = props => {
   const embedRef = useRef(null)
 
