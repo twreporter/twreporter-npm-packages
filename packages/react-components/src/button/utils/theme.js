@@ -198,7 +198,7 @@ export const getIconWithTextButtonTheme = (theme, isActive, isDisabled) => {
   switch (switchKey) {
     case 'photography':
       return {
-        color: colorGrayscale.gray100,
+        color: colorGrayscale.gray200,
         hoverColor: colorSupportive.main,
       }
     case 'photography-active':

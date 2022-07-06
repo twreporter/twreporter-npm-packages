@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.10.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.3...@twreporter/react-components@8.10.0-rc.4) (2022-07-04)
+
+
+### Bug Fixes
+
+* fix tool bar defect ([afc4a56](https://github.com/twreporter/twreporter-npm-packages/commit/afc4a568c27c0614ff2bec460cb07813fbfdfe5a))
+
+
+
+
+
+# [8.10.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.2...@twreporter/react-components@8.10.0-rc.3) (2022-07-01)
+
+
+### Bug Fixes
+
+* fix tool bar defect ([e66c4d7](https://github.com/twreporter/twreporter-npm-packages/commit/e66c4d7eeb87ca61f16f1dede8a191aaf2c8ed80))
+
+
+
+
+
+# [8.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.1...@twreporter/react-components@8.10.0-rc.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* new bookmark should be fetched when mount ([9bb438f](https://github.com/twreporter/twreporter-npm-packages/commit/9bb438f81bd321fee47f55c872589091d8db8be6))
+* remove redundant code ([7468cfa](https://github.com/twreporter/twreporter-npm-packages/commit/7468cfab10a51d092548191d14ab7eeb7839c871))
+
+
+
+
+
+# [8.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.0...@twreporter/react-components@8.10.0-rc.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* bookmark should fetch upstream when page mount ([defb7b8](https://github.com/twreporter/twreporter-npm-packages/commit/defb7b8ae26cb4179dfb59c4392472e6bebe7906))
+
+
+
+
+
+# [8.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0...@twreporter/react-components@8.10.0-rc.0) (2022-06-08)
+
+
+### Bug Fixes
+
+* adjustment style & animation ([1694069](https://github.com/twreporter/twreporter-npm-packages/commit/1694069e769e685b6ec892e0d736111023c1319a))
+
+
+### Features
+
+* add article tool bar & snackbar component ([942328d](https://github.com/twreporter/twreporter-npm-packages/commit/942328d7f9175a39bf74f3650f148e29e5d12274))
+
+
+
+
+
 # [8.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.9.0-rc.6...@twreporter/react-components@8.9.0) (2022-06-07)
 
 **Note:** Version bump only for package @twreporter/react-components

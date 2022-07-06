@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
-const titleDefaultFont = css`
+const DefaultContainer = styled.div`
   font-weight: ${fontWeight.bold};
 `
 
-const H1Container = styled.div`
-  ${titleDefaultFont}
+const H1Container = styled(DefaultContainer)`
   line-height: 125%;
   font-size: 36px;
   font-family: ${props =>
@@ -19,8 +18,7 @@ const H1Container = styled.div`
   `}
 `
 
-const H2Container = styled.div`
-  ${titleDefaultFont}
+const H2Container = styled(DefaultContainer)`
   line-height: 125%;
   font-size: 32px;
   font-family: ${props =>
@@ -30,8 +28,7 @@ const H2Container = styled.div`
   `}
 `
 
-const H3Container = styled.div`
-  ${titleDefaultFont}
+const H3Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 28px;
   font-family: ${props =>
@@ -41,8 +38,7 @@ const H3Container = styled.div`
   `}
 `
 
-const H4Container = styled.div`
-  ${titleDefaultFont}
+const H4Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 22px;
   font-family: ${props =>
@@ -52,8 +48,7 @@ const H4Container = styled.div`
   `}
 `
 
-const H5Container = styled.div`
-  ${titleDefaultFont}
+const H5Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 18px;
   font-family: ${props =>
@@ -63,8 +58,7 @@ const H5Container = styled.div`
   `}
 `
 
-const H6Container = styled.div`
-  ${titleDefaultFont}
+const H6Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 16px;
   font-family: ${props =>
@@ -74,52 +68,82 @@ const H6Container = styled.div`
   `}
 `
 
-export const H1 = ({ text = '', type = 'default' }) => {
-  return <H1Container type={type}>{text}</H1Container>
+export const H1 = ({ text = '', type = 'default', className = '' }) => {
+  return (
+    <H1Container type={type} className={className}>
+      {text}
+    </H1Container>
+  )
 }
 H1.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['default', 'article']),
+  className: PropTypes.string,
 }
 
-export const H2 = ({ text = '', type = 'default' }) => {
-  return <H2Container type={type}>{text}</H2Container>
+export const H2 = ({ text = '', type = 'default', className = '' }) => {
+  return (
+    <H2Container type={type} className={className}>
+      {text}
+    </H2Container>
+  )
 }
 H2.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['default', 'article']),
+  className: PropTypes.string,
 }
 
-export const H3 = ({ text = '', type = 'default' }) => {
-  return <H3Container type={type}>{text}</H3Container>
+export const H3 = ({ text = '', type = 'default', className = '' }) => {
+  return (
+    <H3Container type={type} className={className}>
+      {text}
+    </H3Container>
+  )
 }
 H3.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['default', 'article']),
+  className: PropTypes.string,
 }
 
-export const H4 = ({ text = '', type = 'default' }) => {
-  return <H4Container type={type}>{text}</H4Container>
+export const H4 = ({ text = '', type = 'default', className = '' }) => {
+  return (
+    <H4Container type={type} className={className}>
+      {text}
+    </H4Container>
+  )
 }
 H4.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['default', 'article']),
+  className: PropTypes.string,
 }
 
-export const H5 = ({ text = '', type = 'default' }) => {
-  return <H5Container type={type}>{text}</H5Container>
+export const H5 = ({ text = '', type = 'default', className = '' }) => {
+  return (
+    <H5Container type={type} className={className}>
+      {text}
+    </H5Container>
+  )
 }
 H5.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['default', 'article']),
+  className: PropTypes.string,
 }
 
-export const H6 = ({ text = '', type = 'default' }) => {
-  return <H6Container type={type}>{text}</H6Container>
+export const H6 = ({ text = '', type = 'default', className = '' }) => {
+  return (
+    <H6Container type={type} className={className}>
+      {text}
+    </H6Container>
+  )
 }
 H6.propTypes = {
   text: PropTypes.string,
   type: PropTypes.oneOf(['default', 'article']),
+  className: PropTypes.string,
 }
 
 export default {

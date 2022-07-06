@@ -18,9 +18,10 @@ const IconContainer = styled.svg`
 export const Icon = ({
   filename = '',
   releaseBranch = releaseBranchConsts.master,
+  ...restProps
 }) => {
   const src = `${baseGCSDir}${releaseBranch}/${filename}.svg`
-  return <IconContainer alt={filename} src={src} />
+  return <IconContainer alt={filename} src={src} {...restProps} />
 }
 Icon.propTypes = {
   filename: PropTypes.string,
@@ -125,17 +126,17 @@ Medium.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Twitter = args => <Icon filename="twitter" />
+export const Twitter = args => <Icon filename="twitter" {...args} />
 Twitter.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Youtube = args => <Icon filename="youtube" />
+export const Youtube = args => <Icon filename="youtube" {...args} />
 Youtube.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export const Line = args => <Icon filename="line" />
+export const Line = args => <Icon filename="line" {...args} />
 Line.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }

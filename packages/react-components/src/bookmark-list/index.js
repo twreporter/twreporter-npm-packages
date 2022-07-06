@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import CSSTransition from 'react-transition-group/CSSTransition'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 // components
 import Bookmarks from './bookmarks'
@@ -17,6 +17,7 @@ import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import findIndex from 'lodash/findIndex'
 import get from 'lodash/get'
 import map from 'lodash/map'
+import slice from 'lodash/slice'
 
 const { deleteSingleBookmark, getMultipleBookmarks } = twreporterRedux.actions
 const reduxStatePropKeys = twreporterRedux.reduxStateFields
@@ -25,6 +26,7 @@ const _ = {
   findIndex,
   get,
   map,
+  slice,
 }
 
 const defaultLimit = 5
@@ -75,139 +77,135 @@ const Container = styled.div`
   ${reactTransitionCSS}
 `
 
-class BookmarkList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showConfirmation: false,
-      idToBeDeleted: null,
-    }
-    this.loadMoreBookmarks = this.loadMoreBookmarks.bind(this)
-    this.handleDeleteButtonClicked = this.handleDeleteButtonClicked.bind(this)
-    this.hideComfirmation = this.hideComfirmation.bind(this)
-    this.handleDeletingConfirmed = this.handleDeletingConfirmed.bind(this)
-    this._defaultBodyOverflow = 'scroll'
-  }
+const BookmarkList = ({
+  releaseBranch = releaseBranchConsts.master,
+  bookmarks,
+  total,
+  getMultipleBookmarks,
+  deleteSingleBookmark,
+  isAuthed,
+  jwt,
+  userID,
+}) => {
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [idToBeDeleted, setIdToBeDeleted] = useState()
+  const [numberToShow, setNumberToShow] = useState(
+    total <= defaultLimit ? total : defaultLimit
+  )
+  const [bookmarkToShow, setBookmarkToShow] = useState(bookmarks)
+  let _defaultBodyOverflow = 'scroll'
 
-  componentDidMount() {
-    this.checkAuthorization()
-    this._defaultBodyOverflow = _.get(
-      document,
-      'body.style.overflow',
-      this._defaultBodyOverflow
-    )
-    const { bookmarks } = this.props
-    if (!bookmarks.length) {
-      const { jwt, userID, getMultipleBookmarks } = this.props
-      const offset = 0
-      getMultipleBookmarks(jwt, userID, offset, defaultLimit, defaultSort)
-    }
-  }
-
-  // Redirect to singin page if user has not been authorized
-  checkAuthorization() {
-    const { isAuthed, jwt } = this.props
+  useEffect(() => {
+    // check authorization
+    // redirect to singin page if user has not been authorized
     if (!isAuthed || !jwt) {
       const currentHref =
         typeof window === 'undefined' ? '' : window.location.href
       window.location.href = getSignInHref(currentHref)
     }
-  }
 
-  loadMoreBookmarks() {
-    const { total, bookmarks, jwt, userID, getMultipleBookmarks } = this.props
-    const offset = bookmarks.length
-    if (offset < total) {
+    // set overflow value
+    _defaultBodyOverflow = _.get(
+      document,
+      'body.style.overflow',
+      _defaultBodyOverflow
+    )
+
+    // check bookmark update
+    const offset = 0
+    getMultipleBookmarks(jwt, userID, offset, defaultLimit, defaultSort)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = showConfirmation
+      ? 'hidden'
+      : _defaultBodyOverflow
+  }, [showConfirmation])
+
+  useEffect(() => {
+    setBookmarkToShow(_.slice(bookmarks, 0, numberToShow))
+  }, [numberToShow, bookmarks])
+
+  useEffect(() => {
+    if (total - numberToShow < defaultLimit) {
+      setNumberToShow(total)
+    }
+  }, [total])
+
+  const loadMoreBookmarks = () => {
+    const nextNumberToShow =
+      numberToShow + defaultLimit < total ? numberToShow + defaultLimit : total
+    if (total === bookmarks.length) {
+      setNumberToShow(nextNumberToShow)
+    } else if (numberToShow < total) {
+      const offset = numberToShow
       getMultipleBookmarks(jwt, userID, offset, defaultLimit, defaultSort)
+      setNumberToShow(nextNumberToShow)
     }
   }
 
-  handleDeleteButtonClicked(bookmarkID) {
-    this.setRecordToBeDeleted(bookmarkID)
-    this.showConfirmation()
+  const hideComfirmation = () => {
+    setShowConfirmation(false)
   }
 
-  setRecordToBeDeleted(bookmarkID) {
-    this.setState({
-      idToBeDeleted: bookmarkID,
-    })
+  const showComfirmation = () => {
+    setShowConfirmation(true)
   }
 
-  handleDeletingConfirmed() {
-    this.hideComfirmation()
-    const { idToBeDeleted } = this.state
+  const handleDeleteButtonClicked = bookmarkID => {
+    setIdToBeDeleted(bookmarkID)
+    showComfirmation()
+  }
+
+  const handleDeletingConfirmed = () => {
+    hideComfirmation()
     if (typeof idToBeDeleted === 'number') {
-      const { jwt, userID, deleteSingleBookmark } = this.props
       deleteSingleBookmark(jwt, userID, idToBeDeleted)
     } else {
       console.error(
         `Deleting bookmark failed. Bookmark id should be a number, but is ${idToBeDeleted}`
       ) // eslint-disable-line no-console
     }
-    this.setRecordToBeDeleted(null)
+    setIdToBeDeleted(null)
   }
 
-  hideComfirmation() {
-    this.setState(
-      {
-        showConfirmation: false,
-      },
-      () => {
-        document.body.style.overflow = this._defaultBodyOverflow
-      }
-    )
+  if (!isAuthed || !jwt) {
+    return <RedirectToSignIn>您尚未登入，將跳轉至登入頁</RedirectToSignIn>
   }
 
-  showConfirmation() {
-    this.setState(
-      {
-        showConfirmation: true,
-      },
-      () => {
-        document.body.style.overflow = 'hidden'
-      }
-    )
-  }
-
-  render() {
-    const { isAuthed, jwt } = this.props
-    if (!isAuthed || !jwt)
-      return <RedirectToSignIn>您尚未登入，將跳轉至登入頁</RedirectToSignIn>
-    const { bookmarks, total, releaseBranch } = this.props
-    return (
-      <Container>
-        <Bookmarks
-          bookmarks={bookmarks}
-          handleDelete={this.handleDeleteButtonClicked}
-          total={total}
-          releaseBranch={releaseBranch}
+  return (
+    <Container>
+      <Bookmarks
+        bookmarks={bookmarkToShow}
+        handleDelete={handleDeleteButtonClicked}
+        total={total}
+        releaseBranch={releaseBranch}
+      />
+      <MoreContainer hasMore={numberToShow < total}>
+        <More loadMore={loadMoreBookmarks}>
+          <span>{text.loadMore}</span>
+        </More>
+      </MoreContainer>
+      <CSSTransition
+        classNames={transitionName}
+        in={showConfirmation}
+        timeout={{
+          enter: transitionDuration.enter,
+          exit: transitionDuration.leave,
+        }}
+        mountOnEnter
+        unmountOnExit
+      >
+        <Confirmation
+          onCancel={hideComfirmation}
+          onConfirm={handleDeletingConfirmed}
+          content={text.dialog.content}
+          confirm={text.dialog.confirm}
+          cancel={text.dialog.cancel}
         />
-        <MoreContainer hasMore={bookmarks.length < total}>
-          <More loadMore={this.loadMoreBookmarks}>
-            <span>{text.loadMore}</span>
-          </More>
-        </MoreContainer>
-        <CSSTransition
-          classNames={transitionName}
-          in={this.state.showConfirmation}
-          timeout={{
-            enter: transitionDuration.enter,
-            exit: transitionDuration.leave,
-          }}
-          mountOnEnter
-          unmountOnExit
-        >
-          <Confirmation
-            onCancel={this.hideComfirmation}
-            onConfirm={this.handleDeletingConfirmed}
-            content={text.dialog.content}
-            confirm={text.dialog.confirm}
-            cancel={text.dialog.cancel}
-          />
-        </CSSTransition>
-      </Container>
-    )
-  }
+      </CSSTransition>
+    </Container>
+  )
 }
 
 BookmarkList.propTypes = {
