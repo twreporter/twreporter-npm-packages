@@ -90,7 +90,7 @@ class EmbeddedCode extends React.PureComponent {
   componentDidMount() {
     // Delay loading infogram in loadEmbed()
     if (!this._embeddedCodeWithoutScript?.includes(infogramEmbed)) {
-      this.setState({ isLoaded: true }, this.executeScript)
+      this.executeScript()
     }
   }
 
@@ -101,6 +101,7 @@ class EmbeddedCode extends React.PureComponent {
   }
 
   executeScript = () => {
+    this.setState({ isLoaded: true })
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
     if (node && Array.isArray(scripts)) {
@@ -146,7 +147,7 @@ class EmbeddedCode extends React.PureComponent {
 
   loadEmbed = () => {
     if (!this.state.isLoaded) {
-      this.setState({ isLoaded: true }, this.executeScript)
+      this.executeScript()
     }
   }
 
