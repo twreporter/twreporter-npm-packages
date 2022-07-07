@@ -59,7 +59,7 @@ function dispatchWindowLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
-const infogramEmbed = 'infogram-embed'
+const infogramEmbed = 'infogram'
 
 class EmbeddedCode extends React.PureComponent {
   static propTypes = {
