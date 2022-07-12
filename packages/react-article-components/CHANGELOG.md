@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.5.0...@twreporter/react-article-components@1.6.0-rc.0) (2022-07-08)
+
+
+### Bug Fixes
+
+* add comment ([1d1ef89](https://github.com/twreporter/twreporter-npm-packages/commit/1d1ef89b9aeacecc225b0875e7ebec27459aac1d))
+* add destructor ([3b0e699](https://github.com/twreporter/twreporter-npm-packages/commit/3b0e69973d95d561d95b0b4933ac45de112869d0))
+* refactor import ([f514e5b](https://github.com/twreporter/twreporter-npm-packages/commit/f514e5b78a84cfad55259b423502068094ed04de))
+* refactor private members ([90fe033](https://github.com/twreporter/twreporter-npm-packages/commit/90fe033615a5860f2a05bad2f5987ee0835bce13))
+* rename constant ([7195d43](https://github.com/twreporter/twreporter-npm-packages/commit/7195d437014664f5939e84681344f7b3509b8473))
+* rewire execute script logic ([762f57e](https://github.com/twreporter/twreporter-npm-packages/commit/762f57efd309447e4b20e95f598cb552735e9746))
+* rewire loading logic ([98f368d](https://github.com/twreporter/twreporter-npm-packages/commit/98f368d0e6dde093f6f40abbe197c3d2354d1bf3))
+* shorter keyword to infogram ([260d83c](https://github.com/twreporter/twreporter-npm-packages/commit/260d83c71ff877685f76f9f1d53e5a656d537923))
+* simplify isLoaded ([5872dbb](https://github.com/twreporter/twreporter-npm-packages/commit/5872dbb3a7bf929388949fab55f3d3c809af56bd))
+
+
+### Features
+
+* add load script ([7136740](https://github.com/twreporter/twreporter-npm-packages/commit/7136740ad4f8152dc92bfcdb677924a7f1b37613))
+* add waypoint wrapper ([0a02cdf](https://github.com/twreporter/twreporter-npm-packages/commit/0a02cdf7cd0e5d53e8c62cf1666be51688464784))
+* enable delay loading of infogram ([e312e97](https://github.com/twreporter/twreporter-npm-packages/commit/e312e97fcc000a7bf211f55db5675a08cee99ee9))
+
+
+
+
+
 # [1.5.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.5.0-rc.5...@twreporter/react-article-components@1.5.0) (2022-07-06)
 
 **Note:** Version bump only for package @twreporter/react-article-components
