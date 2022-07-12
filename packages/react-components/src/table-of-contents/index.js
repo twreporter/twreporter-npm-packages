@@ -3,7 +3,6 @@ import React from 'react'
 import get from 'lodash/get'
 import indexOf from 'lodash/indexOf'
 import memoize from 'memoize-one'
-import smoothScroll from 'smoothscroll'
 import some from 'lodash/some'
 import sortBy from 'lodash/sortBy'
 import debounce from 'lodash/debounce'
@@ -334,8 +333,6 @@ class Anchor extends React.PureComponent {
   }
 }
 
-const smoothScrollDuration = 500
-
 class TableOfContents extends React.PureComponent {
   static propTypes = {
     manager: PropTypes.instanceOf(TOCManager).isRequired,
@@ -389,11 +386,11 @@ class TableOfContents extends React.PureComponent {
           },
           () => {
             manager.toStopAutoUpdateHighlightAnchor = true
-            smoothScroll(
-              anchor.getViewportTop(),
-              smoothScrollDuration,
-              () => (manager.toStopAutoUpdateHighlightAnchor = false)
-            )
+            window.scroll({
+              top: anchor.getViewportTop(),
+              behavior: 'auto',
+            })
+            manager.toStopAutoUpdateHighlightAnchor = false
           }
         )
         return true

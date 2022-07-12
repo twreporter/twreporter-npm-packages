@@ -1,5 +1,4 @@
 import React from 'react'
-import smoothScroll from 'smoothscroll'
 import styled from 'styled-components'
 // utils
 import { centerBlock, finalMedia, breakPoints } from '../utils/style-utils'
@@ -159,10 +158,11 @@ class ReporterIntro extends React.PureComponent {
      */
     const element = document.getElementById('news-letter')
     if (element) {
-      const offsetTop = element.offsetTop
-      return smoothScroll(offsetTop)
+      window.scroll({
+        top: element.offsetTop,
+        behavior: 'smooth',
+      })
     }
-    return null
   }
 
   render() {

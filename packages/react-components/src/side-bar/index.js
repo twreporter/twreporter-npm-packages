@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import hoistStatics from 'hoist-non-react-statics'
-import smoothScroll from 'smoothscroll'
 import { Waypoint } from 'react-waypoint'
 // lodash
 import get from 'lodash/get'
@@ -130,8 +129,10 @@ function decorateSideBar(DecoratedComponent) {
       }
       const node = this.moduleMap[moduleID]
       if (node) {
-        // scroll to the section
-        return smoothScroll(node.offsetTop)
+        window.scroll({
+          top: node.offsetTop,
+          behavior: 'smooth',
+        })
       }
       return null
     }

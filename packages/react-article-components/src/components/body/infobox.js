@@ -142,10 +142,26 @@ export default class Infobox extends PureComponent {
     const { className, data } = this.props
     const contentHtmlString = _.get(data, ['content', 0, 'body'], '')
     const title = _.get(data, ['content', 0, 'title'], '')
-    return contentHtmlString ? (
+
+    // Legacy <a> tags inside infobox contain target="_blank" prop,
+    // so that a new tab is opened when clicked, we need to remove those props
+    // for expected anchor jumping behavior.
+    const anchorRegex = /<a[^>]*>/g
+    const fixedContentHtmlString = contentHtmlString?.replace(
+      anchorRegex,
+      anchorString => {
+        const hashRegex = /href="#/
+        const newTabRegex = /target="_blank"/
+        return hashRegex.exec(anchorString) && newTabRegex.exec(anchorString)
+          ? anchorString.replace(newTabRegex, '')
+          : anchorString
+      }
+    )
+
+    return fixedContentHtmlString ? (
       <Container className={className}>
         {title ? <Title>{title}</Title> : null}
-        <Content dangerouslySetInnerHTML={{ __html: contentHtmlString }} />
+        <Content dangerouslySetInnerHTML={{ __html: fixedContentHtmlString }} />
       </Container>
     ) : null
   }

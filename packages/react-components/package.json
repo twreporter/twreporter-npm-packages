@@ -26,7 +26,6 @@
     "react-router-dom": "^5.1.2",
     "react-transition-group": "^2.0.0",
     "react-waypoint": "^9.0.2",
-    "smoothscroll": "^0.3.0",
     "styled-components": "^4.0.0"
   },
   "files": [
