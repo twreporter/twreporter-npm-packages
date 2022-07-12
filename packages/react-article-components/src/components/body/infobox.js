@@ -144,8 +144,8 @@ export default class Infobox extends PureComponent {
     const title = _.get(data, ['content', 0, 'title'], '')
 
     // Legacy <a> tags inside infobox contain target="_blank" prop,
-    // so that a new tab is opened when clicked, we need to remove those props
-    // for expected anchor jumping behavior.
+    // so that a new tab is opened when an anchor is clicked, we need to
+    // remove those props in order to have expected anchor jumping behaviors.
     const anchorRegex = /<a[^>]*>/g
     const fixedContentHtmlString = contentHtmlString?.replace(
       anchorRegex,
