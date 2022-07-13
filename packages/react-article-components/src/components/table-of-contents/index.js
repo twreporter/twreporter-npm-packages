@@ -4,6 +4,7 @@ import React from 'react'
 import TOC from '@twreporter/react-components/lib/table-of-contents'
 import map from 'lodash/map'
 import Tab from '../../assets/table-of-contents/long-form-tab.svg'
+import { TOC_ANCHOR_SCROLL_DURATION } from '../../constants/anchor'
 
 const _ = {
   map,
@@ -81,6 +82,7 @@ class TableOfContents extends React.PureComponent {
         <TOC.React.TableOfContents
           className={className}
           manager={manager}
+          scrollDuration={TOC_ANCHOR_SCROLL_DURATION}
           render={(anchors, highlightAnchor, handleAnchorClick) => {
             const anchorsJSX = _.map(anchors, anchor => {
               const toHighlight = anchor === highlightAnchor

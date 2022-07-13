@@ -334,6 +334,8 @@ class Anchor extends React.PureComponent {
   }
 }
 
+const defaultScrollDuration = 500
+
 class TableOfContents extends React.PureComponent {
   static propTypes = {
     manager: PropTypes.instanceOf(TOCManager).isRequired,
@@ -345,6 +347,7 @@ class TableOfContents extends React.PureComponent {
      *  @param {Function} handleAnchorClick - callback function for handling clicking anchor
      */
     render: PropTypes.func,
+    scrollDuration: PropTypes.number,
   }
 
   constructor(props) {
@@ -377,7 +380,7 @@ class TableOfContents extends React.PureComponent {
    *  @returns
    */
   _handleAnchorClick(anchorID) {
-    const { manager } = this.props
+    const { manager, scrollDuration } = this.props
     const anchors = manager.anchors
     _.some(anchors, anchor => {
       if (anchorID === anchor.anchorID) {
@@ -387,9 +390,13 @@ class TableOfContents extends React.PureComponent {
           },
           () => {
             manager.toStopAutoUpdateHighlightAnchor = true
-            smoothScroll(anchor.getViewportTop(), 50, () => {
-              manager.toStopAutoUpdateHighlightAnchor = false
-            })
+            smoothScroll(
+              anchor.getViewportTop(),
+              scrollDuration || defaultScrollDuration,
+              () => {
+                manager.toStopAutoUpdateHighlightAnchor = false
+              }
+            )
           }
         )
         return true

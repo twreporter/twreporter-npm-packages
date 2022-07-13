@@ -12,6 +12,7 @@ import cssConsts from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 import color from '../../constants/color'
+import { TOC_ANCHOR_SCROLL_DURATION } from '../../constants/anchor'
 
 const _ = {
   get,
@@ -135,7 +136,6 @@ const Container = styled.div`
 // In order to scroll quickly to avoid triggering embeds loading,
 // here we apply custom smooth scroll effect(duration) to internal anchors inside infobox.
 // code ref: https://github.com/alicelieutier/smoothScroll/blob/master/smoothscroll.js
-const smoothScrollDuration = 50
 const customSmoothScrollFuncName = 'twreporterSmoothScroll'
 const customSmoothScrollScript = `
   <script type='text/javascript'>
@@ -145,7 +145,7 @@ const customSmoothScrollScript = `
       const id = e.target.hash.substring(1);
       const element = document.getElementById(id);
       if (element) {
-        smoothScroll(element, ${smoothScrollDuration}, function (el) {
+        smoothScroll(element, ${TOC_ANCHOR_SCROLL_DURATION}, function (el) {
           location.replace('#' + el.id)
           // this will cause the :target to be activated.
         });
