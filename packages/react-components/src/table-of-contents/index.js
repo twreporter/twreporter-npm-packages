@@ -393,9 +393,7 @@ class TableOfContents extends React.PureComponent {
             smoothScroll(
               anchor.getViewportTop(),
               scrollDuration || defaultScrollDuration,
-              () => {
-                manager.toStopAutoUpdateHighlightAnchor = false
-              }
+              () => (manager.toStopAutoUpdateHighlightAnchor = false)
             )
           }
         )
