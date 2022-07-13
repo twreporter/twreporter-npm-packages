@@ -135,7 +135,6 @@ const Container = styled.div`
 // NOTE:
 // In order to scroll quickly to avoid triggering embeds loading,
 // here we apply custom smooth scroll effect(duration) to internal anchors inside infobox.
-// code ref: https://github.com/alicelieutier/smoothScroll/blob/master/smoothscroll.js
 const customSmoothScrollFuncName = 'twreporterSmoothScroll'
 const customSmoothScrollScript = `
   <script type='text/javascript'>
@@ -170,15 +169,17 @@ export default class Infobox extends PureComponent {
     const contentHtmlString = _.get(data, ['content', 0, 'body'], '')
     const title = _.get(data, ['content', 0, 'title'], '')
 
-    // Legacy <a> tags inside infobox contain target="_blank" prop,
-    // so that a new tab is opened when an anchor is clicked, we need to
-    // replace those props of internal anchors with a custom smooth scroll.
     const anchorRegex = /<a[^>]*>/g
     const fixedContentHtmlString = contentHtmlString?.replace(
       anchorRegex,
       anchorString => {
         const hashRegex = /href="#/ // TODO: href={"#"}
         const newTabRegex = /target="_blank"/ // TODO: target={"_blank"}
+
+        // Here we replace internal anchor's "target" props with a onclick event to achieve:
+        // 1. Legacy <a href="#..."> tags inside infobox contain target="_blank" prop,
+        //    but we don't want a opened new tab when the anchor is clicked.
+        // 2. We need a custom smooth scroll behavior when the anchor is clicked.
         return hashRegex.exec(anchorString) && newTabRegex.exec(anchorString)
           ? anchorString.replace(
               newTabRegex,
