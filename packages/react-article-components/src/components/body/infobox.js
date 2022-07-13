@@ -1,14 +1,16 @@
-import mq from '@twreporter/core/lib/utils/media-query'
-import PropTypes from 'prop-types'
-import predefinedPropTypes from '../../constants/prop-types/body'
 import React, { PureComponent } from 'react'
-import cssConsts from '../../constants/css'
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+
+// lodash
+import get from 'lodash/get'
+
+import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedPropTypes from '../../constants/prop-types/body'
+import cssConsts from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 import color from '../../constants/color'
-// lodash
-import get from 'lodash/get'
 
 const _ = {
   get,
