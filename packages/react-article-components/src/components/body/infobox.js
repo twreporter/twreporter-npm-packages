@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components'
 import get from 'lodash/get'
 
 import mq from '@twreporter/core/lib/utils/media-query'
+import smoothScroll from '@twreporter/react-components/lib/utils/smooth-scroll'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import cssConsts from '../../constants/css'
 import themeConst from '../../constants/theme'
@@ -134,58 +135,13 @@ const Container = styled.div`
 // In order to scroll quickly to avoid triggering embeds loading,
 // here we apply custom smooth scroll effect(duration) to internal anchors inside infobox.
 // code ref: https://github.com/alicelieutier/smoothScroll/blob/master/smoothscroll.js
-const smoothScrollDuration = 100
+const smoothScrollDuration = 50
 const customSmoothScrollFuncName = 'twreporterSmoothScroll'
 const customSmoothScrollScript = `
   <script type='text/javascript'>
     function ${customSmoothScrollFuncName}(e) {
       e.preventDefault();
-      var position = function(start, end, elapsed, duration) {
-        if (elapsed > duration) return end;
-        return start + (end - start) * easeInOutCubic(elapsed / duration); // <-- you can change the easing funtion there
-        // return start + (end - start) * (elapsed / duration); // <-- this would give a linear scroll
-      }
-      var getTop = function(element, start) {
-        // return value of html.getBoundingClientRect().top ... IE : 0, other browsers : -pageYOffset
-        if(element.nodeName === 'HTML') return -start
-        return element.getBoundingClientRect().top + start
-      }
-      var easeInOutCubic = function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }
-      var smoothScroll = function(el, duration, callback, context){
-        duration = duration || 500;
-        context = context || window;
-        var start = context.scrollTop || window.pageYOffset;
-
-        if (typeof el === 'number') {
-          var end = parseInt(el);
-        } else {
-          var end = getTop(el, start);
-        }
-
-        var clock = Date.now();
-        var requestAnimationFrame = window.requestAnimationFrame ||
-          window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame ||
-          function(fn){window.setTimeout(fn, 15);};
-
-        var step = function(){
-          var elapsed = Date.now() - clock;
-          if (context !== window) {
-            context.scrollTop = position(start, end, elapsed, duration);
-          }
-          else {
-            window.scroll(0, position(start, end, elapsed, duration));
-          }
-
-          if (elapsed > duration) {
-              if (typeof callback === 'function') {
-                  callback(el);
-              }
-          } else {
-              requestAnimationFrame(step);
-          }
-        }
-        step();
-      }
+      const smoothScroll = ${smoothScroll.toString()}
       const id = e.target.hash.substring(1);
       const element = document.getElementById(id);
       if (element) {
