@@ -7,6 +7,7 @@ import some from 'lodash/some'
 import sortBy from 'lodash/sortBy'
 import debounce from 'lodash/debounce'
 import { Waypoint } from 'react-waypoint'
+import smoothScroll from '../utils/smooth-scroll'
 
 const _ = {
   debounce,
@@ -386,11 +387,9 @@ class TableOfContents extends React.PureComponent {
           },
           () => {
             manager.toStopAutoUpdateHighlightAnchor = true
-            window.scroll({
-              top: anchor.getViewportTop(),
-              behavior: 'auto',
+            smoothScroll(anchor.getViewportTop(), 50, () => {
+              manager.toStopAutoUpdateHighlightAnchor = false
             })
-            manager.toStopAutoUpdateHighlightAnchor = false
           }
         )
         return true
