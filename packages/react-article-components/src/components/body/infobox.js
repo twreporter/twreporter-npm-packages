@@ -214,7 +214,7 @@ export default class Infobox extends PureComponent {
 
     // Legacy <a> tags inside infobox contain target="_blank" prop,
     // so that a new tab is opened when an anchor is clicked, we need to
-    // remove those props in order to have expected anchor jumping behaviors.
+    // replace those props of internal anchors with a custom smooth scroll.
     const anchorRegex = /<a[^>]*>/g
     const fixedContentHtmlString = contentHtmlString?.replace(
       anchorRegex,
