@@ -176,9 +176,9 @@ export default class Infobox extends PureComponent {
         const hashRegex = /href="#/ // TODO: href={"#"}
         const newTabRegex = /target="_blank"/ // TODO: target={"_blank"}
 
-        // Here we replace internal anchor's "target" props with a onclick event to achieve:
+        // Here we replace internal anchor's "target" props with a onclick event handler to achieve:
         // 1. Legacy <a href="#..."> tags inside infobox contain target="_blank" prop,
-        //    but we don't want a opened new tab when the anchor is clicked.
+        //    but we don't want an opened new tab when the anchor is clicked.
         // 2. We need a custom smooth scroll behavior when the anchor is clicked.
         return hashRegex.exec(anchorString) && newTabRegex.exec(anchorString)
           ? anchorString.replace(
