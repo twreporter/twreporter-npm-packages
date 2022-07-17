@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-
-// lodash
 import get from 'lodash/get'
 
+// twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import cssConsts from '../../constants/css'
