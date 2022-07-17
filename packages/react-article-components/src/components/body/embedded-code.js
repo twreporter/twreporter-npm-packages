@@ -146,7 +146,7 @@ class EmbeddedCode extends React.PureComponent {
 
   loadEmbed = () => {
     if (!this.state.isLoaded) {
-      this.setState({ isLoaded: true }, () => this.executeScript())
+      this.setState({ isLoaded: true }, this.executeScript)
     }
   }
 
