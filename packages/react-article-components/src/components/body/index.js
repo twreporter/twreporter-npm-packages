@@ -440,6 +440,8 @@ export default class Body extends Component {
   }
 
   componentDidMount() {
+    // We apply smooth scroll only to ARTICLE_ANCHOR_SCROLL('article-anchor-scroll') selector
+    // ex: <a article-anchor-scroll="true" href="#..."" />
     // eslint-disable-next-line no-new
     new SmoothScroll(`[${ARTICLE_ANCHOR_SCROLL}]`, {
       speed: ANCHOR_SCROLL_DURATION,
