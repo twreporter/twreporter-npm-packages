@@ -31,7 +31,10 @@ import map from 'lodash/map'
 // Change smooth-scroll import path due to SSR issue:
 // https://github.com/cferdinandi/smooth-scroll/issues/481
 import SmoothScroll from 'smooth-scroll/dist/smooth-scroll'
-import { ARTICLE_ANCHOR_SCROLL } from '../../constants/anchor'
+import {
+  ARTICLE_ANCHOR_SCROLL,
+  WAIT_AFTER_REACH_ANCHOR,
+} from '../../constants/anchor'
 
 const _ = {
   get,
@@ -451,9 +454,7 @@ export default class Body extends Component {
       'scrollStop',
       () => {
         // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
-        setTimeout(() => {
-          this._onAnchorClick(false)
-        }, 50)
+        setTimeout(() => this._onAnchorClick(false), WAIT_AFTER_REACH_ANCHOR)
       },
       false
     )

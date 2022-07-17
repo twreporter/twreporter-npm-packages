@@ -4,7 +4,10 @@ import React from 'react'
 import TOC from '@twreporter/react-components/lib/table-of-contents'
 import map from 'lodash/map'
 import Tab from '../../assets/table-of-contents/long-form-tab.svg'
-import { TOC_ANCHOR_SCROLL_DURATION } from '../../constants/anchor'
+import {
+  WAIT_AFTER_REACH_ANCHOR,
+  TOC_ANCHOR_SCROLL_DURATION,
+} from '../../constants/anchor'
 
 const _ = {
   map,
@@ -94,7 +97,11 @@ class TableOfContents extends React.PureComponent {
                   onClick={() => {
                     onAnchorClick(true, () =>
                       handleAnchorClick(anchor.anchorID, () => {
-                        setTimeout(() => onAnchorClick(false), 50)
+                        // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
+                        setTimeout(
+                          () => onAnchorClick(false),
+                          WAIT_AFTER_REACH_ANCHOR
+                        )
                       })
                     )
                   }}
