@@ -441,7 +441,7 @@ export default class Body extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-new
     new SmoothScroll(`[${ARTICLE_ANCHOR_SCROLL}]`, {
-      speed: 200,
+      speed: 100,
       easing: 'easeInOutCubic',
       emitEvents: true,
     })
