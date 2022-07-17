@@ -32,6 +32,7 @@ import map from 'lodash/map'
 // https://github.com/cferdinandi/smooth-scroll/issues/481
 import SmoothScroll from 'smooth-scroll/dist/smooth-scroll'
 import {
+  ANCHOR_SCROLL_DURATION,
   ARTICLE_ANCHOR_SCROLL,
   WAIT_AFTER_REACH_ANCHOR,
 } from '../../constants/anchor'
@@ -441,7 +442,8 @@ export default class Body extends Component {
   componentDidMount() {
     // eslint-disable-next-line no-new
     new SmoothScroll(`[${ARTICLE_ANCHOR_SCROLL}]`, {
-      speed: 100,
+      speed: ANCHOR_SCROLL_DURATION,
+      speedAsDuration: true,
       easing: 'easeInOutCubic',
       emitEvents: true,
     })
