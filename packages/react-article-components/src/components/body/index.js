@@ -17,7 +17,7 @@ import Multimedia from './multimedia'
 import Paragraph from './paragraph'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import Slideshow from './slideshow'
 import styled, { css } from 'styled-components'
 import TOC from '../table-of-contents'
@@ -27,6 +27,10 @@ import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
+
+// Change smooth-scroll import path due to SSR issue:
+// https://github.com/cferdinandi/smooth-scroll/issues/481
+import SmoothScroll from 'smooth-scroll/dist/smooth-scroll'
 
 const _ = {
   get,
@@ -286,7 +290,7 @@ const ClearFloat = styled.div`
  * @param {ElementData} [data={}]
  * @returns
  */
-export function renderElement(data = {}) {
+export function renderElement(data = {}, isAnchorScrolling) {
   const isCenterAligned =
     data.alignment === alignmentConsts.center ||
     data.alignment === alignmentConsts.centerSmall
@@ -326,15 +330,30 @@ export function renderElement(data = {}) {
         case alignmentConsts.left: {
           return (
             <AlignRight key={data.id}>
-              <StyledEmbedded data={data} />
+              <StyledEmbedded
+                data={data}
+                isAnchorScrolling={isAnchorScrolling}
+              />
             </AlignRight>
           )
         }
         case alignmentConsts.centerSmall:
-          return <StyledEmbeddedNormal key={data.id} data={data} />
+          return (
+            <StyledEmbeddedNormal
+              key={data.id}
+              data={data}
+              isAnchorScrolling={isAnchorScrolling}
+            />
+          )
         case alignmentConsts.center:
         default: {
-          return <StyledEmbedded key={data.id} data={data} />
+          return (
+            <StyledEmbedded
+              key={data.id}
+              data={data}
+              isAnchorScrolling={isAnchorScrolling}
+            />
+          )
         }
       }
     case 'small-image':
@@ -397,7 +416,7 @@ export function renderElement(data = {}) {
   }
 }
 
-export default class Body extends PureComponent {
+export default class Body extends Component {
   static propTypes = {
     brief: PropTypes.arrayOf(predefinedPropTypes.elementData),
     content: PropTypes.arrayOf(predefinedPropTypes.elementData),
@@ -408,14 +427,49 @@ export default class Body extends PureComponent {
     content: [],
   }
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      isAnchorScrolling: false,
+    }
+  }
+
+  componentDidMount() {
+    // eslint-disable-next-line no-new
+    new SmoothScroll('[anchor-scroll]', {
+      speed: 500,
+      easing: 'easeInOutCubic',
+      emitEvents: true,
+    })
+    document.addEventListener(
+      'scrollStart',
+      () => this._onAnchorClick(true),
+      false
+    )
+    document.addEventListener(
+      'scrollStop',
+      () => {
+        // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed
+        setTimeout(() => {
+          this._onAnchorClick(false)
+        }, 50)
+      },
+      false
+    )
+  }
+
   tocManager = TOC.createManager()
+
+  _onAnchorClick = isAnchorScrolling => {
+    this.setState({ isAnchorScrolling: isAnchorScrolling })
+  }
 
   _buildContentElement = (data, index) => {
     if (!data.id) {
       data.id = `body_element_${index}`
     }
 
-    return renderElement(data)
+    return renderElement(data, this.state.isAnchorScrolling)
   }
 
   render() {

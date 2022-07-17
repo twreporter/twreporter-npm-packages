@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Waypoint } from 'react-waypoint'
@@ -101,7 +101,6 @@ class EmbeddedCode extends React.PureComponent {
   }
 
   executeScript = () => {
-    this.setState({ isLoaded: true })
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
     if (node && Array.isArray(scripts)) {
@@ -147,7 +146,7 @@ class EmbeddedCode extends React.PureComponent {
 
   loadEmbed = () => {
     if (!this.state.isLoaded) {
-      this.executeScript()
+      this.setState({ isLoaded: true }, () => this.executeScript())
     }
   }
 
@@ -175,19 +174,42 @@ class EmbeddedCode extends React.PureComponent {
 // so here we apply waypoint wrapper to load infogram dynamically to avoid layout shifts for anchors.
 // https://twreporter-org.atlassian.net/browse/TWREPORTER-60
 const WayPointWrapper = props => {
+  const { isAnchorScrolling } = props
+  const [isInViewPort, setIsInViewPort] = useState(false)
   const embedRef = useRef(null)
 
+  useEffect(() => {
+    if (!isAnchorScrolling && isInViewPort) {
+      embedRef.current.loadEmbed()
+    }
+  }, [isAnchorScrolling])
+
   const onEnter = () => {
-    embedRef.current.loadEmbed()
+    setIsInViewPort(true)
+    if (!isAnchorScrolling) {
+      embedRef.current.loadEmbed()
+    }
+  }
+
+  const onLeave = () => {
+    setIsInViewPort(false)
   }
 
   return (
-    <Waypoint onEnter={onEnter} fireOnRapidScroll={false}>
+    <Waypoint onEnter={onEnter} onLeave={onLeave} fireOnRapidScroll={false}>
       <div>
         <EmbeddedCode {...props} ref={embedRef} />
       </div>
     </Waypoint>
   )
+}
+
+WayPointWrapper.defaultProps = {
+  isAnchorScrolling: false,
+}
+
+WayPointWrapper.propTypes = {
+  isAnchorScrolling: PropTypes.bool,
 }
 
 export default WayPointWrapper

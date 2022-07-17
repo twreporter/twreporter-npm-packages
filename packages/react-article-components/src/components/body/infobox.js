@@ -6,13 +6,11 @@ import styled, { css } from 'styled-components'
 import get from 'lodash/get'
 
 import mq from '@twreporter/core/lib/utils/media-query'
-import smoothScroll from '@twreporter/react-components/lib/utils/smooth-scroll'
 import predefinedPropTypes from '../../constants/prop-types/body'
 import cssConsts from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 import color from '../../constants/color'
-import { TOC_ANCHOR_SCROLL_DURATION } from '../../constants/anchor'
 
 const _ = {
   get,
@@ -132,28 +130,6 @@ const Container = styled.div`
   }
 `
 
-// NOTE:
-// In order to scroll quickly to avoid triggering embeds loading,
-// here we apply custom smooth scroll effect(duration) to internal anchors inside infobox.
-const customSmoothScrollFuncName = 'twreporterSmoothScroll'
-const customSmoothScrollScript = `
-  <script type='text/javascript'>
-    function ${customSmoothScrollFuncName}(e) {
-      e.preventDefault();
-      const smoothScroll = ${smoothScroll.toString()}
-      const id = e.target.hash.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        smoothScroll(element, ${TOC_ANCHOR_SCROLL_DURATION}, function (el) {
-          location.replace('#' + el.id)
-          // this will cause the :target to be activated.
-        });
-      }
-      return false;
-    }
-  </script>
-`
-
 export default class Infobox extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
@@ -170,7 +146,7 @@ export default class Infobox extends PureComponent {
     const title = _.get(data, ['content', 0, 'title'], '')
 
     const anchorRegex = /<a[^>]*>/g
-    const fixedContentHtmlString = contentHtmlString?.replace(
+    const mutatedContentHtmlString = contentHtmlString?.replace(
       anchorRegex,
       anchorString => {
         const hashRegex = /href="#/ // TODO: href={"#"}
@@ -180,22 +156,20 @@ export default class Infobox extends PureComponent {
         // 1. Legacy <a href="#..."> tags inside infobox contain target="_blank" prop,
         //    but we don't want an opened new tab when the anchor is clicked.
         // 2. We need a custom smooth scroll behavior when the anchor is clicked.
-        return hashRegex.exec(anchorString) && newTabRegex.exec(anchorString)
+        return hashRegex.exec(anchorString)
           ? anchorString.replace(
               newTabRegex,
-              `onclick="${customSmoothScrollFuncName}(event)"`
+              `anchor-scroll` // TODO: just add a prop, no replace
             )
           : anchorString
       }
     )
 
-    return fixedContentHtmlString ? (
+    return mutatedContentHtmlString ? (
       <Container className={className}>
         {title ? <Title>{title}</Title> : null}
         <Content
-          dangerouslySetInnerHTML={{
-            __html: customSmoothScrollScript + fixedContentHtmlString,
-          }}
+          dangerouslySetInnerHTML={{ __html: mutatedContentHtmlString }}
         />
       </Container>
     ) : null
