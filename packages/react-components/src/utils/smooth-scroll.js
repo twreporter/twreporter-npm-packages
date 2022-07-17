@@ -1,7 +1,9 @@
 // NOTE:
-// We want a custom smooth scroll for internal anchors jumping, but we dont want to
-// apply to all anchors, so copy the implementation of smoothScroll lib in npm:
-// ref: https://github.com/alicelieutier/smoothScroll/blob/master/smoothscroll.js
+// The underline anchors in TOC is actually not <a> but <H1>, so we can't use 'smooth-scroll' lib
+// which is developed specifically for <a>. Here is a workaround to copy the smooth scroll behavior
+// of 'smoothScroll' lib. (ref: https://github.com/alicelieutier/smoothScroll/blob/master/smoothscroll.js)
+// P.S. We don't use 'smoothScroll' directly due to it will apply smooth scroll behavior to ALL anchors
+// in the website automatically.
 
 const defaultDuration = 500
 export default function(el, duration, callback, context) {
