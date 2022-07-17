@@ -145,22 +145,15 @@ export default class Infobox extends PureComponent {
     const contentHtmlString = _.get(data, ['content', 0, 'body'], '')
     const title = _.get(data, ['content', 0, 'title'], '')
 
-    const anchorRegex = /<a[^>]*>/g
+    const anchorRegex = /<a([^>]*)>/g
+    const hashRegex = /href={?["']#/
     const mutatedContentHtmlString = contentHtmlString?.replace(
       anchorRegex,
-      anchorString => {
-        const hashRegex = /href="#/ // TODO: href={"#"}
-        const newTabRegex = /target="_blank"/ // TODO: target={"_blank"}
-
-        // Here we replace internal anchor's "target" props with a onclick event handler to achieve:
-        // 1. Legacy <a href="#..."> tags inside infobox contain target="_blank" prop,
-        //    but we don't want an opened new tab when the anchor is clicked.
-        // 2. We need a custom smooth scroll behavior when the anchor is clicked.
+      (anchorString, attrs) => {
+        // Here we append a custom attribute 'ARTICLE_ANCHOR_SCROLL' in order to apply
+        // smooth scroll effect on <a href="#..."> anchors inside infobox
         return hashRegex.exec(anchorString)
-          ? anchorString.replace(
-              newTabRegex,
-              `${ARTICLE_ANCHOR_SCROLL}="true"` // TODO: just add a prop, no replace
-            )
+          ? `<a ${attrs} ${ARTICLE_ANCHOR_SCROLL}="true" />`
           : anchorString
       }
     )
