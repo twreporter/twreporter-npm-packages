@@ -461,8 +461,12 @@ export default class Body extends Component {
 
   tocManager = TOC.createManager()
 
-  _onAnchorClick = isAnchorScrolling => {
-    this.setState({ isAnchorScrolling: isAnchorScrolling })
+  _onAnchorClick = (isAnchorScrolling, callback) => {
+    this.setState({ isAnchorScrolling: isAnchorScrolling }, () => {
+      if (callback) {
+        callback()
+      }
+    })
   }
 
   _buildContentElement = (data, index) => {
@@ -503,7 +507,10 @@ export default class Body extends Component {
         {contentJsx}
         <ClearFloat />
         {enableTOC ? (
-          <TOC.React.TableOfContents manager={this.tocManager} />
+          <TOC.React.TableOfContents
+            manager={this.tocManager}
+            onAnchorClick={this._onAnchorClick}
+          />
         ) : null}
       </div>
     )

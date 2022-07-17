@@ -379,7 +379,7 @@ class TableOfContents extends React.PureComponent {
    *  @param {string} anchorID - id of clicked anchor
    *  @returns
    */
-  _handleAnchorClick(anchorID) {
+  _handleAnchorClick(anchorID, callback) {
     const { manager, scrollDuration } = this.props
     const anchors = manager.anchors
     _.some(anchors, anchor => {
@@ -393,7 +393,12 @@ class TableOfContents extends React.PureComponent {
             smoothScroll(
               anchor.getViewportTop(),
               scrollDuration || defaultScrollDuration,
-              () => (manager.toStopAutoUpdateHighlightAnchor = false)
+              () => {
+                manager.toStopAutoUpdateHighlightAnchor = false
+                if (callback) {
+                  callback()
+                }
+              }
             )
           }
         )

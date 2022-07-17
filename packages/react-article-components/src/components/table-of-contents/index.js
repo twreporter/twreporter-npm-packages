@@ -14,6 +14,7 @@ class TableOfContents extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     manager: TOC.React.TableOfContents.propTypes.manager,
+    onAnchorClick: PropTypes.func,
   }
 
   static defaultProps = {
@@ -74,7 +75,7 @@ class TableOfContents extends React.PureComponent {
   }
 
   render() {
-    const { className, manager } = this.props
+    const { className, manager, onAnchorClick } = this.props
     const { isExpanded } = this.state
 
     return (
@@ -90,7 +91,13 @@ class TableOfContents extends React.PureComponent {
               return (
                 <Styled.TOCRow
                   key={anchor.anchorID}
-                  onClick={() => handleAnchorClick(anchor.anchorID)}
+                  onClick={() => {
+                    onAnchorClick(true, () =>
+                      handleAnchorClick(anchor.anchorID, () => {
+                        setTimeout(() => onAnchorClick(false), 50)
+                      })
+                    )
+                  }}
                 >
                   <Styled.TOCIndicator
                     toHighlight={toHighlight}
