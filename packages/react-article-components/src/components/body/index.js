@@ -513,7 +513,7 @@ export default class Body extends Component {
         {enableTOC ? (
           <TOC.React.TableOfContents
             manager={this.tocManager}
-            onAnchorClick={this._onStartScrollingToAnchor}
+            onStartScrollingToAnchor={this._onStartScrollingToAnchor}
           />
         ) : null}
       </div>

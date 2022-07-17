@@ -17,7 +17,7 @@ class TableOfContents extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     manager: TOC.React.TableOfContents.propTypes.manager,
-    onAnchorClick: PropTypes.func,
+    onStartScrollingToAnchor: PropTypes.func,
   }
 
   static defaultProps = {
@@ -78,7 +78,7 @@ class TableOfContents extends React.PureComponent {
   }
 
   render() {
-    const { className, manager, onAnchorClick } = this.props
+    const { className, manager, onStartScrollingToAnchor } = this.props
     const { isExpanded } = this.state
 
     return (
@@ -95,11 +95,11 @@ class TableOfContents extends React.PureComponent {
                 <Styled.TOCRow
                   key={anchor.anchorID}
                   onClick={() => {
-                    onAnchorClick(true, () =>
+                    onStartScrollingToAnchor(true, () =>
                       handleAnchorClick(anchor.anchorID, () => {
                         // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
                         setTimeout(
-                          () => onAnchorClick(false),
+                          () => onStartScrollingToAnchor(false),
                           WAIT_AFTER_REACH_ANCHOR
                         )
                       })
