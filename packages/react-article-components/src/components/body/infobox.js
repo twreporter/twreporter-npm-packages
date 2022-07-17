@@ -10,6 +10,7 @@ import cssConsts from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 import color from '../../constants/color'
+import { ARTICLE_ANCHOR_SCROLL } from '../../constants/anchor'
 
 const _ = {
   get,
@@ -158,7 +159,7 @@ export default class Infobox extends PureComponent {
         return hashRegex.exec(anchorString)
           ? anchorString.replace(
               newTabRegex,
-              `anchor-scroll` // TODO: just add a prop, no replace
+              `${ARTICLE_ANCHOR_SCROLL}="true"` // TODO: just add a prop, no replace
             )
           : anchorString
       }

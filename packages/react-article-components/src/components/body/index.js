@@ -31,6 +31,7 @@ import map from 'lodash/map'
 // Change smooth-scroll import path due to SSR issue:
 // https://github.com/cferdinandi/smooth-scroll/issues/481
 import SmoothScroll from 'smooth-scroll/dist/smooth-scroll'
+import { ARTICLE_ANCHOR_SCROLL } from '../../constants/anchor'
 
 const _ = {
   get,
@@ -436,8 +437,8 @@ export default class Body extends Component {
 
   componentDidMount() {
     // eslint-disable-next-line no-new
-    new SmoothScroll('[anchor-scroll]', {
-      speed: 500,
+    new SmoothScroll(`[${ARTICLE_ANCHOR_SCROLL}]`, {
+      speed: 200,
       easing: 'easeInOutCubic',
       emitEvents: true,
     })

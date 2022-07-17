@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect, createContext } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeContext } from 'styled-components'
-import { scroller } from 'react-scroll'
 // context
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 // constant
 import predefinedProps from '../../constants/prop-types/aside'
 import themeConst from '../../constants/theme'
-import { relatedPostAnchor } from '../../constants/anchor'
+import {
+  ARTICLE_ANCHOR_SCROLL,
+  RELATED_POST_ANCHOR_ID,
+} from '../../constants/anchor'
 // util
 import { getToolBarTheme } from './utils/theme'
 // @twreporter
@@ -371,21 +373,18 @@ const RelatedPost = () => {
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
-  const scrollToBottom = () => {
-    scroller.scrollTo(relatedPostAnchor, {
-      duration: 800,
-      smooth: 'easeInOutQuint',
-    })
-  }
+  const anchorScrollAttr = { [ARTICLE_ANCHOR_SCROLL]: 'true' }
 
   return (
-    <ButtonContainer onClick={scrollToBottom}>
-      <IconWithTextButton
-        text="相關文章"
-        iconComponent={<Article releaseBranch={releaseBranch} />}
-        theme={theme}
-        hideText={hideText}
-      />
+    <ButtonContainer>
+      <a href={`#${RELATED_POST_ANCHOR_ID}`} {...anchorScrollAttr}>
+        <IconWithTextButton
+          text="相關文章"
+          iconComponent={<Article releaseBranch={releaseBranch} />}
+          theme={theme}
+          hideText={hideText}
+        />
+      </a>
     </ButtonContainer>
   )
 }
