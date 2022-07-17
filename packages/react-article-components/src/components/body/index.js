@@ -447,14 +447,17 @@ export default class Body extends Component {
     })
     document.addEventListener(
       'scrollStart',
-      () => this._onAnchorClick(true),
+      () => this._onStartScrollingToAnchor(true),
       false
     )
     document.addEventListener(
       'scrollStop',
       () => {
         // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
-        setTimeout(() => this._onAnchorClick(false), WAIT_AFTER_REACH_ANCHOR)
+        setTimeout(
+          () => this._onStartScrollingToAnchor(false),
+          WAIT_AFTER_REACH_ANCHOR
+        )
       },
       false
     )
@@ -462,7 +465,7 @@ export default class Body extends Component {
 
   tocManager = TOC.createManager()
 
-  _onAnchorClick = (isScrollingToAnchor, callback) => {
+  _onStartScrollingToAnchor = (isScrollingToAnchor, callback) => {
     this.setState({ isScrollingToAnchor: isScrollingToAnchor }, () => {
       if (callback) {
         callback()
@@ -510,7 +513,7 @@ export default class Body extends Component {
         {enableTOC ? (
           <TOC.React.TableOfContents
             manager={this.tocManager}
-            onAnchorClick={this._onAnchorClick}
+            onAnchorClick={this._onStartScrollingToAnchor}
           />
         ) : null}
       </div>
