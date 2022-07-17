@@ -449,7 +449,7 @@ export default class Body extends Component {
     document.addEventListener(
       'scrollStop',
       () => {
-        // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed
+        // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
         setTimeout(() => {
           this._onAnchorClick(false)
         }, 50)
