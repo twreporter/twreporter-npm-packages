@@ -294,7 +294,7 @@ const ClearFloat = styled.div`
  * @param {ElementData} [data={}]
  * @returns
  */
-export function renderElement(data = {}, isAnchorScrolling) {
+export function renderElement(data = {}, isScrollingToAnchor) {
   const isCenterAligned =
     data.alignment === alignmentConsts.center ||
     data.alignment === alignmentConsts.centerSmall
@@ -336,7 +336,7 @@ export function renderElement(data = {}, isAnchorScrolling) {
             <AlignRight key={data.id}>
               <StyledEmbedded
                 data={data}
-                isAnchorScrolling={isAnchorScrolling}
+                isScrollingToAnchor={isScrollingToAnchor}
               />
             </AlignRight>
           )
@@ -346,7 +346,7 @@ export function renderElement(data = {}, isAnchorScrolling) {
             <StyledEmbeddedNormal
               key={data.id}
               data={data}
-              isAnchorScrolling={isAnchorScrolling}
+              isScrollingToAnchor={isScrollingToAnchor}
             />
           )
         case alignmentConsts.center:
@@ -355,7 +355,7 @@ export function renderElement(data = {}, isAnchorScrolling) {
             <StyledEmbedded
               key={data.id}
               data={data}
-              isAnchorScrolling={isAnchorScrolling}
+              isScrollingToAnchor={isScrollingToAnchor}
             />
           )
         }
@@ -434,7 +434,7 @@ export default class Body extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isAnchorScrolling: false,
+      isScrollingToAnchor: false,
     }
   }
 
@@ -462,8 +462,8 @@ export default class Body extends Component {
 
   tocManager = TOC.createManager()
 
-  _onAnchorClick = (isAnchorScrolling, callback) => {
-    this.setState({ isAnchorScrolling: isAnchorScrolling }, () => {
+  _onAnchorClick = (isScrollingToAnchor, callback) => {
+    this.setState({ isScrollingToAnchor: isScrollingToAnchor }, () => {
       if (callback) {
         callback()
       }
@@ -475,7 +475,7 @@ export default class Body extends Component {
       data.id = `body_element_${index}`
     }
 
-    return renderElement(data, this.state.isAnchorScrolling)
+    return renderElement(data, this.state.isScrollingToAnchor)
   }
 
   render() {

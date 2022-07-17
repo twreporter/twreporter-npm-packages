@@ -174,19 +174,19 @@ class EmbeddedCode extends React.PureComponent {
 // so here we apply waypoint wrapper to load infogram dynamically to avoid layout shifts for anchors.
 // https://twreporter-org.atlassian.net/browse/TWREPORTER-60
 const WayPointWrapper = props => {
-  const { isAnchorScrolling } = props
+  const { isScrollingToAnchor } = props
   const [isInViewPort, setIsInViewPort] = useState(false)
   const embedRef = useRef(null)
 
   useEffect(() => {
-    if (!isAnchorScrolling && isInViewPort) {
+    if (!isScrollingToAnchor && isInViewPort) {
       embedRef.current.loadEmbed()
     }
-  }, [isAnchorScrolling])
+  }, [isScrollingToAnchor])
 
   const onEnter = () => {
     setIsInViewPort(true)
-    if (!isAnchorScrolling) {
+    if (!isScrollingToAnchor) {
       embedRef.current.loadEmbed()
     }
   }
@@ -205,11 +205,11 @@ const WayPointWrapper = props => {
 }
 
 WayPointWrapper.defaultProps = {
-  isAnchorScrolling: false,
+  isScrollingToAnchor: false,
 }
 
 WayPointWrapper.propTypes = {
-  isAnchorScrolling: PropTypes.bool,
+  isScrollingToAnchor: PropTypes.bool,
 }
 
 export default WayPointWrapper
