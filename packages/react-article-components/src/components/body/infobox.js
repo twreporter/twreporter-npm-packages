@@ -150,10 +150,10 @@ export default class Infobox extends PureComponent {
     const mutatedContentHtmlString = contentHtmlString?.replace(
       anchorRegex,
       (anchorString, attrs) => {
-        // Here we append a custom attribute 'ARTICLE_ANCHOR_SCROLL' in order to apply
+        // Here we insert a custom attribute 'ARTICLE_ANCHOR_SCROLL' in order to apply
         // smooth scroll effect on <a href="#..."> anchors inside infobox
         return hashRegex.exec(anchorString)
-          ? `<a ${attrs} ${ARTICLE_ANCHOR_SCROLL}="true" />`
+          ? `<a ${ARTICLE_ANCHOR_SCROLL}="true" ${attrs}>`
           : anchorString
       }
     )
