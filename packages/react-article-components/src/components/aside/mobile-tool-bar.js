@@ -293,12 +293,14 @@ const BookmarkBlock = ({ articleMeta }) => {
     const iconType = isBookmarked ? 'saved' : 'add'
     const text = isBookmarked ? '已儲存' : '加入書籤'
     const id = isBookmarked ? 'remove-bookmark' : 'add-bookmark'
-    const handleClick = () => {
+    const handleClick = async () => {
       const action = isBookmarked ? removeAction : addAction
-      action()
-      setTimeout(() => {
-        toastr(isBookmarked)
-      }, 500)
+      try {
+        await action()
+      } catch (err) {
+        console.error('add bookmark fail', err)
+      }
+      toastr(isBookmarked)
     }
     return (
       <ButtonContainer onClick={handleClick} id={id}>
