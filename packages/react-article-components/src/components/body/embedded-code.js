@@ -1,17 +1,13 @@
-import React, { useRef } from 'react'
+import predefinedPropTypes from '../../constants/prop-types/body'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-import { Waypoint } from 'react-waypoint'
-
+import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
-
-// twreporter
-import themeConst from '../../constants/theme'
-import colorConst from '../../constants/color'
-import predefinedPropTypes from '../../constants/prop-types/body'
 
 const _ = {
   forEach,
@@ -59,9 +55,7 @@ function dispatchWindowLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
-const infogramEmbed = 'infogram'
-
-class EmbeddedCode extends React.PureComponent {
+export default class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData,
@@ -71,37 +65,12 @@ class EmbeddedCode extends React.PureComponent {
     className: '',
   }
 
-  state = {
-    isLoaded: false,
-  }
-
   constructor(props) {
     super(props)
     this._embedded = React.createRef()
-    const { caption, embeddedCodeWithoutScript } = _.get(
-      this.props,
-      ['data', 'content', 0],
-      {}
-    )
-    this._caption = caption
-    this._embeddedCodeWithoutScript = embeddedCodeWithoutScript
   }
 
   componentDidMount() {
-    // Delay loading infogram in loadEmbed()
-    if (!this._embeddedCodeWithoutScript?.includes(infogramEmbed)) {
-      this.executeScript()
-    }
-  }
-
-  componentWillUnmount() {
-    this._embedded = null
-    this._caption = null
-    this._embeddedCodeWithoutScript = null
-  }
-
-  executeScript = () => {
-    this.setState({ isLoaded: true })
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
     if (node && Array.isArray(scripts)) {
@@ -145,49 +114,21 @@ class EmbeddedCode extends React.PureComponent {
     }
   }
 
-  loadEmbed = () => {
-    if (!this.state.isLoaded) {
-      this.executeScript()
-    }
-  }
-
   render() {
     const { className } = this.props
-    const embed = (
+    const { caption, embeddedCodeWithoutScript } = _.get(
+      this.props,
+      ['data', 'content', 0],
+      {}
+    )
+    return (
       <div className={className}>
         <Block
           ref={this._embedded}
-          dangerouslySetInnerHTML={{ __html: this._embeddedCodeWithoutScript }}
+          dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
         />
-        {this._caption ? <Caption>{this._caption}</Caption> : null}
+        {caption ? <Caption>{caption}</Caption> : null}
       </div>
     )
-
-    if (this._embeddedCodeWithoutScript?.includes(infogramEmbed)) {
-      return this.state.isLoaded ? embed : null
-    }
-
-    return embed
   }
 }
-
-// Serious layout shifts show up when loading bunch of infograms due to lack of heights,
-// so here we apply waypoint wrapper to load infogram dynamically to avoid layout shifts for anchors.
-// https://twreporter-org.atlassian.net/browse/TWREPORTER-60
-const WayPointWrapper = props => {
-  const embedRef = useRef(null)
-
-  const onEnter = () => {
-    embedRef.current.loadEmbed()
-  }
-
-  return (
-    <Waypoint onEnter={onEnter} fireOnRapidScroll={false}>
-      <div>
-        <EmbeddedCode {...props} ref={embedRef} />
-      </div>
-    </Waypoint>
-  )
-}
-
-export default WayPointWrapper
