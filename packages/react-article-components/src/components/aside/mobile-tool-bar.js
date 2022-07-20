@@ -292,6 +292,7 @@ const BookmarkBlock = ({ articleMeta }) => {
   const renderIcon = (isBookmarked, addAction, removeAction) => {
     const iconType = isBookmarked ? 'saved' : 'add'
     const text = isBookmarked ? '已儲存' : '加入書籤'
+    const id = isBookmarked ? 'remove-bookmark' : 'add-bookmark'
     const handleClick = () => {
       const action = isBookmarked ? removeAction : addAction
       action()
@@ -300,7 +301,7 @@ const BookmarkBlock = ({ articleMeta }) => {
       }, 500)
     }
     return (
-      <ButtonContainer onClick={handleClick}>
+      <ButtonContainer onClick={handleClick} id={id}>
         <IconWithTextButton
           text={text}
           iconComponent={
