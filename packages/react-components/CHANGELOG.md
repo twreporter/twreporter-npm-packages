@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.11.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.11.0-rc.0...@twreporter/react-components@8.11.0) (2022-07-21)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.11.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0...@twreporter/react-components@8.11.0-rc.0) (2022-07-20)
+
+
+### Features
+
+* **react-components:** add junior link component ([d1c02f2](https://github.com/twreporter/twreporter-npm-packages/commit/d1c02f29688d1d93cadc9f15c35a3e8cccbf2ac9))
+
+
+
+
+
 # [8.10.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.10.0-rc.4...@twreporter/react-components@8.10.0) (2022-07-06)
 
 **Note:** Version bump only for package @twreporter/react-components

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.3.0-rc.0...@twreporter/index-page@1.3.0) (2022-07-21)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+# [1.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.16...@twreporter/index-page@1.3.0-rc.0) (2022-07-20)
+
+
+### Features
+
+* **index-page:** add junior box section for index page ([4d697bf](https://github.com/twreporter/twreporter-npm-packages/commit/4d697bf0ae5e874011c06a99dbdefc8209ae1178))
+
+
+
+
+
 ## [1.2.16](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.2.16-rc.4...@twreporter/index-page@1.2.16) (2022-07-06)
 
 **Note:** Version bump only for package @twreporter/index-page
