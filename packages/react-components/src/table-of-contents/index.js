@@ -7,7 +7,7 @@ import some from 'lodash/some'
 import sortBy from 'lodash/sortBy'
 import debounce from 'lodash/debounce'
 import { Waypoint } from 'react-waypoint'
-import smoothScroll from '../utils/smooth-scroll'
+import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
 
 const _ = {
   debounce,

@@ -4,6 +4,7 @@ import hoistStatics from 'hoist-non-react-statics'
 import { Waypoint } from 'react-waypoint'
 // lodash
 import get from 'lodash/get'
+import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
 
 const _ = {
   get,
@@ -129,10 +130,7 @@ function decorateSideBar(DecoratedComponent) {
       }
       const node = this.moduleMap[moduleID]
       if (node) {
-        window.scroll({
-          top: node.offsetTop,
-          behavior: 'smooth',
-        })
+        smoothScroll(node.offsetTop)
       }
       return null
     }

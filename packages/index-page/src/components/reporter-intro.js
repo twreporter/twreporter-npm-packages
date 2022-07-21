@@ -25,6 +25,7 @@ import ReporterIcon from '../static/reporter-large.svg'
 // @twreporter
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import { fontWeight } from '@twreporter/core/lib/constants/font'
+import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
 
 const mobileWidth = breakPoints.mobileMaxWidth
 const ContentContainer = styled(Section)`
@@ -158,10 +159,7 @@ class ReporterIntro extends React.PureComponent {
      */
     const element = document.getElementById('news-letter')
     if (element) {
-      window.scroll({
-        top: element.offsetTop,
-        behavior: 'smooth',
-      })
+      smoothScroll(element.offsetTop)
     }
   }
 
