@@ -293,6 +293,7 @@ const ClearFloat = styled.div`
  *
  * @export
  * @param {ElementData} [data={}]
+ * @param {boolean} isScrollingToAnchor - state of scrolling to an anchor or not
  * @returns
  */
 export function renderElement(data = {}, isScrollingToAnchor) {
