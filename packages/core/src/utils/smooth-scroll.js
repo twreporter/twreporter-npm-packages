@@ -10,7 +10,7 @@ const defaultDuration = 500
 export default function(el, duration, callback, context) {
   const position = function(start, end, elapsed, duration) {
     if (elapsed > duration) return end
-    return start + (end - start) * easeInOutCubic(elapsed / duration) // <-- you can change the easing funtion there
+    return start + (end - start) * easeInOutQuint(elapsed / duration) // <-- you can change the easing funtion there
     // return start + (end - start) * (elapsed / duration) // <-- this would give a linear scroll
   }
 
@@ -20,8 +20,8 @@ export default function(el, duration, callback, context) {
     return element.getBoundingClientRect().top + start
   }
 
-  const easeInOutCubic = function(t) {
-    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+  const easeInOutQuint = function(t) {
+    return t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2
   }
 
   duration = duration || defaultDuration

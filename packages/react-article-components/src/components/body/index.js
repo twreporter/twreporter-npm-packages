@@ -447,7 +447,7 @@ export default class Body extends Component {
     new SmoothScroll(`[${ARTICLE_ANCHOR_SCROLL}]`, {
       speed: ANCHOR_SCROLL_DURATION,
       speedAsDuration: true,
-      easing: 'easeInOutCubic',
+      easing: 'easeInOutQuint',
       emitEvents: true,
     })
     document.addEventListener('scrollStart', this._scrollStartHandler, false)
