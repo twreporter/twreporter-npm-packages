@@ -4,6 +4,8 @@ import hoistStatics from 'hoist-non-react-statics'
 import { Waypoint } from 'react-waypoint'
 // lodash
 import get from 'lodash/get'
+
+// twreporter
 import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
 
 const _ = {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import memoize from 'memoize-one'
 import { Waypoint } from 'react-waypoint'
 
-// @twreporter
+// twreporter
 import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
 
 // lodash
