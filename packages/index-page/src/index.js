@@ -8,7 +8,6 @@ import LatestTopicSection from './components/latest-topic'
 import NewsLetterSection from './components/news-letter-section'
 import PhotographySection from './components/photography-section'
 import PodcastBoxSection from './components/podcast-box-section'
-import ReporterIntro from './components/reporter-intro'
 import ReviewsSection from './components/reviews'
 import ScrollFadein from './components/animations/scroll-fadein'
 import SeachBox from './components/search-box'
@@ -26,7 +25,6 @@ export default {
     NewsLetterSection,
     PhotographySection,
     PodcastBoxSection,
-    ReporterIntro,
     ReviewsSection,
     ScrollFadein,
     SeachBox,
