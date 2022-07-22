@@ -449,25 +449,28 @@ export default class Body extends Component {
       easing: 'easeInOutCubic',
       emitEvents: true,
     })
-    document.addEventListener(
-      'scrollStart',
-      () => this._onStartScrollingToAnchor(true),
-      false
-    )
-    document.addEventListener(
-      'scrollStop',
-      () => {
-        // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
-        setTimeout(
-          () => this._onStartScrollingToAnchor(false),
-          WAIT_AFTER_REACH_ANCHOR
-        )
-      },
-      false
-    )
+    document.addEventListener('scrollStart', this._scrollStartHandler, false)
+    document.addEventListener('scrollStop', this._scrollStopHandler, false)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scrollStart', this._scrollStartHandler)
+    document.removeEventListener('scrollStop', this._scrollStopHandler)
   }
 
   tocManager = TOC.createManager()
+
+  _scrollStartHandler = () => {
+    this._onStartScrollingToAnchor(true)
+  }
+
+  _scrollStopHandler = () => {
+    // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
+    setTimeout(
+      () => this._onStartScrollingToAnchor(false),
+      WAIT_AFTER_REACH_ANCHOR
+    )
+  }
 
   _onStartScrollingToAnchor = (isScrollingToAnchor, callback) => {
     this.setState({ isScrollingToAnchor: isScrollingToAnchor }, () => {
