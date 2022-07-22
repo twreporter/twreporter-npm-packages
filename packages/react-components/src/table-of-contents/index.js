@@ -1,13 +1,17 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
+import memoize from 'memoize-one'
+import { Waypoint } from 'react-waypoint'
+
+// @twreporter
+import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
+
+// lodash
 import get from 'lodash/get'
 import indexOf from 'lodash/indexOf'
-import memoize from 'memoize-one'
 import some from 'lodash/some'
 import sortBy from 'lodash/sortBy'
 import debounce from 'lodash/debounce'
-import { Waypoint } from 'react-waypoint'
-import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
 
 const _ = {
   debounce,
