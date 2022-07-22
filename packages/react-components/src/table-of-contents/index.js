@@ -5,6 +5,7 @@ import { Waypoint } from 'react-waypoint'
 
 // @twreporter
 import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
+import { ANCHOR_SCROLL_DURATION } from '@twreporter/react-article-components/lib/constants/anchor'
 
 // lodash
 import get from 'lodash/get'
@@ -338,8 +339,6 @@ class Anchor extends React.PureComponent {
   }
 }
 
-const defaultScrollDuration = 500
-
 class TableOfContents extends React.PureComponent {
   static propTypes = {
     manager: PropTypes.instanceOf(TOCManager).isRequired,
@@ -351,7 +350,6 @@ class TableOfContents extends React.PureComponent {
      *  @param {Function} handleAnchorClick - callback function for handling clicking anchor
      */
     render: PropTypes.func,
-    scrollDuration: PropTypes.number,
   }
 
   constructor(props) {
@@ -384,7 +382,7 @@ class TableOfContents extends React.PureComponent {
    *  @returns
    */
   _handleAnchorClick(anchorID, callback) {
-    const { manager, scrollDuration } = this.props
+    const { manager } = this.props
     const anchors = manager.anchors
     _.some(anchors, anchor => {
       if (anchorID === anchor.anchorID) {
@@ -396,7 +394,7 @@ class TableOfContents extends React.PureComponent {
             manager.toStopAutoUpdateHighlightAnchor = true
             smoothScroll(
               anchor.getViewportTop(),
-              scrollDuration || defaultScrollDuration,
+              ANCHOR_SCROLL_DURATION,
               () => {
                 manager.toStopAutoUpdateHighlightAnchor = false
                 if (callback) {
