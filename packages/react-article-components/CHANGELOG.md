@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.0...@twreporter/react-article-components@1.6.1-rc.0) (2022-07-25)
+
+
+### Bug Fixes
+
+* add id for bookmark & fix icon releaseBranch ([760a8ba](https://github.com/twreporter/twreporter-npm-packages/commit/760a8bab17f85ba1f04f7d4853dbb4b722992778))
+* pop out snackbar asynchrously ([00988cc](https://github.com/twreporter/twreporter-npm-packages/commit/00988cc6eb76cebb83818c81befbfeba2f47e843))
+
+
+
+
+
 # [1.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.0-rc.2...@twreporter/react-article-components@1.6.0) (2022-07-21)
 
 **Note:** Version bump only for package @twreporter/react-article-components
