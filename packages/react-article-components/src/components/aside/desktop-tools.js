@@ -1,7 +1,7 @@
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import PropTypes from 'prop-types'
-import React from 'react'
-import styled, { css } from 'styled-components'
+import React, { useContext } from 'react'
+import styled, { css, ThemeContext } from 'styled-components'
 // constants
 import themeConst from '../../constants/theme'
 import predefinedProps from '../../constants/prop-types/aside'
@@ -185,6 +185,8 @@ const ToolsBlock = styled.div`
 `
 
 function FBShareBT(props) {
+  const themeContext = useContext(ThemeContext)
+  const { releaseBranch } = themeContext
   const handleClick = () => {
     const currentURL = window.location.href
     const location =
@@ -199,7 +201,7 @@ function FBShareBT(props) {
 
   return (
     <ShareIconBlock id="fb-share">
-      <Facebook onClick={handleClick} />
+      <Facebook onClick={handleClick} releaseBranch={releaseBranch} />
     </ShareIconBlock>
   )
 }
@@ -209,6 +211,8 @@ FBShareBT.propTypes = {
 }
 
 function TwitterShareBT(props) {
+  const themeContext = useContext(ThemeContext)
+  const { releaseBranch } = themeContext
   const handleClick = () => {
     const currentURL = window.location.href
     const location =
@@ -222,12 +226,14 @@ function TwitterShareBT(props) {
 
   return (
     <ShareIconBlock id="twitter-share">
-      <Twitter onClick={handleClick} />
+      <Twitter onClick={handleClick} releaseBranch={releaseBranch} />
     </ShareIconBlock>
   )
 }
 
 function LineShareBT(props) {
+  const themeContext = useContext(ThemeContext)
+  const { releaseBranch } = themeContext
   const handleClick = () => {
     const currentURL = window.location.href
     const location = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(
@@ -239,21 +245,58 @@ function LineShareBT(props) {
 
   return (
     <ShareIconBlock id="line-share">
-      <Line onClick={handleClick} />
+      <Line onClick={handleClick} releaseBranch={releaseBranch} />
     </ShareIconBlock>
   )
 }
 
-function BookmarkIcon(isBookmarked, addAction, removeAction) {
-  const iconType = isBookmarked ? 'saved' : 'add'
+const BookmarkBlock = ({ articleMeta }) => {
+  const themeContext = useContext(ThemeContext)
+  const { releaseBranch } = themeContext
+  const renderIcon = (isBookmarked, addAction, removeAction) => {
+    const iconType = isBookmarked ? 'saved' : 'add'
+    const id = isBookmarked ? 'remove-bookmark' : 'add-bookmark'
+    return (
+      <BookmarkIconBlock
+        onClick={isBookmarked ? removeAction : addAction}
+        isBookmarked={isBookmarked}
+        id={id}
+      >
+        <Bookmark type={iconType} releaseBranch={releaseBranch} />
+      </BookmarkIconBlock>
+    )
+  }
+
   return (
-    <BookmarkIconBlock
-      onClick={isBookmarked ? removeAction : addAction}
-      isBookmarked={isBookmarked}
-    >
-      <Bookmark type={iconType} />
-    </BookmarkIconBlock>
+    <BookmarkWidget
+      toAutoCheck={false}
+      articleMeta={articleMeta}
+      renderIcon={renderIcon}
+    />
   )
+}
+BookmarkBlock.propTypes = {
+  articleMeta: predefinedProps.tools.articleMetaForBookmark,
+}
+
+const BackToTopic = ({ backToTopic }) => {
+  const themeContext = useContext(ThemeContext)
+  const { releaseBranch } = themeContext
+
+  return (
+    <DynamicComponentsContext.Consumer>
+      {components => (
+        <components.Link to={backToTopic} target="_self">
+          <BackToTopicBlock>
+            <Topic releaseBranch={releaseBranch} />
+          </BackToTopicBlock>
+        </components.Link>
+      )}
+    </DynamicComponentsContext.Consumer>
+  )
+}
+BackToTopic.propTypes = {
+  backToTopic: predefinedProps.tools.backToTopic,
 }
 
 const defaultFbAppID = '962589903815787'
@@ -265,34 +308,22 @@ const Tools = ({
   onFontLevelChange,
   articleMetaForBookmark,
 }) => {
+  const themeContext = useContext(ThemeContext)
+  const { releaseBranch } = themeContext
   const backToTopicJSX = backToTopic ? (
-    <DynamicComponentsContext.Consumer>
-      {components => {
-        return (
-          <components.Link to={backToTopic} target="_self">
-            <BackToTopicBlock>
-              <Topic />
-            </BackToTopicBlock>
-          </components.Link>
-        )
-      }}
-    </DynamicComponentsContext.Consumer>
+    <BackToTopic backToTopic={backToTopic} />
   ) : null
   const onPrinterClick = () => window.print()
 
   return (
     <ToolsBlock height={height}>
       {backToTopicJSX}
-      <BookmarkWidget
-        toAutoCheck={false}
-        articleMeta={articleMetaForBookmark}
-        renderIcon={BookmarkIcon}
-      />
+      <BookmarkBlock articleMeta={articleMetaForBookmark} />
       <TextIconBlock>
-        <Text onClick={onFontLevelChange} />
+        <Text onClick={onFontLevelChange} releaseBranch={releaseBranch} />
       </TextIconBlock>
       <PrintIconBlock>
-        <Printer onClick={onPrinterClick} />
+        <Printer onClick={onPrinterClick} releaseBranch={releaseBranch} />
       </PrintIconBlock>
       <FBShareBT appID={fbAppID || defaultFbAppID} />
       <TwitterShareBT />
