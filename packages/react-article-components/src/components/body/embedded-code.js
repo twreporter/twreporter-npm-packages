@@ -196,7 +196,16 @@ const WayPointWrapper = props => {
   }
 
   return (
-    <Waypoint onEnter={onEnter} onLeave={onLeave} fireOnRapidScroll={false}>
+    // Note: When an anchor is exactly below an infogram embed, onLeave() is not fired
+    // when jumping to the anchor because infogram's bottom boundary is just overlapped
+    // with viewport's top boundary. Setting topOffset is to shorter infogram's boundary
+    // a little bit to make sure onLeave() fires.
+    <Waypoint
+      onEnter={onEnter}
+      onLeave={onLeave}
+      fireOnRapidScroll={false}
+      topOffset={5}
+    >
       <div>
         <EmbeddedCode {...props} ref={embedRef} />
       </div>
