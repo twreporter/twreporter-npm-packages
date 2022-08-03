@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.2-rc.0...@twreporter/react-article-components@1.6.2-rc.1) (2022-08-03)
+
+
+### Bug Fixes
+
+* update isLoaded initially for non-infogram embed ([#296](https://github.com/twreporter/twreporter-npm-packages/issues/296)) ([714b12e](https://github.com/twreporter/twreporter-npm-packages/commit/714b12ebff7b36f970813435f7b268a92fde0250))
+
+
+
+
+
 ## [1.6.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.1...@twreporter/react-article-components@1.6.2-rc.0) (2022-07-27)
 
 **Note:** Version bump only for package @twreporter/react-article-components
