@@ -28,7 +28,7 @@ const useFontFaceObserver = (fontFaces = [], callback) => {
         console.error(`An error occurred during font loading`)
         console.log(e)
       })
-  }, [fontFacesString])
+  }, [fontFacesString, callback])
 
   return isResolved
 }
