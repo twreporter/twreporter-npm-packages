@@ -23,6 +23,8 @@ const fontWeight = {
 const fontFamily = {
   title: `${merriweather}, ${notoSerifTC}, ${serif}`,
   default: `${rosario}, ${notoSansTC}, ${sansSerif}`,
+  // use defaultFallback before ${notoSansTC} is fully loaded
+  defaultFallback: `${rosario}, ${sansSerif}`,
 }
 
 export default { fonts, fontWeight, fontFamily }
