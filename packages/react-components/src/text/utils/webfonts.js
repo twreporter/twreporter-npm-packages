@@ -11,6 +11,7 @@ const _ = {
 }
 
 const baseGCSDir = 'https://www.twreporter.org/assets/font/'
+const fileExt = '.woff2'
 
 const gcsFontFolder = {
   [fonts.notoSansTC]: 'NotoSansTC',
@@ -26,7 +27,7 @@ const getFontFaces = ({ font, folder }) => {
       font-family: "${font}";
       font-weight: ${fontWeight[fontWeightKey]};
       font-display: swap;
-      src: url("${baseGCSDir}${folder}/${fontWeightKey}.otf");
+      src: url("${baseGCSDir}${folder}/${fontWeightKey}${fileExt}");
     }
   `
   return _.reduce(
@@ -45,7 +46,6 @@ const fontFaces = {
   }),
 }
 
-const fileExt = '.otf'
 let fontGCSFiles = []
 
 _.forEach(fontFaces, function(fontFace, font) {
