@@ -1,9 +1,11 @@
 import { fonts, fontWeight } from '@twreporter/core/lib/constants/font'
 // lodash
+import forEach from 'lodash/forEach'
 import keys from 'lodash/keys'
 import reduce from 'lodash/reduce'
 
 const _ = {
+  forEach,
   keys,
   reduce,
 }
@@ -36,9 +38,22 @@ const getFontFaces = ({ font, folder }) => {
   )
 }
 
-export default {
+const fontFaces = {
   [fonts.notoSansTC]: getFontFaces({
     font: fonts.notoSansTC,
     folder: gcsFontFolder[fonts.notoSansTC],
   }),
 }
+
+const fileExt = '.otf'
+let fontGCSFiles = []
+
+_.forEach(fontFaces, function(fontFace, font) {
+  _.forEach(fontWeightKeys, fontWeightKey => {
+    fontGCSFiles.push(
+      `${baseGCSDir}${gcsFontFolder[font]}/${fontWeightKey}${fileExt}`
+    )
+  })
+})
+
+export default { fontFaces, fontGCSFiles }
