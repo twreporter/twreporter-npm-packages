@@ -1,12 +1,13 @@
 import React from 'react'
 import Tab from '../components/tab'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 export default {
   title: 'Title Bar/Tab',
   component: Tab,
 }
 
-const Template = (args) => <Tab {...args} />
+const Template = args => <Tab {...args} />
 
 export const tab = Template.bind({})
 tab.args = {
@@ -19,6 +20,7 @@ tab.args = {
     { text: '子分類5', isExternal: true, link: 'https://www.google.com' },
     { text: '子分類6', isExternal: true, link: 'https://www.google.com' },
   ],
+  releaseBranch: releaseBranchConsts.master,
 }
 
 export const animalTab = Template.bind({})
@@ -70,4 +72,5 @@ animalTab.args = {
     { text: '燕子', isExternal: true, link: 'https://www.google.com' },
     { text: '鴿子', isExternal: true, link: 'https://www.google.com' },
   ],
+  releaseBranch: releaseBranchConsts.release,
 }

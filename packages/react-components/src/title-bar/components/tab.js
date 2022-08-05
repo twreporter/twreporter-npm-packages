@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  createContext,
+} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu'
@@ -12,8 +18,11 @@ import CustomizedLink from '../../customized-link'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { colorBrand } from '@twreporter/core/lib/constants/color'
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 // const
+const BranchContext = createContext(releaseBranchConsts.master)
 const gradientMask =
   'linear-gradient(to left, rgba(241, 241, 241, 0), #F1F1F1 48px)'
 const tabPropType = PropTypes.shape({
@@ -50,7 +59,7 @@ const MobileOnly = styled.div`
 const TabItemContainer = styled.div`
   display: flex;
   flex-shrink: 0;
-  color: ${(props) => (props.isActive ? colorBrand.heavy : 'inherit')};
+  color: ${props => (props.isActive ? colorBrand.heavy : 'inherit')};
   a {
     color: unset;
     text-decoration: none;
@@ -64,7 +73,7 @@ const MobileTabContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  -webkit-mask-image: ${(props) =>
+  -webkit-mask-image: ${props =>
     props.showGradientMask ? gradientMask : 'none'};
   & > div {
     margin-right: 24px;
@@ -93,13 +102,13 @@ const DesktopTabContainer = styled.div`
 const ArrowContainer = styled.div`
   flex-shrink: 0;
   cursor: pointer;
-  visibility: ${(props) => (props.disabled ? 'hidden' : 'visible')};
-  opacity: ${(props) => (props.disabled ? '0' : '1')};
+  visibility: ${props => (props.disabled ? 'hidden' : 'visible')};
+  opacity: ${props => (props.disabled ? '0' : '1')};
   transition: visibility 0s opacity 0.5s linear;
 `
 
 const PrevArrowContainer = styled(ArrowContainer)`
-  ${(props) => (props.disabled ? 'display: none;' : '')}
+  ${props => (props.disabled ? 'display: none;' : '')}
 `
 
 const TabItem = ({ tab = {}, ...restProps }) => {
@@ -126,7 +135,7 @@ const useScrollStatus = (onHasScroll, falseOnScrollEnd) => {
   }, [ref, onHasScroll])
 
   useEffect(() => {
-    const handleScroll = (event) => {
+    const handleScroll = event => {
       if (
         ref.current.offsetWidth + ref.current.scrollLeft >=
         ref.current.scrollWidth
@@ -171,8 +180,10 @@ MobileTab.propTypes = {
 
 const LeftArrow = () => {
   const { isFirstItemVisible, scrollPrev } = useContext(VisibilityContext)
+  const releaseBranch = useContext(BranchContext)
   const prev = () => scrollPrev()
-  const iconComponent = <Arrow direction="left" />
+  const iconComponent = <Arrow direction="left" releaseBranch={releaseBranch} />
+
   return (
     <PrevArrowContainer onClick={prev} disabled={isFirstItemVisible}>
       <IconButton iconComponent={iconComponent} />
@@ -182,10 +193,14 @@ const LeftArrow = () => {
 
 const RightArrow = () => {
   const { isLastItemVisible, scrollNext } = useContext(VisibilityContext)
+  const releaseBranch = useContext(BranchContext)
   const next = () => {
     scrollNext()
   }
-  const iconComponent = <Arrow direction="right" />
+  const iconComponent = (
+    <Arrow direction="right" releaseBranch={releaseBranch} />
+  )
+
   return (
     <ArrowContainer onClick={next} disabled={isLastItemVisible}>
       <IconButton iconComponent={iconComponent} />
@@ -212,7 +227,7 @@ const DesktopTab = ({ tabs = [] }) => {
     )
   })
   // ease-out-quint
-  const transitionEaseFunc = (t) => 1 - --t * t * t * t
+  const transitionEaseFunc = t => 1 - --t * t * t * t
 
   return (
     <DesktopTabContainer>
@@ -231,21 +246,28 @@ DesktopTab.propTypes = {
   tabs: PropTypes.arrayOf(tabPropType),
 }
 
-const TitleTab = ({ title = '', tabs = [] }) => (
-  <BarContainer>
-    <H1 text={title} />
-    <MobileOnly>
-      <MobileTab tabs={tabs} />
-    </MobileOnly>
-    <DesktopOnly>
-      <DesktopTab tabs={tabs} />
-    </DesktopOnly>
-    <Divider direction="horizontal" />
-  </BarContainer>
+const TitleTab = ({
+  title = '',
+  tabs = [],
+  releaseBranch = releaseBranchConsts.master,
+}) => (
+  <BranchContext.Provider value={releaseBranch}>
+    <BarContainer>
+      <H1 text={title} />
+      <MobileOnly>
+        <MobileTab tabs={tabs} />
+      </MobileOnly>
+      <DesktopOnly>
+        <DesktopTab tabs={tabs} />
+      </DesktopOnly>
+      <Divider direction="horizontal" />
+    </BarContainer>
+  </BranchContext.Provider>
 )
 TitleTab.propTypes = {
   title: PropTypes.string,
   tabs: PropTypes.arrayOf(tabPropType),
+  releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
 export default TitleTab
