@@ -1,6 +1,5 @@
 import React from 'react'
 import Tab from '../components/tab'
-import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 export default {
   title: 'Title Bar/Tab',
@@ -20,7 +19,22 @@ tab.args = {
     { text: '子分類5', isExternal: true, link: 'https://www.google.com' },
     { text: '子分類6', isExternal: true, link: 'https://www.google.com' },
   ],
-  releaseBranch: releaseBranchConsts.master,
+}
+
+export const humanRightsTab = Template.bind({})
+humanRightsTab.args = {
+  title: '人權司法',
+  tabs: [
+    { text: '全部', isExternal: true, link: 'https://www.google.com' },
+    { text: '性別', isExternal: true, link: 'https://www.google.com' },
+    { text: '勞動', isExternal: true, link: 'https://www.google.com' },
+    { text: '移工與移民', isExternal: true, link: 'https://www.google.com' },
+    { text: '居住正義', isExternal: true, link: 'https://www.google.com' },
+    { text: '轉型正義', isExternal: true, link: 'https://www.google.com' },
+    { text: '精神疾病', isExternal: true, link: 'https://www.google.com' },
+    { text: '司法改革', isExternal: true, link: 'https://www.google.com' },
+    { text: '數位人權', isExternal: true, link: 'https://www.google.com' },
+  ],
 }
 
 export const animalTab = Template.bind({})
@@ -72,5 +86,4 @@ animalTab.args = {
     { text: '燕子', isExternal: true, link: 'https://www.google.com' },
     { text: '鴿子', isExternal: true, link: 'https://www.google.com' },
   ],
-  releaseBranch: releaseBranchConsts.release,
 }
