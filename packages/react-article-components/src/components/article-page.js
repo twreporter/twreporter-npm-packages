@@ -441,6 +441,7 @@ export default class Article extends PureComponent {
                   <DesktopAside
                     backToTopic={backToTopic}
                     categories={post.categories}
+                    // categorySets={post.categorySet} // TODO: integrate categorySet
                     date={post.published_date}
                     designers={post.designers}
                     photographers={post.photographers}

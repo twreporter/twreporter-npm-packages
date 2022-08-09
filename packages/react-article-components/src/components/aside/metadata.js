@@ -250,6 +250,7 @@ class Metadata extends PureComponent {
 
   static defaultProps = {
     categories: [],
+    // categorySet: [],
     tags: [],
     writers: [],
     photographers: [],
@@ -292,6 +293,11 @@ class Metadata extends PureComponent {
         </DynamicComponentsContext.Consumer>
       </CategoryFlexBox>
     )
+  }
+
+  renderCategorySetSection() {
+    // TODO: render categorySet
+    return <div>Hello</div>
   }
 
   renderTagsSection() {
@@ -375,6 +381,7 @@ class Metadata extends PureComponent {
     return (
       <MetadataContainer>
         {this.renderCategorySection()}
+        {/* TODO: feature toggle */ this.renderCategorySetSection()}
         <DateSection>{date}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}

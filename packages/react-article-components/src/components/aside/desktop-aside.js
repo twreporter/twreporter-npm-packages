@@ -112,6 +112,7 @@ export default class Aside extends React.PureComponent {
       articleMetaForBookmark,
       backToTopic,
       categories,
+      // categorySet,
       date,
       designers,
       engineers,
@@ -126,6 +127,7 @@ export default class Aside extends React.PureComponent {
     const metadataJSX = (
       <Metadata
         categories={categories}
+        // categorySet={categorySet}
         date={date}
         designers={designers}
         photographers={photographers}
