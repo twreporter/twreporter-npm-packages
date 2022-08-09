@@ -251,7 +251,13 @@ class Metadata extends PureComponent {
 
   static defaultProps = {
     categories: [],
-    categorySet: [],
+    // TODO: remove to []
+    categorySet: [
+      {
+        category: { id: 'category1', name: 'category1' },
+        subcategory: { id: 'subcategory1', name: 'subcategory1' },
+      },
+    ],
     tags: [],
     writers: [],
     photographers: [],
@@ -297,9 +303,20 @@ class Metadata extends PureComponent {
   }
 
   renderCategorySetSection() {
-    // TODO: render categorySet
-    // const { categorySet } = this.props
-    return <div>Hello</div>
+    // TODO: how to generate link? style?
+    const { categorySet } = this.props
+    return (
+      <div>
+        {categorySet.map((set, index) => {
+          return (
+            <React.Fragment key={`categorySet-${index}`}>
+              <a href="#">{set.category.name}</a>
+              <a href="#">{set.subcategory.name}</a>
+            </React.Fragment>
+          )
+        })}
+      </div>
+    )
   }
 
   renderTagsSection() {
