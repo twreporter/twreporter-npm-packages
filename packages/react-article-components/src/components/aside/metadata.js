@@ -306,54 +306,44 @@ class Metadata extends PureComponent {
     )
   }
 
+  // TODO: style
   renderCategorySetSection() {
-    // TODO: how to generate link? style?
     const { categorySet } = this.props
-    /*
-    return (
-      <CategoryFlexBox>
-        {categorySet.map((set, index) => {
-          return (
-            <React.Fragment key={`categorySet-${index}`}>
-              <a href="#">{set.category.name}</a>
-              <a href="#">{set.subcategory.name}</a>
-            </React.Fragment>
-          )
-        })}
-      </CategoryFlexBox>
-    )
-    */
     return (
       <CategoryFlexBox>
         <DynamicComponentsContext.Consumer>
           {components => {
             const numOfCats = _.get(categorySet, 'length', 0)
             const categorySetJSX = _.map(categorySet, (set, index) => {
-              // if only one category,
-              // then `flexGrow = 1`,
-              // which makes flex item fill the flex box.
               const flexGrow = numOfCats === 1 ? 1 : index
               return (
-                <CategoryFlex key={`categorySet_${index}`} flexGrow={flexGrow}>
-                  <components.Link
-                    to={`/categories/`} // TODO: find link destination
+                set && (
+                  <CategoryFlex
+                    key={`categorySet_${index}`}
+                    flexGrow={flexGrow}
                   >
-                    <CategoryText
-                      style={{ fontWeight: index === 0 ? 'bold' : 'normal' }}
+                    <components.Link
+                      to={`/categories/${set.category.id}`} /* TODO: categories link */
                     >
-                      {set.category.name}
-                    </CategoryText>
-                  </components.Link>
-                  <components.Link
-                    to={`/categories/`} // TODO: find link destination
-                  >
-                    <CategoryText
-                      style={{ fontWeight: index === 0 ? 'bold' : 'normal' }}
-                    >
-                      {set.subcategory.name}
-                    </CategoryText>
-                  </components.Link>
-                </CategoryFlex>
+                      <CategoryText
+                        style={{ fontWeight: index === 0 ? 'bold' : 'normal' }}
+                      >
+                        {set.category.name}
+                      </CategoryText>
+                    </components.Link>
+                    {set.subcategory?.id && (
+                      <components.Link to={`/tags/${set.subcategory.id}`}>
+                        <CategoryText
+                          style={{
+                            fontWeight: index === 0 ? 'bold' : 'normal',
+                          }}
+                        >
+                          {set.subcategory.name}
+                        </CategoryText>
+                      </components.Link>
+                    )}
+                  </CategoryFlex>
+                )
               )
             })
             return categorySetJSX
