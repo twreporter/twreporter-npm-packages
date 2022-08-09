@@ -10,6 +10,7 @@ import themeConst from '../../constants/theme'
 import colorConst from '../../constants/color'
 import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
+import enableCategorySet from '../../constants/feature-flag'
 
 const _ = {
   get,
@@ -381,7 +382,7 @@ class Metadata extends PureComponent {
     return (
       <MetadataContainer>
         {this.renderCategorySection()}
-        {/* TODO: feature toggle */ this.renderCategorySetSection()}
+        {enableCategorySet && this.renderCategorySetSection()}
         <DateSection>{date}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}
