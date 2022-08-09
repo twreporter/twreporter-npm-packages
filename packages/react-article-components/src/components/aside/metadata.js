@@ -254,8 +254,12 @@ class Metadata extends PureComponent {
     // TODO: remove to []
     categorySet: [
       {
-        category: { id: 'category1', name: '分類' },
-        subcategory: { id: 'subcategory1', name: '子分類' },
+        category: { id: 'category1', name: '分類1' },
+        subcategory: { id: 'subcategory1', name: '子分類1' },
+      },
+      {
+        category: { id: 'category2', name: '分類2' },
+        subcategory: { id: 'subcategory2', name: '子分類2' },
       },
     ],
     tags: [],
@@ -305,8 +309,9 @@ class Metadata extends PureComponent {
   renderCategorySetSection() {
     // TODO: how to generate link? style?
     const { categorySet } = this.props
+    /*
     return (
-      <div>
+      <CategoryFlexBox>
         {categorySet.map((set, index) => {
           return (
             <React.Fragment key={`categorySet-${index}`}>
@@ -315,7 +320,46 @@ class Metadata extends PureComponent {
             </React.Fragment>
           )
         })}
-      </div>
+      </CategoryFlexBox>
+    )
+    */
+    return (
+      <CategoryFlexBox>
+        <DynamicComponentsContext.Consumer>
+          {components => {
+            const numOfCats = _.get(categorySet, 'length', 0)
+            const categorySetJSX = _.map(categorySet, (set, index) => {
+              // if only one category,
+              // then `flexGrow = 1`,
+              // which makes flex item fill the flex box.
+              const flexGrow = numOfCats === 1 ? 1 : index
+              return (
+                <CategoryFlex key={`categorySet_${index}`} flexGrow={flexGrow}>
+                  <components.Link
+                    to={`/categories/`} // TODO: find link destination
+                  >
+                    <CategoryText
+                      style={{ fontWeight: index === 0 ? 'bold' : 'normal' }}
+                    >
+                      {set.category.name}
+                    </CategoryText>
+                  </components.Link>
+                  <components.Link
+                    to={`/categories/`} // TODO: find link destination
+                  >
+                    <CategoryText
+                      style={{ fontWeight: index === 0 ? 'bold' : 'normal' }}
+                    >
+                      {set.subcategory.name}
+                    </CategoryText>
+                  </components.Link>
+                </CategoryFlex>
+              )
+            })
+            return categorySetJSX
+          }}
+        </DynamicComponentsContext.Consumer>
+      </CategoryFlexBox>
     )
   }
 
@@ -399,8 +443,8 @@ class Metadata extends PureComponent {
 
     return (
       <MetadataContainer>
-        {this.renderCategorySection()}
         {enableCategorySet && this.renderCategorySetSection()}
+        {!enableCategorySet && this.renderCategorySection()}
         <DateSection>{date}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}
