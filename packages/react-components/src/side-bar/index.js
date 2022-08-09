@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import hoistStatics from 'hoist-non-react-statics'
-import smoothScroll from 'smoothscroll'
 import { Waypoint } from 'react-waypoint'
 // lodash
 import get from 'lodash/get'
+
+// twreporter
+import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
 
 const _ = {
   get,
@@ -130,8 +132,7 @@ function decorateSideBar(DecoratedComponent) {
       }
       const node = this.moduleMap[moduleID]
       if (node) {
-        // scroll to the section
-        return smoothScroll(node.offsetTop)
+        smoothScroll(node.offsetTop)
       }
       return null
     }
