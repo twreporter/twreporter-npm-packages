@@ -395,6 +395,7 @@ export default class Article extends PureComponent {
       <MetadataAndToolsBlock>
         <Metadata
           categories={post.categories}
+          categorySet={post.categorySet}
           date={post.published_date}
           designers={post.designers}
           photographers={post.photographers}
@@ -441,7 +442,7 @@ export default class Article extends PureComponent {
                   <DesktopAside
                     backToTopic={backToTopic}
                     categories={post.categories}
-                    // categorySets={post.categorySet} // TODO: integrate categorySet
+                    categorySet={post.categorySet}
                     date={post.published_date}
                     designers={post.designers}
                     photographers={post.photographers}

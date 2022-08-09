@@ -251,7 +251,7 @@ class Metadata extends PureComponent {
 
   static defaultProps = {
     categories: [],
-    // categorySet: [],
+    categorySet: [],
     tags: [],
     writers: [],
     photographers: [],
@@ -298,6 +298,7 @@ class Metadata extends PureComponent {
 
   renderCategorySetSection() {
     // TODO: render categorySet
+    // const { categorySet } = this.props
     return <div>Hello</div>
   }
 
