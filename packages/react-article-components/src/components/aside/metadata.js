@@ -254,8 +254,8 @@ class Metadata extends PureComponent {
     // TODO: remove to []
     categorySet: [
       {
-        category: { id: 'category1', name: 'category1' },
-        subcategory: { id: 'subcategory1', name: 'subcategory1' },
+        category: { id: 'category1', name: '分類' },
+        subcategory: { id: 'subcategory1', name: '子分類' },
       },
     ],
     tags: [],
