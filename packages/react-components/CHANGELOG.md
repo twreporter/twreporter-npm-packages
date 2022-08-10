@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.11.1...@twreporter/react-components@8.12.0-rc.0) (2022-08-10)
+
+
+### Bug Fixes
+
+* **react-components:** add callback as dep of use-font-observer-hook ([9f91ce9](https://github.com/twreporter/twreporter-npm-packages/commit/9f91ce928b0e94c8b29600f44438ea37f45e5c03))
+
+
+### Features
+
+* **react-components:** add NotoSansTC fontface ([046cdb5](https://github.com/twreporter/twreporter-npm-packages/commit/046cdb501b5133fb120cf66401929145ad2c79da))
+* **react-components:** add use-font-face-observer hook ([f2ffa6d](https://github.com/twreporter/twreporter-npm-packages/commit/f2ffa6d9215737046d246aa34dd468a2ff0d15f2))
+* **react-components:** export font files as `fontGCSFiles` ([a8b940c](https://github.com/twreporter/twreporter-npm-packages/commit/a8b940c796dc039cb769f09b8d6bcc0002a22bcf))
+
+
+
+
+
 ## [8.11.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.11.1-rc.0...@twreporter/react-components@8.11.1) (2022-08-09)
 
 **Note:** Version bump only for package @twreporter/react-components

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.4.2...@twreporter/core@1.5.0-rc.0) (2022-08-10)
+
+
+### Features
+
+* **core:** add `defaultFallback` font-family into font ([c7a84a2](https://github.com/twreporter/twreporter-npm-packages/commit/c7a84a23f1bf001717dbf0c7be7711f132dc9b93))
+* **core:** export fonts as a constant ([c9c9cdc](https://github.com/twreporter/twreporter-npm-packages/commit/c9c9cdcb3a0c7b3368d56d09ea73780533ff9ab7))
+
+
+
+
+
 ## [1.4.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.4.2-rc.0...@twreporter/core@1.4.2) (2022-08-09)
 
 **Note:** Version bump only for package @twreporter/core

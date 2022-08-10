@@ -17,7 +17,6 @@ import Tools from './aside/desktop-tools'
 // constants
 import themeConst from '../constants/theme'
 import colorConst from '../constants/color'
-import typography from '../constants/typography'
 import { RELATED_POST_ANCHOR_ID } from '../constants/anchor'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -28,10 +27,6 @@ import get from 'lodash/get'
 const _ = {
   get,
 }
-
-const fontFamilyCss = css`
-  font-family: ${typography.font.family.default};
-`
 
 const shiftLeftCss = css`
   position: relative;
@@ -181,7 +176,6 @@ const RelatedBlock = styled.div`
 `
 
 const BackgroundBlock = styled(BorderBox)`
-  ${fontFamilyCss}
   ${props => getBackgroundBlockStyles(props.theme.name)}
 
   @media print {
