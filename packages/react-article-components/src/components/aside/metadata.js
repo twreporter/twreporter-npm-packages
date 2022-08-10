@@ -45,13 +45,32 @@ const CategoryFlexBox = styled.div`
   display: flex;
 `
 
+const CategoryFlex = styled.div`
+  ${props => createLine('top', props.theme.name)}
+  flex-grow: ${props => props.flexGrow};
+
+  ${mq.tabletAndBelow`
+    padding-right: 15px;
+    padding-left: 15px;
+  `}
+
+  ${mq.desktopAndAbove`
+    padding-right: 5px;
+    padding-left: 5px;
+  `}
+`
+
 const CategorySetFlexBox = styled.div`
   display: flex;
   flex-direction: column;
 `
 
-const CategoryFlex = styled.div`
-  ${props => createLine('top', props.theme.name)}
+const LinkContainer = styled.div`
+  display: flex;
+`
+
+const CategorySetFlex = styled.div`
+  ${props => props.isTop && createLine('top', props.theme.name)}
   flex-grow: ${props => props.flexGrow};
 
   ${mq.tabletAndBelow`
@@ -259,12 +278,20 @@ class Metadata extends PureComponent {
     // TODO: remove to []
     categorySet: [
       {
+        category: { id: 'category4', name: '分類4' },
+        subcategory: undefined,
+      },
+      {
         category: { id: 'category1', name: '分類1' },
         subcategory: { id: 'subcategory1', name: '子分類1' },
       },
       {
         category: { id: 'category2', name: '分類2' },
         subcategory: { id: 'subcategory2', name: '子分類2' },
+      },
+      {
+        category: { id: 'category3', name: '分類3' },
+        subcategory: undefined,
       },
     ],
     tags: [],
@@ -319,36 +346,36 @@ class Metadata extends PureComponent {
         <DynamicComponentsContext.Consumer>
           {components => {
             const categorySetJSX = _.map(categorySet, (set, index) => {
-              const genLink = (path, name, isbold = false) => {
+              const genLink = (path, name, isCategory = false) => {
                 return (
-                  path &&
-                  name && (
-                    <components.Link to={path}>
-                      <CategoryText
-                        style={{ fontWeight: isbold ? 'bold' : 'normal' }}
-                      >
-                        {name}
-                      </CategoryText>
-                    </components.Link>
-                  )
+                  <CategorySetFlex
+                    flexGrow={isCategory ? 1 : 2}
+                    isTop={index === 0}
+                  >
+                    {path && name && (
+                      <components.Link to={path}>
+                        <CategoryText
+                          style={{ fontWeight: isCategory ? 'bold' : 'normal' }}
+                        >
+                          {name}
+                        </CategoryText>
+                      </components.Link>
+                    )}
+                  </CategorySetFlex>
                 )
               }
               return (
-                <div key={`categorySet-${index}`}>
-                  {set?.category?.id &&
-                    set?.category?.name &&
-                    genLink(
-                      `/categories/${set.category.id}`,
-                      set.category.name,
-                      true
-                    )}
-                  {set?.subcategory?.id &&
-                    set?.subcategory?.name &&
-                    genLink(
-                      `/tags/${set.subcategory.id}`,
-                      set.subcategory.name
-                    )}
-                </div>
+                <LinkContainer key={`categorySet-${index}`}>
+                  {genLink(
+                    `/categories/${set?.category?.id}`,
+                    set?.category?.name,
+                    true
+                  )}
+                  {genLink(
+                    `/tags/${set?.subcategory?.id}`,
+                    set?.subcategory?.name
+                  )}
+                </LinkContainer>
               )
             })
             return categorySetJSX
