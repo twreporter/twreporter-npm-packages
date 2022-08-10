@@ -310,12 +310,10 @@ class Metadata extends PureComponent {
   renderCategorySetSection() {
     const { categorySet } = this.props
     return (
-      <CategoryFlexBox>
+      <CategoryFlexBox flexGrow={2}>
         <DynamicComponentsContext.Consumer>
           {components => {
-            const numOfCats = _.get(categorySet, 'length', 0)
             const categorySetJSX = _.map(categorySet, (set, index) => {
-              const flexGrow = numOfCats === 1 ? 1 : index
               const genLink = (path, name, isbold = false) => {
                 return (
                   path &&
@@ -331,7 +329,7 @@ class Metadata extends PureComponent {
                 )
               }
               return (
-                <CategoryFlex key={`categorySet_${index}`} flexGrow={flexGrow}>
+                <React.Fragment key={`categorySet-${index}`}>
                   {set?.category?.id &&
                     set?.category?.name &&
                     genLink(
@@ -345,7 +343,7 @@ class Metadata extends PureComponent {
                       `/tags/${set.subcategory.id}`,
                       set.subcategory.name
                     )}
-                </CategoryFlex>
+                </React.Fragment>
               )
             })
             return categorySetJSX
