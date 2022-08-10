@@ -316,34 +316,36 @@ class Metadata extends PureComponent {
             const numOfCats = _.get(categorySet, 'length', 0)
             const categorySetJSX = _.map(categorySet, (set, index) => {
               const flexGrow = numOfCats === 1 ? 1 : index
-              return (
-                set && (
-                  <CategoryFlex
-                    key={`categorySet_${index}`}
-                    flexGrow={flexGrow}
-                  >
-                    <components.Link
-                      to={`/categories/${set.category.id}`} /* TODO: categories link */
-                    >
+              const genLink = (path, name, isbold = false) => {
+                return (
+                  path &&
+                  name && (
+                    <components.Link to={path}>
                       <CategoryText
-                        style={{ fontWeight: index === 0 ? 'bold' : 'normal' }}
+                        style={{ fontWeight: isbold ? 'bold' : 'normal' }}
                       >
-                        {set.category.name}
+                        {name}
                       </CategoryText>
                     </components.Link>
-                    {set.subcategory?.id && (
-                      <components.Link to={`/tags/${set.subcategory.id}`}>
-                        <CategoryText
-                          style={{
-                            fontWeight: index === 0 ? 'bold' : 'normal',
-                          }}
-                        >
-                          {set.subcategory.name}
-                        </CategoryText>
-                      </components.Link>
-                    )}
-                  </CategoryFlex>
+                  )
                 )
+              }
+              return (
+                <CategoryFlex key={`categorySet_${index}`} flexGrow={flexGrow}>
+                  {set?.category?.id &&
+                    set?.category?.name &&
+                    genLink(
+                      `/categories/${set.category.id}`,
+                      set.category.name,
+                      true
+                    )}
+                  {set?.subcategory?.id &&
+                    set?.subcategory?.name &&
+                    genLink(
+                      `/tags/${set.subcategory.id}`,
+                      set.subcategory.name
+                    )}
+                </CategoryFlex>
               )
             })
             return categorySetJSX
