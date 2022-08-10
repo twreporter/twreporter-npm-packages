@@ -69,22 +69,24 @@ TabItem.propTypes = {
   tab: tabPropType,
 }
 
-const useScrollStatus = (onHasScroll, falseOnScrollEnd) => {
+const useScrollStatus = setShowNext => {
   const ref = useRef()
 
   useEffect(() => {
     if (ref.current.scrollWidth > ref.current.clientWidth) {
-      onHasScroll(true)
+      // scrollbar occur
+      setShowNext(true)
     }
-  }, [ref, onHasScroll])
+  }, [ref, setShowNext])
 
   useEffect(() => {
     const refEle = ref.current
     const handleScroll = event => {
       if (refEle.offsetWidth + refEle.scrollLeft >= refEle.scrollWidth) {
-        falseOnScrollEnd(false)
+        // scroll to end
+        setShowNext(false)
       } else {
-        falseOnScrollEnd(true)
+        setShowNext(true)
       }
     }
 
@@ -93,7 +95,7 @@ const useScrollStatus = (onHasScroll, falseOnScrollEnd) => {
     return () => {
       refEle.removeEventListener('scroll', handleScroll)
     }
-  }, [ref, falseOnScrollEnd])
+  }, [ref, setShowNext])
 
   return ref
 }
@@ -101,7 +103,7 @@ const useScrollStatus = (onHasScroll, falseOnScrollEnd) => {
 const MobileTab = ({ tabs = [], activeTabIndex = 0 }) => {
   const [activeIndex, setActiveIndex] = useState(activeTabIndex)
   const [showGradientMask, setShowGradientMask] = useState(false)
-  const ref = useScrollStatus(setShowGradientMask, setShowGradientMask)
+  const ref = useScrollStatus(setShowGradientMask)
   const tabJSX = tabs.map((tab, index) => {
     tab.isActive = index === activeIndex
     const handleClick = () => {
