@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.12.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.12.0-rc.0...@twreporter/react-components@8.12.0-rc.1) (2022-08-10)
+
+
+### Bug Fixes
+
+* add releaseBranch props for icon component ([bad00f5](https://github.com/twreporter/twreporter-npm-packages/commit/bad00f59878b08d15d52a58ac876f1fb210d101b))
+* address code review ([13aad8e](https://github.com/twreporter/twreporter-npm-packages/commit/13aad8ec84d702af53be830d1ecdb482c15efd3a))
+* remove DesktopTab in TitleTab component ([cde0983](https://github.com/twreporter/twreporter-npm-packages/commit/cde098305d6bdf9ebe847aebf9d70f253520608c))
+
+
+### Features
+
+* add title bar component for design guideline ([b96bdde](https://github.com/twreporter/twreporter-npm-packages/commit/b96bdde414bf068eb9521a627ce0414eb95867e2))
+
+
+
+
+
 # [8.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.11.1...@twreporter/react-components@8.12.0-rc.0) (2022-08-10)
 
 
