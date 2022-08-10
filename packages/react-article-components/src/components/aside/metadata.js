@@ -45,6 +45,11 @@ const CategoryFlexBox = styled.div`
   display: flex;
 `
 
+const CategorySetFlexBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 const CategoryFlex = styled.div`
   ${props => createLine('top', props.theme.name)}
   flex-grow: ${props => props.flexGrow};
@@ -310,7 +315,7 @@ class Metadata extends PureComponent {
   renderCategorySetSection() {
     const { categorySet } = this.props
     return (
-      <CategoryFlexBox flexGrow={2}>
+      <CategorySetFlexBox>
         <DynamicComponentsContext.Consumer>
           {components => {
             const categorySetJSX = _.map(categorySet, (set, index) => {
@@ -329,7 +334,7 @@ class Metadata extends PureComponent {
                 )
               }
               return (
-                <React.Fragment key={`categorySet-${index}`}>
+                <div key={`categorySet-${index}`}>
                   {set?.category?.id &&
                     set?.category?.name &&
                     genLink(
@@ -343,13 +348,13 @@ class Metadata extends PureComponent {
                       `/tags/${set.subcategory.id}`,
                       set.subcategory.name
                     )}
-                </React.Fragment>
+                </div>
               )
             })
             return categorySetJSX
           }}
         </DynamicComponentsContext.Consumer>
-      </CategoryFlexBox>
+      </CategorySetFlexBox>
     )
   }
 
