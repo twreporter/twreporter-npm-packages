@@ -69,13 +69,19 @@ const LinkContainer = styled.div`
   display: flex;
 `
 
+// TODO: style
 const CategorySetFlex = styled.div`
   ${props => props.isTop && createLine('top', props.theme.name)}
-  flex-grow: ${props => props.flexGrow};
+  ${props =>
+    props.isCategory &&
+    css`
+      min-width: 100px;
+    `}
+  flex-basis: ${props => (props.isCategory ? '100px' : 'calc(100% - 100px)')};
 
   ${mq.tabletAndBelow`
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
   `}
 
   ${mq.desktopAndAbove`
@@ -278,19 +284,19 @@ class Metadata extends PureComponent {
     // TODO: remove to []
     categorySet: [
       {
-        category: { id: 'category4', name: '分類4' },
+        category: { id: 'category4', name: '國際兩岸' },
         subcategory: undefined,
       },
       {
-        category: { id: 'category1', name: '分類1' },
-        subcategory: { id: 'subcategory1', name: '子分類1' },
+        category: { id: 'category1', name: '國際兩岸' },
+        subcategory: { id: 'subcategory1', name: '政黨與地方政治' },
       },
       {
-        category: { id: 'category2', name: '分類2' },
-        subcategory: { id: 'subcategory2', name: '子分類2' },
+        category: { id: 'category2', name: '國際兩岸' },
+        subcategory: { id: 'subcategory2', name: '病人自主權利' },
       },
       {
-        category: { id: 'category3', name: '分類3' },
+        category: { id: 'category3', name: '國際兩岸' },
         subcategory: undefined,
       },
     ],
@@ -338,7 +344,6 @@ class Metadata extends PureComponent {
     )
   }
 
-  // TODO: style
   renderCategorySetSection() {
     const { categorySet } = this.props
     return (
@@ -348,10 +353,7 @@ class Metadata extends PureComponent {
             const categorySetJSX = _.map(categorySet, (set, index) => {
               const genLink = (path, name, isCategory = false) => {
                 return (
-                  <CategorySetFlex
-                    flexGrow={isCategory ? 1 : 2}
-                    isTop={index === 0}
-                  >
+                  <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
                     {path && name && (
                       <components.Link to={path}>
                         <CategoryText
