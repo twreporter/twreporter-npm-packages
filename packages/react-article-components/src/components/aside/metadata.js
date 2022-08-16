@@ -69,7 +69,6 @@ const LinkContainer = styled.div`
   display: flex;
 `
 
-// TODO: style
 const CategorySetFlex = styled.div`
   ${props => props.isTop && createLine('top', props.theme.name)}
   ${props =>
@@ -281,25 +280,7 @@ class Metadata extends PureComponent {
 
   static defaultProps = {
     categories: [],
-    // TODO: remove to []
-    categorySet: [
-      {
-        category: { id: 'category4', name: '國際兩岸' },
-        subcategory: undefined,
-      },
-      {
-        category: { id: 'category1', name: '國際兩岸' },
-        subcategory: { id: 'subcategory1', name: '政黨與地方政治' },
-      },
-      {
-        category: { id: 'category2', name: '國際兩岸' },
-        subcategory: { id: 'subcategory2', name: '病人自主權利' },
-      },
-      {
-        category: { id: 'category3', name: '國際兩岸' },
-        subcategory: undefined,
-      },
-    ],
+    categorySet: [],
     tags: [],
     writers: [],
     photographers: [],

@@ -1,4 +1,4 @@
-const enableCategorySet = true
+const enableCategorySet = false
 
 export default {
   enableCategorySet,
