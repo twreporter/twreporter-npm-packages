@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.5.0...@twreporter/core@1.6.0-rc.0) (2022-08-17)
+
+
+### Bug Fixes
+
+* export name, too ([32d1633](https://github.com/twreporter/twreporter-npm-packages/commit/32d1633844abd9e57217e7b959c74621a24f11fc))
+* follow new naming rule ([e27dff1](https://github.com/twreporter/twreporter-npm-packages/commit/e27dff12d4f6a3f96bbebf1f0f2416a1d67dab55))
+
+
+### Features
+
+* add feature toggle for new information architecture ([74b5df5](https://github.com/twreporter/twreporter-npm-packages/commit/74b5df5abde708bb456e7a539807e013e5ebdff0))
+
+
+
+
+
 # [1.5.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.5.0-rc.0...@twreporter/core@1.5.0) (2022-08-11)
 
 **Note:** Version bump only for package @twreporter/core
