@@ -1,16 +1,20 @@
-import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import React, { PureComponent } from 'react'
+import styled, { css } from 'styled-components'
 import get from 'lodash/get'
 import map from 'lodash/map'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedProps from '../../constants/prop-types/aside'
 import sortBy from 'lodash/sortBy'
-import styled, { css } from 'styled-components'
+
+// components
+import DynamicComponentsContext from '../../contexts/dynamic-components-context'
+import predefinedProps from '../../constants/prop-types/aside'
 import themeConst from '../../constants/theme'
 import colorConst from '../../constants/color'
 import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
-import enableCategorySet from '../../constants/feature-flag'
+
+// twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 
 const _ = {
   get,
@@ -448,8 +452,8 @@ class Metadata extends PureComponent {
 
     return (
       <MetadataContainer>
-        {enableCategorySet && this.renderCategorySetSection()}
-        {!enableCategorySet && this.renderCategorySection()}
+        {ENABLE_NEW_INFO_ARCH && this.renderCategorySetSection()}
+        {!ENABLE_NEW_INFO_ARCH && this.renderCategorySection()}
         <DateSection>{date}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}
