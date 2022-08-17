@@ -7,6 +7,7 @@ import {
   fetchAFullPost,
   fetchPostsByCategoryListId,
   fetchPostsByTagListId,
+  fetchPostsByCategorySetListId,
   fetchRelatedPostsOfAnEntity,
 } from './posts'
 import { fetchAFullTopic, fetchFeatureTopic, fetchTopics } from './topics'
@@ -28,6 +29,7 @@ export default {
   fetchIndexPageContent,
   fetchPostsByCategoryListId,
   fetchPostsByTagListId,
+  fetchPostsByCategorySetListId,
   fetchRelatedPostsOfAnEntity,
   fetchTopics,
   getAccessToken,
