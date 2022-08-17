@@ -1,5 +1,1 @@
-const enableNewInfoArch = false
-
-export default {
-  enableNewInfoArch,
-}
+export const enableNewInfoArch = false
