@@ -263,7 +263,7 @@ function fetchPostsByListId(
       const action = {
         type: types.postsByListId.read.failure,
         payload: {
-          list,
+          listId: typeof listId === 'string' ? listId : '',
           error: new Error(reason),
         },
       }
@@ -272,11 +272,11 @@ function fetchPostsByListId(
     }
 
     if (typeof page !== 'number' || isNaN(page) || page < startPage) {
-      fail('page should be > 0')
+      return fail('page should be > 0')
     }
 
     if (typeof listId !== 'string' || !listId) {
-      fail(`listId should be a string and not empty, but got ${listId}`)
+      return fail(`listId should be a string and not empty, but got ${listId}`)
     }
 
     const state = getState()
@@ -305,7 +305,6 @@ function fetchPostsByListId(
     }
     if (listType === 'category_set_id') {
       const [categoryId, subcategoryId] = _.split(listId, '_')
-      console.log('C', categoryId, 'S', subcategoryId)
       params.category_id = categoryId
       params.subcategory_id = subcategoryId
     } else {
