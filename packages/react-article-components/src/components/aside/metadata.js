@@ -75,11 +75,7 @@ const LinkContainer = styled.div`
 
 const CategorySetFlex = styled.div`
   ${props => props.isTop && createLine('top', props.theme.name)}
-  ${props =>
-    props.isCategory &&
-    css`
-      min-width: 100px;
-    `}
+  ${props => props.isCategory && 'min-width: 100px;'}
   flex-basis: ${props => (props.isCategory ? '100px' : 'calc(100% - 100px)')};
 
   ${mq.tabletAndBelow`
