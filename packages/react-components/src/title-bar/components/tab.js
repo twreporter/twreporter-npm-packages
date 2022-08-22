@@ -7,7 +7,10 @@ import { P1 } from '../../text/paragraph'
 import Divider from '../../divider'
 import CustomizedLink from '../../customized-link'
 // @twreporter
-import { colorBrand } from '@twreporter/core/lib/constants/color'
+import {
+  colorBrand,
+  colorGrayscale,
+} from '@twreporter/core/lib/constants/color'
 
 // const
 const gradientMask =
@@ -23,6 +26,7 @@ const BarContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  color: ${colorGrayscale.gray800};
   & > div {
     margin-bottom: 16px;
     &:last-child {

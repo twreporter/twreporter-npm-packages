@@ -5,11 +5,14 @@ import styled from 'styled-components'
 import { H1 } from '../../text/headline'
 import { P1 } from '../../text/paragraph'
 import Divider from '../../divider'
+// @twreporter
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const BarContainer = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  color: ${colorGrayscale.gray800};
   & > div {
     margin-bottom: 16px;
     &:last-child {

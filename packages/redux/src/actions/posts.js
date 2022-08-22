@@ -10,11 +10,13 @@ import types from '../constants/action-types'
 import filter from 'lodash/filter'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
+import split from 'lodash/split'
 
 const _ = {
   filter,
   get,
   merge,
+  split,
 }
 
 const { entities, postsInEntities } = stateFieldNames
@@ -241,8 +243,9 @@ const startPage = 1
 /**
  * Fetch a listed posts(only containing meta properties),
  * such as the posts belonging to the same tag/category/topic.
- * @param {string} listId - id of tag or category
- * @param {string} listType - tag_id or category_id
+ * @param {string} listId - id of tag, category or category_set
+ * @param {string} listType - tag_id, category_id or category_set_id
+ *   category_set_id: `${category_id}_${subcateogry_id}`
  * @param {number} [limit=10] - the number of posts you want to get in one request
  * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
  * @param {number} timeout - request api timeout
@@ -256,14 +259,12 @@ function fetchPostsByListId(
   timeout
 ) {
   return (dispatch, getState) => {
-    if (typeof listId !== 'string' || !listId) {
+    const fail = reason => {
       const action = {
         type: types.postsByListId.read.failure,
         payload: {
-          listId: '',
-          error: new Error(
-            'listId should be a string and not empty, but got ' + listId
-          ),
+          listId: typeof listId === 'string' ? listId : '',
+          error: new Error(reason),
         },
       }
       dispatch(action)
@@ -271,15 +272,11 @@ function fetchPostsByListId(
     }
 
     if (typeof page !== 'number' || isNaN(page) || page < startPage) {
-      const action = {
-        type: types.postsByListId.read.failure,
-        payload: {
-          listId,
-          error: new Error('page should be > 0'),
-        },
-      }
-      dispatch(action)
-      return Promise.reject(action)
+      return fail('page should be > 0')
+    }
+
+    if (typeof listId !== 'string' || !listId) {
+      return fail(`listId should be a string and not empty, but got ${listId}`)
     }
 
     const state = getState()
@@ -303,9 +300,15 @@ function fetchPostsByListId(
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v2/${apiEndpoints.posts}`
     const params = {
-      [listType]: listId,
       limit,
       offset,
+    }
+    if (listType === 'category_set_id') {
+      const [categoryId, subcategoryId] = _.split(listId, '_')
+      params.category_id = categoryId
+      params.subcategory_id = subcategoryId
+    } else {
+      params[listType] = listId
     }
 
     const url = formURL(apiOrigin, path, params)
@@ -365,6 +368,29 @@ export function fetchPostsByTagListId(
 ) {
   return (dispatch, getState) => {
     return fetchPostsByListId(listId, 'tag_id', limit, page, timeout)(
+      dispatch,
+      getState
+    )
+  }
+}
+
+/**
+ * Fetch posts(only containing meta properties) by category set id.
+ * @param {string} listId - id of category set
+ *   category set id: `${category_id}_${subcategory_id}`
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
+ * @return {import('../typedef').Thunk} async action creator
+ */
+export function fetchPostsByCategorySetListId(
+  listId,
+  limit = 10,
+  page = 0,
+  timeout = apiConfig.timeout
+) {
+  return (dispatch, getState) => {
+    return fetchPostsByListId(listId, 'category_set_id', limit, page, timeout)(
       dispatch,
       getState
     )
