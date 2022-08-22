@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.2.2...@twreporter/redux@7.3.0-rc.0) (2022-08-22)
+
+
+### Bug Fixes
+
+* fix redux test ([11b4c5f](https://github.com/twreporter/twreporter-npm-packages/commit/11b4c5f56e86eb4a3943317ad1485fe16cef64d6))
+
+
+### Features
+
+* add `fetchPostsByCategorySetListId` action ([5980ebb](https://github.com/twreporter/twreporter-npm-packages/commit/5980ebb6eb8bc81f294b260b65421cad04e44050))
+
+
+
+
+
 ## [7.2.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.2.2-rc.0...@twreporter/redux@7.2.2) (2022-07-06)
 
 **Note:** Version bump only for package @twreporter/redux

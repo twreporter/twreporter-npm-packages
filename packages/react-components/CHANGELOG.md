@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.12.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.12.1-rc.0...@twreporter/react-components@8.12.1-rc.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* fix title bar text color ([de712ab](https://github.com/twreporter/twreporter-npm-packages/commit/de712ab54ccd886458d94b9c3ed0a98a40b39e51))
+
+
+
+
+
 ## [8.12.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.12.0...@twreporter/react-components@8.12.1-rc.0) (2022-08-17)
 
 **Note:** Version bump only for package @twreporter/react-components
