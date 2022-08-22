@@ -15,6 +15,12 @@ export default {
         sort_order: PropTypes.number.isRequired,
       })
     ),
+    categorySet: PropTypes.arrayOf(
+      PropTypes.shape({
+        category: PropTypes.string.isRequired,
+        subcategory: PropTypes.string.isRequired,
+      })
+    ),
     tags: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
