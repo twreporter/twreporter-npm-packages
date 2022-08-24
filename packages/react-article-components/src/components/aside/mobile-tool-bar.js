@@ -30,14 +30,17 @@ import {
   IconButton,
   IconWithTextButton,
 } from '@twreporter/react-components/lib/button'
-import { SnackBar } from '@twreporter/react-components/lib/snack-bar'
+import {
+  SnackBar,
+  useSnackBar,
+} from '@twreporter/react-components/lib/snack-bar'
 // lodash
 import isNil from 'lodash/isNil'
 const _ = {
   isNil,
 }
 // global var
-const HideTextContext = createContext()
+const ToolBarContext = createContext()
 const defaultFbAppID = '962589903815787'
 const defaultFunc = () => {}
 
@@ -76,11 +79,11 @@ const OptionContainer = styled.div`
 
 const SnackBarContainer = styled.div`
   z-index: 5; // should be less than OptionsContainer in order to click line & twitter icon
-  opacity: ${props => (props.showSnackBar ? '1' : '0')};
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 100ms;
+  opacity: ${props => (props.showSnackBar ? 1 : 0)};
 `
 
 const ToolBarContainer = styled.div`
@@ -218,8 +221,7 @@ CopyUrl.propTypes = {
 
 const ShareBy = ({ fbAppID }) => {
   const [showOption, setShowState] = useState(false)
-  const [showSnackBar, setSnackBar] = useState(false)
-  const hideText = useContext(HideTextContext)
+  const { hideText, toastr } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
@@ -228,10 +230,7 @@ const ShareBy = ({ fbAppID }) => {
     if (!isCopied) {
       return
     }
-    setSnackBar(true)
-    setTimeout(() => {
-      setSnackBar(false)
-    }, 3000)
+    toastr({ text: '已複製', timeout: 3000 })
   }
   const onButtonClick = () => setShowState(prevValue => !prevValue)
   const onClickOutside = () => setShowState(false)
@@ -251,9 +250,6 @@ const ShareBy = ({ fbAppID }) => {
         <TwitterShare />
         <CopyUrl onclick={onCopyUrl} />
       </OptionContainer>
-      <SnackBarContainer showSnackBar={showSnackBar}>
-        <SnackBar text="已複製" theme={theme} />
-      </SnackBarContainer>
     </ButtonContainer>
   )
 }
@@ -262,7 +258,7 @@ ShareBy.propTypes = {
 }
 
 const FontLevel = ({ changeFontLevel }) => {
-  const hideText = useContext(HideTextContext)
+  const { hideText } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
@@ -284,9 +280,7 @@ FontLevel.propTypes = {
 }
 
 const BookmarkBlock = ({ articleMeta }) => {
-  const [showSnackBar, setSnackBar] = useState(false)
-  const [snackbarText, setSnackbarText] = useState('')
-  const hideText = useContext(HideTextContext)
+  const { hideText, toastr } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
@@ -302,7 +296,7 @@ const BookmarkBlock = ({ articleMeta }) => {
       } catch (err) {
         console.error('add bookmark fail', err)
       }
-      toastr(isBookmarked)
+      onClickButton(isBookmarked)
     }
     return (
       <ButtonContainer onClick={handleClick} id={id}>
@@ -317,12 +311,9 @@ const BookmarkBlock = ({ articleMeta }) => {
       </ButtonContainer>
     )
   }
-  const toastr = isBookmarked => {
-    setSnackbarText(isBookmarked ? '已取消書籤' : '已儲存')
-    setSnackBar(true)
-    setTimeout(() => {
-      setSnackBar(false)
-    }, 3000)
+  const onClickButton = isBookmarked => {
+    const text = isBookmarked ? '已取消書籤' : '已儲存'
+    toastr({ text, timeout: 3000 })
   }
 
   return (
@@ -332,9 +323,6 @@ const BookmarkBlock = ({ articleMeta }) => {
         articleMeta={articleMeta}
         renderIcon={renderIcon}
       />
-      <SnackBarContainer showSnackBar={showSnackBar}>
-        <SnackBar text={snackbarText} theme={theme} />
-      </SnackBarContainer>
     </React.Fragment>
   )
 }
@@ -343,7 +331,7 @@ BookmarkBlock.propTypes = {
 }
 
 const BackToTopic = ({ backToTopic }) => {
-  const hideText = useContext(HideTextContext)
+  const { hideText } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
@@ -371,7 +359,7 @@ BackToTopic.propTypes = {
 }
 
 const RelatedPost = () => {
-  const hideText = useContext(HideTextContext)
+  const { hideText } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
@@ -438,14 +426,18 @@ const ToolBar = ({
     }
   }, [scrollDirection])
   const themeContext = useContext(ThemeContext)
+  const theme =
+    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
   const { bgColor, shadow } = getToolBarTheme(themeContext.name)
+  const { showSnackBar, snackBarText, toastr } = useSnackBar()
   const backToTopicJSX = backToTopic ? (
     <BackToTopic backToTopic={backToTopic} />
   ) : null
   const hideText = scrollDirection === 'down'
+  const contextValue = { hideText, toastr }
 
   return (
-    <HideTextContext.Provider value={hideText}>
+    <ToolBarContext.Provider value={contextValue}>
       <ToolBarContainer
         bgColor={bgColor}
         shadow={shadow}
@@ -457,8 +449,11 @@ const ToolBar = ({
         <BookmarkBlock articleMeta={articleMetaForBookmark} />
         <RelatedPost />
         {backToTopicJSX}
+        <SnackBarContainer showSnackBar={showSnackBar}>
+          <SnackBar text={snackBarText} theme={theme} />
+        </SnackBarContainer>
       </ToolBarContainer>
-    </HideTextContext.Provider>
+    </ToolBarContext.Provider>
   )
 }
 ToolBar.propTypes = predefinedProps.tools

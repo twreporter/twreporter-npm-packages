@@ -1,25 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-const useSnackBar = ref => {
+const useSnackBar = () => {
   const [showSnackBar, setShowSnackBar] = useState(false)
-  const toastr = ({ timeout = 3000 }) => {
+  const [snackBarText, setSnackBarText] = useState('')
+  const toastr = ({ text = '', timeout = 3000 }) => {
+    setSnackBarText(text)
     setShowSnackBar(true)
     setTimeout(() => {
       setShowSnackBar(false)
     }, timeout)
   }
 
-  useEffect(() => {
-    const refElem = ref.current
-    if (!refElem) {
-      return
-    }
-    const opacity = showSnackBar ? 1 : 0
-
-    refElem.style.opacity = opacity
-  }, [showSnackBar, ref])
-
-  return toastr
+  return { toastr, showSnackBar, snackBarText }
 }
 
 export default useSnackBar

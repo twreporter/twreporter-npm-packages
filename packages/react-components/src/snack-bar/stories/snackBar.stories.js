@@ -1,9 +1,16 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import SnackBar from '../components/snack-bar'
+// hooks
 import useSnackBar from '../hooks/use-snack-bar'
+// components
+import SnackBar from '../components/snack-bar'
 import { PillButton } from '../../button'
+// lodash
+import random from 'lodash/random'
+const _ = {
+  random,
+}
 
 export default {
   title: 'Snack Bar',
@@ -26,18 +33,21 @@ const Container = styled.div`
 const SnackBarContainer = styled.div`
   margin-bottom: 4px;
   transition: opacity 1s;
-  opacity: 0;
+  opacity: ${props => (props.showSnackBar ? 1 : 0)};
 `
 
 const ClickToShowSnackBar = ({ timeout }) => {
-  const ref = useRef()
-  const toastr = useSnackBar(ref)
-  const handleClick = () => toastr({ timeout })
+  const { toastr, showSnackBar, snackBarText } = useSnackBar()
+  const handleClick = () => {
+    const textPool = ['click!', 'hahaha', 'hello', 'world', 'yoyo']
+    const text = textPool[_.random(0, 4)]
+    toastr({ text, timeout })
+  }
 
   return (
     <Container>
-      <SnackBarContainer ref={ref}>
-        <SnackBar text="click!" />
+      <SnackBarContainer showSnackBar={showSnackBar}>
+        <SnackBar text={snackBarText} />
       </SnackBarContainer>
       <PillButton text="click me" onClick={handleClick} />
     </Container>
