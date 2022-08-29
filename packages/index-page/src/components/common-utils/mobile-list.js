@@ -1,10 +1,11 @@
 import styled from 'styled-components'
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const MobileList = styled.div`
   display: none;
-  @media (max-width: ${props => props.maxWidth}) {
+  ${mq.mobileOnly`
     display: block;
-  }
+  `}
 `
 
 export default MobileList

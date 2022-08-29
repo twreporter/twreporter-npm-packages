@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-// utils
-import { finalMedia } from '../utils/style-utils'
 // constants
 import color from '../constants/color'
 // assets
@@ -9,6 +7,7 @@ import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
 // @twreporter
 import DonationLink from '@twreporter/react-components/lib/donation-link'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const mockup = {
   defaultWidth: 320,
@@ -21,7 +20,7 @@ const Container = styled.div`
   background-color: ${color.brown};
   padding-top: 30px;
   padding-bottom: 30px;
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     padding-top: 40px;
     padding-bottom: 60px;
   `}
@@ -48,18 +47,18 @@ const ContentContainer = styled.div`
     line-height: 1.57;
     text-align: left;
   }
-  ${finalMedia.overDesktop`
+  ${mq.hdOnly`
     max-width: 1440px;
     padding: 0 219px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     position: relative;
     padding: 0 110px;
     p{
       margin-top: 17px;
     }
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     max-width: ${mobileContentWidthPct}%;
     display: block;
     text-align: center;
@@ -85,12 +84,12 @@ const DonateButton = styled.div`
     font-size: 16px;
     cursor: pointer;
     display: table;
-    ${finalMedia.tablet`
+    ${mq.tabletOnly`
       position: absolute;
       right: 110px;
       top: 9px;
     `}
-    ${finalMedia.mobile`
+    ${mq.mobileOnly`
       margin: 40px auto 0 auto;
     `}
     span {
@@ -103,7 +102,7 @@ const DonateButton = styled.div`
 `
 
 const TextColumn = styled.div`
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 608px;
   `}
 `

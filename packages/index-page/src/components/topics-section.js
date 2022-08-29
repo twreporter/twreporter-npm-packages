@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import topicPropType from './prop-types/topic'
 // utils
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+import { breakPoints, truncate } from '../utils/style-utils'
 // components
 import BottomTRLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
@@ -20,6 +20,7 @@ import strings from '../constants/strings'
 import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -61,7 +62,7 @@ const Container = styled.div`
 const Rows = styled.div`
   margin-bottom: 70px;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -103,11 +104,11 @@ const Column = styled.div`
   opacity: ${props => (props.ifHover ? 0.7 : 1)};
   transition: 0.2s opacity linear;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     flex: 0 0 ${mockup.desktop.width.default}px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     flex: 0 0 ${mockup.tablet.width.default}px;
     &:first-child {
       margin-right: 20px;
@@ -136,11 +137,11 @@ const ImgColumn = styled(Column)`
   height: 364px;
   flex: 0 0 ${mockup.hd.width.default}px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     height: 247px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     height: 186px;
   `}
 `
@@ -402,9 +403,8 @@ class TopicsSection extends React.PureComponent {
             data={data.slice(2, totalTopics)}
             useTinyImg={useTinyImg}
           />
-          <MobileList maxWidth={breakPoints.mobileMaxWidth}>
+          <MobileList>
             <MobileFlexSwipeable.SwipableFlexItems
-              mobileWidth={breakPoints.mobileMaxWidth}
               maxSwipableItems={totalTopics - 1}
             >
               {mobileTopicComps}
