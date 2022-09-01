@@ -209,7 +209,7 @@ const HoverEffect = styled.div`
 const FadeInFadeOut = styled.div`
   opacity: ${props => (props.isSelected ? '1' : '0')};
   z-index: ${props => (props.isSelected ? '1' : '0')};
-  transition: 0.5s opacity linear;
+  transition: 150ms opacity ease-in-out;
 `
 
 // this is a container
@@ -357,7 +357,7 @@ class EditorPicks extends React.Component {
           const fadingStyle = {
             opacity: index === selectDataToShow[theProp.position] ? '1' : '0',
             zIndex: index === selectDataToShow[theProp.position] ? '1' : '0',
-            transition: 'opacity .5s linear',
+            transition: 'opacity 150ms ease-in-out',
           }
           return (
             <FadeInFadeOut

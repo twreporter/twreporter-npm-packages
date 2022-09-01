@@ -25,7 +25,7 @@ const FlexList = styled.ul`
     align-items: ${props => {
       return props.alignItems || 'stretch'
     }};
-    transition: 500ms transform linear;
+    transition: 150ms transform linear;
     transform: ${props => {
       return props.selected !== 0
         ? `translateX(${props.selected * -itemPlusPaddingWidthPct}%)`
