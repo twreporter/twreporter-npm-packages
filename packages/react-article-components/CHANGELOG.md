@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.4-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.3...@twreporter/react-article-components@1.6.4-rc.4) (2022-09-05)
+
+
+### Bug Fixes
+
+* make `useSnackBar` headless ([ddaf3dd](https://github.com/twreporter/twreporter-npm-packages/commit/ddaf3ddbd44abba3684f9209fc1b9e8b4c678c15))
+
+
+
+
+
 ## [1.6.4-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.2...@twreporter/react-article-components@1.6.4-rc.3) (2022-08-25)
 
 

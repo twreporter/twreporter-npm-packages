@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.13.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.12.1-rc.1...@twreporter/react-components@8.13.0-rc.0) (2022-09-05)
+
+
+### Bug Fixes
+
+* make `useSnackBar` headless ([ddaf3dd](https://github.com/twreporter/twreporter-npm-packages/commit/ddaf3ddbd44abba3684f9209fc1b9e8b4c678c15))
+
+
+### Features
+
+* add useSnackBar hook ([32696ab](https://github.com/twreporter/twreporter-npm-packages/commit/32696ab41d619d1f675931adaf4550e435be64f4))
+
+
+
+
+
 ## [8.12.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.12.1-rc.0...@twreporter/react-components@8.12.1-rc.1) (2022-08-22)
 
 
