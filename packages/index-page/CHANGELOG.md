@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.3.3-rc.1...@twreporter/index-page@1.3.3-rc.2) (2022-09-05)
+
+
+### Bug Fixes
+
+* adjust index-page style & animation ([5760adb](https://github.com/twreporter/twreporter-npm-packages/commit/5760adb7e656dbfc52b993a0986bedac1072c903))
+
+
+
+
+
 ## [1.3.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.3.3-rc.0...@twreporter/index-page@1.3.3-rc.1) (2022-08-22)
 
 **Note:** Version bump only for package @twreporter/index-page
