@@ -5,7 +5,7 @@ import postPropType from './prop-types/post'
 import styled from 'styled-components'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 // utils
-import { breakPoints, finalMedia } from '../utils/style-utils'
+import { breakPoints } from '../utils/style-utils'
 import { getHref } from '../utils/getHref'
 // components
 import BottomLink from './common-utils/bottom-link'
@@ -19,6 +19,7 @@ import categoryStrings from '../constants/category-strings'
 import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -37,7 +38,6 @@ const mockup = {
 
 // If window is less than oneColumnWidth,
 // there will be only one column. Default is two columns.
-const oneColumnWidth = breakPoints.mobileMaxWidth
 const oneColumnWidthInt = 768
 
 const Section = styled.div`
@@ -50,7 +50,7 @@ const Section = styled.div`
   }};
   padding-top: 100px;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     padding-top: 0px;
   `}
 `
@@ -62,15 +62,15 @@ const Listing = styled.ul`
   position: relative;
   padding-bottom: 60px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 928px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     max-width: 700px;
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     padding-top: 0px;
     padding-bottom: 40px;
     max-width: 100%;
@@ -82,15 +82,15 @@ const Item = styled.li`
   display: inline-block;
   vertical-align: bottom;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 464px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     max-width: 349px;
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     max-width: 100%;
     width: 100%;
     height: 100%;
@@ -116,18 +116,18 @@ const Img = styled.div`
   width: 672px;
   height: 450px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 464px;
     height: 310px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     margin: 0 auto;
     width: 350px;
     height: 234px;
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 100%;
     height: 100%;
   `}
@@ -147,11 +147,11 @@ const Overlay = styled.div`
   transition: 0.5s ease;
   background-color: ${color.ashBlue};
 
-  @media (min-width: ${oneColumnWidth}) {
+  ${mq.tabletAndAbove`
     &:hover {
       opacity: 1;
     }
-  }
+  `}
 `
 
 const More = styled.div`
@@ -310,7 +310,7 @@ class PhotographySection extends React.PureComponent {
       <Waypoint key={'section_check_point'} onLeave={this.onLeave}>
         <div>
           <Section isAutoHover={isAutoHover}>
-            <SectionName mobileWidth={`${oneColumnWidth}`}>
+            <SectionName>
               <span>{sectionStrings.photography}</span>
             </SectionName>
             <Listing>{postComps}</Listing>
