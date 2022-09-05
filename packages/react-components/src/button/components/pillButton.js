@@ -46,6 +46,7 @@ const PillButton = ({
   theme = 'normal',
   type = 'primary',
   disabled = false,
+  ...props
 }) => {
   const themeFunc =
     type === 'primary' ? getFilledPillButtonTheme : getOutlinePillButtonTheme
@@ -69,6 +70,7 @@ const PillButton = ({
       iconSize={iconSize}
       hoverColor={hoverColor}
       hoverBgColor={hoverBgColor}
+      {...props}
     >
       {textJSX}
       {iconComponent}
