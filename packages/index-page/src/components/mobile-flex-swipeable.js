@@ -8,13 +8,15 @@ import {
   itemPaddingRightPct,
   firstItemMarginLeftPct,
 } from '../constants/mobile-mockup-specification'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const FlexList = styled.ul`
   list-style-type: none;
   padding: 0px;
   margin: 0;
 
-  @media (max-width: ${props => props.mobileWidth}) {
+  ${mq.mobileOnly`
     display: flex;
     flex-wrap: nowrap;
     justify-content: ${props => {
@@ -23,17 +25,17 @@ const FlexList = styled.ul`
     align-items: ${props => {
       return props.alignItems || 'stretch'
     }};
-    transition: 500ms transform linear;
+    transition: 150ms transform linear;
     transform: ${props => {
       return props.selected !== 0
         ? `translateX(${props.selected * -itemPlusPaddingWidthPct}%)`
         : 'translateX(0)'
     }};
-  }
+  `}
 `
 
 const FlexItem = styled.li`
-  @media (max-width: ${props => props.mobileWidth}) {
+  ${mq.mobileOnly`
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: ${itemPlusPaddingWidthPct}%;
@@ -41,13 +43,13 @@ const FlexItem = styled.li`
     &:first-child {
       margin: 0 0 0 ${firstItemMarginLeftPct}%;
     }
-  }
+  `}
 `
 
 class SwipableFlexItems extends SwipeableMixin {
   render() {
     const { selected } = this.state
-    const { alignItems, children, justifyContent, mobileWidth } = this.props
+    const { alignItems, children, justifyContent } = this.props
     const onSwiping = (e, deltaX, deltaY, absX, absY) => {
       // In order to avoid slightly vibrating while swiping left and right,
       // we set a threshold to prevent scrolling.
@@ -61,13 +63,7 @@ class SwipableFlexItems extends SwipeableMixin {
       items = [children]
     }
 
-    items = items.map(child => {
-      return (
-        <FlexItem key={child.key} mobileWidth={mobileWidth}>
-          {child}
-        </FlexItem>
-      )
-    })
+    items = items.map(child => <FlexItem key={child.key}>{child}</FlexItem>)
 
     return (
       <Swipeable
@@ -77,7 +73,6 @@ class SwipableFlexItems extends SwipeableMixin {
       >
         <FlexList
           selected={selected}
-          mobileWidth={mobileWidth}
           justifyContent={justifyContent}
           alignItems={alignItems}
         >
@@ -92,14 +87,12 @@ SwipableFlexItems.defaultProps = {
   alignItems: 'flex-end',
   justifyContent: 'flext-start',
   maxSwipableItems: 0,
-  mobileWidth: '600px',
 }
 
 SwipableFlexItems.propTypes = {
   alignItems: PropTypes.string,
   justifyContent: PropTypes.string,
   maxSwipableItems: PropTypes.number,
-  mobileWidth: PropTypes.string,
 }
 
 export default {

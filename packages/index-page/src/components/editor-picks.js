@@ -5,7 +5,7 @@ import postPropType from './prop-types/post'
 import styled from 'styled-components'
 // utils
 import { getHref } from '../utils/getHref'
-import { truncate, breakPoints, finalMedia } from '../utils/style-utils'
+import { truncate, breakPoints } from '../utils/style-utils'
 // components
 import EditorPicksMobile from './editor-picks-mobile'
 import ImgWrapper from './common-utils/img-wrapper'
@@ -19,6 +19,7 @@ import LeftArrowIcon from '../static/left-arrow.svg'
 import RightArrowIcon from '../static/right-arrow.svg'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import clone from 'lodash/clone'
 import get from 'lodash/get'
@@ -51,9 +52,9 @@ const swapArrayElements = (arr, indexA, indexB) => {
 const CarouselContainer = styled(ContentWrapper)`
   overflow-x: hidden;
   position: relative;
-  @media (max-width: ${breakPoints.mobileMaxWidth}) {
+  ${mq.mobileOnly`
     display: none;
-  }
+  `}
 `
 
 const FlexContainer = styled.div`
@@ -61,9 +62,9 @@ const FlexContainer = styled.div`
   display: flex;
   height: 932px;
   align-items: center;
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     height: 702px;
-  }
+  `}
 `
 
 // FlexItem is for moving Title
@@ -78,9 +79,9 @@ const FlexItem = styled.div`
   transition: 500ms transform ease-in, 500ms margin-top ease-in;
   cursor: pointer;
   margin-top: ${props => (props.middle ? '-770px' : '16px')};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     margin-top: ${props => (props.middle ? '-540px' : '16px')};
-  }
+  `}
   z-index: 2;
 `
 
@@ -92,11 +93,11 @@ const ImgFrame = styled.div`
   left: 50%;
   top: 236px;
   transform: translateX(-50%);
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 610px;
     height: 391px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     width: 450px;
     height: 295px;
   `}
@@ -112,18 +113,18 @@ const Arrow = styled.div`
 const LeftArrow = styled(Arrow)`
   left: 17%;
   display: ${props => (props.selected === 0 ? 'none' : 'inline')};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     top: 365px;
-  }
+  `}
   transition: 0.2s display linear;
 `
 const RightArrow = styled(Arrow)`
   right: 17%;
   display: ${props =>
     props.selected === props.dataLength - 1 ? 'none' : 'inline'};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     top: 365px;
-  }
+  `}
   transition: 0.2s display linear;
 `
 
@@ -139,9 +140,9 @@ const SideCategory = styled(CategoryName)`
   height: 16px;
   top: 453px;
   left: ${props => (props.left ? props.left : '0')};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     top: 338px;
-  }
+  `}
 `
 
 const MiddleCategory = styled(CategoryName)`
@@ -173,10 +174,10 @@ const Title = styled.div`
   transform: translateX(-50%);
   overflow: hidden;
   line-break: anywhere;
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: ${props => (props.middle ? '450px' : '120px')};
   `}
-  ${finalMedia.tabletBelow`
+  ${mq.tabletAndBelow`
     width: ${props => (props.middle ? '450px' : '90px')};
   `}
 `
@@ -189,10 +190,10 @@ const Description = styled.div`
   color: ${color.darkGray};
   transform: translateX(-50%);
   ${truncate('absolute', 1.43, 2, 'white')};
-  @media (min-width: ${breakPoints.tabletMinWidth}) {
+  ${mq.tabletAndAbove`
     ${props => (props.ifHover ? 'opacity: 0.7;' : '')}
     transition: .2s opacity linear;
-  }
+  `}
   z-index: 2;
 `
 
@@ -200,15 +201,15 @@ const HoverEffect = styled.div`
   cursor: pointer;
   text-decoration: none;
   color: ${color.darkGray};
-  @media (min-width: ${breakPoints.tabletMinWidth}) {
+  ${mq.tabletAndAbove`
     ${props => (props.ifHover ? 'opacity: 0.7;' : 'opacity: 1;')}
     transition: .2s opacity linear;
-  }
+  `}
 `
 const FadeInFadeOut = styled.div`
   opacity: ${props => (props.isSelected ? '1' : '0')};
   z-index: ${props => (props.isSelected ? '1' : '0')};
-  transition: 0.5s opacity linear;
+  transition: 150ms opacity ease-in-out;
 `
 
 // this is a container
@@ -356,7 +357,7 @@ class EditorPicks extends React.Component {
           const fadingStyle = {
             opacity: index === selectDataToShow[theProp.position] ? '1' : '0',
             zIndex: index === selectDataToShow[theProp.position] ? '1' : '0',
-            transition: 'opacity .5s linear',
+            transition: 'opacity 150ms ease-in-out',
           }
           return (
             <FadeInFadeOut

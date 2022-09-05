@@ -354,10 +354,12 @@ class Metadata extends PureComponent {
                     set?.category?.name,
                     true
                   )}
-                  {genLink(
-                    `/tags/${set?.subcategory?.id}`,
-                    set?.subcategory?.name
-                  )}
+                  {set?.subcategory?.id && set?.subcategory?.name
+                    ? genLink(
+                        `/tags/${set.subcategory.id}`,
+                        set.subcategory.name
+                      )
+                    : genLink(`/categories/${set?.category?.id}`, '全部')}
                 </LinkContainer>
               )
             })
