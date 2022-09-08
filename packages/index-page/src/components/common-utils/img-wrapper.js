@@ -65,7 +65,7 @@ class ImgWrapper extends React.Component {
   }
 
   render() {
-    const { src, alt, srcSet, sizes } = this.props
+    const { src, alt, srcSet, sizes, isLazyLoaded } = this.props
     const isObjectFit = this.state.isObjectFit
     return isObjectFit ? (
       <ImgObjectFit>
@@ -77,6 +77,7 @@ class ImgWrapper extends React.Component {
           style={{
             transform: 'translateZ(0)',
           }}
+          loading={isLazyLoaded ? 'lazy' : 'eager'}
         />
         {this.props.children}
       </ImgObjectFit>
@@ -94,6 +95,7 @@ ImgWrapper.defaultProps = {
   src: '',
   srcSet: {},
   sizes: '',
+  isLazyLoaded: true,
 }
 
 ImgWrapper.propTypes = {
@@ -102,6 +104,7 @@ ImgWrapper.propTypes = {
   src: PropTypes.string.isRequired,
   srcSet: PropTypes.object,
   sizes: PropTypes.string,
+  isLazyLoaded: PropTypes.bool,
 }
 
 export default ImgWrapper
