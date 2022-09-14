@@ -261,9 +261,9 @@ function testFetchPostsByListId(actionToFetch, paramKey) {
         },
       })
       const mockQuery = {
-        [paramKey]: mockListId,
         limit,
         offset,
+        [paramKey]: mockListId,
       }
       const mockPath = '/v2/posts'
       const mockUrl = formURL(mockApiHost, mockPath, mockQuery)
@@ -387,9 +387,9 @@ function testFetchPostsByListId(actionToFetch, paramKey) {
       })
       const mockPath = '/v2/posts'
       const mockQuery = {
-        [paramKey]: mockListId,
         limit,
         offset,
+        [paramKey]: mockListId,
       }
       const mockUrl = formURL('http://localhost:8080', mockPath, mockQuery)
       const mockStatusCode = 500

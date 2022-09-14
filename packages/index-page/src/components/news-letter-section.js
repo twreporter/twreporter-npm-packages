@@ -1,8 +1,9 @@
-import { finalMedia } from '../utils/style-utils'
-import EmailIcon from '../static/subscribe-icon.svg'
 import React from 'react'
 import styled from 'styled-components'
+import EmailIcon from '../static/subscribe-icon.svg'
 import color from '../constants/color'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import delay from 'lodash/delay'
 const _ = {
@@ -24,7 +25,7 @@ const Container = styled.div`
   background-color: ${color.lightGray};
   padding-top: 70px;
   padding-bottom: 70px;
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     padding-top: 30px;
     padding-bottom: 60px;
   `}
@@ -36,7 +37,7 @@ const ContentContainer = styled.div`
   display: flex;
   align-items: flex-start;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     max-width: ${mobileContentWidthPct}%;
     display: block;
   `}
@@ -50,7 +51,7 @@ const Icon = styled.div`
 
   margin-right: 20px;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 46px;
     height: 30px;
     margin: 0 auto;
@@ -74,7 +75,7 @@ const SignupForm = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     margin-top: 20px;
   `}
 `
@@ -92,7 +93,7 @@ const EmailInput = styled.input`
     -webkit-box-shadow: 0 0 0 30px white inset;
   }
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     font-size: 14px;
     display: inline;
     padding-left: 34px;
@@ -110,7 +111,7 @@ const SubscribeInput = styled.input`
   outline: none;
   box-shadow: none;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     font-size: 12px;
   `}
 `

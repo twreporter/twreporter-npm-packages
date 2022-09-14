@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
 // utils
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+import { breakPoints, truncate } from '../utils/style-utils'
 import { getHref } from '../utils/getHref'
 // components
 import BottomLink from './common-utils/bottom-link'
@@ -20,15 +20,12 @@ import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 const _ = {
   get,
 }
-
-// If window is less than oneColumnWidth,
-// there will be only one column. Default is three columns.
-const oneColumnWidth = breakPoints.mobileMaxWidth
 
 const mockup = {
   img: {
@@ -51,7 +48,7 @@ const UpperList = styled.div`
   justify-content: center;
   align-items: flex-start;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -61,11 +58,11 @@ const LowerList = styled(UpperList)`
   margin-top: -282px;
   margin-bottom: 59px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     margin-top: -170px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     margin-top: -130px;
     margin-bottom: 51px;
   `}
@@ -86,11 +83,11 @@ const Item = styled.div`
     margin-left: 30px;
   }
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 290px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     max-width: 220px;
     &:first-child {
       margin-right: 20px;
@@ -101,7 +98,7 @@ const Item = styled.div`
     }
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     max-width: 100%;
     &:first-child {
       margin-left: 0;
@@ -111,11 +108,11 @@ const Item = styled.div`
     }
   `}
 
-  @media (min-width: ${oneColumnWidth}) {
+  ${mq.tabletAndAbove`
     &:hover {
       opacity: 0.7;
     }
-  }
+  `}
 `
 const WordBlock = styled.div`
   background-color: ${color.white};
@@ -123,16 +120,16 @@ const WordBlock = styled.div`
   min-height: 115px;
   padding: 8px 20px 15px 12px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 290px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     margin: 0 auto;
     width: 220px;
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 100%;
     height: 100%;
   `}
@@ -144,11 +141,11 @@ const Title = styled.h3`
   font-family: ${fontFamily.title};
   font-size: 20px;
   color: ${color.darkGray};
-  @media (min-width: ${breakPoints.desktopMinWidth}) {
+  ${mq.desktopAndAbove`
     ${truncate('relative', 1.4, 2, color.white)};
-  }
+  `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     font-size: 16px;
     ${truncate('relative', 1.4, 3, color.white)};
   `}
@@ -161,14 +158,14 @@ const ImgFrame = styled.div`
     return props.isPortrait ? '596px' : '282px'
   }};
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 290px;
     height: ${props => {
       return props.isPortrait ? '390px' : '190px'
     }};
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     margin: 0 auto;
     width: 220px;
     height: ${props => {
@@ -176,7 +173,7 @@ const ImgFrame = styled.div`
     }};
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 100%;
     height: 186px;
   `}
@@ -267,15 +264,14 @@ class InfographicSection extends React.PureComponent {
 
     return (
       <Container>
-        <Section mobileWidth={oneColumnWidth}>
-          <SectionName mobileWidth={oneColumnWidth}>
+        <Section>
+          <SectionName>
             <span>{sectionStrings.infographic}</span>
           </SectionName>
           <UpperList>{postComps.slice(0, listNumber)}</UpperList>
           <LowerList>{postComps.slice(listNumber, listNumber * 2)}</LowerList>
-          <MobileList maxWidth={oneColumnWidth}>
+          <MobileList>
             <MobileFlexSwipeable.SwipableFlexItems
-              mobileWidth={oneColumnWidth}
               maxSwipableItems={5}
               alignItems="flex-start"
             >

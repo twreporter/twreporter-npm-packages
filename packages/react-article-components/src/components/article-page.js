@@ -388,7 +388,8 @@ export default class Article extends PureComponent {
     const metadataAndToolsJSX = (
       <MetadataAndToolsBlock>
         <Metadata
-          categories={post.categories}
+          categories={post.categories} // TODO: remove when categorySet integration is done
+          categorySet={post.categorySet}
           date={post.published_date}
           designers={post.designers}
           photographers={post.photographers}
@@ -434,7 +435,8 @@ export default class Article extends PureComponent {
                 <DesktopAsideBlock>
                   <DesktopAside
                     backToTopic={backToTopic}
-                    categories={post.categories}
+                    categories={post.categories} // TODO: remove when categorySet integration is done
+                    categorySet={post.categorySet}
                     date={post.published_date}
                     designers={post.designers}
                     photographers={post.photographers}

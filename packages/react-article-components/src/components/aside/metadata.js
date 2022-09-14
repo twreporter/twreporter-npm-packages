@@ -1,15 +1,20 @@
-import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import React, { PureComponent } from 'react'
+import styled, { css } from 'styled-components'
 import get from 'lodash/get'
 import map from 'lodash/map'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedProps from '../../constants/prop-types/aside'
 import sortBy from 'lodash/sortBy'
-import styled, { css } from 'styled-components'
+
+// components
+import DynamicComponentsContext from '../../contexts/dynamic-components-context'
+import predefinedProps from '../../constants/prop-types/aside'
 import themeConst from '../../constants/theme'
 import colorConst from '../../constants/color'
 import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
+
+// twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 
 const _ = {
   get,
@@ -51,6 +56,31 @@ const CategoryFlex = styled.div`
   ${mq.tabletAndBelow`
     padding-right: 15px;
     padding-left: 15px;
+  `}
+
+  ${mq.desktopAndAbove`
+    padding-right: 5px;
+    padding-left: 5px;
+  `}
+`
+
+const CategorySetFlexBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const LinkContainer = styled.div`
+  display: flex;
+`
+
+const CategorySetFlex = styled.div`
+  ${props => props.isTop && createLine('top', props.theme.name)}
+  ${props => props.isCategory && 'min-width: 100px;'}
+  flex-basis: ${props => (props.isCategory ? '100px' : 'calc(100% - 100px)')};
+
+  ${mq.tabletAndBelow`
+    padding-right: 10px;
+    padding-left: 10px;
   `}
 
   ${mq.desktopAndAbove`
@@ -250,6 +280,7 @@ class Metadata extends PureComponent {
 
   static defaultProps = {
     categories: [],
+    categorySet: [],
     tags: [],
     writers: [],
     photographers: [],
@@ -291,6 +322,51 @@ class Metadata extends PureComponent {
           }}
         </DynamicComponentsContext.Consumer>
       </CategoryFlexBox>
+    )
+  }
+
+  renderCategorySetSection() {
+    const { categorySet } = this.props
+    return (
+      <CategorySetFlexBox>
+        <DynamicComponentsContext.Consumer>
+          {components => {
+            const categorySetJSX = _.map(categorySet, (set, index) => {
+              const genLink = (path, name, isCategory = false) => {
+                return (
+                  <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
+                    {path && name && (
+                      <components.Link to={path}>
+                        <CategoryText
+                          style={{ fontWeight: isCategory ? 'bold' : 'normal' }}
+                        >
+                          {name}
+                        </CategoryText>
+                      </components.Link>
+                    )}
+                  </CategorySetFlex>
+                )
+              }
+              return (
+                <LinkContainer key={`categorySet-${index}`}>
+                  {genLink(
+                    `/categories/${set?.category?.id}`,
+                    set?.category?.name,
+                    true
+                  )}
+                  {set?.subcategory?.id && set?.subcategory?.name
+                    ? genLink(
+                        `/tags/${set.subcategory.id}`,
+                        set.subcategory.name
+                      )
+                    : genLink(`/categories/${set?.category?.id}`, '全部')}
+                </LinkContainer>
+              )
+            })
+            return categorySetJSX
+          }}
+        </DynamicComponentsContext.Consumer>
+      </CategorySetFlexBox>
     )
   }
 
@@ -374,7 +450,8 @@ class Metadata extends PureComponent {
 
     return (
       <MetadataContainer>
-        {this.renderCategorySection()}
+        {ENABLE_NEW_INFO_ARCH && this.renderCategorySetSection()}
+        {!ENABLE_NEW_INFO_ARCH && this.renderCategorySection()}
         <DateSection>{date}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}

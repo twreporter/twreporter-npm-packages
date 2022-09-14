@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.4-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.4...@twreporter/react-article-components@1.6.4-rc.5) (2022-09-08)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.6.4-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.3...@twreporter/react-article-components@1.6.4-rc.4) (2022-09-05)
+
+
+### Bug Fixes
+
+* make `useSnackBar` headless ([ddaf3dd](https://github.com/twreporter/twreporter-npm-packages/commit/ddaf3ddbd44abba3684f9209fc1b9e8b4c678c15))
+
+
+
+
+
+## [1.6.4-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.2...@twreporter/react-article-components@1.6.4-rc.3) (2022-08-25)
+
+
+### Bug Fixes
+
+* fix empty subcategory part ([#305](https://github.com/twreporter/twreporter-npm-packages/issues/305)) ([492d347](https://github.com/twreporter/twreporter-npm-packages/commit/492d347f00427ccf2e8f3b93590d91309ea05676))
+
+
+
+
+
+## [1.6.4-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.1...@twreporter/react-article-components@1.6.4-rc.2) (2022-08-22)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.6.4-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.0...@twreporter/react-article-components@1.6.4-rc.1) (2022-08-22)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.6.4-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.3...@twreporter/react-article-components@1.6.4-rc.0) (2022-08-17)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.6.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.3-rc.1...@twreporter/react-article-components@1.6.3) (2022-08-11)
 
 **Note:** Version bump only for package @twreporter/react-article-components

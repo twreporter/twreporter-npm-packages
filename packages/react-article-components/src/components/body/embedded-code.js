@@ -9,9 +9,10 @@ import get from 'lodash/get'
 import merge from 'lodash/merge'
 
 // twreporter
-import themeConst from '../../constants/theme'
 import colorConst from '../../constants/color'
 import predefinedPropTypes from '../../constants/prop-types/body'
+import themeConst from '../../constants/theme'
+import zIndexConst from '../../constants/position-z-index'
 
 const _ = {
   forEach,
@@ -19,8 +20,14 @@ const _ = {
   merge,
 }
 
+const embedNamespace = {
+  infogram: 'infogram',
+  twreporter: '__twreporterEmbeddedData',
+}
+
 export const Block = styled.div`
   position: relative;
+  z-index: ${props => (props.shouldEscalateZIndex ? zIndexConst.embed : 0)};
 
   /* styles for image link */
   img.img-responsive {
@@ -59,8 +66,6 @@ function dispatchWindowLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
-const infogramEmbed = 'infogram'
-
 class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
@@ -73,30 +78,37 @@ class EmbeddedCode extends React.PureComponent {
 
   state = {
     isLoaded: false,
+    shouldEscalateZIndex: false,
   }
 
   constructor(props) {
     super(props)
     this._embedded = React.createRef()
-    const { caption, embeddedCodeWithoutScript } = _.get(
+    const { caption, embeddedCode, embeddedCodeWithoutScript } = _.get(
       this.props,
       ['data', 'content', 0],
       {}
     )
     this._caption = caption
     this._embeddedCodeWithoutScript = embeddedCodeWithoutScript
+    this._embeddedCode = embeddedCode
   }
 
   componentDidMount() {
     // Delay loading infogram in loadEmbed()
-    if (!this._embeddedCodeWithoutScript?.includes(infogramEmbed)) {
+    if (!this._embeddedCodeWithoutScript?.includes(embedNamespace.infogram)) {
       this.setState({ isLoaded: true }, this.executeScript)
+    }
+    // Deliberately set z-index for embeded from @twreporter
+    if (this._embeddedCode?.includes(embedNamespace.twreporter)) {
+      this.setState({ shouldEscalateZIndex: true })
     }
   }
 
   componentWillUnmount() {
     this._embedded = null
     this._caption = null
+    this._embeddedCode = null
     this._embeddedCodeWithoutScript = null
   }
 
@@ -152,17 +164,19 @@ class EmbeddedCode extends React.PureComponent {
 
   render() {
     const { className } = this.props
+    const { shouldEscalateZIndex } = this.state
     const embed = (
       <div className={className}>
         <Block
           ref={this._embedded}
+          shouldEscalateZIndex={shouldEscalateZIndex}
           dangerouslySetInnerHTML={{ __html: this._embeddedCodeWithoutScript }}
         />
         {this._caption ? <Caption>{this._caption}</Caption> : null}
       </div>
     )
 
-    if (this._embeddedCodeWithoutScript?.includes(infogramEmbed)) {
+    if (this._embeddedCodeWithoutScript?.includes(embedNamespace.infogram)) {
       return this.state.isLoaded ? embed : null
     }
 

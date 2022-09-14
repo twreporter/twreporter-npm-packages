@@ -121,9 +121,11 @@ class List extends PureComponent {
         />
       )
     })
+    const headerTitle = catName || (tagName ? `#${tagName}` : '')
+    const headerJSX = headerTitle ? <Header>{headerTitle}</Header> : null
     return (
       <Container>
-        <Header>{catName || (tagName ? `#${tagName}` : '')}</Header>
+        {headerJSX}
         <Items isFetching={isFetching} showSpinner={showSpinner}>
           {listJSX}
         </Items>
