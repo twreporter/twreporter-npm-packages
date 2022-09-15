@@ -1,3 +1,6 @@
+import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
+import { CATEGORY_PATH } from '@twreporter/core/lib/constants/category-set'
+
 const entities = 'entities'
 const indexPage = 'index_page'
 const lists = 'lists'
@@ -30,6 +33,27 @@ const cultureAndArt = 'culture_and_art'
 const international = 'international'
 const livingAndMedicalCare = 'living_and_medical_care'
 
+// feature toggle
+const categories = ENABLE_NEW_INFO_ARCH
+  ? {
+      world: CATEGORY_PATH.world,
+      humanrights: CATEGORY_PATH.humanrights,
+      politicsAndSociety: CATEGORY_PATH.politicsAndSociety,
+      health: CATEGORY_PATH.health,
+      environment: CATEGORY_PATH.environment,
+      econ: CATEGORY_PATH.econ,
+      culture: CATEGORY_PATH.culture,
+      education: CATEGORY_PATH.education,
+    }
+  : {
+      humanRightsAndSociety,
+      environmentAndEducation,
+      politicsAndEconomy,
+      cultureAndArt,
+      international,
+      livingAndMedicalCare,
+    }
+
 // time stamp for next popup
 const nextNotifyPopupTS = 'nextNotifyPopupTS'
 
@@ -46,14 +70,7 @@ const origins = 'origins'
 const settings = 'settings'
 
 export default {
-  categories: {
-    humanRightsAndSociety,
-    environmentAndEducation,
-    politicsAndEconomy,
-    cultureAndArt,
-    international,
-    livingAndMedicalCare,
-  },
+  categories,
   sections: {
     editorPicksSection,
     infographicsSection,

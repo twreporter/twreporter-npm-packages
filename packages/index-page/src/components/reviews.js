@@ -38,7 +38,6 @@ const mockup = {
 }
 
 const desktopMinWidth = breakPoints.desktopMinWidth
-const tabletMaxWidth = breakPoints.tabletMaxWidth
 const tabletMinWidth = breakPoints.tabletMinWidth
 const maxSwipableItems = 3
 const moreText = '更多評論文章'
@@ -54,9 +53,9 @@ const FlexBox = styled.div`
   display: flex;
   padding: 0 47px;
   justify-content: center;
-  @media (max-width: ${tabletMaxWidth}) {
+  ${mq.tabletOnly`
     padding: 0 35px;
-  }
+  `}
   ${mq.mobileOnly`
     display: none;
   `}
