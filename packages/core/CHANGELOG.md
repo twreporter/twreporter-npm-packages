@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.6.0...@twreporter/core@1.7.0-rc.0) (2022-09-20)
+
+
+### Features
+
+* add category set const & apply category set to index-page ([c497f90](https://github.com/twreporter/twreporter-npm-packages/commit/c497f90752246e2a0ffd2707fa246c054fa6da78))
+
+
+
+
+
 # [1.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.6.0-rc.0...@twreporter/core@1.6.0) (2022-09-14)
 
 **Note:** Version bump only for package @twreporter/core

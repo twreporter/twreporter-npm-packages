@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.3.3...@twreporter/index-page@1.4.0-rc.0) (2022-09-20)
+
+
+### Bug Fixes
+
+* apply feature toggle on index-page latest section ([716b9cb](https://github.com/twreporter/twreporter-npm-packages/commit/716b9cb157438e1431a433e67060c61c3fa55557))
+
+
+### Features
+
+* add category set const & apply category set to index-page ([c497f90](https://github.com/twreporter/twreporter-npm-packages/commit/c497f90752246e2a0ffd2707fa246c054fa6da78))
+
+
+
+
+
 ## [1.3.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.3.3-rc.3...@twreporter/index-page@1.3.3) (2022-09-14)
 
 **Note:** Version bump only for package @twreporter/index-page
