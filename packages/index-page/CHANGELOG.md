@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.0-rc.1...@twreporter/index-page@1.4.0-rc.2) (2022-09-27)
+
+
+### Features
+
+* **index-page:** add isLazyLoaded prop to img-wrapper ([1057681](https://github.com/twreporter/twreporter-npm-packages/commit/1057681077b6ee7f2e1fcb0b14f52776a73a70b7))
+
+
+
+
+
 # [1.4.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.0-rc.0...@twreporter/index-page@1.4.0-rc.1) (2022-09-21)
 
 **Note:** Version bump only for package @twreporter/index-page
