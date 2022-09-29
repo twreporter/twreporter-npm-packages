@@ -31,13 +31,14 @@ const IconButton = ({
   type = 'primary',
   disabled = false,
   active = false,
+  ...props
 }) => {
   const themeFunc =
     type === 'primary' ? getPrimaryIconButtonTheme : getSecondaryIconButtonTheme
   const { color, hoverColor } = themeFunc(theme, active, disabled)
 
   return (
-    <ButtonContainer color={color} hoverColor={hoverColor}>
+    <ButtonContainer color={color} hoverColor={hoverColor} {...props}>
       {iconComponent}
     </ButtonContainer>
   )

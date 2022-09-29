@@ -57,16 +57,23 @@ export const getOutlinePillButtonTheme = (theme, disabled) => {
     switch (theme) {
       case 'transparent':
         return {
-          color: colorGrayscale.white,
+          color: colorGrayscale.gray200,
           bgColor: colorGrayscale.gray200,
-          hoverColor: colorGrayscale.white,
+          hoverColor: colorGrayscale.gray200,
+          hoverBgColor: colorGrayscale.gray200,
+        }
+      case 'photography':
+        return {
+          color: colorGrayscale.gray600,
+          bgColor: colorGrayscale.gray200,
+          hoverColor: colorGrayscale.gray600,
           hoverBgColor: colorGrayscale.gray200,
         }
       default:
         return {
-          color: colorGrayscale.white,
+          color: colorGrayscale.gray400,
           bgColor: colorGrayscale.gray400,
-          hoverColor: colorGrayscale.white,
+          hoverColor: colorGrayscale.gray400,
           hoverBgColor: colorGrayscale.gray400,
         }
     }
@@ -230,10 +237,98 @@ export const getIconWithTextButtonTheme = (theme, isActive, isDisabled) => {
   }
 }
 
+export const getPrimaryTextButtonTheme = theme => {
+  switch (theme) {
+    case 'photography':
+      return {
+        color: colorGrayscale.white,
+        hoverColor: colorSupportive.main,
+      }
+    case 'transparent':
+      return {
+        color: colorGrayscale.white,
+        hoverColor: colorGrayscale.gray800,
+      }
+    case 'normal':
+    default:
+      return {
+        color: colorGrayscale.gray800,
+        hoverColor: colorBrand.heavy,
+      }
+  }
+}
+
+export const getSecondaryTextButtonTheme = theme => {
+  switch (theme) {
+    case 'photography':
+      return {
+        color: colorGrayscale.gray400,
+        hoverColor: colorSupportive.main,
+      }
+    case 'transparent':
+      return {
+        color: colorGrayscale.gray600,
+        hoverColor: colorGrayscale.gray800,
+      }
+    case 'normal':
+    default:
+      return {
+        color: colorGrayscale.gray600,
+        hoverColor: colorBrand.heavy,
+      }
+  }
+}
+
+export const getDisabledTextButtonTheme = theme => {
+  switch (theme) {
+    case 'photography':
+      return {
+        color: colorGrayscale.gray600,
+        hoverColor: colorGrayscale.gray600,
+      }
+    case 'transparent':
+      return {
+        color: colorGrayscale.gray200,
+        hoverColor: colorGrayscale.gray200,
+      }
+    case 'normal':
+    default:
+      return {
+        color: colorGrayscale.gray400,
+        hoverColor: colorGrayscale.gray400,
+      }
+  }
+}
+
+export const getActiveTextButtonTheme = theme => {
+  switch (theme) {
+    case 'photography':
+      return {
+        color: colorSupportive.main,
+        hoverColor: colorSupportive.main,
+      }
+    case 'transparent':
+      return {
+        color: colorGrayscale.white,
+        hoverColor: colorGrayscale.white,
+      }
+    case 'normal':
+    default:
+      return {
+        color: colorBrand.heavy,
+        hoverColor: colorBrand.heavy,
+      }
+  }
+}
+
 export default {
   getFilledPillButtonTheme,
   getOutlinePillButtonTheme,
   getPrimaryIconButtonTheme,
   getSecondaryIconButtonTheme,
   getIconWithTextButtonTheme,
+  getPrimaryTextButtonTheme,
+  getSecondaryTextButtonTheme,
+  getDisabledTextButtonTheme,
+  getActiveTextButtonTheme,
 }
