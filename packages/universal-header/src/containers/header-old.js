@@ -3,16 +3,32 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import HeaderContext from '../contexts/header-context'
+// util
+import linkUtils from '../utils/links'
 // constant
+import {
+  categoryLabels,
+  categoryPathnames,
+  categoryOrder,
+} from '../constants/categories'
+import {
+  channelOrder,
+  channelLabels,
+  channelTypes,
+  channelPathnames,
+} from '../constants/channels'
 import { actionOrder, actionActive } from '../constants/actions-old'
+import { serviceOrder, serviceKeys } from '../constants/services'
 import wellDefinedPropTypes from '../constants/prop-types'
 // component
-import Header from '../components/header'
+import Header from '../components/header-old'
+import MobileHeader from '../components/mobile-header'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
+
 const _ = {
   get,
   map,
@@ -26,6 +42,24 @@ const stickyTop = css`
   position: sticky;
   top: 0;
   z-index: 1000; // other components in twreporter-react has z-index 999
+`
+
+const MobileOnly = styled.div`
+  display: none;
+
+  ${mq.mobileOnly`
+    display: block;
+    ${stickyTop}
+  `}
+`
+
+const TabletOnly = styled.div`
+  display: none;
+
+  ${mq.tabletOnly`
+    display: block;
+    ${stickyTop}
+  `}
 `
 
 const DesktopAndAbove = styled.div`
@@ -147,6 +181,48 @@ class Container extends React.PureComponent {
     return scrollState
   }
 
+  __prepareServiceProps(isAuthed) {
+    const serviceProps = _.map(serviceOrder, key => ({ key }))
+
+    if (isAuthed) {
+      const logoutKey = serviceKeys.logout
+      serviceProps.push({ key: logoutKey })
+    } else {
+      const loginKey = serviceKeys.login
+      serviceProps.push({ key: loginKey })
+    }
+
+    return serviceProps
+  }
+
+  __prepareChannelProps(releaseBranch, isLinkExternal) {
+    const channelProps = _.map(channelOrder, key => {
+      return {
+        key,
+        label: channelLabels[key],
+        type: channelTypes[key],
+        pathname: channelPathnames[key],
+        link: linkUtils.getChannelLinks(isLinkExternal, releaseBranch)[key],
+      }
+    })
+
+    return channelProps
+  }
+
+  __prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps) {
+    channelProps[channelProps.length - 1].dropDownMenu = _.map(
+      categoryOrder,
+      key => {
+        return {
+          key,
+          label: categoryLabels[key],
+          pathname: categoryPathnames[key],
+          link: linkUtils.getCategoryLinks(isLinkExternal, releaseBranch)[key],
+        }
+      }
+    )
+  }
+
   __prepareActionProps() {
     const isActive = actionActive
     const mobileActionProps = _.map(actionOrder.mobile, key => ({
@@ -186,12 +262,45 @@ class Container extends React.PureComponent {
       hideHeader,
     }
 
+    const serviceProps = this.__prepareServiceProps(isAuthed)
+    const channelProps = this.__prepareChannelProps(
+      releaseBranch,
+      isLinkExternal
+    )
     const actionProps = this.__prepareActionProps()
+
+    this.__prepareCategoriesProps(releaseBranch, isLinkExternal, channelProps)
 
     return (
       <HeaderContext.Provider value={contextValue}>
+        <MobileOnly>
+          <MobileHeader
+            actions={actionProps.mobile}
+            menuChannels={channelProps}
+            menuServices={serviceProps}
+            menuActions={actionProps.hamburger}
+            narrowActions={actionProps.narrow}
+            {...passThrough}
+          />
+        </MobileOnly>
+        <TabletOnly>
+          <MobileHeader
+            actions={actionProps.tablet}
+            menuChannels={channelProps}
+            menuServices={serviceProps}
+            menuActions={actionProps.hamburger}
+            narrowActions={actionProps.narrow}
+            {...passThrough}
+          />
+        </TabletOnly>
         <DesktopAndAbove>
-          <Header actions={actionProps.desktop} {...passThrough} />
+          <Header
+            channels={channelProps}
+            services={serviceProps}
+            actions={actionProps.desktop}
+            narrowActions={actionProps.narrow}
+            {...passThrough}
+          />
         </DesktopAndAbove>
       </HeaderContext.Provider>
     )
@@ -201,6 +310,8 @@ class Container extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     isAuthed: _.get(state, 'auth.isAuthed', false),
+    // bookmarks: _.get(state, 'header.bookmarks'),
+    // notifications: _.get(state, 'headers.notifications'),
   }
 }
 

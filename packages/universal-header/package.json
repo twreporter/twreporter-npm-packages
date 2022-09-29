@@ -7,7 +7,9 @@
     "clean": "make clean",
     "build": "make build",
     "dev": "make dev",
-    "prepublishOnly": "make build"
+    "prepublishOnly": "make build",
+    "storybook": "start-storybook -p 3000",
+    "build-storybook": "build-storybook"
   },
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -33,5 +35,17 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack4": "^6.5.12",
+    "@storybook/manager-webpack4": "^6.5.12",
+    "@storybook/react": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.2.5"
+  }
 }
