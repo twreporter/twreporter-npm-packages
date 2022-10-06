@@ -2,17 +2,13 @@
 import React from 'react'
 import Slogan from './slogan'
 import HeaderContext from '../contexts/header-context'
+import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
 
-const themeOption = ['normal', 'transparent', 'photography', 'index']
 export default {
   title: 'Slogan',
   component: Slogan,
   argTypes: {
-    theme: {
-      defaultValue: 'normal',
-      options: themeOption,
-      control: { type: 'radio' },
-    },
+    theme: THEME_STORYBOOK_ARG_TYPE,
   },
 }
 

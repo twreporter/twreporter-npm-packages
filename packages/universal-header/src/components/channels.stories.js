@@ -2,24 +2,15 @@
 import React from 'react'
 import Channel from './channels'
 import HeaderContext from '../contexts/header-context'
-import releaseBranch from '@twreporter/core/lib/constants/release-branch'
-const { master, staging, preview, release } = releaseBranch
+import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
+import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
 
-const themeOption = ['normal', 'transparent', 'photography', 'index']
 export default {
   title: 'Channel',
   component: Channel,
   argTypes: {
-    theme: {
-      defaultValue: 'normal',
-      options: themeOption,
-      control: { type: 'radio' },
-    },
-    releaseBranch: {
-      defaultValue: master,
-      options: [master, staging, preview, release],
-      control: { type: 'radio' },
-    },
+    theme: THEME_STORYBOOK_ARG_TYPE,
+    releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
   },
 }
 

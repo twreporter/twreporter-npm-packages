@@ -50,7 +50,7 @@ const Channel = ({ ...props }) => {
     return (
       <Item key={categoryKey}>
         <Link {...link}>
-          <TextButton text={label} size="L" />
+          <TextButton text={label} size="L" theme={theme} />
         </Link>
       </Item>
     )

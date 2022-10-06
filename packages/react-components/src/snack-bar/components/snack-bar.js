@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import { getSnackBarTheme } from '../utils/theme'
 // component
 import { P3 } from '../../text/paragraph'
+// @twreporter
+import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
 
 const SnackBarContainer = styled.div`
   width: fit-content;
@@ -17,7 +19,7 @@ const SnackBarContainer = styled.div`
   background-color: ${props => props.bgColor};
 `
 
-const SnackBar = ({ text = '', theme = 'normal' }) => {
+const SnackBar = ({ text = '', theme = THEME.normal }) => {
   const { color, bgColor } = getSnackBarTheme(theme)
   return (
     <SnackBarContainer color={color} bgColor={bgColor}>
@@ -27,7 +29,7 @@ const SnackBar = ({ text = '', theme = 'normal' }) => {
 }
 SnackBar.propTypes = {
   text: PropTypes.string,
-  theme: PropTypes.oneOf(['normal', 'photography', 'transparent', 'index']),
+  theme: THEME_PROP_TYPES,
 }
 
 export default SnackBar

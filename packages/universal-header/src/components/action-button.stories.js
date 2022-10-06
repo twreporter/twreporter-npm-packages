@@ -3,17 +3,16 @@ import React from 'react'
 import styled from 'styled-components'
 import ActionButton from './action-button'
 import HeaderContext from '../contexts/header-context'
+import {
+  THEME,
+  THEME_STORYBOOK_ARG_TYPE,
+} from '@twreporter/core/lib/constants/theme'
 
-const themeOption = ['normal', 'transparent', 'photography', 'index']
 export default {
   title: 'Action Button',
   component: ActionButton,
   argTypes: {
-    theme: {
-      defaultValue: 'normal',
-      options: themeOption,
-      control: { type: 'radio' },
-    },
+    theme: THEME_STORYBOOK_ARG_TYPE,
     direction: {
       defaultValue: 'row',
       options: ['row', 'column'],
@@ -46,7 +45,7 @@ actionButton.args = {
 }
 
 export const photographyTheme = props => (
-  <HeaderContext.Provider value={{ theme: 'photography' }}>
+  <HeaderContext.Provider value={{ theme: THEME.photography }}>
     <Container>
       <ActionButton {...props} />
     </Container>
@@ -56,12 +55,12 @@ photographyTheme.args = {
   actions: defaultActions,
 }
 photographyTheme.parameters = {
-  backgrounds: { default: 'photography' },
+  backgrounds: { default: THEME.photography },
   controls: { exclude: ['actions', 'callback', 'theme'] },
 }
 
 export const transparentTheme = props => (
-  <HeaderContext.Provider value={{ theme: 'transparent' }}>
+  <HeaderContext.Provider value={{ theme: THEME.transparent }}>
     <Container>
       <ActionButton {...props} />
     </Container>
@@ -71,12 +70,12 @@ transparentTheme.args = {
   actions: defaultActions,
 }
 transparentTheme.parameters = {
-  backgrounds: { default: 'transparent' },
+  backgrounds: { default: THEME.transparent },
   controls: { exclude: ['actions', 'callback', 'theme'] },
 }
 
 export const hamburger = props => (
-  <HeaderContext.Provider value={{ theme: 'normal' }}>
+  <HeaderContext.Provider value={{ theme: THEME.normal }}>
     <Container>
       <ActionButton {...props} />
     </Container>

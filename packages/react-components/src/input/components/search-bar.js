@@ -8,8 +8,11 @@ import { Cross, Search } from '../../icon'
 import { IconButton } from '../../button'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
-import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
+import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -79,8 +82,8 @@ const DesktopOnlyIconButton = styled(IconButton)`
 const defaultFunc = () => {}
 const SearchBar = ({
   placeholder = '',
-  theme = 'normal',
-  releaseBranch = releaseBranchConsts.master,
+  theme = THEME.normal,
+  releaseBranch = BRANCH.master,
   onSearch = defaultFunc,
   onClose = defaultFunc,
   ...props
@@ -157,8 +160,8 @@ const SearchBar = ({
 }
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
-  theme: PropTypes.oneOf(['normal', 'photography', 'transparent']),
-  releaseBranch: predefinedPropTypes.releaseBranch,
+  theme: THEME_PROP_TYPES,
+  releaseBranch: BRANCH_PROP_TYPES,
   onSearch: PropTypes.func,
   onClose: PropTypes.func,
 }

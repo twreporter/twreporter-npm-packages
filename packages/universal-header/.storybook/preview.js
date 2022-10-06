@@ -8,12 +8,16 @@ import {
   colorGrayscale,
   colorPhoto,
 } from '@twreporter/core/lib/constants/color'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const themeColor = {
-  normal: { name: 'normal', value: colorGrayscale.gray100 },
-  index: { name: 'normal', value: colorGrayscale.gray100 },
-  photography: { name: 'photography', value: colorPhoto.dark },
-  transparent: { name: 'transparent', value: colorGrayscale.gray600 },
+  [THEME.normal]: { name: THEME.normal, value: colorGrayscale.gray100 },
+  [THEME.index]: { name: THEME.normal, value: colorGrayscale.gray100 },
+  [THEME.photography]: { name: THEME.photography, value: colorPhoto.dark },
+  [THEME.transparent]: {
+    name: THEME.transparent,
+    value: colorGrayscale.gray600,
+  },
 }
 
 export const parameters = {
@@ -42,7 +46,11 @@ const storyListener = args => {
     return
   }
 
-  if (!['normal', 'photography', 'transparent', 'index'].includes(theme)) {
+  if (
+    ![THEME.normal, THEME.photography, THEME.transparent, THEME.index].includes(
+      theme
+    )
+  ) {
     return
   }
   const backgrounds = themeColor[theme]
