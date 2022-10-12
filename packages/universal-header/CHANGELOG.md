@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.15-rc.2...@twreporter/universal-header@2.3.0-rc.0) (2022-10-12)
+
+
+### Bug Fixes
+
+* address review comment ([2cf0499](https://github.com/twreporter/twreporter-npm-packages/commit/2cf04990d34e0f26c7aee5519fb120ce99c12776))
+
+
+### Features
+
+* add new info structure desktop header ([855aa82](https://github.com/twreporter/twreporter-npm-packages/commit/855aa8288116610592452e66827f8421b9a99c7e))
+
+
+
+
+
 ## [2.2.15-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.2.15-rc.1...@twreporter/universal-header@2.2.15-rc.2) (2022-09-27)
 
 **Note:** Version bump only for package @twreporter/universal-header
