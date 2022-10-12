@@ -1,7 +1,7 @@
 import { categoryPathnames } from '../constants/categories'
 import { channelPathnames } from '../constants/channels'
 import { servicePathnames, serviceKeys } from '../constants/services'
-import { actionKeys } from '../constants/actions'
+import { actionKeys } from '../constants/actions-old'
 import externalLinks from '../constants/external-links'
 // @twreporter
 import origins from '@twreporter/core/lib/constants/request-origins'
@@ -87,6 +87,14 @@ function getCategoryLinks(
   return __getLinks(isExternal, releaseBranch, mainBaseURL, categoryPathnames)
 }
 
+export const getCategoryLink = (
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch,
+  path = ''
+) => {
+  return __getLink(isExternal, releaseBranch, mainBaseURL, path)
+}
+
 function getChannelLinks(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
@@ -151,7 +159,7 @@ function getServiceLinks(
   }
 }
 
-function getActionLinks() {
+export function getActionLinks() {
   return {
     [actionKeys.support]: {
       to: __getExternalLinks().monthlyDonation,

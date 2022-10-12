@@ -3,35 +3,31 @@ export const actionKeys = {
   newsLetter: 'newsLetter',
 }
 
-export const actionLabels = {
-  [actionKeys.support]: '贊助',
-  [actionKeys.newsLetter]: '訂閱',
+export const ACTION_LABEL = {
+  row: {
+    [actionKeys.support]: '贊助',
+    [actionKeys.newsLetter]: '訂閱',
+  },
+  column: {
+    [actionKeys.support]: '贊助我們',
+    [actionKeys.newsLetter]: '訂閱電子報',
+  },
+}
+
+export const ACTION_BUTTON_TYPE = {
+  [actionKeys.support]: 'primary',
+  [actionKeys.newsLetter]: 'secondary',
 }
 
 export const actionOrder = {
-  mobile: [
-    actionKeys.support,
-  ],
-  desktop: [
-    actionKeys.support,
-    actionKeys.newsLetter,
-  ],
-}
-
-export const actionActive = {
-  wide: {
-    [actionKeys.support]: true,
-    [actionKeys.newsLetter]: true,
-  },
-  narrow: {
-    [actionKeys.support]: true,
-    [actionKeys.newsLetter]: false,
-  },
+  mobile: [actionKeys.support],
+  desktop: [actionKeys.newsLetter, actionKeys.support],
+  hamburger: [actionKeys.newsLetter, actionKeys.support],
 }
 
 export default {
   actionKeys,
-  actionLabels,
   actionOrder,
-  actionActive,
+  ACTION_LABEL,
+  ACTION_BUTTON_TYPE,
 }

@@ -202,6 +202,20 @@ function selectHamburgerServiceTheme(theme) {
   }
 }
 
+export const selectSloganThemeNew = theme => {
+  switch (theme) {
+    case themeConst.photography:
+    case themeConst.transparent: {
+      return colorGrayscale.white
+    }
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return colorGrayscale.gray800
+    }
+  }
+}
+
 function selectSloganTheme(theme) {
   switch (theme) {
     case themeConst.photography: {

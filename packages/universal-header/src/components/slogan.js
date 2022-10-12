@@ -1,44 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 import sloganText from '../constants/slogan'
-import fonts from '../constants/fonts'
-import themeUtils from '../utils/theme'
-import { colorGrayscale } from '@twreporter/core/lib/constants/color'
-
-const style = {
-  fontSize: {
-    desktop: fonts.size.base,
-  },
-}
+import { selectSloganThemeNew } from '../utils/theme'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const SloganContainer = styled.div`
-  color: ${props => props.color || colorGrayscale.gray900};
-  font-size: ${style.fontSize.desktop};
-  font-family: ${fonts.family.serif};
+  color: ${props => props.color};
   display: flex;
   align-items: center;
   cursor: default;
+  font-family: ${fontFamily.title};
+  font-weight: ${fontWeight.bold};
 `
 
-const Slogan = ({ themeFunction }) => {
+const Slogan = ({ ...props }) => {
+  const { theme } = useContext(HeaderContext)
+  const color = selectSloganThemeNew(theme)
   return (
-    <HeaderContext.Consumer>
-      {({ theme }) => {
-        const color = themeFunction(theme)
-        return <SloganContainer color={color}>{sloganText}</SloganContainer>
-      }}
-    </HeaderContext.Consumer>
+    <SloganContainer color={color} {...props}>
+      {sloganText}
+    </SloganContainer>
   )
-}
-
-Slogan.propTypes = {
-  themeFunction: PropTypes.func,
-}
-
-Slogan.defaultProps = {
-  themeFunction: themeUtils.selectSloganTheme,
 }
 
 export default Slogan
