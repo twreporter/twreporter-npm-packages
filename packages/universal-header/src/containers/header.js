@@ -8,8 +8,6 @@ import { actionOrder, actionActive } from '../constants/actions-old'
 import wellDefinedPropTypes from '../constants/prop-types'
 // component
 import Header from '../components/header'
-// @twreporter
-import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -28,13 +26,8 @@ const stickyTop = css`
   z-index: 1000; // other components in twreporter-react has z-index 999
 `
 
-const DesktopAndAbove = styled.div`
-  display: none;
-
-  ${mq.desktopAndAbove`
-    display: block;
-    ${stickyTop}
-  `}
+const HeaderContainer = styled.div`
+  ${stickyTop}
 `
 
 class Container extends React.PureComponent {
@@ -190,9 +183,13 @@ class Container extends React.PureComponent {
 
     return (
       <HeaderContext.Provider value={contextValue}>
-        <DesktopAndAbove>
-          <Header actions={actionProps.desktop} {...passThrough} />
-        </DesktopAndAbove>
+        <HeaderContainer>
+          <Header
+            actions={actionProps.desktop}
+            hbActions={actionProps.hamburger}
+            {...passThrough}
+          />
+        </HeaderContainer>
       </HeaderContext.Provider>
     )
   }

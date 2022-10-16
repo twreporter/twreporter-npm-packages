@@ -10,6 +10,7 @@ import { ACTION_LABEL, ACTION_BUTTON_TYPE } from '../constants/actions'
 import Link from '@twreporter/react-components/lib/customized-link'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import { PillButton } from '@twreporter/react-components/lib/button'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import map from 'lodash/map'
 const _ = {
@@ -61,6 +62,8 @@ const ActionButtonItem = ({
   callback = defaultFunc,
 }) => {
   const { theme } = useContext(HeaderContext)
+  const buttonTheme =
+    direction === 'row' || theme === THEME.photography ? theme : THEME.noraml
   const actionKey = action.key
   const actionLabel = ACTION_LABEL[direction][actionKey]
   const actionLink = getActionLinks()[actionKey]
@@ -72,7 +75,7 @@ const ActionButtonItem = ({
       <Link {...actionLink}>
         <StyledPillButton
           text={actionLabel}
-          theme={theme}
+          theme={buttonTheme}
           type={buttonType}
           size={buttonSize}
           direction={direction}
@@ -96,14 +99,13 @@ const ActionButton = ({
   callback = defaultFunc,
   ...rest
 }) => (
-  <ActionsContainer direction={direction}>
+  <ActionsContainer direction={direction} {...rest}>
     {_.map(actions, action => {
       return (
         <ActionButtonItem
           action={action}
           direction={direction}
           key={action.key}
-          {...rest}
         />
       )
     })}

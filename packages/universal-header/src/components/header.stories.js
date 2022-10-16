@@ -13,24 +13,31 @@ export default {
       defaultValue: false,
       control: { type: 'boolean' },
     },
+    hideHeader: {
+      defaultValue: false,
+      control: { type: 'boolean' },
+    },
     theme: THEME_STORYBOOK_ARG_TYPE,
     releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
   },
 }
 
 const defaultActions = [{ key: 'newsLetter' }, { key: 'support' }]
-export const header = props => {
-  const { theme, releaseBranch, toUseNarrow } = props
+export const desktop = props => {
+  const { theme, releaseBranch, toUseNarrow, hideHeader } = props
   const context = {
     theme,
     releaseBranch,
     toUseNarrow,
+    hideHeader,
     isLinkExternal: true,
   }
   return (
     <HeaderContext.Provider value={context}>
-      <Header actions={defaultActions} />
+      <Header actions={defaultActions} hbActions={defaultActions} />
     </HeaderContext.Provider>
   )
 }
-header.parameters = { controls: { exclude: ['pathname', 'actions'] } }
+desktop.parameters = {
+  controls: { exclude: ['pathname', 'actions', 'hbActions'] },
+}

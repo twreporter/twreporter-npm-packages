@@ -4,7 +4,12 @@ import styled from 'styled-components'
 // context
 import HeaderContext from '../contexts/header-context'
 // utils
-import linkUtils from '../utils/links'
+import {
+  getLogoutLink,
+  getLoginLink,
+  getSearchLink,
+  getBookmarksLink,
+} from '../utils/links'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import { IconButton } from '@twreporter/react-components/lib/button'
@@ -66,14 +71,14 @@ const LogInOutIcon = () => {
     }
     const redirectURL = window.location.href
     const query = querystring.stringify({ destination: redirectURL })
-    window.location = linkUtils.getLogoutLink(releaseBranch).to + '?' + query
+    window.location = getLogoutLink(releaseBranch).to + '?' + query
   }
   const onClickLogOut = e => {
     e.preventDefault()
 
     const redirectURL = window.location.href
     const query = querystring.stringify({ destination: redirectURL })
-    window.location = linkUtils.getLoginLink(releaseBranch).to + '?' + query
+    window.location = getLoginLink(releaseBranch).to + '?' + query
   }
   const closeDialog = () => setShowDialog(false)
   const ref = useOutsideClick(closeDialog)
@@ -117,7 +122,7 @@ const SearchIcon = () => {
       return
     }
     window.location = `${
-      linkUtils.getSearchLink(isLinkExternal, releaseBranch).to
+      getSearchLink(isLinkExternal, releaseBranch).to
     }?q=${keywords}`
   }
 
@@ -142,7 +147,7 @@ const SearchIcon = () => {
 
 const BookmarkIcon = () => {
   const { releaseBranch, isLinkExternal, theme } = useContext(HeaderContext)
-  const link = linkUtils.getBookmarksLink(isLinkExternal, releaseBranch)
+  const link = getBookmarksLink(isLinkExternal, releaseBranch)
   const Icon = <Bookmark releaseBranch={releaseBranch} />
 
   return (

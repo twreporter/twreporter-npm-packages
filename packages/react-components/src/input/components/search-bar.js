@@ -25,7 +25,6 @@ const InputContainer = styled.div`
   padding: 8px 16px;
   border: none;
   border-radius: 40px;
-  margin: 8px;
   background-color: ${props => props.bgColor};
 `
 const Container = styled.form`
@@ -74,6 +73,7 @@ const Input = styled.input`
   }
 `
 const DesktopOnlyIconButton = styled(IconButton)`
+  margin-left: 8px;
   ${mq.tabletAndBelow`
     display: none;
   `}

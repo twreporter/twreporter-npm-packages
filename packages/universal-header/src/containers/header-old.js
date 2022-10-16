@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import HeaderContext from '../contexts/header-context'
 // util
-import linkUtils from '../utils/links'
+import linkUtils from '../utils/links-old'
 // constant
 import {
   categoryLabels,
@@ -16,7 +16,7 @@ import {
   channelLabels,
   channelTypes,
   channelPathnames,
-} from '../constants/channels'
+} from '../constants/channels-old'
 import { actionOrder, actionActive } from '../constants/actions-old'
 import { serviceOrder, serviceKeys } from '../constants/services'
 import wellDefinedPropTypes from '../constants/prop-types'

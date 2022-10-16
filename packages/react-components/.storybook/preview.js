@@ -1,3 +1,4 @@
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { addons } from '@storybook/addons'
 import {
   UPDATE_GLOBALS,

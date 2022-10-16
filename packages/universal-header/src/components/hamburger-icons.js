@@ -2,10 +2,10 @@ import HeaderContext from '../contexts/header-context'
 import Link from './customized-link'
 import PropTypes from 'prop-types'
 import React from 'react'
-import linkUtils from '../utils/links'
+import linkUtils from '../utils/links-old'
 import querystring from 'querystring'
 import styled from 'styled-components'
-import themeUtils from '../utils/theme'
+import themeUtils from '../utils/theme-old'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash

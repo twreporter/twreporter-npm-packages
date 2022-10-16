@@ -1,7 +1,9 @@
-export const actionKeys = {
+const actionKeys = {
   support: 'support',
   newsLetter: 'newsLetter',
 }
+
+export const ACTION_KEY = actionKeys
 
 export const ACTION_LABEL = {
   row: {
@@ -19,15 +21,8 @@ export const ACTION_BUTTON_TYPE = {
   [actionKeys.newsLetter]: 'secondary',
 }
 
-export const actionOrder = {
+export const ACTION_ORDER = {
   mobile: [actionKeys.support],
   desktop: [actionKeys.newsLetter, actionKeys.support],
   hamburger: [actionKeys.newsLetter, actionKeys.support],
-}
-
-export default {
-  actionKeys,
-  actionOrder,
-  ACTION_LABEL,
-  ACTION_BUTTON_TYPE,
 }
