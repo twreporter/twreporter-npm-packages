@@ -143,6 +143,21 @@ Line.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
 }
 
+export const SocialMedia = ({ mediaType, ...args }) => (
+  <Icon filename={mediaType} {...args} />
+)
+SocialMedia.propTypes = {
+  mediaType: PropTypes.oneOf([
+    'facebook',
+    'instagram',
+    'medium',
+    'twitter',
+    'youtube',
+    'line',
+  ]),
+  releaseBranch: BRANCH_PROP_TYPES,
+}
+
 export default {
   Arrow,
   Article,
@@ -165,4 +180,5 @@ export default {
   Topic,
   Twitter,
   Youtube,
+  SocialMedia,
 }
