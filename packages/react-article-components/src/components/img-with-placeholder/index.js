@@ -57,6 +57,7 @@ const Placeholder = styled.div`
 
 const ImgWithObjectFit = styled.img`
   display: block;
+  width: 100%;
   height: 100%;
   object-fit: ${props => props.objectFit || 'none'};
   object-position: ${props => props.objectPosition || '50% 50%'};
@@ -83,9 +84,11 @@ const ImgBox = styled.div`
   height: 100%;
   opacity: ${props => (props.toShow ? '1' : '0')};
   transition: opacity 0.5s;
-  & > img {
-    width: 100%;
-  }
+`
+
+const DefaultImg = styled.img`
+  width: 100%;
+  height: auto;
 `
 
 /**
@@ -240,8 +243,9 @@ export default class Img extends React.PureComponent {
 
     const srcset = getSrcsetString(imageSet)
     const isObjectFit = Boolean(objectFit)
-    const heightWidthRatio =
-      _.get(defaultImage, 'height') / _.get(defaultImage, 'width')
+    const defaultImageHeight = _.get(defaultImage, 'height')
+    const defaultImageWidth = _.get(defaultImage, 'width')
+    const heightWidthRatio = defaultImageHeight / defaultImageWidth
     if (isObjectFit && !heightWidthRatio) {
       console.warn(
         'Warning on Img component:',
@@ -275,6 +279,8 @@ export default class Img extends React.PureComponent {
                 src={defaultImageSrc}
                 srcSet={this._supportObjectFit ? srcset : ''}
                 hide={!this._supportObjectFit}
+                width={defaultImageWidth}
+                height={defaultImageHeight}
                 {...imgProps}
               />
               {this._supportObjectFit ? null : (
@@ -286,13 +292,15 @@ export default class Img extends React.PureComponent {
               )}
             </React.Fragment>
           ) : (
-            <img
+            <DefaultImg
               alt={alt}
               onLoad={this.handleImageLoaded}
               ref={this._img}
               sizes={sizes}
               src={defaultImageSrc}
               srcSet={srcset}
+              width={defaultImageWidth}
+              height={defaultImageHeight}
               {...imgProps}
             />
           )}
