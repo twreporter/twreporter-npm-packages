@@ -115,6 +115,9 @@ const MobileTab = ({ tabs = [], activeTabIndex = 0 }) => {
     }
     return <TabItem key={index} tab={tab} onClick={handleClick} />
   })
+  useEffect(() => {
+    setActiveIndex(activeTabIndex)
+  }, [activeTabIndex])
 
   return (
     <MobileTabContainer ref={ref} showGradientMask={showGradientMask}>

@@ -37,7 +37,7 @@ export const CATEGORY_LABEL = {
   [categoryPath.education]: '教育校園',
   [categoryPath.podcast]: 'Podcast',
   [categoryPath.opinion]: '評論',
-  [categoryPath.photography]: '攝影',
+  [categoryPath.photography]: '影像',
 }
 
 export const CATEGORY_ID = {

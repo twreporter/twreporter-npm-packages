@@ -14,10 +14,11 @@ const channelKey = {
 }
 export const CHANNEL_KEY = channelKey
 
+// external links are in external-links.js file
 export const CHANNEL_PATH = {
   [channelKey.latest]: '/categories/latest',
   [channelKey.topic]: '/topics',
-  [channelKey.humanStory]: '/tags/xxx',
+  [channelKey.humanStory]: '/tags/58db34a30f56b40d001ae6a6',
   [channelKey.photography]: '/photography',
   [channelKey.infographic]: `/tags/${INFOGRAM_ID}`,
 }
@@ -29,9 +30,9 @@ export const CHANNEL_LABEL = {
   [channelKey.opinion]: '評論',
   [channelKey.column]: '專欄',
   [channelKey.humanStory]: '人物故事',
-  [channelKey.photography]: '攝影',
+  [channelKey.photography]: '影像',
   [channelKey.podcast]: 'Podcast',
-  [channelKey.kidsReporter]: 'Teens Reporter',
+  [channelKey.kidsReporter]: '少年報導者',
   [channelKey.infographic]: '數位敘事',
 }
 

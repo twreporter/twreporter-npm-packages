@@ -33,6 +33,12 @@ const animation = {
   step3Delay: '150ms',
   step3Duration: '200ms',
 }
+const zIndex = {
+  hamburger: 4,
+  header: 3,
+  topRow: 2,
+  channel: 1,
+}
 
 const channelSlideIn = keyframes`
   from {
@@ -65,16 +71,29 @@ const ChannelEffect = css`
     animation-delay: 0ms;
   }
 `
+const HamburgerEffect = css`
+  .hamburger-effect-enter {
+  }
+  .hamburger-effect-enter-active,
+  .hamburger-effect-enter-done {
+  }
+  .hamburger-effect-exit-active {
+  }
+`
 const HeaderContainer = styled.div`
+  width: 100%;
+  background-color: ${props => props.bgColor};
+  transform: translateY(
+    ${props => (props.hideHeader ? `${-narrowHeaderHeight}px` : '0')}
+  );
+  transition: transform 300ms
+    ${props => (props.hideHeader ? 'ease-in' : 'ease-out')};
+`
+const HeaderSection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin: auto;
-  background-color: ${props => props.bgColor};
-  transform: translateY(${props =>
-    props.hideHeader ? `${-narrowHeaderHeight}px` : '0'});
-  transition: transform 300ms ${props =>
-    props.hideHeader ? 'ease-in' : 'ease-out'};
+  z-index: ${zIndex.header};
 
   ${mq.hdOnly`
     width: 1280px;
@@ -101,7 +120,7 @@ const TopRow = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${props => (props.toUseNarrow ? '16px' : '24px')} 16px;
-  z-index: 501;
+  z-index: ${zIndex.topRow};
   background-color: ${props => props.topRowBgColor};
   ${ShowWhenNarrow} {
     opacity: ${props => (props.toUseNarrow ? '1' : '0')};
@@ -142,22 +161,24 @@ const FlexGroup = styled.div`
   align-items: center;
 `
 const ChannelContainer = styled.div`
-  z-index: 500;
+  z-index: ${zIndex.channel};
   ${ChannelEffect}
 `
-const StyledHamburgerMenu = styled(HamburgerMenu)`
+const HamburgerContainer = styled.div`
+  z-index: ${zIndex.hamburger};
   position: absolute;
   top: 0;
   left: -${MENU_WIDTH.desktop};
-  transform: translateX(
-    ${props => (props.showHamburger ? MENU_WIDTH.desktop : '0')}
-  );
   transition: transform 300ms ease-in-out;
+  transform: translateX(
+    ${props => (props.showHamburger ? MENU_WIDTH.desktop : 0)}
+  );
   ${mq.tabletOnly`
     left: -${MENU_WIDTH.tablet};
     transform: translateX(${props =>
-      props.showHamburger ? MENU_WIDTH.tablet : '0'});
+      props.showHamburger ? MENU_WIDTH.tablet : 0});
   `}
+  ${HamburgerEffect}
 `
 
 const Header = ({ pathname = '', actions = [], hbActions = [] }) => {
@@ -173,59 +194,67 @@ const Header = ({ pathname = '', actions = [], hbActions = [] }) => {
   const logoType = selectLogoType(theme)
   const HamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
   const { bgColor, topRowBgColor } = selectHeaderTheme(theme)
-  const toggleHamburger = () => setShowHamburger(!showHamburger)
+  const toggleHamburger = e => {
+    e.stopPropagation()
+    setShowHamburger(!showHamburger)
+  }
   const closeHamburger = () => setShowHamburger(false)
   const ref = useOutsideClick(closeHamburger)
 
   return (
     <React.Fragment>
-      <HeaderContainer hideHeader={hideHeader} bgColor={bgColor}>
-        <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
-          <FlexGroup>
-            <ShowWhenNarrow>
-              <IconButton
-                iconComponent={HamburgerIcon}
-                theme={theme}
-                onClick={toggleHamburger}
-              />
-            </ShowWhenNarrow>
-            <LogoContainer>
-              <Link {...logoLink}>
-                <LogoHeader type={logoType} releaseBranch={releaseBranch} />
-              </Link>
-            </LogoContainer>
-            <HideWhenNarrow>
-              <Slogan />
-            </HideWhenNarrow>
-          </FlexGroup>
-          <FlexGroup>
-            <HideWhenNarrow>
-              <ActionButton actions={actions} />
-            </HideWhenNarrow>
-            <IconContainer>
-              <Icons />
-            </IconContainer>
-          </FlexGroup>
-        </TopRow>
-        <StyledDivider toUseNarrow={toUseNarrow} />
-        <ChannelContainer>
-          <CSSTransition
-            in={!toUseNarrow}
-            classNames="channel-effect"
-            timeout={{ appear: 0, enter: 350, exit: 200 }}
-            unmountOnExit
-          >
-            <Channel onClickHambuger={toggleHamburger} />
-          </CSSTransition>
-        </ChannelContainer>
+      <HeaderContainer bgColor={bgColor} hideHeader={hideHeader}>
+        <HeaderSection>
+          <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+            <FlexGroup>
+              <ShowWhenNarrow>
+                <IconButton
+                  iconComponent={HamburgerIcon}
+                  theme={theme}
+                  onClick={toggleHamburger}
+                />
+              </ShowWhenNarrow>
+              <LogoContainer>
+                <Link {...logoLink}>
+                  <LogoHeader type={logoType} releaseBranch={releaseBranch} />
+                </Link>
+              </LogoContainer>
+              <HideWhenNarrow>
+                <Slogan />
+              </HideWhenNarrow>
+            </FlexGroup>
+            <FlexGroup>
+              <HideWhenNarrow>
+                <ActionButton actions={actions} />
+              </HideWhenNarrow>
+              <IconContainer>
+                <Icons />
+              </IconContainer>
+            </FlexGroup>
+          </TopRow>
+          <StyledDivider toUseNarrow={toUseNarrow} />
+          <ChannelContainer>
+            <CSSTransition
+              in={!toUseNarrow}
+              classNames="channel-effect"
+              timeout={{ appear: 0, enter: 350, exit: 200 }}
+              unmountOnExit
+            >
+              <Channel onClickHambuger={toggleHamburger} />
+            </CSSTransition>
+          </ChannelContainer>
+        </HeaderSection>
       </HeaderContainer>
-      <div ref={ref}>
-        <StyledHamburgerMenu
-          actions={hbActions}
-          handleClose={closeHamburger}
-          showHamburger={showHamburger}
-        />
-      </div>
+      <HamburgerContainer ref={ref} showHamburger={showHamburger}>
+        <CSSTransition
+          in={showHamburger}
+          classNames="hamburger-effect"
+          timeout={{ appear: 0, enter: 300, exit: 300 }}
+          unmountOnExit
+        >
+          <HamburgerMenu actions={hbActions} handleClose={closeHamburger} />
+        </CSSTransition>
+      </HamburgerContainer>
     </React.Fragment>
   )
 }

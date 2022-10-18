@@ -43,11 +43,8 @@ const Channel = ({ onClickHambuger, ...props }) => {
   const { isLinkExternal, releaseBranch, theme } = useContext(HeaderContext)
   const CategoryJsx = _.map(CATEGORY_ORDER, categoryKey => {
     const label = CATEGORY_LABEL[categoryKey]
-    const link = getCategoryLink(
-      isLinkExternal,
-      releaseBranch,
-      `categories/${categoryKey}`
-    )
+    const path = `/categories/${categoryKey}`
+    const link = getCategoryLink(isLinkExternal, releaseBranch, path)
     return (
       <Item key={categoryKey}>
         <Link {...link}>

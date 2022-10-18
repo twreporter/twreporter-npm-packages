@@ -24,7 +24,7 @@ export const selectHeaderTheme = theme => {
     case themeConst.photography: {
       return {
         bgColor: colorPhoto.dark,
-        topRowBgColor: 'inherit',
+        topRowBgColor: colorPhoto.dark,
       }
     }
     case themeConst.transparent: {
@@ -36,14 +36,14 @@ export const selectHeaderTheme = theme => {
     case themeConst.index: {
       return {
         bgColor: colorGrayscale.white,
-        topRowBgColor: 'inherit',
+        topRowBgColor: colorGrayscale.white,
       }
     }
     case themeConst.normal:
     default: {
       return {
         bgColor: colorGrayscale.gray100,
-        topRowBgColor: 'inherit',
+        topRowBgColor: colorGrayscale.gray100,
       }
     }
   }
@@ -116,6 +116,7 @@ export const selectHamburgerMenuTheme = theme => {
     case themeConst.photography: {
       return {
         bgColor: colorPhoto.dark,
+        scrollBarColor: colorOpacity['white_0.8'],
       }
     }
     case themeConst.transparent:
@@ -124,6 +125,7 @@ export const selectHamburgerMenuTheme = theme => {
     default: {
       return {
         bgColor: colorGrayscale.white,
+        scrollBarColor: colorOpacity['black_0.2'],
       }
     }
   }

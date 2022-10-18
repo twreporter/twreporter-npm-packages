@@ -31,6 +31,7 @@ import {
 import mq from '@twreporter/core/lib/utils/media-query'
 import Link from '@twreporter/react-components/lib/customized-link'
 import Divider from '@twreporter/react-components/lib/divider'
+import Modal from '@twreporter/react-components/lib/mobile-pop-up-modal'
 import { IconButton } from '@twreporter/react-components/lib/button'
 import { Cross } from '@twreporter/react-components/lib/icon'
 import { LogoSymbol } from '@twreporter/react-components/lib/logo'
@@ -49,15 +50,27 @@ const _ = {
   map,
 }
 
+const StyledModal = styled(Modal)`
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+`
 const MenuContainer = styled.div`
   max-width: ${MENU_WIDTH.desktop};
   max-height: 100vh;
   overflow-y: scroll;
+  overscroll-behavior: none;
   background-color: ${props => props.bgColor};
-  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
   ${mq.tabletOnly`
     max-width: ${MENU_WIDTH.tablet};
   `}
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.scrollBarColor};
+    border-radius: 2px;
+  }
 `
 const CloseSection = styled.div`
   display: flex;
@@ -111,7 +124,7 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
     // category
     subItemJSX = _.map(CATEGORY_ORDER, catKey => {
       const label = CATEGORY_LABEL[catKey]
-      const path = `/categories/${CATEGORY_PATH[itemKey]}`
+      const path = `/categories/${catKey}`
       const link = getCategoryLink(isLinkExternal, releaseBranch, path)
       return <MenuSubItem text={label} link={link} key={catKey} />
     })
@@ -189,7 +202,7 @@ const Content = () => {
 const HamburgerMenu = ({ actions, handleClose, ...props }) => {
   const { theme, releaseBranch, isLinkExternal } = useContext(HeaderContext)
   const menuTheme = theme === THEME.photography ? theme : THEME.noraml
-  const { bgColor } = selectHamburgerMenuTheme(menuTheme)
+  const { bgColor, scrollBarColor } = selectHamburgerMenuTheme(menuTheme)
   const logoType = selectLogoType(menuTheme)
   const CloseIcon = <Cross releaseBranch={releaseBranch} />
   const logoLink = getLogoLink(isLinkExternal, releaseBranch)
@@ -201,30 +214,38 @@ const HamburgerMenu = ({ actions, handleClose, ...props }) => {
       getSearchLink(isLinkExternal, releaseBranch).to
     }?q=${keywords}`
   }
+  const modalHeight = '100vh'
+  const modalWidth = MENU_WIDTH.desktop
 
   return (
-    <MenuContainer bgColor={bgColor} {...props}>
-      <CloseSection>
-        <IconButton
-          iconComponent={CloseIcon}
-          theme={menuTheme}
-          onClick={handleClose}
-        />
-      </CloseSection>
-      <LogoSection>
-        <Link {...logoLink}>
-          <LogoSymbol type={logoType} />
-        </Link>
-      </LogoSection>
-      <SearchSection>
-        <SearchBar onSearch={onSearch} />
-      </SearchSection>
-      <Content />
-      <Footer />
-      <ActionSection>
-        <ActionButton actions={actions} direction="column" />
-      </ActionSection>
-    </MenuContainer>
+    <StyledModal modalHeight={modalHeight} modalWidth={modalWidth}>
+      <MenuContainer
+        bgColor={bgColor}
+        scrollBarColor={scrollBarColor}
+        {...props}
+      >
+        <CloseSection>
+          <IconButton
+            iconComponent={CloseIcon}
+            theme={menuTheme}
+            onClick={handleClose}
+          />
+        </CloseSection>
+        <LogoSection>
+          <Link {...logoLink}>
+            <LogoSymbol type={logoType} />
+          </Link>
+        </LogoSection>
+        <SearchSection>
+          <SearchBar onSearch={onSearch} />
+        </SearchSection>
+        <Content />
+        <Footer />
+        <ActionSection>
+          <ActionButton actions={actions} direction="column" />
+        </ActionSection>
+      </MenuContainer>
+    </StyledModal>
   )
 }
 HamburgerMenu.propTypes = {
