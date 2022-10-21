@@ -13,6 +13,8 @@ const useOutsideClick = callback => {
       }
     }
 
+    // to work with react synthetic events, we need to add event handler on window instead of document
+    // ref: https://dev.to/dvnrsn/why-isn-t-event-stoppropagation-working-1bnm
     window.addEventListener('click', handleClick)
 
     return () => {
