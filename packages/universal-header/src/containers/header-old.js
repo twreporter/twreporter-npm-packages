@@ -19,7 +19,7 @@ import {
 } from '../constants/channels-old'
 import { actionOrder, actionActive } from '../constants/actions-old'
 import { serviceOrder, serviceKeys } from '../constants/services'
-import wellDefinedPropTypes from '../constants/prop-types'
+import wellDefinedPropTypes from '../constants/prop-types-old'
 // component
 import Header from '../components/header-old'
 import MobileHeader from '../components/mobile-header'

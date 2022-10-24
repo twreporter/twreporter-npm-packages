@@ -6,7 +6,7 @@ import HeaderContext from '../contexts/header-context'
 // util
 import themeUtils from '../utils/theme-old'
 // constant
-import wellDefinedPropTypes from '../constants/prop-types'
+import wellDefinedPropTypes from '../constants/prop-types-old'
 import { channelDropDownType, channelLinkType } from '../constants/channels-old'
 import fonts from '../constants/fonts'
 // component

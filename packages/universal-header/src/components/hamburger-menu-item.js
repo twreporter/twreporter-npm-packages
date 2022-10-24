@@ -10,8 +10,12 @@ import Link from '@twreporter/react-components/lib/customized-link'
 import { Arrow } from '@twreporter/react-components/lib/icon'
 import { P1, P2 } from '@twreporter/react-components/lib/text/paragraph'
 
+const StyledP1 = styled(P1)``
+const StyledP2 = styled(P2)``
 const ItemContainer = styled.div`
-  padding: 8px 32px;
+  ${StyledP1} {
+    padding: 8px 32px;
+  }
   cursor: pointer;
   color: ${props => props.color};
   a {
@@ -31,9 +35,12 @@ const ItemContainer = styled.div`
   }
 `
 const SubItemContainer = styled(ItemContainer)`
-  padding-left: 48px;
+  ${StyledP2} {
+    padding: 8px 32px 8px 48px;
+  }
 `
 const DropdownItemContainer = styled(ItemContainer)`
+  padding: 8px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,7 +62,7 @@ export const MenuLinkItem = ({ text = '', link = {}, ...props }) => {
       {...props}
     >
       <Link {...link}>
-        <P1 text={text} weight="bold" />
+        <StyledP1 text={text} weight="bold" />
       </Link>
     </ItemContainer>
   )
@@ -77,7 +84,7 @@ export const MenuSubItem = ({ text = '', link = {}, ...props }) => {
       {...props}
     >
       <Link {...link}>
-        <P2 text={text} weight="bold" />
+        <StyledP2 text={text} weight="bold" />
       </Link>
     </SubItemContainer>
   )

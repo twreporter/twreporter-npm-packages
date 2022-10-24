@@ -57,7 +57,11 @@ function __getExternalLinks() {
   return Object.assign({}, externalLinks)
 }
 
-const __composeExternalLink = link => ({ to: link, isExternal: true })
+const __composeExternalLink = (link, target = '_self') => ({
+  to: link,
+  isExternal: true,
+  target,
+})
 
 export const getCategoryLink = (
   isExternal = defaultIsExternal,
@@ -114,14 +118,12 @@ export function getLogoLink(
 
 export function getActionLinks() {
   return {
-    [ACTION_KEY.support]: {
-      to: __getExternalLinks().monthlyDonation,
-      isExternal: true,
-    },
-    [ACTION_KEY.newsLetter]: {
-      to: __getExternalLinks().newsLetter,
-      isExternal: true,
-    },
+    [ACTION_KEY.support]: __composeExternalLink(
+      __getExternalLinks().monthlyDonation
+    ),
+    [ACTION_KEY.newsLetter]: __composeExternalLink(
+      __getExternalLinks().newsLetter
+    ),
   }
 }
 
@@ -134,15 +136,18 @@ export function getFooterLinks(
       isExternal,
       releaseBranch,
       mainBaseURL,
-      FOOTER_PATH.aboutUs
+      FOOTER_PATH[FOOTER_KEY.aboutUs]
     ),
     [FOOTER_KEY.influenceReport]: __getLink(
       isExternal,
       releaseBranch,
       mainBaseURL,
-      FOOTER_PATH.influenceReport
+      FOOTER_PATH[FOOTER_KEY.influenceReport]
     ),
-    [FOOTER_KEY.openLab]: __composeExternalLink(__getExternalLinks().openLab),
+    [FOOTER_KEY.openLab]: __composeExternalLink(
+      __getExternalLinks().openLab,
+      '_blank'
+    ),
   }
 }
 
@@ -153,7 +158,7 @@ export function getSocialMediaLinks() {
     (res, key) => {
       const link = externalLinks[key]
       if (link) {
-        res[key] = __composeExternalLink(link)
+        res[key] = __composeExternalLink(link, '_blank')
       }
       return res
     },
@@ -175,7 +180,8 @@ export function getChannelLinks(
     {}
   )
   links[CHANNEL_KEY.kidsReporter] = __composeExternalLink(
-    __getExternalLinks().kidsReporter
+    __getExternalLinks().kidsReporter,
+    '_blank'
   )
 
   return links

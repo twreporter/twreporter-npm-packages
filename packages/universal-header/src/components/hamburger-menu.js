@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import HeaderContext from '../contexts/header-context'
+// context
+import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
 import {
   getLogoLink,
@@ -17,6 +18,7 @@ import {
   CHANNEL_TYPE,
   CHANNEL_LABEL,
   CHANNEL_LINK_TYPE,
+  CHANNEL_DROPDOWN,
 } from '../constants/channels'
 import { MENU_WIDTH } from '../constants/hamburger-menu'
 // components
@@ -37,7 +39,6 @@ import { Cross } from '@twreporter/react-components/lib/icon'
 import { LogoSymbol } from '@twreporter/react-components/lib/logo'
 import { SearchBar } from '@twreporter/react-components/lib/input'
 import {
-  CATEGORY_SET,
   SUBCATEGORY_LABEL,
   CATEGORY_ORDER,
   CATEGORY_LABEL,
@@ -52,6 +53,8 @@ const _ = {
 
 const StyledModal = styled(Modal)`
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+  background-color: ${props => props.bgColor};
+  overflow-y: unset;
 `
 const MenuContainer = styled.div`
   max-width: ${MENU_WIDTH.desktop};
@@ -84,6 +87,9 @@ const CloseSection = styled.div`
 const LogoSection = styled.div`
   display: flex;
   justify-content: center;
+  a {
+    display: flex;
+  }
   img {
     height: 24px;
     width: 24px;
@@ -119,6 +125,7 @@ const DividerContainer = styled.div`
 
 const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
   const { releaseBranch, isLinkExternal } = useContext(HeaderContext)
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   let subItemJSX
   if (itemKey === CHANNEL_KEY.category) {
     // category
@@ -126,15 +133,34 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
       const label = CATEGORY_LABEL[catKey]
       const path = `/categories/${catKey}`
       const link = getCategoryLink(isLinkExternal, releaseBranch, path)
+      if (!label || !link) {
+        return
+      }
       return <MenuSubItem text={label} link={link} key={catKey} />
     })
   } else {
     // subcategory
-    subItemJSX = _.map(CATEGORY_SET[itemKey], subKey => {
-      const label = SUBCATEGORY_LABEL[subKey]
-      const path = `/categories/${CATEGORY_PATH[itemKey]}/${subKey}`
+    subItemJSX = _.map(CHANNEL_DROPDOWN[itemKey], (subItem, key) => {
+      const { type } = subItem
+      let label, path
+      if (type === 'subcategory') {
+        label = SUBCATEGORY_LABEL[subItem.key]
+        path = `/categories/${CATEGORY_PATH[itemKey]}`
+        if (subItem.key !== 'all') {
+          path += `/{subItem.key}`
+        }
+      }
+      if (type === 'path') {
+        label = subItem.label
+        path = subItem.path
+      }
+
       const link = getCategoryLink(isLinkExternal, releaseBranch, path)
-      return <MenuSubItem text={label} link={link} key={subKey} />
+      if (!label || !link) {
+        return
+      }
+      const componentKey = `${itemKey}-${key}`
+      return <MenuSubItem text={label} link={link} key={componentKey} />
     })
   }
   const label = CHANNEL_LABEL[itemKey]
@@ -149,7 +175,9 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
         onClick={handleClick}
         key={dropdownKey}
       />
-      <SubContainer isActive={isActive}>{subItemJSX}</SubContainer>
+      <SubContainer isActive={isActive} onClick={closeHamburgerMenu}>
+        {subItemJSX}
+      </SubContainer>
     </DropdownItemContainer>
   )
 }
@@ -161,6 +189,7 @@ DropdownContent.propTypes = {
 
 const Content = () => {
   const { releaseBranch, isLinkExternal } = useContext(HeaderContext)
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   const [activeKey, setActiveKey] = useState('')
   const itemLinks = getChannelLinks(isLinkExternal, releaseBranch)
   const itemJSX = _.map(CHANNEL_ORDER, (itemKey, index) => {
@@ -177,8 +206,18 @@ const Content = () => {
     const type = CHANNEL_TYPE[itemKey]
     // link type
     if (type === CHANNEL_LINK_TYPE) {
-      const link = itemLinks[itemKey]
-      return <MenuLinkItem text={label} link={link} key={itemKey} />
+      const link = itemLinks && itemLinks[itemKey]
+      if (!label || !link) {
+        return
+      }
+      return (
+        <MenuLinkItem
+          text={label}
+          link={link}
+          key={itemKey}
+          onClick={closeHamburgerMenu}
+        />
+      )
     }
 
     // dropdown type
@@ -216,36 +255,43 @@ const HamburgerMenu = ({ actions, handleClose, ...props }) => {
   }
   const modalHeight = '100vh'
   const modalWidth = MENU_WIDTH.desktop
+  const contextValue = { closeHamburgerMenu: handleClose }
 
   return (
-    <StyledModal modalHeight={modalHeight} modalWidth={modalWidth}>
-      <MenuContainer
+    <HamburgerContext.Provider value={contextValue}>
+      <StyledModal
+        modalHeight={modalHeight}
+        modalWidth={modalWidth}
         bgColor={bgColor}
-        scrollBarColor={scrollBarColor}
-        {...props}
       >
-        <CloseSection>
-          <IconButton
-            iconComponent={CloseIcon}
-            theme={menuTheme}
-            onClick={handleClose}
-          />
-        </CloseSection>
-        <LogoSection>
-          <Link {...logoLink}>
-            <LogoSymbol type={logoType} />
-          </Link>
-        </LogoSection>
-        <SearchSection>
-          <SearchBar onSearch={onSearch} />
-        </SearchSection>
-        <Content />
-        <Footer />
-        <ActionSection>
-          <ActionButton actions={actions} direction="column" />
-        </ActionSection>
-      </MenuContainer>
-    </StyledModal>
+        <MenuContainer
+          bgColor={bgColor}
+          scrollBarColor={scrollBarColor}
+          {...props}
+        >
+          <CloseSection>
+            <IconButton
+              iconComponent={CloseIcon}
+              theme={menuTheme}
+              onClick={handleClose}
+            />
+          </CloseSection>
+          <LogoSection>
+            <Link {...logoLink}>
+              <LogoSymbol type={logoType} />
+            </Link>
+          </LogoSection>
+          <SearchSection>
+            <SearchBar onSearch={onSearch} />
+          </SearchSection>
+          <Content />
+          <Footer />
+          <ActionSection>
+            <ActionButton actions={actions} direction="column" />
+          </ActionSection>
+        </MenuContainer>
+      </StyledModal>
+    </HamburgerContext.Provider>
   )
 }
 HamburgerMenu.propTypes = {

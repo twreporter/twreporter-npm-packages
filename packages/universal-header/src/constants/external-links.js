@@ -8,7 +8,7 @@ const links = {
   instagram: 'https://www.instagram.com/twreporter/',
   twitter: 'https://twitter.com/tw_reporter_org',
   youtube: 'https://www.youtube.com/c/TwreporterOrg',
-  kidsReporter: 'some link to kids reporter',
+  kidsReporter: 'https://kids.twreporter.org/',
 }
 
 export default links

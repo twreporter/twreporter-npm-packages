@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 // context
-import HeaderContext from '../contexts/header-context'
+import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
 import { getFooterLinks, getSocialMediaLinks } from '../utils/links'
 import { selectHamburgerFooterTheme } from '../utils/theme'
@@ -27,19 +27,13 @@ const FooterContainer = styled.div`
 `
 const LinkItem = styled.div`
   padding: 8px 32px;
-  a {
-    color: ${props => props.color};
-  }
+  color: ${props => props.color};
   &:hover {
-    a {
-      color: ${props => props.hoverColor};
-    }
+    color: ${props => props.hoverColor};
     background-color: ${props => props.hoverBgColor};
   }
   &:active {
-    a {
-      color: ${props => props.activeColor};
-    }
+    color: ${props => props.activeColor};
     background-color: ${props => props.activeBgColor};
   }
 `
@@ -66,6 +60,7 @@ const DividerContainer = styled.div`
 
 const Footer = ({ ...props }) => {
   const { theme, releaseBranch, isLinkExternal } = useContext(HeaderContext)
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   const footerTheme = theme === THEME.transparent ? THEME.normal : theme
   const {
     color,
@@ -76,34 +71,39 @@ const Footer = ({ ...props }) => {
   } = selectHamburgerFooterTheme(footerTheme)
 
   const footerLinks = getFooterLinks(isLinkExternal, releaseBranch)
-  const linkJSX = (
+  const linkJSX = footerLinks ? (
     <LinkSection>
       {_.map(FOOTER_ORDER, key => {
         const link = footerLinks[key]
         const label = FOOTER_LABEL[key]
+        if (!link || !label) {
+          return
+        }
         return (
-          <LinkItem
-            key={key}
-            color={color}
-            hoverColor={hoverColor}
-            hoverBgColor={hoverBgColor}
-            activeColor={activeColor}
-            activeBgColor={activeBgColor}
-          >
-            <Link {...link}>
+          <Link {...link} key={key} onClick={closeHamburgerMenu}>
+            <LinkItem
+              color={color}
+              hoverColor={hoverColor}
+              hoverBgColor={hoverBgColor}
+              activeColor={activeColor}
+              activeBgColor={activeBgColor}
+            >
               <P2 text={label} />
-            </Link>
-          </LinkItem>
+            </LinkItem>
+          </Link>
         )
       })}
     </LinkSection>
-  )
+  ) : null
 
   const socialMediaLinks = getSocialMediaLinks()
-  const socialMediaJSX = (
+  const socialMediaJSX = socialMediaLinks ? (
     <SocialMediaSection>
       {_.map(SOCIAL_MEDIA_ORDER, key => {
         const link = socialMediaLinks[key]
+        if (!link) {
+          return
+        }
         const Icon = (
           <SocialMedia mediaType={key} releaseBranch={releaseBranch} />
         )
@@ -116,7 +116,7 @@ const Footer = ({ ...props }) => {
         )
       })}
     </SocialMediaSection>
-  )
+  ) : null
 
   return (
     <FooterContainer {...props}>

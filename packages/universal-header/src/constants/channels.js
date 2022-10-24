@@ -1,4 +1,5 @@
 import { INFOGRAM_ID } from '@twreporter/core/lib/constants/infogram'
+import { SUBCATEGORY_PATH } from '@twreporter/core/lib/constants/category-set'
 
 const channelKey = {
   latest: 'latest',
@@ -53,6 +54,19 @@ export const CHANNEL_TYPE = {
   [channelKey.podcast]: channelDropDownType,
   [channelKey.kidsReporter]: channelLinkType,
   [channelKey.infographic]: channelLinkType,
+}
+
+export const CHANNEL_DROPDOWN = {
+  [channelKey.opinion]: [
+    { type: 'subcategory', key: SUBCATEGORY_PATH.bookReview },
+    { type: 'subcategory', key: SUBCATEGORY_PATH.letter },
+    { type: 'subcategory', key: SUBCATEGORY_PATH.all },
+  ],
+  [channelKey.podcast]: [
+    { type: 'path', label: '關於報導者 Podcast', path: '/a/podcast-list' },
+    { type: 'subcategory', key: SUBCATEGORY_PATH.theRealStory },
+    { type: 'subcategory', key: SUBCATEGORY_PATH.onTheGround },
+  ],
 }
 
 export const CHANNEL_ORDER = [

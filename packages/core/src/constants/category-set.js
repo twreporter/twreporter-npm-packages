@@ -113,6 +113,8 @@ const subcategoryPath = {
   letter: 'letter',
 }
 
+export const SUBCATEGORY_PATH = subcategoryPath
+
 export const SUBCATEGORY_LABEL = {
   [subcategoryPath.all]: '全部',
   [subcategoryPath.hk]: '香港',
