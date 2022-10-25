@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const juniorURL = 'https://www.twreporter.org/tags/6239377ee538880600e2effe'
+const juniorURL = 'https://kids.twreporter.org/'
 
 class JuniorLink extends React.PureComponent {
   static propTypes = {
