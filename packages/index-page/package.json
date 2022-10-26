@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/index-page",
-  "version": "1.4.0-rc.6",
+  "version": "1.4.0-rc.7",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
