@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.7.0-rc.2...@twreporter/core@1.7.0-rc.3) (2022-10-12)
+
+
+### Bug Fixes
+
+* address review comment ([2cf0499](https://github.com/twreporter/twreporter-npm-packages/commit/2cf04990d34e0f26c7aee5519fb120ce99c12776))
+
+
+### Features
+
+* add new color for design guideline ([1ea7e07](https://github.com/twreporter/twreporter-npm-packages/commit/1ea7e079123629d503993655ac6b7adb4b6cd44a))
+
+
+
+
+
+# [1.7.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.7.0-rc.1...@twreporter/core@1.7.0-rc.2) (2022-09-27)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
+# [1.7.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.7.0-rc.0...@twreporter/core@1.7.0-rc.1) (2022-09-21)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
+# [1.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.6.0...@twreporter/core@1.7.0-rc.0) (2022-09-20)
+
+
+### Features
+
+* add category set const & apply category set to index-page ([c497f90](https://github.com/twreporter/twreporter-npm-packages/commit/c497f90752246e2a0ffd2707fa246c054fa6da78))
+
+
+
+
+
 # [1.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.6.0-rc.0...@twreporter/core@1.6.0) (2022-09-14)
 
 **Note:** Version bump only for package @twreporter/core

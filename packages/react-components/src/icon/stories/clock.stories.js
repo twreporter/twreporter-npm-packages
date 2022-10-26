@@ -1,17 +1,12 @@
 import React from 'react'
 import { Clock } from '../index'
-import releaseBranch from '@twreporter/core/lib/constants/release-branch'
-const { master, staging, preview, release } = releaseBranch
+import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
   title: 'Icon/Clock',
   component: Clock,
   argTypes: {
-    releaseBranch: {
-      defaultValue: master,
-      options: [master, staging, preview, release],
-      control: { type: 'radio' },
-    },
+    releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
   },
 }
 

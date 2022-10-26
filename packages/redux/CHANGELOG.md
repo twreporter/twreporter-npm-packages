@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.0-rc.2...@twreporter/redux@7.4.0-rc.3) (2022-10-12)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.4.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.0-rc.1...@twreporter/redux@7.4.0-rc.2) (2022-09-27)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.4.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.0-rc.0...@twreporter/redux@7.4.0-rc.1) (2022-09-21)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.3.0...@twreporter/redux@7.4.0-rc.0) (2022-09-20)
+
+
+### Bug Fixes
+
+* add @twreporter/core to redux dependency ([f84bbf3](https://github.com/twreporter/twreporter-npm-packages/commit/f84bbf3d99a9635b7985846886c2c21c6a261078))
+* fix index-page reducer test case ([2e71684](https://github.com/twreporter/twreporter-npm-packages/commit/2e7168412ad2403def444e74f4ab831cf2efd603))
+* fix jest config for cannot found module problem in monorepo ([538bd96](https://github.com/twreporter/twreporter-npm-packages/commit/538bd963a34dc91741ff887bb2c36eb14b582bc7))
+
+
+### Features
+
+* add category set const & apply category set to index-page ([c497f90](https://github.com/twreporter/twreporter-npm-packages/commit/c497f90752246e2a0ffd2707fa246c054fa6da78))
+
+
+
+
+
 # [7.3.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.3.0-rc.0...@twreporter/redux@7.3.0) (2022-09-14)
 
 **Note:** Version bump only for package @twreporter/redux

@@ -6,6 +6,11 @@ import useSnackBar from '../hooks/use-snack-bar'
 // components
 import SnackBar from '../components/snack-bar'
 import { PillButton } from '../../button'
+// @twreporter
+import {
+  THEME,
+  THEME_STORYBOOK_ARG_TYPE,
+} from '@twreporter/core/lib/constants/theme'
 // lodash
 import random from 'lodash/random'
 const _ = {
@@ -15,12 +20,15 @@ const _ = {
 export default {
   title: 'Snack Bar',
   component: SnackBar,
+  argTypes: {
+    theme: THEME_STORYBOOK_ARG_TYPE,
+  },
 }
 
 export const snackBar = props => <SnackBar {...props} />
 snackBar.args = {
   text: '系統作業文字',
-  theme: 'normal',
+  theme: THEME.normal,
 }
 
 const Container = styled.div`

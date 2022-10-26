@@ -1,13 +1,15 @@
 {
   "name": "@twreporter/universal-header",
-  "version": "2.2.14",
+  "version": "2.3.0-rc.2",
   "description": "Universal header of TWReporter sites",
   "main": "lib/index.js",
   "scripts": {
     "clean": "make clean",
     "build": "make build",
     "dev": "make dev",
-    "prepublishOnly": "make build"
+    "prepublishOnly": "make build",
+    "storybook": "start-storybook -p 3000",
+    "build-storybook": "build-storybook"
   },
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -18,8 +20,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@twreporter/core": "^1.6.0",
-    "@twreporter/react-components": "^8.13.0",
+    "@twreporter/core": "^1.7.0-rc.3",
+    "@twreporter/react-components": "^8.14.0-rc.2",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "querystring": "^0.2.0",
@@ -33,5 +35,17 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack4": "^6.5.12",
+    "@storybook/manager-webpack4": "^6.5.12",
+    "@storybook/react": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.2.5"
+  }
 }

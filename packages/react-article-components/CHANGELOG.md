@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.0-rc.4...@twreporter/react-article-components@1.7.0-rc.5) (2022-10-26)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.7.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.0-rc.3...@twreporter/react-article-components@1.7.0-rc.4) (2022-10-25)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.7.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.0-rc.2...@twreporter/react-article-components@1.7.0-rc.3) (2022-10-21)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.7.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.0-rc.1...@twreporter/react-article-components@1.7.0-rc.2) (2022-10-12)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.7.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.0-rc.0...@twreporter/react-article-components@1.7.0-rc.1) (2022-09-27)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.5-rc.1...@twreporter/react-article-components@1.7.0-rc.0) (2022-09-27)
+
+
+### Features
+
+* **react-article-components:** add lazyload to <img> ([43598a0](https://github.com/twreporter/twreporter-npm-packages/commit/43598a01a9aaa388ce47facdb7f87ead31670995))
+
+
+
+
+
+## [1.6.5-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.5-rc.0...@twreporter/react-article-components@1.6.5-rc.1) (2022-09-21)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.6.5-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4...@twreporter/react-article-components@1.6.5-rc.0) (2022-09-20)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.6.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.6.4-rc.5...@twreporter/react-article-components@1.6.4) (2022-09-14)
 
 **Note:** Version bump only for package @twreporter/react-article-components

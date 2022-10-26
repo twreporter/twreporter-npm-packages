@@ -6,8 +6,11 @@ import {
   getPrimaryIconButtonTheme,
   getSecondaryIconButtonTheme,
 } from '../utils/theme'
+// constants
+import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
   cursor: pointer;
@@ -27,25 +30,28 @@ const ButtonContainer = styled.div`
 
 const IconButton = ({
   iconComponent,
-  theme = 'normal',
-  type = 'primary',
+  theme = THEME.normal,
+  type = TYPE.primary,
   disabled = false,
   active = false,
+  ...props
 }) => {
   const themeFunc =
-    type === 'primary' ? getPrimaryIconButtonTheme : getSecondaryIconButtonTheme
+    type === TYPE.primary
+      ? getPrimaryIconButtonTheme
+      : getSecondaryIconButtonTheme
   const { color, hoverColor } = themeFunc(theme, active, disabled)
 
   return (
-    <ButtonContainer color={color} hoverColor={hoverColor}>
+    <ButtonContainer color={color} hoverColor={hoverColor} {...props}>
       {iconComponent}
     </ButtonContainer>
   )
 }
 IconButton.propTypes = {
   iconComponent: PropTypes.element.isRequired,
-  theme: PropTypes.oneOf(['normal', 'photography', 'transparent', 'index']),
-  type: PropTypes.oneOf(['primary', 'secondary']),
+  theme: THEME_PROP_TYPES,
+  type: TYPE_PROP_TYPES,
   disabled: PropTypes.bool,
   active: PropTypes.bool,
 }

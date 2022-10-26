@@ -55,15 +55,11 @@ const SectionWrapper = styled(Section)`
 
 const FlexBox = styled.div`
   display: flex;
-  flex-wrap:wrap;
-  width: 1002px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  padding: 0 47px;
   justify-content: center;
-  ${mq.desktopOnly`
-    width: 690px;
-  `}
   ${mq.tabletOnly`
-    width: 690px;
+    padding: 0 34px;
   `}
   ${mq.mobileOnly`
     display: none;
@@ -75,19 +71,23 @@ const FlexItem = styled.div`
   position: relative;
   margin-bottom: 70px;
   padding-bottom: 20px;
-  width: 314px;
-  &:nth-child(3n+2) {
-    margin-right: 30px;
-    margin-left: 30px;
+  width: 312px;
+  margin-right: 32.6px;
+  &:nth-child(4n) {
+    margin-right: 0px;
   }
   ${mq.desktopOnly`
     width: 210px;
+    margin-right: 30px;
+    &:nth-child(4n) {
+      margin-right: 0px;
+    }
   `}
   ${mq.tabletOnly`
-    width: 210px;
-    &:nth-child(3n+2) {
-      margin-right: 20px;
-      margin-left: 20px;
+    width: 160px;
+    margin-right: 20px;
+    &:nth-child(4n) {
+      margin-right: 0px;
     }
   `}
   ${mq.mobileOnly`
