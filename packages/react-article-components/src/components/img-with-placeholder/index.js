@@ -116,7 +116,6 @@ export default class Img extends React.PureComponent {
     ]),
     objectPosition: PropTypes.string,
     sizes: PropTypes.string.isRequired,
-    isLazyLoaded: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -129,7 +128,6 @@ export default class Img extends React.PureComponent {
     placeholderNoBlur: false,
     noImgPlaceholder: false,
     sizes: '',
-    isLazyLoaded: true,
   }
 
   constructor(props) {
@@ -224,7 +222,6 @@ export default class Img extends React.PureComponent {
       objectFit,
       objectPosition,
       sizes,
-      isLazyLoaded,
     } = this.props
 
     const appendedClassName = className + ' avoid-break'
@@ -278,7 +275,6 @@ export default class Img extends React.PureComponent {
                 src={defaultImageSrc}
                 srcSet={this._supportObjectFit ? srcset : ''}
                 hide={!this._supportObjectFit}
-                loading={isLazyLoaded ? 'lazy' : 'eager'}
                 {...imgProps}
               />
               {this._supportObjectFit ? null : (
@@ -297,7 +293,6 @@ export default class Img extends React.PureComponent {
               sizes={sizes}
               src={defaultImageSrc}
               srcSet={srcset}
-              loading={isLazyLoaded ? 'lazy' : 'eager'}
               {...imgProps}
             />
           )}
