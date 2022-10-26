@@ -425,7 +425,6 @@ class EditorPicks extends React.Component {
                     `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
                     `${mockup.img.sizes.mobile}`
                   }
-                  isLazyLoaded={false}
                 />
               </ImgFrame>
             </HoverEffect>
