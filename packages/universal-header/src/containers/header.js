@@ -4,18 +4,18 @@ import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import HeaderContext from '../contexts/header-context'
 // constant
-import { actionOrder, actionActive } from '../constants/actions-old'
-import wellDefinedPropTypes from '../constants/prop-types'
+import { ACTION_ORDER } from '../constants/actions'
+import { CONTEXT_PROP } from '../constants/prop-types'
 // component
 import Header from '../components/header'
-// @twreporter
-import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
+import reduce from 'lodash/reduce'
 const _ = {
   get,
   map,
+  reduce,
 }
 
 const HIDE_HEADER_THRESHOLD = 8
@@ -28,22 +28,17 @@ const stickyTop = css`
   z-index: 1000; // other components in twreporter-react has z-index 999
 `
 
-const DesktopAndAbove = styled.div`
-  display: none;
-
-  ${mq.desktopAndAbove`
-    display: block;
-    ${stickyTop}
-  `}
+const HeaderContainer = styled.div`
+  ${stickyTop}
 `
 
 class Container extends React.PureComponent {
   static defaultProps = {
-    ...wellDefinedPropTypes.context.defaultProps,
+    ...CONTEXT_PROP.defaultProps,
     pathname: '',
   }
   static propTypes = {
-    ...wellDefinedPropTypes.context.propTypes,
+    ...CONTEXT_PROP.propTypes,
     pathname: PropTypes.string,
   }
 
@@ -148,24 +143,14 @@ class Container extends React.PureComponent {
   }
 
   __prepareActionProps() {
-    const isActive = actionActive
-    const mobileActionProps = _.map(actionOrder.mobile, key => ({
-      key,
-    }))
-    const desktopAndTabletActionProps = _.map(actionOrder.desktop, key => ({
-      key,
-    }))
-    const narrowActionProps = _.map(actionOrder.desktop, key => {
-      return { key, active: isActive.narrow[key] }
-    })
-
-    return {
-      mobile: mobileActionProps,
-      tablet: desktopAndTabletActionProps,
-      hamburger: desktopAndTabletActionProps,
-      desktop: desktopAndTabletActionProps,
-      narrow: narrowActionProps,
-    }
+    return _.reduce(
+      ACTION_ORDER,
+      (res, value, key) => {
+        res[key] = _.map(value, itemKey => ({ key: itemKey }))
+        return res
+      },
+      {}
+    )
   }
 
   render() {
@@ -190,9 +175,14 @@ class Container extends React.PureComponent {
 
     return (
       <HeaderContext.Provider value={contextValue}>
-        <DesktopAndAbove>
-          <Header actions={actionProps.desktop} {...passThrough} />
-        </DesktopAndAbove>
+        <HeaderContainer>
+          <Header
+            actions={actionProps.desktop}
+            mobileActions={actionProps.mobile}
+            hbActions={actionProps.hamburger}
+            {...passThrough}
+          />
+        </HeaderContainer>
       </HeaderContext.Provider>
     )
   }

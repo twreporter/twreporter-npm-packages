@@ -1,43 +1,38 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import Header from './header'
+import HamburgerMenu from './hamburger-menu'
 import HeaderContext from '../contexts/header-context'
 import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
-  title: 'Header/Desktop',
-  component: Header,
+  title: 'Hamburger/Menu',
+  component: HamburgerMenu,
   argTypes: {
-    toUseNarrow: {
-      defaultValue: false,
-      control: { type: 'boolean' },
-    },
-    hideHeader: {
-      defaultValue: false,
-      control: { type: 'boolean' },
-    },
     theme: THEME_STORYBOOK_ARG_TYPE,
     releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
   },
 }
 
 const defaultActions = [{ key: 'newsLetter' }, { key: 'support' }]
-export const desktop = props => {
-  const { theme, releaseBranch, toUseNarrow, hideHeader } = props
+const onClose = () => window?.alert('click close !')
+export const menu = props => {
+  const { theme, releaseBranch } = props
   const context = {
     theme,
     releaseBranch,
-    toUseNarrow,
-    hideHeader,
     isLinkExternal: true,
   }
   return (
     <HeaderContext.Provider value={context}>
-      <Header actions={defaultActions} hbActions={defaultActions} />
+      <HamburgerMenu {...props} />
     </HeaderContext.Provider>
   )
 }
-desktop.parameters = {
-  controls: { exclude: ['pathname', 'actions', 'hbActions'] },
+menu.args = {
+  actions: defaultActions,
+  handleClose: onClose,
+}
+menu.parameter = {
+  controls: { exclude: ['actions', 'handleClose'] },
 }

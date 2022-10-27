@@ -4,10 +4,10 @@ import CSSTransition from 'react-transition-group/CSSTransition'
 import styled, { css } from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 // util
-import themeUtils from '../utils/theme'
+import themeUtils from '../utils/theme-old'
 // constant
-import wellDefinedPropTypes from '../constants/prop-types'
-import { channelDropDownType, channelLinkType } from '../constants/channels'
+import wellDefinedPropTypes from '../constants/prop-types-old'
+import { channelDropDownType, channelLinkType } from '../constants/channels-old'
 import fonts from '../constants/fonts'
 // component
 import DropDownMenu from './drop-down-menu'

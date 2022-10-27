@@ -9,27 +9,14 @@ import {
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
 
-const LogoContainer = styled.img`
-  ${props => (props.isHide ? 'display: none;' : '')}
-`
+const LogoContainer = styled.img``
 
 const LogoHeader = ({ type, releaseBranch }) => {
-  const [logoDefaultSrc, logoWhiteSrc] = pathUtil.selectLogoPath(
-    'header',
-    releaseBranch
-  )
+  const logoSrc = pathUtil.selectLogoPath('header', releaseBranch, type)
+
   return (
     <React.Fragment>
-      <LogoContainer
-        alt="The Reporter Logo"
-        src={logoDefaultSrc}
-        isHide={type !== 'default'}
-      />
-      <LogoContainer
-        alt="The Reporter Logo"
-        src={logoWhiteSrc}
-        isHide={type !== 'white'}
-      />
+      <LogoContainer alt="The Reporter Logo" src={logoSrc} />
     </React.Fragment>
   )
 }

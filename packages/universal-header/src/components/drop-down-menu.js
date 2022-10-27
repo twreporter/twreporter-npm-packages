@@ -4,7 +4,7 @@ import React from 'react'
 import colors from '../constants/colors'
 import fonts from '../constants/fonts'
 import styled from 'styled-components'
-import wellDefinedPropTypes from '../constants/prop-types'
+import { LINK_PROP } from '../constants/prop-types'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
@@ -92,7 +92,7 @@ class DropDownMenu extends React.PureComponent {
       PropTypes.shape({
         key: PropTypes.string,
         label: PropTypes.string,
-        link: PropTypes.shape(wellDefinedPropTypes.link.propTypes),
+        link: PropTypes.shape(LINK_PROP.propTypes),
         pathname: PropTypes.string,
       })
     ),

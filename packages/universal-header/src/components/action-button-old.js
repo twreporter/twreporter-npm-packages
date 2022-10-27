@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 // util
-import linkUtils from '../utils/links'
-import themeUtils from '../utils/theme'
+import linkUtils from '../utils/links-old'
+import themeUtils from '../utils/theme-old'
 // constant
 import fonts from '../constants/fonts'
 import { actionLabels } from '../constants/actions-old'

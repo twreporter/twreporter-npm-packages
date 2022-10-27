@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 import sloganText from '../constants/slogan'
-import { selectSloganThemeNew } from '../utils/theme'
+import { selectSloganTheme } from '../utils/theme'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const SloganContainer = styled.div`
@@ -16,7 +16,7 @@ const SloganContainer = styled.div`
 
 const Slogan = ({ ...props }) => {
   const { theme } = useContext(HeaderContext)
-  const color = selectSloganThemeNew(theme)
+  const color = selectSloganTheme(theme)
   return (
     <SloganContainer color={color} {...props}>
       {sloganText}
