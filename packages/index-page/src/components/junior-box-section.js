@@ -130,7 +130,7 @@ class JuniorBoxSection extends React.PureComponent {
       <Container>
         <ContentContainer>
           <TextColumn>
-            <h3>看兒童新聞，與孩子對話</h3>
+            <h3>看兒少新聞，與孩子對話</h3>
             <p>
               向孩子解釋重要的事件、嚴肅的議題，是民主社會很重要的事，也是《報導者》身為非營利媒體的重要責任，讓我們和你一起尋找對話的契機。
             </p>

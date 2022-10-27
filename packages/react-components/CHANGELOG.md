@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.14.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.14.0-rc.2...@twreporter/react-components@8.14.0) (2022-10-26)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.14.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.14.0-rc.1...@twreporter/react-components@8.14.0-rc.2) (2022-10-25)
+
+
+### Bug Fixes
+
+* update kids reporter link ([3e4e58c](https://github.com/twreporter/twreporter-npm-packages/commit/3e4e58c37b36e558fbda5cf3a2a2b4e524bf48ee))
+
+
+
+
+
+# [8.14.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.14.0-rc.0...@twreporter/react-components@8.14.0-rc.1) (2022-10-21)
+
+
+### Bug Fixes
+
+* import INITIAL_VIEWPORTS from storybook addon ([7b0ccef](https://github.com/twreporter/twreporter-npm-packages/commit/7b0ccef7723e7ad29f368b54a149ee2562a2ef00))
+
+
+
+
+
 # [8.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.13.1-rc.2...@twreporter/react-components@8.14.0-rc.0) (2022-10-12)
 
 

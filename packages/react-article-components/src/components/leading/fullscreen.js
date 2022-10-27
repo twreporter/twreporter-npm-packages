@@ -177,7 +177,6 @@ export default class FullScreenLeading extends React.PureComponent {
           objectFit="cover"
           objectPostion="center center"
           sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
-          isLazyLoaded={false}
         />
       </FigureBlock>
     )
@@ -193,7 +192,6 @@ export default class FullScreenLeading extends React.PureComponent {
               defaultImage={portraitPoster.mobile}
               objectFit="cover"
               objectPostion="center center"
-              isLazyLoaded={false}
             />
           </FigureBlock>
         </DisplayOnPortrait>
