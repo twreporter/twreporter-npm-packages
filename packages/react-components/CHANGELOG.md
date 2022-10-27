@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.15.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.14.0...@twreporter/react-components@8.15.0-rc.0) (2022-10-27)
+
+
+### Bug Fixes
+
+* add comment for event handler notice ([eb872aa](https://github.com/twreporter/twreporter-npm-packages/commit/eb872aa9de69408e4bad58ba7d9c52bfa2f80d1a))
+* fix feature toggle & style ([9d615b1](https://github.com/twreporter/twreporter-npm-packages/commit/9d615b1091bf5762329f878f13c114cf1dce9912))
+* fix style & bug & naming ([7d824ab](https://github.com/twreporter/twreporter-npm-packages/commit/7d824abc5429b3505555aa174c038c67056abccb))
+
+
+### Features
+
+* add LogoSymbol component & story ([3a1d773](https://github.com/twreporter/twreporter-npm-packages/commit/3a1d773972c576fd48e37e538687e9f6756f5e79))
+* add SocialMedia component & fic category-set constants ([617c87c](https://github.com/twreporter/twreporter-npm-packages/commit/617c87c4d67f16e3e9ca2cd778b526a563708277))
+
+
+
+
+
 # [8.14.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.14.0-rc.2...@twreporter/react-components@8.14.0) (2022-10-26)
 
 **Note:** Version bump only for package @twreporter/react-components

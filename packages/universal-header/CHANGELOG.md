@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.3.0...@twreporter/universal-header@2.4.0-rc.0) (2022-10-27)
+
+
+### Bug Fixes
+
+* address review comments & bugs ([ef8ffa1](https://github.com/twreporter/twreporter-npm-packages/commit/ef8ffa12fdad73f256f0e76a168a88899f27205f))
+* fix feature toggle & style ([9d615b1](https://github.com/twreporter/twreporter-npm-packages/commit/9d615b1091bf5762329f878f13c114cf1dce9912))
+* fix style & bug & naming ([7d824ab](https://github.com/twreporter/twreporter-npm-packages/commit/7d824abc5429b3505555aa174c038c67056abccb))
+
+
+### Features
+
+* add hamburger-footer component & story ([40cd9e7](https://github.com/twreporter/twreporter-npm-packages/commit/40cd9e73f23a9edf12bfe6211ef67f721c0cbca9))
+* add hamburger-menu component with story & feature toggle ([fc4c76b](https://github.com/twreporter/twreporter-npm-packages/commit/fc4c76bf98534d7b2f3fdf7695ae75adec1df510))
+* add hamburger-menu-item component & story ([604140b](https://github.com/twreporter/twreporter-npm-packages/commit/604140b7d388dbd1b1a35795b895bab963e26254))
+
+
+
+
+
 # [2.3.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.3.0-rc.2...@twreporter/universal-header@2.3.0) (2022-10-26)
 
 **Note:** Version bump only for package @twreporter/universal-header
