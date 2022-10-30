@@ -173,6 +173,8 @@ class Category extends React.PureComponent {
                   useTinyImg ? 'tiny' : 'mobile',
                   'url',
                 ])}
+                width={_.get(imgObj, 'resized_targets.mobile.width')}
+                height={_.get(imgObj, 'resized_targets.mobile.height')}
                 srcSet={_.get(imgObj, 'resized_targets')}
                 sizes={
                   `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +

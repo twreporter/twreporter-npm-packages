@@ -419,6 +419,8 @@ class EditorPicks extends React.Component {
                 <ImgWrapper
                   alt={_.get(imgObj, 'description')}
                   src={_.get(imgObj, 'resized_targets.tablet.url')}
+                  width={_.get(imgObj, 'resized_targets.mobile.width')}
+                  height={_.get(imgObj, 'resized_targets.mobile.height')}
                   srcSet={_.get(imgObj, 'resized_targets')}
                   sizes={
                     `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +

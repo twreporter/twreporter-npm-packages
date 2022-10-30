@@ -216,6 +216,8 @@ class MobileTopic extends React.PureComponent {
               alt={imgObj.alt}
               srcSet={imgObj.srcSet}
               sizes={sizesForsrcSet}
+              width={_.get(imgObj, 'srcSet.mobile.width')}
+              height={_.get(imgObj, 'srcSet.mobile.height')}
             />
           </Mobile.Img>
           <Mobile.DescFrame>
@@ -315,6 +317,8 @@ class TopicsInARow extends React.PureComponent {
                 useTinyImg ? 'tiny' : 'mobile',
                 'url',
               ])}
+              width={_.get(imgObj, 'resized_targets.mobile.width')}
+              height={_.get(imgObj, 'resized_targets.mobile.height')}
               srcSet={_.get(imgObj, 'resized_targets', '')}
               sizes={sizesForsrcSet}
             />
