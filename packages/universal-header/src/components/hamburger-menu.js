@@ -142,7 +142,6 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
     // subcategory
     subItemJSX = _.map(CHANNEL_DROPDOWN[itemKey], (subItem, key) => {
       const { type } = subItem
-      console.log('subItem', subItem)
       let label, path
       if (type === 'subcategory') {
         label = SUBCATEGORY_LABEL[subItem.key]
