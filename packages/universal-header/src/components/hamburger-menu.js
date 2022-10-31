@@ -142,12 +142,13 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
     // subcategory
     subItemJSX = _.map(CHANNEL_DROPDOWN[itemKey], (subItem, key) => {
       const { type } = subItem
+      console.log('subItem', subItem)
       let label, path
       if (type === 'subcategory') {
         label = SUBCATEGORY_LABEL[subItem.key]
         path = `/categories/${CATEGORY_PATH[itemKey]}`
         if (subItem.key !== 'all') {
-          path += `/{subItem.key}`
+          path += `/${subItem.key}`
         }
       }
       if (type === 'path') {
@@ -277,12 +278,12 @@ const HamburgerMenu = ({ actions, handleClose, ...props }) => {
             />
           </CloseSection>
           <LogoSection>
-            <Link {...logoLink}>
+            <Link {...logoLink} onClick={handleClose}>
               <LogoSymbol type={logoType} />
             </Link>
           </LogoSection>
           <SearchSection>
-            <SearchBar onSearch={onSearch} />
+            <SearchBar onSearch={onSearch} autofocus={false} />
           </SearchSection>
           <Content />
           <Footer />

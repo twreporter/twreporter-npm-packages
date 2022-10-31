@@ -170,7 +170,7 @@ export const SUBCATEGORY_LABEL = {
   [subcategoryPath.lowBirthRate]: '少子化',
   [subcategoryPath.theRealStory]: 'The Real Story',
   [subcategoryPath.onTheGround]: 'On the Ground 路邊攤計畫',
-  [subcategoryPath.bookReview]: '書摘',
+  [subcategoryPath.bookReview]: '書摘與書評',
   [subcategoryPath.letter]: '讀者投書',
 }
 
