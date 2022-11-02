@@ -31,10 +31,25 @@ const Header = styled.div`
   font-size: 36px;
   font-weight: ${fontWeight.bold};
   color: ${color.darkDarkGray};
-  margin: 0 auto 45px auto;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 
+  ${mq.hdOnly`
+    margin-bottom: 64px;
+  `}
+
+  ${mq.desktopOnly`
+    margin-bottom: 64px;
+  `}
+
+  ${mq.tabletOnly`
+    margin-bottom: 32px;
+  `}
+
   ${mq.mobileOnly`
+    margin-bottom: 24px;
     width: ${(mockup.mobile.cardWidth / mockup.mobile.maxWidth) * 100}%;
     text-align: left;
   `}
