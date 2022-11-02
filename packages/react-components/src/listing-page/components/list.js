@@ -24,7 +24,25 @@ const _ = {
 }
 
 const Container = styled.div`
-  margin: 45px auto 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+
+  ${mq.hdOnly`
+    margin-top: 64px;
+  `}
+
+  ${mq.desktopOnly`
+    margin-top: 64px;
+  `}
+
+  ${mq.tabletOnly`
+    margin-top: 32px;
+  `}
+
+  ${mq.mobileOnly`
+    margin-top: 24px;
+  `}
 `
 
 const Header = styled.div`
