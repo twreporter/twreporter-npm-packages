@@ -111,8 +111,8 @@ const DesktopAsideBlock = styled.div`
 
 const MetadataAndToolsBlock = styled.div`
   ${mq.mobileOnly`
-    padding-top: 40px;
-    padding-bottom: 60px;
+    padding-top: 33px;
+    padding-bottom: 33px;
   `}
 
   ${mq.tabletOnly`
@@ -192,7 +192,7 @@ const BackgroundBlock = styled(BorderBox)`
     }
   }
 
-  /* boreder-(right|left) of articlePage */
+  /* border-(right|left) of articlePage */
   padding-left: 10px;
   padding-right: 10px;
 `
