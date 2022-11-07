@@ -192,7 +192,7 @@ const BackgroundBlock = styled(BorderBox)`
     }
   }
 
-  /* border-(right|left) of articlePage */
+  /* border-(right|left) of article page */
   padding-left: 10px;
   padding-right: 10px;
 `
