@@ -3,14 +3,11 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 // component
 import { H1 } from '../../text/headline'
-import { P1 } from '../../text/paragraph'
+import { TextButton } from '../../button'
 import Divider from '../../divider'
 import CustomizedLink from '../../customized-link'
 // @twreporter
-import {
-  colorBrand,
-  colorGrayscale,
-} from '@twreporter/core/lib/constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 // const
 const gradientMask =
@@ -27,22 +24,22 @@ const BarContainer = styled.div`
   width: 100%;
   flex-direction: column;
   color: ${colorGrayscale.gray800};
-  & > div {
-    margin-bottom: 16px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 `
 
 const TabItemContainer = styled.div`
   display: flex;
   flex-shrink: 0;
-  color: ${props => (props.isActive ? colorBrand.heavy : 'inherit')};
+  margin-right: 24px;
+  &:last-child {
+    margin-right: 0;
+  }
   a {
-    color: unset;
     text-decoration: none;
   }
+`
+
+const StyledTextButton = styled(TextButton)`
+  padding: 16px 0;
 `
 
 const MobileTabContainer = styled.div`
@@ -54,17 +51,14 @@ const MobileTabContainer = styled.div`
   }
   -webkit-mask-image: ${props =>
     props.showGradientMask ? gradientMask : 'none'};
-  & > div {
-    margin-right: 24px;
-  }
 `
 
 const TabItem = ({ tab = {}, ...restProps }) => {
   const { text, link, isExternal, isActive } = tab
   return (
-    <TabItemContainer isActive={isActive} {...restProps}>
+    <TabItemContainer {...restProps}>
       <CustomizedLink to={link} isExternal={isExternal}>
-        <P1 text={text} weight="bold" />
+        <StyledTextButton text={text} active={isActive} size="L" />
       </CustomizedLink>
     </TabItemContainer>
   )

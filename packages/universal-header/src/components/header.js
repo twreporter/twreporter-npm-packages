@@ -111,7 +111,9 @@ const HeaderSection = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 16px;
+  a {
+    display: flex;
+  }
 `
 const HideWhenNarrow = styled.div``
 const ShowWhenNarrow = styled.div``
