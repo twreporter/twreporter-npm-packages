@@ -11,7 +11,8 @@ const SloganContainer = styled.div`
   align-items: center;
   cursor: default;
   font-family: ${fontFamily.title};
-  font-weight: ${fontWeight.bold};
+  font-weight: ${fontWeight.normal};
+  font-size: 14px;
 `
 
 const Slogan = ({ ...props }) => {

@@ -52,6 +52,7 @@ const Input = styled.input`
   color: ${props => props.color};
   margin-right: 8px;
   height: 24px;
+  font-size: 14px;
   &,
   &:focus,
   &:focus-visible {
@@ -86,6 +87,8 @@ const SearchBar = ({
   releaseBranch = BRANCH.master,
   onSearch = defaultFunc,
   onClose = defaultFunc,
+  handleBlur = defaultFunc,
+  autofocus = true,
   ...props
 }) => {
   const [keywords, setKeywords] = useState('')
@@ -106,6 +109,7 @@ const SearchBar = ({
   }
   const onBlur = () => {
     setFocus(false)
+    handleBlur()
   }
   const onSubmit = e => {
     e.preventDefault()
@@ -126,7 +130,6 @@ const SearchBar = ({
       onSubmit={onSubmit}
       onReset={onReset}
       onFocus={onFocus}
-      onBlur={onBlur}
       focus={focus}
       focusBgColor={focusBgColor}
       desktopBgColor={desktopBgColor}
@@ -142,7 +145,8 @@ const SearchBar = ({
           placeholderColor={placeholderColor}
           value={keywords}
           onChange={onChange}
-          autoFocus
+          onBlur={onBlur}
+          autoFocus={autofocus}
         />
         <IconButton
           iconComponent={SearchIcon}
@@ -164,6 +168,8 @@ SearchBar.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
   onSearch: PropTypes.func,
   onClose: PropTypes.func,
+  handleBlur: PropTypes.func,
+  autofocus: PropTypes.bool,
 }
 
 export default SearchBar

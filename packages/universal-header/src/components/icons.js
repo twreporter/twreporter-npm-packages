@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import querystring from 'querystring'
 import styled from 'styled-components'
+import CSSTransition from 'react-transition-group/CSSTransition'
 // context
 import HeaderContext from '../contexts/header-context'
 // utils
@@ -25,6 +26,9 @@ const IconsContainer = styled.div`
 const IconContainer = styled.div`
   position: relative;
   margin-right: 16px;
+  &:last-child {
+    margin-right: 0;
+  }
   a {
     display: flex;
   }
@@ -45,7 +49,7 @@ const SearchContainer = styled.div`
   transition: opacity 300ms ease;
   position: absolute;
   right: 0;
-  top: -16px;
+  top: -8px;
   z-index: ${props => (props.isSearchOpened ? 999 : -1)};
 `
 
@@ -71,14 +75,14 @@ const LogInOutIcon = () => {
     }
     const redirectURL = window.location.href
     const query = querystring.stringify({ destination: redirectURL })
-    window.location = getLogoutLink(releaseBranch).to + '?' + query
+    window.location = getLoginLink(releaseBranch).to + '?' + query
   }
   const onClickLogOut = e => {
     e.preventDefault()
 
     const redirectURL = window.location.href
     const query = querystring.stringify({ destination: redirectURL })
-    window.location = getLoginLink(releaseBranch).to + '?' + query
+    window.location = getLogoutLink(releaseBranch).to + '?' + query
   }
   const closeDialog = () => setShowDialog(false)
   const ref = useOutsideClick(closeDialog)
@@ -88,12 +92,19 @@ const LogInOutIcon = () => {
     <IconContainer key="login">
       <LogContainer onClick={onClickIcon} ref={ref}>
         <IconButton iconComponent={Icon} theme={theme} />
-        <StyledDialog
-          text="登出"
-          size="L"
-          showDialog={showDialog}
-          onClick={onClickLogOut}
-        />
+        <CSSTransition
+          in={showDialog}
+          classNames="dialog-effect"
+          timeout={{ appear: 0, enter: 100, exit: 100 }}
+          unmountOnExit
+        >
+          <StyledDialog
+            text="登出"
+            size="L"
+            showDialog={showDialog}
+            onClick={onClickLogOut}
+          />
+        </CSSTransition>
       </LogContainer>
     </IconContainer>
   )
@@ -139,6 +150,7 @@ const SearchIcon = () => {
           theme={theme}
           onClose={closeSearchBox}
           onSearch={onSearch}
+          handleBlur={closeSearchBox}
         />
       </SearchContainer>
     </IconContainer>

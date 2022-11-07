@@ -37,12 +37,13 @@ const mainBaseURL = getOriginsByType('main')
 const defaultReleaseBranch = releaseBranchConsts.master
 const defaultIsExternal = false
 
-function __getLink(isExternal, releaseBranch, baseURL, path) {
+function __getLink(isExternal, releaseBranch, baseURL, path, target = '_self') {
   if (isExternal) {
     if (baseURL.hasOwnProperty(releaseBranch)) {
       return {
         to: baseURL[releaseBranch] + path,
         isExternal,
+        target,
       }
     }
   }
@@ -133,10 +134,11 @@ export function getFooterLinks(
 ) {
   return {
     [FOOTER_KEY.aboutUs]: __getLink(
-      isExternal,
+      true,
       releaseBranch,
       mainBaseURL,
-      FOOTER_PATH[FOOTER_KEY.aboutUs]
+      FOOTER_PATH[FOOTER_KEY.aboutUs],
+      '_blank'
     ),
     [FOOTER_KEY.influenceReport]: __getLink(
       isExternal,

@@ -70,7 +70,12 @@ const TextButton = ({
     )
 
   return (
-    <ButtonContainer color={color} hoverColor={hoverColor} iconSize={iconSize}>
+    <ButtonContainer
+      color={color}
+      hoverColor={hoverColor}
+      iconSize={iconSize}
+      {...props}
+    >
       {textJSX}
       {iconComponent}
     </ButtonContainer>
