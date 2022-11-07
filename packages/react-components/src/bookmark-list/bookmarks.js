@@ -49,8 +49,8 @@ const Column = styled.div`
 
 const StatusBar = styled.div`
   ${mq.mobileOnly`
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 24px;
+    padding-right: 24px;
   `}
   padding-bottom: 64px;
   width: stretch;
