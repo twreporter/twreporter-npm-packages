@@ -51,6 +51,10 @@ const StatusBar = styled.div`
   ${mq.mobileOnly`
     padding-left: 24px;
     padding-right: 24px;
+    padding-bottom: 24px;
+  `}
+  ${mq.tabletOnly`
+    padding-bottom: 32px;
   `}
   padding-bottom: 64px;
   width: stretch;
