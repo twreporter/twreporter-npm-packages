@@ -30,7 +30,7 @@ const _ = {
 
 const shiftLeftCss = css`
   position: relative;
-  /* 20px is border-(right|left) width of articlePage */
+  /* 20px is border-(right|left) width of article page */
   width: calc(100% + 20px);
   left: -10px;
 `
