@@ -22,7 +22,8 @@ const styles = {
   },
   titleMargin: {
     mobile: [0, 0, 24, 0],
-    tablet: [0, 0, 42, 0],
+    tablet: [0, 0, 32, 0],
+    desktop: [0, 0, 64, 0],
   },
   titlePadding: [16, 0, 16, 0],
 }
@@ -41,9 +42,14 @@ const SectionTitle = styled.div`
   font-size: 18px;
   font-weight: ${fontWeight.bold};
   line-height: 1;
-  margin: ${arrayToCssShorthand(styles.titleMargin.mobile)};
-  ${mq.tabletAndAbove`
+  ${mq.mobileOnly`
+    margin: ${arrayToCssShorthand(styles.titleMargin.mobile)};
+  `}
+  ${mq.tabletOnly`
     margin: ${arrayToCssShorthand(styles.titleMargin.tablet)};
+  `}
+  ${mq.desktopAndAbove`
+    margin: ${arrayToCssShorthand(styles.titleMargin.desktop)};
   `}
 `
 const SectionContent = styled.div`
