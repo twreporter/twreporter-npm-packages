@@ -16,8 +16,8 @@ const styles = {
   goToTopicMargin: [20, 'auto', 0, 'auto'],
   goToTopicPadding: [14, 0, 14, 0],
   sectionMargin: {
-    mobile: [0, 0, 35, 0],
-    tablet: [0, 0, 42, 0],
+    mobile: [0, 0, 36, 0],
+    tablet: [0, 0, 64, 0],
     desktop: [0, 0, 60, 0],
   },
   titleMargin: {
@@ -55,11 +55,8 @@ const SectionTitle = styled.div`
 const SectionContent = styled.div`
   width: 100%;
   margin: ${arrayToCssShorthand(styles.sectionMargin.mobile)};
-  ${mq.tabletOnly`
+  ${mq.tabletAndAbove`
     margin: ${arrayToCssShorthand(styles.sectionMargin.tablet)};
-  `}
-  ${mq.desktopAndAbove`
-    margin: ${arrayToCssShorthand(styles.sectionMargin.desktop)};
   `}
 `
 
