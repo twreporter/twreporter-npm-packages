@@ -18,20 +18,20 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-image: url(${app.assetsPath}/PodcastBox_Desktop.jpg);
+  background-image: url(${app.assetsPath}/KidsReporter_Banner_Desktop.jpg);
   background-size: contain;
   padding-top: 30px;
   padding-bottom: 30px;
   ${mq.mobileOnly`
-    background-image: url(${app.assetsPath}/PodcastBox_Mobile.jpg);
+    background-image: url(${app.assetsPath}/KidsReporter_Banner_Mobile.jpg);
     padding-top: 40px;
     padding-bottom: 60px;
   `}
   ${mq.tabletOnly`
-    background-image: url(${app.assetsPath}/PodcastBox_Tablet.jpg);
+    background-image: url(${app.assetsPath}/KidsReporter_Banner_Tablet.jpg);
   `}
   ${mq.hdOnly`
-    background-image: url(${app.assetsPath}/PodcastBox_DesktopHD.jpg);
+    background-image: url(${app.assetsPath}/KidsReporter_Banner_DesktopHD.jpg);
   `}
 `
 
