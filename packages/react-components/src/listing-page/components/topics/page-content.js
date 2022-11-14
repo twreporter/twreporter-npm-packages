@@ -6,8 +6,8 @@ const styles = {
   contentWidth: {
     min: 300, // px
     mobile: 95, // %
-    tablet: 700, // px
-    desktop: 870, // px
+    tablet: 698, // px
+    desktop: 922, // px
   },
   titlePadding: 0,
   titleMargin: {
