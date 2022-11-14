@@ -36,10 +36,12 @@ class Container extends React.PureComponent {
   static defaultProps = {
     ...CONTEXT_PROP.defaultProps,
     pathname: '',
+    location: {},
   }
   static propTypes = {
     ...CONTEXT_PROP.propTypes,
     pathname: PropTypes.string,
+    location: PropTypes.object,
   }
 
   constructor(props) {
@@ -159,6 +161,7 @@ class Container extends React.PureComponent {
       isAuthed,
       isLinkExternal,
       theme,
+      pathname,
       ...passThrough
     } = this.props
     const { toUseNarrow, hideHeader } = this.state
@@ -167,6 +170,7 @@ class Container extends React.PureComponent {
       isAuthed,
       isLinkExternal,
       theme,
+      pathname,
       toUseNarrow,
       hideHeader,
     }

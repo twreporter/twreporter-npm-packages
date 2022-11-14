@@ -6,11 +6,11 @@ const actionKeys = {
 export const ACTION_KEY = actionKeys
 
 export const ACTION_LABEL = {
-  row: {
+  brief: {
     [actionKeys.support]: '贊助',
     [actionKeys.newsLetter]: '訂閱',
   },
-  column: {
+  full: {
     [actionKeys.support]: '贊助我們',
     [actionKeys.newsLetter]: '訂閱電子報',
   },

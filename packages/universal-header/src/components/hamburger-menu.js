@@ -22,21 +22,25 @@ import {
 } from '../constants/channels'
 import { MENU_WIDTH } from '../constants/hamburger-menu'
 // components
-import ActionButton from './action-button'
+import {
+  DesktopHamburgerAction,
+  MobileHamburgerAction,
+  MobileHeaderAction,
+} from './action-button'
 import Footer from './hamburger-footer'
 import {
   MenuLinkItem,
   MenuSubItem,
   MenuDropdownItem,
 } from './hamburger-menu-item'
+import { MobileIcons } from './icons'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import Link from '@twreporter/react-components/lib/customized-link'
 import Divider from '@twreporter/react-components/lib/divider'
-import Modal from '@twreporter/react-components/lib/mobile-pop-up-modal'
 import { IconButton } from '@twreporter/react-components/lib/button'
 import { Cross } from '@twreporter/react-components/lib/icon'
-import { LogoSymbol } from '@twreporter/react-components/lib/logo'
+import { LogoSymbol, LogoHeader } from '@twreporter/react-components/lib/logo'
 import { SearchBar } from '@twreporter/react-components/lib/input'
 import {
   SUBCATEGORY_LABEL,
@@ -45,25 +49,28 @@ import {
   CATEGORY_PATH,
 } from '@twreporter/core/lib/constants/category-set'
 import { THEME } from '@twreporter/core/lib/constants/theme'
+import {
+  TabletAndAbove,
+  MobileOnly,
+} from '@twreporter/react-components/lib/rwd'
 // lodash
 import map from 'lodash/map'
 const _ = {
   map,
 }
 
-const StyledModal = styled(Modal)`
-  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
-  background-color: ${props => props.bgColor};
-  overflow-y: unset;
-`
 const MenuContainer = styled.div`
-  max-width: ${MENU_WIDTH.desktop};
+  width: ${MENU_WIDTH.desktop};
   max-height: 100vh;
   overflow-y: scroll;
   overscroll-behavior: none;
   background-color: ${props => props.bgColor};
   ${mq.tabletOnly`
-    max-width: ${MENU_WIDTH.tablet};
+    width: ${MENU_WIDTH.tablet};
+  `}
+  ${mq.mobileOnly`
+    max-height: calc(100vh - 51px);
+    width: ${MENU_WIDTH.mobile};
   `}
 
   &::-webkit-scrollbar {
@@ -99,6 +106,9 @@ const LogoSection = styled.div`
   `}
 `
 const SearchSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 16px 32px 0 32px;
   ${mq.mobileOnly`
     padding: 24px 32px;
@@ -113,6 +123,18 @@ const ContentSection = styled.div`
 const ActionSection = styled.div`
   padding: 40px 32px 32px 32px;
 `
+const HeaderSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+`
+const FlexGroup = styled.div`
+  display: flex;
+  align-items: center;
+  img {
+    height: 21px;
+  }
+`
 const DropdownItemContainer = styled.div``
 const SubContainer = styled.div`
   max-height: ${props => (props.isActive ? '300px' : '0')};
@@ -121,6 +143,12 @@ const SubContainer = styled.div`
 `
 const DividerContainer = styled.div`
   margin: 16px 32px;
+`
+const IconContainer = styled.div`
+  margin-left: 24px;
+`
+const StyledMobileHamburgerAction = styled(MobileHamburgerAction)`
+  width: 100%;
 `
 
 const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
@@ -238,8 +266,9 @@ const Content = () => {
   return <ContentSection>{itemJSX}</ContentSection>
 }
 
-const HamburgerMenu = ({ actions, handleClose, ...props }) => {
+const HamburgerMenu = ({ ...props }) => {
   const { theme, releaseBranch, isLinkExternal } = useContext(HeaderContext)
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   const menuTheme = theme === THEME.photography ? theme : THEME.noraml
   const { bgColor, scrollBarColor } = selectHamburgerMenuTheme(menuTheme)
   const logoType = selectLogoType(menuTheme)
@@ -253,50 +282,53 @@ const HamburgerMenu = ({ actions, handleClose, ...props }) => {
       getSearchLink(isLinkExternal, releaseBranch).to
     }?q=${keywords}`
   }
-  const modalHeight = '100vh'
-  const modalWidth = MENU_WIDTH.desktop
-  const contextValue = { closeHamburgerMenu: handleClose }
 
   return (
-    <HamburgerContext.Provider value={contextValue}>
-      <StyledModal
-        modalHeight={modalHeight}
-        modalWidth={modalWidth}
-        bgColor={bgColor}
-      >
-        <MenuContainer
-          bgColor={bgColor}
-          scrollBarColor={scrollBarColor}
-          {...props}
-        >
-          <CloseSection>
-            <IconButton
-              iconComponent={CloseIcon}
-              theme={menuTheme}
-              onClick={handleClose}
-            />
-          </CloseSection>
-          <LogoSection>
-            <Link {...logoLink} onClick={handleClose}>
-              <LogoSymbol type={logoType} />
+    <MenuContainer bgColor={bgColor} scrollBarColor={scrollBarColor} {...props}>
+      <TabletAndAbove>
+        <CloseSection>
+          <IconButton
+            iconComponent={CloseIcon}
+            theme={menuTheme}
+            onClick={closeHamburgerMenu}
+          />
+        </CloseSection>
+        <LogoSection>
+          <Link {...logoLink} onClick={closeHamburgerMenu}>
+            <LogoSymbol type={logoType} releaseBranch={releaseBranch} />
+          </Link>
+        </LogoSection>
+      </TabletAndAbove>
+      <MobileOnly>
+        <HeaderSection>
+          <FlexGroup>
+            <Link {...logoLink} onClick={closeHamburgerMenu}>
+              <LogoHeader type={logoType} releaseBranch={releaseBranch} />
             </Link>
-          </LogoSection>
-          <SearchSection>
-            <SearchBar onSearch={onSearch} autofocus={false} />
-          </SearchSection>
-          <Content />
-          <Footer />
-          <ActionSection>
-            <ActionButton actions={actions} direction="column" />
-          </ActionSection>
-        </MenuContainer>
-      </StyledModal>
-    </HamburgerContext.Provider>
+          </FlexGroup>
+          <FlexGroup>
+            <MobileHeaderAction />
+            <IconContainer>
+              <MobileIcons />
+            </IconContainer>
+          </FlexGroup>
+        </HeaderSection>
+      </MobileOnly>
+      <SearchSection>
+        <SearchBar onSearch={onSearch} autofocus={false} widthType="stretch" />
+      </SearchSection>
+      <Content />
+      <Footer />
+      <ActionSection>
+        <TabletAndAbove>
+          <DesktopHamburgerAction />
+        </TabletAndAbove>
+        <MobileOnly>
+          <StyledMobileHamburgerAction />
+        </MobileOnly>
+      </ActionSection>
+    </MenuContainer>
   )
-}
-HamburgerMenu.propTypes = {
-  actions: PropTypes.array,
-  handleClose: PropTypes.func,
 }
 
 export default HamburgerMenu

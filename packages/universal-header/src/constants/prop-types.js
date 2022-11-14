@@ -26,11 +26,15 @@ const linkPropTypes = {
 }
 
 const hamburgerContextPropTypes = {
+  toggleHamburger: PropTypes.func,
   closeHamburgerMenu: PropTypes.func,
+  isHamburgerMenuOpen: PropTypes.boolean,
 }
 
 const hamburgerContextDefaultProps = {
+  toggleHamburger: () => {},
   closeHamburgerMenu: () => {},
+  isHamburgerMenuOpen: false,
 }
 
 export const CONTEXT_PROP = {

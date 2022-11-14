@@ -30,6 +30,7 @@ const InputContainer = styled.div`
 const Container = styled.form`
   display: flex;
   align-items: center;
+  ${props => (props.widthType === 'stretch' ? 'width: 100%;' : '')}
   ${InputContainer} {
     ${props =>
       props.focus
@@ -38,6 +39,9 @@ const Container = styled.form`
       border: 1px solid ${props.borderColor};
     `
         : ''}
+    &, & > input {
+      ${props => (props.widthType === 'stretch' ? 'width: 100%;' : '')}
+    }
     ${mq.desktopAndAbove`
       ${props =>
         props.focus
@@ -89,6 +93,7 @@ const SearchBar = ({
   onClose = defaultFunc,
   handleBlur = defaultFunc,
   autofocus = true,
+  widthType = 'fit',
   ...props
 }) => {
   const [keywords, setKeywords] = useState('')
@@ -134,6 +139,7 @@ const SearchBar = ({
       focusBgColor={focusBgColor}
       desktopBgColor={desktopBgColor}
       borderColor={borderColor}
+      widthType={widthType}
       {...props}
     >
       <InputContainer bgColor={bgColor}>
@@ -170,6 +176,7 @@ SearchBar.propTypes = {
   onClose: PropTypes.func,
   handleBlur: PropTypes.func,
   autofocus: PropTypes.bool,
+  widthType: PropTypes.oneOf(['fit', 'stretch']),
 }
 
 export default SearchBar

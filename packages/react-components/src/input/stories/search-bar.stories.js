@@ -27,4 +27,6 @@ searchBar.args = {
   releaseBranch: BRANCH.master,
   onSearch,
   onClose,
+  autofocus: false,
+  widthType: 'fit',
 }

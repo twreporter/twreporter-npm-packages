@@ -130,3 +130,23 @@ export const selectHamburgerMenuTheme = theme => {
     }
   }
 }
+
+export const selectTabBarTheme = theme => {
+  switch (theme) {
+    case themeConst.photography: {
+      return {
+        bgColor: colorPhoto.dark,
+        borderColor: colorPhoto.heavy,
+      }
+    }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default: {
+      return {
+        bgColor: colorGrayscale.gray100,
+        borderColor: colorGrayscale.gray300,
+      }
+    }
+  }
+}

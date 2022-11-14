@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
-import ActionButton from './action-button'
+import ActionButton from './action-button-item'
 import HeaderContext from '../contexts/header-context'
 import {
   THEME,
@@ -16,6 +16,21 @@ export default {
     direction: {
       defaultValue: 'row',
       options: ['row', 'column'],
+      control: { type: 'radio' },
+    },
+    textType: {
+      defaultValue: 'brief',
+      options: ['brief', 'full'],
+      control: { type: 'radio' },
+    },
+    buttonWidth: {
+      defaultValue: 'fit',
+      options: ['fit', 'stretch'],
+      control: { type: 'radio' },
+    },
+    buttonSize: {
+      defaultValue: 'S',
+      options: ['S', 'L'],
       control: { type: 'radio' },
     },
   },
@@ -75,7 +90,7 @@ transparentTheme.parameters = {
 }
 
 export const hamburger = props => (
-  <HeaderContext.Provider value={{ theme: THEME.normal }}>
+  <HeaderContext.Provider value={{ theme: props.theme }}>
     <Container>
       <ActionButton {...props} />
     </Container>
@@ -84,8 +99,20 @@ export const hamburger = props => (
 hamburger.args = {
   actions: defaultActions,
   direction: 'column',
+  textType: 'full',
+  buttonWidth: 'stretch',
+  buttonSize: 'L',
 }
 hamburger.parameters = {
   backgrounds: { default: 'white' },
-  controls: { exclude: ['actions', 'callback', 'theme'] },
+  controls: {
+    exclude: [
+      'actions',
+      'callback',
+      'direction',
+      'textType',
+      'buttonWidth',
+      'buttonSize',
+    ],
+  },
 }
