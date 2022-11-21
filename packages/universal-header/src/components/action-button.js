@@ -1,6 +1,12 @@
 import React from 'react'
 // constant
 import { ACTION_ORDER } from '../constants/actions'
+import {
+  DIRECTION_TYPE,
+  TEXT_TYPE,
+  BUTTON_WIDTH_TYPE,
+  BUTTON_SIZE_TYPE,
+} from '../constants/action-item-types'
 // component
 import ActionButton from './action-button-item'
 // lodash
@@ -26,10 +32,10 @@ export const DesktopHamburgerAction = ({ ...props }) => {
   return (
     <ActionButton
       actions={actionProps}
-      direction="column"
-      textType="full"
-      buttonWidth="stretch"
-      buttonSize="L"
+      direction={DIRECTION_TYPE.column}
+      textType={TEXT_TYPE.full}
+      buttonWidth={BUTTON_WIDTH_TYPE.stretch}
+      buttonSize={BUTTON_SIZE_TYPE.L}
       {...props}
     />
   )
@@ -40,9 +46,9 @@ export const MobileHamburgerAction = ({ ...props }) => {
   return (
     <ActionButton
       actions={actionProps}
-      textType="full"
-      buttonWidth="stretch"
-      buttonSize="L"
+      textType={TEXT_TYPE.full}
+      buttonWidth={BUTTON_WIDTH_TYPE.stretch}
+      buttonSize={BUTTON_SIZE_TYPE.L}
       {...props}
     />
   )

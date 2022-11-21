@@ -6,6 +6,16 @@ import HeaderContext from '../contexts/header-context'
 import { getActionLinks } from '../utils/links'
 // constant
 import { ACTION_LABEL, ACTION_BUTTON_TYPE } from '../constants/actions'
+import {
+  DIRECTION_TYPE,
+  DIRECTION_PROP_TYPE,
+  TEXT_TYPE,
+  TEXT_PROP_TYPE,
+  BUTTON_WIDTH_TYPE,
+  BUTTON_WIDTH_PROP_TYPE,
+  BUTTON_SIZE_TYPE,
+  BUTTON_SIZE_PROP_TYPE,
+} from '../constants/action-item-types'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
@@ -58,15 +68,17 @@ const ActionsContainer = styled.div`
 
 const ActionButtonItem = ({
   action = {},
-  direction = 'row',
-  textType = 'brief',
-  buttonWidth = 'fit',
-  buttonSize = 'S',
+  direction = DIRECTION_TYPE.row,
+  textType = TEXT_TYPE.brief,
+  buttonWidth = BUTTON_WIDTH_TYPE.fit,
+  buttonSize = BUTTON_SIZE_TYPE.S,
   callback = defaultFunc,
 }) => {
   const { theme } = useContext(HeaderContext)
   const buttonTheme =
-    direction === 'row' || theme === THEME.photography ? theme : THEME.noraml
+    direction === DIRECTION_TYPE.row || theme === THEME.photography
+      ? theme
+      : THEME.noraml
   const actionKey = action.key
   const actionLabel = ACTION_LABEL[textType][actionKey]
   const actionLink = getActionLinks()[actionKey]
@@ -91,19 +103,19 @@ ActionButtonItem.propTypes = {
   action: PropTypes.shape({
     key: PropTypes.string,
   }),
-  direction: PropTypes.oneOf(['row', 'column']),
-  textType: PropTypes.oneOf(['brief', 'full']),
-  buttonWidth: PropTypes.oneOf(['fit', 'stretch']),
-  buttonSize: PropTypes.oneOf(['S', 'L']),
+  direction: DIRECTION_PROP_TYPE,
+  textType: TEXT_PROP_TYPE,
+  buttonWidth: BUTTON_WIDTH_PROP_TYPE,
+  buttonSize: BUTTON_SIZE_PROP_TYPE,
   callback: PropTypes.func,
 }
 
 const ActionButton = ({
   actions = [],
-  direction = 'row',
-  textType = 'brief',
-  buttonWidth = 'fit',
-  buttonSize = 'S',
+  direction = DIRECTION_TYPE.row,
+  textType = TEXT_TYPE.brief,
+  buttonWidth = BUTTON_WIDTH_TYPE.fit,
+  buttonSize = BUTTON_SIZE_TYPE.S,
   callback = defaultFunc,
   ...rest
 }) => (

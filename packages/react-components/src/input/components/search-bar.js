@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 // utils
 import { selectThemeStyle } from '../utils/theme'
+// constants
+import { WIDTH_TYPE, WIDTH_PROP_TYPE } from '../constants/type'
 // components
 import { Cross, Search } from '../../icon'
 import { IconButton } from '../../button'
@@ -93,7 +95,7 @@ const SearchBar = ({
   onClose = defaultFunc,
   handleBlur = defaultFunc,
   autofocus = true,
-  widthType = 'fit',
+  widthType = WIDTH_TYPE.fit,
   ...props
 }) => {
   const [keywords, setKeywords] = useState('')
@@ -176,7 +178,7 @@ SearchBar.propTypes = {
   onClose: PropTypes.func,
   handleBlur: PropTypes.func,
   autofocus: PropTypes.bool,
-  widthType: PropTypes.oneOf(['fit', 'stretch']),
+  widthType: WIDTH_PROP_TYPE,
 }
 
 export default SearchBar
