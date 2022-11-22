@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
-import { fontWeight } from '@twreporter/core/lib/constants/font'
 // constants
 import mockup from '../constants/mockup-spec'
-import color from '../constants/color'
 // components
 import ListItem from './list-item'
+import PageContent from './page-content'
+import { TitleBar } from '../../title-bar'
 import FetchingWrapper from '../../is-fetching-wrapper'
 // lodash
 import forEach from 'lodash/forEach'
@@ -23,59 +23,9 @@ const _ = {
   map,
 }
 
-const Container = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0px;
-
-  ${mq.hdOnly`
-    margin-top: 64px;
-  `}
-
-  ${mq.desktopOnly`
-    margin-top: 64px;
-  `}
-
-  ${mq.tabletOnly`
-    margin-top: 32px;
-  `}
-
-  ${mq.mobileOnly`
-    margin-top: 24px;
-  `}
-`
-
-const Header = styled.div`
-  font-size: 36px;
-  font-weight: ${fontWeight.bold};
-  color: ${color.darkDarkGray};
-  margin-top: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-
-  ${mq.hdOnly`
-    margin-bottom: 64px;
-  `}
-
-  ${mq.desktopOnly`
-    margin-bottom: 64px;
-  `}
-
-  ${mq.tabletOnly`
-    margin-bottom: 32px;
-  `}
-
-  ${mq.mobileOnly`
-    margin-bottom: 24px;
-    width: ${(mockup.mobile.cardWidth / mockup.mobile.maxWidth) * 100}%;
-    text-align: left;
-  `}
-`
-
 const FlexItems = styled.div`
   width: ${mockup.hd.maxWidth}px;
-  margin: 0 auto;
+  margin: 64px auto 0;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -91,10 +41,12 @@ const FlexItems = styled.div`
 
   ${mq.tabletOnly`
     width: ${mockup.tablet.maxWidth}px;
+    margin-top: 32px;
   `}
 
   ${mq.mobileOnly`
     width: 100%;
+    margin-top: 24px;
     > div:nth-child(odd) {
       margin-right: 0;
     }
@@ -154,15 +106,17 @@ class List extends PureComponent {
         />
       )
     })
-    const headerTitle = catName || (tagName ? `#${tagName}` : '')
-    const headerJSX = headerTitle ? <Header>{headerTitle}</Header> : null
+    const headerTitle = catName || tagName
+    const headerJSX = headerTitle ? (
+      <TitleBar title={headerTitle ?? ''} />
+    ) : null
     return (
-      <Container>
+      <PageContent>
         {headerJSX}
         <Items isFetching={isFetching} showSpinner={showSpinner}>
           {listJSX}
         </Items>
-      </Container>
+      </PageContent>
     )
   }
 }

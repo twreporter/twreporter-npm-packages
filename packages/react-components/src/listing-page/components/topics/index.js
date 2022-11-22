@@ -6,7 +6,7 @@ import FetchingWrapper from '../../../is-fetching-wrapper'
 import PostsContainer from './posts'
 import PostItem from './post-item'
 import TopicItem from './topic-item'
-import PageContent from './page-content'
+import PageContent from '../page-content'
 import { TopSectionContent, ListSectionContent } from './section'
 // constants
 import { TEXT } from '../../constants/topics'

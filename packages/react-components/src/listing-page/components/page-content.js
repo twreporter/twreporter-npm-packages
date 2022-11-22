@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { resetLinkStyle } from '../../constants/predefined-css'
+import { resetLinkStyle } from '../constants/predefined-css'
 import mq from '@twreporter/core/lib/utils/media-query'
 
 const styles = {
