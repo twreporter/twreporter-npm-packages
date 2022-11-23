@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.1-rc.5...@twreporter/index-page@1.4.1-rc.6) (2022-11-22)
+
+
+### Bug Fixes
+
+* switch image to official gcs bucket ([7b23a14](https://github.com/twreporter/twreporter-npm-packages/commit/7b23a147873efdc15895c6e1e137cb900506f837))
+* update kids banner ([95bfdf6](https://github.com/twreporter/twreporter-npm-packages/commit/95bfdf6bbcc3957567aa7a87857f0a79678223f5))
+
+
+
+
+
 ## [1.4.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.1-rc.4...@twreporter/index-page@1.4.1-rc.5) (2022-11-07)
 
 **Note:** Version bump only for package @twreporter/index-page

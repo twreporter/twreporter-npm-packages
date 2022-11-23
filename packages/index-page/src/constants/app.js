@@ -1,6 +1,6 @@
 export default {
   url: 'https://twreporter.org',
-  assetsPath: 'https://www.twreporter.org/images/index-page',
+  assetsPath: 'https://www.twreporter.org/assets/banner',
   domain: '',
   expirationDays: 0,
   title: '',
