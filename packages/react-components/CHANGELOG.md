@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.15.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.5...@twreporter/react-components@8.15.0-rc.6) (2022-11-25)
+
+
+### Bug Fixes
+
+* add constants file to manage prop types ([4841e86](https://github.com/twreporter/twreporter-npm-packages/commit/4841e868cad52cfd2168f0c146de30950e27c996))
+
+
+### Features
+
+* add mobile & tablet view for new info structure ([b0e158c](https://github.com/twreporter/twreporter-npm-packages/commit/b0e158c751230723626c9cb9de83641f0588c189))
+
+
+
+
+
 # [8.15.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.4...@twreporter/react-components@8.15.0-rc.5) (2022-11-07)
 
 

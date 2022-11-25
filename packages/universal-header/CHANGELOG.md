@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.5...@twreporter/universal-header@2.4.0-rc.6) (2022-11-25)
+
+
+### Bug Fixes
+
+* add constants file to manage prop types ([4841e86](https://github.com/twreporter/twreporter-npm-packages/commit/4841e868cad52cfd2168f0c146de30950e27c996))
+* move action button storybook arg types in constants ([c4c066f](https://github.com/twreporter/twreporter-npm-packages/commit/c4c066f540628686478d44662a7c177021f52c59))
+* remove unnecessary parantheses ([13df7e4](https://github.com/twreporter/twreporter-npm-packages/commit/13df7e49084d1e2f895ee7ebce4349c77a0810c2))
+* update `latest` page path ([a592546](https://github.com/twreporter/twreporter-npm-packages/commit/a5925467548d33179b8b9122f0c3c83ad61e1fcd))
+
+
+### Features
+
+* add mobile & tablet view for new info structure ([b0e158c](https://github.com/twreporter/twreporter-npm-packages/commit/b0e158c751230723626c9cb9de83641f0588c189))
+
+
+
+
+
 # [2.4.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.4...@twreporter/universal-header@2.4.0-rc.5) (2022-11-07)
 
 
