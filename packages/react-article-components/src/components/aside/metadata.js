@@ -201,7 +201,8 @@ const MetadataContainer = styled.div`
   letter-spacing: 0.4px;
 
   ${mq.mobileOnly`
-    width: calc(300/355*100%);
+    padding-left: 24px;
+    padding-right: 24px;
     margin: 0 auto;
   `}
 
