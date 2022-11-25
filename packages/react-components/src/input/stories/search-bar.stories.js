@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBar from '../components/search-bar'
+import { WIDTH_TYPE } from '../constants/type'
 import {
   BRANCH,
   BRANCH_STORYBOOK_ARG_TYPE,
@@ -27,4 +28,6 @@ searchBar.args = {
   releaseBranch: BRANCH.master,
   onSearch,
   onClose,
+  autofocus: false,
+  widthType: WIDTH_TYPE.fit,
 }

@@ -17,7 +17,7 @@ export const CHANNEL_KEY = channelKey
 
 // external links are in external-links.js file
 export const CHANNEL_PATH = {
-  [channelKey.latest]: '/categories/latest',
+  [channelKey.latest]: '/latest',
   [channelKey.topic]: '/topics',
   [channelKey.humanStory]: '/tags/58db34a30f56b40d001ae6a6',
   [channelKey.photography]: '/photography',
