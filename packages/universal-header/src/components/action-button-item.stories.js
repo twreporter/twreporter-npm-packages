@@ -1,8 +1,18 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
-import ActionButton from './action-button'
+import ActionButton from './action-button-item'
 import HeaderContext from '../contexts/header-context'
+import {
+  DIRECTION_STORYBOOK_ARG_TYPE,
+  TEXT_STORYBOOK_ARG_TYPE,
+  BUTTON_WIDTH_STORYBOOK_ARG_TYPE,
+  BUTTON_SIZE_STORYBOOK_ARG_TYPE,
+  DIRECTION_TYPE,
+  TEXT_TYPE,
+  BUTTON_WIDTH_TYPE,
+  BUTTON_SIZE_TYPE,
+} from '../constants/action-item-types'
 import {
   THEME,
   THEME_STORYBOOK_ARG_TYPE,
@@ -13,11 +23,10 @@ export default {
   component: ActionButton,
   argTypes: {
     theme: THEME_STORYBOOK_ARG_TYPE,
-    direction: {
-      defaultValue: 'row',
-      options: ['row', 'column'],
-      control: { type: 'radio' },
-    },
+    direction: DIRECTION_STORYBOOK_ARG_TYPE,
+    textType: TEXT_STORYBOOK_ARG_TYPE,
+    buttonWidth: BUTTON_WIDTH_STORYBOOK_ARG_TYPE,
+    buttonSize: BUTTON_SIZE_STORYBOOK_ARG_TYPE,
   },
 }
 
@@ -75,7 +84,7 @@ transparentTheme.parameters = {
 }
 
 export const hamburger = props => (
-  <HeaderContext.Provider value={{ theme: THEME.normal }}>
+  <HeaderContext.Provider value={{ theme: props.theme }}>
     <Container>
       <ActionButton {...props} />
     </Container>
@@ -83,9 +92,21 @@ export const hamburger = props => (
 )
 hamburger.args = {
   actions: defaultActions,
-  direction: 'column',
+  direction: DIRECTION_TYPE.column,
+  textType: TEXT_TYPE.full,
+  buttonWidth: BUTTON_WIDTH_TYPE.stretch,
+  buttonSize: BUTTON_SIZE_TYPE.L,
 }
 hamburger.parameters = {
   backgrounds: { default: 'white' },
-  controls: { exclude: ['actions', 'callback', 'theme'] },
+  controls: {
+    exclude: [
+      'actions',
+      'callback',
+      'direction',
+      'textType',
+      'buttonWidth',
+      'buttonSize',
+    ],
+  },
 }

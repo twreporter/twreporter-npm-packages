@@ -10,9 +10,11 @@ import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 // lodash
 import forEach from 'lodash/forEach'
 import reduce from 'lodash/reduce'
+import split from 'lodash/split'
 const _ = {
   forEach,
   reduce,
+  split,
 }
 
 const originsForClient = origins.forClientSideRendering
@@ -63,6 +65,14 @@ const __composeExternalLink = (link, target = '_self') => ({
   isExternal: true,
   target,
 })
+
+export const checkReferrer = (
+  referrer = '',
+  releaseBranch = defaultReleaseBranch
+) => {
+  const url = new URL(referrer)
+  return url.origin === mainBaseURL[releaseBranch]
+}
 
 export const getCategoryLink = (
   isExternal = defaultIsExternal,
@@ -187,4 +197,20 @@ export function getChannelLinks(
   )
 
   return links
+}
+
+export function getTabBarLinks(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
+  return {
+    home: __getLink(isExternal, releaseBranch, mainBaseURL, ''),
+    latest: __getLink(isExternal, releaseBranch, mainBaseURL, '/latest'),
+    bookmark: __getLink(
+      isExternal,
+      releaseBranch,
+      mainBaseURL,
+      servicePathnames.bookmarks
+    ),
+  }
 }

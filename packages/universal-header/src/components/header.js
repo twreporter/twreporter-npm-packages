@@ -1,28 +1,37 @@
 import React, { useContext, useState } from 'react'
-import PropTypes from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 import CSSTransition from 'react-transition-group/CSSTransition'
 // context
-import HeaderContext from '../contexts/header-context'
+import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
-import { getLogoLink } from '../utils/links'
+import { getLogoLink, checkReferrer } from '../utils/links'
 import { selectLogoType, selectHeaderTheme } from '../utils/theme'
 // constants
 import { MENU_WIDTH } from '../constants/hamburger-menu'
 // components
 import Channel from './channels'
-import ActionButton from './action-button'
-import Icons from './icons'
+import { DesktopHeaderAction, MobileHeaderAction } from './action-button'
+import Icons, { MobileIcons } from './icons'
 import Slogan from './slogan'
 import HamburgerMenu from './hamburger-menu'
+import TabBar from './tab-bar'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import mq from '@twreporter/core/lib/utils/media-query'
 import Divider from '@twreporter/react-components/lib/divider'
 import { LogoHeader } from '@twreporter/react-components/lib/logo'
 import { IconButton } from '@twreporter/react-components/lib/button'
-import { Hamburger } from '@twreporter/react-components/lib/icon'
+import { Hamburger, Arrow } from '@twreporter/react-components/lib/icon'
 import { useOutsideClick } from '@twreporter/react-components/lib/hook'
+import {
+  DesktopAndAbove,
+  TabletAndBelow,
+} from '@twreporter/react-components/lib/rwd'
+// lodash
+import split from 'lodash/split'
+const _ = {
+  split,
+}
 
 const narrowHeaderHeight = 65
 const channelHeight = 50
@@ -71,15 +80,6 @@ const ChannelEffect = css`
     animation-delay: 0ms;
   }
 `
-const HamburgerEffect = css`
-  .hamburger-effect-enter {
-  }
-  .hamburger-effect-enter-active,
-  .hamburger-effect-enter-done {
-  }
-  .hamburger-effect-exit-active {
-  }
-`
 const HeaderContainer = styled.div`
   width: 100%;
   background-color: ${props => props.bgColor};
@@ -88,6 +88,9 @@ const HeaderContainer = styled.div`
   );
   transition: transform 300ms
     ${props => (props.hideHeader ? 'ease-in' : 'ease-out')};
+  ${mq.mobileOnly`
+    ${props => (props.forceShowOnMobile ? 'transform: translateY(0);' : '')}
+  `}
 `
 const HeaderSection = styled.div`
   display: flex;
@@ -111,8 +114,16 @@ const HeaderSection = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-right: 16px;
   a {
     display: flex;
+  }
+`
+const MobileLogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  img {
+    height: 21px;
   }
 `
 const HideWhenNarrow = styled.div``
@@ -149,6 +160,9 @@ const TopRow = styled.div`
         props.toUseNarrow ? animation.step3Delay : 0};
     }
   }
+  ${mq.tabletAndBelow`
+    padding: 16px 0;
+  `}
 `
 const StyledDivider = styled(Divider)`
   opacity: ${props => (props.toUseNarrow ? '0' : '1')};
@@ -180,16 +194,34 @@ const HamburgerContainer = styled.div`
     transform: translateX(${props =>
       props.showHamburger ? MENU_WIDTH.tablet : 0});
   `}
-  ${HamburgerEffect}
+  ${mq.mobileOnly`
+    left: 0;
+    transform: none;
+    opacity: ${props => (props.showHamburger ? 1 : 0)};
+  `}
+`
+const TabBarContainer = styled.div`
+  position: fixed;
+  bottom: env(safe-area-inset-bottom, 0);
+  left: 0;
+  width: 100%;
+`
+const HideOnArticle = styled.div`
+  ${props => (props.isOnArticlePage ? 'display: none;' : '')}
+`
+const ShowOnArticle = styled.div`
+  ${props => (props.isOnArticlePage ? '' : 'display: none;')}
+  margin-right: 16px;
 `
 
-const Header = ({ pathname = '', actions = [], hbActions = [] }) => {
+const Header = () => {
   const {
     releaseBranch,
     isLinkExternal,
     theme,
     toUseNarrow,
     hideHeader,
+    pathname,
   } = useContext(HeaderContext)
   const [showHamburger, setShowHamburger] = useState(false)
   const logoLink = getLogoLink(isLinkExternal, releaseBranch)
@@ -202,50 +234,102 @@ const Header = ({ pathname = '', actions = [], hbActions = [] }) => {
   }
   const closeHamburger = () => setShowHamburger(false)
   const ref = useOutsideClick(closeHamburger)
+  const contextValue = {
+    toggleHamburger,
+    closeHamburgerMenu: closeHamburger,
+    isHamburgerMenuOpen: showHamburger,
+  }
+  const isOnArticlePage = _.split(pathname, '/')[1] === 'a'
+  const BackToPrevIcon = (
+    <Arrow direction="left" releaseBranch={releaseBranch} />
+  )
+  const gotoPrev = () => {
+    if (checkReferrer(document.referrer, releaseBranch)) {
+      // go to previous page when referer is twreporter site
+      window.history.back()
+    } else {
+      // go to home page when referer is not twreporter site
+      window.location.href = '/'
+    }
+  }
+  const DesktopHeaderJSX = (
+    <HeaderSection>
+      <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+        <FlexGroup>
+          <ShowWhenNarrow>
+            <IconButton
+              iconComponent={HamburgerIcon}
+              theme={theme}
+              onClick={toggleHamburger}
+            />
+          </ShowWhenNarrow>
+          <LogoContainer>
+            <Link {...logoLink}>
+              <LogoHeader type={logoType} releaseBranch={releaseBranch} />
+            </Link>
+          </LogoContainer>
+          <HideWhenNarrow>
+            <Slogan />
+          </HideWhenNarrow>
+        </FlexGroup>
+        <FlexGroup>
+          <HideWhenNarrow>
+            <DesktopHeaderAction />
+          </HideWhenNarrow>
+          <IconContainer>
+            <Icons />
+          </IconContainer>
+        </FlexGroup>
+      </TopRow>
+      <StyledDivider toUseNarrow={toUseNarrow} />
+      <ChannelContainer>
+        <CSSTransition
+          in={!toUseNarrow}
+          classNames="channel-effect"
+          timeout={{ appear: 0, enter: 350, exit: 200 }}
+          unmountOnExit
+        >
+          <Channel onClickHambuger={toggleHamburger} />
+        </CSSTransition>
+      </ChannelContainer>
+    </HeaderSection>
+  )
+  const MobileHeaderJSX = (
+    <HeaderSection>
+      <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+        <FlexGroup>
+          <ShowOnArticle isOnArticlePage={isOnArticlePage}>
+            <IconButton
+              iconComponent={BackToPrevIcon}
+              theme={theme}
+              onClick={gotoPrev}
+            />
+          </ShowOnArticle>
+          <MobileLogoContainer>
+            <Link {...logoLink}>
+              <LogoHeader type={logoType} releaseBranch={releaseBranch} />
+            </Link>
+          </MobileLogoContainer>
+        </FlexGroup>
+        <FlexGroup>
+          <MobileHeaderAction />
+          <IconContainer>
+            <MobileIcons />
+          </IconContainer>
+        </FlexGroup>
+      </TopRow>
+    </HeaderSection>
+  )
 
   return (
-    <React.Fragment>
-      <HeaderContainer bgColor={bgColor} hideHeader={hideHeader}>
-        <HeaderSection>
-          <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
-            <FlexGroup>
-              <ShowWhenNarrow>
-                <IconButton
-                  iconComponent={HamburgerIcon}
-                  theme={theme}
-                  onClick={toggleHamburger}
-                />
-              </ShowWhenNarrow>
-              <LogoContainer>
-                <Link {...logoLink}>
-                  <LogoHeader type={logoType} releaseBranch={releaseBranch} />
-                </Link>
-              </LogoContainer>
-              <HideWhenNarrow>
-                <Slogan />
-              </HideWhenNarrow>
-            </FlexGroup>
-            <FlexGroup>
-              <HideWhenNarrow>
-                <ActionButton actions={actions} />
-              </HideWhenNarrow>
-              <IconContainer>
-                <Icons />
-              </IconContainer>
-            </FlexGroup>
-          </TopRow>
-          <StyledDivider toUseNarrow={toUseNarrow} />
-          <ChannelContainer>
-            <CSSTransition
-              in={!toUseNarrow}
-              classNames="channel-effect"
-              timeout={{ appear: 0, enter: 350, exit: 200 }}
-              unmountOnExit
-            >
-              <Channel onClickHambuger={toggleHamburger} />
-            </CSSTransition>
-          </ChannelContainer>
-        </HeaderSection>
+    <HamburgerContext.Provider value={contextValue}>
+      <HeaderContainer
+        bgColor={bgColor}
+        hideHeader={hideHeader}
+        forceShowOnMobile={showHamburger}
+      >
+        <DesktopAndAbove>{DesktopHeaderJSX}</DesktopAndAbove>
+        <TabletAndBelow>{MobileHeaderJSX}</TabletAndBelow>
       </HeaderContainer>
       <HamburgerContainer ref={ref} showHamburger={showHamburger}>
         <CSSTransition
@@ -254,16 +338,18 @@ const Header = ({ pathname = '', actions = [], hbActions = [] }) => {
           timeout={{ appear: 0, enter: 300, exit: 300 }}
           unmountOnExit
         >
-          <HamburgerMenu actions={hbActions} handleClose={closeHamburger} />
+          <HamburgerMenu />
         </CSSTransition>
       </HamburgerContainer>
-    </React.Fragment>
+      <TabletAndBelow>
+        <HideOnArticle isOnArticlePage={isOnArticlePage}>
+          <TabBarContainer>
+            <TabBar toggleHamburger={toggleHamburger} />
+          </TabBarContainer>
+        </HideOnArticle>
+      </TabletAndBelow>
+    </HamburgerContext.Provider>
   )
-}
-Header.propTypes = {
-  pathname: PropTypes.string,
-  actions: PropTypes.array,
-  hbActions: PropTypes.array,
 }
 
 export default Header

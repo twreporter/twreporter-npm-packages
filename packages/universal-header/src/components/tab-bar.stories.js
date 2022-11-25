@@ -1,21 +1,24 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import HamburgerMenu from './hamburger-menu'
+import styled from 'styled-components'
+import TabBar from './tab-bar'
 import HeaderContext from '../contexts/header-context'
 import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
-  title: 'Hamburger/Menu',
-  component: HamburgerMenu,
+  title: 'Tab Bar',
+  component: TabBar,
   argTypes: {
     theme: THEME_STORYBOOK_ARG_TYPE,
     releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
   },
 }
 
-const onClose = () => window?.alert('click close !')
-export const menu = props => {
+const Container = styled.div`
+  width: 320px;
+`
+export const tabBar = props => {
   const { theme, releaseBranch } = props
   const context = {
     theme,
@@ -24,13 +27,9 @@ export const menu = props => {
   }
   return (
     <HeaderContext.Provider value={context}>
-      <HamburgerMenu {...props} />
+      <Container>
+        <TabBar />
+      </Container>
     </HeaderContext.Provider>
   )
-}
-menu.args = {
-  handleClose: onClose,
-}
-menu.parameter = {
-  controls: { exclude: ['handleClose'] },
 }

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import PropTypes from 'prop-types'
 import querystring from 'querystring'
 import styled from 'styled-components'
 import CSSTransition from 'react-transition-group/CSSTransition'
@@ -13,7 +14,7 @@ import {
 } from '../utils/links'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
-import { IconButton } from '@twreporter/react-components/lib/button'
+import { IconButton, TextButton } from '@twreporter/react-components/lib/button'
 import { Member, Search, Bookmark } from '@twreporter/react-components/lib/icon'
 import { Dialog } from '@twreporter/react-components/lib/card'
 import { SearchBar } from '@twreporter/react-components/lib/input'
@@ -63,7 +64,7 @@ const StyledDialog = styled(Dialog)`
   cursor: pointer;
 `
 
-const LogInOutIcon = () => {
+const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
   const [showDialog, setShowDialog] = useState(false)
   const { releaseBranch, theme, isAuthed } = useContext(HeaderContext)
   const onClickIcon = e => {
@@ -86,12 +87,18 @@ const LogInOutIcon = () => {
   }
   const closeDialog = () => setShowDialog(false)
   const ref = useOutsideClick(closeDialog)
-
   const Icon = <Member releaseBranch={releaseBranch} />
+  const LoginButton =
+    loginButtonType === 'icon' || isAuthed ? (
+      <IconButton iconComponent={Icon} theme={theme} />
+    ) : (
+      <TextButton text="登入" theme={theme} />
+    )
+
   return (
     <IconContainer key="login">
       <LogContainer onClick={onClickIcon} ref={ref}>
-        <IconButton iconComponent={Icon} theme={theme} />
+        {LoginButton}
         <CSSTransition
           in={showDialog}
           classNames="dialog-effect"
@@ -108,6 +115,9 @@ const LogInOutIcon = () => {
       </LogContainer>
     </IconContainer>
   )
+}
+LogInOutIcon.propTypes = {
+  loginButtonType: PropTypes.oneOf(['icon', 'text']),
 }
 
 const SearchIcon = () => {
@@ -176,6 +186,12 @@ const Icons = () => (
     <SearchIcon />
     <BookmarkIcon />
     <LogInOutIcon />
+  </IconsContainer>
+)
+
+export const MobileIcons = () => (
+  <IconsContainer>
+    <LogInOutIcon loginButtonType="text" />
   </IconsContainer>
 )
 
