@@ -79,7 +79,7 @@ export const selectHamburgerFooterTheme = theme => {
   }
 }
 
-export const selectHamburgerItemTheme = (theme, active) => {
+export const selectHamburgerItemTheme = (theme, active = false) => {
   switch (theme) {
     case themeConst.photography:
       return {
