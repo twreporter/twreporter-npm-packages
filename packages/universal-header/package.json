@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/universal-header",
-  "version": "2.4.0-rc.7",
+  "version": "2.4.0-rc.8",
   "description": "Universal header of TWReporter sites",
   "main": "lib/index.js",
   "scripts": {
