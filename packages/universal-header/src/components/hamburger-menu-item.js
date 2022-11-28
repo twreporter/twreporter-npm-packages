@@ -18,7 +18,9 @@ const ItemContainer = styled.div`
   }
   cursor: pointer;
   color: ${props => props.color};
-  a {
+  a,
+  a:visited,
+  a:link {
     text-decoration: none;
     color: ${props => props.color};
   }
