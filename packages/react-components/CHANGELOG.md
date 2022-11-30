@@ -3,6 +3,120 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.15.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.8...@twreporter/react-components@8.15.0-rc.9) (2022-11-30)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.15.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.7...@twreporter/react-components@8.15.0-rc.8) (2022-11-29)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.15.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.6...@twreporter/react-components@8.15.0-rc.7) (2022-11-25)
+
+
+### Bug Fixes
+
+* add title bar to topic & refine style ([70bb908](https://github.com/twreporter/twreporter-npm-packages/commit/70bb908caca7a6e488cc714d842db0d322d4fe7f))
+* fix bookmark status bar style ([e26e9d1](https://github.com/twreporter/twreporter-npm-packages/commit/e26e9d1f73ecd5692625a6ea3002721e905604ea))
+* fix bookmark title style ([1359c67](https://github.com/twreporter/twreporter-npm-packages/commit/1359c6788e716cf43cba474b1d8f3142ed9c7f88))
+* fix bookmark width ([5887126](https://github.com/twreporter/twreporter-npm-packages/commit/588712652c7b3130ea2d535312fb7fc3a792740b))
+* fix topic content margin ([1c3aa52](https://github.com/twreporter/twreporter-npm-packages/commit/1c3aa52dbe4b123012f8bc5fd9b1a48f15e056d8))
+* fix topic page content width ([4e07fbb](https://github.com/twreporter/twreporter-npm-packages/commit/4e07fbb5bf6018a82494dfe511f0ce70c017dac8))
+* fix topic title margin ([5f85e69](https://github.com/twreporter/twreporter-npm-packages/commit/5f85e69ce3968828ff8ba3d7061e0200c99a0e3c))
+* refine tag page style ([62265b8](https://github.com/twreporter/twreporter-npm-packages/commit/62265b85cb4df93d69f876ff0cf2989601b238ba))
+* refine tag page style ([b9b3676](https://github.com/twreporter/twreporter-npm-packages/commit/b9b3676478c2aa8720b96c7e8affa30d515b2969))
+* remove unused import ([fff1a13](https://github.com/twreporter/twreporter-npm-packages/commit/fff1a13212c11fb2ac40935486942709096bac24))
+
+
+
+
+
+# [8.15.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.5...@twreporter/react-components@8.15.0-rc.6) (2022-11-25)
+
+
+### Bug Fixes
+
+* add constants file to manage prop types ([4841e86](https://github.com/twreporter/twreporter-npm-packages/commit/4841e868cad52cfd2168f0c146de30950e27c996))
+
+
+### Features
+
+* add mobile & tablet view for new info structure ([b0e158c](https://github.com/twreporter/twreporter-npm-packages/commit/b0e158c751230723626c9cb9de83641f0588c189))
+
+
+
+
+
+# [8.15.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.4...@twreporter/react-components@8.15.0-rc.5) (2022-11-07)
+
+
+### Bug Fixes
+
+* address defects ([a33aa3b](https://github.com/twreporter/twreporter-npm-packages/commit/a33aa3bf55fd9b1bf5472a4a13de942a9f8757ca))
+
+
+
+
+
+# [8.15.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.3...@twreporter/react-components@8.15.0-rc.4) (2022-10-31)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.15.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.2...@twreporter/react-components@8.15.0-rc.3) (2022-10-30)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.15.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.1...@twreporter/react-components@8.15.0-rc.2) (2022-10-28)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.15.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.0...@twreporter/react-components@8.15.0-rc.1) (2022-10-27)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.15.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.14.0...@twreporter/react-components@8.15.0-rc.0) (2022-10-27)
+
+
+### Bug Fixes
+
+* add comment for event handler notice ([eb872aa](https://github.com/twreporter/twreporter-npm-packages/commit/eb872aa9de69408e4bad58ba7d9c52bfa2f80d1a))
+* fix feature toggle & style ([9d615b1](https://github.com/twreporter/twreporter-npm-packages/commit/9d615b1091bf5762329f878f13c114cf1dce9912))
+* fix style & bug & naming ([7d824ab](https://github.com/twreporter/twreporter-npm-packages/commit/7d824abc5429b3505555aa174c038c67056abccb))
+
+
+### Features
+
+* add LogoSymbol component & story ([3a1d773](https://github.com/twreporter/twreporter-npm-packages/commit/3a1d773972c576fd48e37e538687e9f6756f5e79))
+* add SocialMedia component & fic category-set constants ([617c87c](https://github.com/twreporter/twreporter-npm-packages/commit/617c87c4d67f16e3e9ca2cd778b526a563708277))
+
+
+
+
+
 # [8.14.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.14.0-rc.2...@twreporter/react-components@8.14.0) (2022-10-26)
 
 **Note:** Version bump only for package @twreporter/react-components

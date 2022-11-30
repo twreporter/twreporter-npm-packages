@@ -2,14 +2,23 @@
 import React from 'react'
 import Header from './header'
 import HeaderContext from '../contexts/header-context'
+// @twerporter
 import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
-  title: 'Header/Desktop',
+  title: 'Header/Universal',
   component: Header,
   argTypes: {
     toUseNarrow: {
+      defaultValue: false,
+      control: { type: 'boolean' },
+    },
+    hideHeader: {
+      defaultValue: false,
+      control: { type: 'boolean' },
+    },
+    isAuthed: {
       defaultValue: false,
       control: { type: 'boolean' },
     },
@@ -18,19 +27,22 @@ export default {
   },
 }
 
-const defaultActions = [{ key: 'newsLetter' }, { key: 'support' }]
-export const header = props => {
-  const { theme, releaseBranch, toUseNarrow } = props
+export const universal = props => {
+  const { theme, releaseBranch, toUseNarrow, hideHeader, isAuthed } = props
   const context = {
     theme,
     releaseBranch,
     toUseNarrow,
+    hideHeader,
+    isAuthed,
     isLinkExternal: true,
   }
   return (
     <HeaderContext.Provider value={context}>
-      <Header actions={defaultActions} />
+      <Header />
     </HeaderContext.Provider>
   )
 }
-header.parameters = { controls: { exclude: ['pathname', 'actions'] } }
+universal.parameters = {
+  controls: { exclude: ['pathname'] },
+}

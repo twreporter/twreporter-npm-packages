@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 import sloganText from '../constants/slogan'
 import fonts from '../constants/fonts'
-import themeUtils from '../utils/theme'
+import themeUtils from '../utils/theme-old'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const style = {

@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.1-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.1-rc.5...@twreporter/redux@7.4.1-rc.6) (2022-11-29)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.4.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.1-rc.4...@twreporter/redux@7.4.1-rc.5) (2022-11-07)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.4.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.1-rc.3...@twreporter/redux@7.4.1-rc.4) (2022-10-31)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.4.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.1-rc.2...@twreporter/redux@7.4.1-rc.3) (2022-10-30)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.4.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.1-rc.1...@twreporter/redux@7.4.1-rc.2) (2022-10-28)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.4.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.1-rc.0...@twreporter/redux@7.4.1-rc.1) (2022-10-27)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.4.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.0...@twreporter/redux@7.4.1-rc.0) (2022-10-27)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
 # [7.4.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.0-rc.3...@twreporter/redux@7.4.0) (2022-10-26)
 
 **Note:** Version bump only for package @twreporter/redux

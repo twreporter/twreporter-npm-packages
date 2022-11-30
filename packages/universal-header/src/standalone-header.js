@@ -4,23 +4,23 @@ import React from 'react'
 import requestOrigins from '@twreporter/core/lib/constants/request-origins'
 import rootReducer from './reducers/index'
 import thunk from 'redux-thunk'
-import wellDefinedPropTypes from './constants/prop-types'
+import { CONTEXT_PROP } from './constants/prop-types'
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 import { getAccessToken } from './actions/auth'
 
 export default class StandaloneHeader extends React.PureComponent {
   static propTypes = {
-    theme: wellDefinedPropTypes.context.propTypes.theme,
-    releaseBranch: wellDefinedPropTypes.context.propTypes.releaseBranch,
-    isAuthed: wellDefinedPropTypes.context.propTypes.isAuthed,
+    theme: CONTEXT_PROP.propTypes.theme,
+    releaseBranch: CONTEXT_PROP.propTypes.releaseBranch,
+    isAuthed: CONTEXT_PROP.propTypes.isAuthed,
     pathname: PropTypes.string,
   }
 
   static defaultProps = {
-    theme: wellDefinedPropTypes.context.defaultProps.theme,
-    releaseBranch: wellDefinedPropTypes.context.defaultProps.releaseBranch,
-    isAuthed: wellDefinedPropTypes.context.defaultProps.isAuthed,
+    theme: CONTEXT_PROP.defaultProps.theme,
+    releaseBranch: CONTEXT_PROP.defaultProps.releaseBranch,
+    isAuthed: CONTEXT_PROP.defaultProps.isAuthed,
     pathname: '',
   }
 

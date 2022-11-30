@@ -1,13 +1,20 @@
 import React, { useState, useContext } from 'react'
+import PropTypes from 'prop-types'
 import querystring from 'querystring'
 import styled from 'styled-components'
+import CSSTransition from 'react-transition-group/CSSTransition'
 // context
 import HeaderContext from '../contexts/header-context'
 // utils
-import linkUtils from '../utils/links'
+import {
+  getLogoutLink,
+  getLoginLink,
+  getSearchLink,
+  getBookmarksLink,
+} from '../utils/links'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
-import { IconButton } from '@twreporter/react-components/lib/button'
+import { IconButton, TextButton } from '@twreporter/react-components/lib/button'
 import { Member, Search, Bookmark } from '@twreporter/react-components/lib/icon'
 import { Dialog } from '@twreporter/react-components/lib/card'
 import { SearchBar } from '@twreporter/react-components/lib/input'
@@ -20,6 +27,9 @@ const IconsContainer = styled.div`
 const IconContainer = styled.div`
   position: relative;
   margin-right: 16px;
+  &:last-child {
+    margin-right: 0;
+  }
   a {
     display: flex;
   }
@@ -40,7 +50,7 @@ const SearchContainer = styled.div`
   transition: opacity 300ms ease;
   position: absolute;
   right: 0;
-  top: -16px;
+  top: -8px;
   z-index: ${props => (props.isSearchOpened ? 999 : -1)};
 `
 
@@ -54,7 +64,7 @@ const StyledDialog = styled(Dialog)`
   cursor: pointer;
 `
 
-const LogInOutIcon = () => {
+const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
   const [showDialog, setShowDialog] = useState(false)
   const { releaseBranch, theme, isAuthed } = useContext(HeaderContext)
   const onClickIcon = e => {
@@ -66,32 +76,48 @@ const LogInOutIcon = () => {
     }
     const redirectURL = window.location.href
     const query = querystring.stringify({ destination: redirectURL })
-    window.location = linkUtils.getLogoutLink(releaseBranch).to + '?' + query
+    window.location = getLoginLink(releaseBranch).to + '?' + query
   }
   const onClickLogOut = e => {
     e.preventDefault()
 
     const redirectURL = window.location.href
     const query = querystring.stringify({ destination: redirectURL })
-    window.location = linkUtils.getLoginLink(releaseBranch).to + '?' + query
+    window.location = getLogoutLink(releaseBranch).to + '?' + query
   }
   const closeDialog = () => setShowDialog(false)
   const ref = useOutsideClick(closeDialog)
-
   const Icon = <Member releaseBranch={releaseBranch} />
+  const LoginButton =
+    loginButtonType === 'icon' || isAuthed ? (
+      <IconButton iconComponent={Icon} theme={theme} />
+    ) : (
+      <TextButton text="登入" theme={theme} />
+    )
+
   return (
     <IconContainer key="login">
       <LogContainer onClick={onClickIcon} ref={ref}>
-        <IconButton iconComponent={Icon} theme={theme} />
-        <StyledDialog
-          text="登出"
-          size="L"
-          showDialog={showDialog}
-          onClick={onClickLogOut}
-        />
+        {LoginButton}
+        <CSSTransition
+          in={showDialog}
+          classNames="dialog-effect"
+          timeout={{ appear: 0, enter: 100, exit: 100 }}
+          unmountOnExit
+        >
+          <StyledDialog
+            text="登出"
+            size="L"
+            showDialog={showDialog}
+            onClick={onClickLogOut}
+          />
+        </CSSTransition>
       </LogContainer>
     </IconContainer>
   )
+}
+LogInOutIcon.propTypes = {
+  loginButtonType: PropTypes.oneOf(['icon', 'text']),
 }
 
 const SearchIcon = () => {
@@ -117,7 +143,7 @@ const SearchIcon = () => {
       return
     }
     window.location = `${
-      linkUtils.getSearchLink(isLinkExternal, releaseBranch).to
+      getSearchLink(isLinkExternal, releaseBranch).to
     }?q=${keywords}`
   }
 
@@ -134,6 +160,7 @@ const SearchIcon = () => {
           theme={theme}
           onClose={closeSearchBox}
           onSearch={onSearch}
+          handleBlur={closeSearchBox}
         />
       </SearchContainer>
     </IconContainer>
@@ -142,7 +169,7 @@ const SearchIcon = () => {
 
 const BookmarkIcon = () => {
   const { releaseBranch, isLinkExternal, theme } = useContext(HeaderContext)
-  const link = linkUtils.getBookmarksLink(isLinkExternal, releaseBranch)
+  const link = getBookmarksLink(isLinkExternal, releaseBranch)
   const Icon = <Bookmark releaseBranch={releaseBranch} />
 
   return (
@@ -159,6 +186,12 @@ const Icons = () => (
     <SearchIcon />
     <BookmarkIcon />
     <LogInOutIcon />
+  </IconsContainer>
+)
+
+export const MobileIcons = () => (
+  <IconsContainer>
+    <LogInOutIcon loginButtonType="text" />
   </IconsContainer>
 )
 

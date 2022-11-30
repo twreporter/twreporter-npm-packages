@@ -8,6 +8,10 @@ import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
 // @twreporter
 import PodcastLandingPageLink from '@twreporter/react-components/lib/podcast-link'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
 import mq from '@twreporter/core/lib/utils/media-query'
 
 const mockup = {
@@ -18,20 +22,24 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-image: url(${app.assetsPath}/PodcastBox_Desktop.jpg);
+  background-image: ${props =>
+    `url(${app.assetsPath}/${props.releaseBranch}/PodcastBox_Desktop.jpg)`};
   background-size: contain;
   padding-top: 30px;
   padding-bottom: 30px;
   ${mq.mobileOnly`
-    background-image: url(${app.assetsPath}/PodcastBox_Mobile.jpg);
+    background-image: ${props =>
+      `url(${app.assetsPath}/${props.releaseBranch}/PodcastBox_Mobile.jpg)`};
     padding-top: 40px;
     padding-bottom: 60px;
   `}
   ${mq.tabletOnly`
-    background-image: url(${app.assetsPath}/PodcastBox_Tablet.jpg);
+    background-image: ${props =>
+      `url(${app.assetsPath}/${props.releaseBranch}/PodcastBox_Tablet.jpg)`};
   `}
   ${mq.hdOnly`
-    background-image: url(${app.assetsPath}/PodcastBox_DesktopHD.jpg);
+    background-image: ${props =>
+      `url(${app.assetsPath}/${props.releaseBranch}/PodcastBox_DesktopHD.jpg)`};
   `}
 `
 
@@ -135,8 +143,9 @@ const listenNow = (
 
 class PodcastBoxSection extends React.PureComponent {
   render() {
+    const { releaseBranch } = this.props
     return (
-      <Container>
+      <Container releaseBranch={releaseBranch}>
         <ContentContainer>
           <TextColumn>
             <h3>聽Podcast，感受真實</h3>
@@ -151,6 +160,14 @@ class PodcastBoxSection extends React.PureComponent {
       </Container>
     )
   }
+}
+
+PodcastBoxSection.propTypes = {
+  releaseBranch: BRANCH_PROP_TYPES,
+}
+
+PodcastBoxSection.defaultProps = {
+  releaseBranch: BRANCH.master,
 }
 
 export default PodcastBoxSection

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 // util
@@ -29,7 +30,7 @@ const CategoryContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(100% - 32px);
+  width: 100%;
   padding: 8px 16px;
 `
 const ChannelContainer = styled.div`
@@ -38,15 +39,12 @@ const ChannelContainer = styled.div`
   align-items: center;
 `
 
-const Channel = ({ ...props }) => {
+const Channel = ({ onClickHambuger, ...props }) => {
   const { isLinkExternal, releaseBranch, theme } = useContext(HeaderContext)
   const CategoryJsx = _.map(CATEGORY_ORDER, categoryKey => {
     const label = CATEGORY_LABEL[categoryKey]
-    const link = getCategoryLink(
-      isLinkExternal,
-      releaseBranch,
-      `categories/${categoryKey}`
-    )
+    const path = `/categories/${categoryKey}`
+    const link = getCategoryLink(isLinkExternal, releaseBranch, path)
     return (
       <Item key={categoryKey}>
         <Link {...link}>
@@ -59,14 +57,20 @@ const Channel = ({ ...props }) => {
 
   return (
     <ChannelContainer {...props}>
-      <Divider />
       <CategoryContainer>
-        <IconButton iconComponent={hamburgerIcon} theme={theme} />
+        <IconButton
+          iconComponent={hamburgerIcon}
+          theme={theme}
+          onClick={onClickHambuger}
+        />
         {CategoryJsx}
       </CategoryContainer>
       <Divider />
     </ChannelContainer>
   )
+}
+Channel.propTypes = {
+  onClickHambuger: PropTypes.func,
 }
 
 export default Channel

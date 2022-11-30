@@ -1,119 +1,55 @@
-import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import HeaderContext from '../contexts/header-context'
-// util
-import { getActionLinks } from '../utils/links'
+import React from 'react'
 // constant
-import { ACTION_LABEL, ACTION_BUTTON_TYPE } from '../constants/actions'
-// @twreporter
-import Link from '@twreporter/react-components/lib/customized-link'
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
-import { PillButton } from '@twreporter/react-components/lib/button'
+import { ACTION_ORDER } from '../constants/actions'
+import {
+  DIRECTION_TYPE,
+  TEXT_TYPE,
+  BUTTON_WIDTH_TYPE,
+  BUTTON_SIZE_TYPE,
+} from '../constants/action-item-types'
+// component
+import ActionButton from './action-button-item'
 // lodash
 import map from 'lodash/map'
 const _ = {
   map,
 }
 
-// global var
-const defaultFunc = () => {}
+const getActionProps = type => _.map(ACTION_ORDER[type], key => ({ key }))
 
-const styles = {
-  itemMargin: {
-    row: [0, 0, 0, 16], // px
-    column: [16, 0, 0, 0], // px
-  },
+export const DesktopHeaderAction = ({ ...props }) => {
+  const actionProps = getActionProps('desktop')
+  return <ActionButton actions={actionProps} {...props} />
 }
 
-const StyledPillButton = styled(PillButton)`
-  justify-content: center;
-  ${props => (props.direction === 'column' ? 'width: auto;' : '')}
-`
+export const MobileHeaderAction = ({ ...props }) => {
+  const actionProps = getActionProps('mobile')
+  return <ActionButton actions={actionProps} {...props} />
+}
 
-const ActionItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: ${props => arrayToCssShorthand(styles.itemMargin[props.direction])};
-  &:first-child {
-    margin-top: 0;
-    margin-left: 0;
-  }
-  a {
-    text-decoration: none;
-  }
-`
-
-const ActionsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: ${props => props.direction};
-  &,
-  ${ActionItem}, a {
-    ${props => (props.direction === 'column' ? 'width: 100%;' : '')}
-  }
-`
-
-const ActionButtonItem = ({
-  action = {},
-  direction = 'row',
-  callback = defaultFunc,
-}) => {
-  const { theme } = useContext(HeaderContext)
-  const actionKey = action.key
-  const actionLabel = ACTION_LABEL[direction][actionKey]
-  const actionLink = getActionLinks()[actionKey]
-  const buttonType = ACTION_BUTTON_TYPE[actionKey]
-  const buttonSize = direction === 'column' ? 'L' : 'S'
-
+export const DesktopHamburgerAction = ({ ...props }) => {
+  const actionProps = getActionProps('hamburger')
   return (
-    <ActionItem onClick={callback} direction={direction}>
-      <Link {...actionLink}>
-        <StyledPillButton
-          text={actionLabel}
-          theme={theme}
-          type={buttonType}
-          size={buttonSize}
-          direction={direction}
-        />
-      </Link>
-    </ActionItem>
+    <ActionButton
+      actions={actionProps}
+      direction={DIRECTION_TYPE.column}
+      textType={TEXT_TYPE.full}
+      buttonWidth={BUTTON_WIDTH_TYPE.stretch}
+      buttonSize={BUTTON_SIZE_TYPE.L}
+      {...props}
+    />
   )
 }
 
-ActionButtonItem.propTypes = {
-  action: PropTypes.shape({
-    key: PropTypes.string,
-  }),
-  direction: PropTypes.oneOf(['row', 'column']),
-  callback: PropTypes.func,
+export const MobileHamburgerAction = ({ ...props }) => {
+  const actionProps = getActionProps('hamburger')
+  return (
+    <ActionButton
+      actions={actionProps}
+      textType={TEXT_TYPE.full}
+      buttonWidth={BUTTON_WIDTH_TYPE.stretch}
+      buttonSize={BUTTON_SIZE_TYPE.L}
+      {...props}
+    />
+  )
 }
-
-const ActionButton = ({
-  actions = [],
-  direction = 'row',
-  callback = defaultFunc,
-  ...rest
-}) => (
-  <ActionsContainer direction={direction}>
-    {_.map(actions, action => {
-      return (
-        <ActionButtonItem
-          action={action}
-          direction={direction}
-          key={action.key}
-          {...rest}
-        />
-      )
-    })}
-  </ActionsContainer>
-)
-
-ActionButton.propTypes = {
-  actions: PropTypes.arrayOf(ActionButtonItem.propTypes.action),
-  direction: ActionButtonItem.propTypes.direction,
-  callback: PropTypes.func,
-}
-
-export default ActionButton

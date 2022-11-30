@@ -1,5 +1,5 @@
 const merriweather = 'merriweather'
-const notoSerifTC = 'Noto Serif TC'
+const sourceHanSerifTC = 'source-han-serif-tc'
 const serif = 'serif'
 const rosario = 'rosario'
 const notoSansTC = 'Noto Sans TC'
@@ -7,7 +7,7 @@ const sansSerif = 'sans-serif'
 
 const fonts = {
   merriweather,
-  notoSerifTC,
+  sourceHanSerifTC,
   serif,
   rosario,
   notoSansTC,
@@ -21,7 +21,7 @@ const fontWeight = {
 }
 
 const fontFamily = {
-  title: `${merriweather}, ${notoSerifTC}, ${serif}`,
+  title: `${merriweather}, ${sourceHanSerifTC}, ${serif}`,
   default: `${rosario}, ${notoSansTC}, ${sansSerif}`,
   // use defaultFallback before ${notoSansTC} is fully loaded
   defaultFallback: `${rosario}, ${sansSerif}`,

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { css } from 'styled-components'
 // utils
-import linkUtils from '../utils/links'
+import linkUtils from '../utils/links-old'
 // constants
 import fonts from '../constants/fonts'
 import colors from '../constants/colors'

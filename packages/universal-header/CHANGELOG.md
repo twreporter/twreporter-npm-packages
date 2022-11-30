@@ -3,6 +3,124 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.9...@twreporter/universal-header@2.4.0-rc.10) (2022-11-30)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.4.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.8...@twreporter/universal-header@2.4.0-rc.9) (2022-11-29)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.4.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.7...@twreporter/universal-header@2.4.0-rc.8) (2022-11-28)
+
+
+### Bug Fixes
+
+* fix text color in a tag ([d1bbec7](https://github.com/twreporter/twreporter-npm-packages/commit/d1bbec7ad4717e6a9012ec8adb136d3a76947b30))
+
+
+
+
+
+# [2.4.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.6...@twreporter/universal-header@2.4.0-rc.7) (2022-11-25)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.4.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.5...@twreporter/universal-header@2.4.0-rc.6) (2022-11-25)
+
+
+### Bug Fixes
+
+* add constants file to manage prop types ([4841e86](https://github.com/twreporter/twreporter-npm-packages/commit/4841e868cad52cfd2168f0c146de30950e27c996))
+* move action button storybook arg types in constants ([c4c066f](https://github.com/twreporter/twreporter-npm-packages/commit/c4c066f540628686478d44662a7c177021f52c59))
+* remove unnecessary parantheses ([13df7e4](https://github.com/twreporter/twreporter-npm-packages/commit/13df7e49084d1e2f895ee7ebce4349c77a0810c2))
+* update `latest` page path ([a592546](https://github.com/twreporter/twreporter-npm-packages/commit/a5925467548d33179b8b9122f0c3c83ad61e1fcd))
+
+
+### Features
+
+* add mobile & tablet view for new info structure ([b0e158c](https://github.com/twreporter/twreporter-npm-packages/commit/b0e158c751230723626c9cb9de83641f0588c189))
+
+
+
+
+
+# [2.4.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.4...@twreporter/universal-header@2.4.0-rc.5) (2022-11-07)
+
+
+### Bug Fixes
+
+* address defects ([a33aa3b](https://github.com/twreporter/twreporter-npm-packages/commit/a33aa3bf55fd9b1bf5472a4a13de942a9f8757ca))
+* remove console.log ([97eb713](https://github.com/twreporter/twreporter-npm-packages/commit/97eb7135bbdb1923d5050a805cebf5207e29e6f5))
+
+
+
+
+
+# [2.4.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.3...@twreporter/universal-header@2.4.0-rc.4) (2022-10-31)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.4.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.2...@twreporter/universal-header@2.4.0-rc.3) (2022-10-30)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.4.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.1...@twreporter/universal-header@2.4.0-rc.2) (2022-10-28)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.4.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.0...@twreporter/universal-header@2.4.0-rc.1) (2022-10-27)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.3.0...@twreporter/universal-header@2.4.0-rc.0) (2022-10-27)
+
+
+### Bug Fixes
+
+* address review comments & bugs ([ef8ffa1](https://github.com/twreporter/twreporter-npm-packages/commit/ef8ffa12fdad73f256f0e76a168a88899f27205f))
+* fix feature toggle & style ([9d615b1](https://github.com/twreporter/twreporter-npm-packages/commit/9d615b1091bf5762329f878f13c114cf1dce9912))
+* fix style & bug & naming ([7d824ab](https://github.com/twreporter/twreporter-npm-packages/commit/7d824abc5429b3505555aa174c038c67056abccb))
+
+
+### Features
+
+* add hamburger-footer component & story ([40cd9e7](https://github.com/twreporter/twreporter-npm-packages/commit/40cd9e73f23a9edf12bfe6211ef67f721c0cbca9))
+* add hamburger-menu component with story & feature toggle ([fc4c76b](https://github.com/twreporter/twreporter-npm-packages/commit/fc4c76bf98534d7b2f3fdf7695ae75adec1df510))
+* add hamburger-menu-item component & story ([604140b](https://github.com/twreporter/twreporter-npm-packages/commit/604140b7d388dbd1b1a35795b895bab963e26254))
+
+
+
+
+
 # [2.3.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.3.0-rc.2...@twreporter/universal-header@2.3.0) (2022-10-26)
 
 **Note:** Version bump only for package @twreporter/universal-header
