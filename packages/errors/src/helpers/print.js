@@ -1,7 +1,7 @@
 import helpers from './general'
 
 function trimLinesFromTheBottom(string, trimmedCount) {
-  if (!trimmedCount || !string) return string
+  if (!trimmedCount || !string) return string ?? ''
   const array = string.split(/\r?\n|\r/)
   array.splice(array.length - trimmedCount, trimmedCount)
   return array.join('\n')
