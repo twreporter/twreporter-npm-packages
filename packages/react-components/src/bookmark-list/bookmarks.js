@@ -37,10 +37,10 @@ const PageContainer = styled.div`
 const Column = styled.div`
   margin: 0 auto;
   width: 97%;
-  max-width: 922px;
+  max-width: 834px;
   ${mq.tabletOnly`
     width: 100%;
-    max-width: 698px;
+    max-width: 707px;
   `}
   ${mq.mobileOnly`
     width: 100%;
@@ -49,12 +49,8 @@ const Column = styled.div`
 
 const StatusBar = styled.div`
   ${mq.mobileOnly`
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-bottom: 24px;
-  `}
-  ${mq.tabletOnly`
-    padding-bottom: 32px;
+    padding-left: 1em;
+    padding-right: 1em;
   `}
   padding-bottom: 64px;
   width: stretch;

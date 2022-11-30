@@ -28,8 +28,7 @@ const TextBlock = styled.div`
   margin: 0 auto;
 
   ${mq.mobileOnly`
-    padding-left: 24px;
-    padding-right: 24px;
+    width: calc(327/375*100%);
   `}
 
   ${mq.tabletOnly`
@@ -50,7 +49,6 @@ const Title = styled.h1`
 
   ${mq.mobileOnly`
     font-size: 34px;
-    margin-bottom: 38px;
   `}
 
   ${mq.tabletAndAbove`
@@ -111,16 +109,8 @@ const FigCaption = styled.figcaption`
 
 const BackgroundBlock = styled.div`
   ${props => getBackgroundBlockStyles(props.theme.name)}
-  ${mq.hdOnly`
-    padding-top: 100px;
-  `}
-  ${mq.desktopOnly`
-    padding-top: 48px;
-  `}
+  padding-top: 30px;
   ${mq.tabletOnly`
-    padding-top: 32px;
-  `}
-  ${mq.mobileOnly`
     padding-top: 30px;
   `}
 `
