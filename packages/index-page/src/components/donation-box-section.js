@@ -1,9 +1,13 @@
-import { finalMedia } from '../utils/style-utils'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
-import DonationLink from '@twreporter/react-components/lib/donation-link-with-utm'
 import React from 'react'
 import styled from 'styled-components'
+// constants
+import color from '../constants/color'
+// assets
+import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
+// @twreporter
+import DonationLink from '@twreporter/react-components/lib/donation-link'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const mockup = {
   defaultWidth: 320,
@@ -13,10 +17,10 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-color: #a67a44;
+  background-color: ${color.brown};
   padding-top: 30px;
   padding-bottom: 30px;
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     padding-top: 40px;
     padding-bottom: 60px;
   `}
@@ -29,11 +33,12 @@ const ContentContainer = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 100px;
-  color: #ffffff;
+  color: ${color.white};
   h3{
     margin: 0;
     font-size: 32px;
     font-weight: ${fontWeight.bold};
+    font-family: ${fontFamily.title};
     line-height: 1.63;
   }
   p{
@@ -42,18 +47,18 @@ const ContentContainer = styled.div`
     line-height: 1.57;
     text-align: left;
   }
-  ${finalMedia.overDesktop`
+  ${mq.hdOnly`
     max-width: 1440px;
     padding: 0 219px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     position: relative;
     padding: 0 110px;
     p{
       margin-top: 17px;
     }
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     max-width: ${mobileContentWidthPct}%;
     display: block;
     text-align: center;
@@ -73,18 +78,18 @@ const DonateButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: #ffffff;
+    background: ${color.white};
     border: none;
-    color: #a67a44;
+    color: ${color.brown};
     font-size: 16px;
     cursor: pointer;
     display: table;
-    ${finalMedia.tablet`
+    ${mq.tabletOnly`
       position: absolute;
       right: 110px;
       top: 9px;
     `}
-    ${finalMedia.mobile`
+    ${mq.mobileOnly`
       margin: 40px auto 0 auto;
     `}
     span {
@@ -97,7 +102,7 @@ const DonateButton = styled.div`
 `
 
 const TextColumn = styled.div`
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 608px;
   `}
 `
@@ -130,7 +135,7 @@ class DonationBoxSection extends React.PureComponent {
             </p>
           </TextColumn>
           <DonateButton>
-            <DonationLink utmMedium="index">{DonateInfo}</DonationLink>
+            <DonationLink>{DonateInfo}</DonationLink>
           </DonateButton>
         </ContentContainer>
       </Container>

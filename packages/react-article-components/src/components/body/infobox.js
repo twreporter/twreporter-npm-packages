@@ -1,13 +1,16 @@
-import mq from '@twreporter/core/lib/utils/media-query'
-import PropTypes from 'prop-types'
-import predefinedPropTypes from '../../constants/prop-types/body'
 import React, { PureComponent } from 'react'
-import cssConsts from '../../constants/css'
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+import get from 'lodash/get'
+
+// twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedPropTypes from '../../constants/prop-types/body'
+import cssConsts from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
-// lodash
-import get from 'lodash/get'
+import color from '../../constants/color'
+import { ARTICLE_ANCHOR_SCROLL } from '../../constants/anchor'
 
 const _ = {
   get,
@@ -33,7 +36,7 @@ const widthCSS = css`
 
 const Title = styled.div`
   ${widthCSS}
-  color: #494949;
+  color: ${color.gray85};
   line-height: 1.9;
   letter-spacing: 0.7px;
   font-weight: ${typography.font.weight.bold};
@@ -44,7 +47,7 @@ const Title = styled.div`
 const Content = styled.div`
   ${widthCSS}
 
-  color: #494949;
+  color: ${color.gray85};
   line-height: 1.75;
   letter-spacing: 0.5px;
   font-weight: ${typography.font.weight.normal};
@@ -58,14 +61,14 @@ function getContainerStyles(themeName) {
       return css`
         &::before,
         &::after {
-          background: #a67a44;
+          background: ${color.brown};
         }
       `
     case themeConst.article.v2.pink:
       return css`
         &::before,
         &::after {
-          background: #fbafef;
+          background: ${color.pink};
         }
       `
     case themeConst.article.v2.default:
@@ -73,7 +76,7 @@ function getContainerStyles(themeName) {
       return css`
         &::before,
         &::after {
-          background: #d0a67d;
+          background: ${color.milkTea};
         }
       `
   }
@@ -87,7 +90,7 @@ const Container = styled.div`
   /* line breaks */
   white-space: pre-wrap;
 
-  background: #fff;
+  background: ${color.white};
   position: relative;
   margin: 60px auto 0 auto;
   ${mq.tabletAndBelow`
@@ -141,10 +144,26 @@ export default class Infobox extends PureComponent {
     const { className, data } = this.props
     const contentHtmlString = _.get(data, ['content', 0, 'body'], '')
     const title = _.get(data, ['content', 0, 'title'], '')
-    return contentHtmlString ? (
+
+    const anchorRegex = /<a([^>]*)>/g
+    const hashRegex = /href={?["']#/
+    const mutatedContentHtmlString = contentHtmlString?.replace(
+      anchorRegex,
+      (anchorString, attrs) => {
+        // Here we insert a custom attribute 'ARTICLE_ANCHOR_SCROLL' in order to apply
+        // smooth scroll effect on <a href="#..."> anchors inside infobox
+        return hashRegex.exec(anchorString)
+          ? `<a ${ARTICLE_ANCHOR_SCROLL}="true" ${attrs}>`
+          : anchorString
+      }
+    )
+
+    return mutatedContentHtmlString ? (
       <Container className={className}>
         {title ? <Title>{title}</Title> : null}
-        <Content dangerouslySetInnerHTML={{ __html: contentHtmlString }} />
+        <Content
+          dangerouslySetInnerHTML={{ __html: mutatedContentHtmlString }}
+        />
       </Container>
     ) : null
   }

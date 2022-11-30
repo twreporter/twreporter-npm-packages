@@ -1,224 +1,198 @@
-import HeaderContext from '../contexts/header-context'
-import Link from './customized-link'
-import React from 'react'
-import SearchBox from './search-box'
-import fonts from '../constants/fonts'
-import linkUtils from '../utils/links'
+import React, { useState, useContext } from 'react'
+import PropTypes from 'prop-types'
 import querystring from 'querystring'
-import serviceConst from '../constants/services'
 import styled from 'styled-components'
-import themeUtils from '../utils/theme'
+import CSSTransition from 'react-transition-group/CSSTransition'
+// context
+import HeaderContext from '../contexts/header-context'
+// utils
+import {
+  getLogoutLink,
+  getLoginLink,
+  getSearchLink,
+  getBookmarksLink,
+} from '../utils/links'
 // @twreporter
-import mq from '@twreporter/core/lib/utils/media-query'
-
-const styles = {
-  iconContainerSize: 3, // em
-}
+import Link from '@twreporter/react-components/lib/customized-link'
+import { IconButton, TextButton } from '@twreporter/react-components/lib/button'
+import { Member, Search, Bookmark } from '@twreporter/react-components/lib/icon'
+import { Dialog } from '@twreporter/react-components/lib/card'
+import { SearchBar } from '@twreporter/react-components/lib/input'
+import { useOutsideClick } from '@twreporter/react-components/lib/hook'
 
 const IconsContainer = styled.div`
-  position: relative;
-  display: table;
-  ${mq.mobileOnly`
-    display: none;
-  `}
+  display: flex;
 `
 
 const IconContainer = styled.div`
-  font-size: ${fonts.size.base};
-  cursor: pointer;
-  display: table-cell;
-  width: ${styles.iconContainerSize}em;
-  height: ${styles.iconContainerSize}em;
-  line-height: 1;
-  vertical-align: middle;
-  text-align: center;
   position: relative;
+  margin-right: 16px;
+  &:last-child {
+    margin-right: 0;
+  }
+  a {
+    display: flex;
+  }
+`
+
+const Container = styled.div`
   opacity: ${props => (props.isSearchOpened ? '0' : '1')};
-  transition: opacity 600ms ease;
-  svg {
-    height: 100%;
-  }
-  span {
-    display: none;
-  }
-  ${mq.desktopAndAbove`
-    svg {
-      opacity: 1;
-      transition: transform .3s ease-in-out, opacity .3s ease-in-out;
-      position: absolute;
-      height: 100%;
-      top: 0;
-      left: 30%;
-      z-index: 1;
-    }
-    span {
-      display: inline;
-      white-space: nowrap;
-      overflow: hidden;
-      color: #808080;
-      font-weight: ${fonts.weight.bold};
-      opacity: 0;
-      transition: transform .3s ease-in-out, opacity .3s ease-in-out;
-      transform: scale(.4, 1.2);
-      position: absolute;
-      height: 100%;
-      width: 2em;
-      line-height: ${styles.iconContainerSize};
-      vertical-align: middle;
-      top: 0;
-      left: 17%;
-      z-index: 2;
-    }
-    &:hover {
-      svg {
-        transform: scale(1.7, .5);
-        opacity: 0;
-      }
-      span {
-        transform: scale(1, 1);
-        opacity: 1;
-      }
-    }
-  `}
+  transition: opacity 300ms ease;
 `
 
-const DisplayOnDesktop = styled(IconContainer)`
-  display: none;
-  ${mq.desktopAndAbove`
-    display: table-cell;
-  `}
+const LogContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
-const HideOnDesktop = styled(IconContainer)`
-  display: table-cell;
-  ${mq.desktopAndAbove`
-    display: none;
-  `}
+const SearchContainer = styled.div`
+  opacity: ${props => (props.isSearchOpened ? '1' : '0')};
+  transition: opacity 300ms ease;
+  position: absolute;
+  right: 0;
+  top: -8px;
+  z-index: ${props => (props.isSearchOpened ? 999 : -1)};
 `
 
-class Icons extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isSearchOpened: false,
-    }
-    this._closeSearchBox = this._closeSearchBox.bind(this)
-    this._handleClickSearch = this._handleClickSearch.bind(this)
-  }
+const StyledDialog = styled(Dialog)`
+  opacity: ${props => (props.showDialog ? '1' : '0')};
+  transition: opacity 100ms;
+  position: absolute;
+  top: 24px;
+  right: -16px;
+  width: max-content;
+  cursor: pointer;
+`
 
-  _closeSearchBox() {
-    this.setState({
-      isSearchOpened: false,
-    })
-  }
-
-  _handleClickSearch(e) {
+const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
+  const [showDialog, setShowDialog] = useState(false)
+  const { releaseBranch, theme, isAuthed } = useContext(HeaderContext)
+  const onClickIcon = e => {
     e.preventDefault()
-    this.setState({
-      isSearchOpened: true,
-    })
-  }
 
-  _handleLogIconClick = (e, isAuthed, releaseBranch) => {
+    if (isAuthed) {
+      setShowDialog(!showDialog)
+      return
+    }
+    const redirectURL = window.location.href
+    const query = querystring.stringify({ destination: redirectURL })
+    window.location = getLoginLink(releaseBranch).to + '?' + query
+  }
+  const onClickLogOut = e => {
     e.preventDefault()
 
     const redirectURL = window.location.href
-    const query = querystring.stringify({
-      destination: redirectURL,
-    })
-    if (isAuthed) {
-      window.location = linkUtils.getLogoutLink(releaseBranch).to + '?' + query
+    const query = querystring.stringify({ destination: redirectURL })
+    window.location = getLogoutLink(releaseBranch).to + '?' + query
+  }
+  const closeDialog = () => setShowDialog(false)
+  const ref = useOutsideClick(closeDialog)
+  const Icon = <Member releaseBranch={releaseBranch} />
+  const LoginButton =
+    loginButtonType === 'icon' || isAuthed ? (
+      <IconButton iconComponent={Icon} theme={theme} />
+    ) : (
+      <TextButton text="登入" theme={theme} />
+    )
+
+  return (
+    <IconContainer key="login">
+      <LogContainer onClick={onClickIcon} ref={ref}>
+        {LoginButton}
+        <CSSTransition
+          in={showDialog}
+          classNames="dialog-effect"
+          timeout={{ appear: 0, enter: 100, exit: 100 }}
+          unmountOnExit
+        >
+          <StyledDialog
+            text="登出"
+            size="L"
+            showDialog={showDialog}
+            onClick={onClickLogOut}
+          />
+        </CSSTransition>
+      </LogContainer>
+    </IconContainer>
+  )
+}
+LogInOutIcon.propTypes = {
+  loginButtonType: PropTypes.oneOf(['icon', 'text']),
+}
+
+const SearchIcon = () => {
+  const [isSearchOpened, setSearchOpened] = useState(false)
+  const { isLinkExternal, releaseBranch, theme } = useContext(HeaderContext)
+
+  const closeSearchBox = () => {
+    setSearchOpened(false)
+  }
+  const handleClickSearch = e => {
+    e.preventDefault()
+    setSearchOpened(true)
+    if (!ref.current) {
       return
     }
-    window.location = linkUtils.getLoginLink(releaseBranch).to + '?' + query
+    const input = ref.current.getElementsByTagName('INPUT')[0]
+    if (input) {
+      input.focus()
+    }
+  }
+  const onSearch = keywords => {
+    if (!window) {
+      return
+    }
+    window.location = `${
+      getSearchLink(isLinkExternal, releaseBranch).to
+    }?q=${keywords}`
   }
 
-  render() {
-    const { isSearchOpened } = this.state
-    const Member = (
-      <HeaderContext.Consumer>
-        {({ isAuthed, releaseBranch, theme }) => {
-          const LogInIcon = themeUtils.selectServiceIcons(theme).member
-          const LogOutIcon = themeUtils.selectServiceIcons(theme).logout
-
-          return (
-            <a
-              onClick={e => {
-                this._handleLogIconClick(e, isAuthed, releaseBranch)
-              }}
-            >
-              {isAuthed ? (
-                <React.Fragment>
-                  <LogOutIcon />
-                  <span>{serviceConst.serviceLabels.logout}</span>
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  <LogInIcon />
-                  <span>{serviceConst.serviceLabels.login}</span>
-                </React.Fragment>
-              )}
-            </a>
-          )
-        }}
-      </HeaderContext.Consumer>
-    )
-    return (
-      <IconsContainer>
-        <DisplayOnDesktop
-          onClick={this._handleClickSearch}
-          isSearchOpened={isSearchOpened}
-        >
-          <HeaderContext.Consumer>
-            {({ theme }) => {
-              const SearchIcon = themeUtils.selectServiceIcons(theme).search
-              return <SearchIcon />
-            }}
-          </HeaderContext.Consumer>
-          <span>{serviceConst.serviceLabels.search}</span>
-        </DisplayOnDesktop>
-        <SearchBox
-          isSearchOpened={isSearchOpened}
-          closeSearchBox={this._closeSearchBox}
+  const Icon = <Search releaseBranch={releaseBranch} />
+  const ref = useOutsideClick(closeSearchBox)
+  return (
+    <IconContainer ref={ref} key="search">
+      <Container onClick={handleClickSearch} isSearchOpened={isSearchOpened}>
+        <IconButton iconComponent={Icon} theme={theme} />
+      </Container>
+      <SearchContainer isSearchOpened={isSearchOpened}>
+        <SearchBar
+          placeholder="關鍵字搜尋"
+          theme={theme}
+          onClose={closeSearchBox}
+          onSearch={onSearch}
+          handleBlur={closeSearchBox}
         />
-        <HideOnDesktop>
-          <HeaderContext.Consumer>
-            {({ releaseBranch, isLinkExternal, theme }) => {
-              const SearchIcon = themeUtils.selectServiceIcons(theme).search
-              const link = linkUtils.getSearchLink(
-                isLinkExternal,
-                releaseBranch
-              )
-              return (
-                <Link {...link}>
-                  <SearchIcon />
-                  <span>{serviceConst.serviceLabels.search}</span>
-                </Link>
-              )
-            }}
-          </HeaderContext.Consumer>
-        </HideOnDesktop>
-        <IconContainer isSearchOpened={isSearchOpened}>
-          <HeaderContext.Consumer>
-            {({ releaseBranch, isLinkExternal, theme }) => {
-              const BookmarkIcon = themeUtils.selectServiceIcons(theme).bookmark
-              const link = linkUtils.getBookmarksLink(
-                isLinkExternal,
-                releaseBranch
-              )
-              return (
-                <Link {...link}>
-                  <BookmarkIcon />
-                  <span>{serviceConst.serviceLabels.bookmarks}</span>
-                </Link>
-              )
-            }}
-          </HeaderContext.Consumer>
-        </IconContainer>
-        <IconContainer isSearchOpened={isSearchOpened}>{Member}</IconContainer>
-      </IconsContainer>
-    )
-  }
+      </SearchContainer>
+    </IconContainer>
+  )
 }
+
+const BookmarkIcon = () => {
+  const { releaseBranch, isLinkExternal, theme } = useContext(HeaderContext)
+  const link = getBookmarksLink(isLinkExternal, releaseBranch)
+  const Icon = <Bookmark releaseBranch={releaseBranch} />
+
+  return (
+    <IconContainer key="bookmark">
+      <Link {...link}>
+        <IconButton iconComponent={Icon} theme={theme} />
+      </Link>
+    </IconContainer>
+  )
+}
+
+const Icons = () => (
+  <IconsContainer>
+    <SearchIcon />
+    <BookmarkIcon />
+    <LogInOutIcon />
+  </IconsContainer>
+)
+
+export const MobileIcons = () => (
+  <IconsContainer>
+    <LogInOutIcon loginButtonType="text" />
+  </IconsContainer>
+)
 
 export default Icons

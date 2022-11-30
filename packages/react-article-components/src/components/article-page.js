@@ -1,7 +1,6 @@
 import DynamicComponentsContext from '../contexts/dynamic-components-context'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { ThemeProvider, css } from 'styled-components'
 // components
 import Body from './body'
@@ -10,29 +9,24 @@ import DonationBox from './donation-box'
 import License from './license'
 import Link from './link'
 import Metadata from './aside/metadata'
-import MobileAside from './aside/mobile-aside'
+import ToolBar from './aside/mobile-tool-bar'
 import Related from './related'
 import SeparationCurve from './separation-curve'
 import UIManager from '../managers/ui-manager'
-import Tools from './aside/tools'
+import Tools from './aside/desktop-tools'
+// constants
 import themeConst from '../constants/theme'
+import colorConst from '../constants/color'
+import { RELATED_POST_ANCHOR_ID } from '../constants/anchor'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 // lodash
 import get from 'lodash/get'
-import map from 'lodash/map'
-import merge from 'lodash/merge'
-import throttle from 'lodash/throttle'
-
 const _ = {
   get,
-  map,
-  merge,
-  throttle,
 }
-
-const fontFamilyCss = css`
-  /* ff-tisa-web-prop is for english text */
-  font-family: ff-tisa-web-pro, source-han-sans-traditional, sans-serif;
-`
 
 const shiftLeftCss = css`
   position: relative;
@@ -57,7 +51,7 @@ const SeprationLine = styled.div`
       props.visible
         ? css`
             width: 100%;
-            border-bottom: solid 1px #e2e2e2;
+            border-bottom: solid 1px ${colorConst.gray40};
             padding-bottom: 60px;
           `
         : css`
@@ -82,6 +76,7 @@ const BodyBackground = styled.div`
 const BodyBlock = styled.div`
   position: relative;
   width: 100%;
+
   ${mq.desktopOnly`
     max-width: 1024px;
     margin: 0 auto;
@@ -130,17 +125,15 @@ const MetadataAndToolsBlock = styled.div`
   `}
 `
 
-const ToolsBlock = styled.div`
+const DesktopToolsBlock = styled.div`
   ${mq.tabletAndBelow`
-    ${shiftLeftCss}
+    display: none;
   `}
+`
 
-  ${mq.mobileOnly`
-    margin-top: 20px;
-  `}
-
-  ${mq.tabletOnly`
-    margin-top: 30px;
+const MobileToolBar = styled(ToolBar)`
+  ${mq.desktopAndAbove`
+    display: none;
   `}
 `
 
@@ -183,11 +176,21 @@ const RelatedBlock = styled.div`
 `
 
 const BackgroundBlock = styled(BorderBox)`
-  ${fontFamilyCss}
-  ${props =>
-    getBackgroundBlockStyles(
-      props.theme.name
-    )}
+  ${props => getBackgroundBlockStyles(props.theme.name)}
+
+  @media print {
+    // Fix background-image printing issue
+    -webkit-print-color-adjust: exact; // Chrome/Safari/Edge
+    color-adjust: exact; // Firefox
+
+    .hidden-print {
+      display: none;
+    }
+
+    .avoid-break {
+      break-inside: avoid;
+    }
+  }
 
   /* boreder-(right|left) of articlePage */
   padding-left: 10px;
@@ -198,24 +201,24 @@ function getBackgroundBlockStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.pink:
       return css`
-        background-color: #fadaf5;
+        background-color: ${colorConst.lightPink};
         ${BodyBackground} {
-          background-color: #f4f4f4;
+          background-color: ${colorConst.gray20};
         }
       `
     case themeConst.article.v2.photo:
       return css`
-        background-color: #08192d;
+        background-color: ${colorConst.darkBlue};
         ${BodyBackground} {
-          background-color: #08192d;
+          background-color: ${colorConst.darkBlue};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        background-color: #f1f1f1;
+        background-color: ${colorConst.gray30};
         ${BodyBackground} {
-          background-color: #f1f1f1;
+          background-color: ${colorConst.gray30};
         }
       `
   }
@@ -296,6 +299,7 @@ export default class Article extends PureComponent {
     onFontLevelChange: PropTypes.func,
     hasMoreRelateds: PropTypes.bool,
     loadMoreRelateds: PropTypes.func,
+    releaseBranch: predefinedPropTypes.releaseBranch,
   }
 
   static defaultProps = {
@@ -305,30 +309,7 @@ export default class Article extends PureComponent {
     relatedTopic: {},
     hasMoreRelateds: false,
     loadMoreRelateds: noop,
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.mobileAsideRef = React.createRef()
-    this.scrollPosition = {
-      y: 0,
-    }
-    this.toggleMobileAside = this._toggleMobileAside.bind(this)
-    this.onScroll = _.throttle(this.toggleMobileAside, 300).bind(this)
-  }
-
-  componentDidMount() {
-    // detect sroll position
-    window.addEventListener('scroll', this.onScroll)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll)
-
-    this.scrollPosition = {
-      y: 0,
-    }
+    releaseBranch: releaseBranchConsts.master,
   }
 
   changeFontLevel = () => {
@@ -370,30 +351,6 @@ export default class Article extends PureComponent {
     }
   }
 
-  /**
-   * If users scroll up, and the scrolling distance is more than a certain distance as well, show mobile aside.
-   * Otherwise, if users scroll down, hide the mobile aside.
-   */
-  _toggleMobileAside() {
-    if (this.mobileAsideRef) {
-      const mAside = this.mobileAsideRef
-      const currentTopY = window.scrollY
-
-      // Calculate scrolling distance to determine whether to display aside
-      const lastY = this.scrollPosition.y
-      const distance = currentTopY - lastY
-      if (distance > 30) {
-        this.scrollPosition.y = currentTopY
-        mAside.current.toShow = false
-      } else {
-        if (Math.abs(distance) > 150) {
-          this.scrollPosition.y = currentTopY
-          mAside.current.toShow = true
-        }
-      }
-    }
-  }
-
   render() {
     const {
       LinkComponent,
@@ -403,6 +360,7 @@ export default class Article extends PureComponent {
       relatedTopic,
       hasMoreRelateds,
       loadMoreRelateds,
+      releaseBranch,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -421,13 +379,17 @@ export default class Article extends PureComponent {
     const uiManager = new UIManager(post, relatedTopic)
     const LeadingComponent = uiManager.getLeadingComponent()
     const leadingProps = uiManager.getLeadingComponentProps()
-    const backToTopic = leadingProps.topicHref
+    const backToTopic =
+      leadingProps && leadingProps.isTopicPublished
+        ? leadingProps.topicHref
+        : ''
 
     // only for tablet and below
     const metadataAndToolsJSX = (
       <MetadataAndToolsBlock>
         <Metadata
-          categories={post.categories}
+          categories={post.categories} // TODO: remove when categorySet integration is done
+          categorySet={post.categorySet}
           date={post.published_date}
           designers={post.designers}
           photographers={post.photographers}
@@ -436,13 +398,13 @@ export default class Article extends PureComponent {
           engineers={post.engineers}
           rawAutherText={post.extend_byline}
         />
-        <ToolsBlock>
+        <DesktopToolsBlock>
           <Tools
             articleMetaForBookmark={articleMetaForBookmark}
             backToTopic={backToTopic}
             onFontLevelChange={this.changeFontLevel}
           />
-        </ToolsBlock>
+        </DesktopToolsBlock>
       </MetadataAndToolsBlock>
     )
 
@@ -452,6 +414,7 @@ export default class Article extends PureComponent {
           name: _.get(post, 'style', themeConst.article.v2.default),
           colors: uiManager.getThemeColors(),
           fontSizeOffset: this.getFontSizeOffset(fontLevel),
+          releaseBranch,
         }}
       >
         <DynamicComponentsContext.Provider value={{ Link: LinkComponent }}>
@@ -464,15 +427,16 @@ export default class Article extends PureComponent {
             </LeadingBlock>
             <BodyBackground>
               <BodyBlock>
-                <MobileAside
+                <MobileToolBar
                   backToTopic={backToTopic}
                   articleMetaForBookmark={articleMetaForBookmark}
-                  ref={this.mobileAsideRef}
+                  onFontLevelChange={this.changeFontLevel}
                 />
                 <DesktopAsideBlock>
                   <DesktopAside
                     backToTopic={backToTopic}
-                    categories={post.categories}
+                    categories={post.categories} // TODO: remove when categorySet integration is done
+                    categorySet={post.categorySet}
                     date={post.published_date}
                     designers={post.designers}
                     photographers={post.photographers}
@@ -498,6 +462,7 @@ export default class Article extends PureComponent {
               <License
                 license={post.copyright}
                 publishedDate={post.published_date}
+                id={RELATED_POST_ANCHOR_ID} // current scroll to releated post anchor
               />
               <StyledSeparationCurve />
               <RelatedBlock>

@@ -224,11 +224,15 @@ export default class Img extends React.PureComponent {
       sizes,
     } = this.props
 
+    const appendedClassName = className + ' avoid-break'
     const defaultImageOriginalUrl = _.get(defaultImage, 'url')
     /* Render placeholder only if no valid image is given */
     if (!defaultImageOriginalUrl && (!imageSet || imageSet.length === 0)) {
       return (
-        <ImgContainer className={className} heightString="height: 100%;">
+        <ImgContainer
+          className={appendedClassName}
+          heightString="height: 100%;"
+        >
           {this._renderImagePlaceholder()}
         </ImgContainer>
       )
@@ -250,7 +254,7 @@ export default class Img extends React.PureComponent {
 
     return (
       <ImgContainer
-        className={className}
+        className={appendedClassName}
         heightString={
           isObjectFit
             ? `height: 100%;`

@@ -1,22 +1,28 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import postPropType from './prop-types/post'
+import styled from 'styled-components'
+// utils
+import { getHref } from '../utils/getHref'
+import { breakPoints, truncate } from '../utils/style-utils'
+// components
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import MobileFlexSwipeable from './mobile-flex-swipeable'
 import MobileListUtils from './common-utils/mobile-list'
-import PropTypes from 'prop-types'
-import React from 'react'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
-import sectionStrings from '../constants/section-strings'
 import Section from './common-utils/section'
 import TRLink from './common-utils/twreporter-link'
+// constants
+import sectionStrings from '../constants/section-strings'
+import color from '../constants/color'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
 import get from 'lodash/get'
-import postPropType from './prop-types/post'
-import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
-
 const _ = {
   get,
 }
@@ -32,29 +38,27 @@ const mockup = {
 }
 
 const desktopMinWidth = breakPoints.desktopMinWidth
-const tabletMaxWidth = breakPoints.tabletMaxWidth
 const tabletMinWidth = breakPoints.tabletMinWidth
-const mobileWidth = breakPoints.mobileMaxWidth
 const maxSwipableItems = 3
 const moreText = '更多評論文章'
 
 const Container = styled(Section)`
   background-color: white;
-  @media (max-width: ${tabletMaxWidth}) {
+  ${mq.tabletAndBelow`
     padding-top: 36px;
-  }
+  `}
 `
 
 const FlexBox = styled.div`
   display: flex;
   padding: 0 47px;
   justify-content: center;
-  @media (max-width: ${tabletMaxWidth}) {
+  ${mq.tabletOnly`
     padding: 0 35px;
-  }
-  @media (max-width: ${mobileWidth}) {
+  `}
+  ${mq.mobileOnly`
     display: none;
-  }
+  `}
 `
 
 const FlexItem = styled.div`
@@ -65,7 +69,7 @@ const FlexItem = styled.div`
   &:nth-child(even) {
     margin-left: 32.6px;
   }
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 210px;
     &:nth-child(3) {
       margin-left: 30px;
@@ -74,7 +78,7 @@ const FlexItem = styled.div`
       margin-left: 30px;
     }
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     width: 160px;
     &:nth-child(3) {
       margin-left: 20px;
@@ -83,7 +87,7 @@ const FlexItem = styled.div`
       margin-left: 20px;
     }
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     margin-top: 10px;
     width: 100%;
   `}
@@ -91,13 +95,13 @@ const FlexItem = styled.div`
 const ImgFrame = styled.div`
   width: 100%;
   height: 202px;
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     height: 138px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     height: 102px;
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     height: 186px;
   `}
 `
@@ -109,30 +113,31 @@ const TextFrame = styled.div`
 
 const Category = styled(CategoryName)`
   line-height: 1.33;
-  @media (max-width: ${mobileWidth}) {
+  ${mq.mobileOnly`
     margin-top: 9px;
-  }
+  `}
 `
 
 const Title = styled.div`
   margin-top: 2px;
   font-size: 20px;
   font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   line-height: 1.5;
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     width: 144px;
   `}
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 const Description = styled.div`
   margin-top: 8px;
   font-size: 16px;
-  color: #4a4949;
-  ${finalMedia.tablet`
+  color: ${color.darkGray};
+  ${mq.tabletOnly`
     width: 144px;
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     font-size: 18px;
   `}
   ${truncate('relative', 1.5, 5, 'white')}
@@ -179,15 +184,14 @@ class Reviews extends React.PureComponent {
       )
     })
     return (
-      <Container mobileWidth={mobileWidth}>
-        <SectionName mobileWidth={mobileWidth}>
+      <Container>
+        <SectionName>
           <span>{sectionStrings.review}</span>
         </SectionName>
         <FlexBox>{ReviewsItem}</FlexBox>
-        <MobileListUtils maxWidth={mobileWidth}>
+        <MobileListUtils>
           <MobileFlexSwipeable.SwipableFlexItems
             alignItems={'flex-start'}
-            mobileWidth={mobileWidth}
             maxSwipableItems={maxSwipableItems}
           >
             {ReviewsItem}

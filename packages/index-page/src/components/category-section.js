@@ -1,29 +1,34 @@
-import { breakPoints, finalMedia } from '../utils/style-utils'
-import { getHref } from '../utils/getHref'
-import BottomLink from './common-utils/bottom-link'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import get from 'lodash/get'
-import ImgWrapper from './common-utils/img-wrapper'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import MobileListUtils from './common-utils/mobile-list'
 import postPropType from './prop-types/post'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Section from './common-utils/section'
-import SectionAnimationWrapper from './animations/section-animation-wrapper'
-import SectionName from './common-utils/section-name'
-import sectionStrings from '../constants/section-strings'
 import styled from 'styled-components'
+import SectionAnimationWrapper from './animations/section-animation-wrapper'
+// utils
+import { breakPoints } from '../utils/style-utils'
+import { getHref } from '../utils/getHref'
+// components
+import MobileFlexSwipeable from './mobile-flex-swipeable'
+import BottomLink from './common-utils/bottom-link'
+import MobileListUtils from './common-utils/mobile-list'
+import Section from './common-utils/section'
+import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
-
+import ImgWrapper from './common-utils/img-wrapper'
+// constants
+import sectionStrings from '../constants/section-strings'
+import color from '../constants/color'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
 
 const desktopMinWidth = breakPoints.desktopMinWidth
 const tabletMinWidth = breakPoints.tabletMinWidth
-const mobileWidth = breakPoints.mobileMaxWidth
-const backgroundColor = '#e2e2e2'
+const backgroundColor = color.gray
 
 const mockup = {
   mobile: {
@@ -50,17 +55,13 @@ const SectionWrapper = styled(Section)`
 
 const FlexBox = styled.div`
   display: flex;
-  flex-wrap:wrap;
-  width: 1002px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  padding: 0 47px;
   justify-content: center;
-  ${finalMedia.desktop`
-    width: 690px;
+  ${mq.tabletOnly`
+    padding: 0 34px;
   `}
-  ${finalMedia.tablet`
-    width: 690px;
-  `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -70,22 +71,26 @@ const FlexItem = styled.div`
   position: relative;
   margin-bottom: 70px;
   padding-bottom: 20px;
-  width: 314px;
-  &:nth-child(3n+2) {
-    margin-right: 30px;
-    margin-left: 30px;
+  width: 312px;
+  margin-right: 32.6px;
+  &:nth-child(4n) {
+    margin-right: 0px;
   }
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 210px;
-  `}
-  ${finalMedia.tablet`
-    width: 210px;
-    &:nth-child(3n+2) {
-      margin-right: 20px;
-      margin-left: 20px;
+    margin-right: 30px;
+    &:nth-child(4n) {
+      margin-right: 0px;
     }
   `}
-  ${finalMedia.mobile`
+  ${mq.tabletOnly`
+    width: 160px;
+    margin-right: 20px;
+    &:nth-child(4n) {
+      margin-right: 0px;
+    }
+  `}
+  ${mq.mobileOnly`
     width: 100%;
     height: 100%;
     margin-bottom: 0;
@@ -94,13 +99,13 @@ const FlexItem = styled.div`
 
 const ImgFrame = styled.div`
   height: 202px;
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     height: 138px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     height: 138px;
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     height: 186px;
   `}
 `
@@ -108,7 +113,7 @@ const ImgFrame = styled.div`
 const CategoryName = styled.div`
   background-color: ${backgroundColor};
   width: 100%;
-  color: #4a4949;
+  color: ${color.darkGray};
   font-weight: ${fontWeight.bold};
   line-height: 1.4;
   text-align: center;
@@ -123,15 +128,16 @@ const TextFrame = styled.div`
 `
 
 const Title = styled.div`
+  font-family: ${fontFamily.title};
   font-weight: ${fontWeight.bold};
   font-size: 20px;
-  color: #4a4949;
+  color: ${color.darkGray};
   line-height: 1.4;
   width: 92%;
   margin: 0 auto;
-  @media (max-width: ${mobileWidth}) {
+  ${mq.mobileOnly`
     width: ${(mockup.mobile.titleWidth / mockup.mobile.titleFrameWidth) * 100}%;
-  }
+  `}
 `
 
 const More = styled.div`
@@ -143,9 +149,9 @@ const More = styled.div`
   text-align: center;
   width: 101%;
   background-color: ${backgroundColor};
-  @media (max-width: ${mobileWidth}) {
+  ${mq.mobileOnly`
     bottom: -24px;
-  }
+  `}
 `
 
 class Category extends React.PureComponent {
@@ -190,15 +196,14 @@ class Category extends React.PureComponent {
     })
     return (
       <Container>
-        <SectionWrapper mobileWidth={mobileWidth}>
-          <SectionName mobileWidth={mobileWidth}>
+        <SectionWrapper>
+          <SectionName>
             <span>{sectionStrings.category}</span>
           </SectionName>
           <FlexBox>{items}</FlexBox>
-          <MobileListUtils maxWidth={mobileWidth}>
+          <MobileListUtils>
             <MobileFlexSwipeable.SwipableFlexItems
               alignItems="stretch"
-              mobileWidth={mobileWidth}
               maxSwipableItems={_.get(this.props, 'data.length', 1) - 1}
               categorySection
             >

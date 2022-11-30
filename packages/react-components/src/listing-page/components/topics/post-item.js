@@ -1,15 +1,19 @@
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
+import styled from 'styled-components'
+// components
+import Image from '../image'
+// constants
 import {
   linkHoverFadeOut,
   resetLinkStyle,
 } from '../../constants/predefined-css'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import Image from '../image'
-import { Link } from 'react-router-dom'
+import color from '../../constants/color'
+// @twreporter
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
-import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
-import styled from 'styled-components'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const styles = {
   imgLandscape: {
@@ -49,7 +53,7 @@ const PostBox = styled(Link)`
     width: ${styles.imgLandscape.desktop.width}px;
   `}
   ${mq.tabletAndAbove`
-    border: solid .5px #d8d8d8;
+    border: solid .5px ${color.gray};
     overflow: hidden;
     flex-direction: column;
   `}
@@ -79,8 +83,9 @@ const PostImage = styled.div`
   }
 `
 const PostText = styled.div`
-  color: #4a4949;
+  color: ${color.darkGray};
   font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   font-size: 16px;
   line-height: 1.5;
   flex: 1 1 auto;

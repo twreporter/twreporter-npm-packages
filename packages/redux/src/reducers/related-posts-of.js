@@ -4,11 +4,13 @@ import types from '../constants/action-types'
 import filter from 'lodash/filter'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
+import uniq from 'lodash/uniq'
 
 const _ = {
   filter,
   get,
   merge,
+  uniq,
 }
 
 const initialState = {
@@ -82,6 +84,9 @@ export default function relatedPostsOf(state = initialState, action = {}) {
       if (Array.isArray(topicRelateds)) {
         more = more.concat(topicRelateds)
       }
+
+      // deduplicate related posts according to their ids
+      more = _.uniq(more).filter(relatedId => relatedId !== entityId)
 
       const allIds = _.get(state, 'allIds', [])
       const ids = []

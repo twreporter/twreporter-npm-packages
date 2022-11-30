@@ -1,13 +1,17 @@
-import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
-import entityPaths from '@twreporter/core/lib/constants/entity-path'
-import FetchingWrapper from '../../is-fetching-wrapper'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import ListItem from './list-item'
-import mockup from '../constants/mockup-spec'
-import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+// @twreporter
+import entityPaths from '@twreporter/core/lib/constants/entity-path'
+import mq from '@twreporter/core/lib/utils/media-query'
+import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
+// constants
+import mockup from '../constants/mockup-spec'
+import color from '../constants/color'
+// components
+import ListItem from './list-item'
+import FetchingWrapper from '../../is-fetching-wrapper'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -26,7 +30,7 @@ const Container = styled.div`
 const Header = styled.div`
   font-size: 36px;
   font-weight: ${fontWeight.bold};
-  color: #404040;
+  color: ${color.darkDarkGray};
   margin: 0 auto 45px auto;
   text-align: center;
 
@@ -101,7 +105,11 @@ class List extends PureComponent {
           desc={_.get(item, 'og_description', '')}
           img={{
             alt: _.get(item, 'hero_image.description'),
-            src: _.get(item, 'hero_image.resized_targets.mobile.url'),
+            // Displaying `hero_image` is a default setting for listing.
+            // In cases which do not have `hero_image`, display `og_image` as fallback.
+            src:
+              _.get(item, 'hero_image.resized_targets.mobile.url') ||
+              _.get(item, 'og_image.resized_targets.mobile.url'),
           }}
           category={_.get(item, 'categories.0.name', '')}
           pubDate={date2yyyymmdd(_.get(item, 'published_date', ''), '.')}
@@ -113,9 +121,11 @@ class List extends PureComponent {
         />
       )
     })
+    const headerTitle = catName || (tagName ? `#${tagName}` : '')
+    const headerJSX = headerTitle ? <Header>{headerTitle}</Header> : null
     return (
       <Container>
-        <Header>{catName || (tagName ? `#${tagName}` : '')}</Header>
+        {headerJSX}
         <Items isFetching={isFetching} showSpinner={showSpinner}>
           {listJSX}
         </Items>

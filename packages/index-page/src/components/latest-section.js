@@ -1,23 +1,28 @@
-import CategoryName from './common-utils/category-name'
-import ImgWrapper from './common-utils/img-wrapper'
-import PropTypes from 'prop-types'
 import React from 'react'
-import ContentWrapper from './common-utils/section-content-wrapper'
-import TRLink from './common-utils/twreporter-link'
-import get from 'lodash/get'
+import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+// utils
 import { getHref } from '../utils/getHref'
-import { breakPoints, finalMedia } from '../utils/style-utils'
-
+import { breakPoints } from '../utils/style-utils'
+// components
+import CategoryName from './common-utils/category-name'
+import ImgWrapper from './common-utils/img-wrapper'
+import ContentWrapper from './common-utils/section-content-wrapper'
+import TRLink from './common-utils/twreporter-link'
+// constants
+import color from '../constants/color'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
 
 const desktopMinWidth = breakPoints.desktopMinWidth
 const tabletMinWidth = breakPoints.tabletMinWidth
-const mobileMaxWidth = breakPoints.mobileMaxWidth
 const mobileMidWidth = '578px'
 const mobileSemiMidWidth = '414px'
 const mobileMinWidth = '320px'
@@ -39,9 +44,9 @@ const headerPadding = {
 }
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
   position: relative;
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     padding: 0;
   `}
 `
@@ -51,10 +56,10 @@ const ContentContainer = styled(ContentWrapper)`
   padding: 30px ${headerPadding.desktop};
   overflow-x: hidden;
   justify-content: center;
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     padding: 30px ${headerPadding.tablet};
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     padding: 30px ${headerPadding.mobile};
   `}
 `
@@ -66,10 +71,10 @@ const ItemFrame = styled.div`
   &:first-child {
     margin: 0;
   }
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 130px;
   `}
-  ${finalMedia.tabletBelow`
+  ${mq.tabletAndBelow`
     &:nth-child(6) {
       display: none;
     }
@@ -77,7 +82,7 @@ const ItemFrame = styled.div`
       display: none;
     }
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     width: 160px;
     margin-left: 20px;
   `}
@@ -105,15 +110,15 @@ const ImageFrame = styled.div`
   background-size: cover;
   background-position: center;
   display: block;
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     height: 90px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     height: 110px;
   `}
-  @media (max-width: ${mobileMaxWidth}) {
+  ${mq.mobileOnly`
     height: 100px;
-  }
+  `}
   @media (max-width: ${mobileSemiMidWidth}) {
     height: 93px;
   }
@@ -123,7 +128,6 @@ const ImageFrame = styled.div`
 `
 
 const ContentFrame = styled.div`
-  width: 88%;
   margin: 0 auto;
 `
 
@@ -137,7 +141,8 @@ const Title = styled.div`
   height: auto;
   font-size: 16px;
   font-weight: ${fontWeight.bold};
-  color: #4a4949;
+  font-family: ${fontFamily.title};
+  color: ${color.darkGray};
 `
 
 class LatestSection extends React.Component {
@@ -146,6 +151,15 @@ class LatestSection extends React.Component {
       const isExternal = _.get(item, 'is_external', false)
       const href = getHref(_.get(item, 'slug', 'error'), isExternal)
       const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
+      const categoryName = _.get(item, 'category_set[0].category.name', '')
+      const subcategoryName = _.get(
+        item,
+        'category_set[0].subcategory.name',
+        ''
+      )
+      const categorySetName = `${categoryName}/${
+        subcategoryName || '全部'
+      }`
       return (
         <ItemFrame key={_.get(item, 'id')}>
           <TRLink href={href} redirect={isExternal}>
@@ -162,7 +176,7 @@ class LatestSection extends React.Component {
               />
             </ImageFrame>
             <ContentFrame>
-              <Category>{_.get(item, 'categories[0].name', '')}</Category>
+              <Category>{categorySetName}</Category>
               <Title>{_.get(item, 'title', '')}</Title>
             </ContentFrame>
           </TRLink>

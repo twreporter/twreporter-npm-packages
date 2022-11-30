@@ -1,19 +1,22 @@
-import styles from './constants/styles'
-import Content from './content'
-import IconList from './icon-list'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-// core
+// components
+import Content from './content'
+import IconList from './icon-list'
+// constants
+import styles from './constants/styles'
+import color from './constants/color'
+// @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
 import mq from '@twreporter/core/lib/utils/media-query'
-import origins from '@twreporter/core/lib/constants/request-origins'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
+import fundraisingId from '@twreporter/core/lib/constants/fundraising'
 
 const FooterContainer = styled.div`
-  border-top: solid 0.5px #d8d8d8;
+  border-top: solid 0.5px ${color.lightGray};
   width: 100%;
   background-color: ${props => props.bgColor};
   padding: 0;
@@ -48,37 +51,68 @@ const FooterContent = styled.div`
   width: 100%;
 `
 
-const CopyRight = styled.p`
+const CompanyInfo = styled.div`
+  display: flex;
+  align-items: center;
+  ${mq.tabletAndBelow`
+    flex-direction: column;
+    p:last-child {
+      margin-top: 10px;
+    }
+  `}
+  ${mq.mobileOnly`
+    width: 100%;
+    margin-top: 30px;
+  `}
+  ${mq.tabletOnly`
+    align-items: baseline;
+    margin-top: 50px;
+  `}
+  ${mq.desktopAndAbove`
+    width: 100%;
+    margin-top: 30px;
+    justify-content: space-between;
+  `}
+`
+
+const InfoContainer = styled.p`
   font-size: 12px;
-  font-weight: ${fontWeight.medium};
+  font-weight: ${fontWeight.normal};
   letter-spacing: 0.4px;
-  color: #9c9c9c;
+  color: ${color.gray};
   ${mq.mobileOnly`
     text-align: center;
-    margin-top: 10px;
   `}
-  ${mq.tabletAndAbove`
-    margin-top: 40px;
-  `}
-  ${mq.hdOnly`
-    margin-top: 60px;
-  `}  
 `
+
+const Copyright = () => {
+  const currentYear = new Date().getFullYear()
+  return (
+    <InfoContainer>{`Copyright © ${currentYear} The Reporter.`}</InfoContainer>
+  )
+}
+
+const Fundraising = () => {
+  if (!fundraisingId) return null
+  return <InfoContainer>{fundraisingId}</InfoContainer>
+}
 
 class Footer extends React.PureComponent {
   render() {
     const { bgColor, releaseBranch, pathname, host } = this.props
-    const currentYear = new Date().getFullYear()
     return (
       <FooterContainer bgColor={bgColor}>
         <FooterContent>
           <Content
-            mainOrigin={origins.forClientSideRendering[releaseBranch].main}
             pathname={pathname}
             host={host}
+            releaseBranch={releaseBranch}
           />
           <IconList />
-          <CopyRight>{`Copyright © ${currentYear} The Reporter.`}</CopyRight>
+          <CompanyInfo>
+            <Fundraising />
+            <Copyright />
+          </CompanyInfo>
         </FooterContent>
       </FooterContainer>
     )
@@ -93,7 +127,7 @@ Footer.propTypes = {
 }
 
 Footer.defaultProps = {
-  bgColor: '#ffffff',
+  bgColor: color.white,
   releaseBranch: releaseBranchConsts.release,
   host: '',
   pathname: '',

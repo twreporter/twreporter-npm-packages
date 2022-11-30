@@ -1,26 +1,21 @@
 import PropTypes from 'prop-types'
-import theme from './theme'
 // @twreporter
-import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
-import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
-
-const themePropTypes = PropTypes.oneOf([
-  theme.normal,
-  theme.transparent,
-  theme.photography,
-  theme.index,
-])
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
+import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
 
 const contextPropTypes = {
-  theme: themePropTypes,
-  releaseBranch: predefinedPropTypes.releaseBranch,
+  theme: THEME_PROP_TYPES,
+  releaseBranch: BRANCH_PROP_TYPES,
   isLinkExternal: PropTypes.bool,
   isAuthed: PropTypes.bool,
 }
 
 const contextDefaultProps = {
-  theme: theme.normal,
-  releaseBranch: releaseBranchConsts.master,
+  theme: THEME.normal,
+  releaseBranch: BRANCH.master,
   isLinkExternal: false,
   isAuthed: false,
 }
@@ -30,12 +25,28 @@ const linkPropTypes = {
   isExternal: PropTypes.bool.isRequired,
 }
 
-export default {
-  context: {
-    propTypes: contextPropTypes,
-    defaultProps: contextDefaultProps,
-  },
-  link: {
-    propTypes: linkPropTypes,
-  },
+const hamburgerContextPropTypes = {
+  toggleHamburger: PropTypes.func,
+  closeHamburgerMenu: PropTypes.func,
+  isHamburgerMenuOpen: PropTypes.boolean,
+}
+
+const hamburgerContextDefaultProps = {
+  toggleHamburger: () => {},
+  closeHamburgerMenu: () => {},
+  isHamburgerMenuOpen: false,
+}
+
+export const CONTEXT_PROP = {
+  propTypes: contextPropTypes,
+  defaultProps: contextDefaultProps,
+}
+
+export const HAMBURGER_CONTEXT_PROP = {
+  propTypes: hamburgerContextPropTypes,
+  defaultProps: hamburgerContextDefaultProps,
+}
+
+export const LINK_PROP = {
+  propTypes: linkPropTypes,
 }

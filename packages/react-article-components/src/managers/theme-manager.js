@@ -1,4 +1,5 @@
 import themeConst from '../constants/theme'
+import colorConst from '../constants/color'
 
 /**
  *  @module ThemeManager
@@ -22,39 +23,39 @@ import themeConst from '../constants/theme'
  */
 
 const secondaryColorSet = {
-  text: '#a67a44',
-  accent: '#a67a44',
-  support: '#d0a67d',
-  background: '#c9af8e',
+  text: colorConst.brown,
+  accent: colorConst.brown,
+  support: colorConst.milkTea,
+  background: colorConst.lightBrown,
 }
 
 const baseColorSet = {
-  text: '#404040',
-  lightText: '#808080',
+  text: colorConst.gray90,
+  lightText: colorConst.gray80,
   button: {
     text: {
-      color: '#808080',
+      color: colorConst.gray80,
     },
     border: {
-      color: '#808080',
+      color: colorConst.gray80,
     },
     background: {
       color: 'initial',
     },
     hover: {
       text: {
-        color: '#808080',
+        color: colorConst.gray80,
       },
       border: {
-        color: '#808080',
+        color: colorConst.gray80,
       },
       background: {
-        color: '#fff',
+        color: colorConst.white,
       },
     },
   },
-  line: '#afafaf',
-  background: '#f4f4f4',
+  line: colorConst.gray60,
+  background: colorConst.gray20,
 }
 
 /**
@@ -67,80 +68,80 @@ export default class ThemeManager {
   static colors = {
     pink: {
       primary: {
-        text: '#355ed3',
-        accent: '#ef7ede',
-        support: '#fbafef',
-        background: '#fadaf5',
+        text: colorConst.blue,
+        accent: colorConst.drakPink,
+        support: colorConst.pink,
+        background: colorConst.lightPink,
       },
       secondary: secondaryColorSet,
       base: baseColorSet,
       toc: {
-        text: '#9c9c9c',
-        accent: '#ef7ede',
-        support: '#fbafef',
-        background: '#fadaf5',
+        text: colorConst.gray70,
+        accent: colorConst.darkPink,
+        support: colorConst.pink,
+        background: colorConst.lightPink,
       },
     },
     default: {
       primary: {
-        text: '#a67a44',
-        accent: '#a67a44',
-        support: '#d0a67d',
-        background: '#f1f1f1',
+        text: colorConst.brown,
+        accent: colorConst.brown,
+        support: colorConst.milkTea,
+        background: colorConst.gray30,
       },
       secondary: secondaryColorSet,
       base: {
         ...baseColorSet,
-        background: '#f1f1f1',
+        background: colorConst.gray30,
       },
       toc: {
-        text: '#afafaf',
-        accent: '#a67a44',
-        support: '#d0a67d',
-        background: '#fefefe',
+        text: colorConst.gray60,
+        accent: colorConst.brown,
+        support: colorConst.milkTea,
+        background: colorConst.almostWhite,
       },
     },
     photo: {
       primary: {
-        text: '#a67a44',
-        accent: '#a67a44',
-        support: '#d0a67d',
-        background: '#08192d',
+        text: colorConst.brown,
+        accent: colorConst.brown,
+        support: colorConst.milkTea,
+        background: colorConst.darkBlue,
       },
       secondary: secondaryColorSet,
       base: {
-        text: 'rgba(255, 255, 255, 0.8)',
-        lightText: 'rgba(255, 255, 255, 0.5)',
+        text: colorConst.notSoWhite,
+        lightText: colorConst.gray5,
         button: {
           text: {
-            color: '#808080',
+            color: colorConst.gray80,
           },
           border: {
-            color: '#808080',
+            color: colorConst.gray80,
           },
           background: {
             color: 'initial',
           },
           hover: {
             text: {
-              color: '#fff',
+              color: colorConst.white,
             },
             border: {
-              color: '#fff',
+              color: colorConst.white,
             },
             background: {
               color: 'initial',
             },
           },
         },
-        line: 'rgba(216, 216, 216, 0.2)',
-        background: '#08192d',
+        line: colorConst.gray35,
+        background: colorConst.darkBlue,
       },
       toc: {
-        text: '#afafaf',
-        accent: '#a67a44',
-        support: '#d0a67d',
-        background: '#fefefe',
+        text: colorConst.gray60,
+        accent: colorConst.brown,
+        support: colorConst.milkTea,
+        background: colorConst.almostWhite,
       },
     },
   }

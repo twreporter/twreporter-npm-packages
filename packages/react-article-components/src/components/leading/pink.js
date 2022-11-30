@@ -1,11 +1,16 @@
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
-import Img from '../img-with-placeholder'
 import React, { PureComponent } from 'react'
-import get from 'lodash/get'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedPropTypes from '../../constants/prop-types/leading'
 import styled from 'styled-components'
-
+// components
+import Img from '../img-with-placeholder'
+// constants
+import predefinedPropTypes from '../../constants/prop-types/leading'
+import color from '../../constants/color'
+import typography from '../../constants/typography'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -69,7 +74,7 @@ const TextBlock = styled.div`
 
 const TopicTextBlock = styled.div`
   background-color: ${props => props.theme.colors.primary.support};
-  border: solid 2px #fff;
+  border: solid 2px ${color.white};
   display: inline-block;
 
   position: relative;
@@ -80,18 +85,19 @@ const TopicTextBlock = styled.div`
   /* through ThemeProvider of styled-components */
   color: ${props => props.theme.colors.primary.text};
   font-size: 20px;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
   line-height: 1.8;
   letter-spacing: 0.4px;
 
-  box-shadow: 5px 5px #fff;
+  box-shadow: 5px 5px ${color.white};
 `
 
 const TitleTextBlock = styled.h1`
   /* through ThemeProvider of styled-components */
   color: ${props => props.theme.colors.primary.text};
 
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
+  font-family: ${typography.font.family.title};
   padding-left: 10px;
 
   /* overwrite h1 default margin*/
@@ -117,8 +123,8 @@ const TitleTextBlock = styled.h1`
     font-size: 34px;
     > span {
       line-height: 1.6;
-      background-color: #fff;
-      box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
+      background-color: ${color.white};
+      box-shadow: 10px 0 0 ${color.white}, -10px 0 0 ${color.white};
     }
   `}
 
@@ -130,7 +136,7 @@ const SubtitleTextBlock = styled.h2`
   display: block;
 
   font-size: 20px;
-  font-weight: bold;
+  font-weight: ${typography.font.weight.bold};
   margin: 0 0 10px 0;
 
   > span {
@@ -140,7 +146,7 @@ const SubtitleTextBlock = styled.h2`
 
   ${mq.desktopAndAbove`
     > span {
-      background-color: #fff;
+      background-color: ${color.white};
     }
   `}
 `
@@ -176,6 +182,7 @@ export default class LeadingBlock extends PureComponent {
     topicHref: '',
     shortTitle: '',
     paddingTop: '',
+    isTopicPublished: false,
   }
 
   render() {
@@ -186,13 +193,14 @@ export default class LeadingBlock extends PureComponent {
       title,
       topicHref,
       shortTitle,
+      isTopicPublished,
     } = this.props
 
     return (
       <BackgroundBlock paddingTop={paddingTop}>
         <ContentBlock>
           <TextBlock>
-            {shortTitle ? (
+            {isTopicPublished && shortTitle ? (
               <DynamicComponentsContext.Consumer>
                 {components => {
                   return (

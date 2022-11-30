@@ -1,14 +1,16 @@
 /* eslint-disable camelcase */
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 import BookmarkIcon from './assets/bookmark.svg'
-import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import CustomizedLink from './customized-link'
 import ImgWrapper from './image-wrapper'
 import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import color from './constants/color'
+// @twreporter
+import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import truncate from '@twreporter/core/lib/utils/truncate'
 // lodash
 import get from 'lodash/get'
@@ -42,7 +44,7 @@ const styles = {
 const BookmarkIconComp = styled(BookmarkIcon)`
   &:hover {
     path {
-      fill: #99000a;
+      fill: ${color.darkRed};
       transition: fill 200ms linear;
     }
   }
@@ -55,8 +57,7 @@ const BookmarkFrame = styled.div`
 const BookmarkContentContainer = styled.li`
   position: relative;
   width: 100%;
-  background-color: #ffffff;
-
+  background-color: ${color.white};
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -135,6 +136,9 @@ const TextBox = styled.div`
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  a {
+    width: 100%;
+  }
 `
 
 const Category = styled.span`
@@ -143,7 +147,7 @@ const Category = styled.span`
     font-size: 14px;
   `}
   line-height: 1;
-  color: #c4333e;
+  color: ${color.red};
 `
 
 const FirstRow = styled.div`
@@ -166,16 +170,16 @@ const Title = styled.div`
     margin-bottom: 0;
   `}
   font-weight: ${fontWeight.bold};
-  color: #3e3f3f;
+  color: ${color.darkGray};
   flex-basis: auto;
   flex-grow: 0;
 `
 
 const Description = styled.div`
   width: 98%;
-  color: #3e3f3f;
+  color: ${color.darkGray};
   font-size: 18px;
-  ${truncate('relative', 1.57, 2, '#ffffff', 'justify')};
+  ${truncate('relative', 1.57, 2, color.white, 'justify')};
   flex-basis: auto;
   flex-grow: 0;
   ${mq.mobileOnly`
@@ -193,7 +197,7 @@ const LastRow = styled.div`
 const ReadMore = styled.div`
   font-size: 14px;
   text-align: left;
-  color: #8c8c8c;
+  color: ${color.gray};
   cursor: pointer;
   display: inline-block;
 `
@@ -201,8 +205,8 @@ const ReadMore = styled.div`
 const Date = styled.span`
   vertical-align: top;
   font-size: 16px;
-  font-weight: ${fontWeight.light};
-  color: #4a4a4a;
+  font-weight: ${fontWeight.default};
+  color: ${color.gray};
   float: right;
 `
 

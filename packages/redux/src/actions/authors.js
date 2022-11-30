@@ -2,7 +2,6 @@ import { author as authorSchema } from '../schemas/article-schema'
 import { camelizeKeys } from 'humps'
 import {
   MAX_RESULTS_PER_FETCH,
-  MAX_RESULTS_PER_SEARCH,
   NUMBER_OF_FIRST_RESPONSE_PAGE,
   RETURN_DELAY_TIME,
 } from '../constants/authors-list'
@@ -65,19 +64,20 @@ export function searchAuthors({ keywords, targetPage, returnDelay }) {
     // eslint-disable-line no-unused-vars
     const searchParas = {
       keywords,
-      filters: 'articlesCount>0',
-      hitsPerPage:
-        keywords === '' ? MAX_RESULTS_PER_FETCH : MAX_RESULTS_PER_SEARCH,
-      page: targetPage,
+      limit: MAX_RESULTS_PER_FETCH,
+      offset: targetPage * MAX_RESULTS_PER_FETCH,
     }
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const url = formURL(apiOrigin, '/v1/search/authors', searchParas, false)
+    const url = formURL(apiOrigin, '/v2/authors', searchParas, false)
     dispatch(requestSearchAuthors(keywords))
     // Call our API server to fetch the data
     return axios.get(url).then(
-      response => {
-        const authors = _.get(response, 'data.hits', {})
+      ({ data }) => {
+        const authors = _.get(data, 'data.records', {})
+        const offset = _.get(data, 'data.meta.offset', 0)
+        const limit = _.get(data, 'data.meta.limit', 24)
+        const total = _.get(data, 'data.meta.total', 0)
         const receiveSearchAuthorsAction = {
           type:
             keywords === ''
@@ -88,12 +88,8 @@ export function searchAuthors({ keywords, targetPage, returnDelay }) {
             normalizedData: Array.isArray(authors)
               ? normalize(camelizeKeys(authors), new schema.Array(authorSchema))
               : normalize(camelizeKeys(authors), authorSchema),
-            currentPage: _.get(
-              response,
-              'data.page',
-              NUMBER_OF_FIRST_RESPONSE_PAGE - 1
-            ),
-            totalPages: _.get(response, 'data.nbPages', 0),
+            currentPage: Math.floor(offset / limit),
+            totalPages: Math.ceil(total / limit),
             receivedAt: Date.now(),
           },
         }

@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import color from '../../../constants/color'
 
 export const Rail = styled.div`
   width: 100%;
   height: 100%;
-  background: #ccc;
+  background: ${color.gray55};
   position: relative;
   cursor: ${props => (props.isHeld ? 'grabbing' : 'pointer')};
 `

@@ -1,25 +1,31 @@
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import topicPropType from './prop-types/topic'
+// utils
+import { breakPoints, truncate } from '../utils/style-utils'
+import { getHref } from '../utils/getHref'
+// components
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import TRLink from './common-utils/twreporter-link'
 import MobileFlexSwipeable from './mobile-flex-swipeable'
 import MobileListUtils from './common-utils/mobile-list'
-import PropTypes from 'prop-types'
-import React from 'react'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
-import forEach from 'lodash/forEach'
-import get from 'lodash/get'
+// constants
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
-import styled from 'styled-components'
-import topicPropType from './prop-types/topic'
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
-
+import color from '../constants/color'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import forEach from 'lodash/forEach'
+import get from 'lodash/get'
 const _ = {
   forEach,
   get,
@@ -36,9 +42,8 @@ const mockup = {
 }
 
 const categoryPrefix = strings.topic + strings.fullShapeDot
-const mobileWidth = breakPoints.mobileMaxWidth
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
 `
 
 const ContentContainer = styled(Section)`
@@ -48,7 +53,7 @@ const ContentContainer = styled(Section)`
 const TopicFrame = styled.div`
   width: 447px;
   margin: 0 auto;
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 100%;
   `}
 `
@@ -57,11 +62,12 @@ const Title = styled.div`
   width: 374px;
   font-size: 32px;
   font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   line-height: 1.25;
-  color: #4a4949;
+  color: ${color.darkGray};
   text-align: center;
   margin: 2px auto 0 auto;
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     font-size: 24px;
     width: ${itemWidthPct}%;
   `}
@@ -73,8 +79,8 @@ const Description = styled.div`
   font-size: 16px;
   line-height: 1.5;
   text-align: justify;
-  color: #4a4949;
-  ${finalMedia.mobile`
+  color: ${color.darkGray};
+  ${mq.mobileOnly`
     width: ${itemWidthPct}%;
     margin: 6px auto 0 auto;
     font-size: 18px;
@@ -88,13 +94,13 @@ const FlexBox = styled.div`
   padding: 0 48px;
   display: flex;
   justify-content: center;
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     padding: 0 49px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     padding: 0 34px;
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -106,19 +112,19 @@ const FlexItem = styled.div`
   &:nth-child(2) {
     margin: 0 33px;
   }
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 290px;
     &:nth-child(2) {
       margin: 0 28px;
     }
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     width: 220px;
     &:nth-child(2) {
       margin: 0 20px;
     }
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 100%;
   `}
 `
@@ -141,7 +147,8 @@ const RelatedCategory = styled(CategoryName)`
 const RelatedTitle = styled.div`
   font-size: 20px;
   font-weight: ${fontWeight.bold};
-  color: #4a4949;
+  font-family: ${fontFamily.title};
+  color: ${color.darkGray};
   line-height: 1.5;
 `
 
@@ -150,28 +157,28 @@ const RelatedDescription = styled.div`
   height: auto;
   font-size: 16px;
   line-height: 20px;
-  color: #4a4949;
-  ${truncate('relative', 1.43, 4, '#f2f2f2')};
-  ${finalMedia.mobile`
+  color: ${color.darkGray};
+  ${truncate('relative', 1.43, 4, color.lightGray)};
+  ${mq.mobileOnly`
     font-size: 18px;
   `}
 `
 const MoreFrame = styled.div`
   margin: 60px auto 0 auto;
-  @media (max-width: ${mobileWidth}) {
+  ${mq.mobileOnly`
     margin: 40px auto 0 auto;
-  }
+  `}
 `
 
 const ImgFrame = styled.div`
   height: 274px;
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     height: 186px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     height: 140px;
   `}
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     height: 186px;
   `}
 `
@@ -191,7 +198,7 @@ class LatestTopic extends React.PureComponent {
       const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
       relatedsJsx.push(
-        <FlexItem key={_.get(post, 'id')} mobileWidth={mobileWidth}>
+        <FlexItem key={_.get(post, 'id')}>
           <TRLink href={href} redirect={isExternal}>
             <ImgFrame>
               <ImgWrapper
@@ -225,8 +232,8 @@ class LatestTopic extends React.PureComponent {
 
     return (
       <Container>
-        <ContentContainer mobileWidth={mobileWidth}>
-          <SectionName mobileWidth={mobileWidth}>
+        <ContentContainer>
+          <SectionName>
             <span>{sectionStrings.latestTopic}</span>
           </SectionName>
           <TopicFrame>
@@ -239,10 +246,9 @@ class LatestTopic extends React.PureComponent {
             <Description>{_.get(data, 'og_description', '')}</Description>
           </TopicFrame>
           <FlexBox>{relatedsJsx}</FlexBox>
-          <MobileList maxWidth={mobileWidth}>
+          <MobileList>
             <MobileFlexSwipeable.SwipableFlexItems
               alignItems={'flex-start'}
-              mobileWidth={mobileWidth}
               maxSwipableItems={maxSwipableItems}
             >
               {relatedsJsx}

@@ -1,5 +1,4 @@
 /* global expect, test, describe, afterEach */
-import { MAX_ARTICLES_PER_FETCH } from '../../constants/author-page'
 import { expectActionErrorObj } from './expect-utils'
 import { mockResponse, items } from './mocks/author-articles'
 import * as actions from '../../../src/actions/author-articles'
@@ -12,6 +11,7 @@ import thunk from 'redux-thunk'
 // all constants
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
+const apiOrigin = 'http://localhost:8080'
 const mockDefaultState = {
   articlesByAuthor: {},
   entities: {
@@ -21,19 +21,14 @@ const mockDefaultState = {
     articles: {},
   },
   [fieldNames.origins]: {
-    api: 'http://localhost:8080',
+    api: apiOrigin,
   },
 }
-const authorId = 'theAurhtorId'
-const searchParas = {
-  keywords: authorId,
-  hitsPerPage: MAX_ARTICLES_PER_FETCH,
-  page: 0,
-}
+const authorId = 'theArthorId'
 
 process.env.NODE_ENV = 'development'
 
-describe('Atuhor Action Testing', () => {
+describe('Author Collections Action Testing', () => {
   afterEach(() => {
     nock.cleanAll()
   })
@@ -41,12 +36,11 @@ describe('Atuhor Action Testing', () => {
   test('The Actions: FETCH_AUTHOR_COLLECTION_REQUEST && FETCH_AUTHOR_COLLECTION_FAILURE', () => {
     const mockStatusCode = 500
     const mockAPIRes = {
-      message: 'mock internal server error',
+      message: 'Unexpected error',
       status: 'error',
     }
-    nock('http://localhost:8080')
-      .get('/v1/search/posts')
-      .query(searchParas)
+    nock(apiOrigin)
+      .get(`/v2/authors/${authorId}/posts?limit=5&offset=0`)
       .reply(mockStatusCode, mockAPIRes)
 
     const store = mockStore(mockDefaultState)
@@ -81,9 +75,8 @@ describe('Atuhor Action Testing', () => {
   })
 
   test('The Actions: FETCH_AUTHOR_COLLECTION_REQUEST && FETCH_AUTHOR_COLLECTION_SUCCESS', () => {
-    nock('http://localhost:8080')
-      .get('/v1/search/posts')
-      .query(searchParas)
+    nock(apiOrigin)
+      .get(`/v2/authors/${authorId}/posts?limit=5&offset=0`)
       .reply(200, mockResponse)
 
     const store = mockStore(mockDefaultState)
@@ -101,10 +94,10 @@ describe('Atuhor Action Testing', () => {
           {
             type: actionTypes.FETCH_AUTHOR_COLLECTION_SUCCESS,
             payload: {
-              normalizedData: items,
               authorId,
+              normalizedData: items,
               currentPage: 0,
-              totalPages: 28,
+              totalPages: 29,
               totalResults: 145,
               receivedAt: expect.any(Number),
             },
@@ -116,9 +109,8 @@ describe('Atuhor Action Testing', () => {
   })
 
   test('The Actions: dataAlreadyExists', () => {
-    nock('http://localhost:8080')
-      .get('/v1/search/posts')
-      .query(searchParas)
+    nock(apiOrigin)
+      .get(`/v2/authors/${authorId}/posts`)
       .reply(200, mockResponse)
 
     const store = mockStore({

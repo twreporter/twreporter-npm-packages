@@ -2,12 +2,16 @@ import CSSTransition from 'react-transition-group/CSSTransition'
 import HeaderContext from '../contexts/header-context'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SearchCancel from '../../static/search-cancel.svg'
-import fonts from '../constants/fonts'
-import get from 'lodash/get'
-import linkUtils from '../utils/links'
 import styled, { css } from 'styled-components'
-
+// utils
+import linkUtils from '../utils/links-old'
+// constants
+import fonts from '../constants/fonts'
+import colors from '../constants/colors'
+// assets
+import SearchCancel from '../../static/search-cancel.svg'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -83,7 +87,7 @@ const SearchInput = styled.input`
   &::placeholder {
     font-size: ${fonts.size.base};
     font-weight: ${fonts.size.medium};
-    color: #8c8c8c;
+    color: ${colors.gray550};
     opacity: 0.5;
     letter-spacing: 0.7px;
   }

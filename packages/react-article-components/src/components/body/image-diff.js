@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import Slider, { Rail, Progress, Indicator } from './slider'
 import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
 import styled, { css } from 'styled-components'
 // lodash
 import get from 'lodash/get'
@@ -30,33 +31,36 @@ const getResponsiveBackground = imageSetPropKey => css`
     background-image: url(${props =>
       replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'mobile', 'url']))});
   `}
+  @media print {
+    background-image: url(${props =>
+      replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'desktop', 'url']))});
+  }
 `
 
 const sharedStyleOfIndicatorPointer = css`
   padding-top: 4px;
   text-align: center;
   font-size: 12px;
-  font-family: arial, sans-serif;
   display: block;
   position: absolute;
   top: 0;
   width: 24px;
   height: 24px;
-  background: #fff;
+  background: ${colorConst.white};
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return '#a67a44'
+        return colorConst.brown
       case themeConst.article.v2.pink:
-        return '#fbafef'
+        return colorConst.pink
       case themeConst.article.v2.default:
       default:
-        return '#d0a67d'
+        return colorConst.milkTea
     }
   }};
 `
 
-const Image = styled.div`
+const ImageContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -81,7 +85,7 @@ const Image = styled.div`
   }
   ${Indicator} {
     width: 3px;
-    background: #fff;
+    background: ${colorConst.white};
     &::after {
       content: "${unicodeToString(
         '25C4'
@@ -145,7 +149,8 @@ export default class ImageDiff extends PureComponent {
     )
     return (
       <Container>
-        <Image
+        <ImageContainer
+          className="avoid-break"
           heightWidthRatio={renderedHeightWidthRation}
           leftImageSet={leftImageSet}
           rightImageSet={rightImageSet}
@@ -153,7 +158,7 @@ export default class ImageDiff extends PureComponent {
           <div>
             <Slider defaultValue={50} min={1} max={100} />
           </div>
-        </Image>
+        </ImageContainer>
         {caption ? <Multimedia.Caption>{caption}</Multimedia.Caption> : null}
       </Container>
     )

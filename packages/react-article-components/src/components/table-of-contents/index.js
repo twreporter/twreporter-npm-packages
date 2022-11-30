@@ -4,6 +4,10 @@ import React from 'react'
 import TOC from '@twreporter/react-components/lib/table-of-contents'
 import map from 'lodash/map'
 import Tab from '../../assets/table-of-contents/long-form-tab.svg'
+import {
+  ANCHOR_SCROLL_DURATION,
+  WAIT_AFTER_REACH_ANCHOR,
+} from '../../constants/anchor'
 
 const _ = {
   map,
@@ -13,6 +17,7 @@ class TableOfContents extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     manager: TOC.React.TableOfContents.propTypes.manager,
+    onStartScrollingToAnchor: PropTypes.func,
   }
 
   static defaultProps = {
@@ -73,14 +78,15 @@ class TableOfContents extends React.PureComponent {
   }
 
   render() {
-    const { className, manager } = this.props
+    const { className, manager, onStartScrollingToAnchor } = this.props
     const { isExpanded } = this.state
 
     return (
-      <div ref={this._ref}>
+      <div className="hidden-print" ref={this._ref}>
         <TOC.React.TableOfContents
           className={className}
           manager={manager}
+          scrollDuration={ANCHOR_SCROLL_DURATION}
           render={(anchors, highlightAnchor, handleAnchorClick) => {
             const anchorsJSX = _.map(anchors, anchor => {
               const toHighlight = anchor === highlightAnchor
@@ -88,7 +94,17 @@ class TableOfContents extends React.PureComponent {
               return (
                 <Styled.TOCRow
                   key={anchor.anchorID}
-                  onClick={() => handleAnchorClick(anchor.anchorID)}
+                  onClick={() => {
+                    onStartScrollingToAnchor(true, () =>
+                      handleAnchorClick(anchor.anchorID, () => {
+                        // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
+                        setTimeout(
+                          () => onStartScrollingToAnchor(false),
+                          WAIT_AFTER_REACH_ANCHOR
+                        )
+                      })
+                    )
+                  }}
                 >
                   <Styled.TOCIndicator
                     toHighlight={toHighlight}

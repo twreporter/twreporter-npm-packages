@@ -5,6 +5,7 @@ import styled, { css, keyframes } from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -74,11 +75,11 @@ const Indicator = styled.span`
 
 const AnnotationContent = styled.div`
   display: ${props => (props.isExpanded ? 'block' : 'none')};
-  background: #fff;
+  background: ${color.white};
   font-size: ${props => props.theme.fontSizeOffset + 16}px;
   line-height: 2.11;
   letter-spacing: 0.5px;
-  color: #494949;
+  color: ${color.gray85};
   font-weight: ${typography.font.weight.normal};
   border-width: 2px 0 0 0;
   border-style: solid;
@@ -104,50 +105,50 @@ function getContainerStyles(themeName) {
     case themeConst.article.v2.pink:
       return css`
         ${AnnotatedText} {
-          color: #355ed3;
+          color: ${color.blue};
         }
         ${Indicator} {
-          border-color: #355ed3;
+          border-color: ${color.blue};
           &::before,
           &::after {
-            background-color: #355ed3;
+            background-color: ${color.blue};
           }
         }
         ${AnnotationContent} {
-          border-color: #fbafef;
+          border-color: ${color.pink};
         }
       `
     case themeConst.article.v2.photo:
       return css`
         ${AnnotatedText} {
-          color: #d0a67d;
+          color: ${color.milkTea};
         }
         ${Indicator} {
-          border-color: #d0a67d;
+          border-color: ${color.milkTea};
           &::before,
           &::after {
-            background-color: #d0a67d;
+            background-color: ${color.milkTea};
           }
         }
         ${AnnotationContent} {
-          border-color: #d0a67d;
+          border-color: ${color.milkTea};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${AnnotatedText} {
-          color: #a67a44;
+          color: ${color.brown};
         }
         ${Indicator} {
-          border-color: #d0a67d;
+          border-color: ${color.milkTea};
           &::before,
           &::after {
-            background-color: #d0a67d;
+            background-color: ${color.milkTea};
           }
         }
         ${AnnotationContent} {
-          border-color: #d0a67d;
+          border-color: ${color.milkTea};
         }
       `
   }

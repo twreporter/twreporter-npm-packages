@@ -1,20 +1,32 @@
 /* eslint-disable no-param-reassign */
-import CategoryName from './common-utils/category-name'
-import ContentWrapper from './common-utils/section-content-wrapper'
-import EditorPicksMobile from './editor-picks-mobile'
-import ImgWrapper from './common-utils/img-wrapper'
-import LeftArrowIcon from '../static/left-arrow.svg'
-import PropTypes from 'prop-types'
 import React from 'react'
-import RightArrowIcon from '../static/right-arrow.svg'
-import TRLink from './common-utils/twreporter-link'
-import clone from 'lodash/clone'
-import get from 'lodash/get'
+import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
+// utils
 import { getHref } from '../utils/getHref'
-import { truncate, breakPoints, finalMedia } from '../utils/style-utils'
+import { truncate, breakPoints } from '../utils/style-utils'
+// components
+import EditorPicksMobile from './editor-picks-mobile'
+import ImgWrapper from './common-utils/img-wrapper'
+import CategoryName from './common-utils/category-name'
+import ContentWrapper from './common-utils/section-content-wrapper'
+import TRLink from './common-utils/twreporter-link'
+// constants
+import color from '../constants/color'
+// assets
+import LeftArrowIcon from '../static/left-arrow.svg'
+import RightArrowIcon from '../static/right-arrow.svg'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import clone from 'lodash/clone'
+import get from 'lodash/get'
+const _ = {
+  get,
+  clone,
+}
 
 const mockup = {
   img: {
@@ -24,11 +36,6 @@ const mockup = {
       mobile: '307px',
     },
   },
-}
-
-const _ = {
-  get,
-  clone,
 }
 
 const swapArrayElements = (arr, indexA, indexB) => {
@@ -45,9 +52,9 @@ const swapArrayElements = (arr, indexA, indexB) => {
 const CarouselContainer = styled(ContentWrapper)`
   overflow-x: hidden;
   position: relative;
-  @media (max-width: ${breakPoints.mobileMaxWidth}) {
+  ${mq.mobileOnly`
     display: none;
-  }
+  `}
 `
 
 const FlexContainer = styled.div`
@@ -55,9 +62,9 @@ const FlexContainer = styled.div`
   display: flex;
   height: 932px;
   align-items: center;
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     height: 702px;
-  }
+  `}
 `
 
 // FlexItem is for moving Title
@@ -72,9 +79,9 @@ const FlexItem = styled.div`
   transition: 500ms transform ease-in, 500ms margin-top ease-in;
   cursor: pointer;
   margin-top: ${props => (props.middle ? '-770px' : '16px')};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     margin-top: ${props => (props.middle ? '-540px' : '16px')};
-  }
+  `}
   z-index: 2;
 `
 
@@ -86,11 +93,11 @@ const ImgFrame = styled.div`
   left: 50%;
   top: 236px;
   transform: translateX(-50%);
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 610px;
     height: 391px;
   `}
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     width: 450px;
     height: 295px;
   `}
@@ -106,18 +113,18 @@ const Arrow = styled.div`
 const LeftArrow = styled(Arrow)`
   left: 17%;
   display: ${props => (props.selected === 0 ? 'none' : 'inline')};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     top: 365px;
-  }
+  `}
   transition: 0.2s display linear;
 `
 const RightArrow = styled(Arrow)`
   right: 17%;
   display: ${props =>
     props.selected === props.dataLength - 1 ? 'none' : 'inline'};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     top: 365px;
-  }
+  `}
   transition: 0.2s display linear;
 `
 
@@ -133,9 +140,9 @@ const SideCategory = styled(CategoryName)`
   height: 16px;
   top: 453px;
   left: ${props => (props.left ? props.left : '0')};
-  @media (max-width: ${breakPoints.desktopMaxWidth}) {
+  ${mq.desktopAndBelow`
     top: 338px;
-  }
+  `}
 `
 
 const MiddleCategory = styled(CategoryName)`
@@ -155,7 +162,8 @@ const MiddleCategory = styled(CategoryName)`
 const Title = styled.div`
   font-size: ${props => (props.middle ? `32px` : `16px`)};
   font-weight: ${fontWeight.bold};
-  color: #4a4949;
+  font-family: ${fontFamily.title};
+  color: ${color.darkGray};
   width: ${props => (props.middle ? '450px' : '150px')};
   position: absolute;
   text-align: center;
@@ -165,10 +173,11 @@ const Title = styled.div`
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
-  ${finalMedia.desktop`
+  line-break: anywhere;
+  ${mq.desktopOnly`
     width: ${props => (props.middle ? '450px' : '120px')};
   `}
-  ${finalMedia.tabletBelow`
+  ${mq.tabletAndBelow`
     width: ${props => (props.middle ? '450px' : '90px')};
   `}
 `
@@ -178,29 +187,29 @@ const Description = styled.div`
   width: 450px;
   top: ${props => (props.top ? props.top : '0')};
   left: ${props => (props.left ? props.left : '0')};
-  color: #4a4949;
+  color: ${color.darkGray};
   transform: translateX(-50%);
   ${truncate('absolute', 1.43, 2, 'white')};
-  @media (min-width: ${breakPoints.tabletMinWidth}) {
+  ${mq.tabletAndAbove`
     ${props => (props.ifHover ? 'opacity: 0.7;' : '')}
     transition: .2s opacity linear;
-  }
+  `}
   z-index: 2;
 `
 
 const HoverEffect = styled.div`
   cursor: pointer;
   text-decoration: none;
-  color: #4a4949;
-  @media (min-width: ${breakPoints.tabletMinWidth}) {
+  color: ${color.darkGray};
+  ${mq.tabletAndAbove`
     ${props => (props.ifHover ? 'opacity: 0.7;' : 'opacity: 1;')}
     transition: .2s opacity linear;
-  }
+  `}
 `
 const FadeInFadeOut = styled.div`
   opacity: ${props => (props.isSelected ? '1' : '0')};
   z-index: ${props => (props.isSelected ? '1' : '0')};
-  transition: 0.5s opacity linear;
+  transition: 150ms opacity ease-in-out;
 `
 
 // this is a container
@@ -348,7 +357,7 @@ class EditorPicks extends React.Component {
           const fadingStyle = {
             opacity: index === selectDataToShow[theProp.position] ? '1' : '0',
             zIndex: index === selectDataToShow[theProp.position] ? '1' : '0',
-            transition: 'opacity .5s linear',
+            transition: 'opacity 150ms ease-in-out',
           }
           return (
             <FadeInFadeOut

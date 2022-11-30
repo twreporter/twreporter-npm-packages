@@ -1,146 +1,136 @@
-import colorsConst from '../constants/colors'
 import themeConst from '../constants/theme'
-import LogoLightGray from '../../static/twreporter-logo-light-gray.svg'
-import Logo from '../../static/twreporter-logo.svg'
-import BookmarkIcon from '../../static/bookmark-list-icon.svg'
-import BookmarkIconLightGray from '../../static/bookmark-list-icon-light-gray.svg'
-import MemberIcon from '../../static/member-icon.svg'
-import MemberIconLightGray from '../../static/member-icon-light-gray.svg'
-import LogoutIcon from '../../static/logout.svg'
-import LogoutIconLightGray from '../../static/logout-light-gray.svg'
-import SearchIcon from '../../static/search-icon.svg'
-import SearchIconLightGray from '../../static/search-icon-light-gray.svg'
+import {
+  colorBrand,
+  colorPhoto,
+  colorSupportive,
+  colorGrayscale,
+  colorOpacity,
+} from '@twreporter/core/lib/constants/color'
 
-const lightGrayBgColor = colorsConst.grayBg
-
-function selectLogoComponent(theme) {
+export const selectLogoType = theme => {
   switch (theme) {
-    case themeConst.photography:
-    case themeConst.transparent: {
-      return LogoLightGray
-    }
-    default: {
-      return Logo
-    }
-  }
-}
-
-function selectServiceIcons(theme) {
-  switch (theme) {
-    case themeConst.photography:
-    case themeConst.transparent: {
-      return {
-        bookmark: BookmarkIconLightGray,
-        member: MemberIconLightGray,
-        search: SearchIconLightGray,
-        logout: LogoutIconLightGray,
-      }
-    }
-    default: {
-      return {
-        bookmark: BookmarkIcon,
-        member: MemberIcon,
-        search: SearchIcon,
-        logout: LogoutIcon,
-      }
-    }
-  }
-}
-
-function selectFontColor(theme) {
-  switch (theme) {
-    case themeConst.transparent: {
-      return colorsConst.white
-    }
-    case themeConst.photography: {
-      return '#808080'
-    }
-    case themeConst.index:
-    case themeConst.normal:
-    default: {
-      return colorsConst.gray15
-    }
-  }
-}
-
-function selectHoverFontColor(theme) {
-  switch (theme) {
-    case themeConst.transparent: {
-      return '#808080'
-    }
-    case themeConst.photography: {
-      return colorsConst.secondary
-    }
-    case themeConst.index:
-    case themeConst.normal:
-    default: {
-      return '#808080'
-    }
-  }
-}
-
-function selectChannelTextShadow(theme) {
-  switch (theme) {
-    case themeConst.transparent: {
-      return '0 2px 2px rgba(0, 0, 0, 0.22)'
-    }
-
-    default: {
-      return 'none'
-    }
-  }
-}
-
-function selectBgColor(theme) {
-  switch (theme) {
-    case themeConst.photography: {
-      return colorsConst.photography
-    }
-    case themeConst.transparent: {
-      return 'rgba(0, 0, 0, 0.1)'
-    }
-    case themeConst.index: {
-      return colorsConst.white
-    }
-    case themeConst.normal:
-    default: {
-      return lightGrayBgColor
-    }
-  }
-}
-
-function selectMobileSlideDownMenuBgColor(theme) {
-  switch (theme) {
-    case themeConst.normal: {
-      return colorsConst.white
-    }
-    case themeConst.index:
     case themeConst.photography:
     case themeConst.transparent:
-    default: {
-      return lightGrayBgColor
-    }
+      return 'white'
+    default:
+      return 'default'
   }
 }
 
-function selectChannelsBgColor(theme) {
+export const selectHeaderTheme = theme => {
   switch (theme) {
-    case themeConst.transparent: {
-      return 'transparent'
-    }
-    default: {
-      return colorsConst.white
-    }
+    case themeConst.photography:
+      return {
+        bgColor: colorPhoto.dark,
+        topRowBgColor: colorPhoto.dark,
+      }
+    case themeConst.transparent:
+      return {
+        bgColor: colorOpacity['black_0.2'],
+        topRowBgColor: 'unset',
+      }
+    case themeConst.index:
+      return {
+        bgColor: colorGrayscale.white,
+        topRowBgColor: colorGrayscale.white,
+      }
+    case themeConst.normal:
+    default:
+      return {
+        bgColor: colorGrayscale.gray100,
+        topRowBgColor: colorGrayscale.gray100,
+      }
   }
 }
 
-export default {
-  selectBgColor,
-  selectChannelTextShadow,
-  selectChannelsBgColor,
-  selectFontColor,
-  selectHoverFontColor,
-  selectLogoComponent,
-  selectMobileSlideDownMenuBgColor,
-  selectServiceIcons,
+export const selectSloganTheme = theme => {
+  switch (theme) {
+    case themeConst.photography:
+    case themeConst.transparent:
+      return colorGrayscale.white
+    case themeConst.index:
+    case themeConst.normal:
+    default:
+      return colorGrayscale.gray800
+  }
+}
+
+export const selectHamburgerFooterTheme = theme => {
+  switch (theme) {
+    case themeConst.photography:
+      return {
+        color: colorGrayscale.gray400,
+        hoverColor: colorGrayscale.gray400,
+        hoverBgColor: colorOpacity['white_0.2'],
+        activeColor: colorGrayscale.gray400,
+        activeBgColor: colorOpacity['white_0.5'],
+      }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default:
+      return {
+        color: colorGrayscale.gray600,
+        hoverColor: colorGrayscale.gray800,
+        hoverBgColor: colorGrayscale.gray100,
+        activeColor: colorGrayscale.gray800,
+        activeBgColor: colorGrayscale.gray200,
+      }
+  }
+}
+
+export const selectHamburgerItemTheme = (theme, active = false) => {
+  switch (theme) {
+    case themeConst.photography:
+      return {
+        color: active ? colorSupportive.main : colorGrayscale.white,
+        hoverBgColor: colorOpacity['white_0.2'],
+        activeBgColor: colorOpacity['white_0.5'],
+      }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default:
+      return {
+        color: active ? colorBrand.heavy : colorGrayscale.gray800,
+        hoverBgColor: colorGrayscale.gray100,
+        activeBgColor: colorGrayscale.gray200,
+      }
+  }
+}
+
+export const selectHamburgerMenuTheme = theme => {
+  switch (theme) {
+    case themeConst.photography:
+      return {
+        bgColor: colorPhoto.dark,
+        scrollBarColor: colorOpacity['white_0.8'],
+      }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default:
+      return {
+        bgColor: colorGrayscale.white,
+        scrollBarColor: colorOpacity['black_0.2'],
+      }
+  }
+}
+
+export const selectTabBarTheme = theme => {
+  switch (theme) {
+    case themeConst.photography:
+      return {
+        bgColor: colorPhoto.dark,
+        borderColor: colorPhoto.heavy,
+      }
+    case themeConst.transparent:
+    case themeConst.index:
+    case themeConst.normal:
+    default:
+      return {
+        bgColor: colorGrayscale.gray100,
+        borderColor: colorGrayscale.gray300,
+      }
+  }
 }

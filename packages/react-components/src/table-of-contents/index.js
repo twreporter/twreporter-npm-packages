@@ -1,13 +1,17 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
+import memoize from 'memoize-one'
+import { Waypoint } from 'react-waypoint'
+
+// twreporter
+import smoothScroll from '@twreporter/core/lib/utils/smooth-scroll'
+
+// lodash
 import get from 'lodash/get'
 import indexOf from 'lodash/indexOf'
-import memoize from 'memoize-one'
-import smoothScroll from 'smoothscroll'
 import some from 'lodash/some'
 import sortBy from 'lodash/sortBy'
 import debounce from 'lodash/debounce'
-import { Waypoint } from 'react-waypoint'
 
 const _ = {
   debounce,
@@ -334,7 +338,7 @@ class Anchor extends React.PureComponent {
   }
 }
 
-const smoothScrollDuration = 500
+const defaultScrollDuration = 500
 
 class TableOfContents extends React.PureComponent {
   static propTypes = {
@@ -347,6 +351,7 @@ class TableOfContents extends React.PureComponent {
      *  @param {Function} handleAnchorClick - callback function for handling clicking anchor
      */
     render: PropTypes.func,
+    scrollDuration: PropTypes.number,
   }
 
   constructor(props) {
@@ -378,8 +383,8 @@ class TableOfContents extends React.PureComponent {
    *  @param {string} anchorID - id of clicked anchor
    *  @returns
    */
-  _handleAnchorClick(anchorID) {
-    const { manager } = this.props
+  _handleAnchorClick(anchorID, callback) {
+    const { manager, scrollDuration } = this.props
     const anchors = manager.anchors
     _.some(anchors, anchor => {
       if (anchorID === anchor.anchorID) {
@@ -391,8 +396,13 @@ class TableOfContents extends React.PureComponent {
             manager.toStopAutoUpdateHighlightAnchor = true
             smoothScroll(
               anchor.getViewportTop(),
-              smoothScrollDuration,
-              () => (manager.toStopAutoUpdateHighlightAnchor = false)
+              scrollDuration || defaultScrollDuration,
+              () => {
+                manager.toStopAutoUpdateHighlightAnchor = false
+                if (callback) {
+                  callback()
+                }
+              }
             )
           }
         )

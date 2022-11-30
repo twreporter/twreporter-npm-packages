@@ -7,4 +7,7 @@ module.exports = {
   transform: {
     '^.+\\.[t|j]sx?$': require('path').join(__dirname, 'custom-babel-jest.js'),
   },
+  moduleNameMapper: {
+    '@twreporter/core/lib/(.*)': '<rootDir>/../core/src/$1',
+  },
 }

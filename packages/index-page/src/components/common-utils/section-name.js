@@ -1,9 +1,10 @@
-import { finalMedia } from '../../utils/style-utils'
 import styled from 'styled-components'
+import color from '../../constants/color'
+import mq from '@twreporter/core/lib/utils/media-query'
 
 const SectionName = styled.div`
   display: none;
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     display: block;
     font-size: 12px;
     position: absolute;
@@ -14,10 +15,10 @@ const SectionName = styled.div`
     right: 0;
     text-align: center;
     >span {
-      color: #fff;
+      color: ${color.white};
       padding-left: 5px;
       padding-right: 5px;
-      background-color: #c3000b;
+      background-color: ${color.red};
     }
   `}
 `

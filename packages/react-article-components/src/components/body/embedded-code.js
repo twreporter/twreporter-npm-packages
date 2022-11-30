@@ -1,12 +1,18 @@
-import predefinedPropTypes from '../../constants/prop-types/body'
+import React, { useRef, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import React from 'react'
 import styled from 'styled-components'
-import themeConst from '../../constants/theme'
+import { Waypoint } from 'react-waypoint'
+
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
+
+// twreporter
+import colorConst from '../../constants/color'
+import predefinedPropTypes from '../../constants/prop-types/body'
+import themeConst from '../../constants/theme'
+import zIndexConst from '../../constants/position-z-index'
 
 const _ = {
   forEach,
@@ -14,8 +20,14 @@ const _ = {
   merge,
 }
 
+const embedNamespace = {
+  infogram: 'infogram',
+  twreporter: '__twreporterEmbeddedData',
+}
+
 export const Block = styled.div`
   position: relative;
+  z-index: ${props => (props.shouldEscalateZIndex ? zIndexConst.embed : 0)};
 
   /* styles for image link */
   img.img-responsive {
@@ -33,11 +45,11 @@ export const Caption = styled.div`
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return 'rgba(255, 255, 255, 0.7)'
+        return colorConst.notSoWhite
       case themeConst.article.v2.pink:
       case themeConst.article.v2.default:
       default:
-        return '#808080'
+        return colorConst.gray80
     }
   }};
   padding: 15px 15px 0 15px;
@@ -54,7 +66,7 @@ function dispatchWindowLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
-export default class EmbeddedCode extends React.PureComponent {
+class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData,
@@ -64,12 +76,43 @@ export default class EmbeddedCode extends React.PureComponent {
     className: '',
   }
 
+  state = {
+    isLoaded: false,
+    shouldEscalateZIndex: false,
+  }
+
   constructor(props) {
     super(props)
     this._embedded = React.createRef()
+    const { caption, embeddedCode, embeddedCodeWithoutScript } = _.get(
+      this.props,
+      ['data', 'content', 0],
+      {}
+    )
+    this._caption = caption
+    this._embeddedCodeWithoutScript = embeddedCodeWithoutScript
+    this._embeddedCode = embeddedCode
   }
 
   componentDidMount() {
+    // Delay loading infogram in loadEmbed()
+    if (!this._embeddedCodeWithoutScript?.includes(embedNamespace.infogram)) {
+      this.setState({ isLoaded: true }, this.executeScript)
+    }
+    // Deliberately set z-index for embeded from @twreporter
+    if (this._embeddedCode?.includes(embedNamespace.twreporter)) {
+      this.setState({ shouldEscalateZIndex: true })
+    }
+  }
+
+  componentWillUnmount() {
+    this._embedded = null
+    this._caption = null
+    this._embeddedCode = null
+    this._embeddedCodeWithoutScript = null
+  }
+
+  executeScript = () => {
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
     if (node && Array.isArray(scripts)) {
@@ -113,21 +156,83 @@ export default class EmbeddedCode extends React.PureComponent {
     }
   }
 
+  loadEmbed = () => {
+    if (!this.state.isLoaded) {
+      this.setState({ isLoaded: true }, this.executeScript)
+    }
+  }
+
   render() {
     const { className } = this.props
-    const { caption, embeddedCodeWithoutScript } = _.get(
-      this.props,
-      ['data', 'content', 0],
-      {}
-    )
-    return (
+    const { shouldEscalateZIndex } = this.state
+    const embed = (
       <div className={className}>
         <Block
           ref={this._embedded}
-          dangerouslySetInnerHTML={{ __html: embeddedCodeWithoutScript }}
+          shouldEscalateZIndex={shouldEscalateZIndex}
+          dangerouslySetInnerHTML={{ __html: this._embeddedCodeWithoutScript }}
         />
-        {caption ? <Caption>{caption}</Caption> : null}
+        {this._caption ? <Caption>{this._caption}</Caption> : null}
       </div>
     )
+
+    if (this._embeddedCodeWithoutScript?.includes(embedNamespace.infogram)) {
+      return this.state.isLoaded ? embed : null
+    }
+
+    return embed
   }
 }
+
+// Serious layout shifts show up when loading bunch of infograms due to lack of heights,
+// so here we apply waypoint wrapper to load infogram dynamically to avoid layout shifts for anchors.
+// https://twreporter-org.atlassian.net/browse/TWREPORTER-60
+const WayPointWrapper = props => {
+  const { isScrollingToAnchor } = props
+  const [isInViewPort, setIsInViewPort] = useState(false)
+  const embedRef = useRef(null)
+
+  useEffect(() => {
+    if (!isScrollingToAnchor && isInViewPort) {
+      embedRef.current.loadEmbed()
+    }
+  }, [isScrollingToAnchor])
+
+  const onEnter = () => {
+    setIsInViewPort(true)
+    if (!isScrollingToAnchor) {
+      embedRef.current.loadEmbed()
+    }
+  }
+
+  const onLeave = () => {
+    setIsInViewPort(false)
+  }
+
+  return (
+    // Note: When an anchor is exactly below an infogram embed, onLeave() is not fired
+    // when jumping to the anchor because infogram's bottom boundary is just overlapped
+    // with viewport's top boundary. Setting topOffset is to shorter infogram's boundary
+    // a little bit to make sure onLeave() fires.
+    <Waypoint
+      onEnter={onEnter}
+      onLeave={onLeave}
+      fireOnRapidScroll={false}
+      topOffset={5}
+    >
+      <div>
+        <EmbeddedCode {...props} ref={embedRef} />
+      </div>
+    </Waypoint>
+  )
+}
+
+WayPointWrapper.defaultProps = {
+  isScrollingToAnchor: false,
+}
+
+WayPointWrapper.propTypes = {
+  isScrollingToAnchor: PropTypes.bool,
+}
+
+export default WayPointWrapper

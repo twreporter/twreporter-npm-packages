@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+import color from '../../constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -53,32 +54,32 @@ function getQuoteContainerStyles(themeName) {
     case themeConst.article.v2.pink:
       return css`
         ${QuoteContent}, ${QuoteBy} {
-          color: #404040;
+          color: ${color.gray90};
         }
 
         ${VerticalLine} {
-          background-color: #fbafef;
+          background-color: ${color.pink};
         }
       `
     case themeConst.article.v2.photo:
       return css`
         ${QuoteContent}, ${QuoteBy} {
-          color: rgba(255, 255, 255, 0.7);
+          color: ${color.notSoWhite};
         }
 
         ${VerticalLine} {
-          background-color: #a67a44;
+          background-color: ${color.brown};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${QuoteContent}, ${QuoteBy} {
-          color: #404040;
+          color: ${color.gray90};
         }
 
         ${VerticalLine} {
-          background-color: #d0a67d;
+          background-color: ${color.milkTea};
         }
       `
   }

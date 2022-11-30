@@ -1,15 +1,19 @@
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
+import styled from 'styled-components'
+// components
+import Image from '../image'
+// constants
 import {
   linkHoverFadeOut,
   resetLinkStyle,
 } from '../../constants/predefined-css'
 import { TEXT } from '../../constants/topics'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import Image from '../image'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import React, { PureComponent } from 'react'
-import styled from 'styled-components'
+import color from '../../constants/color'
+// @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const styles = {
   imgPortrait: {
@@ -116,7 +120,7 @@ const TextBlock = styled.div`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 const TopicTitle = styled.h2`
@@ -126,6 +130,7 @@ const TopicTitle = styled.h2`
   `}
   font-size: ${styles.fontSize.title.mobile}px;
   font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   letter-spacing: .2px;
   line-height: 1.43;
   ${mq.tabletOnly`

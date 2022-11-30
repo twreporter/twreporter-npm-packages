@@ -17,16 +17,34 @@ const _ = {
 
 export function requestFetchAuthorDetails(authorId) {
   return {
-    type: actionTypes.FETCH_AUTHOR_DETAILS_REQUEST,
+    type: actionTypes.authorDetails.read.request,
     payload: {
-      keywords: authorId,
+      authorId,
     },
   }
 }
 
+/**
+ * @typedef NormalizedDataOfAuthorDetails
+ * @property {string} result
+ * @property {Object} entities
+ * @property {Object|undefined} entities.authors
+ */
+
+/**
+ * @typedef SuccessActionOfFetchAuthorDetails
+ * @property {string} type - Action type
+ * @property {Object} payload - Action payload
+ * @property {NormalizedDataOfAuthorDetails} payload.normalizedData
+ */
+
+/**
+ * @param {NormalizedDataOfAuthorDetails} normalizedData
+ * @returns {SuccessActionOfFetchAuthorDetails}
+ */
 export function receiveFetchAuthorDetails(normalizedData) {
   return {
-    type: actionTypes.FETCH_AUTHOR_DETAILS_SUCCESS,
+    type: actionTypes.authorDetails.read.success,
     payload: {
       normalizedData,
     },
@@ -41,53 +59,27 @@ export function fetchAuthorDetails(authorId) {
    */
   return function(dispatch, getState) {
     const searchParas = {
-      keywords: authorId,
-      hitsPerPage: 1,
-      page: 0,
+      author_id: authorId,
     }
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const url = formURL(apiOrigin, '/v1/search/authors', searchParas, false)
+    const url = formURL(apiOrigin, `/v2/authors/${authorId}`, searchParas)
     dispatch(requestFetchAuthorDetails(authorId))
     return axios.get(url).then(
-      response => {
-        const hits = _.get(response, 'data.hits')
-        if (!Array.isArray(hits) || hits.length < 1) {
-          const failAction = {
-            type: actionTypes.FETCH_AUTHOR_DETAILS_FAILURE,
-            payload: {
-              error: new Error(
-                `There should be at least one record matched the given id. But returned ${hits.length}.`
-              ),
-            },
-          }
-          dispatch(failAction)
-          return Promise.reject(failAction)
-        }
-        const author = _.assign({}, hits[0])
-        delete author._highlightResult
-        if (author) {
-          const normalizedData = normalize(camelizeKeys(author), authorSchema)
-          const successAction = receiveFetchAuthorDetails(normalizedData)
-          dispatch(successAction)
-          return successAction
-        } else {
-          const failAction = {
-            type: actionTypes.FETCH_AUTHOR_DETAILS_FAILURE,
-            payload: {
-              error: new Error(
-                'Got response data but it has no valid authorDetails.'
-              ),
-            },
-          }
-          dispatch(failAction)
-          return Promise.reject(failAction)
-        }
+      ({ data }) => {
+        const author = _.assign({}, _.get(data, 'data'))
+
+        /** type {NormalizedDataOfAuthorDetails} */
+        const normalizedData = normalize(camelizeKeys(author), authorSchema)
+        /** type {SuccessActionOfFetchAuthorDetails} */
+        const successAction = receiveFetchAuthorDetails(normalizedData)
+        dispatch(successAction)
+        return successAction
       },
       error => {
         const failAction = errorActionCreators.axios(
           error,
-          actionTypes.FETCH_AUTHOR_DETAILS_FAILURE
+          actionTypes.authorDetails.read.failure
         )
         dispatch(failAction)
         return Promise.reject(failAction)

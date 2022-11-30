@@ -1,14 +1,80 @@
-import HeaderContext from '../contexts/header-context'
-import Link from './customized-link'
-import PropTypes from 'prop-types'
 import React from 'react'
-import SlideDownMenu from './mobile-slide-down-menu'
-import colors from '../constants/colors'
-import linkUtils from '../utils/links'
-import styled from 'styled-components'
-import themeUtils from '../utils/theme'
+import PropTypes from 'prop-types'
+import CSSTransition from 'react-transition-group/CSSTransition'
+import styled, { css } from 'styled-components'
+import HeaderContext from '../contexts/header-context'
+import linkUtils from '../utils/links-old'
+import themeUtils from '../utils/theme-old'
+import animationUtils from '../utils/animations'
+import Link from './customized-link'
+import HamburgerMenu from './hamburger-menu-old'
+import ActionButton from './action-button-old'
+import Slogan from './slogan-old'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import { LogoHeader } from '@twreporter/react-components/lib/logo'
+
+const styles = {
+  headerHeight: {
+    mobile: 74, // px
+    tablet: 88, // px
+  },
+  headerPadding: {
+    mobile: [24], // px
+    tablet: [24, 30, 24, 50], // px
+  },
+  hamburgerPadding: {
+    mobile: [24], // px
+    tablet: [24, 30], // px
+  },
+  logoHeight: {
+    mobile: 26, // px
+    tablet: 40, // px
+  },
+  logoWidth: {
+    mobile: 160, // px
+    tablet: 200, // px
+  },
+  actionMarginLeft: {
+    mobile: 30, // px
+    tablet: 22, // px
+  },
+  sloganMarginLeft: {
+    tablet: 14, // px
+  },
+}
+
+const SloganEffect = css`
+  .slogan-effect-enter {
+    opacity: 0;
+  }
+  .slogagn-effect-enter-active {
+    animation: ${animationUtils.changeOpacity('0', '1')} 0.1s;
+    animation-delay: 300ms;
+  }
+  .slogan-effect-exit-active {
+    animation: ${animationUtils.changeOpacity('1', '0')} 0.1s;
+    animation-delay: 300ms;
+  }
+  .slogan-effect-exit-done {
+    opacity: 0;
+  }
+`
+
+const TabletOnly = styled.div`
+  display: none;
+
+  ${mq.tabletOnly`
+    display: flex;
+  `}
+`
 
 const FlexBox = styled.div`
+  transform: translateY(
+    ${props => (props.isHide ? `${-styles.headerHeight.mobile}px` : 0)}
+  );
+  transition: transform 0.3s linear;
   background-color: ${props => props.bgColor};
   display: flex;
   box-sizing: border-box;
@@ -16,35 +82,82 @@ const FlexBox = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 10px 35px 24px;
+  padding: ${arrayToCssShorthand(styles.headerPadding.mobile)};
+  ${mq.tabletOnly`
+    transform: translateY(${props =>
+      props.isHide ? `${-styles.headerHeight.tablet}px` : 0});
+    padding: ${arrayToCssShorthand(styles.headerPadding.tablet)};
+  `}
+`
+
+const FlexGroup = styled.div`
+  display: flex;
+`
+
+const LogoContainer = styled.div`
+  a {
+    display: flex;
+  }
+  img {
+    height: ${styles.logoHeight.mobile}px;
+    width: ${styles.logoWidth.mobile}px;
+    ${mq.tabletOnly`
+      height: ${styles.logoHeight.tablet}px;
+      width: ${styles.logoWidth.tablet}px;
+    `}
+  }
+`
+
+const ActionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: ${styles.actionMarginLeft.mobile}px;
+  ${mq.tabletOnly`
+    margin-left: ${styles.actionMarginLeft.tablet}px;
+  `}
+`
+
+const SloganContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: ${styles.sloganMarginLeft.tablet}px;
+  ${SloganEffect}
+`
+
+const HamburgerContainer = styled.div`
+  display: block;
 `
 
 const Hamburger = styled.div`
-  cursor: pointer;
-`
-
-const Stroke = styled.div`
-  background-color: ${colors.primary};
-  border-radius: 10px;
-  height: 4px;
-  margin-bottom: 5px;
-  width: 25px;
+  display: flex;
+  position: absolute;
+  right: 0;
+  padding: ${arrayToCssShorthand(styles.hamburgerPadding.mobile)};
+  ${mq.tabletOnly`
+    padding: ${arrayToCssShorthand(styles.hamburgerPadding.tablet)};
+  `}
 `
 
 export default class MobileHeader extends React.PureComponent {
   static propTypes = {
-    pathname: PropTypes.string,
-    menu: SlideDownMenu.propTypes.data,
+    actions: PropTypes.array,
+    narrowActions: PropTypes.array,
+    menuChannels: PropTypes.array,
+    menuServices: PropTypes.array,
+    menuActions: PropTypes.array,
   }
   static defaultProps = {
-    pathname: '',
-    menu: SlideDownMenu.defaultProps.data,
+    actions: [],
+    narrowActions: [],
+    menuChannels: [],
+    menuServices: [],
+    menuActions: [],
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      toSlideDown: false,
+      isMenuOpen: false,
     }
     this.handleOnHamburgerClick = this._handleOnHamburgerClick.bind(this)
     this.closeMenu = this._closeMenu.bind(this)
@@ -52,48 +165,84 @@ export default class MobileHeader extends React.PureComponent {
 
   _handleOnHamburgerClick() {
     this.setState({
-      toSlideDown: !this.state.toSlideDown,
+      isMenuOpen: !this.state.isMenuOpen,
     })
   }
 
   _closeMenu() {
     this.setState({
-      toSlideDown: false,
+      isMenuOpen: false,
     })
   }
 
   render() {
-    const { menu } = this.props
+    const {
+      actions,
+      narrowActions,
+      menuChannels,
+      menuServices,
+      menuActions,
+    } = this.props
+    const { isMenuOpen } = this.state
 
-    const { toSlideDown } = this.state
-
-    const slideDownPanelJSX = (
-      <SlideDownMenu
-        toSlideDown={toSlideDown}
-        data={menu}
-        handleClick={this.closeMenu}
+    const hamburgerJSX = (
+      <HamburgerMenu
+        channels={menuChannels}
+        services={menuServices}
+        actions={menuActions}
+        handleClose={this.closeMenu}
       />
     )
 
+    const hamburgerMenu = isMenuOpen ? hamburgerJSX : ''
+
     return (
       <React.Fragment>
-        {slideDownPanelJSX}
+        <HamburgerContainer>{hamburgerMenu}</HamburgerContainer>
         <HeaderContext.Consumer>
-          {({ releaseBranch, isLinkExternal, theme }) => {
-            const Logo = themeUtils.selectLogoComponent(theme)
-            const bgColor = themeUtils.selectBgColor(theme)
+          {({
+            releaseBranch,
+            isLinkExternal,
+            theme,
+            toUseNarrow,
+            hideHeader,
+          }) => {
+            const { bgColor } = themeUtils.selectHeaderTheme(theme)
+            const MenuIcon = themeUtils.selectIcons(theme).menu
+            const logoType = themeUtils.selectLogoType(theme)
             return (
-              <FlexBox bgColor={bgColor}>
-                <Link
-                  {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
-                  onClick={this.closeMenu}
-                >
-                  <Logo />
-                </Link>
+              <FlexBox bgColor={bgColor} isHide={hideHeader}>
+                <FlexGroup>
+                  <LogoContainer>
+                    <Link
+                      {...linkUtils.getLogoLink(isLinkExternal, releaseBranch)}
+                      onClick={this.closeMenu}
+                    >
+                      <LogoHeader
+                        type={logoType}
+                        releaseBranch={releaseBranch}
+                      />
+                    </Link>
+                  </LogoContainer>
+                  <ActionContainer>
+                    <ActionButton
+                      actions={toUseNarrow ? narrowActions : actions}
+                    />
+                  </ActionContainer>
+                  <TabletOnly>
+                    <SloganContainer>
+                      <CSSTransition
+                        in={!toUseNarrow}
+                        classNames="slogan-effect"
+                        timeout={{ appear: 0, enter: 400, exit: 400 }}
+                      >
+                        <Slogan />
+                      </CSSTransition>
+                    </SloganContainer>
+                  </TabletOnly>
+                </FlexGroup>
                 <Hamburger onClick={this.handleOnHamburgerClick}>
-                  <Stroke />
-                  <Stroke />
-                  <Stroke />
+                  <MenuIcon />
                 </Hamburger>
               </FlexBox>
             )

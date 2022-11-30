@@ -12,6 +12,7 @@ const leading = {
   subtitle: PropTypes.string,
   shortTitle: PropTypes.string,
   topicHref: PropTypes.string,
+  isTopicPublished: PropTypes.bool,
 }
 
 export default {

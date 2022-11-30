@@ -3,6 +3,7 @@
 import fieldNames from '../../constants/redux-state-field-names'
 import reducer from '../index-page'
 import types from '../../constants/action-types'
+import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 
 const post1 = {
   id: 'post-id-1',
@@ -47,6 +48,44 @@ describe('index-page reducer', () => {
   })
 
   test('should handle `types.indexPage.read.success`', () => {
+    const categoryPayload = ENABLE_NEW_INFO_ARCH
+      ? {
+          [fieldNames.categories.world]: [post1],
+          [fieldNames.categories.humanrights]: [post2],
+          [fieldNames.categories.politicsAndSociety]: [post3],
+          [fieldNames.categories.health]: [post4],
+          [fieldNames.categories.environment]: [],
+          [fieldNames.categories.econ]: [],
+          [fieldNames.categories.culture]: [],
+          [fieldNames.categories.education]: [],
+        }
+      : {
+          [fieldNames.categories.humanRightsAndSociety]: [post1],
+          [fieldNames.categories.environmentAndEducation]: [post2],
+          [fieldNames.categories.politicsAndEconomy]: [post3],
+          [fieldNames.categories.cultureAndArt]: [post4],
+          [fieldNames.categories.livingAndMedicalCare]: [],
+          [fieldNames.categories.international]: [],
+        }
+    const categoryResponse = ENABLE_NEW_INFO_ARCH
+      ? {
+          [fieldNames.categories.world]: [post1.id],
+          [fieldNames.categories.humanrights]: [post2.id],
+          [fieldNames.categories.politicsAndSociety]: [post3.id],
+          [fieldNames.categories.health]: [post4.id],
+          [fieldNames.categories.environment]: [],
+          [fieldNames.categories.econ]: [],
+          [fieldNames.categories.culture]: [],
+          [fieldNames.categories.education]: [],
+        }
+      : {
+          [fieldNames.categories.humanRightsAndSociety]: [post1.id],
+          [fieldNames.categories.environmentAndEducation]: [post2.id],
+          [fieldNames.categories.politicsAndEconomy]: [post3.id],
+          [fieldNames.categories.cultureAndArt]: [post4.id],
+          [fieldNames.categories.livingAndMedicalCare]: [],
+          [fieldNames.categories.international]: [],
+        }
     expect(
       reducer(
         {
@@ -63,12 +102,7 @@ describe('index-page reducer', () => {
               [fieldNames.sections.topicsSection]: [fullTopic, nonFullTopic],
               [fieldNames.sections.photosSection]: [post4],
               [fieldNames.sections.infographicsSection]: [],
-              [fieldNames.categories.humanRightsAndSociety]: [post1],
-              [fieldNames.categories.environmentAndEducation]: [post2],
-              [fieldNames.categories.politicsAndEconomy]: [post3],
-              [fieldNames.categories.cultureAndArt]: [post4],
-              [fieldNames.categories.livingAndMedicalCare]: [],
-              [fieldNames.categories.international]: [],
+              ...categoryPayload,
             },
           },
         }
@@ -81,15 +115,10 @@ describe('index-page reducer', () => {
       [fieldNames.sections.topicsSection]: [fullTopic.id, nonFullTopic.id],
       [fieldNames.sections.photosSection]: [post4.id],
       [fieldNames.sections.infographicsSection]: [],
-      [fieldNames.categories.humanRightsAndSociety]: [post1.id],
-      [fieldNames.categories.environmentAndEducation]: [post2.id],
-      [fieldNames.categories.politicsAndEconomy]: [post3.id],
-      [fieldNames.categories.cultureAndArt]: [post4.id],
-      [fieldNames.categories.livingAndMedicalCare]: [],
-      [fieldNames.categories.international]: [],
       error: null,
       isFetching: false,
       isReady: true,
+      ...categoryResponse,
     })
   })
 

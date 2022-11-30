@@ -1,29 +1,31 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import postPropType from './prop-types/post'
+import styled from 'styled-components'
+// utils
+import { breakPoints, truncate } from '../utils/style-utils'
+import { getHref } from '../utils/getHref'
+// components
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import MobileFlexSwipeable from './mobile-flex-swipeable'
 import MobileListBase from './common-utils/mobile-list'
-import PropTypes from 'prop-types'
-import React from 'react'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
-import get from 'lodash/get'
-import postPropType from './prop-types/post'
+// constants
 import sectionStrings from '../constants/section-strings'
-import styled from 'styled-components'
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
-
+import color from '../constants/color'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
-
-// If window is less than oneColumnWidth,
-// there will be only one column. Default is three columns.
-const oneColumnWidth = breakPoints.mobileMaxWidth
 
 const mockup = {
   img: {
@@ -36,7 +38,7 @@ const mockup = {
 }
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
 `
 
 const UpperList = styled.div`
@@ -46,7 +48,7 @@ const UpperList = styled.div`
   justify-content: center;
   align-items: flex-start;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -56,11 +58,11 @@ const LowerList = styled(UpperList)`
   margin-top: -282px;
   margin-bottom: 59px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     margin-top: -170px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     margin-top: -130px;
     margin-bottom: 51px;
   `}
@@ -81,11 +83,11 @@ const Item = styled.div`
     margin-left: 30px;
   }
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 290px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     max-width: 220px;
     &:first-child {
       margin-right: 20px;
@@ -96,7 +98,7 @@ const Item = styled.div`
     }
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     max-width: 100%;
     &:first-child {
       margin-left: 0;
@@ -106,28 +108,28 @@ const Item = styled.div`
     }
   `}
 
-  @media (min-width: ${oneColumnWidth}) {
+  ${mq.tabletAndAbove`
     &:hover {
       opacity: 0.7;
     }
-  }
+  `}
 `
 const WordBlock = styled.div`
-  background-color: #fff;
+  background-color: ${color.white};
   width: 430px;
   min-height: 115px;
   padding: 8px 20px 15px 12px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     width: 290px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     margin: 0 auto;
     width: 220px;
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 100%;
     height: 100%;
   `}
@@ -136,15 +138,16 @@ const WordBlock = styled.div`
 const Title = styled.h3`
   margin: 0;
   font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
   font-size: 20px;
-  color: #4a4a4a;
-  @media (min-width: ${breakPoints.desktopMinWidth}) {
-    ${truncate('relative', 1.4, 2, '#fff')};
-  }
+  color: ${color.darkGray};
+  ${mq.desktopAndAbove`
+    ${truncate('relative', 1.4, 2, color.white)};
+  `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     font-size: 16px;
-    ${truncate('relative', 1.4, 3, '#fff')};
+    ${truncate('relative', 1.4, 3, color.white)};
   `}
 `
 
@@ -155,14 +158,14 @@ const ImgFrame = styled.div`
     return props.isPortrait ? '596px' : '282px'
   }};
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     max-width: 290px;
     height: ${props => {
       return props.isPortrait ? '390px' : '190px'
     }};
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     margin: 0 auto;
     width: 220px;
     height: ${props => {
@@ -170,7 +173,7 @@ const ImgFrame = styled.div`
     }};
   `}
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     width: 100%;
     height: 186px;
   `}
@@ -261,15 +264,14 @@ class InfographicSection extends React.PureComponent {
 
     return (
       <Container>
-        <Section mobileWidth={oneColumnWidth}>
-          <SectionName mobileWidth={oneColumnWidth}>
+        <Section>
+          <SectionName>
             <span>{sectionStrings.infographic}</span>
           </SectionName>
           <UpperList>{postComps.slice(0, listNumber)}</UpperList>
           <LowerList>{postComps.slice(listNumber, listNumber * 2)}</LowerList>
-          <MobileList maxWidth={oneColumnWidth}>
+          <MobileList>
             <MobileFlexSwipeable.SwipableFlexItems
-              mobileWidth={oneColumnWidth}
               maxSwipableItems={5}
               alignItems="flex-start"
             >

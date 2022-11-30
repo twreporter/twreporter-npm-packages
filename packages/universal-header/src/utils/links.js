@@ -1,15 +1,20 @@
-import { categoryPathnames } from '../constants/categories'
-import { channelPathnames } from '../constants/channels'
-import { servicePathnames, serviceKeys } from '../constants/services'
+import { servicePathnames } from '../constants/services'
+import { ACTION_KEY } from '../constants/actions'
+import { FOOTER_KEY, FOOTER_PATH } from '../constants/footer'
+import { SOCIAL_MEDIA_KEY } from '../constants/social-media'
+import { CHANNEL_KEY, CHANNEL_PATH } from '../constants/channels'
 import externalLinks from '../constants/external-links'
 // @twreporter
 import origins from '@twreporter/core/lib/constants/request-origins'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 // lodash
 import forEach from 'lodash/forEach'
-
+import reduce from 'lodash/reduce'
+import split from 'lodash/split'
 const _ = {
   forEach,
+  reduce,
+  split,
 }
 
 const originsForClient = origins.forClientSideRendering
@@ -34,37 +39,13 @@ const mainBaseURL = getOriginsByType('main')
 const defaultReleaseBranch = releaseBranchConsts.master
 const defaultIsExternal = false
 
-function __getLinks(isExternal, releaseBranch, baseURL, paths) {
-  const rtn = {}
-
-  if (isExternal) {
-    if (baseURL.hasOwnProperty(releaseBranch)) {
-      for (const key in paths) {
-        rtn[key] = {
-          to: baseURL[releaseBranch] + paths[key],
-          isExternal,
-        }
-      }
-      return rtn
-    }
-  }
-
-  for (const key in paths) {
-    rtn[key] = {
-      to: paths[key],
-      isExternal,
-    }
-  }
-
-  return rtn
-}
-
-function __getLink(isExternal, releaseBranch, baseURL, path) {
+function __getLink(isExternal, releaseBranch, baseURL, path, target = '_self') {
   if (isExternal) {
     if (baseURL.hasOwnProperty(releaseBranch)) {
       return {
         to: baseURL[releaseBranch] + path,
         isExternal,
+        target,
       }
     }
   }
@@ -79,35 +60,43 @@ function __getExternalLinks() {
   return Object.assign({}, externalLinks)
 }
 
-function getCategoryLinks(
-  isExternal = defaultIsExternal,
+const __composeExternalLink = (link, target = '_self') => ({
+  to: link,
+  isExternal: true,
+  target,
+})
+
+export const checkReferrer = (
+  referrer = '',
   releaseBranch = defaultReleaseBranch
-) {
-  return __getLinks(isExternal, releaseBranch, mainBaseURL, categoryPathnames)
+) => {
+  const url = new URL(referrer)
+  return url.origin === mainBaseURL[releaseBranch]
 }
 
-function getChannelLinks(
+export const getCategoryLink = (
   isExternal = defaultIsExternal,
-  releaseBranch = defaultReleaseBranch
-) {
-  return __getLinks(isExternal, releaseBranch, mainBaseURL, channelPathnames)
+  releaseBranch = defaultReleaseBranch,
+  path = ''
+) => {
+  return __getLink(isExternal, releaseBranch, mainBaseURL, path)
 }
 
-function getLogoutLink(releaseBranch = defaultReleaseBranch) {
+export function getLogoutLink(releaseBranch = defaultReleaseBranch) {
   return {
     to: apiBaseURL[releaseBranch] + servicePathnames.logout,
     isExternal: true,
   }
 }
 
-function getLoginLink(releaseBranch = defaultReleaseBranch) {
+export function getLoginLink(releaseBranch = defaultReleaseBranch) {
   return {
     to: accountsBaseURL[releaseBranch] + servicePathnames.login,
     isExternal: true,
   }
 }
 
-function getBookmarksLink(
+export function getBookmarksLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
 ) {
@@ -119,7 +108,7 @@ function getBookmarksLink(
   )
 }
 
-function getSearchLink(
+export function getSearchLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
 ) {
@@ -131,40 +120,97 @@ function getSearchLink(
   )
 }
 
-function getLogoLink(
+export function getLogoLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
 ) {
   return __getLink(isExternal, releaseBranch, mainBaseURL, '')
 }
 
-function getServiceLinks(
+export function getActionLinks() {
+  return {
+    [ACTION_KEY.support]: __composeExternalLink(
+      __getExternalLinks().monthlyDonation
+    ),
+    [ACTION_KEY.newsLetter]: __composeExternalLink(
+      __getExternalLinks().newsLetter
+    ),
+  }
+}
+
+export function getFooterLinks(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
 ) {
   return {
-    [serviceKeys.bookmarks]: getBookmarksLink(isExternal, releaseBranch),
-    [serviceKeys.login]: getLoginLink(releaseBranch),
-    [serviceKeys.logout]: getLogoutLink(releaseBranch),
-    [serviceKeys.search]: getSearchLink(isExternal, releaseBranch),
-    [serviceKeys.support]: {
-      to: __getExternalLinks().monthlyDonation,
-      isExternal: true,
-    },
-    [serviceKeys.newsLetter]: {
-      to: __getExternalLinks().newsLetter,
-      isExternal: true,
-    },
+    [FOOTER_KEY.aboutUs]: __getLink(
+      true,
+      releaseBranch,
+      mainBaseURL,
+      FOOTER_PATH[FOOTER_KEY.aboutUs],
+      '_blank'
+    ),
+    [FOOTER_KEY.influenceReport]: __getLink(
+      isExternal,
+      releaseBranch,
+      mainBaseURL,
+      FOOTER_PATH[FOOTER_KEY.influenceReport]
+    ),
+    [FOOTER_KEY.openLab]: __composeExternalLink(
+      __getExternalLinks().openLab,
+      '_blank'
+    ),
   }
 }
 
-export default {
-  getBookmarksLink,
-  getCategoryLinks,
-  getChannelLinks,
-  getServiceLinks,
-  getLogoLink,
-  getLoginLink,
-  getLogoutLink,
-  getSearchLink,
+export function getSocialMediaLinks() {
+  const externalLinks = __getExternalLinks()
+  return _.reduce(
+    SOCIAL_MEDIA_KEY,
+    (res, key) => {
+      const link = externalLinks[key]
+      if (link) {
+        res[key] = __composeExternalLink(link, '_blank')
+      }
+      return res
+    },
+    {}
+  )
+}
+
+export function getChannelLinks(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
+  const links = _.reduce(
+    CHANNEL_PATH,
+    (res, path, key) => {
+      const link = __getLink(isExternal, releaseBranch, mainBaseURL, path)
+      res[key] = link
+      return res
+    },
+    {}
+  )
+  links[CHANNEL_KEY.kidsReporter] = __composeExternalLink(
+    __getExternalLinks().kidsReporter,
+    '_blank'
+  )
+
+  return links
+}
+
+export function getTabBarLinks(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
+  return {
+    home: __getLink(isExternal, releaseBranch, mainBaseURL, ''),
+    latest: __getLink(isExternal, releaseBranch, mainBaseURL, '/latest'),
+    bookmark: __getLink(
+      isExternal,
+      releaseBranch,
+      mainBaseURL,
+      servicePathnames.bookmarks
+    ),
+  }
 }

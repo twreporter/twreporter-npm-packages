@@ -1,13 +1,20 @@
-import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import React, { PureComponent } from 'react'
+import styled, { css } from 'styled-components'
 import get from 'lodash/get'
 import map from 'lodash/map'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedProps from '../../constants/prop-types/aside'
 import sortBy from 'lodash/sortBy'
-import styled, { css } from 'styled-components'
+
+// components
+import DynamicComponentsContext from '../../contexts/dynamic-components-context'
+import predefinedProps from '../../constants/prop-types/aside'
 import themeConst from '../../constants/theme'
+import colorConst from '../../constants/color'
+import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
+
+// twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
+import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 
 const _ = {
   get,
@@ -16,9 +23,9 @@ const _ = {
 }
 
 const createLine = (topOrBottom, themeName) => {
-  let borderColor = '#d8d8d8'
+  let borderColor = colorConst.gray50
   if (themeName === themeConst.article.v2.photo) {
-    borderColor = 'rgba(255, 255, 255, 0.2)'
+    borderColor = colorConst.gray10
   }
 
   return css`
@@ -57,6 +64,31 @@ const CategoryFlex = styled.div`
   `}
 `
 
+const CategorySetFlexBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const LinkContainer = styled.div`
+  display: flex;
+`
+
+const CategorySetFlex = styled.div`
+  ${props => props.isTop && createLine('top', props.theme.name)}
+  ${props => props.isCategory && 'min-width: 100px;'}
+  flex-basis: ${props => (props.isCategory ? '100px' : 'calc(100% - 100px)')};
+
+  ${mq.tabletAndBelow`
+    padding-right: 10px;
+    padding-left: 10px;
+  `}
+
+  ${mq.desktopAndAbove`
+    padding-right: 5px;
+    padding-left: 5px;
+  `}
+`
+
 const CategoryText = styled.div`
   display: inline-block;
   font-size: 16px;
@@ -73,7 +105,7 @@ const CategoryText = styled.div`
 const DateSection = styled.div`
   ${props => createLine('top', props.theme.name)}
   font-size: 14px;
-  color: #9c9c9c;
+  color: ${colorConst.gray70};
   margin-left: 5px;
   margin-top: 15px;
 
@@ -96,7 +128,7 @@ const AuthorRow = styled.div`
 
 const AuthorJobTitle = styled.div`
   font-size: 14px;
-  color: #808080;
+  color: ${colorConst.gray80};
   margin-left: 5px;
   padding-top: 2px;
   line-height: 1;
@@ -129,7 +161,7 @@ const AuthorName = styled.div`
 
 const RawAuthorText = styled.div`
   font-size: 14px;
-  color: #808080;
+  color: ${colorConst.gray80};
   padding-left: 5px;
 `
 
@@ -147,7 +179,7 @@ const TagButton = styled.div`
   border-radius: 50px;
   padding: 5px 10px 5px 10px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: ${typography.font.weight.normal};
   margin-bottom: 10px;
   margin-right: 10px;
 
@@ -184,39 +216,39 @@ function getMetadataContainerStyles(themeName) {
     case themeConst.article.v2.photo:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: #d0a67d;
+          color: ${colorConst.milkTea};
           &:hover {
-            border-color: #d0a67d;
+            border-color: ${colorConst.milkTea};
           }
         }
         ${AngledSeparationLine} {
-          border-color: #a67a44;
+          border-color: ${colorConst.brown};
         }
         ${TagButton} {
-          border-color: #808080;
-          color: #808080;
+          border-color: ${colorConst.gray80};
+          color: ${colorConst.gray80};
           &:hover {
-            color: #fff;
-            border-color: #fff;
+            color: ${colorConst.white};
+            border-color: ${colorConst.white};
           }
         }
       `
     case themeConst.article.v2.pink:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: #355ed3;
+          color: ${colorConst.blue};
           &:hover {
-            border-color: #355ed3;
+            border-color: ${colorConst.blue};
           }
         }
         ${AngledSeparationLine} {
-          border-color: #fbafef;
+          border-color: ${colorConst.pink};
         }
         ${TagButton} {
-          border-color: #808080;
-          color: #808080;
+          border-color: ${colorConst.gray80};
+          color: ${colorConst.gray80};
           &:hover {
-            background-color: #fff;
+            background-color: ${colorConst.white};
           }
         }
       `
@@ -224,19 +256,19 @@ function getMetadataContainerStyles(themeName) {
     default:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: #a67a44;
+          color: ${colorConst.brown};
           &:hover {
-            border-color: #a67a44;
+            border-color: ${colorConst.brown};
           }
         }
         ${AngledSeparationLine} {
-          border-color: #d0a67d;
+          border-color: ${colorConst.milkTea};
         }
         ${TagButton} {
-          border-color: #808080;
-          color: #808080;
+          border-color: ${colorConst.gray80};
+          color: ${colorConst.gray80};
           &:hover {
-            background-color: #fff;
+            background-color: ${colorConst.white};
           }
         }
       `
@@ -248,6 +280,7 @@ class Metadata extends PureComponent {
 
   static defaultProps = {
     categories: [],
+    categorySet: [],
     tags: [],
     writers: [],
     photographers: [],
@@ -289,6 +322,51 @@ class Metadata extends PureComponent {
           }}
         </DynamicComponentsContext.Consumer>
       </CategoryFlexBox>
+    )
+  }
+
+  renderCategorySetSection() {
+    const { categorySet } = this.props
+    return (
+      <CategorySetFlexBox>
+        <DynamicComponentsContext.Consumer>
+          {components => {
+            const categorySetJSX = _.map(categorySet, (set, index) => {
+              const genLink = (path, name, isCategory = false) => {
+                return (
+                  <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
+                    {path && name && (
+                      <components.Link to={path}>
+                        <CategoryText
+                          style={{ fontWeight: isCategory ? 'bold' : 'normal' }}
+                        >
+                          {name}
+                        </CategoryText>
+                      </components.Link>
+                    )}
+                  </CategorySetFlex>
+                )
+              }
+              return (
+                <LinkContainer key={`categorySet-${index}`}>
+                  {genLink(
+                    `/categories/${set?.category?.id}`,
+                    set?.category?.name,
+                    true
+                  )}
+                  {set?.subcategory?.id && set?.subcategory?.name
+                    ? genLink(
+                        `/tags/${set.subcategory.id}`,
+                        set.subcategory.name
+                      )
+                    : genLink(`/categories/${set?.category?.id}`, '全部')}
+                </LinkContainer>
+              )
+            })
+            return categorySetJSX
+          }}
+        </DynamicComponentsContext.Consumer>
+      </CategorySetFlexBox>
     )
   }
 
@@ -372,7 +450,8 @@ class Metadata extends PureComponent {
 
     return (
       <MetadataContainer>
-        {this.renderCategorySection()}
+        {ENABLE_NEW_INFO_ARCH && this.renderCategorySetSection()}
+        {!ENABLE_NEW_INFO_ARCH && this.renderCategorySection()}
         <DateSection>{date}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}

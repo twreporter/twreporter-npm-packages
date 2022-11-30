@@ -62,6 +62,7 @@ export default class LayoutManager {
    *  @property {string} subtitle - Post subtitle
    *  @property {string} topicHref - href of topic
    *  @property {string} shortTitle - short title of topic
+   *  @property {bool} isTopicPublished - topic is published or not
    *  @property {string} figureCaption - Description of leading image
    *  @property {module:Article:ResizedTargets} poster - A set of images
    *  @property {module:Article:ResizedTargets} portraitPoster - A set of images
@@ -73,6 +74,7 @@ export default class LayoutManager {
   getLeadingComponentProps() {
     const post = this.post
     const relatedTopic = this.relatedTopic
+
     // TODO
     // In the future,
     // if `LeadingComponent = this.getLeadingComponent()` receive different props,
@@ -82,6 +84,7 @@ export default class LayoutManager {
       subtitle: _.get(post, 'subtitle'),
       topicHref: this.getTopicHref(),
       shortTitle: _.get(relatedTopic, 'short_title', ''),
+      isTopicPublished: _.get(relatedTopic, 'state', '') === 'published',
       figureCaption: _.get(post, 'leading_image_description', ''),
       poster: {
         tiny: _.get(post, 'hero_image.resized_targets.tiny'),

@@ -1,22 +1,27 @@
+import React from 'react'
+import Swipeable from 'react-swipeable'
+import PropTypes from 'prop-types'
+import postPropType from './prop-types/post'
+import styled from 'styled-components'
+// utils
+import { getHref } from '../utils/getHref'
+import { truncate, breakPoints } from '../utils/style-utils'
+// components
+import MobileFlexSwipeable from './mobile-flex-swipeable'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import PropTypes from 'prop-types'
-import React from 'react'
 import Section from './common-utils/section'
 import SectionName from './common-utils/section-name'
 import SwipableMixin from './common-utils/swipable-mixin'
-import Swipeable from 'react-swipeable'
 import TRLink from './common-utils/twreporter-link'
-import get from 'lodash/get'
-import postPropType from './prop-types/post'
+// constants
 import sectionStrings from '../constants/section-strings'
-import styled from 'styled-components'
-import { sourceHanSansTC as fontWeight } from '@twreporter/core/lib/constants/font-weight'
-import { getHref } from '../utils/getHref'
+import color from '../constants/color'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
-import { truncate, breakPoints } from '../utils/style-utils'
-
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+// lodash
+import get from 'lodash/get'
 const _ = {
   get,
 }
@@ -35,7 +40,7 @@ const mockup = {
 
 const CarouselContainer = styled(Section)`
   padding-top: 0;
-  background: #ffffff;
+  background: ${color.white};
   @media (min-width: ${breakPoints.tabletMinWidth}) {
     display: none;
   }
@@ -62,14 +67,15 @@ const Title = styled.div`
   width: ${itemWidthPct}%;
   font-size: 24px;
   font-weight: ${fontWeight.bold};
-  color: #4a4949;
+  font-family: ${fontFamily.title};
+  color: ${color.darkGray};
   position: absolute;
 `
 
 const TitleSpan = styled.span`
   width: 100%;
   height: 3.99;
-  ${truncate('absolute', 1.33, 3, `#ffffff`, 'center')};
+  ${truncate('absolute', 1.33, 3, color.white, 'center')};
 `
 
 const Description = styled.div`
@@ -79,7 +85,7 @@ const Description = styled.div`
   transform: translateX(-50%);
   width: ${itemWidthPct}%;
   text-align: left;
-  color: #4a4949;
+  color: ${color.darkGray};
   ${truncate('absolute', 1.43, 3, 'white')};
 `
 

@@ -1,22 +1,29 @@
-import { breakPoints, finalMedia, truncate } from '../utils/style-utils'
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import topicPropType from './prop-types/topic'
+// utils
+import { breakPoints, truncate } from '../utils/style-utils'
+// components
 import BottomTRLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
-import forEach from 'lodash/forEach'
-import get from 'lodash/get'
 import ImgWrapper from './common-utils/img-wrapper'
 import MobileFlexSwipeable from './mobile-flex-swipeable'
 import MobileList from './common-utils/mobile-list'
-import PropTypes from 'prop-types'
-import React from 'react'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
+import TRLink from './common-utils/twreporter-link'
+// constants
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
-import styled from 'styled-components'
-import topicPropType from './prop-types/topic'
-import TRLink from './common-utils/twreporter-link'
-
+import color from '../constants/color'
+// @twreporter
+import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+// lodash
+import forEach from 'lodash/forEach'
+import get from 'lodash/get'
 const _ = {
   forEach,
   get,
@@ -49,13 +56,13 @@ const mockup = {
 }
 
 const Container = styled.div`
-  background-color: #f2f2f2;
+  background-color: ${color.lightGray};
 `
 
 const Rows = styled.div`
   margin-bottom: 70px;
 
-  ${finalMedia.mobile`
+  ${mq.mobileOnly`
     display: none;
   `}
 `
@@ -97,11 +104,11 @@ const Column = styled.div`
   opacity: ${props => (props.ifHover ? 0.7 : 1)};
   transition: 0.2s opacity linear;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     flex: 0 0 ${mockup.desktop.width.default}px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     flex: 0 0 ${mockup.tablet.width.default}px;
     &:first-child {
       margin-right: 20px;
@@ -112,16 +119,17 @@ const Column = styled.div`
 const TopicNameColumn = styled(Column)`
   margin-bottom: 0;
   font-size: 12px;
-  color: #c4333e;
+  color: ${color.red};
 `
 
 const TitleColumn = styled(Column)`
   font-size: 32px;
-  font-weight: 600;
+  font-weight: ${fontWeight.bold};
+  font-family: ${fontFamily.title};
 `
 
 const Title = styled.div`
-  color: #4a4949;
+  color: ${color.darkGray};
   line-height: 1.25;
 `
 
@@ -129,11 +137,11 @@ const ImgColumn = styled(Column)`
   height: 364px;
   flex: 0 0 ${mockup.hd.width.default}px;
 
-  ${finalMedia.desktop`
+  ${mq.desktopOnly`
     height: 247px;
   `}
 
-  ${finalMedia.tablet`
+  ${mq.tabletOnly`
     height: 186px;
   `}
 `
@@ -146,7 +154,7 @@ const DescColumn = styled(Column)`
 const Desc = styled.div`
   width: ${(mockup.desktop.width.desc / mockup.desktop.width.default) * 100}%;
   margin: 0 auto;
-  color: #4a4949;
+  color: ${color.darkGray};
 `
 
 const Mobile = {
@@ -160,7 +168,8 @@ const Mobile = {
   Title: styled(Title)`
     line-height: 1.33;
     text-align: center;
-    font-weight: 600;
+    font-family: ${fontFamily.title};
+    font-weight: ${fontWeight.bold};
     font-size: 24px;
     margin-bottom: 15px;
     margin-top: 4px;
@@ -178,7 +187,7 @@ const Mobile = {
   Desc: styled(Desc)`
     width: 100%;
     font-size: 18px;
-    ${truncate('relative', 1.5, 6, '#f2f2f2')}
+    ${truncate('relative', 1.5, 6, color.lightGray)}
     margin-left: 0;
   `,
 }
@@ -394,9 +403,8 @@ class TopicsSection extends React.PureComponent {
             data={data.slice(2, totalTopics)}
             useTinyImg={useTinyImg}
           />
-          <MobileList maxWidth={breakPoints.mobileMaxWidth}>
+          <MobileList>
             <MobileFlexSwipeable.SwipableFlexItems
-              mobileWidth={breakPoints.mobileMaxWidth}
               maxSwipableItems={totalTopics - 1}
             >
               {mobileTopicComps}

@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.3.4",
+  "version": "8.15.0",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -9,11 +9,15 @@
     "clean": "make clean",
     "build": "make build",
     "dev": "make dev",
-    "prepublishOnly": "make build"
+    "prepublishOnly": "make build",
+    "storybook": "start-storybook -p 3000",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@twreporter/core": "^1.2.1",
-    "@twreporter/redux": "^7.0.2",
+    "@twreporter/core": "^1.8.0",
+    "@twreporter/redux": "^7.4.1",
+    "fontfaceobserver-es": "^3.3.3",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",
     "memoize-one": "^5.0.5",
@@ -23,10 +27,21 @@
     "react-router-dom": "^5.1.2",
     "react-transition-group": "^2.0.0",
     "react-waypoint": "^9.0.2",
-    "smoothscroll": "^0.3.0",
     "styled-components": "^4.0.0"
   },
   "files": [
     "lib"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@storybook/addon-actions": "^6.4.21",
+    "@storybook/addon-essentials": "^6.4.21",
+    "@storybook/addon-interactions": "^6.4.21",
+    "@storybook/addon-links": "^6.4.21",
+    "@storybook/addon-viewport": "^6.4.21",
+    "@storybook/react": "^6.4.21",
+    "@storybook/testing-library": "^0.0.9",
+    "babel-loader": "^8.2.4",
+    "chromatic": "^6.5.4"
+  }
 }

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/errors@1.1.1-rc.0...@twreporter/errors@1.1.1) (2021-10-12)
+
+**Note:** Version bump only for package @twreporter/errors
+
+
+
+
+
+## [1.1.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/errors@1.1.0...@twreporter/errors@1.1.1-rc.0) (2021-09-24)
+
+**Note:** Version bump only for package @twreporter/errors
+
+
+
+
+
 # [1.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/errors@1.1.0-rc.0...@twreporter/errors@1.1.0) (2020-03-16)
 
 **Note:** Version bump only for package @twreporter/errors
