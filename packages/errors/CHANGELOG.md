@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/errors@1.1.1...@twreporter/errors@1.1.2-rc.0) (2022-12-01)
+
+
+### Bug Fixes
+
+* **errors:** unexpected error occurs while executing `printOne` ([3efe274](https://github.com/twreporter/twreporter-npm-packages/commit/3efe274696e29b40cacbaacacb7b0bc678cf671d))
+
+
+
+
+
 ## [1.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/errors@1.1.1-rc.0...@twreporter/errors@1.1.1) (2021-10-12)
 
 **Note:** Version bump only for package @twreporter/errors
