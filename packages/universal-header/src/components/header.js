@@ -222,6 +222,7 @@ const Header = () => {
     toUseNarrow,
     hideHeader,
     pathname,
+    referrerPath,
   } = useContext(HeaderContext)
   const [showHamburger, setShowHamburger] = useState(false)
   const logoLink = getLogoLink(isLinkExternal, releaseBranch)
@@ -244,7 +245,7 @@ const Header = () => {
     <Arrow direction="left" releaseBranch={releaseBranch} />
   )
   const gotoPrev = () => {
-    if (checkReferrer(document.referrer, releaseBranch)) {
+    if (referrerPath || checkReferrer(document.referrer, releaseBranch)) {
       // go to previous page when referer is twreporter site
       window.history.back()
     } else {
