@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.15.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.0...@twreporter/react-components@8.15.1-rc.1) (2022-12-13)
+
+
+### Bug Fixes
+
+* fix defects ([c38e4e0](https://github.com/twreporter/twreporter-npm-packages/commit/c38e4e0c53283d9581df6ad059c41d50f3696428))
+* remove curly brackets when value is static ([d911533](https://github.com/twreporter/twreporter-npm-packages/commit/d911533de39d092ac10241a2e742811a870da4e1))
+
+
+### Reverts
+
+* Revert "Revert "Jason/refinement new arch"" ([991bb42](https://github.com/twreporter/twreporter-npm-packages/commit/991bb425789940a68ec3f427cb293b7683b07a95))
+
+
+
+
+
 ## [8.15.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0...@twreporter/react-components@8.15.1-rc.0) (2022-12-01)
 
 **Note:** Version bump only for package @twreporter/react-components
