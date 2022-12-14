@@ -9,6 +9,7 @@ import { selectHamburgerFooterTheme } from '../utils/theme'
 import { FOOTER_ORDER, FOOTER_LABEL } from '../constants/footer'
 import { SOCIAL_MEDIA_ORDER } from '../constants/social-media'
 // @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 import Divider from '@twreporter/react-components/lib/divider'
 import Link from '@twreporter/react-components/lib/customized-link'
 import { P2 } from '@twreporter/react-components/lib/text/paragraph'
@@ -49,6 +50,12 @@ const IconItem = styled.div`
   &:last-child {
     margin-right: 0;
   }
+  ${mq.mobileOnly`
+    svg {
+      height: 32px;
+      width: 32px;
+    }
+  `}
 `
 const SocialMediaSection = styled.div`
   display: flex;

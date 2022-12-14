@@ -65,12 +65,13 @@ const MenuContainer = styled.div`
   overflow-y: scroll;
   overscroll-behavior: none;
   background-color: ${props => props.bgColor};
+  -webkit-overflow-scrolling: touch;
   ${mq.tabletOnly`
     width: ${MENU_WIDTH.tablet};
   `}
   ${mq.mobileOnly`
-    max-height: calc(100vh - 51px);
     width: ${MENU_WIDTH.mobile};
+    padding-bottom: 48px;
   `}
 
   &::-webkit-scrollbar {
@@ -146,6 +147,10 @@ const DividerContainer = styled.div`
 `
 const IconContainer = styled.div`
   margin-left: 24px;
+  ${mq.mobileOnly`
+    z-index: 1;
+    margin-left: 16px;
+  `}
 `
 const StyledMobileHamburgerAction = styled(MobileHamburgerAction)`
   width: 100%;
@@ -315,7 +320,12 @@ const HamburgerMenu = ({ ...props }) => {
         </HeaderSection>
       </MobileOnly>
       <SearchSection>
-        <SearchBar onSearch={onSearch} autofocus={false} widthType="stretch" />
+        <SearchBar
+          onSearch={onSearch}
+          autofocus={false}
+          widthType="stretch"
+          placeholder="關鍵字搜尋"
+        />
       </SearchSection>
       <Content />
       <Footer />

@@ -43,6 +43,7 @@ const animation = {
   step3Duration: '200ms',
 }
 const zIndex = {
+  tabBar: 10,
   hamburger: 4,
   header: 3,
   topRow: 2,
@@ -171,6 +172,9 @@ const StyledDivider = styled(Divider)`
 `
 const IconContainer = styled.div`
   margin-left: 24px;
+  ${mq.mobileOnly`
+    margin-left: 16px;
+  `}
 `
 const FlexGroup = styled.div`
   display: flex;
@@ -201,8 +205,9 @@ const HamburgerContainer = styled.div`
   `}
 `
 const TabBarContainer = styled.div`
+  z-index: ${zIndex.tabBar};
   position: fixed;
-  bottom: env(safe-area-inset-bottom, 0);
+  bottom: 0;
   left: 0;
   width: 100%;
 `

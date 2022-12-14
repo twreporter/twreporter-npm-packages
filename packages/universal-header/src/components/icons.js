@@ -19,6 +19,7 @@ import { Member, Search, Bookmark } from '@twreporter/react-components/lib/icon'
 import { Dialog } from '@twreporter/react-components/lib/card'
 import { SearchBar } from '@twreporter/react-components/lib/input'
 import { useOutsideClick } from '@twreporter/react-components/lib/hook'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const IconsContainer = styled.div`
   display: flex;
@@ -62,6 +63,7 @@ const StyledDialog = styled(Dialog)`
   right: -16px;
   width: max-content;
   cursor: pointer;
+  color: ${colorGrayscale.gray800};
 `
 
 const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
