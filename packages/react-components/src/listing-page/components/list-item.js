@@ -29,7 +29,7 @@ const Container = styled.div`
     width: ${mockup.tablet.cardWidth}px;
   `}
   ${mq.mobileOnly`
-    width: ${mockup.mobile.cardWidth}px;
+    width: 100%;
   `}
 
   a {
