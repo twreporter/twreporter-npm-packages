@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.15.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.1...@twreporter/react-components@8.15.1-rc.2) (2022-12-16)
+
+
+### Bug Fixes
+
+* fix mobile rwd issue ([19a22f0](https://github.com/twreporter/twreporter-npm-packages/commit/19a22f02af99b66f6d1f7ead120ac3d0e166f55f))
+
+
+
+
+
 ## [8.15.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.0...@twreporter/react-components@8.15.1-rc.1) (2022-12-13)
 
 
