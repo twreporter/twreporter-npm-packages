@@ -14,6 +14,7 @@ import origins from './origins'
 import reduxStatePropKey from '../constants/redux-state-field-names'
 import relatedPostsOf from './related-posts-of'
 import settings from './settings'
+import latest from './latest'
 
 const rootReducer = combineReducers({
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.entitiesForAuthors]: entitiesForAuthors,
   [reduxStatePropKey.origins]: origins,
   [reduxStatePropKey.settings]: settings,
+  [reduxStatePropKey.latest]: latest,
 })
 
 export default rootReducer

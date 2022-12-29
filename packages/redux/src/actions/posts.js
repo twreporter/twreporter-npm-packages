@@ -303,7 +303,9 @@ function fetchPostsByListId(
       limit,
       offset,
     }
-    if (listType === 'category_set_id') {
+    if (listType === 'latest') {
+      params.sort = '-published_date'
+    } else if (listType === 'category_set_id') {
       const [categoryId, subcategoryId] = _.split(listId, '_')
       params.category_id = categoryId
       params.subcategory_id = subcategoryId
@@ -391,6 +393,27 @@ export function fetchPostsByCategorySetListId(
 ) {
   return (dispatch, getState) => {
     return fetchPostsByListId(listId, 'category_set_id', limit, page, timeout)(
+      dispatch,
+      getState
+    )
+  }
+}
+
+/**
+ * Fetch latest posts(only containing meta properties) sorted by published date.
+ * @param {number} [limit=10] - the number of posts you want to get in one request
+ * @param {number} [page=1] - page is used to calculate `offset`, which indicates how many posts we should skip
+ * @param {number} [timeout=apiConfig.timeout] - request api timeout
+ * @return {import('../typedef').Thunk} async action creator
+ *
+ */
+export function fetchLatestPosts(
+  limit = 10,
+  page = 0,
+  timeout = apiConfig.timeout
+) {
+  return (dispatch, getState) => {
+    return fetchPostsByListId('latest', 'latest', limit, page, timeout)(
       dispatch,
       getState
     )
