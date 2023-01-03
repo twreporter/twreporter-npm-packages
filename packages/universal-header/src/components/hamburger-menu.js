@@ -64,7 +64,7 @@ const MenuContainer = styled.div`
   height: 100vh;
   max-height: 100vh;
   overflow-y: scroll;
-  overscroll-behavior: none;
+  overscroll-behavior: contain;
   background-color: ${props => props.bgColor};
   -webkit-overflow-scrolling: touch;
   ${mq.tabletOnly`

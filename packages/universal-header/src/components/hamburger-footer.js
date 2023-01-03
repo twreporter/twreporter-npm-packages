@@ -29,10 +29,12 @@ const FooterContainer = styled.div`
 const LinkItem = styled.div`
   padding: 8px 32px;
   color: ${props => props.color};
-  &:hover {
-    color: ${props => props.hoverColor};
-    background-color: ${props => props.hoverBgColor};
-  }
+  ${mq.desktopAndAbove`
+    &:hover {
+      color: ${props => props.hoverColor};
+      background-color: ${props => props.hoverBgColor};
+    }
+  `}
   &:active {
     color: ${props => props.activeColor};
     background-color: ${props => props.activeBgColor};
