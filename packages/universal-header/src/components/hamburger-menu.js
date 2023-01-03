@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
 // context
 import HeaderContext, { HamburgerContext } from '../contexts/header-context'
@@ -72,6 +72,8 @@ const MenuContainer = styled.div`
   `}
   ${mq.mobileOnly`
     width: ${MENU_WIDTH.mobile};
+    height: ${props => props.mobileHeight};
+    max-height: ${props => props.mobileHeight};
     padding-bottom: 48px;
   `}
 
@@ -275,6 +277,7 @@ const Content = () => {
 const HamburgerMenu = ({ ...props }) => {
   const { theme, releaseBranch, isLinkExternal } = useContext(HeaderContext)
   const { closeHamburgerMenu } = useContext(HamburgerContext)
+  const [mobileHeight, setMobileHeight] = useState('100vh')
   const menuTheme = theme === THEME.photography ? theme : THEME.noraml
   const { bgColor, scrollBarColor } = selectHamburgerMenuTheme(menuTheme)
   const logoType = selectLogoType(menuTheme)
@@ -289,8 +292,17 @@ const HamburgerMenu = ({ ...props }) => {
     }?q=${keywords}`
   }
 
+  useEffect(() => {
+    setMobileHeight(`${window.innerHeight}px`)
+  }, [])
+
   return (
-    <MenuContainer bgColor={bgColor} scrollBarColor={scrollBarColor} {...props}>
+    <MenuContainer
+      bgColor={bgColor}
+      scrollBarColor={scrollBarColor}
+      mobileHeight={mobileHeight}
+      {...props}
+    >
       <TabletAndAbove>
         <CloseSection>
           <IconButton
