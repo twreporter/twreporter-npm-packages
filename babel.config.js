@@ -37,5 +37,6 @@ module.exports = {
         },
       },
     ],
+    '@babel/plugin-proposal-optional-catch-binding',
   ],
 }
