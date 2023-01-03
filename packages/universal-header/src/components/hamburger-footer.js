@@ -62,7 +62,7 @@ const SocialMediaSection = styled.div`
   justify-content: center;
 `
 const DividerContainer = styled.div`
-  margin: 8px 32px 16px 32px;
+  margin: 16px 32px;
 `
 
 const Footer = ({ ...props }) => {

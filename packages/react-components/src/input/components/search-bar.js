@@ -40,7 +40,7 @@ const Container = styled.form`
       background-color: ${props.focusBgColor};
       border: 1px solid ${props.borderColor};
     `
-        : ''}
+        : 'border: 1px solid transparent;'}
     &, & > input {
       ${props => (props.widthType === 'stretch' ? 'width: 100%;' : '')}
     }

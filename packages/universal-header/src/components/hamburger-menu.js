@@ -61,6 +61,7 @@ const _ = {
 
 const MenuContainer = styled.div`
   width: ${MENU_WIDTH.desktop};
+  height: 100vh;
   max-height: 100vh;
   overflow-y: scroll;
   overscroll-behavior: none;
@@ -110,9 +111,9 @@ const SearchSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 32px 0 32px;
+  padding: 24px 32px 0 32px;
   ${mq.mobileOnly`
-    padding: 24px 32px;
+    padding: 24px 32px 8px 32px;
   `}
   ${mq.desktopAndAbove`
     display: none;
