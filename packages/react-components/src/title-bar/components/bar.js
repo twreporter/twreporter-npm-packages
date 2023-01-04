@@ -23,8 +23,8 @@ const BarContainer = styled.div`
 
 const TitleBar = ({ title = '', subtitle = '' }) => (
   <BarContainer>
-    <H1 text={title} />
-    <P1 text={subtitle} weight="bold" />
+    {title ? <H1 text={title} /> : null}
+    {subtitle ? <P1 text={subtitle} weight="bold" /> : null}
     <Divider direction="horizontal" />
   </BarContainer>
 )
