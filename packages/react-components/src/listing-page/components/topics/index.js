@@ -100,7 +100,7 @@ class Topics extends Component {
       topSectionJSX = [
         <TitleBar
           key="top-title"
-          title="深度專題"
+          title={'深度專題'}
           subtitle={TEXT.SECTION_TITLE_FEATURED}
         />,
         <TopSectionContent
