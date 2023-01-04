@@ -84,8 +84,7 @@ const largeWidthCSS = css`
 
 const normalWidthCSS = css`
   ${mq.mobileOnly`
-    padding-left: 34px;
-    padding-right: 34px;
+    width: calc(300/375*100%);
   `}
   ${mq.tabletOnly`
     width: 453px;

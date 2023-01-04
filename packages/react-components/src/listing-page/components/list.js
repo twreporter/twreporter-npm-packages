@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
+import { fontWeight } from '@twreporter/core/lib/constants/font'
 // constants
 import mockup from '../constants/mockup-spec'
+import color from '../constants/color'
 // components
 import ListItem from './list-item'
-import PageContent from './page-content'
-import { TitleBar } from '../../title-bar'
 import FetchingWrapper from '../../is-fetching-wrapper'
 // lodash
 import forEach from 'lodash/forEach'
@@ -23,9 +23,26 @@ const _ = {
   map,
 }
 
+const Container = styled.div`
+  margin: 45px auto 0 auto;
+`
+
+const Header = styled.div`
+  font-size: 36px;
+  font-weight: ${fontWeight.bold};
+  color: ${color.darkDarkGray};
+  margin: 0 auto 45px auto;
+  text-align: center;
+
+  ${mq.mobileOnly`
+    width: ${(mockup.mobile.cardWidth / mockup.mobile.maxWidth) * 100}%;
+    text-align: left;
+  `}
+`
+
 const FlexItems = styled.div`
   width: ${mockup.hd.maxWidth}px;
-  margin: 64px auto 0;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -41,12 +58,10 @@ const FlexItems = styled.div`
 
   ${mq.tabletOnly`
     width: ${mockup.tablet.maxWidth}px;
-    margin-top: 32px;
   `}
 
   ${mq.mobileOnly`
     width: 100%;
-    margin-top: 24px;
     > div:nth-child(odd) {
       margin-right: 0;
     }
@@ -106,17 +121,15 @@ class List extends PureComponent {
         />
       )
     })
-    const headerTitle = catName || tagName
-    const headerJSX = headerTitle ? (
-      <TitleBar title={headerTitle ?? ''} />
-    ) : null
+    const headerTitle = catName || (tagName ? `#${tagName}` : '')
+    const headerJSX = headerTitle ? <Header>{headerTitle}</Header> : null
     return (
-      <PageContent>
+      <Container>
         {headerJSX}
         <Items isFetching={isFetching} showSpinner={showSpinner}>
           {listJSX}
         </Items>
-      </PageContent>
+      </Container>
     )
   }
 }
