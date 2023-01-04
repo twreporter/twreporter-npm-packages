@@ -16,14 +16,13 @@ const styles = {
   goToTopicMargin: [20, 'auto', 0, 'auto'],
   goToTopicPadding: [14, 0, 14, 0],
   sectionMargin: {
-    mobile: [24, 0, 36, 0],
-    tablet: [32, 0, 64, 0],
-    desktop: [64, 0, 64, 0],
+    mobile: [0, 0, 35, 0],
+    tablet: [0, 0, 42, 0],
+    desktop: [0, 0, 60, 0],
   },
   titleMargin: {
     mobile: [0, 0, 24, 0],
-    tablet: [0, 0, 32, 0],
-    desktop: [0, 0, 64, 0],
+    tablet: [0, 0, 42, 0],
   },
   titlePadding: [16, 0, 16, 0],
 }
@@ -34,11 +33,22 @@ const StyledLink = styled(Link)`
   margin: ${arrayToCssShorthand(styles.goToTopicMargin)};
 `
 
+const SectionTitle = styled.div`
+  width: 100%;
+  border-bottom: 2px solid ${color.gray};
+  padding: ${arrayToCssShorthand(styles.titlePadding)};
+  color: ${color.darkGray};
+  font-size: 18px;
+  font-weight: ${fontWeight.bold};
+  line-height: 1;
+  margin: ${arrayToCssShorthand(styles.titleMargin.mobile)};
+  ${mq.tabletAndAbove`
+    margin: ${arrayToCssShorthand(styles.titleMargin.tablet)};
+  `}
+`
 const SectionContent = styled.div`
   width: 100%;
-  ${mq.mobileOnly`
-    margin: ${arrayToCssShorthand(styles.sectionMargin.mobile)};
-  `}
+  margin: ${arrayToCssShorthand(styles.sectionMargin.mobile)};
   ${mq.tabletOnly`
     margin: ${arrayToCssShorthand(styles.sectionMargin.tablet)};
   `}
@@ -104,4 +114,4 @@ ListSectionContent.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export { TopSectionContent, ListSectionContent }
+export { TopSectionContent, ListSectionContent, SectionTitle }

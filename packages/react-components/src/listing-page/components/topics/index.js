@@ -6,14 +6,13 @@ import FetchingWrapper from '../../../is-fetching-wrapper'
 import PostsContainer from './posts'
 import PostItem from './post-item'
 import TopicItem from './topic-item'
-import PageContent from '../page-content'
-import { TopSectionContent, ListSectionContent } from './section'
+import PageContent from './page-content'
+import { TopSectionContent, ListSectionContent, SectionTitle } from './section'
 // constants
 import { TEXT } from '../../constants/topics'
 import color from '../../constants/color'
 // @twreporter
 import { fontWeight } from '@twreporter/core/lib/constants/font'
-import { TitleBar } from '@twreporter/react-components/lib/title-bar'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -98,11 +97,9 @@ class Topics extends Component {
       topTopicName = _.get(topics, [0, 'topic_name'], '')
       topicUrl = _.get(topics, [0, 'linkTo'], '')
       topSectionJSX = [
-        <TitleBar
-          key="top-title"
-          title="深度專題"
-          subtitle={TEXT.SECTION_TITLE_FEATURED}
-        />,
+        <SectionTitle key="top-title">
+          {TEXT.SECTION_TITLE_FEATURED}
+        </SectionTitle>,
         <TopSectionContent
           key="top-section"
           topicName={topTopicName}
@@ -126,7 +123,7 @@ class Topics extends Component {
       <PageContent>
         {topSectionJSX}
         {isFetching && isFirstPage ? null : (
-          <TitleBar subtitle={TEXT.SECTION_TITLE_OTHERS} />
+          <SectionTitle>{TEXT.SECTION_TITLE_OTHERS}</SectionTitle>
         )}
         <WrappedListSectionContent
           isFetching={isFetching}

@@ -1,13 +1,13 @@
 import styled from 'styled-components'
-import { resetLinkStyle } from '../constants/predefined-css'
+import { resetLinkStyle } from '../../constants/predefined-css'
 import mq from '@twreporter/core/lib/utils/media-query'
 
 const styles = {
   contentWidth: {
     min: 300, // px
-    mobile: 100, // %
-    tablet: 698, // px
-    desktop: 922, // px
+    mobile: 95, // %
+    tablet: 700, // px
+    desktop: 870, // px
   },
   titlePadding: 0,
   titleMargin: {

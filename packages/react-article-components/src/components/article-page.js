@@ -30,7 +30,7 @@ const _ = {
 
 const shiftLeftCss = css`
   position: relative;
-  /* 20px is border-(right|left) width of article page */
+  /* 20px is border-(right|left) width of articlePage */
   width: calc(100% + 20px);
   left: -10px;
 `
@@ -111,8 +111,8 @@ const DesktopAsideBlock = styled.div`
 
 const MetadataAndToolsBlock = styled.div`
   ${mq.mobileOnly`
-    padding-top: 33px;
-    padding-bottom: 33px;
+    padding-top: 40px;
+    padding-bottom: 60px;
   `}
 
   ${mq.tabletOnly`
@@ -192,7 +192,7 @@ const BackgroundBlock = styled(BorderBox)`
     }
   }
 
-  /* border-(right|left) of article page */
+  /* boreder-(right|left) of articlePage */
   padding-left: 10px;
   padding-right: 10px;
 `
