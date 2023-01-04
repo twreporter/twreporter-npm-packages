@@ -106,7 +106,7 @@ class List extends PureComponent {
         />
       )
     })
-    const headerTitle = catName || (tagName ? `#${tagName}` : '')
+    const headerTitle = catName || tagName
     const headerJSX = headerTitle ? (
       <TitleBar title={headerTitle ?? ''} />
     ) : null

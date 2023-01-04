@@ -31,6 +31,8 @@ const NoData = styled.div`
   text-align: center;
 `
 
+const topicTitleText = '深度專題'
+
 class Topics extends Component {
   _buildRelatedPosts(posts) {
     const _buildPostJSX = post => {
@@ -100,7 +102,7 @@ class Topics extends Component {
       topSectionJSX = [
         <TitleBar
           key="top-title"
-          title={'深度專題'}
+          title={topicTitleText}
           subtitle={TEXT.SECTION_TITLE_FEATURED}
         />,
         <TopSectionContent
@@ -126,7 +128,10 @@ class Topics extends Component {
       <PageContent>
         {topSectionJSX}
         {isFetching && isFirstPage ? null : (
-          <TitleBar subtitle={TEXT.SECTION_TITLE_OTHERS} />
+          <TitleBar
+            title={topicTitleText}
+            subtitle={TEXT.SECTION_TITLE_OTHERS}
+          />
         )}
         <WrappedListSectionContent
           isFetching={isFetching}
