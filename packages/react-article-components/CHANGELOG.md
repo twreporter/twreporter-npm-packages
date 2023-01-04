@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.4...@twreporter/react-article-components@1.7.2-rc.5) (2023-01-04)
+
+
+### Reverts
+
+* Revert "Revert "Revert "Jason/refinement new arch""" ([94f13a2](https://github.com/twreporter/twreporter-npm-packages/commit/94f13a29c8f051f8956b583ef31b86578f5d0daf))
+
+
+
+
+
 ## [1.7.2-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.3...@twreporter/react-article-components@1.7.2-rc.4) (2022-12-26)
 
 **Note:** Version bump only for package @twreporter/react-article-components

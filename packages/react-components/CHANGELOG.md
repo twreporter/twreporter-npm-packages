@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.15.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.4...@twreporter/react-components@8.15.1-rc.5) (2023-01-04)
+
+
+### Reverts
+
+* Revert "Revert "Revert "Jason/refinement new arch""" ([94f13a2](https://github.com/twreporter/twreporter-npm-packages/commit/94f13a29c8f051f8956b583ef31b86578f5d0daf))
+* Revert "fix: fix defects" ([9b5f28c](https://github.com/twreporter/twreporter-npm-packages/commit/9b5f28c41fc4f05c33f37e248a3c63679071ed18))
+* Revert "fix: remove curly brackets when value is static" ([bdca1f4](https://github.com/twreporter/twreporter-npm-packages/commit/bdca1f4ce624ec1ebc9ad5ec0033ab4e982beebf))
+* Revert "fix: fix mobile rwd issue" ([15fdbf7](https://github.com/twreporter/twreporter-npm-packages/commit/15fdbf7e25815d21a7a034b2728df2b532d35a05))
+* Revert "fix: fix width" ([680a690](https://github.com/twreporter/twreporter-npm-packages/commit/680a690cb7c71861b83d23eea5df245996988d18))
+
+
+
+
+
 ## [8.15.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.3...@twreporter/react-components@8.15.1-rc.4) (2022-12-26)
 
 
