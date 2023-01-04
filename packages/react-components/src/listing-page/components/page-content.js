@@ -5,7 +5,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 const styles = {
   contentWidth: {
     min: 300, // px
-    mobile: 100, // %
+    mobile: 95, // %
     tablet: 698, // px
     desktop: 922, // px
   },
