@@ -3,6 +3,95 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.15.1-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.6...@twreporter/react-components@8.15.1-rc.7) (2023-01-05)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.15.1-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.5...@twreporter/react-components@8.15.1-rc.6) (2023-01-05)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.15.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.4...@twreporter/react-components@8.15.1-rc.5) (2023-01-04)
+
+
+### Reverts
+
+* Revert "Revert "Revert "Jason/refinement new arch""" ([94f13a2](https://github.com/twreporter/twreporter-npm-packages/commit/94f13a29c8f051f8956b583ef31b86578f5d0daf))
+* Revert "fix: fix defects" ([9b5f28c](https://github.com/twreporter/twreporter-npm-packages/commit/9b5f28c41fc4f05c33f37e248a3c63679071ed18))
+* Revert "fix: remove curly brackets when value is static" ([bdca1f4](https://github.com/twreporter/twreporter-npm-packages/commit/bdca1f4ce624ec1ebc9ad5ec0033ab4e982beebf))
+* Revert "fix: fix mobile rwd issue" ([15fdbf7](https://github.com/twreporter/twreporter-npm-packages/commit/15fdbf7e25815d21a7a034b2728df2b532d35a05))
+* Revert "fix: fix width" ([680a690](https://github.com/twreporter/twreporter-npm-packages/commit/680a690cb7c71861b83d23eea5df245996988d18))
+
+
+
+
+
+## [8.15.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.3...@twreporter/react-components@8.15.1-rc.4) (2022-12-26)
+
+
+### Bug Fixes
+
+* fix width ([2a7cf0a](https://github.com/twreporter/twreporter-npm-packages/commit/2a7cf0aa8013a5f3ead5a6bd31f76155fa728a65))
+
+
+
+
+
+## [8.15.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.2...@twreporter/react-components@8.15.1-rc.3) (2022-12-23)
+
+
+### Bug Fixes
+
+* fix defects ([306fb41](https://github.com/twreporter/twreporter-npm-packages/commit/306fb41304f79e11cd21eb01405d5511467a39f8))
+
+
+
+
+
+## [8.15.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.1...@twreporter/react-components@8.15.1-rc.2) (2022-12-16)
+
+
+### Bug Fixes
+
+* fix mobile rwd issue ([19a22f0](https://github.com/twreporter/twreporter-npm-packages/commit/19a22f02af99b66f6d1f7ead120ac3d0e166f55f))
+
+
+
+
+
+## [8.15.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1-rc.0...@twreporter/react-components@8.15.1-rc.1) (2022-12-13)
+
+
+### Bug Fixes
+
+* fix defects ([c38e4e0](https://github.com/twreporter/twreporter-npm-packages/commit/c38e4e0c53283d9581df6ad059c41d50f3696428))
+* remove curly brackets when value is static ([d911533](https://github.com/twreporter/twreporter-npm-packages/commit/d911533de39d092ac10241a2e742811a870da4e1))
+
+
+### Reverts
+
+* Revert "Revert "Jason/refinement new arch"" ([991bb42](https://github.com/twreporter/twreporter-npm-packages/commit/991bb425789940a68ec3f427cb293b7683b07a95))
+
+
+
+
+
+## [8.15.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0...@twreporter/react-components@8.15.1-rc.0) (2022-12-01)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
 # [8.15.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.0-rc.9...@twreporter/react-components@8.15.0) (2022-11-30)
 
 **Note:** Version bump only for package @twreporter/react-components

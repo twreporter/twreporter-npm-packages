@@ -21,6 +21,7 @@ const TabBarContainer = styled.div`
   padding: 4px 16px;
   border-top: 1px solid ${props => props.borderColor};
   background-color: ${props => props.bgColor};
+  padding-bottom: env(safe-area-inset-bottom, 0);
   a {
     text-decoration: none;
   }
@@ -55,6 +56,7 @@ const TabBar = () => {
   const isHomeActive = !isHamburgerMenuOpen && pathname === '/'
   const isLatestActive = !isHamburgerMenuOpen && pathname === '/latest'
   const isBookmarkActive = !isHamburgerMenuOpen && pathname === '/bookmarks'
+  const hamburgerIconText = isHamburgerMenuOpen ? '關閉選單' : '選單'
 
   return (
     <TabBarContainer bgColor={bgColor} borderColor={borderColor}>
@@ -90,7 +92,7 @@ const TabBar = () => {
       </ButtonContainer>
       <ButtonContainer onClick={toggleHamburger}>
         <IconWithTextButton
-          text="選單"
+          text={hamburgerIconText}
           iconComponent={HamburgerIcon}
           theme={theme}
           active={isHamburgerMenuOpen}

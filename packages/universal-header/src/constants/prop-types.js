@@ -11,6 +11,8 @@ const contextPropTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
   isLinkExternal: PropTypes.bool,
   isAuthed: PropTypes.bool,
+  pathname: PropTypes.string,
+  referrerPath: PropTypes.string,
 }
 
 const contextDefaultProps = {
@@ -18,6 +20,8 @@ const contextDefaultProps = {
   releaseBranch: BRANCH.master,
   isLinkExternal: false,
   isAuthed: false,
+  pathname: '',
+  referrerPath: '',
 }
 
 const linkPropTypes = {

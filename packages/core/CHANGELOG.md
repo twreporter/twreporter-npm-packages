@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.1-rc.1...@twreporter/core@1.8.1-rc.2) (2023-01-05)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
+## [1.8.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.1-rc.0...@twreporter/core@1.8.1-rc.1) (2023-01-05)
+
+
+### Bug Fixes
+
+* update 2023 fundraising id ([060fe4a](https://github.com/twreporter/twreporter-npm-packages/commit/060fe4a8f874cd66b29c1c7d04819e562eb2b1e9))
+
+
+
+
+
+## [1.8.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.0...@twreporter/core@1.8.1-rc.0) (2022-12-01)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
 # [1.8.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.0-rc.6...@twreporter/core@1.8.0) (2022-11-30)
 
 **Note:** Version bump only for package @twreporter/core

@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.6...@twreporter/react-article-components@1.7.2-rc.7) (2023-01-05)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.7.2-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.5...@twreporter/react-article-components@1.7.2-rc.6) (2023-01-05)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.7.2-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.4...@twreporter/react-article-components@1.7.2-rc.5) (2023-01-04)
+
+
+### Reverts
+
+* Revert "Revert "Revert "Jason/refinement new arch""" ([94f13a2](https://github.com/twreporter/twreporter-npm-packages/commit/94f13a29c8f051f8956b583ef31b86578f5d0daf))
+
+
+
+
+
+## [1.7.2-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.3...@twreporter/react-article-components@1.7.2-rc.4) (2022-12-26)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.7.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.2...@twreporter/react-article-components@1.7.2-rc.3) (2022-12-23)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.7.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.1...@twreporter/react-article-components@1.7.2-rc.2) (2022-12-16)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.7.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.2-rc.0...@twreporter/react-article-components@1.7.2-rc.1) (2022-12-13)
+
+
+### Reverts
+
+* Revert "Revert "Jason/refinement new arch"" ([991bb42](https://github.com/twreporter/twreporter-npm-packages/commit/991bb425789940a68ec3f427cb293b7683b07a95))
+
+
+
+
+
+## [1.7.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.1...@twreporter/react-article-components@1.7.2-rc.0) (2022-12-01)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.7.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.1-rc.10...@twreporter/react-article-components@1.7.1) (2022-11-30)
 
 **Note:** Version bump only for package @twreporter/react-article-components

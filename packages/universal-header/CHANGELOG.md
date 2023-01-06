@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.6...@twreporter/universal-header@2.4.1-rc.7) (2023-01-05)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.1-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.5...@twreporter/universal-header@2.4.1-rc.6) (2023-01-05)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.4...@twreporter/universal-header@2.4.1-rc.5) (2023-01-04)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.3...@twreporter/universal-header@2.4.1-rc.4) (2022-12-26)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.2...@twreporter/universal-header@2.4.1-rc.3) (2022-12-23)
+
+
+### Bug Fixes
+
+* add new contexgt props `referrerPath` ([e673c03](https://github.com/twreporter/twreporter-npm-packages/commit/e673c0360dbbd64ac33c1ddb9456032d7ffaeff0))
+* fix defects ([306fb41](https://github.com/twreporter/twreporter-npm-packages/commit/306fb41304f79e11cd21eb01405d5511467a39f8))
+
+
+
+
+
+## [2.4.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.1...@twreporter/universal-header@2.4.1-rc.2) (2022-12-16)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.0...@twreporter/universal-header@2.4.1-rc.1) (2022-12-13)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0...@twreporter/universal-header@2.4.1-rc.0) (2022-12-01)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
 # [2.4.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.0-rc.10...@twreporter/universal-header@2.4.0) (2022-11-30)
 
 **Note:** Version bump only for package @twreporter/universal-header

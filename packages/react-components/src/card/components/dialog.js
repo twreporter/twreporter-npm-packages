@@ -12,6 +12,7 @@ const Container = styled.div`
 const Text = styled.div`
   padding: 16px 24px;
   background-color: white;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
 `
 
 const Triangle = styled.div`
