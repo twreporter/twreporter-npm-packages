@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.2...@twreporter/redux@7.5.0-rc.0) (2023-01-12)
+
+
+### Features
+
+* add latest page action & reducer ([d56ff04](https://github.com/twreporter/twreporter-npm-packages/commit/d56ff044d46e7073784e9487efb7e0243e7e0d03))
+
+
+
+
+
 ## [7.4.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.2-rc.2...@twreporter/redux@7.4.2) (2023-01-06)
 
 **Note:** Version bump only for package @twreporter/redux
