@@ -59,6 +59,9 @@ const _ = {
   map,
 }
 
+// global var
+const reserveHeightForIos15 = 48
+
 const MenuContainer = styled.div`
   width: ${MENU_WIDTH.desktop};
   height: 100vh;
@@ -74,7 +77,7 @@ const MenuContainer = styled.div`
     width: ${MENU_WIDTH.mobile};
     height: ${props => props.mobileHeight};
     max-height: ${props => props.mobileHeight};
-    padding-bottom: 48px;
+    padding-bottom: ${reserveHeightForIos15 + 48}px;
   `}
 
   &::-webkit-scrollbar {
@@ -293,7 +296,7 @@ const HamburgerMenu = ({ ...props }) => {
   }
 
   useEffect(() => {
-    setMobileHeight(`${window.innerHeight}px`)
+    setMobileHeight(`${window.innerHeight + reserveHeightForIos15}px`)
   }, [])
 
   return (
