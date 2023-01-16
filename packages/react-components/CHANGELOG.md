@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.15.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.2-rc.0...@twreporter/react-components@8.15.2-rc.1) (2023-01-16)
+
+
+### Bug Fixes
+
+* fix defects for mobile/tablet header ([bb3f7e5](https://github.com/twreporter/twreporter-npm-packages/commit/bb3f7e523b3173712d9f308e76d781326a276c64))
+
+
+
+
+
 ## [8.15.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.1...@twreporter/react-components@8.15.2-rc.0) (2023-01-12)
 
 **Note:** Version bump only for package @twreporter/react-components

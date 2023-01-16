@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.0...@twreporter/universal-header@2.4.2-rc.1) (2023-01-16)
+
+
+### Bug Fixes
+
+* fix defects for mobile/tablet header ([bb3f7e5](https://github.com/twreporter/twreporter-npm-packages/commit/bb3f7e523b3173712d9f308e76d781326a276c64))
+* fix hamburger menu style ([917f603](https://github.com/twreporter/twreporter-npm-packages/commit/917f6037231ab8f13df56b95b2efc6bb5548064a))
+* ios15.1 url bar would hide when scroll hambuger menu ([eba130d](https://github.com/twreporter/twreporter-npm-packages/commit/eba130d0d670462ac25f40f25106a364d65fb160))
+* mobile hamburger cannot scroll to bottom when url bar show ([b85a2fd](https://github.com/twreporter/twreporter-npm-packages/commit/b85a2fd57174528bfc3876d6f934664f03981ffc))
+
+
+
+
+
 ## [2.4.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1...@twreporter/universal-header@2.4.2-rc.0) (2023-01-12)
 
 **Note:** Version bump only for package @twreporter/universal-header
