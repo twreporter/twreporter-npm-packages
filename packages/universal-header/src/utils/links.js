@@ -70,8 +70,12 @@ export const checkReferrer = (
   referrer = '',
   releaseBranch = defaultReleaseBranch
 ) => {
-  const url = new URL(referrer)
-  return url.origin === mainBaseURL[releaseBranch]
+  try {
+    const url = new URL(referrer)
+    return url.origin === mainBaseURL[releaseBranch]
+  } catch (err) {
+    return false
+  }
 }
 
 export const getCategoryLink = (

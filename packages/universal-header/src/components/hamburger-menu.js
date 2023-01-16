@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
 // context
 import HeaderContext, { HamburgerContext } from '../contexts/header-context'
@@ -59,11 +59,15 @@ const _ = {
   map,
 }
 
+// global var
+const reserveHeightForIos15 = 48
+
 const MenuContainer = styled.div`
   width: ${MENU_WIDTH.desktop};
+  height: 100vh;
   max-height: 100vh;
   overflow-y: scroll;
-  overscroll-behavior: none;
+  overscroll-behavior: contain;
   background-color: ${props => props.bgColor};
   -webkit-overflow-scrolling: touch;
   ${mq.tabletOnly`
@@ -71,7 +75,9 @@ const MenuContainer = styled.div`
   `}
   ${mq.mobileOnly`
     width: ${MENU_WIDTH.mobile};
-    padding-bottom: 48px;
+    height: ${props => props.mobileHeight};
+    max-height: ${props => props.mobileHeight};
+    padding-bottom: ${reserveHeightForIos15 + 48}px;
   `}
 
   &::-webkit-scrollbar {
@@ -110,9 +116,9 @@ const SearchSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 32px 0 32px;
+  padding: 24px 32px 0 32px;
   ${mq.mobileOnly`
-    padding: 24px 32px;
+    padding: 24px 32px 8px 32px;
   `}
   ${mq.desktopAndAbove`
     display: none;
@@ -274,6 +280,7 @@ const Content = () => {
 const HamburgerMenu = ({ ...props }) => {
   const { theme, releaseBranch, isLinkExternal } = useContext(HeaderContext)
   const { closeHamburgerMenu } = useContext(HamburgerContext)
+  const [mobileHeight, setMobileHeight] = useState('100vh')
   const menuTheme = theme === THEME.photography ? theme : THEME.noraml
   const { bgColor, scrollBarColor } = selectHamburgerMenuTheme(menuTheme)
   const logoType = selectLogoType(menuTheme)
@@ -288,8 +295,17 @@ const HamburgerMenu = ({ ...props }) => {
     }?q=${keywords}`
   }
 
+  useEffect(() => {
+    setMobileHeight(`${window.innerHeight + reserveHeightForIos15}px`)
+  }, [])
+
   return (
-    <MenuContainer bgColor={bgColor} scrollBarColor={scrollBarColor} {...props}>
+    <MenuContainer
+      bgColor={bgColor}
+      scrollBarColor={scrollBarColor}
+      mobileHeight={mobileHeight}
+      {...props}
+    >
       <TabletAndAbove>
         <CloseSection>
           <IconButton
