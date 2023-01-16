@@ -9,6 +9,7 @@ import {
   fetchPostsByTagListId,
   fetchPostsByCategorySetListId,
   fetchRelatedPostsOfAnEntity,
+  fetchLatestPosts,
 } from './posts'
 import { fetchAFullTopic, fetchFeatureTopic, fetchTopics } from './topics'
 import {
@@ -17,6 +18,7 @@ import {
   getSingleBookmark,
   getMultipleBookmarks,
 } from './bookmarks'
+import { fetchLatestTags } from './latest'
 
 export default {
   createSingleBookmark,
@@ -27,11 +29,13 @@ export default {
   fetchAuthorDetails,
   fetchFeatureTopic,
   fetchIndexPageContent,
+  fetchLatestPosts,
   fetchPostsByCategoryListId,
   fetchPostsByTagListId,
   fetchPostsByCategorySetListId,
   fetchRelatedPostsOfAnEntity,
   fetchTopics,
+  fetchLatestTags,
   getAccessToken,
   getMultipleBookmarks,
   getSingleBookmark,

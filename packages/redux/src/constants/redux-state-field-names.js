@@ -3,6 +3,7 @@ import { CATEGORY_PATH } from '@twreporter/core/lib/constants/category-set'
 
 const entities = 'entities'
 const indexPage = 'index_page'
+const latest = 'latest'
 const lists = 'lists'
 const topicList = 'topic_list'
 const selectedPost = 'selected_post'
@@ -84,6 +85,7 @@ export default {
   selectedTopic,
   entities,
   indexPage,
+  latest,
   lists,
   topicList,
   postsInEntities,
