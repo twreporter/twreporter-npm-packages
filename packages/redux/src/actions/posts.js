@@ -5,6 +5,7 @@ import apiEndpoints from '../constants/api-endpoints'
 import axios from 'axios'
 import stateFieldNames from '../constants/redux-state-field-names'
 import types from '../constants/action-types'
+import { LATEST_LIST_ID } from '../constants/latest'
 
 // lodash
 import filter from 'lodash/filter'
@@ -413,7 +414,7 @@ export function fetchLatestPosts(
   timeout = apiConfig.timeout
 ) {
   return (dispatch, getState) => {
-    return fetchPostsByListId('latest', 'latest', limit, page, timeout)(
+    return fetchPostsByListId(LATEST_LIST_ID, 'latest', limit, page, timeout)(
       dispatch,
       getState
     )
