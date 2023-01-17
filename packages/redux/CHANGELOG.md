@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.0...@twreporter/redux@7.5.0-rc.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* add `LATEST_LIST_ID` constant ([48b4ceb](https://github.com/twreporter/twreporter-npm-packages/commit/48b4ceb507897aed4202acc954bbf101cb7b8332))
+* add missing latest constant file ([9646ef6](https://github.com/twreporter/twreporter-npm-packages/commit/9646ef611a7b6d205010ffa2254b404bc7260855))
+
+
+
+
+
 # [7.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.2...@twreporter/redux@7.5.0-rc.0) (2023-01-12)
 
 
