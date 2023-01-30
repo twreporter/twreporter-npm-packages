@@ -157,12 +157,13 @@ const More = styled.div`
 class Category extends React.PureComponent {
   render() {
     const { data, useTinyImg } = this.props
-    const items = data.map(item => {
+    const items = data.map((item, index) => {
       const isExternal = _.get(item, 'is_external', false)
       const href = getHref(_.get(item, 'slug', 'error'), isExternal)
       const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
+      const key = `${index}-${_.get(item, 'id')}`
       return (
-        <FlexItem key={_.get(item, 'id')}>
+        <FlexItem key={key}>
           <CategoryName>{_.get(item, 'listName')}</CategoryName>
           <TRLink href={href} redirect={isExternal}>
             <ImgFrame>

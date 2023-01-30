@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.3-rc.1...@twreporter/index-page@1.4.3-rc.2) (2023-01-17)
+
+
+### Bug Fixes
+
+* fix react warning when same article occur in different category ([c7f1d90](https://github.com/twreporter/twreporter-npm-packages/commit/c7f1d90f6ee50340a65cffa3dfc3a9e12a7fe8e7))
+
+
+
+
+
 ## [1.4.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.3-rc.0...@twreporter/index-page@1.4.3-rc.1) (2023-01-16)
 
 **Note:** Version bump only for package @twreporter/index-page
