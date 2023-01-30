@@ -4,6 +4,7 @@ import actionTypes from './constants/action-types'
 import createStore from './store/create-store'
 import pagination from './utils/pagination'
 import reduxStateFields from './constants/redux-state-field-names'
+import { LATEST_LIST_ID } from './constants/latest'
 import ReduxStoreContext from './context/redux-store'
 import ReduxStoreProvider from './component/provider'
 
@@ -45,4 +46,5 @@ export default {
     formURL,
     pagination,
   },
+  LATEST_LIST_ID,
 }
