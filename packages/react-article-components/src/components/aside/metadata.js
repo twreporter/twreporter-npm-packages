@@ -8,13 +8,13 @@ import sortBy from 'lodash/sortBy'
 // components
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import predefinedProps from '../../constants/prop-types/aside'
-import themeConst from '../../constants/theme'
 import colorConst from '../../constants/color'
 import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
 
 // twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 import TextLink from '@twreporter/react-components/lib/text/link'
 
@@ -26,7 +26,7 @@ const _ = {
 
 const createLine = (topOrBottom, themeName) => {
   let borderColor = colorConst.gray50
-  if (themeName === themeConst.article.v2.photo) {
+  if (themeName === ARTICLE_THEME.v2.photo) {
     borderColor = colorConst.gray10
   }
 
@@ -215,7 +215,7 @@ const MetadataContainer = styled.div`
 
 function getMetadataContainerStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         ${CategoryText}, ${AuthorName} {
           color: ${colorConst.milkTea};
@@ -235,7 +235,7 @@ function getMetadataContainerStyles(themeName) {
           }
         }
       `
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         ${CategoryText}, ${AuthorName} {
           color: ${colorConst.blue};
@@ -254,7 +254,7 @@ function getMetadataContainerStyles(themeName) {
           }
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         ${CategoryText}, ${AuthorName} {
