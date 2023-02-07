@@ -56,7 +56,7 @@ export const colorOpacity = {
 }
 
 // article
-export const colorArticle = {
+export const COLOR_ARTICLE = {
   blue: '#355ed3',
   brown: '#a67a44',
   milkTea: '#d0a67d',

@@ -19,3 +19,11 @@ export const THEME_STORYBOOK_ARG_TYPE = {
   options: [THEME.normal, THEME.photography, THEME.transparent, THEME.index],
   control: { type: 'radio' },
 }
+
+export const ARTICLE_THEME = {
+  v2: {
+    pink: 'article:v2:pink',
+    default: 'article:v2:default',
+    photo: 'article:v2:photo',
+  },
+}

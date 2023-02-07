@@ -1,18 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import themeConst from './constants/article-theme'
-import { colorArticle } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
+import { COLOR_ARTICLE } from '@twreporter/core/lib/constants/color'
 
 const getColorFromTheme = theme => {
   switch (theme) {
-    case themeConst.article.v2.photo:
-      return colorArticle.milkTea
-    case themeConst.article.v2.pink:
-      return colorArticle.blue
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.photo:
+      return COLOR_ARTICLE.milkTea
+    case ARTICLE_THEME.v2.pink:
+      return COLOR_ARTICLE.blue
+    case ARTICLE_THEME.v2.default:
     default:
-      return colorArticle.brown
+      return COLOR_ARTICLE.brown
   }
 }
 
