@@ -1,3 +1,4 @@
+// TODO: remove this constant & use @twreporter/core/lib/constants/theme
 export default {
   article: {
     v2: {

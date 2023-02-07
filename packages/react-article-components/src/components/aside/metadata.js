@@ -8,13 +8,13 @@ import sortBy from 'lodash/sortBy'
 // components
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import predefinedProps from '../../constants/prop-types/aside'
-import colorConst from '../../constants/color'
 import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
 
 // twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
+import { COLOR_ARTICLE } from '@twreporter/core/lib/constants/color'
 import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 import TextLink from '@twreporter/react-components/lib/text/link'
 
@@ -25,9 +25,9 @@ const _ = {
 }
 
 const createLine = (topOrBottom, themeName) => {
-  let borderColor = colorConst.gray50
+  let borderColor = COLOR_ARTICLE.gray50
   if (themeName === ARTICLE_THEME.v2.photo) {
-    borderColor = colorConst.gray10
+    borderColor = COLOR_ARTICLE.gray10
   }
 
   return css`
@@ -107,7 +107,7 @@ const CategoryText = styled.div`
 const DateSection = styled.div`
   ${props => createLine('top', props.theme.name)}
   font-size: 14px;
-  color: ${colorConst.gray70};
+  color: ${COLOR_ARTICLE.gray70};
   margin-left: 5px;
   margin-top: 15px;
 
@@ -130,7 +130,7 @@ const AuthorRow = styled.div`
 
 const AuthorJobTitle = styled.div`
   font-size: 14px;
-  color: ${colorConst.gray80};
+  color: ${COLOR_ARTICLE.gray80};
   margin-left: 5px;
   padding-top: 2px;
   line-height: 1;
@@ -163,7 +163,7 @@ const AuthorName = styled.div`
 
 const RawAuthorText = styled.div`
   font-size: 14px;
-  color: ${colorConst.gray80};
+  color: ${COLOR_ARTICLE.gray80};
   padding-left: 5px;
 `
 
@@ -218,39 +218,39 @@ function getMetadataContainerStyles(themeName) {
     case ARTICLE_THEME.v2.photo:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: ${colorConst.milkTea};
+          color: ${COLOR_ARTICLE.milkTea};
           &:hover {
-            border-color: ${colorConst.milkTea};
+            border-color: ${COLOR_ARTICLE.milkTea};
           }
         }
         ${AngledSeparationLine} {
-          border-color: ${colorConst.brown};
+          border-color: ${COLOR_ARTICLE.brown};
         }
         ${TagButton} {
-          border-color: ${colorConst.gray80};
-          color: ${colorConst.gray80};
+          border-color: ${COLOR_ARTICLE.gray80};
+          color: ${COLOR_ARTICLE.gray80};
           &:hover {
-            color: ${colorConst.white};
-            border-color: ${colorConst.white};
+            color: ${COLOR_ARTICLE.white};
+            border-color: ${COLOR_ARTICLE.white};
           }
         }
       `
     case ARTICLE_THEME.v2.pink:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: ${colorConst.blue};
+          color: ${COLOR_ARTICLE.blue};
           &:hover {
-            border-color: ${colorConst.blue};
+            border-color: ${COLOR_ARTICLE.blue};
           }
         }
         ${AngledSeparationLine} {
-          border-color: ${colorConst.pink};
+          border-color: ${COLOR_ARTICLE.pink};
         }
         ${TagButton} {
-          border-color: ${colorConst.gray80};
-          color: ${colorConst.gray80};
+          border-color: ${COLOR_ARTICLE.gray80};
+          color: ${COLOR_ARTICLE.gray80};
           &:hover {
-            background-color: ${colorConst.white};
+            background-color: ${COLOR_ARTICLE.white};
           }
         }
       `
@@ -258,19 +258,19 @@ function getMetadataContainerStyles(themeName) {
     default:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: ${colorConst.brown};
+          color: ${COLOR_ARTICLE.brown};
           &:hover {
-            border-color: ${colorConst.brown};
+            border-color: ${COLOR_ARTICLE.brown};
           }
         }
         ${AngledSeparationLine} {
-          border-color: ${colorConst.milkTea};
+          border-color: ${COLOR_ARTICLE.milkTea};
         }
         ${TagButton} {
-          border-color: ${colorConst.gray80};
-          color: ${colorConst.gray80};
+          border-color: ${COLOR_ARTICLE.gray80};
+          color: ${COLOR_ARTICLE.gray80};
           &:hover {
-            background-color: ${colorConst.white};
+            background-color: ${COLOR_ARTICLE.white};
           }
         }
       `
