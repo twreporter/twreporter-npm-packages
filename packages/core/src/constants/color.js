@@ -91,3 +91,13 @@ export const COLOR_ARTICLE = {
   brown: '#a67a44',
   milkTea: '#d0a67d',
 }
+
+export default {
+  colorBrand,
+  colorPhoto,
+  colorPodcast,
+  colorSupportive,
+  colorGrayscale,
+  colorOpacity,
+  COLOR_ARTICLE,
+}
