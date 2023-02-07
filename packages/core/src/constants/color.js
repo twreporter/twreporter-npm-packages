@@ -55,11 +55,9 @@ export const colorOpacity = {
   'black_0.2': 'rgba(0, 0, 0, 0.2)',
 }
 
-export default {
-  colorBrand,
-  colorPhoto,
-  colorPodcast,
-  colorSupportive,
-  colorGrayscale,
-  colorOpacity,
+// article
+export const colorArticle = {
+  blue: '#355ed3',
+  brown: '#a67a44',
+  milkTea: '#d0a67d',
 }

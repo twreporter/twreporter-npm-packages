@@ -1,5 +1,6 @@
-import React, { PureComponent } from 'react'
-import styled, { css } from 'styled-components'
+import React, { PureComponent, useContext } from 'react'
+import PropTypes from 'prop-types'
+import styled, { css, ThemeContext } from 'styled-components'
 import get from 'lodash/get'
 import map from 'lodash/map'
 import sortBy from 'lodash/sortBy'
@@ -15,6 +16,7 @@ import { idToPathSegment } from '../../constants/category'
 // twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
+import TextLink from '@twreporter/react-components/lib/text/link'
 
 const _ = {
   get,
@@ -275,6 +277,37 @@ function getMetadataContainerStyles(themeName) {
   }
 }
 
+const CategorySet = props => {
+  const themeContext = useContext(ThemeContext)
+  const categorySetJSX = _.map(props.categorySet, (set, index) => {
+    const genLink = (path, name, isCategory = false) => {
+      return (
+        <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
+          <TextLink
+            path={path}
+            name={name}
+            theme={themeContext.name}
+            isBold={isCategory}
+          />
+        </CategorySetFlex>
+      )
+    }
+    return (
+      <LinkContainer key={`categorySet-${index}`}>
+        {genLink(`/categories/${set?.category?.id}`, set?.category?.name, true)}
+        {set?.subcategory?.id && set?.subcategory?.name
+          ? genLink(`/tags/${set.subcategory.id}`, set.subcategory.name)
+          : genLink(`/categories/${set?.category?.id}`, '全部')}
+      </LinkContainer>
+    )
+  })
+  return <CategorySetFlexBox>{categorySetJSX}</CategorySetFlexBox>
+}
+
+CategorySet.propTypes = {
+  categorySet: PropTypes.array,
+}
+
 class Metadata extends PureComponent {
   static propTypes = predefinedProps.metadata
 
@@ -322,51 +355,6 @@ class Metadata extends PureComponent {
           }}
         </DynamicComponentsContext.Consumer>
       </CategoryFlexBox>
-    )
-  }
-
-  renderCategorySetSection() {
-    const { categorySet } = this.props
-    return (
-      <CategorySetFlexBox>
-        <DynamicComponentsContext.Consumer>
-          {components => {
-            const categorySetJSX = _.map(categorySet, (set, index) => {
-              const genLink = (path, name, isCategory = false) => {
-                return (
-                  <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
-                    {path && name && (
-                      <components.Link to={path}>
-                        <CategoryText
-                          style={{ fontWeight: isCategory ? 'bold' : 'normal' }}
-                        >
-                          {name}
-                        </CategoryText>
-                      </components.Link>
-                    )}
-                  </CategorySetFlex>
-                )
-              }
-              return (
-                <LinkContainer key={`categorySet-${index}`}>
-                  {genLink(
-                    `/categories/${set?.category?.id}`,
-                    set?.category?.name,
-                    true
-                  )}
-                  {set?.subcategory?.id && set?.subcategory?.name
-                    ? genLink(
-                        `/tags/${set.subcategory.id}`,
-                        set.subcategory.name
-                      )
-                    : genLink(`/categories/${set?.category?.id}`, '全部')}
-                </LinkContainer>
-              )
-            })
-            return categorySetJSX
-          }}
-        </DynamicComponentsContext.Consumer>
-      </CategorySetFlexBox>
     )
   }
 
@@ -440,8 +428,9 @@ class Metadata extends PureComponent {
   }
 
   render() {
-    const date = this.props.date
-      ? new Date(this.props.date).toLocaleString('zh-hant', {
+    const { categorySet, date } = this.props
+    const dateStr = date
+      ? new Date(date).toLocaleString('zh-hant', {
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',
@@ -450,9 +439,9 @@ class Metadata extends PureComponent {
 
     return (
       <MetadataContainer>
-        {ENABLE_NEW_INFO_ARCH && this.renderCategorySetSection()}
+        {ENABLE_NEW_INFO_ARCH && <CategorySet categorySet={categorySet} />}
         {!ENABLE_NEW_INFO_ARCH && this.renderCategorySection()}
-        <DateSection>{date}</DateSection>
+        <DateSection>{dateStr}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}
       </MetadataContainer>
