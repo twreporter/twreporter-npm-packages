@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.3-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.3-rc.2...@twreporter/react-article-components@1.7.3-rc.3) (2023-02-10)
+
+
+### Bug Fixes
+
+* fix rename issue ([c40427e](https://github.com/twreporter/twreporter-npm-packages/commit/c40427e6cd75cdf263e1f2d8fbd7be2cd6dc7a2b))
+
+
+
+
+
 ## [1.7.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.3-rc.1...@twreporter/react-article-components@1.7.3-rc.2) (2023-01-17)
 
 **Note:** Version bump only for package @twreporter/react-article-components

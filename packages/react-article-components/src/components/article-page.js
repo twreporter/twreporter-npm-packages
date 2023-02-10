@@ -389,7 +389,7 @@ export default class Article extends PureComponent {
       <MetadataAndToolsBlock>
         <Metadata
           categories={post.categories} // TODO: remove when categorySet integration is done
-          categorySet={post.categorySet}
+          categorySet={post.category_set}
           date={post.published_date}
           designers={post.designers}
           photographers={post.photographers}
@@ -436,7 +436,7 @@ export default class Article extends PureComponent {
                   <DesktopAside
                     backToTopic={backToTopic}
                     categories={post.categories} // TODO: remove when categorySet integration is done
-                    categorySet={post.categorySet}
+                    categorySet={post.category_set}
                     date={post.published_date}
                     designers={post.designers}
                     photographers={post.photographers}
