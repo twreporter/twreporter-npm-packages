@@ -17,7 +17,7 @@ const getColorFromTheme = theme => {
 }
 
 const Text = styled.div`
-  color: ${props => getColorFromTheme(props.theme)};
+  color: ${props => props.color};
   display: inline-block;
   font-size: 16px;
   line-height: 1;
@@ -27,7 +27,7 @@ const Text = styled.div`
     padding-bottom: 2px;
     border-width: 0 0 1px 0;
     border-style: solid;
-    border-color: ${props => getColorFromTheme(props.theme)};
+    border-color: ${props => props.color};
   }
 `
 
@@ -36,10 +36,11 @@ const Anchor = styled.a`
 `
 
 const TextLink = props => {
+  const color = getColorFromTheme(props.theme)
   return (
     <Anchor href={props.path}>
       <Text
-        theme={props.theme}
+        color={color}
         style={{ fontWeight: props.isBold ? 'bold' : 'normal' }}
       >
         {props.name}
@@ -49,7 +50,7 @@ const TextLink = props => {
 }
 
 TextLink.propTypes = {
-  path: PropTypes.string,
+  path: PropTypes.string.isRequired,
   name: PropTypes.string,
   theme: PropTypes.string,
   isBold: PropTypes.bool,
