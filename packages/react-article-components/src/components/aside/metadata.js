@@ -288,6 +288,7 @@ const CategorySet = props => {
             name={name}
             theme={themeContext.name}
             isBold={isCategory}
+            padding={'0 0 0 5px'}
           />
         </CategorySetFlex>
       )

@@ -21,7 +21,7 @@ const Text = styled.div`
   display: inline-block;
   font-size: 16px;
   line-height: 1;
-  padding-left: 5px;
+  padding: ${props => props.padding};
 
   &:hover {
     padding-bottom: 2px;
@@ -35,15 +35,22 @@ const Anchor = styled.a`
   text-decoration: none;
 `
 
-const TextLink = props => {
-  const color = getColorFromTheme(props.theme)
+const TextLink = ({
+  path = '',
+  name = '',
+  theme = ARTICLE_THEME.v2.default,
+  isBold = false,
+  ...props
+}) => {
+  const color = getColorFromTheme(theme)
   return (
-    <Anchor href={props.path}>
+    <Anchor href={path}>
       <Text
         color={color}
-        style={{ fontWeight: props.isBold ? 'bold' : 'normal' }}
+        style={{ fontWeight: isBold ? 'bold' : 'normal' }}
+        {...props}
       >
-        {props.name}
+        {name}
       </Text>
     </Anchor>
   )
