@@ -1,7 +1,7 @@
 const categoryPath = {
   world: 'world',
   humanrights: 'humanrights',
-  politicsAndSociety: 'politics_and_society',
+  politicsAndSociety: 'politics-and-society',
   health: 'health',
   environment: 'environment',
   econ: 'econ',
