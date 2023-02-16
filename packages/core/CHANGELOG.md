@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.1...@twreporter/core@1.8.2-rc.2) (2023-02-16)
+
+
+### Bug Fixes
+
+* fix category link issue & add error handling ([9bd5f76](https://github.com/twreporter/twreporter-npm-packages/commit/9bd5f76a8b37eff4c634c17dfde30cbe7ac6f1b9))
+
+
+
+
+
 ## [1.8.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.0...@twreporter/core@1.8.2-rc.1) (2023-02-13)
 
 

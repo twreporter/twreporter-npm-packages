@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.3-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.3-rc.4...@twreporter/react-article-components@1.7.3-rc.5) (2023-02-16)
+
+
+### Bug Fixes
+
+* fix category link issue & add error handling ([9bd5f76](https://github.com/twreporter/twreporter-npm-packages/commit/9bd5f76a8b37eff4c634c17dfde30cbe7ac6f1b9))
+
+
+
+
+
 ## [1.7.3-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.3-rc.3...@twreporter/react-article-components@1.7.3-rc.4) (2023-02-13)
 
 
