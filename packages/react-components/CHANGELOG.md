@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.16.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.16.0-rc.0...@twreporter/react-components@8.16.0-rc.1) (2023-02-16)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.16.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.2-rc.2...@twreporter/react-components@8.16.0-rc.0) (2023-02-13)
+
+
+### Bug Fixes
+
+* abstract padding ([bdb104b](https://github.com/twreporter/twreporter-npm-packages/commit/bdb104ba374dd4210d3517c95edd5050274509f1))
+* fix comments ([3fbc942](https://github.com/twreporter/twreporter-npm-packages/commit/3fbc942b0dfa8730a79d8c04a599af6de6de3a56))
+* refactor some ([11217da](https://github.com/twreporter/twreporter-npm-packages/commit/11217da7d8698bd4f57e7becab5a2d9072a9dc39))
+
+
+### Features
+
+* add story ([b951b33](https://github.com/twreporter/twreporter-npm-packages/commit/b951b3388d7e174e25e8742708a70e7ddc63c97e))
+
+
+
+
+
 ## [8.15.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.15.2-rc.1...@twreporter/react-components@8.15.2-rc.2) (2023-01-17)
 
 **Note:** Version bump only for package @twreporter/react-components

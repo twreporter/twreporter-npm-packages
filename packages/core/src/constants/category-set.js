@@ -54,6 +54,14 @@ export const CATEGORY_ID = {
   [categoryPath.photography]: '574d028748fa171000c45d48',
 }
 
+// flip CATEGORY_ID to a {id: path} object
+const flippedCategoryID = Object.fromEntries(
+  Object.entries(CATEGORY_ID).map(([key, value]) => [value, key])
+)
+export const GET_CATEGORY_PATH_FROM_ID = id => {
+  return flippedCategoryID[id]
+}
+
 const subcategoryPath = {
   all: 'all',
   hk: 'hk',
@@ -326,6 +334,7 @@ export default {
   CATEGORY_ORDER,
   CATEGORY_LABEL,
   CATEGORY_ID,
+  GET_CATEGORY_PATH_FROM_ID,
   SUBCATEGORY_LABEL,
   SUBCATEGORY_ID,
   CATEGORY_SET,

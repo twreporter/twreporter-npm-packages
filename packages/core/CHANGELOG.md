@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.1...@twreporter/core@1.8.2-rc.2) (2023-02-16)
+
+
+### Bug Fixes
+
+* fix category link issue & add error handling ([9bd5f76](https://github.com/twreporter/twreporter-npm-packages/commit/9bd5f76a8b37eff4c634c17dfde30cbe7ac6f1b9))
+
+
+
+
+
+## [1.8.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.0...@twreporter/core@1.8.2-rc.1) (2023-02-13)
+
+
+### Bug Fixes
+
+* export both named & default ([981457d](https://github.com/twreporter/twreporter-npm-packages/commit/981457d2d164ed1e492ecae38676ca72ddf43434))
+* refactor some ([11217da](https://github.com/twreporter/twreporter-npm-packages/commit/11217da7d8698bd4f57e7becab5a2d9072a9dc39))
+* replace color constant ([c4b4dcd](https://github.com/twreporter/twreporter-npm-packages/commit/c4b4dcdd3190105c13007201451f910053cf92f0))
+
+
+
+
+
 ## [1.8.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.1...@twreporter/core@1.8.2-rc.0) (2023-01-17)
 
 **Note:** Version bump only for package @twreporter/core
