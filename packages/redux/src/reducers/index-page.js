@@ -7,13 +7,14 @@ import get from 'lodash/get'
 import map from 'lodash/map'
 import merge from 'lodash/merge'
 import values from 'lodash/values'
-
+import snakeCase from 'lodash/snakeCase'
 const _ = {
   concat,
   get,
   map,
   merge,
   values,
+  snakeCase,
 }
 
 const initialState = {
@@ -33,7 +34,8 @@ function indexPage(state = initialState, action = {}) {
       const fields = _.concat(sections, categories)
 
       fields.forEach(field => {
-        rtn[field] = _.map(_.get(payload, ['items', field]), post => {
+        const key = _.snakeCase(field)
+        rtn[field] = _.map(_.get(payload, ['items', key]), post => {
           return _.get(post, 'id')
         })
       })

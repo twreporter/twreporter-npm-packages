@@ -78,6 +78,10 @@ export const checkReferrer = (
   }
 }
 
+export const checkPathnameParent = (pathname = '', parent = '') => {
+  return _.indexOf(_.split(pathname, '/'), parent) === 1
+}
+
 export const getCategoryLink = (
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch,
