@@ -55,12 +55,12 @@ export const CATEGORY_ID = {
 }
 
 // flip CATEGORY_ID to a {id: path} object
-let flippedCategoryID = {}
+let categoryIDToPath = {}
 Object.entries(CATEGORY_ID).forEach(([key, value]) => {
-  flippedCategoryID[value] = key
+  categoryIDToPath[value] = key
 })
 export const GET_CATEGORY_PATH_FROM_ID = id => {
-  return flippedCategoryID[id]
+  return categoryIDToPath[id]
 }
 
 const subcategoryPath = {
