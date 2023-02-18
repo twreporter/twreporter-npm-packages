@@ -79,12 +79,7 @@ export const checkReferrer = (
 }
 
 export const checkPathnameParent = (pathname = '', parent = '') => {
-  try {
-    const isMatch = _.indexOf(_.split(pathname, '/'), parent) === 1
-    return isMatch
-  } catch (err) {
-    return false
-  }
+  return _.indexOf(_.split(pathname, '/'), parent) === 1
 }
 
 export const getCategoryLink = (
