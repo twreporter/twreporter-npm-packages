@@ -11,10 +11,12 @@ import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import forEach from 'lodash/forEach'
 import reduce from 'lodash/reduce'
 import split from 'lodash/split'
+import indexOf from 'lodash/indexOf'
 const _ = {
   forEach,
   reduce,
   split,
+  indexOf,
 }
 
 const originsForClient = origins.forClientSideRendering
