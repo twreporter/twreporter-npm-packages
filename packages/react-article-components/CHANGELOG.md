@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.3-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.3-rc.8...@twreporter/react-article-components@1.7.3-rc.9) (2023-02-20)
+
+
+### Bug Fixes
+
+* fix subcategory path issue ([c17a761](https://github.com/twreporter/twreporter-npm-packages/commit/c17a761e5178fafce4fd49da17ea1232c2d69faa))
+
+
+
+
+
 ## [1.7.3-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.3-rc.7...@twreporter/react-article-components@1.7.3-rc.8) (2023-02-20)
 
 **Note:** Version bump only for package @twreporter/react-article-components

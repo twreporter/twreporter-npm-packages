@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.3...@twreporter/core@1.8.2-rc.4) (2023-02-20)
+
+
+### Bug Fixes
+
+* add missing export ([dee0af3](https://github.com/twreporter/twreporter-npm-packages/commit/dee0af3c0612b5918014853bafa200ff3d590e41))
+* fix subcategory path issue ([c17a761](https://github.com/twreporter/twreporter-npm-packages/commit/c17a761e5178fafce4fd49da17ea1232c2d69faa))
+
+
+
+
+
 ## [1.8.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.2...@twreporter/core@1.8.2-rc.3) (2023-02-18)
 
 
