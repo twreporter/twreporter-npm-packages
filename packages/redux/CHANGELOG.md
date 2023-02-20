@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.4...@twreporter/redux@7.5.0-rc.5) (2023-02-18)
+
+
+### Bug Fixes
+
+* category url & api returned path not consistent ([bd2cfef](https://github.com/twreporter/twreporter-npm-packages/commit/bd2cfefa8e3522bb71fc1fc84c3cb77cd6edf548))
+* index-page reducer test case ([059fb43](https://github.com/twreporter/twreporter-npm-packages/commit/059fb43d61b2ffd2fdd6621744a8fb4367673404))
+
+
+
+
+
+# [7.5.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.3...@twreporter/redux@7.5.0-rc.4) (2023-02-18)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
 # [7.5.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.2...@twreporter/redux@7.5.0-rc.3) (2023-02-16)
 
 **Note:** Version bump only for package @twreporter/redux

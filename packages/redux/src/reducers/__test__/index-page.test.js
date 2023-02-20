@@ -4,6 +4,13 @@ import fieldNames from '../../constants/redux-state-field-names'
 import reducer from '../index-page'
 import types from '../../constants/action-types'
 import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
+// lodash
+import reduce from 'lodash/reduce'
+import snakeCase from 'lodash/snakeCase'
+const _ = {
+  reduce,
+  snakeCase,
+}
 
 const post1 = {
   id: 'post-id-1',
@@ -38,6 +45,21 @@ const nonFullTopic = {
   full: false,
 }
 
+const unifyToBeFieldName = fields =>
+  _.reduce(
+    fields,
+    (res, value, key) => {
+      res[key] = _.snakeCase(value)
+      return res
+    },
+    {}
+  )
+
+const beFieldNames = {
+  categories: unifyToBeFieldName(fieldNames.categories),
+  sections: unifyToBeFieldName(fieldNames.sections),
+}
+
 describe('index-page reducer', () => {
   test('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual({
@@ -50,22 +72,22 @@ describe('index-page reducer', () => {
   test('should handle `types.indexPage.read.success`', () => {
     const categoryPayload = ENABLE_NEW_INFO_ARCH
       ? {
-          [fieldNames.categories.world]: [post1],
-          [fieldNames.categories.humanrights]: [post2],
-          [fieldNames.categories.politicsAndSociety]: [post3],
-          [fieldNames.categories.health]: [post4],
-          [fieldNames.categories.environment]: [],
-          [fieldNames.categories.econ]: [],
-          [fieldNames.categories.culture]: [],
-          [fieldNames.categories.education]: [],
+          [beFieldNames.categories.world]: [post1],
+          [beFieldNames.categories.humanrights]: [post2],
+          [beFieldNames.categories.politicsAndSociety]: [post3],
+          [beFieldNames.categories.health]: [post4],
+          [beFieldNames.categories.environment]: [],
+          [beFieldNames.categories.econ]: [],
+          [beFieldNames.categories.culture]: [],
+          [beFieldNames.categories.education]: [],
         }
       : {
-          [fieldNames.categories.humanRightsAndSociety]: [post1],
-          [fieldNames.categories.environmentAndEducation]: [post2],
-          [fieldNames.categories.politicsAndEconomy]: [post3],
-          [fieldNames.categories.cultureAndArt]: [post4],
-          [fieldNames.categories.livingAndMedicalCare]: [],
-          [fieldNames.categories.international]: [],
+          [beFieldNames.categories.humanRightsAndSociety]: [post1],
+          [beFieldNames.categories.environmentAndEducation]: [post2],
+          [beFieldNames.categories.politicsAndEconomy]: [post3],
+          [beFieldNames.categories.cultureAndArt]: [post4],
+          [beFieldNames.categories.livingAndMedicalCare]: [],
+          [beFieldNames.categories.international]: [],
         }
     const categoryResponse = ENABLE_NEW_INFO_ARCH
       ? {
@@ -95,13 +117,13 @@ describe('index-page reducer', () => {
           type: types.indexPage.read.success,
           payload: {
             items: {
-              [fieldNames.sections.latestSection]: [post1],
-              [fieldNames.sections.editorPicksSection]: [post2],
-              [fieldNames.sections.reviewsSection]: [post3],
-              [fieldNames.sections.latestTopicSection]: [fullTopic],
-              [fieldNames.sections.topicsSection]: [fullTopic, nonFullTopic],
-              [fieldNames.sections.photosSection]: [post4],
-              [fieldNames.sections.infographicsSection]: [],
+              [beFieldNames.sections.latestSection]: [post1],
+              [beFieldNames.sections.editorPicksSection]: [post2],
+              [beFieldNames.sections.reviewsSection]: [post3],
+              [beFieldNames.sections.latestTopicSection]: [fullTopic],
+              [beFieldNames.sections.topicsSection]: [fullTopic, nonFullTopic],
+              [beFieldNames.sections.photosSection]: [post4],
+              [beFieldNames.sections.infographicsSection]: [],
               ...categoryPayload,
             },
           },

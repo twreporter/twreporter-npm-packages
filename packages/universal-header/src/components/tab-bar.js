@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // context
 import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
-import { getTabBarLinks } from '../utils/links'
+import { getTabBarLinks, checkPathnameParent } from '../utils/links'
 import { selectTabBarTheme } from '../utils/theme'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
@@ -54,7 +54,8 @@ const TabBar = () => {
   const HamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
   const { bgColor, borderColor } = selectTabBarTheme(theme)
   const isHomeActive = !isHamburgerMenuOpen && pathname === '/'
-  const isLatestActive = !isHamburgerMenuOpen && pathname === '/latest'
+  const isLatestActive =
+    !isHamburgerMenuOpen && checkPathnameParent(pathname, 'latest')
   const isBookmarkActive = !isHamburgerMenuOpen && pathname === '/bookmarks'
   const hamburgerIconText = isHamburgerMenuOpen ? '關閉選單' : '選單'
 

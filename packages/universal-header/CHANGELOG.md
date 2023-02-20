@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.6...@twreporter/universal-header@2.4.2-rc.7) (2023-02-20)
+
+
+### Bug Fixes
+
+* add missing import ([6c016ae](https://github.com/twreporter/twreporter-npm-packages/commit/6c016aed11d920056f2b6cbc8c53399ebb50882f))
+
+
+
+
+
+## [2.4.2-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.5...@twreporter/universal-header@2.4.2-rc.6) (2023-02-18)
+
+
+### Bug Fixes
+
+* address review comment ([914fd68](https://github.com/twreporter/twreporter-npm-packages/commit/914fd68e1e6c284b61b594cc7c8df97568c3d201))
+* latest icon should active when click latest tags ([819a3a8](https://github.com/twreporter/twreporter-npm-packages/commit/819a3a88ef3547261799c6d0a1d088b522962acd))
+* remove unnecessary try-catch ([4f57abd](https://github.com/twreporter/twreporter-npm-packages/commit/4f57abd5e340638cb03339ae1edc15cbc36a89e1))
+
+
+
+
+
+## [2.4.2-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.4...@twreporter/universal-header@2.4.2-rc.5) (2023-02-18)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
 ## [2.4.2-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.3...@twreporter/universal-header@2.4.2-rc.4) (2023-02-16)
 
 **Note:** Version bump only for package @twreporter/universal-header

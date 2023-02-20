@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.2...@twreporter/core@1.8.2-rc.3) (2023-02-18)
+
+
+### Bug Fixes
+
+* rename object ([c13468f](https://github.com/twreporter/twreporter-npm-packages/commit/c13468fe9a0ddea0e699a0cabc4c39993c6d221e))
+* replace Object.fromentries() to avoid version compatiblity issue ([7623323](https://github.com/twreporter/twreporter-npm-packages/commit/762332376e6c9a941f55ebf63ec8e6da586ab6ef))
+
+
+
+
+
 ## [1.8.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2-rc.1...@twreporter/core@1.8.2-rc.2) (2023-02-16)
 
 
