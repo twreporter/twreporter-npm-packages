@@ -242,6 +242,17 @@ export const SUBCATEGORY_ID = {
   [subcategoryPath.letter]: '63206383207bf7c5f871626b',
 }
 
+// flip SUBCATEGORY_ID to a {id: path} object
+let subcategoryIDToPath = {}
+Object.entries(SUBCATEGORY_ID)
+  .filter(([key, value]) => key !== subcategoryPath.all)
+  .forEach(([key, value]) => {
+    subcategoryIDToPath[value] = key
+  })
+export const GET_SUBCATEGORY_PATH_FROM_ID = id => {
+  return subcategoryIDToPath[id]
+}
+
 export const CATEGORY_SET = {
   [categoryPath.world]: [
     subcategoryPath.all,
@@ -336,6 +347,7 @@ export default {
   CATEGORY_LABEL,
   CATEGORY_ID,
   GET_CATEGORY_PATH_FROM_ID,
+  GET_SUBCATEGORY_PATH_FROM_ID,
   SUBCATEGORY_LABEL,
   SUBCATEGORY_ID,
   CATEGORY_SET,

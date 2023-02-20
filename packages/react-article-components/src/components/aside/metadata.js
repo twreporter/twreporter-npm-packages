@@ -15,7 +15,10 @@ import { idToPathSegment } from '../../constants/category'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 import { COLOR_ARTICLE } from '@twreporter/core/lib/constants/color'
-import { GET_CATEGORY_PATH_FROM_ID } from '@twreporter/core/lib/constants/category-set'
+import {
+  GET_CATEGORY_PATH_FROM_ID,
+  GET_SUBCATEGORY_PATH_FROM_ID,
+} from '@twreporter/core/lib/constants/category-set'
 import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 import TextLink from '@twreporter/react-components/lib/text/link'
 
@@ -295,11 +298,15 @@ const CategorySet = props => {
       )
     }
     const categoryPath = GET_CATEGORY_PATH_FROM_ID(set?.category?.id)
+    const subcategoryPath = GET_SUBCATEGORY_PATH_FROM_ID(set?.subcategory?.id)
     return categoryPath ? (
       <LinkContainer key={`categorySet-${index}`}>
         {genLink(`/categories/${categoryPath}`, set?.category?.name, true)}
-        {set?.subcategory?.id && set?.subcategory?.name
-          ? genLink(`/tags/${set.subcategory.id}`, set.subcategory.name)
+        {subcategoryPath && set?.subcategory?.name
+          ? genLink(
+              `/categories/${categoryPath}/${subcategoryPath}`,
+              set.subcategory.name
+            )
           : genLink(`/categories/${categoryPath}`, '全部')}
       </LinkContainer>
     ) : null
