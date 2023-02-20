@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.6...@twreporter/universal-header@2.4.2-rc.7) (2023-02-20)
+
+
+### Bug Fixes
+
+* add missing import ([6c016ae](https://github.com/twreporter/twreporter-npm-packages/commit/6c016aed11d920056f2b6cbc8c53399ebb50882f))
+
+
+
+
+
 ## [2.4.2-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.5...@twreporter/universal-header@2.4.2-rc.6) (2023-02-18)
 
 
