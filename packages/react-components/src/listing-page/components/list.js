@@ -24,7 +24,7 @@ const _ = {
 }
 
 const Container = styled.div`
-  margin: 45px auto 0 auto;
+  margin: 0 auto;
 `
 
 const Header = styled.div`

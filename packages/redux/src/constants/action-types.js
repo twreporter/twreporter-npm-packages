@@ -70,6 +70,15 @@ export default {
     },
   },
 
+  latest: {
+    read: {
+      request: 'request to fetch latest tags',
+      success: 'success to fetch latest tags',
+      failure: 'fail to fetch latest tags',
+      alreadyExists: 'latest tags to fetch are already existed',
+    },
+  },
+
   singleBookmark: {
     read: {
       request: 'request to fetch single bookmark',

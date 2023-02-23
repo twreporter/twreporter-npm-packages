@@ -6,6 +6,7 @@ import HeaderContext from '../contexts/header-context'
 // utils
 import { selectHamburgerItemTheme } from '../utils/theme'
 // @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 import Link from '@twreporter/react-components/lib/customized-link'
 import { Arrow } from '@twreporter/react-components/lib/icon'
 import { P1, P2 } from '@twreporter/react-components/lib/text/paragraph'
@@ -28,9 +29,11 @@ const ItemContainer = styled.div`
     background-color: ${props => props.color};
   }
 
-  &:hover {
-    background-color: ${props => props.hoverBgColor};
-  }
+  ${mq.desktopAndAbove`
+    &:hover {
+      background-color: ${props => props.hoverBgColor};
+    }
+  `}
 
   &:active {
     background-color: ${props => props.activeBgColor};

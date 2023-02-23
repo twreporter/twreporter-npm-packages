@@ -3,6 +3,100 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.8...@twreporter/universal-header@2.4.2-rc.9) (2023-02-22)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.2-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.7...@twreporter/universal-header@2.4.2-rc.8) (2023-02-20)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.2-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.6...@twreporter/universal-header@2.4.2-rc.7) (2023-02-20)
+
+
+### Bug Fixes
+
+* add missing import ([6c016ae](https://github.com/twreporter/twreporter-npm-packages/commit/6c016aed11d920056f2b6cbc8c53399ebb50882f))
+
+
+
+
+
+## [2.4.2-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.5...@twreporter/universal-header@2.4.2-rc.6) (2023-02-18)
+
+
+### Bug Fixes
+
+* address review comment ([914fd68](https://github.com/twreporter/twreporter-npm-packages/commit/914fd68e1e6c284b61b594cc7c8df97568c3d201))
+* latest icon should active when click latest tags ([819a3a8](https://github.com/twreporter/twreporter-npm-packages/commit/819a3a88ef3547261799c6d0a1d088b522962acd))
+* remove unnecessary try-catch ([4f57abd](https://github.com/twreporter/twreporter-npm-packages/commit/4f57abd5e340638cb03339ae1edc15cbc36a89e1))
+
+
+
+
+
+## [2.4.2-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.4...@twreporter/universal-header@2.4.2-rc.5) (2023-02-18)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.2-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.3...@twreporter/universal-header@2.4.2-rc.4) (2023-02-16)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.2...@twreporter/universal-header@2.4.2-rc.3) (2023-02-13)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.1...@twreporter/universal-header@2.4.2-rc.2) (2023-01-17)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.4.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2-rc.0...@twreporter/universal-header@2.4.2-rc.1) (2023-01-16)
+
+
+### Bug Fixes
+
+* fix defects for mobile/tablet header ([bb3f7e5](https://github.com/twreporter/twreporter-npm-packages/commit/bb3f7e523b3173712d9f308e76d781326a276c64))
+* fix hamburger menu style ([917f603](https://github.com/twreporter/twreporter-npm-packages/commit/917f6037231ab8f13df56b95b2efc6bb5548064a))
+* ios15.1 url bar would hide when scroll hambuger menu ([eba130d](https://github.com/twreporter/twreporter-npm-packages/commit/eba130d0d670462ac25f40f25106a364d65fb160))
+* mobile hamburger cannot scroll to bottom when url bar show ([b85a2fd](https://github.com/twreporter/twreporter-npm-packages/commit/b85a2fd57174528bfc3876d6f934664f03981ffc))
+
+
+
+
+
+## [2.4.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1...@twreporter/universal-header@2.4.2-rc.0) (2023-01-12)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
 ## [2.4.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.1-rc.7...@twreporter/universal-header@2.4.1) (2023-01-06)
 
 **Note:** Version bump only for package @twreporter/universal-header

@@ -5,4 +5,5 @@ export default {
   posts: 'posts',
   users: 'users',
   authors: 'authors',
+  tags: 'tags',
 }

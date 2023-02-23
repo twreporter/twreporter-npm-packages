@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.15.1",
+  "version": "8.16.0-rc.5",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -15,8 +15,8 @@
     "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@twreporter/core": "^1.8.1",
-    "@twreporter/redux": "^7.4.2",
+    "@twreporter/core": "^1.8.2-rc.5",
+    "@twreporter/redux": "^7.5.0-rc.7",
     "fontfaceobserver-es": "^3.3.3",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",

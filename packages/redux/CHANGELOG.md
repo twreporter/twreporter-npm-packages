@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.6...@twreporter/redux@7.5.0-rc.7) (2023-02-22)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.5.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.5...@twreporter/redux@7.5.0-rc.6) (2023-02-20)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.5.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.4...@twreporter/redux@7.5.0-rc.5) (2023-02-18)
+
+
+### Bug Fixes
+
+* category url & api returned path not consistent ([bd2cfef](https://github.com/twreporter/twreporter-npm-packages/commit/bd2cfefa8e3522bb71fc1fc84c3cb77cd6edf548))
+* index-page reducer test case ([059fb43](https://github.com/twreporter/twreporter-npm-packages/commit/059fb43d61b2ffd2fdd6621744a8fb4367673404))
+
+
+
+
+
+# [7.5.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.3...@twreporter/redux@7.5.0-rc.4) (2023-02-18)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.5.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.2...@twreporter/redux@7.5.0-rc.3) (2023-02-16)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.5.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.1...@twreporter/redux@7.5.0-rc.2) (2023-02-13)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.0-rc.0...@twreporter/redux@7.5.0-rc.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* add `LATEST_LIST_ID` constant ([48b4ceb](https://github.com/twreporter/twreporter-npm-packages/commit/48b4ceb507897aed4202acc954bbf101cb7b8332))
+* add missing latest constant file ([9646ef6](https://github.com/twreporter/twreporter-npm-packages/commit/9646ef611a7b6d205010ffa2254b404bc7260855))
+
+
+
+
+
+# [7.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.2...@twreporter/redux@7.5.0-rc.0) (2023-01-12)
+
+
+### Features
+
+* add latest page action & reducer ([d56ff04](https://github.com/twreporter/twreporter-npm-packages/commit/d56ff044d46e7073784e9487efb7e0243e7e0d03))
+
+
+
+
+
 ## [7.4.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.4.2-rc.2...@twreporter/redux@7.4.2) (2023-01-06)
 
 **Note:** Version bump only for package @twreporter/redux

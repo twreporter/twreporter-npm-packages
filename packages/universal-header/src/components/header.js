@@ -43,7 +43,8 @@ const animation = {
   step3Duration: '200ms',
 }
 const zIndex = {
-  tabBar: 10,
+  tabBarMobile: 10,
+  tabBarTablet: 3,
   hamburger: 4,
   header: 3,
   topRow: 2,
@@ -205,11 +206,16 @@ const HamburgerContainer = styled.div`
   `}
 `
 const TabBarContainer = styled.div`
-  z-index: ${zIndex.tabBar};
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+  ${mq.tabletOnly`
+    z-index: ${zIndex.tabBarTablet};
+  `}
+  ${mq.mobileOnly`
+    z-index: ${zIndex.tabBarMobile};
+  `}
 `
 const HideOnArticle = styled.div`
   ${props => (props.isOnArticlePage ? 'display: none;' : '')}

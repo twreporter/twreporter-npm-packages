@@ -1,3 +1,4 @@
+// TODO: remove this constant & use @twreporter/core/lib/constants/color
 export default {
   transparent: 'rgba(0, 0, 0, 0)',
   white: '#ffffff',
