@@ -14,9 +14,12 @@ export const Checkbox = ({
   onChange = () => {},
   ...props
 }) => {
+  const handleChange = e => {
+    onChange && onChange()
+  }
   return (
     <Container {...props}>
-      <input type="checkbox" checked={value} onChange={onChange} />
+      <input type="checkbox" checked={value} onChange={handleChange} />
       <P1 text={label} />
     </Container>
   )
