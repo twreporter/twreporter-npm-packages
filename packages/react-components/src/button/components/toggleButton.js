@@ -64,6 +64,9 @@ const ToggleButton = ({
   ...props
 }) => {
   const labelStr = label && label.length >= 2 ? label[value ? 1 : 0] : ''
+  const labelComponent = (
+    <P2 text={labelStr} style={{ color: colorGrayscale.gray600 }} />
+  )
   const handleChange = e => {
     onChange && onChange()
   }
@@ -82,13 +85,13 @@ const ToggleButton = ({
     >
       {labelPosition === Position.TOP || labelPosition === Position.LEFT ? (
         <React.Fragment>
-          <P2 text={labelStr} />
+          {labelComponent}
           {toggle}
         </React.Fragment>
       ) : (
         <React.Fragment>
           {toggle}
-          <P2 text={labelStr} />
+          {labelComponent}
         </React.Fragment>
       )}
     </Container>
