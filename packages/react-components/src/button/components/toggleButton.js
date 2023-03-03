@@ -8,10 +8,13 @@ import {
 import { Position } from '../constants'
 import { P2 } from '../../text/paragraph'
 
+// TODO: check width not 42px?
 const Container = styled.div`
   display: flex;
   flex-direction: ${props => (props.isVertical ? 'column' : 'row')};
-  width: 42px;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
 `
 
 const Label = styled.label`
