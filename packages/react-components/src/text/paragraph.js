@@ -26,9 +26,14 @@ const P4Container = styled(defaultContainer)`
   font-size: 10px;
 `
 
-export const P1 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
+export const P1 = ({
+  text = '',
+  weight = WEIGHT.normal,
+  className = '',
+  ...props
+}) => {
   return (
-    <P1Container weight={weight} className={className}>
+    <P1Container weight={weight} className={className} {...props}>
       {text}
     </P1Container>
   )
@@ -39,9 +44,14 @@ P1.propTypes = {
   className: PropTypes.string,
 }
 
-export const P2 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
+export const P2 = ({
+  text = '',
+  weight = WEIGHT.normal,
+  className = '',
+  ...props
+}) => {
   return (
-    <P2Container weight={weight} className={className}>
+    <P2Container weight={weight} className={className} {...props}>
       {text}
     </P2Container>
   )
@@ -52,9 +62,14 @@ P2.propTypes = {
   className: PropTypes.string,
 }
 
-export const P3 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
+export const P3 = ({
+  text = '',
+  weight = WEIGHT.normal,
+  className = '',
+  ...props
+}) => {
   return (
-    <P3Container weight={weight} className={className}>
+    <P3Container weight={weight} className={className} {...props}>
       {text}
     </P3Container>
   )
@@ -65,9 +80,14 @@ P3.propTypes = {
   className: PropTypes.string,
 }
 
-export const P4 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
+export const P4 = ({
+  text = '',
+  weight = WEIGHT.normal,
+  className = '',
+  ...props
+}) => {
   return (
-    <P4Container weight={weight} className={className}>
+    <P4Container weight={weight} className={className} {...props}>
       {text}
     </P4Container>
   )

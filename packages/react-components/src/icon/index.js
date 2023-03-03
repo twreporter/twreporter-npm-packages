@@ -30,9 +30,9 @@ Icon.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
 }
 
-export const Arrow = ({ direction = 'right', releaseBranch }) => {
+export const Arrow = ({ direction = 'right', releaseBranch, ...props }) => {
   const filename = `arrow_${direction}`
-  return <Icon filename={filename} releaseBranch={releaseBranch} />
+  return <Icon filename={filename} releaseBranch={releaseBranch} {...props} />
 }
 Arrow.propTypes = {
   direction: PropTypes.oneOf(['right', 'left', 'up', 'down']),
