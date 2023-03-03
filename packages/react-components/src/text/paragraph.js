@@ -8,6 +8,8 @@ const defaultContainer = styled.div`
   font-weight: ${props => fontWeight[props.weight]};
   font-family: ${fontFamily.default};
   line-height: 150%;
+  display: flex;
+  align-items: center;
 `
 
 const P1Container = styled(defaultContainer)`
