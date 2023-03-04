@@ -6,6 +6,7 @@ import { P2 } from '../text/paragraph'
 const Container = styled.div`
   background: white;
   padding: 2px 4px;
+  width: fit-content;
 `
 
 export const Badge = ({ text = '', ...props }) => {
