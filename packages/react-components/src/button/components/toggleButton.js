@@ -30,7 +30,7 @@ const Switch = styled.div`
   height: 20px;
   background: ${colorGrayscale.gray600};
   border-radius: 20px;
-  padding: 4px;
+  padding: 0px;
   transition: 100ms ease-in-out;
 
   &:before {
@@ -68,7 +68,10 @@ const ToggleButton = ({
 }) => {
   const labelStr = label && label.length >= 2 ? label[value ? 1 : 0] : ''
   const labelComponent = (
-    <P2 text={labelStr} style={{ color: colorGrayscale.gray600 }} />
+    <P2
+      text={labelStr}
+      style={{ color: colorGrayscale.gray600, whiteSpace: 'nowrap' }}
+    />
   )
   const handleChange = e => {
     onChange && onChange()
