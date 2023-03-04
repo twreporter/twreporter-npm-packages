@@ -5,13 +5,12 @@ import {
   colorBrand,
   colorGrayscale,
 } from '@twreporter/core/lib/constants/color'
-import { Position } from '../constants'
 import { P2 } from '../../text/paragraph'
 
 // TODO: check width not 42px?
 const Container = styled.div`
   display: flex;
-  flex-direction: ${props => (props.isVertical ? 'column' : 'row')};
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 44px;
@@ -62,44 +61,24 @@ const Input = styled.input`
 const ToggleButton = ({
   value = false,
   label = ['', ''],
-  labelPosition = Position.LEFT,
   onChange = () => {},
   ...props
 }) => {
   const labelStr = label && label.length >= 2 ? label[value ? 1 : 0] : ''
-  const labelComponent = (
-    <P2
-      text={labelStr}
-      style={{ color: colorGrayscale.gray600, whiteSpace: 'nowrap' }}
-    />
-  )
   const handleChange = e => {
     onChange && onChange()
   }
-  const toggle = (
-    <Label {...props}>
-      <Input type="checkbox" checked={value} onChange={handleChange} />
-      <Switch />
-    </Label>
-  )
 
   return (
-    <Container
-      isVertical={
-        labelPosition === Position.TOP || labelPosition === Position.BOTTOM
-      }
-    >
-      {labelPosition === Position.TOP || labelPosition === Position.LEFT ? (
-        <React.Fragment>
-          {labelComponent}
-          {toggle}
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          {toggle}
-          {labelComponent}
-        </React.Fragment>
-      )}
+    <Container>
+      <P2
+        text={labelStr}
+        style={{ color: colorGrayscale.gray600, whiteSpace: 'nowrap' }}
+      />
+      <Label {...props}>
+        <Input type="checkbox" checked={value} onChange={handleChange} />
+        <Switch />
+      </Label>
     </Container>
   )
 }
@@ -107,12 +86,6 @@ const ToggleButton = ({
 ToggleButton.propTypes = {
   value: PropTypes.bool.isRequired,
   label: PropTypes.arrayOf(PropTypes.string),
-  labelPosition: PropTypes.oneOf([
-    Position.TOP,
-    Position.BOTTOM,
-    Position.LEFT,
-    Position.RIGHT,
-  ]),
   onChange: PropTypes.func.isRequired,
 }
 
