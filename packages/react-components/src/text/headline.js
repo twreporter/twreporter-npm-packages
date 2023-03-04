@@ -67,119 +67,37 @@ const H6Container = styled(DefaultContainer)`
   `}
 `
 
-export const H1 = ({
-  text = '',
-  type = TYPE.default,
-  className = '',
-  ...props
-}) => {
-  const fontFamily = TYPE_FONT_FAMILY[type]
-  return (
-    <H1Container fontFamily={fontFamily} className={className} {...props}>
-      {text}
-    </H1Container>
-  )
-}
-H1.propTypes = {
-  text: PropTypes.string,
-  type: TYPE_PROP_TYPES,
-  className: PropTypes.string,
+const withContainer = HeaderContainer => {
+  const headerline = ({
+    text = '',
+    type = TYPE.default,
+    className = '',
+    ...props
+  }) => {
+    const fontFamily = TYPE_FONT_FAMILY[type]
+    return (
+      <HeaderContainer fontFamily={fontFamily} className={className} {...props}>
+        {text}
+      </HeaderContainer>
+    )
+  }
+
+  headerline.displayName = 'headerline'
+  headerline.propTypes = {
+    text: PropTypes.string,
+    type: TYPE_PROP_TYPES,
+    className: PropTypes.string,
+  }
+
+  return headerline
 }
 
-export const H2 = ({
-  text = '',
-  type = TYPE.default,
-  className = '',
-  ...props
-}) => {
-  const fontFamily = TYPE_FONT_FAMILY[type]
-  return (
-    <H2Container fontFamily={fontFamily} className={className} {...props}>
-      {text}
-    </H2Container>
-  )
-}
-H2.propTypes = {
-  text: PropTypes.string,
-  type: TYPE_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const H3 = ({
-  text = '',
-  type = TYPE.default,
-  className = '',
-  ...props
-}) => {
-  const fontFamily = TYPE_FONT_FAMILY[type]
-  return (
-    <H3Container fontFamily={fontFamily} className={className} {...props}>
-      {text}
-    </H3Container>
-  )
-}
-H3.propTypes = {
-  text: PropTypes.string,
-  type: TYPE_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const H4 = ({
-  text = '',
-  type = TYPE.default,
-  className = '',
-  ...props
-}) => {
-  const fontFamily = TYPE_FONT_FAMILY[type]
-  return (
-    <H4Container fontFamily={fontFamily} className={className} {...props}>
-      {text}
-    </H4Container>
-  )
-}
-H4.propTypes = {
-  text: PropTypes.string,
-  type: TYPE_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const H5 = ({
-  text = '',
-  type = TYPE.default,
-  className = '',
-  ...props
-}) => {
-  const fontFamily = TYPE_FONT_FAMILY[type]
-  return (
-    <H5Container fontFamily={fontFamily} className={className} {...props}>
-      {text}
-    </H5Container>
-  )
-}
-H5.propTypes = {
-  text: PropTypes.string,
-  type: TYPE_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const H6 = ({
-  text = '',
-  type = TYPE.default,
-  className = '',
-  ...props
-}) => {
-  const fontFamily = TYPE_FONT_FAMILY[type]
-  return (
-    <H6Container fontFamily={fontFamily} className={className} {...props}>
-      {text}
-    </H6Container>
-  )
-}
-H6.propTypes = {
-  text: PropTypes.string,
-  type: TYPE_PROP_TYPES,
-  className: PropTypes.string,
-}
+export const H1 = withContainer(H1Container)
+export const H2 = withContainer(H2Container)
+export const H3 = withContainer(H3Container)
+export const H4 = withContainer(H4Container)
+export const H5 = withContainer(H5Container)
+export const H6 = withContainer(H6Container)
 
 export default {
   H1,

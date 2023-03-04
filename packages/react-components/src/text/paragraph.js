@@ -28,76 +28,33 @@ const P4Container = styled(defaultContainer)`
   font-size: 10px;
 `
 
-export const P1 = ({
-  text = '',
-  weight = WEIGHT.normal,
-  className = '',
-  ...props
-}) => {
-  return (
-    <P1Container weight={weight} className={className} {...props}>
-      {text}
-    </P1Container>
-  )
-}
-P1.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
+const withContainer = ParagraphContainer => {
+  const paragraph = ({
+    text = '',
+    weight = WEIGHT.normal,
+    className = '',
+    ...props
+  }) => {
+    return (
+      <ParagraphContainer weight={weight} className={className} {...props}>
+        {text}
+      </ParagraphContainer>
+    )
+  }
+
+  paragraph.displayName = 'paragraph'
+  paragraph.propTypes = {
+    text: PropTypes.string,
+    weight: WEIGHT_PROP_TYPES,
+    className: PropTypes.string,
+  }
+
+  return paragraph
 }
 
-export const P2 = ({
-  text = '',
-  weight = WEIGHT.normal,
-  className = '',
-  ...props
-}) => {
-  return (
-    <P2Container weight={weight} className={className} {...props}>
-      {text}
-    </P2Container>
-  )
-}
-P2.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const P3 = ({
-  text = '',
-  weight = WEIGHT.normal,
-  className = '',
-  ...props
-}) => {
-  return (
-    <P3Container weight={weight} className={className} {...props}>
-      {text}
-    </P3Container>
-  )
-}
-P3.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const P4 = ({
-  text = '',
-  weight = WEIGHT.normal,
-  className = '',
-  ...props
-}) => {
-  return (
-    <P4Container weight={weight} className={className} {...props}>
-      {text}
-    </P4Container>
-  )
-}
-P4.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
-}
+export const P1 = withContainer(P1Container)
+export const P2 = withContainer(P2Container)
+export const P3 = withContainer(P3Container)
+export const P4 = withContainer(P4Container)
 
 export default { P1, P2, P3, P4 }
