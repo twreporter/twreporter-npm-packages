@@ -7,13 +7,12 @@ import {
 } from '@twreporter/core/lib/constants/color'
 import { P2 } from '../../text/paragraph'
 
-// TODO: check width not 42px?
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 44px;
+  width: 42px;
 `
 
 const Label = styled.label`
