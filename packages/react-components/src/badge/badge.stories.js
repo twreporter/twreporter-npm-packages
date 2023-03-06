@@ -1,5 +1,5 @@
 import React from 'react'
-import Badge from '..'
+import Badge from '.'
 import { colorBrand } from '@twreporter/core/lib/constants/color'
 
 export default {

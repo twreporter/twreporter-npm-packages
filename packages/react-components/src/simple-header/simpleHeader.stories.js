@@ -1,5 +1,5 @@
 import React from 'react'
-import SimpleHeader from '..'
+import SimpleHeader from '.'
 
 export default {
   title: 'Header/Simple Header',
