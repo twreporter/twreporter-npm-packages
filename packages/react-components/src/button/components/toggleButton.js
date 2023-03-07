@@ -26,7 +26,8 @@ const Switch = styled.div`
   position: relative;
   width: 40px;
   height: 20px;
-  background: ${colorGrayscale.gray600};
+  background: ${props =>
+    props.disabled ? colorGrayscale.gray400 : colorGrayscale.gray600};
   border-radius: 20px;
   padding: 0px;
   transition: 100ms ease-in-out;
@@ -50,7 +51,8 @@ const Input = styled.input`
   position: absolute;
 
   &:checked + ${Switch} {
-    background: ${colorBrand.heavy};
+    background: ${props =>
+      props.disabled ? colorGrayscale.gray400 : colorBrand.heavy};
     &:before {
       transform: translate(20px, -50%);
     }
@@ -61,6 +63,7 @@ const ToggleButton = ({
   value = false,
   labelOn = '',
   labelOff = '',
+  disabled = false,
   onChange = () => {},
   ...props
 }) => {
@@ -75,8 +78,13 @@ const ToggleButton = ({
         style={{ color: colorGrayscale.gray600, whiteSpace: 'nowrap' }}
       />
       <Label {...props}>
-        <Input type="checkbox" checked={value} onChange={handleChange} />
-        <Switch />
+        <Input
+          type="checkbox"
+          disabled={disabled}
+          checked={value}
+          onChange={handleChange}
+        />
+        <Switch disabled={disabled} />
       </Label>
     </Container>
   )
@@ -86,6 +94,7 @@ ToggleButton.propTypes = {
   value: PropTypes.bool.isRequired,
   labelOn: PropTypes.string,
   labelOff: PropTypes.string,
+  disabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 }
 

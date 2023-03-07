@@ -16,6 +16,8 @@ const Template = args => <ToggleButton {...args} />
 export const toggleButton = Template.bind({})
 toggleButton.args = {
   value: false,
-  label: ['未訂閱', '已訂閱'],
+  labelOn: '已訂閱',
+  labelOff: '未訂閱',
+  disabled: false,
   onChange: () => {},
 }
