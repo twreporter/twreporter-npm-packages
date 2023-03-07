@@ -59,11 +59,11 @@ const Input = styled.input`
 
 const ToggleButton = ({
   value = false,
-  label = ['', ''],
+  labelOn = '',
+  labelOff = '',
   onChange = () => {},
   ...props
 }) => {
-  const labelStr = label && label.length >= 2 ? label[value ? 1 : 0] : ''
   const handleChange = e => {
     onChange && onChange()
   }
@@ -71,7 +71,7 @@ const ToggleButton = ({
   return (
     <Container>
       <P2
-        text={labelStr}
+        text={value ? labelOn : labelOff}
         style={{ color: colorGrayscale.gray600, whiteSpace: 'nowrap' }}
       />
       <Label {...props}>
@@ -84,7 +84,8 @@ const ToggleButton = ({
 
 ToggleButton.propTypes = {
   value: PropTypes.bool.isRequired,
-  label: PropTypes.arrayOf(PropTypes.string),
+  labelOn: PropTypes.string,
+  labelOff: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 }
 
