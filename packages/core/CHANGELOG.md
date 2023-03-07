@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.3-rc.0...@twreporter/core@1.8.3-rc.1) (2023-03-07)
+
+
+### Bug Fixes
+
+* adjust subcategory naming & url ([50c2556](https://github.com/twreporter/twreporter-npm-packages/commit/50c2556a2bc0da036592aa3e5ab6ea75a3edf7a7))
+* subcategory naming & url ([94aa92a](https://github.com/twreporter/twreporter-npm-packages/commit/94aa92ab0ebae534db55d97be33fe3848edc88a8))
+
+
+
+
+
 ## [1.8.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.2...@twreporter/core@1.8.3-rc.0) (2023-02-23)
 
 **Note:** Version bump only for package @twreporter/core
