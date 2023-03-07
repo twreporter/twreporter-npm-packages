@@ -12,6 +12,7 @@ import { getSizeStyle } from '../utils/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
 // constants
+import { Position } from '../constants'
 import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
 import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
 // @twreporter
@@ -42,7 +43,9 @@ const ButtonContainer = styled.div`
 const TextButton = ({
   text = '',
   iconComponent,
+  iconPosition = Position.RIGHT,
   size = SIZE.S,
+  colorSet = undefined,
   theme = THEME.normal,
   type = TYPE.primary,
   active = false,
@@ -60,13 +63,26 @@ const TextButton = ({
         ? getPrimaryTextButtonTheme
         : getSecondaryTextButtonTheme
   }
-  const { color, hoverColor } = themeFunc(theme, active)
+  const { color, hoverColor } = colorSet || themeFunc(theme, active)
   const { iconSize } = getSizeStyle(size)
   const textJSX =
     size === SIZE.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
+    )
+
+  const components =
+    iconPosition === Position.RIGHT ? (
+      <>
+        {textJSX}
+        {iconComponent}
+      </>
+    ) : (
+      <>
+        {iconComponent}
+        {textJSX}
+      </>
     )
 
   return (
@@ -76,15 +92,19 @@ const TextButton = ({
       iconSize={iconSize}
       {...props}
     >
-      {textJSX}
-      {iconComponent}
+      {components}
     </ButtonContainer>
   )
 }
 TextButton.propTypes = {
   iconComponent: PropTypes.element,
+  iconPosition: PropTypes.oneOf([Position.LEFT, Position.RIGHT]),
   text: PropTypes.string,
   size: SIZE_PROP_TYPES,
+  colorSet: PropTypes.shape({
+    color: PropTypes.string,
+    hoverColor: PropTypes.string,
+  }),
   theme: THEME_PROP_TYPES,
   type: TYPE_PROP_TYPES,
   active: PropTypes.bool,
