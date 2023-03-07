@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.0...@twreporter/universal-header@2.4.3-rc.1) (2023-03-07)
+
+
+### Bug Fixes
+
+* mobile header logo align center ([6b8fdef](https://github.com/twreporter/twreporter-npm-packages/commit/6b8fdefe6e48614255cd9bbeb20245f5c64f602d))
+
+
+
+
+
 ## [2.4.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.2...@twreporter/universal-header@2.4.3-rc.0) (2023-02-23)
 
 **Note:** Version bump only for package @twreporter/universal-header
