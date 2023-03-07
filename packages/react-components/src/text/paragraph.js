@@ -34,13 +34,11 @@ const withContainer = ParagraphContainer => {
     weight = WEIGHT.normal,
     className = '',
     ...props
-  }) => {
-    return (
-      <ParagraphContainer weight={weight} className={className} {...props}>
-        {text}
-      </ParagraphContainer>
-    )
-  }
+  }) => (
+    <ParagraphContainer weight={weight} className={className} {...props}>
+      {text}
+    </ParagraphContainer>
+  )
 
   paragraph.displayName = 'paragraph'
   paragraph.propTypes = {
