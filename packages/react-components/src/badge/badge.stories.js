@@ -11,5 +11,6 @@ const Template = args => <Badge {...args} />
 export const badge = Template.bind({})
 badge.args = {
   text: '不定期',
-  style: { color: colorBrand.heavy },
+  textColor: colorBrand.heavy,
+  backgroundColor: 'white',
 }
