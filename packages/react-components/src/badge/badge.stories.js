@@ -3,7 +3,7 @@ import Badge from '.'
 import { colorBrand } from '@twreporter/core/lib/constants/color'
 
 export default {
-  title: 'Badge/Badge',
+  title: 'Badge',
   component: Badge,
 }
 
