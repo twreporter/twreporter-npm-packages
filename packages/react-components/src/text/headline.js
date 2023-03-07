@@ -67,8 +67,8 @@ const H6Container = styled(DefaultContainer)`
   `}
 `
 
-const withContainer = HeaderContainer => {
-  const headerline = ({
+const withContainer = HeadlineContainer => {
+  const headline = ({
     text = '',
     type = TYPE.default,
     className = '',
@@ -76,20 +76,24 @@ const withContainer = HeaderContainer => {
   }) => {
     const fontFamily = TYPE_FONT_FAMILY[type]
     return (
-      <HeaderContainer fontFamily={fontFamily} className={className} {...props}>
+      <HeadlineContainer
+        fontFamily={fontFamily}
+        className={className}
+        {...props}
+      >
         {text}
-      </HeaderContainer>
+      </HeadlineContainer>
     )
   }
 
-  headerline.displayName = 'headerline'
-  headerline.propTypes = {
+  headline.displayName = 'headline'
+  headline.propTypes = {
     text: PropTypes.string,
     type: TYPE_PROP_TYPES,
     className: PropTypes.string,
   }
 
-  return headerline
+  return headline
 }
 
 export const H1 = withContainer(H1Container)
