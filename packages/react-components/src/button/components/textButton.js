@@ -41,7 +41,8 @@ const ButtonContainer = styled.div`
 
 const TextButton = ({
   text = '',
-  iconComponent,
+  leftIconComponent = null,
+  rightIconComponent = null,
   size = SIZE.S,
   theme = THEME.normal,
   type = TYPE.primary,
@@ -76,13 +77,15 @@ const TextButton = ({
       iconSize={iconSize}
       {...props}
     >
+      {leftIconComponent}
       {textJSX}
-      {iconComponent}
+      {rightIconComponent}
     </ButtonContainer>
   )
 }
 TextButton.propTypes = {
-  iconComponent: PropTypes.element,
+  leftIconComponent: PropTypes.element,
+  rightIconComponent: PropTypes.element,
   text: PropTypes.string,
   size: SIZE_PROP_TYPES,
   theme: THEME_PROP_TYPES,

@@ -32,7 +32,8 @@ textButton.args = {
 
 export const withArrowIcon = Template.bind({})
 withArrowIcon.args = {
-  iconComponent: <Arrow direction="right" />,
+  leftIconComponent: <Arrow direction="left" />,
+  rightIconComponent: <Arrow direction="right" />,
   text: '文字',
   size: SIZE.S,
   theme: THEME.normal,
