@@ -44,7 +44,6 @@ const TextButton = ({
   leftIconComponent = null,
   rightIconComponent = null,
   size = SIZE.S,
-  colorSet = undefined,
   theme = THEME.normal,
   type = TYPE.primary,
   active = false,
@@ -62,7 +61,7 @@ const TextButton = ({
         ? getPrimaryTextButtonTheme
         : getSecondaryTextButtonTheme
   }
-  const { color, hoverColor } = colorSet || themeFunc(theme, active)
+  const { color, hoverColor } = themeFunc(theme, active)
   const { iconSize } = getSizeStyle(size)
   const textJSX =
     size === SIZE.S ? (
@@ -89,10 +88,6 @@ TextButton.propTypes = {
   rightIconComponent: PropTypes.element,
   text: PropTypes.string,
   size: SIZE_PROP_TYPES,
-  colorSet: PropTypes.shape({
-    color: PropTypes.string,
-    hoverColor: PropTypes.string,
-  }),
   theme: THEME_PROP_TYPES,
   type: TYPE_PROP_TYPES,
   active: PropTypes.bool,
