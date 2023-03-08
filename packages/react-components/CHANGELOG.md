@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.17.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.16.1-rc.1...@twreporter/react-components@8.17.0-rc.0) (2023-03-08)
+
+
+### Bug Fixes
+
+* add badge storybook ([6e9fe23](https://github.com/twreporter/twreporter-npm-packages/commit/6e9fe2340c68948c9ad75345fe0fe77fead16153))
+* add disable to toggle ([ab57603](https://github.com/twreporter/twreporter-npm-packages/commit/ab5760396e957dd723cc2936bc20fe07fe0a6fb9))
+* add icon position & color set to text button ([38cda1c](https://github.com/twreporter/twreporter-npm-packages/commit/38cda1cf43291fa6b59cafac4c4a594f33102885))
+* add prop to header ([978d2a7](https://github.com/twreporter/twreporter-npm-packages/commit/978d2a758537f6bfba98390c4bbfb1cff0b09e19))
+* add rest props ([25ca8eb](https://github.com/twreporter/twreporter-npm-packages/commit/25ca8eba3f865dbbfd5394a6e03d1d1bc5349e41))
+* add simple header ([54fa27a](https://github.com/twreporter/twreporter-npm-packages/commit/54fa27a2a24fe63b896357638f4bb1e388a38592))
+* center p ([9f80c1b](https://github.com/twreporter/twreporter-npm-packages/commit/9f80c1b6c0e541c892a5d728df0635e054733141))
+* fix badge color issue ([7df7316](https://github.com/twreporter/twreporter-npm-packages/commit/7df731601bf03da1dfb1ff6ba3af3a6dfd6eb493))
+* fix color issue of text button ([3f27a81](https://github.com/twreporter/twreporter-npm-packages/commit/3f27a81b8794c2ea493d8ffbff41d055ff6f6a8a))
+* fix headline naming ([e7c14c7](https://github.com/twreporter/twreporter-npm-packages/commit/e7c14c73636f27de9681600a8b6bf27741f9d28b))
+* fix icon issue of text button ([018e609](https://github.com/twreporter/twreporter-npm-packages/commit/018e6094c2e27cc79162b17e0d93dd276009825f))
+* fix toggle & add storybook ([400ab71](https://github.com/twreporter/twreporter-npm-packages/commit/400ab71146ebed19e24bab9be6e5c663922101f3))
+* fix toggle size ([58ffa04](https://github.com/twreporter/twreporter-npm-packages/commit/58ffa0410c6f569bf650445507613a72f573c6ce))
+* fix toggle style ([4cfe224](https://github.com/twreporter/twreporter-npm-packages/commit/4cfe22485956ecb2cfef297d5a71c41b0cafdbc7))
+* fix toggle style ([c997bbe](https://github.com/twreporter/twreporter-npm-packages/commit/c997bbeb97bf96b478b9da598da02c4a4fbb9f87))
+* fix toggle text color ([a4b7471](https://github.com/twreporter/twreporter-npm-packages/commit/a4b7471d6789f07a41215a6a83618f9875cffb2b))
+* refactor headerline, paragraph with hoc ([9a30a36](https://github.com/twreporter/twreporter-npm-packages/commit/9a30a367c2f4b2734da4e2bd95aa7f71464fb5a9))
+* refine a little bit ([4b6cfcd](https://github.com/twreporter/twreporter-npm-packages/commit/4b6cfcda60d25a7934c0a5feb5478c4b8dab1337))
+* remove badge storybook category ([0fea1f5](https://github.com/twreporter/twreporter-npm-packages/commit/0fea1f56ab151afc4e8e96e61aa2b4e5a31b3a25))
+* remove checkbox ([ccfb810](https://github.com/twreporter/twreporter-npm-packages/commit/ccfb81045cfc1ee5896a9b61e7dc17a5e7d6c466))
+* remove unnecessary folder ([e9fdc17](https://github.com/twreporter/twreporter-npm-packages/commit/e9fdc170cf48d0cf852ecca57671545aaa923bb8))
+* rename toggle label prop ([1b79fa6](https://github.com/twreporter/twreporter-npm-packages/commit/1b79fa63d7098f1d348ee4cf500be6a21e36ca3b))
+* simplify return of paragraph ([3f9efd5](https://github.com/twreporter/twreporter-npm-packages/commit/3f9efd5f3d2bb1e5233607e09ae74567bf148a1f))
+
+
+### Features
+
+* add badge, toggle, checkbox ([bdf2b16](https://github.com/twreporter/twreporter-npm-packages/commit/bdf2b1687789db61540d5b060890eefffcd34b2a))
+
+
+
+
+
 ## [8.16.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.16.1-rc.0...@twreporter/react-components@8.16.1-rc.1) (2023-03-07)
 
 **Note:** Version bump only for package @twreporter/react-components
