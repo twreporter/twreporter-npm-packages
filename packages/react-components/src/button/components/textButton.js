@@ -12,7 +12,6 @@ import { getSizeStyle } from '../utils/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
 // constants
-import { Position } from '../constants'
 import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
 import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
 // @twreporter
@@ -42,8 +41,8 @@ const ButtonContainer = styled.div`
 
 const TextButton = ({
   text = '',
-  iconComponent,
-  iconPosition = Position.RIGHT,
+  leftIconComponent = null,
+  rightIconComponent = null,
   size = SIZE.S,
   colorSet = undefined,
   theme = THEME.normal,
@@ -72,19 +71,6 @@ const TextButton = ({
       <P1 text={text} weight="bold" />
     )
 
-  const components =
-    iconPosition === Position.RIGHT ? (
-      <>
-        {textJSX}
-        {iconComponent}
-      </>
-    ) : (
-      <>
-        {iconComponent}
-        {textJSX}
-      </>
-    )
-
   return (
     <ButtonContainer
       color={color}
@@ -92,13 +78,15 @@ const TextButton = ({
       iconSize={iconSize}
       {...props}
     >
-      {components}
+      {leftIconComponent}
+      {textJSX}
+      {rightIconComponent}
     </ButtonContainer>
   )
 }
 TextButton.propTypes = {
-  iconComponent: PropTypes.element,
-  iconPosition: PropTypes.oneOf([Position.LEFT, Position.RIGHT]),
+  leftIconComponent: PropTypes.element,
+  rightIconComponent: PropTypes.element,
   text: PropTypes.string,
   size: SIZE_PROP_TYPES,
   colorSet: PropTypes.shape({

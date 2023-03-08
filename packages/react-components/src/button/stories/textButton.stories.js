@@ -1,7 +1,6 @@
 import React from 'react'
 import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
-import { Position } from '../constants'
 import { SIZE, SIZE_STORYBOOK_ARG_TYPE } from '../constants/size'
 import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/type'
 import {
@@ -16,11 +15,6 @@ export default {
     theme: THEME_STORYBOOK_ARG_TYPE,
     type: TYPE_STORYBOOK_ARG_TYPE,
     size: SIZE_STORYBOOK_ARG_TYPE,
-    iconPosition: {
-      defaultValue: Position.RIGHT,
-      options: [Position.LEFT, Position.RIGHT],
-      control: { type: 'radio' },
-    },
   },
 }
 
@@ -38,8 +32,8 @@ textButton.args = {
 
 export const withArrowIcon = Template.bind({})
 withArrowIcon.args = {
-  iconComponent: <Arrow direction="right" />,
-  iconPosition: Position.RIGHT,
+  leftIconComponent: <Arrow direction="left" />,
+  rightIconComponent: <Arrow direction="right" />,
   text: '文字',
   size: SIZE.S,
   theme: THEME.normal,
