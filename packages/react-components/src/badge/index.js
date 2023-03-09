@@ -7,6 +7,11 @@ const Container = styled.div`
   background: ${props => props.backgroundColor};
   padding: 2px 4px;
   width: fit-content;
+  border-radius: 2px;
+`
+
+const ColorP2 = styled(P2)`
+  color: ${props => props.color};
 `
 
 export const Badge = ({
@@ -17,7 +22,7 @@ export const Badge = ({
 }) => {
   return (
     <Container backgroundColor={backgroundColor} {...props}>
-      <P2 text={text} style={{ color: textColor }} />
+      <ColorP2 text={text} color={textColor} />
     </Container>
   )
 }

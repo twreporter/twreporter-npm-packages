@@ -7,6 +7,11 @@ import {
 } from '@twreporter/core/lib/constants/color'
 import { P2 } from '../../text/paragraph'
 
+const ColorP2 = styled(P2)`
+  color: ${colorGrayscale.gray600};
+  white-space: nowrap;
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,10 +78,7 @@ const ToggleButton = ({
 
   return (
     <Container>
-      <P2
-        text={value ? labelOn : labelOff}
-        style={{ color: colorGrayscale.gray600, whiteSpace: 'nowrap' }}
-      />
+      <ColorP2 text={value ? labelOn : labelOff} />
       <Label {...props}>
         <Input
           type="checkbox"

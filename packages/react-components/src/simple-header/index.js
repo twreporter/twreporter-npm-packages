@@ -9,10 +9,15 @@ const HeaderContainer = styled.div`
   padding: 16px 24px;
 `
 
+const Logo = styled(LogoHeader)`
+  width: 144px;
+  height: 21px;
+`
+
 export const SimpleHeader = props => {
   return (
     <HeaderContainer {...props}>
-      <LogoHeader />
+      <Logo />
     </HeaderContainer>
   )
 }

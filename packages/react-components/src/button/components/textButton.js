@@ -12,11 +12,11 @@ import { getSizeStyle } from '../utils/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
 // constants
+import { TEXT_BUTTON_THEME, TEXT_BUTTON_THEME_PROP_TYPES } from '../constants/'
 import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
 import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
   cursor: pointer;
@@ -39,12 +39,18 @@ const ButtonContainer = styled.div`
   `}
 `
 
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: ${props => (props.isLeft ? '0 4px 0 0' : '0 0 0 4px')};
+`
+
 const TextButton = ({
   text = '',
   leftIconComponent = null,
   rightIconComponent = null,
   size = SIZE.S,
-  theme = THEME.normal,
+  theme = TEXT_BUTTON_THEME.normal,
   type = TYPE.primary,
   active = false,
   disabled = false,
@@ -77,9 +83,17 @@ const TextButton = ({
       iconSize={iconSize}
       {...props}
     >
-      {leftIconComponent}
+      {size === SIZE.L ? (
+        <IconContainer isLeft={true}>{leftIconComponent}</IconContainer>
+      ) : (
+        leftIconComponent
+      )}
       {textJSX}
-      {rightIconComponent}
+      {size === SIZE.L ? (
+        <IconContainer>{rightIconComponent}</IconContainer>
+      ) : (
+        rightIconComponent
+      )}
     </ButtonContainer>
   )
 }
@@ -88,7 +102,7 @@ TextButton.propTypes = {
   rightIconComponent: PropTypes.element,
   text: PropTypes.string,
   size: SIZE_PROP_TYPES,
-  theme: THEME_PROP_TYPES,
+  theme: TEXT_BUTTON_THEME_PROP_TYPES,
   type: TYPE_PROP_TYPES,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
