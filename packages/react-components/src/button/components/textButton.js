@@ -39,6 +39,12 @@ const ButtonContainer = styled.div`
   `}
 `
 
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: ${props => (props.isLeft ? '0 4px 0 0' : '0 0 0 4px')};
+`
+
 const TextButton = ({
   text = '',
   leftIconComponent = null,
@@ -77,9 +83,17 @@ const TextButton = ({
       iconSize={iconSize}
       {...props}
     >
-      {leftIconComponent}
+      {size === SIZE.L ? (
+        <IconContainer isLeft={true}>{leftIconComponent}</IconContainer>
+      ) : (
+        leftIconComponent
+      )}
       {textJSX}
-      {rightIconComponent}
+      {size === SIZE.L ? (
+        <IconContainer>{rightIconComponent}</IconContainer>
+      ) : (
+        rightIconComponent
+      )}
     </ButtonContainer>
   )
 }
