@@ -7,6 +7,7 @@ const Container = styled.div`
   background: ${props => props.backgroundColor};
   padding: 2px 4px;
   width: fit-content;
+  border-radius: 2px;
 `
 
 export const Badge = ({
