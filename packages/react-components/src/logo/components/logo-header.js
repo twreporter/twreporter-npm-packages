@@ -11,12 +11,12 @@ import {
 
 const LogoContainer = styled.img``
 
-const LogoHeader = ({ type, releaseBranch }) => {
+const LogoHeader = ({ type, releaseBranch, ...props }) => {
   const logoSrc = pathUtil.selectLogoPath('header', releaseBranch, type)
 
   return (
     <React.Fragment>
-      <LogoContainer alt="The Reporter Logo" src={logoSrc} />
+      <LogoContainer alt="The Reporter Logo" src={logoSrc} {...props} />
     </React.Fragment>
   )
 }

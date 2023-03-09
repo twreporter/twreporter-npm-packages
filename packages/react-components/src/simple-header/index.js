@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
 export const SimpleHeader = props => {
   return (
     <HeaderContainer {...props}>
-      <LogoHeader />
+      <LogoHeader width="144px" height="21px" />
     </HeaderContainer>
   )
 }
