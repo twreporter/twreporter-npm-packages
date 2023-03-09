@@ -3,16 +3,17 @@ import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
 import { SIZE, SIZE_STORYBOOK_ARG_TYPE } from '../constants/size'
 import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/type'
-import {
-  THEME,
-  THEME_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/theme'
+import { TEXT_BUTTON_THEME } from '../constants'
 
 export default {
   title: 'Button/Text Button',
   component: TextButton,
   argTypes: {
-    theme: THEME_STORYBOOK_ARG_TYPE,
+    theme: {
+      defaultValue: TEXT_BUTTON_THEME.normal,
+      options: Object.values(TEXT_BUTTON_THEME),
+      control: { type: 'radio' },
+    },
     type: TYPE_STORYBOOK_ARG_TYPE,
     size: SIZE_STORYBOOK_ARG_TYPE,
   },
@@ -24,7 +25,7 @@ export const textButton = Template.bind({})
 textButton.args = {
   text: '文字',
   size: SIZE.S,
-  theme: THEME.normal,
+  theme: TEXT_BUTTON_THEME.normal,
   type: TYPE.primary,
   active: false,
   disabled: false,
@@ -36,7 +37,7 @@ withArrowIcon.args = {
   rightIconComponent: <Arrow direction="right" />,
   text: '文字',
   size: SIZE.S,
-  theme: THEME.normal,
+  theme: TEXT_BUTTON_THEME.normal,
   type: TYPE.primary,
   active: false,
   disabled: false,
