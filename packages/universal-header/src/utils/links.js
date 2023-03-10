@@ -190,8 +190,19 @@ export function getSocialMediaLinks() {
 
 export function getChannelLinks(
   isExternal = defaultIsExternal,
-  releaseBranch = defaultReleaseBranch
+  releaseBranch = defaultReleaseBranch,
+  targetChannelKey = ''
 ) {
+  if (targetChannelKey) {
+    return __getLink(
+      isExternal,
+      releaseBranch,
+      mainBaseURL,
+      CHANNEL_PATH[targetChannelKey]
+    )
+  }
+
+  // if no target channel, return all channel links
   const links = _.reduce(
     CHANNEL_PATH,
     (res, path, key) => {

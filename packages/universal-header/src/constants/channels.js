@@ -84,6 +84,12 @@ export const CHANNEL_ORDER = [
   'divider',
 ]
 
+export const DESKTOP_CHANNEL_ORDER = [
+  channelKey.latest,
+  channelKey.topic,
+  channelKey.category,
+]
+
 export default {
   CHANNEL_LINK_TYPE,
   CHANNEL_DROPDOWN_TYPE,
@@ -91,4 +97,5 @@ export default {
   CHANNEL_LABEL,
   CHANNEL_TYPE,
   CHANNEL_ORDER,
+  DESKTOP_CHANNEL_ORDER,
 }
