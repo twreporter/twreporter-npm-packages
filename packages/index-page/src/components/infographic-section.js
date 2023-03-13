@@ -193,6 +193,8 @@ class Infographic extends React.PureComponent {
             <ImgWrapper
               alt={imgObj.alt}
               src={imgObj.src}
+              width={_.get(imgObj, 'srcSet.mobile.width')}
+              height={_.get(imgObj, 'srcSet.mobile.height')}
               srcSet={imgObj.srcSet}
               sizes={
                 `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
