@@ -188,21 +188,27 @@ export function getSocialMediaLinks() {
   )
 }
 
-export function getChannelLinks(
+export function getChannelLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch,
   targetChannelKey = ''
 ) {
-  if (targetChannelKey) {
-    return __getLink(
-      isExternal,
-      releaseBranch,
-      mainBaseURL,
-      CHANNEL_PATH[targetChannelKey]
-    )
+  if (!targetChannelKey || !CHANNEL_PATH[targetChannelKey]) {
+    throw new Error('invalid channel key')
   }
 
-  // if no target channel, return all channel links
+  return __getLink(
+    isExternal,
+    releaseBranch,
+    mainBaseURL,
+    CHANNEL_PATH[targetChannelKey]
+  )
+}
+
+export function getChannelLinks(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
   const links = _.reduce(
     CHANNEL_PATH,
     (res, path, key) => {

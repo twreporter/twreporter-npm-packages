@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 // util
-import { getCategoryLink, getChannelLinks } from '../utils/links'
+import { getCategoryLink, getChannelLink } from '../utils/links'
 // constant
 import {
   DESKTOP_CHANNEL_ORDER,
@@ -80,7 +80,7 @@ const Channel = ({ onClickHambuger, ...props }) => {
         res = _.concat(res, categoryJSX)
       } else {
         const label = CHANNEL_LABEL[channelKey]
-        const link = getChannelLinks(isLinkExternal, releaseBranch, channelKey)
+        const link = getChannelLink(isLinkExternal, releaseBranch, channelKey)
         res.push(<ChannelItem key={channelKey} label={label} link={link} />)
       }
       return res
