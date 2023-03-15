@@ -5,8 +5,7 @@ import {
   colorSupportive,
   colorGrayscale,
 } from '@twreporter/core/lib/constants/color'
-import { THEME } from '@twreporter/core/lib/constants/theme'
-import { TEXT_BUTTON_THEME } from '../constants'
+import { THEME, TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 export const getFilledPillButtonTheme = (theme, disabled) => {
   if (disabled) {
