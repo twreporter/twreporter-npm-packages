@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 // util
-import { getCategoryLink, getChannelLink } from '../utils/links'
+import { getLink } from '../utils/links'
 // constant
 import {
   DESKTOP_CHANNEL_ORDER,
   CHANNEL_KEY,
   CHANNEL_LABEL,
+  CHANNEL_PATH,
 } from '../constants/channels'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
@@ -74,14 +75,20 @@ const Channel = ({ onClickHambuger, ...props }) => {
         const categoryJSX = _.map(CATEGORY_ORDER, categoryKey => {
           const label = CATEGORY_LABEL[categoryKey]
           const path = `/categories/${categoryKey}`
-          const link = getCategoryLink(isLinkExternal, releaseBranch, path)
+          const link = getLink(isLinkExternal, releaseBranch, path)
           return <ChannelItem key={categoryKey} label={label} link={link} />
         })
         res = _.concat(res, categoryJSX)
       } else {
         const label = CHANNEL_LABEL[channelKey]
-        const link = getChannelLink(isLinkExternal, releaseBranch, channelKey)
-        res.push(<ChannelItem key={channelKey} label={label} link={link} />)
+        const link = getLink(
+          isLinkExternal,
+          releaseBranch,
+          CHANNEL_PATH[channelKey]
+        )
+        if (label && link) {
+          res.push(<ChannelItem key={channelKey} label={label} link={link} />)
+        }
       }
       return res
     },

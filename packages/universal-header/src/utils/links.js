@@ -84,11 +84,11 @@ export const checkPathnameParent = (pathname = '', parent = '') => {
   return _.indexOf(_.split(pathname, '/'), parent) === 1
 }
 
-export const getCategoryLink = (
+export function getLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch,
   path = ''
-) => {
+) {
   return __getLink(isExternal, releaseBranch, mainBaseURL, path)
 }
 
@@ -185,23 +185,6 @@ export function getSocialMediaLinks() {
       return res
     },
     {}
-  )
-}
-
-export function getChannelLink(
-  isExternal = defaultIsExternal,
-  releaseBranch = defaultReleaseBranch,
-  targetChannelKey = ''
-) {
-  if (!targetChannelKey || !CHANNEL_PATH[targetChannelKey]) {
-    throw new Error('invalid channel key')
-  }
-
-  return __getLink(
-    isExternal,
-    releaseBranch,
-    mainBaseURL,
-    CHANNEL_PATH[targetChannelKey]
   )
 }
 
