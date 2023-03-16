@@ -84,11 +84,11 @@ export const checkPathnameParent = (pathname = '', parent = '') => {
   return _.indexOf(_.split(pathname, '/'), parent) === 1
 }
 
-export const getCategoryLink = (
+export function getLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch,
   path = ''
-) => {
+) {
   return __getLink(isExternal, releaseBranch, mainBaseURL, path)
 }
 

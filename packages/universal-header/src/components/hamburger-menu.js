@@ -7,8 +7,8 @@ import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 import {
   getLogoLink,
   getChannelLinks,
-  getCategoryLink,
   getSearchLink,
+  getLink,
 } from '../utils/links'
 import { selectLogoType, selectHamburgerMenuTheme } from '../utils/theme'
 // constants
@@ -171,7 +171,7 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
     subItemJSX = _.map(CATEGORY_ORDER, catKey => {
       const label = CATEGORY_LABEL[catKey]
       const path = `/categories/${catKey}`
-      const link = getCategoryLink(isLinkExternal, releaseBranch, path)
+      const link = getLink(isLinkExternal, releaseBranch, path)
       if (!label || !link) {
         return
       }
@@ -194,7 +194,7 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
         path = subItem.path
       }
 
-      const link = getCategoryLink(isLinkExternal, releaseBranch, path)
+      const link = getLink(isLinkExternal, releaseBranch, path)
       if (!label || !link) {
         return
       }
