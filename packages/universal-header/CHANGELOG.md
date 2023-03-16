@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.4...@twreporter/universal-header@2.4.3-rc.5) (2023-03-16)
+
+
+### Bug Fixes
+
+* add error handle for getChannelLink function ([cbda297](https://github.com/twreporter/twreporter-npm-packages/commit/cbda2974b2b9f54f9d3019aa150fad9bfef46774))
+* decoupling CHANNEL_KEY and get channel link function ([c7856a1](https://github.com/twreporter/twreporter-npm-packages/commit/c7856a10811b9053577bcde36aeb73a69c007784))
+* patch latest & topic on desktop channel ([56c9ca2](https://github.com/twreporter/twreporter-npm-packages/commit/56c9ca2c100a9131d0326b15ef5ab1c8b5c8a47f))
+
+
+
+
+
 ## [2.4.3-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.3...@twreporter/universal-header@2.4.3-rc.4) (2023-03-09)
 
 **Note:** Version bump only for package @twreporter/universal-header
