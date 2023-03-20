@@ -42,6 +42,10 @@ const LogoCenteringBlock = styled(ImgContainer)`
   align-items: center;
   background-color: white;
   display: ${props => props.display};
+  > img {
+    width: 65%;
+    height: 65%;
+  }
 `
 
 class Image extends React.PureComponent {

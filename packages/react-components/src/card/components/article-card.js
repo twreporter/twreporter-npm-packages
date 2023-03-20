@@ -90,7 +90,7 @@ const ArticleCard = ({
   releaseBranch = BRANCH.master,
 }) => {
   const hideMeta = !category && !date
-  const titleJSX = title ? <H4 text={title} /> : null
+  const titleJSX = title ? <H4 text={title} type="article" /> : null
   const dateJSX = date ? <P3 text={date} /> : null
   const categoryJSX = category ? <P3 text={category} /> : null
   const descriptionJSX = description ? (
