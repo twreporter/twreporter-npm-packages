@@ -1,8 +1,11 @@
 import React from 'react'
 import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
-import { SIZE, SIZE_STORYBOOK_ARG_TYPE } from '../constants/size'
 import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/type'
+import {
+  SIZE,
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '@twreporter/core/lib/constants/size'
 import { TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 export default {

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// constant
-import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
+// @twreporter
+import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
 
 const Container = styled.div`
   display: flex;

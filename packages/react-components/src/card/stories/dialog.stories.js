@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Dialog from '../components/dialog'
-import { SIZE, SIZE_STORYBOOK_ARG_TYPE } from '../constants/size'
+import {
+  SIZE,
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '@twreporter/core/lib/constants/size'
 
 export default {
   title: 'Card/Dialog',

@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// constant
-import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
 // component
 import Image from '../../image-with-fallback'
 import { P1, P2, P3 } from '../../text/paragraph'
@@ -12,6 +10,7 @@ import { IconButton, TextButton } from '../../button'
 // @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import { THEME, TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
+import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
 import {
   BRANCH,
   BRANCH_PROP_TYPES,

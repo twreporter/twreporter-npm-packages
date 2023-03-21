@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import ArticleCard from '../components/article-card'
-import { SIZE, SIZE_STORYBOOK_ARG_TYPE } from '../constants/size'
+import {
+  SIZE,
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '@twreporter/core/lib/constants/size'
 import {
   BRANCH,
   BRANCH_STORYBOOK_ARG_TYPE,
