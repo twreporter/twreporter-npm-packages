@@ -16,6 +16,8 @@ import {
   BRANCH,
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
+import { SIZE } from '@twreporter/core/lib/constants/size'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -109,12 +111,12 @@ const CardList = ({
 
   const listJSX = _.map(data, item => {
     const { id, title, slug, style } = item
+    const isInteractiveArticle = style === ARTICLE_THEME.interactive
     const link = {
-      to:
-        style === 'interactive'
-          ? entityPaths.interactiveArticle + slug
-          : entityPaths.article + slug,
-      target: style === 'interactive' ? '_blank' : '',
+      to: isInteractiveArticle
+        ? entityPaths.interactiveArticle + slug
+        : entityPaths.article + slug,
+      target: isInteractiveArticle ? '_blank' : '',
     }
     const articleCardProps = {
       title,
@@ -134,10 +136,10 @@ const CardList = ({
       <Item key={id}>
         <Link {...link}>
           <DesktopOnly>
-            <ArticleCard {...articleCardProps} size="L" />
+            <ArticleCard {...articleCardProps} size={SIZE.L} />
           </DesktopOnly>
           <MobileOnly>
-            <ArticleCard {...articleCardProps} size="S" />
+            <ArticleCard {...articleCardProps} size={SIZE.S} />
           </MobileOnly>
           <StyledDivider />
         </Link>

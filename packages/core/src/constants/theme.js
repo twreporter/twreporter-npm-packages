@@ -20,11 +20,13 @@ export const THEME_STORYBOOK_ARG_TYPE = {
   control: { type: 'radio' },
 }
 
+// the value of ARTICLE_THEME is correspond to posts.style
 export const ARTICLE_THEME = Object.freeze({
   v2: {
     pink: 'article:v2:pink',
     default: 'article:v2:default',
     photo: 'article:v2:photo',
+    interactive: 'interactive',
   },
 })
 
