@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import { ArticleCard } from '../../card'
 import FetchingWrapper from '../../is-fetching-wrapper'
 import Divider from '../../divider'
+import Link from '../../customized-link'
 // constants
 import mockup from '../constants/mockup-spec'
 // @twreporter
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
-import Link from '@twreporter/react-components/lib/customized-link'
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
 import {
   BRANCH,
