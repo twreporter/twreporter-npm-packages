@@ -1,16 +1,14 @@
 import React from 'react'
-import Badge from '.'
-import { colorBrand } from '@twreporter/core/lib/constants/color'
+import Checkbox from '.'
 
 export default {
-  title: 'Badge',
-  component: Badge,
+  title: 'Checkbox',
+  component: Checkbox,
 }
 
-const Template = args => <Badge {...args} />
-export const badge = Template.bind({})
-badge.args = {
-  text: '不定期',
-  textColor: colorBrand.heavy,
-  backgroundColor: 'white',
+const Template = args => <Checkbox {...args} />
+export const checkbox = Template.bind({})
+checkbox.args = {
+  label: '藝術',
+  value: false,
 }
