@@ -76,18 +76,18 @@ const HeaderEffect = css`
 
 const ActionEffect = css`
   .action-effect-enter {
-    transform: translateX(-40px);
+    transform: translateX(0px);
   }
   .action-effect-enter-active {
-    animation: ${animationUtils.changeTranslateX('-40px', 0)} 0.2s;
+    animation: ${animationUtils.changeTranslateX('0px', 0)} 0.2s;
     animation-delay: 300ms;
   }
   .action-effect-exit-active {
-    animation: ${animationUtils.changeTranslateX(0, '-40px')} 0.2s;
+    animation: ${animationUtils.changeTranslateX(0, '0px')} 0.2s;
     animation-delay: 300ms;
   }
   .action-effect-exit-done {
-    transform: translateX(-40px);
+    transform: translateX(0px);
   }
 `
 
@@ -145,24 +145,24 @@ const ChannelEffect = css`
 const LogoEffect = css`
   .logo-effect-enter {
     img {
-      width: 80%;
+      width: 168px;
     }
   }
   .logo-effect-enter-active {
     img {
-      animation: ${animationUtils.changeWidth('80%', '100%')} 0.2s linear;
+      animation: ${animationUtils.changeWidth('168px', '210px')} 0.2s linear;
       animation-delay: 300ms;
     }
   }
   .logo-effect-exit-active {
     img {
-      animation: ${animationUtils.changeWidth('100%', '80%')} 0.2s linear;
+      animation: ${animationUtils.changeWidth('210px', '168px')} 0.2s linear;
       animation-delay: 300ms;
     }
   }
   .logo-effect-exit-done {
     img {
-      width: 80%;
+      width: 168px;
     }
   }
 `
