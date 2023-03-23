@@ -3,7 +3,14 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 // util
-import { getCategoryLink } from '../utils/links'
+import { getLink } from '../utils/links'
+// constant
+import {
+  DESKTOP_CHANNEL_ORDER,
+  CHANNEL_KEY,
+  CHANNEL_LABEL,
+  CHANNEL_PATH,
+} from '../constants/channels'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import {
@@ -15,8 +22,12 @@ import { Hamburger } from '@twreporter/react-components/lib/icon'
 import Divider from '@twreporter/react-components/lib/divider'
 // lodash
 import map from 'lodash/map'
+import reduce from 'lodash/reduce'
+import concat from 'lodash/concat'
 const _ = {
   map,
+  reduce,
+  concat,
 }
 
 const Item = styled.div`
@@ -39,21 +50,50 @@ const ChannelContainer = styled.div`
   align-items: center;
 `
 
+const ChannelItem = ({ link = {}, label = '' }) => {
+  const { theme } = useContext(HeaderContext)
+  return (
+    <Item>
+      <Link {...link}>
+        <TextButton text={label} size="L" theme={theme} />
+      </Link>
+    </Item>
+  )
+}
+ChannelItem.propTypes = {
+  link: PropTypes.object,
+  label: PropTypes.string,
+}
+
 const Channel = ({ onClickHambuger, ...props }) => {
   const { isLinkExternal, releaseBranch, theme } = useContext(HeaderContext)
-  const CategoryJsx = _.map(CATEGORY_ORDER, categoryKey => {
-    const label = CATEGORY_LABEL[categoryKey]
-    const path = `/categories/${categoryKey}`
-    const link = getCategoryLink(isLinkExternal, releaseBranch, path)
-    return (
-      <Item key={categoryKey}>
-        <Link {...link}>
-          <TextButton text={label} size="L" theme={theme} />
-        </Link>
-      </Item>
-    )
-  })
   const hamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
+  const ItemJSX = _.reduce(
+    DESKTOP_CHANNEL_ORDER,
+    (res, channelKey) => {
+      if (channelKey === CHANNEL_KEY.category) {
+        const categoryJSX = _.map(CATEGORY_ORDER, categoryKey => {
+          const label = CATEGORY_LABEL[categoryKey]
+          const path = `/categories/${categoryKey}`
+          const link = getLink(isLinkExternal, releaseBranch, path)
+          return <ChannelItem key={categoryKey} label={label} link={link} />
+        })
+        res = _.concat(res, categoryJSX)
+      } else {
+        const label = CHANNEL_LABEL[channelKey]
+        const link = getLink(
+          isLinkExternal,
+          releaseBranch,
+          CHANNEL_PATH[channelKey]
+        )
+        if (label && link) {
+          res.push(<ChannelItem key={channelKey} label={label} link={link} />)
+        }
+      }
+      return res
+    },
+    []
+  )
 
   return (
     <ChannelContainer {...props}>
@@ -63,7 +103,7 @@ const Channel = ({ onClickHambuger, ...props }) => {
           theme={theme}
           onClick={onClickHambuger}
         />
-        {CategoryJsx}
+        {ItemJSX}
       </CategoryContainer>
       <Divider />
     </ChannelContainer>
