@@ -17,6 +17,11 @@ const Input = styled.input`
   margin-right: 8px;
 `
 
+const ColorP1 = styled(P1)`
+  color: ${props =>
+    props.disabled ? colorGrayscale.gray400 : colorGrayscale.gray800};
+`
+
 export const Checkbox = ({
   value = false,
   label = '',
@@ -35,7 +40,7 @@ export const Checkbox = ({
         disabled={disabled}
         onChange={handleChange}
       />
-      <P1 text={label} />
+      <ColorP1 text={label} disabled={disabled} />
     </Container>
   )
 }
