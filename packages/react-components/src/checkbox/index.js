@@ -2,10 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { P1 } from '../text/paragraph'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const Container = styled.div`
   display: flex;
   flex-direction: 'row';
+`
+
+const Input = styled.input`
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  accent-color: ${colorGrayscale.gray800};
+  margin-right: 8px;
 `
 
 export const Checkbox = ({
@@ -20,7 +29,7 @@ export const Checkbox = ({
   }
   return (
     <Container {...props}>
-      <input
+      <Input
         type="checkbox"
         checked={value}
         disabled={disabled}
