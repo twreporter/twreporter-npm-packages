@@ -41,7 +41,7 @@ export const Checkbox = ({
         disabled={disabled}
         onChange={handleChange}
       />
-      <ColorP1 text={label} disabled={disabled} />
+      {label && <ColorP1 text={label} disabled={disabled} />}
     </Container>
   )
 }
