@@ -14,6 +14,7 @@ const Input = styled.input`
   height: 16px;
   border-radius: 2px;
   accent-color: ${colorGrayscale.gray800};
+  margin-left: 0px;
   margin-right: 8px;
 `
 
