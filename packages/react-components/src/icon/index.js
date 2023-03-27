@@ -113,6 +113,11 @@ Printer.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
 }
 
+export const Letter = args => <Icon filename="letter" {...args} />
+Letter.propTypes = {
+  releaseBranch: BRANCH_PROP_TYPES,
+}
+
 export const Facebook = args => <Icon filename="facebook" {...args} />
 Facebook.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
@@ -143,6 +148,11 @@ Line.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
 }
 
+export const Google = args => <Icon filename="google" {...args} />
+Google.propTypes = {
+  releaseBranch: BRANCH_PROP_TYPES,
+}
+
 export const SocialMedia = ({ mediaType, ...args }) => (
   <Icon filename={mediaType} {...args} />
 )
@@ -154,6 +164,7 @@ SocialMedia.propTypes = {
     'twitter',
     'youtube',
     'line',
+    'google',
   ]),
   releaseBranch: BRANCH_PROP_TYPES,
 }
@@ -172,6 +183,7 @@ export default {
   Line,
   Loading,
   Printer,
+  Letter,
   Medium,
   Member,
   Search,
@@ -180,5 +192,6 @@ export default {
   Topic,
   Twitter,
   Youtube,
+  Google,
   SocialMedia,
 }
