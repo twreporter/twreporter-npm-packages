@@ -7,8 +7,9 @@ import {
 } from '@twreporter/core/lib/constants/color'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 import { TEXT_BUTTON_THEME } from '../constants'
+import { STYLE } from '../constants/style'
 
-export const getFilledPillButtonTheme = (theme, disabled) => {
+export const getFilledPillButtonTheme = (theme, disabled, style) => {
   if (disabled) {
     switch (theme) {
       case THEME.transparent:
@@ -45,16 +46,34 @@ export const getFilledPillButtonTheme = (theme, disabled) => {
     case THEME.normal:
     case THEME.index:
     default:
-      return {
-        color: colorGrayscale.white,
-        bgColor: colorBrand.heavy,
-        hoverColor: colorGrayscale.white,
-        hoverBgColor: colorBrand.dark,
+      switch (style) {
+        case STYLE.dark:
+          return {
+            color: colorGrayscale.white,
+            bgColor: colorGrayscale.gray800,
+            hoverColor: colorGrayscale.white,
+            hoverBgColor: colorGrayscale.black,
+          }
+        case STYLE.light:
+          return {
+            color: colorGrayscale.gray800,
+            bgColor: colorGrayscale.white,
+            hoverColor: colorGrayscale.gray800,
+            hoverBgColor: colorGrayscale.gray200,
+          }
+        case STYLE.brand:
+        default:
+          return {
+            color: colorGrayscale.white,
+            bgColor: colorBrand.heavy,
+            hoverColor: colorGrayscale.white,
+            hoverBgColor: colorBrand.dark,
+          }
       }
   }
 }
 
-export const getOutlinePillButtonTheme = (theme, disabled) => {
+export const getOutlinePillButtonTheme = (theme, disabled, style) => {
   if (disabled) {
     switch (theme) {
       case THEME.transparent:
@@ -98,11 +117,29 @@ export const getOutlinePillButtonTheme = (theme, disabled) => {
     case THEME.normal:
     case THEME.index:
     default:
-      return {
-        color: colorBrand.heavy,
-        bgColor: colorBrand.heavy,
-        hoverColor: colorBrand.dark,
-        hoverBgColor: colorBrand.dark,
+      switch (style) {
+        case STYLE.dark:
+          return {
+            color: colorGrayscale.gray800,
+            bgColor: colorGrayscale.gray800,
+            hoverColor: colorGrayscale.black,
+            hoverBgColor: colorGrayscale.black,
+          }
+        case STYLE.light:
+          return {
+            color: colorGrayscale.gray800,
+            bgColor: colorGrayscale.white,
+            hoverColor: colorGrayscale.gray800,
+            hoverBgColor: colorGrayscale.gray200,
+          }
+        case STYLE.brand:
+        default:
+          return {
+            color: colorBrand.heavy,
+            bgColor: colorBrand.heavy,
+            hoverColor: colorBrand.dark,
+            hoverBgColor: colorBrand.dark,
+          }
       }
   }
 }
