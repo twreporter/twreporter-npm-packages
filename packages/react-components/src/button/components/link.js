@@ -43,16 +43,18 @@ const LinkButton = ({
   type = LINK_TYPE.default,
   link = {},
   text = '',
+  weight,
   TextComponent = null,
+  ...props
 }) => {
   const textJSX = TextComponent ? (
-    <TextComponent text={text} />
+    <TextComponent text={text} weight={weight} />
   ) : (
-    <P1 text={text} />
+    <P1 text={text} weight={weight} />
   )
 
   return (
-    <LinkContainer type={type}>
+    <LinkContainer type={type} {...props}>
       <StyledLink {...link}>{textJSX}</StyledLink>
     </LinkContainer>
   )
@@ -61,6 +63,7 @@ LinkButton.propTypes = {
   type: LINK_TYPE_PROP_TYPES,
   link: PropTypes.object,
   text: PropTypes.string.isRequired,
+  weight: PropTypes.string,
   TextComponent: PropTypes.elementType,
 }
 
