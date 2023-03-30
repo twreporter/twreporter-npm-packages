@@ -16,19 +16,60 @@ const IconContainer = styled.svg`
   mask-image: url(${props => props.src});
   mask-size: cover;
 `
-
+const RawIconContainer = styled.img`
+  height: 24px;
+  width: 24px;
+`
 export const Icon = ({
+  type = 'mask',
   filename = '',
   releaseBranch = BRANCH.master,
   ...restProps
 }) => {
   const src = `${baseGCSDir}${releaseBranch}/${filename}.svg`
-  return <IconContainer alt={filename} src={src} {...restProps} />
+  const IconComponent = type === 'raw' ? RawIconContainer : IconContainer
+  return <IconComponent alt={filename} src={src} {...restProps} />
 }
 Icon.propTypes = {
+  type: PropTypes.oneOf(['mask', 'raw']),
   filename: PropTypes.string,
   releaseBranch: BRANCH_PROP_TYPES,
 }
+
+const getIcon = gcsFileName => {
+  const gscIcon = ({ releaseBranch = BRANCH.master, ...props }) => (
+    <Icon filename={gcsFileName} releaseBranch={releaseBranch} {...props} />
+  )
+  gscIcon.propTypes = {
+    type: PropTypes.oneOf(['mask', 'raw']),
+    releaseBranch: BRANCH_PROP_TYPES,
+  }
+  gscIcon.displayName = gcsFileName || 'icon'
+
+  return gscIcon
+}
+
+export const Hamburger = getIcon('hamburger')
+export const Cross = getIcon('cross')
+export const Search = getIcon('search')
+export const Member = getIcon('member')
+export const Home = getIcon('home')
+export const Share = getIcon('share')
+export const Text = getIcon('text')
+export const Clock = getIcon('clock')
+export const Article = getIcon('article')
+export const Topic = getIcon('topic')
+export const Copy = getIcon('copy')
+export const Loading = getIcon('loading')
+export const Printer = getIcon('printer')
+export const Letter = getIcon('letter')
+export const Facebook = getIcon('facebook')
+export const Instagram = getIcon('instagram')
+export const Medium = getIcon('medium')
+export const Twitter = getIcon('twitter')
+export const Youtube = getIcon('youtube')
+export const Line = getIcon('line')
+export const Google = getIcon('google')
 
 export const Arrow = ({ direction = 'right', releaseBranch, ...props }) => {
   const filename = `arrow_${direction}`
@@ -45,111 +86,6 @@ export const Bookmark = ({ type = 'basic', releaseBranch }) => {
 }
 Bookmark.propTypes = {
   type: PropTypes.oneOf(['basic', 'add', 'saved']),
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Hamburger = args => <Icon filename="hamburger" {...args} />
-Hamburger.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Cross = args => <Icon filename="cross" {...args} />
-Cross.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Search = args => <Icon filename="search" {...args} />
-Search.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Member = args => <Icon filename="member" {...args} />
-Member.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Home = args => <Icon filename="home" {...args} />
-Home.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Share = args => <Icon filename="share" {...args} />
-Share.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Text = args => <Icon filename="text" {...args} />
-Text.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Clock = args => <Icon filename="clock" {...args} />
-Clock.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Article = args => <Icon filename="article" {...args} />
-Article.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Topic = args => <Icon filename="topic" {...args} />
-Topic.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Copy = args => <Icon filename="copy" {...args} />
-Copy.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Loading = args => <Icon filename="loading" {...args} />
-Loading.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Printer = args => <Icon filename="printer" {...args} />
-Printer.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Letter = args => <Icon filename="letter" {...args} />
-Letter.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Facebook = args => <Icon filename="facebook" {...args} />
-Facebook.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Instagram = args => <Icon filename="instagram" {...args} />
-Instagram.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Medium = args => <Icon filename="medium" {...args} />
-Medium.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Twitter = args => <Icon filename="twitter" {...args} />
-Twitter.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Youtube = args => <Icon filename="youtube" {...args} />
-Youtube.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Line = args => <Icon filename="line" {...args} />
-Line.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Google = args => <Icon filename="google" {...args} />
-Google.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
 }
 
