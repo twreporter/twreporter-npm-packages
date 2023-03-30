@@ -23,7 +23,7 @@ const style = {
   },
 }
 
-const LinkContainer = styled.div`
+const LinkContainer = styled(Link)`
   display: flex;
   align-items: center;
   text-underline-offset: 4px;
@@ -33,10 +33,6 @@ const LinkContainer = styled.div`
   &:hover {
     text-decoration-line: underline;
   }
-`
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
 `
 
 const LinkButton = ({
@@ -54,8 +50,8 @@ const LinkButton = ({
   )
 
   return (
-    <LinkContainer type={type} {...props}>
-      <StyledLink {...link}>{textJSX}</StyledLink>
+    <LinkContainer type={type} {...link} {...props}>
+      {textJSX}
     </LinkContainer>
   )
 }
