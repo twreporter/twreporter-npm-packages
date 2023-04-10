@@ -3,6 +3,7 @@ const socialMediaKey = {
   instagram: 'instagram',
   twitter: 'twitter',
   youtube: 'youtube',
+  medium: 'medium',
 }
 
 export const SOCIAL_MEDIA_KEY = socialMediaKey
@@ -12,4 +13,5 @@ export const SOCIAL_MEDIA_ORDER = [
   socialMediaKey.instagram,
   socialMediaKey.twitter,
   socialMediaKey.youtube,
+  socialMediaKey.medium,
 ]
