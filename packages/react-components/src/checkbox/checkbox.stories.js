@@ -18,5 +18,7 @@ checkbox.args = {
   label: '藝術',
   value: false,
   disabled: false,
-  onChange: () => {},
+  onChange: e => {
+    console.log('callback', e.target.checked)
+  },
 }
