@@ -12,10 +12,19 @@ const Container = styled.div`
 const Input = styled.input`
   width: 16px;
   height: 16px;
+  border: solid 1px;
   border-radius: 2px;
   accent-color: ${colorGrayscale.gray800};
   margin-left: 0px;
   margin-right: 8px;
+
+  &:enabled:not(:checked) {
+    border-color: ${colorGrayscale.gray800};
+    background: rgba(0, 0, 0, 0);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
 `
 
 const ColorP1 = styled(P1)`
