@@ -31,7 +31,7 @@ export const Checkbox = ({
   ...props
 }) => {
   const handleChange = e => {
-    onChange && onChange()
+    onChange && onChange(e)
   }
   return (
     <Container {...props}>
