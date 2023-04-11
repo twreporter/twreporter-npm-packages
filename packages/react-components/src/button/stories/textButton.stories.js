@@ -62,6 +62,6 @@ toggleIconDisplay.args = {
   active: false,
   disabled: false,
 }
-textButton.parameters = {
+toggleIconDisplay.parameters = {
   controls: { exclude: ['leftIconComponent', 'rightIconComponent'] },
 }

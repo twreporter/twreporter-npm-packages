@@ -115,26 +115,28 @@ const ArticleCard = ({
       {bookmarkButton}
     </BookmarkContainer>
   ) : null
+  const metaJSX = (
+    <Meta hide={hideMeta}>
+      {categoryJSX}
+      {dateJSX}
+    </Meta>
+  )
+  const imageJSX = (
+    <ImageContainer size={size}>
+      <Image src={image.src} alt={image.alt} releaseBranch={releaseBranch} />
+    </ImageContainer>
+  )
 
   if (size === SIZE.S) {
     return (
       <FlexGroupColumn>
         <FlexSpaceBetween>
           <FlexGroupColumn>
-            <Meta hide={hideMeta}>
-              {categoryJSX}
-              {dateJSX}
-            </Meta>
+            {metaJSX}
             {titleJSX}
           </FlexGroupColumn>
           <FlexGroup>
-            <ImageContainer size={size}>
-              <Image
-                src={image.src}
-                alt={image.alt}
-                releaseBranch={releaseBranch}
-              />
-            </ImageContainer>
+            {imageJSX}
           </FlexGroup>
         </FlexSpaceBetween>
         <FlexGroupColumn>
@@ -149,19 +151,14 @@ const ArticleCard = ({
   return (
     <FlexSpaceBetween>
       <FlexGroupColumn>
-        <Meta hide={hideMeta}>
-          {categoryJSX}
-          {dateJSX}
-        </Meta>
+        {metaJSX}
         <FlexGroupColumn>
           {titleJSX}
           <DescContainer>{descriptionJSX}</DescContainer>
           {bookmarkJSX}
         </FlexGroupColumn>
       </FlexGroupColumn>
-      <ImageContainer size={size}>
-        <Image src={image.src} alt={image.alt} releaseBranch={releaseBranch} />
-      </ImageContainer>
+      {imageJSX}
     </FlexSpaceBetween>
   )
 }
