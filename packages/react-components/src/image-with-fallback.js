@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { LogoFallback } from './logo'
 import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
 
 // lodash
 import get from 'lodash/get'
@@ -47,7 +51,12 @@ const LogoCenteringBlock = styled(ImgContainer)`
   }
 `
 
-const Image = ({ src, alt = '', srcSet = '' }) => {
+const Image = ({
+  src,
+  alt = '',
+  srcSet = '',
+  releaseBranch = BRANCH.master,
+}) => {
   const [isObjectFit, setIsObjectFit] = useState(false)
   const [isImgOnLoad, setIsImgOnLoad] = useState(false)
   const imgNode = useRef(null)
@@ -94,7 +103,7 @@ const Image = ({ src, alt = '', srcSet = '' }) => {
   return (
     <ImgContainer>
       <LogoCenteringBlock display={logoDisplay}>
-        <LogoFallback />
+        <LogoFallback releaseBranch={releaseBranch} />
       </LogoCenteringBlock>
       {ImgJSX}
     </ImgContainer>
@@ -105,6 +114,7 @@ Image.propTypes = {
   alt: PropTypes.string,
   src: PropTypes.string.isRequired,
   srcSet: PropTypes.string,
+  releaseBranch: BRANCH_PROP_TYPES,
 }
 
 export default Image
