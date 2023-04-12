@@ -80,9 +80,11 @@ class List extends PureComponent {
       const style = _.get(item, 'style')
       const slug = _.get(item, 'slug')
       const isInteractiveArticle = style === ARTICLE_THEME.interactive
-      const to = isInteractiveArticle
-        ? entityPaths.interactiveArticle + slug
-        : entityPaths.article + slug
+      const to = `${
+        isInteractiveArticle
+          ? entityPaths.interactiveArticle
+          : entityPaths.article
+      }${slug}`
 
       const tags = _.map(_.get(item, 'tags'), tag => {
         if (_.get(tag, 'name') === tagName) {

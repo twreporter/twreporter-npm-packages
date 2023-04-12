@@ -135,9 +135,7 @@ const ArticleCard = ({
             {metaJSX}
             {titleJSX}
           </FlexGroupColumn>
-          <FlexGroup>
-            {imageJSX}
-          </FlexGroup>
+          <FlexGroup>{imageJSX}</FlexGroup>
         </FlexSpaceBetween>
         <FlexGroupColumn>
           <DescContainer>{descriptionJSX}</DescContainer>

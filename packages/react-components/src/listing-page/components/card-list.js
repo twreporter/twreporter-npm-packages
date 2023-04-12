@@ -113,9 +113,11 @@ const CardList = ({
     const { id, title, slug, style } = item
     const isInteractiveArticle = style === ARTICLE_THEME.interactive
     const link = {
-      to: isInteractiveArticle
-        ? entityPaths.interactiveArticle + slug
-        : entityPaths.article + slug,
+      to: `${
+        isInteractiveArticle
+          ? entityPaths.interactiveArticle
+          : entityPaths.article
+      }${slug}`,
       target: isInteractiveArticle ? '_blank' : '',
     }
     const articleCardProps = {
