@@ -1,3 +1,7 @@
+/* Notice: this component is deprecated.
+ * Please migrate to use @twerporter/react-components/lib/image-with-fallback.js
+ */
+
 import LogoIcon from '../assets/img-loading-placeholder.svg'
 import React from 'react'
 import PropTypes from 'prop-types'

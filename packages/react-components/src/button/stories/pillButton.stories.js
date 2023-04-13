@@ -1,8 +1,11 @@
 import React from 'react'
 import PillButton from '../components/pillButton'
 import { Arrow } from '../../icon'
-import { SIZE, SIZE_STORYBOOK_ARG_TYPE } from '../constants/size'
 import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/type'
+import {
+  SIZE,
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '@twreporter/core/lib/constants/size'
 import {
   THEME,
   THEME_STORYBOOK_ARG_TYPE,

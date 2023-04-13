@@ -6,6 +6,7 @@ import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
 import { fontWeight } from '@twreporter/core/lib/constants/font'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // constants
 import mockup from '../constants/mockup-spec'
 import color from '../constants/color'
@@ -78,11 +79,12 @@ class List extends PureComponent {
     _.forEach(data, item => {
       const style = _.get(item, 'style')
       const slug = _.get(item, 'slug')
-      // TODO extract interactive as to a const file
-      const to =
-        style === 'interactive'
-          ? entityPaths.interactiveArticle + slug
-          : entityPaths.article + slug
+      const isInteractiveArticle = style === ARTICLE_THEME.interactive
+      const to = `${
+        isInteractiveArticle
+          ? entityPaths.interactiveArticle
+          : entityPaths.article
+      }${slug}`
 
       const tags = _.map(_.get(item, 'tags'), tag => {
         if (_.get(tag, 'name') === tagName) {
@@ -116,7 +118,7 @@ class List extends PureComponent {
           tags={tags}
           link={{
             to,
-            target: style === 'interactive' ? '_blank' : '',
+            target: isInteractiveArticle ? '_blank' : '',
           }}
         />
       )

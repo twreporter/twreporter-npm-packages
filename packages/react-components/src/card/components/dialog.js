@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+// component
 import { P1, P2 } from '../../text/paragraph'
+// @twreporter
+import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
 
 const Container = styled.div`
   display: flex;
@@ -24,9 +27,9 @@ const Triangle = styled.div`
   transform: translateX(-16px);
 `
 
-const Dialog = ({ text = '', size = 'S', ...props }) => {
+const Dialog = ({ text = '', size = SIZE.S, ...props }) => {
   const textIcon =
-    size === 'S' ? (
+    size === SIZE.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
@@ -40,7 +43,7 @@ const Dialog = ({ text = '', size = 'S', ...props }) => {
 }
 Dialog.propTypes = {
   text: PropTypes.string,
-  size: PropTypes.oneOf(['S', 'L']),
+  size: SIZE_PROP_TYPES,
 }
 
 export default Dialog
