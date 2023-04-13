@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import { P1 } from '../text/paragraph'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
+const disableColor = colorGrayscale.gray400
+const activeColor = colorGrayscale.gray800
+
 const Container = styled.div`
   display: flex;
   flex-direction: 'row';
@@ -28,18 +31,16 @@ const Indicator = styled.div`
   background: ${props =>
     props.value
       ? props.disabled
-        ? colorGrayscale.gray400
-        : colorGrayscale.gray800
+        ? disableColor
+        : activeColor
       : 'rgba(0, 0, 0, 0)'};
   position: absolute;
   top: 0px;
   left: 0px;
-  border-color: ${props =>
-    props.disabled ? colorGrayscale.gray400 : colorGrayscale.gray800};
+  border-color: ${props => (props.disabled ? disableColor : activeColor)};
   border-radius: 2px;
   box-shadow: 0 0 0 1px
-    ${props =>
-      props.disabled ? colorGrayscale.gray400 : colorGrayscale.gray800};
+    ${props => (props.disabled ? disableColor : activeColor)};
   margin: 3px 8px 0px 0px;
 
   &::after {
@@ -63,8 +64,7 @@ const Indicator = styled.div`
 `
 
 const ColorP1 = styled(P1)`
-  color: ${props =>
-    props.disabled ? colorGrayscale.gray400 : colorGrayscale.gray800};
+  color: ${props => (props.disabled ? disableColor : activeColor)};
 `
 
 export const Checkbox = ({
