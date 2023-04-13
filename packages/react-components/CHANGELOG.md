@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.17.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.2...@twreporter/react-components@8.17.0-rc.3) (2023-04-13)
+
+
+### Bug Fixes
+
+* add comments ([c5db49d](https://github.com/twreporter/twreporter-npm-packages/commit/c5db49dc1fae29527e7dec334bcadba18068aea4))
+* add icon toggle for TextButton story & refactor ([66b5c83](https://github.com/twreporter/twreporter-npm-packages/commit/66b5c834e6545ad1c278ac7934899ed845204c20))
+* add missing releaseBranch props to image-with-fallback component ([a98c612](https://github.com/twreporter/twreporter-npm-packages/commit/a98c61215314f98de86345a41b5870b31971db08))
+* address CardList defects ([5d183b0](https://github.com/twreporter/twreporter-npm-packages/commit/5d183b0f411540b66c07476b014be97703577284))
+* address review comments ([539cac0](https://github.com/twreporter/twreporter-npm-packages/commit/539cac05e06e33621a9fbc4b9971e040c4560bf8))
+* address review comments & fix typo ([20c1ebe](https://github.com/twreporter/twreporter-npm-packages/commit/20c1ebe273869a176bf2715bc2975fe5abcb50b6))
+* define interactive style in [@twreporter](https://github.com/twreporter) core package ([0acbe56](https://github.com/twreporter/twreporter-npm-packages/commit/0acbe564eecd201e5c8d11314b8f1598892859f1))
+* fix Link import path in CardList ([3667d82](https://github.com/twreporter/twreporter-npm-packages/commit/3667d82063b048f1e43e50dc8e73d19b9d08ce23))
+* move size constant to @twreporter/core package ([c0e4d29](https://github.com/twreporter/twreporter-npm-packages/commit/c0e4d295a1846c6a8828970cb651854619206c5f))
+* refactor ImagWithFallback into function component ([854edb7](https://github.com/twreporter/twreporter-npm-packages/commit/854edb7631b64087f7959105ca642fdb347a48fc))
+* use size constant for Dialog component ([e7c1831](https://github.com/twreporter/twreporter-npm-packages/commit/e7c1831d9df727c0bdf686a8748109cfa1b5f79a))
+* use size constant from core package ([be6aa4f](https://github.com/twreporter/twreporter-npm-packages/commit/be6aa4f806b95994c5acaa5d6cbe49fc2303c0c3))
+
+
+### Features
+
+* add CardList component ([f970192](https://github.com/twreporter/twreporter-npm-packages/commit/f97019239c19451d83c42034675021a09e0004de))
+* add design guideline components ([efe249d](https://github.com/twreporter/twreporter-npm-packages/commit/efe249d44f0d45f5c50ee6e69b0d7f1482270bbe))
+
+
+
+
+
 # [8.17.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.1...@twreporter/react-components@8.17.0-rc.2) (2023-04-12)
 
 **Note:** Version bump only for package @twreporter/react-components

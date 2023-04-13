@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.3-rc.1...@twreporter/core@1.8.3-rc.2) (2023-04-13)
+
+
+### Bug Fixes
+
+* add icon toggle for TextButton story & refactor ([66b5c83](https://github.com/twreporter/twreporter-npm-packages/commit/66b5c834e6545ad1c278ac7934899ed845204c20))
+* define interactive style in [@twreporter](https://github.com/twreporter) core package ([0acbe56](https://github.com/twreporter/twreporter-npm-packages/commit/0acbe564eecd201e5c8d11314b8f1598892859f1))
+* move size constant to @twreporter/core package ([c0e4d29](https://github.com/twreporter/twreporter-npm-packages/commit/c0e4d295a1846c6a8828970cb651854619206c5f))
+
+
+
+
+
 ## [1.8.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.3-rc.0...@twreporter/core@1.8.3-rc.1) (2023-03-07)
 
 
