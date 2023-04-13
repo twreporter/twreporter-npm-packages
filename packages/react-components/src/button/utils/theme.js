@@ -5,9 +5,8 @@ import {
   colorSupportive,
   colorGrayscale,
 } from '@twreporter/core/lib/constants/color'
-import { THEME } from '@twreporter/core/lib/constants/theme'
-import { TEXT_BUTTON_THEME } from '../constants'
 import { STYLE } from '../constants/style'
+import { THEME, TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 export const getFilledPillButtonTheme = (theme, disabled, style) => {
   if (disabled) {
@@ -386,17 +385,17 @@ export const getActiveTextButtonTheme = theme => {
       }
     case TEXT_BUTTON_THEME.brand:
       return {
-        color: colorBrand.heavy,
+        color: colorBrand.dark,
         hoverColor: colorBrand.dark,
       }
     case TEXT_BUTTON_THEME.dark:
       return {
-        color: colorGrayscale.gray800,
+        color: colorBrand.heavy,
         hoverColor: colorBrand.heavy,
       }
     case TEXT_BUTTON_THEME.light:
       return {
-        color: colorGrayscale.gray600,
+        color: colorGrayscale.gray800,
         hoverColor: colorGrayscale.gray800,
       }
     case TEXT_BUTTON_THEME.normal:

@@ -9,11 +9,11 @@ import {
 } from '../utils/theme'
 import { getSizeStyle } from '../utils/size'
 // constants
-import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
 import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
 import { STYLE, STYLE_PROP_TYPES } from '../constants/style'
 // @twreporter
 import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
+import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
 
 const ButtonContainer = styled.div`
   width: fit-content;

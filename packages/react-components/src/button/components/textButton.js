@@ -12,11 +12,12 @@ import { getSizeStyle } from '../utils/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
 // constants
-import { TEXT_BUTTON_THEME, TEXT_BUTTON_THEME_PROP_TYPES } from '../constants/'
-import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
+import { TEXT_BUTTON_THEME_PROP_TYPES } from '../constants/'
 import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
+import { TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
   cursor: pointer;

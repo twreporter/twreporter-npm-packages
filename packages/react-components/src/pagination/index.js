@@ -26,15 +26,21 @@ const styles = {
   },
   prevNextBtnPadding: [0, 20, 2, 20],
   ellipsisBoxPadding: [10, 6, 10, 6],
-  containerMargin: [58, 'auto', 50, 'auto'],
+  containerMargin: {
+    default: [64, 'auto', 120, 'auto'],
+    mobile: [32, 'auto', 64, 'auto'],
+  },
 }
 
 const PaginationContainer = styled.div`
-  margin: ${arrayToCssShorthand(styles.containerMargin)};
+  margin: ${arrayToCssShorthand(styles.containerMargin.default)};
   text-align: center;
   height: ${styles.btnBoxSize.mobile}px;
   ${mq.tabletAndAbove`
     height: ${styles.btnBoxSize.desktop}px;
+  `}
+  ${mq.mobileOnly`
+    margin: ${arrayToCssShorthand(styles.containerMargin.mobile)};
   `}
 `
 
