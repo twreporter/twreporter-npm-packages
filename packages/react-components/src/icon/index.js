@@ -4,7 +4,10 @@ import styled from 'styled-components'
 // enum
 import { IconType, ArrowDirection, BookmarkType, MediaType } from './enum'
 // @twreporter
-import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
 
 const baseGCSDir = 'https://www.twreporter.org/assets/icon/'
 
@@ -32,7 +35,7 @@ export const Icon = ({
 Icon.propTypes = {
   type: PropTypes.oneOf(Object.values(IconType)),
   filename: PropTypes.string,
-  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+  releaseBranch: BRANCH_PROP_TYPES,
 }
 Icon.type = IconType
 Icon.releaseBranch = BRANCH
@@ -43,7 +46,7 @@ const getIcon = gcsFileName => {
   )
   gcsIcon.propTypes = {
     type: PropTypes.oneOf(Object.values(IconType)),
-    releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+    releaseBranch: BRANCH_PROP_TYPES,
   }
   gcsIcon.displayName = gcsFileName || 'icon'
   gcsIcon.type = IconType
@@ -84,7 +87,7 @@ export const Arrow = ({
 }
 Arrow.propTypes = {
   direction: PropTypes.oneOf(Object.values(ArrowDirection)),
-  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+  releaseBranch: BRANCH_PROP_TYPES,
 }
 Arrow.direction = ArrowDirection
 Arrow.releaseBranch = BRANCH
@@ -95,7 +98,7 @@ export const Bookmark = ({ type = BookmarkType.BASIC, releaseBranch }) => {
 }
 Bookmark.propTypes = {
   type: PropTypes.oneOf(Object.values(BookmarkType)),
-  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+  releaseBranch: BRANCH_PROP_TYPES,
 }
 Bookmark.type = BookmarkType
 Bookmark.releaseBranch = BRANCH
@@ -104,8 +107,9 @@ export const SocialMedia = ({ mediaType = MediaType.GOOGLE, ...args }) => (
   <Icon filename={mediaType} {...args} />
 )
 SocialMedia.propTypes = {
-  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+  type: Icon.propTypes.type,
   mediaType: PropTypes.oneOf(Object.values(MediaType)),
+  releaseBranch: BRANCH_PROP_TYPES,
 }
 SocialMedia.type = IconType
 SocialMedia.mediaType = MediaType

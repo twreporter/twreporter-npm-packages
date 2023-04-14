@@ -1,6 +1,6 @@
 import React from 'react'
 import LogoHeader from '../components/logo-header'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
+import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
   title: 'Logo/Header',

@@ -4,7 +4,7 @@ import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
 import { Type } from '../enums'
 
-import { SIZE_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/size'
+import { SIZE_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
   title: 'Button/Text Button',

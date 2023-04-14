@@ -16,12 +16,6 @@ export const BRANCH_PROP_TYPES = PropTypes.oneOf([
   BRANCH.release,
 ])
 
-export const BRANCH_STORYBOOK_ARG_TYPE = {
-  defaultValue: BRANCH.master,
-  options: [BRANCH.master, BRANCH.staging, BRANCH.preview, BRANCH.release],
-  control: { type: 'radio' },
-}
-
 export default {
   master: 'master',
   // for dev

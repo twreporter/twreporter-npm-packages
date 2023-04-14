@@ -1,7 +1,7 @@
 import React from 'react'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import { SocialMedia } from '../index'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
+import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
   title: 'Icon/Social Media',

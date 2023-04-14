@@ -9,10 +9,10 @@ import {
 } from './hamburger-menu-item'
 import HeaderContext from '../contexts/header-context'
 import {
-  THEME,
   THEME_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/theme'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
+  BRANCH_STORYBOOK_ARG_TYPE,
+} from '../storybook/constants'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 export default {
   title: 'Hamburger/Item',

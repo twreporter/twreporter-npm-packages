@@ -1,6 +1,6 @@
 import React from 'react'
 import LogoFallback from '../components/logo-loading-fallback'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
+import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
   title: 'Logo/Fallback',

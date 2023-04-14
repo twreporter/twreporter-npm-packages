@@ -6,8 +6,8 @@ import useSnackBar from '../hooks/use-snack-bar'
 // components
 import SnackBar from '../components/snack-bar'
 import { PillButton } from '../../button'
-// @twreporter
-import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
+// storybook
+import { THEME_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 // lodash
 import random from 'lodash/random'
 const _ = {

@@ -3,8 +3,10 @@ import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import PillButton from '../components/pillButton'
 import { Cross } from '../../icon'
 import { Type, Style } from '../enums'
-import { SIZE_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/size'
-import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
+import {
+  THEME_STORYBOOK_ARG_TYPE,
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '../../storybook/constants'
 
 export default {
   title: 'Button/Pill Button',

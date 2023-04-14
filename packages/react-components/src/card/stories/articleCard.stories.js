@@ -2,13 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import ArticleCard from '../components/article-card'
 import {
-  SIZE,
-  SIZE_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/size'
-import {
-  BRANCH,
   BRANCH_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/release-branch'
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '../../storybook/constants'
+import { SIZE } from '@twreporter/core/lib/constants/size'
+import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
   title: 'Card/Article',

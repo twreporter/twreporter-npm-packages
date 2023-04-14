@@ -1,7 +1,7 @@
 import React from 'react'
 import IconWithTextButton from '../components/iconWithTextButton'
 import { Share, Arrow } from '../../icon'
-import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
+import { THEME_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
   title: 'Button/Icon With Text Button',

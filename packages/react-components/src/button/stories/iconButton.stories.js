@@ -3,7 +3,7 @@ import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import IconButton from '../components/iconButton'
 import { Share, Arrow } from '../../icon'
 import { Type } from '../enums'
-import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
+import { THEME_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
   title: 'Button/Icon Button',

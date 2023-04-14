@@ -1,8 +1,10 @@
 import React from 'react'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import SearchBar from '../components/search-bar'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
-import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
+import {
+  BRANCH_STORYBOOK_ARG_TYPE,
+  THEME_STORYBOOK_ARG_TYPE,
+} from '../../storybook/constants'
 
 export default {
   title: 'Input/Search Bar',

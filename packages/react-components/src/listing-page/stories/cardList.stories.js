@@ -1,9 +1,7 @@
 import React from 'react'
 import CardList from '../components/card-list'
-import {
-  BRANCH,
-  BRANCH_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/release-branch'
+import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
+import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
   title: 'List/Card',
