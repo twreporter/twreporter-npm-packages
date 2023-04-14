@@ -39,7 +39,7 @@ const LinkButton = ({
   type = LinkType.DEFAULT,
   link = {},
   text = '',
-  weight,
+  weight = P1.weight.NORMAL,
   TextComponent = null,
   ...props
 }) => {
@@ -59,9 +59,10 @@ LinkButton.propTypes = {
   type: PropTypes.oneOf(Object.values(LinkType)),
   link: PropTypes.object,
   text: PropTypes.string.isRequired,
-  weight: PropTypes.string,
+  weight: P1.propTypes.weight,
   TextComponent: PropTypes.elementType,
 }
 LinkButton.type = LinkType
+LinkButton.weight = P1.weight
 
 export default LinkButton
