@@ -14,7 +14,7 @@ const flexDirection = {
 
 const FlexContainer = styled.div`
   display: flex;
-  flex-direction: ${(props) => flexDirection[props.direction]};
+  flex-direction: ${props => flexDirection[props.direction]};
   align-items: center;
   justify-content: space-between;
   height: 250px;
@@ -31,21 +31,23 @@ const VerticalContainer = styled.div`
   height: 200px;
 `
 
-export const divider = (args) => (
+export const divider = args => (
   <FlexContainer {...args}>
     <Cube />
     <Divider {...args} />
     <Cube />
   </FlexContainer>
 )
-divider.args = { direction: 'horizontal' }
+divider.args = { direction: Divider.direction.horizontal }
 
-export const horizontal = () => <Divider direction="horizontal" />
+export const horizontal = () => (
+  <Divider direction={Divider.direction.horizontal} />
+)
 horizontal.parameters = { controls: { exclude: ['direction'] } }
 
 export const vertical = () => (
   <VerticalContainer>
-    <Divider direction="vertical" />
+    <Divider direction={Divider.direction.vertical} />
   </VerticalContainer>
 )
 vertical.parameters = { controls: { exclude: ['direction'] } }

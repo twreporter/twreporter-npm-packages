@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+// enum
+import { IconType, ArrowDirection, BookmarkType, MediaType } from './enum'
 // @twreporter
-import {
-  BRANCH,
-  BRANCH_PROP_TYPES,
-} from '@twreporter/core/lib/constants/release-branch'
+import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 
 const baseGCSDir = 'https://www.twreporter.org/assets/icon/'
 
@@ -21,32 +20,36 @@ const RawIconContainer = styled.img`
   width: 24px;
 `
 export const Icon = ({
-  type = 'mask',
+  type = IconType.MASK,
   filename = '',
   releaseBranch = BRANCH.master,
   ...restProps
 }) => {
   const src = `${baseGCSDir}${releaseBranch}/${filename}.svg`
-  const IconComponent = type === 'raw' ? RawIconContainer : IconContainer
+  const IconComponent = type === IconType.RAW ? RawIconContainer : IconContainer
   return <IconComponent alt={filename} src={src} {...restProps} />
 }
 Icon.propTypes = {
-  type: PropTypes.oneOf(['mask', 'raw']),
+  type: PropTypes.oneOf(Object.values(IconType)),
   filename: PropTypes.string,
-  releaseBranch: BRANCH_PROP_TYPES,
+  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
 }
+Icon.type = IconType
+Icon.releaseBranch = BRANCH
 
 const getIcon = gcsFileName => {
-  const gscIcon = ({ releaseBranch = BRANCH.master, ...props }) => (
+  const gcsIcon = ({ releaseBranch = BRANCH.master, ...props }) => (
     <Icon filename={gcsFileName} releaseBranch={releaseBranch} {...props} />
   )
-  gscIcon.propTypes = {
-    type: PropTypes.oneOf(['mask', 'raw']),
-    releaseBranch: BRANCH_PROP_TYPES,
+  gcsIcon.propTypes = {
+    type: PropTypes.oneOf(Object.values(IconType)),
+    releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
   }
-  gscIcon.displayName = gcsFileName || 'icon'
+  gcsIcon.displayName = gcsFileName || 'icon'
+  gcsIcon.type = IconType
+  gcsIcon.releaseBranch = BRANCH
 
-  return gscIcon
+  return gcsIcon
 }
 
 export const Hamburger = getIcon('hamburger')
@@ -71,39 +74,42 @@ export const Youtube = getIcon('youtube')
 export const Line = getIcon('line')
 export const Google = getIcon('google')
 
-export const Arrow = ({ direction = 'right', releaseBranch, ...props }) => {
+export const Arrow = ({
+  direction = ArrowDirection.RIGHT,
+  releaseBranch,
+  ...props
+}) => {
   const filename = `arrow_${direction}`
   return <Icon filename={filename} releaseBranch={releaseBranch} {...props} />
 }
 Arrow.propTypes = {
-  direction: PropTypes.oneOf(['right', 'left', 'up', 'down']),
-  releaseBranch: BRANCH_PROP_TYPES,
+  direction: PropTypes.oneOf(Object.values(ArrowDirection)),
+  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
 }
+Arrow.direction = ArrowDirection
+Arrow.releaseBranch = BRANCH
 
-export const Bookmark = ({ type = 'basic', releaseBranch }) => {
+export const Bookmark = ({ type = BookmarkType.BASIC, releaseBranch }) => {
   const filename = `bookmark_${type}`
   return <Icon filename={filename} releaseBranch={releaseBranch} />
 }
 Bookmark.propTypes = {
-  type: PropTypes.oneOf(['basic', 'add', 'saved']),
-  releaseBranch: BRANCH_PROP_TYPES,
+  type: PropTypes.oneOf(Object.values(BookmarkType)),
+  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
 }
+Bookmark.type = BookmarkType
+Bookmark.releaseBranch = BRANCH
 
-export const SocialMedia = ({ mediaType, ...args }) => (
+export const SocialMedia = ({ mediaType = MediaType.GOOGLE, ...args }) => (
   <Icon filename={mediaType} {...args} />
 )
 SocialMedia.propTypes = {
-  mediaType: PropTypes.oneOf([
-    'facebook',
-    'instagram',
-    'medium',
-    'twitter',
-    'youtube',
-    'line',
-    'google',
-  ]),
-  releaseBranch: BRANCH_PROP_TYPES,
+  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+  mediaType: PropTypes.oneOf(Object.values(MediaType)),
 }
+SocialMedia.type = IconType
+SocialMedia.mediaType = MediaType
+SocialMedia.releaseBranch = BRANCH
 
 export default {
   Arrow,

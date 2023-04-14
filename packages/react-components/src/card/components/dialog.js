@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // component
 import { P1, P2 } from '../../text/paragraph'
 // @twreporter
-import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
+import { SIZE } from '@twreporter/core/lib/constants/size'
 
 const Container = styled.div`
   display: flex;
@@ -43,7 +43,8 @@ const Dialog = ({ text = '', size = SIZE.S, ...props }) => {
 }
 Dialog.propTypes = {
   text: PropTypes.string,
-  size: SIZE_PROP_TYPES,
+  size: PropTypes.oneOf(Object.values(SIZE)),
 }
+Dialog.size = SIZE
 
 export default Dialog

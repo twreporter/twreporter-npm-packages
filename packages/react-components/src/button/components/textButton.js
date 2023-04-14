@@ -12,11 +12,10 @@ import { getSizeStyle } from '../utils/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
 // constants
-import { TEXT_BUTTON_THEME_PROP_TYPES } from '../constants/'
-import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
+import { Type } from '../enums'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
+import { SIZE } from '@twreporter/core/lib/constants/size'
 import { TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
@@ -52,7 +51,7 @@ const TextButton = ({
   rightIconComponent = null,
   size = SIZE.S,
   theme = TEXT_BUTTON_THEME.normal,
-  type = TYPE.primary,
+  type = Type.PRIMARY,
   active = false,
   disabled = false,
   ...props
@@ -64,7 +63,7 @@ const TextButton = ({
     themeFunc = getActiveTextButtonTheme
   } else {
     themeFunc =
-      type === TYPE.primary
+      type === Type.PRIMARY
         ? getPrimaryTextButtonTheme
         : getSecondaryTextButtonTheme
   }
@@ -102,11 +101,14 @@ TextButton.propTypes = {
   leftIconComponent: PropTypes.element,
   rightIconComponent: PropTypes.element,
   text: PropTypes.string,
-  size: SIZE_PROP_TYPES,
-  theme: TEXT_BUTTON_THEME_PROP_TYPES,
-  type: TYPE_PROP_TYPES,
+  size: PropTypes.oneOf(Object.values(SIZE)),
+  theme: PropTypes.oneOf(Object.values(TEXT_BUTTON_THEME)),
+  type: PropTypes.oneOf(Object.values(Type)),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
 }
+TextButton.theme = TEXT_BUTTON_THEME
+TextButton.size = SIZE
+TextButton.type = Type
 
 export default TextButton

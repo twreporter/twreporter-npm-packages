@@ -9,11 +9,10 @@ import {
 } from '../utils/theme'
 import { getSizeStyle } from '../utils/size'
 // constants
-import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
-import { STYLE, STYLE_PROP_TYPES } from '../constants/style'
+import { Style, Type } from '../enums'
 // @twreporter
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
-import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
+import { THEME } from '@twreporter/core/lib/constants/theme'
+import { SIZE } from '@twreporter/core/lib/constants/size'
 
 const ButtonContainer = styled.div`
   width: fit-content;
@@ -21,7 +20,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   border-radius: 40px;
   background-color: ${props =>
-    props.type === TYPE.primary ? props.bgColor : 'transparent'};
+    props.type === Type.PRIMARY ? props.bgColor : 'transparent'};
   border-color: ${props => props.bgColor};
   border-style: solid;
   border-width: 1.5px;
@@ -36,7 +35,7 @@ const ButtonContainer = styled.div`
   &:hover {
     color: ${props => props.hoverColor};
     background-color: ${props =>
-      props.type === TYPE.primary ? props.hoverBgColor : 'transparent'};
+      props.type === Type.PRIMARY ? props.hoverBgColor : 'transparent'};
     border-color: ${props => props.hoverBgColor};
     svg {
       background-color: ${props => props.hoverColor};
@@ -60,13 +59,13 @@ const PillButton = ({
   rightIconComponent = null,
   size = SIZE.S,
   theme = THEME.normal,
-  type = TYPE.primary,
-  style = STYLE.brand,
+  type = Type.PRIMARY,
+  style = Style.BRAND,
   disabled = false,
   ...props
 }) => {
   const themeFunc =
-    type === TYPE.primary ? getFilledPillButtonTheme : getOutlinePillButtonTheme
+    type === Type.PRIMARY ? getFilledPillButtonTheme : getOutlinePillButtonTheme
   const { color, bgColor, hoverColor, hoverBgColor } = themeFunc(
     theme,
     disabled,
@@ -107,11 +106,15 @@ PillButton.propTypes = {
   leftIconComponent: PropTypes.element,
   rightIconComponent: PropTypes.element,
   text: PropTypes.string,
-  size: SIZE_PROP_TYPES,
-  theme: THEME_PROP_TYPES,
-  type: TYPE_PROP_TYPES,
-  style: STYLE_PROP_TYPES,
+  size: PropTypes.oneOf(Object.values(SIZE)),
+  theme: PropTypes.oneOf(Object.values(THEME)),
+  type: PropTypes.oneOf(Object.values(Type)),
+  style: PropTypes.oneOf(Object.values(Style)),
   disabled: PropTypes.bool,
 }
+PillButton.theme = THEME
+PillButton.type = Type
+PillButton.size = SIZE
+PillButton.style = Style
 
 export default PillButton

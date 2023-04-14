@@ -6,11 +6,11 @@ import {
   getPrimaryIconButtonTheme,
   getSecondaryIconButtonTheme,
 } from '../utils/theme'
-// constants
-import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
+// enums
+import { Type } from '../enums'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
   cursor: pointer;
@@ -31,13 +31,13 @@ const ButtonContainer = styled.div`
 const IconButton = ({
   iconComponent,
   theme = THEME.normal,
-  type = TYPE.primary,
+  type = Type.PRIMARY,
   disabled = false,
   active = false,
   ...props
 }) => {
   const themeFunc =
-    type === TYPE.primary
+    type === Type.PRIMARY
       ? getPrimaryIconButtonTheme
       : getSecondaryIconButtonTheme
   const { color, hoverColor } = themeFunc(theme, active, disabled)
@@ -50,10 +50,12 @@ const IconButton = ({
 }
 IconButton.propTypes = {
   iconComponent: PropTypes.element.isRequired,
-  theme: THEME_PROP_TYPES,
-  type: TYPE_PROP_TYPES,
+  theme: PropTypes.oneOf(Object.values(THEME)),
+  type: PropTypes.oneOf(Object.values(Type)),
   disabled: PropTypes.bool,
   active: PropTypes.bool,
 }
+IconButton.theme = THEME
+IconButton.type = Type
 
 export default IconButton

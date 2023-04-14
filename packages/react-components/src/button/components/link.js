@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Link from '../../customized-link'
 import { P1 } from '../../text/paragraph'
 // constant
-import { LINK_TYPE, LINK_TYPE_PROP_TYPES } from '../constants/type'
+import { LinkType } from '../enums'
 // @twreporter
 import {
   colorGrayscale,
@@ -14,12 +14,12 @@ import {
 
 const style = {
   decoration: {
-    [LINK_TYPE.default]: 'none',
-    [LINK_TYPE.underline]: 'underline',
+    [LinkType.DEFAULT]: 'none',
+    [LinkType.UNDERLINE]: 'underline',
   },
   color: {
-    [LINK_TYPE.default]: COLOR_SEMANTIC.info,
-    [LINK_TYPE.underline]: colorGrayscale.gray600,
+    [LinkType.DEFAULT]: COLOR_SEMANTIC.info,
+    [LinkType.UNDERLINE]: colorGrayscale.gray600,
   },
 }
 
@@ -36,7 +36,7 @@ const LinkContainer = styled(Link)`
 `
 
 const LinkButton = ({
-  type = LINK_TYPE.default,
+  type = LinkType.DEFAULT,
   link = {},
   text = '',
   weight,
@@ -56,11 +56,12 @@ const LinkButton = ({
   )
 }
 LinkButton.propTypes = {
-  type: LINK_TYPE_PROP_TYPES,
+  type: PropTypes.oneOf(Object.values(LinkType)),
   link: PropTypes.object,
   text: PropTypes.string.isRequired,
   weight: PropTypes.string,
   TextComponent: PropTypes.elementType,
 }
+LinkButton.type = LinkType
 
 export default LinkButton

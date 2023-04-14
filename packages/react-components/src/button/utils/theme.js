@@ -5,7 +5,7 @@ import {
   colorSupportive,
   colorGrayscale,
 } from '@twreporter/core/lib/constants/color'
-import { STYLE } from '../constants/style'
+import { Style } from '../enums'
 import { THEME, TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 export const getFilledPillButtonTheme = (theme, disabled, style) => {
@@ -46,21 +46,21 @@ export const getFilledPillButtonTheme = (theme, disabled, style) => {
     case THEME.index:
     default:
       switch (style) {
-        case STYLE.dark:
+        case Style.DARK:
           return {
             color: colorGrayscale.white,
             bgColor: colorGrayscale.gray800,
             hoverColor: colorGrayscale.white,
             hoverBgColor: colorGrayscale.black,
           }
-        case STYLE.light:
+        case Style.LIGHT:
           return {
             color: colorGrayscale.gray800,
             bgColor: colorGrayscale.white,
             hoverColor: colorGrayscale.gray800,
             hoverBgColor: colorGrayscale.gray200,
           }
-        case STYLE.brand:
+        case Style.BRAND:
         default:
           return {
             color: colorGrayscale.white,
@@ -117,21 +117,21 @@ export const getOutlinePillButtonTheme = (theme, disabled, style) => {
     case THEME.index:
     default:
       switch (style) {
-        case STYLE.dark:
+        case Style.DARK:
           return {
             color: colorGrayscale.gray800,
             bgColor: colorGrayscale.gray800,
             hoverColor: colorGrayscale.black,
             hoverBgColor: colorGrayscale.black,
           }
-        case STYLE.light:
+        case Style.LIGHT:
           return {
             color: colorGrayscale.gray800,
             bgColor: colorGrayscale.white,
             hoverColor: colorGrayscale.gray800,
             hoverBgColor: colorGrayscale.gray200,
           }
-        case STYLE.brand:
+        case Style.BRAND:
         default:
           return {
             color: colorBrand.heavy,

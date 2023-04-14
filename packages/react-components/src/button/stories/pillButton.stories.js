@@ -1,25 +1,19 @@
 import React from 'react'
+import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import PillButton from '../components/pillButton'
 import { Cross } from '../../icon'
-import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/type'
-import { STYLE, STYLE_STORYBOOK_ARG_TYPE } from '../constants/style'
-import {
-  SIZE,
-  SIZE_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/size'
-import {
-  THEME,
-  THEME_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/theme'
+import { Type, Style } from '../enums'
+import { SIZE_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/size'
+import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
 
 export default {
   title: 'Button/Pill Button',
   component: PillButton,
   argTypes: {
     theme: THEME_STORYBOOK_ARG_TYPE,
-    type: TYPE_STORYBOOK_ARG_TYPE,
+    type: getRadioArg(Type, Type.PRIMARY),
     size: SIZE_STORYBOOK_ARG_TYPE,
-    style: STYLE_STORYBOOK_ARG_TYPE,
+    style: getRadioArg(Style, Style.BRAND),
     // showLeft & showRight args are only for storybook check
     showLeft: {
       defaultValue: true,
@@ -37,10 +31,10 @@ const Template = args => <PillButton {...args} />
 export const pillButton = Template.bind({})
 pillButton.args = {
   text: '文字',
-  size: SIZE.S,
-  theme: THEME.normal,
-  style: STYLE.brand,
-  type: TYPE.primary,
+  size: PillButton.size.S,
+  theme: PillButton.theme.normal,
+  style: PillButton.style.BRAND,
+  type: PillButton.type.PRIMARY,
   disabled: false,
 }
 pillButton.parameters = { controls: { exclude: ['showLeft', 'showRight'] } }
@@ -55,10 +49,10 @@ toggleIconDisplay.args = {
   showLeft: true,
   showRight: true,
   text: '文字',
-  size: SIZE.S,
-  theme: THEME.normal,
-  style: STYLE.brand,
-  type: TYPE.primary,
+  size: PillButton.size.S,
+  theme: PillButton.theme.normal,
+  style: PillButton.style.BRAND,
+  type: PillButton.type.PRIMARY,
   disabled: false,
 }
 toggleIconDisplay.parameters = {

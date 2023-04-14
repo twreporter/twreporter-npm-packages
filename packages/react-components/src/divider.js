@@ -4,6 +4,12 @@ import styled from 'styled-components'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 
+// direction enum
+const direction = {
+  horizontal: 'horizontal',
+  vertical: 'vertical',
+}
+
 const borderWidth = {
   vertical: [0, '1px', 0, 0],
   horizontal: ['1px', 0, 0, 0],
@@ -31,7 +37,8 @@ const Divider = ({ direction = 'horizontal', ...props }) => {
   return <DividerBox direction={direction} {...props} />
 }
 Divider.propTypes = {
-  direction: PropTypes.oneOf(['vertical', 'horizontal']),
+  direction: PropTypes.oneOf(Object.values(direction)),
 }
+Divider.direction = direction
 
 export default Divider

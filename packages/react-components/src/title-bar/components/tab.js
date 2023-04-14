@@ -58,7 +58,11 @@ const TabItem = ({ tab = {}, ...restProps }) => {
   return (
     <TabItemContainer {...restProps}>
       <CustomizedLink to={link} isExternal={isExternal}>
-        <StyledTextButton text={text} active={isActive} size="L" />
+        <StyledTextButton
+          text={text}
+          active={isActive}
+          size={TextButton.size.L}
+        />
       </CustomizedLink>
     </TabItemContainer>
   )
@@ -128,7 +132,7 @@ const TitleTab = ({ title = '', tabs = [], activeTabIndex = 0 }) => (
   <BarContainer>
     <H1 text={title} />
     <MobileTab tabs={tabs} activeTabIndex={activeTabIndex} />
-    <Divider direction="horizontal" />
+    <Divider direction={Divider.direction.horizontal} />
   </BarContainer>
 )
 TitleTab.propTypes = {

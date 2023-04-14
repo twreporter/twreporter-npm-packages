@@ -4,13 +4,14 @@ import styled from 'styled-components'
 // utils
 import pathUtil from '../utils/path'
 // @twreporter
-import {
-  BRANCH,
-  BRANCH_PROP_TYPES,
-} from '@twreporter/core/lib/constants/release-branch'
+import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 
 const LogoContainer = styled.img``
 
+const logoType = {
+  DEFAULT: 'default',
+  WHITE: 'white',
+}
 const LogoHeader = ({ type, releaseBranch, ...props }) => {
   const logoSrc = pathUtil.selectLogoPath('header', releaseBranch, type)
 
@@ -20,15 +21,15 @@ const LogoHeader = ({ type, releaseBranch, ...props }) => {
     </React.Fragment>
   )
 }
-
 LogoHeader.propTypes = {
-  type: PropTypes.oneOf(['default', 'white']),
-  releaseBranch: BRANCH_PROP_TYPES,
+  type: PropTypes.oneOf(Object.values(logoType)),
+  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
 }
-
 LogoHeader.defaultProps = {
   type: 'default',
   releaseBranch: BRANCH.master,
 }
+LogoHeader.releaseBranch = BRANCH
+LogoHeader.type = logoType
 
 export default LogoHeader

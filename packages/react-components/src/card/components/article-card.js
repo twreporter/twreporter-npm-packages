@@ -9,7 +9,6 @@ import { Bookmark } from '../../icon'
 import { IconButton, TextButton } from '../../button'
 // @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
-import { THEME, TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
 import {
   BRANCH,
@@ -99,16 +98,21 @@ const ArticleCard = ({
       <P1 text={description} />
     )
   ) : null
-  const bookmarkIcon = <Bookmark type="saved" releaseBranch={releaseBranch} />
+  const bookmarkIcon = (
+    <Bookmark type={Bookmark.type.SAVED} releaseBranch={releaseBranch} />
+  )
   const bookmarkButton =
     size === SIZE.S ? (
       <TextButton
-        theme={TEXT_BUTTON_THEME.light}
+        theme={TextButton.theme.light}
         leftIconComponent={bookmarkIcon}
         text="取消收藏"
       />
     ) : (
-      <IconButton theme={THEME.normal} iconComponent={bookmarkIcon} />
+      <IconButton
+        theme={IconButton.theme.normal}
+        iconComponent={bookmarkIcon}
+      />
     )
   const bookmarkJSX = isBookmarked ? (
     <BookmarkContainer onClick={toggleBookmark}>

@@ -6,7 +6,7 @@ import { getSnackBarTheme } from '../utils/theme'
 // component
 import { P3 } from '../../text/paragraph'
 // @twreporter
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const SnackBarContainer = styled.div`
   width: fit-content;
@@ -29,7 +29,8 @@ const SnackBar = ({ text = '', theme = THEME.normal }) => {
 }
 SnackBar.propTypes = {
   text: PropTypes.string,
-  theme: THEME_PROP_TYPES,
+  theme: PropTypes.oneOf(Object.values(THEME)),
 }
+SnackBar.theme = THEME
 
 export default SnackBar
