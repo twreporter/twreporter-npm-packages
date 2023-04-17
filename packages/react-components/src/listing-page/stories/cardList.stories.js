@@ -31,6 +31,16 @@ card.args = {
       slug: 'this-is-a-test-article',
     },
     {
+      id: '12347',
+      title: '文章標題',
+      og_description: '文章描述',
+      published_date: '2023-02-12T16:00:00Z',
+      hero_image: {
+        description: 'test',
+      },
+      slug: 'this-is-a-test-article-3',
+    },
+    {
       id: '12346',
       title: '文章標題文章標題文章標題文章標題文章標題文章標題文章標題文章標題',
       og_description:
