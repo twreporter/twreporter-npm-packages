@@ -6,6 +6,7 @@ import { ArticleCard } from '../../card'
 import FetchingWrapper from '../../is-fetching-wrapper'
 import Divider from '../../divider'
 import Link from '../../customized-link'
+import { DesktopOnly, MobileOnly } from '../../rwd'
 // constants
 import mockup from '../constants/mockup-spec'
 // @twreporter
@@ -28,17 +29,8 @@ const _ = {
   map,
 }
 
-const DesktopOnly = styled.div`
-  display: none;
-  ${mq.desktopAndAbove`
-    display: flex;
-  `}
-`
-const MobileOnly = styled.div`
-  display: none;
-  ${mq.tabletAndBelow`
-    display: flex;
-  `}
+const Card = styled(ArticleCard)`
+  width: 100%;
 `
 const Container = styled.div`
   display: flex;
@@ -138,10 +130,10 @@ const CardList = ({
       <Item key={id}>
         <Link {...link}>
           <DesktopOnly>
-            <ArticleCard {...articleCardProps} size={SIZE.L} />
+            <Card {...articleCardProps} size={SIZE.L} />
           </DesktopOnly>
           <MobileOnly>
-            <ArticleCard {...articleCardProps} size={SIZE.S} />
+            <Card {...articleCardProps} size={SIZE.S} />
           </MobileOnly>
           <StyledDivider />
         </Link>
