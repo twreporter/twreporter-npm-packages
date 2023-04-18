@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.4-rc.9...@twreporter/react-article-components@1.7.4-rc.10) (2023-04-18)
+
+
+### Bug Fixes
+
+* address review comments ([022d112](https://github.com/twreporter/twreporter-npm-packages/commit/022d112baa7001db775b55ef604e909aa7f76462))
+* merge text/link into buttom/link component & migrate ([0b526b2](https://github.com/twreporter/twreporter-npm-packages/commit/0b526b2c9171169377d188add257c062811f7758))
+* use component defined enums to assign props ([2e0ff41](https://github.com/twreporter/twreporter-npm-packages/commit/2e0ff41dec714b4a9c97a02027dc4fdb91c958b9))
+
+
+
+
+
 ## [1.7.4-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.4-rc.8...@twreporter/react-article-components@1.7.4-rc.9) (2023-04-17)
 
 **Note:** Version bump only for package @twreporter/react-article-components
