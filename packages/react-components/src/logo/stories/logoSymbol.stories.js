@@ -11,4 +11,4 @@ export default {
 }
 
 export const symbol = args => <LogoSymbol {...args} />
-symbol.args = { type: LogoSymbol.type.DEFAULT }
+symbol.args = { type: LogoSymbol.Type.DEFAULT }

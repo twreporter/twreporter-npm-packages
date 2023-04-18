@@ -25,7 +25,7 @@ export default {
 export const snackBar = props => <SnackBar {...props} />
 snackBar.args = {
   text: '系統作業文字',
-  theme: SnackBar.theme.normal,
+  theme: SnackBar.THEME.normal,
 }
 
 const Container = styled.div`

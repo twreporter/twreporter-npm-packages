@@ -49,8 +49,7 @@ const getIcon = gcsFileName => {
     releaseBranch: BRANCH_PROP_TYPES,
   }
   gcsIcon.displayName = gcsFileName || 'icon'
-  gcsIcon.type = IconType
-  gcsIcon.releaseBranch = BRANCH
+  gcsIcon.Type = IconType
 
   return gcsIcon
 }
@@ -89,8 +88,7 @@ Arrow.propTypes = {
   direction: PropTypes.oneOf(Object.values(ArrowDirection)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
-Arrow.direction = ArrowDirection
-Arrow.releaseBranch = BRANCH
+Arrow.Direction = ArrowDirection
 
 export const Bookmark = ({ type = BookmarkType.BASIC, releaseBranch }) => {
   const filename = `bookmark_${type}`
@@ -100,8 +98,7 @@ Bookmark.propTypes = {
   type: PropTypes.oneOf(Object.values(BookmarkType)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
-Bookmark.type = BookmarkType
-Bookmark.releaseBranch = BRANCH
+Bookmark.Type = BookmarkType
 
 export const SocialMedia = ({ mediaType = MediaType.GOOGLE, ...args }) => (
   <Icon filename={mediaType} {...args} />
@@ -111,9 +108,8 @@ SocialMedia.propTypes = {
   mediaType: PropTypes.oneOf(Object.values(MediaType)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
-SocialMedia.type = IconType
-SocialMedia.mediaType = MediaType
-SocialMedia.releaseBranch = BRANCH
+SocialMedia.Type = IconType
+SocialMedia.MediaType = MediaType
 
 export default {
   Arrow,

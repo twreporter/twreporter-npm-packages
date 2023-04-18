@@ -31,6 +31,6 @@ SnackBar.propTypes = {
   text: PropTypes.string,
   theme: PropTypes.oneOf(Object.values(THEME)),
 }
-SnackBar.theme = THEME
+SnackBar.THEME = THEME
 
 export default SnackBar

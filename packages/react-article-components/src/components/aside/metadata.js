@@ -298,8 +298,8 @@ const CategorySet = props => {
     const genLink = (path, name, isCategory = false) => {
       const link = { to: path, isExternal: false }
       const weight = isCategory
-        ? LinkButton.weight.BOLD
-        : LinkButton.weight.NORMAL
+        ? LinkButton.Weight.BOLD
+        : LinkButton.Weight.NORMAL
       return (
         <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
           <TextLink link={link} text={name} weight={weight} />

@@ -11,4 +11,4 @@ export default {
 }
 
 export const header = args => <LogoHeader {...args} />
-header.args = { type: LogoHeader.type.DEFAULT }
+header.args = { type: LogoHeader.Type.DEFAULT }

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 // component
 import { P1, P2 } from '../../text/paragraph'
-// @twreporter
-import { SIZE } from '@twreporter/core/lib/constants/size'
+// enum
+import { Size } from '../../shared-enum'
 
 const Container = styled.div`
   display: flex;
@@ -27,9 +27,9 @@ const Triangle = styled.div`
   transform: translateX(-16px);
 `
 
-const Dialog = ({ text = '', size = SIZE.S, ...props }) => {
+const Dialog = ({ text = '', size = Size.S, ...props }) => {
   const textIcon =
-    size === SIZE.S ? (
+    size === Size.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
@@ -43,8 +43,8 @@ const Dialog = ({ text = '', size = SIZE.S, ...props }) => {
 }
 Dialog.propTypes = {
   text: PropTypes.string,
-  size: PropTypes.oneOf(Object.values(SIZE)),
+  size: PropTypes.oneOf(Object.values(Size)),
 }
-Dialog.size = SIZE
+Dialog.Size = Size
 
 export default Dialog

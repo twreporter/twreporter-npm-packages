@@ -10,7 +10,10 @@ import { Cross, Search } from '../../icon'
 import { IconButton } from '../../button'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import get from 'lodash/get'
@@ -170,15 +173,14 @@ const SearchBar = ({
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
   theme: PropTypes.oneOf(Object.values(THEME)),
-  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+  releaseBranch: BRANCH_PROP_TYPES,
   onSearch: PropTypes.func,
   onClose: PropTypes.func,
   handleBlur: PropTypes.func,
   autofocus: PropTypes.bool,
   widthType: PropTypes.oneOf(Object.values(WidthType)),
 }
-SearchBar.theme = THEME
-SearchBar.releaseBranch = BRANCH
-SearchBar.widthType = WidthType
+SearchBar.THEME = THEME
+SearchBar.WidthType = WidthType
 
 export default SearchBar

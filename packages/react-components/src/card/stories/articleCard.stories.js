@@ -5,7 +5,6 @@ import {
   BRANCH_STORYBOOK_ARG_TYPE,
   SIZE_STORYBOOK_ARG_TYPE,
 } from '../../storybook/constants'
-import { SIZE } from '@twreporter/core/lib/constants/size'
 import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
@@ -18,7 +17,7 @@ export default {
 }
 
 const Container = styled.div`
-  width: ${props => (props.size === SIZE.S ? '343' : '878')}px;
+  width: ${props => (props.size === ArticleCard.Size.S ? '343' : '878')}px;
 `
 
 export const article = args => (
@@ -27,7 +26,7 @@ export const article = args => (
   </Container>
 )
 article.args = {
-  size: SIZE.L,
+  size: ArticleCard.Size.L,
   title: '文章標題文章標題文章標題文章標題文章標題文章標題文章標題文章標題',
   description:
     '文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述文章描述',

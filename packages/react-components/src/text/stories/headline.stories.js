@@ -12,7 +12,7 @@ export default {
 }
 
 const defaultText = '標題「標題」：標題，《標題》標題English標題123標題？'
-const defaultType = H1.type.DEFAULT
+const defaultType = H1.Type.DEFAULT
 
 export const h1 = args => <H1 {...args} />
 h1.args = { text: defaultText, type: defaultType }

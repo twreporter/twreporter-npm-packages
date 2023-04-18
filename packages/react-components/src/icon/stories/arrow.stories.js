@@ -12,20 +12,20 @@ export default {
 
 const Template = args => <Arrow {...args} />
 export const arrow = Template.bind({})
-arrow.args = { direction: 'right' }
+arrow.args = { direction: Arrow.Direction.RIGHT }
 
 export const right = Template.bind({})
 right.parameters = { controls: { exclude: ['direction'] } }
-right.args = { direction: 'right' }
+right.args = { direction: Arrow.Direction.RIGHT }
 
 export const left = Template.bind({})
 left.parameters = { controls: { exclude: ['direction'] } }
-left.args = { direction: 'left' }
+left.args = { direction: Arrow.Direction.LEFT }
 
 export const up = Template.bind({})
 up.parameters = { controls: { exclude: ['direction'] } }
-up.args = { direction: 'up' }
+up.args = { direction: Arrow.Direction.UP }
 
 export const down = Template.bind({})
 down.parameters = { controls: { exclude: ['direction'] } }
-down.args = { direction: 'down' }
+down.args = { direction: Arrow.Direction.DOWN }

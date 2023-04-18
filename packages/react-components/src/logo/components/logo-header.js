@@ -4,7 +4,10 @@ import styled from 'styled-components'
 // utils
 import pathUtil from '../utils/path'
 // @twreporter
-import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
 
 const LogoContainer = styled.img``
 
@@ -23,13 +26,12 @@ const LogoHeader = ({ type, releaseBranch, ...props }) => {
 }
 LogoHeader.propTypes = {
   type: PropTypes.oneOf(Object.values(logoType)),
-  releaseBranch: PropTypes.oneOf(Object.values(BRANCH)),
+  releaseBranch: BRANCH_PROP_TYPES,
 }
 LogoHeader.defaultProps = {
-  type: 'default',
+  type: logoType.DEFAULT,
   releaseBranch: BRANCH.master,
 }
-LogoHeader.releaseBranch = BRANCH
-LogoHeader.type = logoType
+LogoHeader.Type = logoType
 
 export default LogoHeader

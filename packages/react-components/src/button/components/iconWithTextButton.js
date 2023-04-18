@@ -66,6 +66,6 @@ IconWithTextButton.propTypes = {
   active: PropTypes.bool,
   hideText: PropTypes.bool,
 }
-IconWithTextButton.theme = THEME
+IconWithTextButton.THEME = THEME
 
 export default IconWithTextButton

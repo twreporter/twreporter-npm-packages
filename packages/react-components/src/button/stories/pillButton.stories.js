@@ -33,10 +33,10 @@ const Template = args => <PillButton {...args} />
 export const pillButton = Template.bind({})
 pillButton.args = {
   text: '文字',
-  size: PillButton.size.S,
-  theme: PillButton.theme.normal,
-  style: PillButton.style.BRAND,
-  type: PillButton.type.PRIMARY,
+  size: PillButton.Size.S,
+  theme: PillButton.THEME.normal,
+  style: PillButton.Style.BRAND,
+  type: PillButton.Type.PRIMARY,
   disabled: false,
 }
 pillButton.parameters = { controls: { exclude: ['showLeft', 'showRight'] } }
@@ -51,10 +51,10 @@ toggleIconDisplay.args = {
   showLeft: true,
   showRight: true,
   text: '文字',
-  size: PillButton.size.S,
-  theme: PillButton.theme.normal,
-  style: PillButton.style.BRAND,
-  type: PillButton.type.PRIMARY,
+  size: PillButton.Size.S,
+  theme: PillButton.THEME.normal,
+  style: PillButton.Style.BRAND,
+  type: PillButton.Type.PRIMARY,
   disabled: false,
 }
 toggleIconDisplay.parameters = {

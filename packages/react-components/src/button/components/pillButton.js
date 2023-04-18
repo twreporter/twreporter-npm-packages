@@ -8,11 +8,11 @@ import {
   getOutlinePillButtonTheme,
 } from '../utils/theme'
 import { getSizeStyle } from '../utils/size'
-// constants
+// enums
 import { Style, Type } from '../enums'
+import { Size } from '../../shared-enum'
 // @twreporter
 import { THEME } from '@twreporter/core/lib/constants/theme'
-import { SIZE } from '@twreporter/core/lib/constants/size'
 
 const ButtonContainer = styled.div`
   width: fit-content;
@@ -57,7 +57,7 @@ const PillButton = ({
   text = '',
   leftIconComponent = null,
   rightIconComponent = null,
-  size = SIZE.S,
+  size = Size.S,
   theme = THEME.normal,
   type = Type.PRIMARY,
   style = Style.BRAND,
@@ -73,7 +73,7 @@ const PillButton = ({
   )
   const { padding, iconSize } = getSizeStyle(size)
   const textJSX =
-    size === SIZE.S ? (
+    size === Size.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
@@ -106,15 +106,15 @@ PillButton.propTypes = {
   leftIconComponent: PropTypes.element,
   rightIconComponent: PropTypes.element,
   text: PropTypes.string,
-  size: PropTypes.oneOf(Object.values(SIZE)),
+  size: PropTypes.oneOf(Object.values(Size)),
   theme: PropTypes.oneOf(Object.values(THEME)),
   type: PropTypes.oneOf(Object.values(Type)),
   style: PropTypes.oneOf(Object.values(Style)),
   disabled: PropTypes.bool,
 }
-PillButton.theme = THEME
-PillButton.type = Type
-PillButton.size = SIZE
-PillButton.style = Style
+PillButton.THEME = THEME
+PillButton.Type = Type
+PillButton.Size = Size
+PillButton.Style = Style
 
 export default PillButton

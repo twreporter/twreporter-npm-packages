@@ -89,7 +89,7 @@ const withContainer = HeadlineContainer => {
     type: PropTypes.oneOf(Object.values(Type)),
     className: PropTypes.string,
   }
-  headline.type = Type
+  headline.Type = Type
 
   return headline
 }

@@ -3,18 +3,16 @@ import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
 import { Type } from '../enums'
-
-import { SIZE_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
+import {
+  THEME_STORYBOOK_ARG_TYPE,
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '../../storybook/constants'
 
 export default {
   title: 'Button/Text Button',
   component: TextButton,
   argTypes: {
-    theme: {
-      defaultValue: TextButton.theme.normal,
-      options: Object.values(TextButton.theme),
-      control: { type: 'radio' },
-    },
+    theme: THEME_STORYBOOK_ARG_TYPE,
     type: getRadioArg(Type, Type.PRIMARY),
     size: SIZE_STORYBOOK_ARG_TYPE,
     // showLeft & showRight args are only for storybook check
@@ -34,9 +32,9 @@ const Template = args => <TextButton {...args} />
 export const textButton = Template.bind({})
 textButton.args = {
   text: '文字',
-  size: TextButton.size.S,
-  theme: TextButton.theme.normal,
-  type: TextButton.type.PRIMARY,
+  size: TextButton.Size.S,
+  theme: TextButton.THEME.normal,
+  type: TextButton.Type.PRIMARY,
   active: false,
   disabled: false,
   leftIconComponent: <Arrow direction="left" />,
@@ -54,9 +52,9 @@ toggleIconDisplay.args = {
   showLeft: true,
   showRight: true,
   text: '文字',
-  size: TextButton.size.S,
-  theme: TextButton.theme.normal,
-  type: TextButton.type.PRIMARY,
+  size: TextButton.Size.S,
+  theme: TextButton.THEME.normal,
+  type: TextButton.Type.PRIMARY,
   active: false,
   disabled: false,
 }

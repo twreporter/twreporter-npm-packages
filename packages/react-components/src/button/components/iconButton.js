@@ -55,7 +55,7 @@ IconButton.propTypes = {
   disabled: PropTypes.bool,
   active: PropTypes.bool,
 }
-IconButton.theme = THEME
-IconButton.type = Type
+IconButton.THEME = THEME
+IconButton.Type = Type
 
 export default IconButton

@@ -61,7 +61,7 @@ const TabItem = ({ tab = {}, ...restProps }) => {
         <StyledTextButton
           text={text}
           active={isActive}
-          size={TextButton.size.L}
+          size={TextButton.Size.L}
         />
       </CustomizedLink>
     </TabItemContainer>
@@ -132,7 +132,7 @@ const TitleTab = ({ title = '', tabs = [], activeTabIndex = 0 }) => (
   <BarContainer>
     <H1 text={title} />
     <MobileTab tabs={tabs} activeTabIndex={activeTabIndex} />
-    <Divider direction={Divider.direction.horizontal} />
+    <Divider direction={Divider.Direction.HORIZONTAL} />
   </BarContainer>
 )
 TitleTab.propTypes = {

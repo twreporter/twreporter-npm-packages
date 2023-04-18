@@ -39,7 +39,7 @@ const LinkButton = ({
   type = LinkType.DEFAULT,
   link = {},
   text = '',
-  weight = P1.weight.NORMAL,
+  weight = P1.Weight.NORMAL,
   TextComponent = null,
   ...props
 }) => {
@@ -62,7 +62,7 @@ LinkButton.propTypes = {
   weight: P1.propTypes.weight,
   TextComponent: PropTypes.elementType,
 }
-LinkButton.type = LinkType
-LinkButton.weight = P1.weight
+LinkButton.Type = LinkType
+LinkButton.Weight = P1.Weight
 
 export default LinkButton

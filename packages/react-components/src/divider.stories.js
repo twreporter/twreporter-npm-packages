@@ -38,16 +38,16 @@ export const divider = args => (
     <Cube />
   </FlexContainer>
 )
-divider.args = { direction: Divider.direction.horizontal }
+divider.args = { direction: Divider.Direction.HORIZONTAL }
 
 export const horizontal = () => (
-  <Divider direction={Divider.direction.horizontal} />
+  <Divider direction={Divider.Direction.HORIZONTAL} />
 )
 horizontal.parameters = { controls: { exclude: ['direction'] } }
 
 export const vertical = () => (
   <VerticalContainer>
-    <Divider direction={Divider.direction.vertical} />
+    <Divider direction={Divider.Direction.VERTICAL} />
   </VerticalContainer>
 )
 vertical.parameters = { controls: { exclude: ['direction'] } }

@@ -5,12 +5,13 @@ import {
   BRANCH_STORYBOOK_ARG_TYPE,
   THEME_STORYBOOK_ARG_TYPE,
 } from '../../storybook/constants'
+import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 
 export default {
   title: 'Input/Search Bar',
   component: SearchBar,
   argTypes: {
-    widthType: getRadioArg(SearchBar.widthType, SearchBar.widthType.FIT),
+    widthType: getRadioArg(SearchBar.WidthType, SearchBar.WidthType.FIT),
     releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
     theme: THEME_STORYBOOK_ARG_TYPE,
   },
@@ -21,10 +22,10 @@ const onSearch = keyword => window?.alert(`search keyword: ${keyword}`)
 const onClose = () => window?.alert('click close !')
 searchBar.args = {
   placeholder: '關鍵字搜尋',
-  theme: SearchBar.theme.normal,
-  releaseBranch: SearchBar.releaseBranch.master,
+  theme: SearchBar.THEME.normal,
+  releaseBranch: BRANCH.master,
   onSearch,
   onClose,
   autofocus: false,
-  widthType: SearchBar.widthType.FIT,
+  widthType: SearchBar.WidthType.FIT,
 }

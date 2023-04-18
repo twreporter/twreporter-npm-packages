@@ -11,11 +11,11 @@ import {
 import { getSizeStyle } from '../utils/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
-// constants
+// enums
 import { Type } from '../enums'
+import { Size } from '../../shared-enum'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import { SIZE } from '@twreporter/core/lib/constants/size'
 import { TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
@@ -49,7 +49,7 @@ const TextButton = ({
   text = '',
   leftIconComponent = null,
   rightIconComponent = null,
-  size = SIZE.S,
+  size = Size.S,
   theme = TEXT_BUTTON_THEME.normal,
   type = Type.PRIMARY,
   active = false,
@@ -70,7 +70,7 @@ const TextButton = ({
   const { color, hoverColor } = themeFunc(theme, active)
   const { iconSize } = getSizeStyle(size)
   const textJSX =
-    size === SIZE.S ? (
+    size === Size.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
@@ -83,13 +83,13 @@ const TextButton = ({
       iconSize={iconSize}
       {...props}
     >
-      {size === SIZE.L ? (
+      {size === Size.L ? (
         <IconContainer isLeft={true}>{leftIconComponent}</IconContainer>
       ) : (
         leftIconComponent
       )}
       {textJSX}
-      {size === SIZE.L ? (
+      {size === Size.L ? (
         <IconContainer>{rightIconComponent}</IconContainer>
       ) : (
         rightIconComponent
@@ -101,14 +101,14 @@ TextButton.propTypes = {
   leftIconComponent: PropTypes.element,
   rightIconComponent: PropTypes.element,
   text: PropTypes.string,
-  size: PropTypes.oneOf(Object.values(SIZE)),
+  size: PropTypes.oneOf(Object.values(Size)),
   theme: PropTypes.oneOf(Object.values(TEXT_BUTTON_THEME)),
   type: PropTypes.oneOf(Object.values(Type)),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
 }
-TextButton.theme = TEXT_BUTTON_THEME
-TextButton.size = SIZE
-TextButton.type = Type
+TextButton.THEME = TEXT_BUTTON_THEME
+TextButton.Size = Size
+TextButton.Type = Type
 
 export default TextButton

@@ -12,7 +12,7 @@ export default {
 }
 
 const defaultText = '內文「內文」：內文，《內文》內文English內文123內文？'
-const defaultWeight = P1.weight.NORMAL
+const defaultWeight = P1.Weight.NORMAL
 
 export const p1 = args => <P1 {...args} />
 p1.args = { text: defaultText, weight: defaultWeight }

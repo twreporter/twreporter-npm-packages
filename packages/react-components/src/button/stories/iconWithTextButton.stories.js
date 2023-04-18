@@ -17,7 +17,7 @@ export const iconWithTextButton = Template.bind({})
 iconWithTextButton.args = {
   text: '文字',
   iconComponent: <Arrow direction="down" />,
-  theme: IconWithTextButton.theme.normal,
+  theme: IconWithTextButton.THEME.normal,
   disabled: false,
   active: false,
   hideText: false,
@@ -27,7 +27,7 @@ export const shareButton = Template.bind({})
 shareButton.args = {
   text: '分享',
   iconComponent: <Share />,
-  theme: IconWithTextButton.theme.normal,
+  theme: IconWithTextButton.THEME.normal,
   disabled: false,
   active: false,
   hideText: false,

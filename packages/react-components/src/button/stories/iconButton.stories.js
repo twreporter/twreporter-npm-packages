@@ -19,8 +19,8 @@ const Template = args => <IconButton {...args} />
 export const iconButton = Template.bind({})
 iconButton.args = {
   iconComponent: <Arrow direction="down" />,
-  theme: IconButton.theme.normal,
-  type: IconButton.type.PRIMARY,
+  theme: IconButton.THEME.normal,
+  type: IconButton.Type.PRIMARY,
   disabled: false,
   active: false,
 }
@@ -28,8 +28,8 @@ iconButton.args = {
 export const shareButton = Template.bind({})
 shareButton.args = {
   iconComponent: <Share />,
-  theme: IconButton.theme.normal,
-  type: IconButton.type.PRIMARY,
+  theme: IconButton.THEME.normal,
+  type: IconButton.Type.PRIMARY,
   disabled: false,
   active: false,
 }

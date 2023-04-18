@@ -7,8 +7,8 @@ export default {
   title: 'Icon/Social Media',
   component: SocialMedia,
   argTypes: {
-    type: getRadioArg(SocialMedia.type, SocialMedia.type.MASK),
-    mediaType: getRadioArg(SocialMedia.mediaType, SocialMedia.mediaType.GOOGLE),
+    type: getRadioArg(SocialMedia.Type, SocialMedia.Type.MASK),
+    mediaType: getRadioArg(SocialMedia.MediaType, SocialMedia.MediaType.GOOGLE),
     releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
   },
 }

@@ -2,7 +2,7 @@ import { getRadioArg } from '../utils/get-enum-arg'
 
 import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 import { THEME } from '@twreporter/core/lib/constants/theme'
-import { SIZE } from '@twreporter/core/lib/constants/size'
+import { Size } from '../../shared-enum'
 
 export const BRANCH_STORYBOOK_ARG_TYPE = {
   defaultValue: BRANCH.master,
@@ -12,4 +12,4 @@ export const BRANCH_STORYBOOK_ARG_TYPE = {
 
 export const THEME_STORYBOOK_ARG_TYPE = getRadioArg(THEME, THEME.normal)
 
-export const SIZE_STORYBOOK_ARG_TYPE = getRadioArg(SIZE, SIZE.S)
+export const SIZE_STORYBOOK_ARG_TYPE = getRadioArg(Size, Size.S)
