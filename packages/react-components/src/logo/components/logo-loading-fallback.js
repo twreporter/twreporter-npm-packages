@@ -14,11 +14,9 @@ const LogoFallback = ({ releaseBranch }) => {
   const logoSrc = pathUtil.selectLogoPath('loading-fallback', releaseBranch)
   return <LogoContainer alt="The Reporter Loading Fallback" src={logoSrc} />
 }
-
 LogoFallback.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
 }
-
 LogoFallback.defaultProps = {
   releaseBranch: BRANCH.master,
 }

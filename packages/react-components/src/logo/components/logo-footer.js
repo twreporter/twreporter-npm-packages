@@ -22,11 +22,9 @@ const LogoFooter = ({ releaseBranch }) => {
   const logoSrc = pathUtil.selectLogoPath('footer', releaseBranch)
   return <LogoContainer alt="The Reporter Logo" src={logoSrc} />
 }
-
 LogoFooter.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
 }
-
 LogoFooter.defaultProps = {
   releaseBranch: BRANCH.master,
 }

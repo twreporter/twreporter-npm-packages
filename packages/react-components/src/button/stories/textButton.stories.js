@@ -1,23 +1,19 @@
 import React from 'react'
+import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
-import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/type'
+import { Type } from '../enums'
 import {
-  SIZE,
+  THEME_STORYBOOK_ARG_TYPE,
   SIZE_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/size'
-import { TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
+} from '../../storybook/constants'
 
 export default {
   title: 'Button/Text Button',
   component: TextButton,
   argTypes: {
-    theme: {
-      defaultValue: TEXT_BUTTON_THEME.normal,
-      options: Object.values(TEXT_BUTTON_THEME),
-      control: { type: 'radio' },
-    },
-    type: TYPE_STORYBOOK_ARG_TYPE,
+    theme: THEME_STORYBOOK_ARG_TYPE,
+    type: getRadioArg(Type, Type.PRIMARY),
     size: SIZE_STORYBOOK_ARG_TYPE,
     // showLeft & showRight args are only for storybook check
     showLeft: {
@@ -36,9 +32,9 @@ const Template = args => <TextButton {...args} />
 export const textButton = Template.bind({})
 textButton.args = {
   text: '文字',
-  size: SIZE.S,
-  theme: TEXT_BUTTON_THEME.normal,
-  type: TYPE.primary,
+  size: TextButton.Size.S,
+  theme: TextButton.THEME.normal,
+  type: TextButton.Type.PRIMARY,
   active: false,
   disabled: false,
   leftIconComponent: <Arrow direction="left" />,
@@ -56,9 +52,9 @@ toggleIconDisplay.args = {
   showLeft: true,
   showRight: true,
   text: '文字',
-  size: SIZE.S,
-  theme: TEXT_BUTTON_THEME.normal,
-  type: TYPE.primary,
+  size: TextButton.Size.S,
+  theme: TextButton.THEME.normal,
+  type: TextButton.Type.PRIMARY,
   active: false,
   disabled: false,
 }

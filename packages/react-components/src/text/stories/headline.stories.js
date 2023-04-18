@@ -1,17 +1,18 @@
 import React from 'react'
+import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import { H1, H2, H3, H4, H5, H6 } from '../headline'
-import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/headline-type'
+import { Type } from '../enums'
 
 export default {
   title: 'Text/Headline',
   component: H1,
   argTypes: {
-    type: TYPE_STORYBOOK_ARG_TYPE,
+    type: getRadioArg(Type, Type.DEFAULT),
   },
 }
 
 const defaultText = '標題「標題」：標題，《標題》標題English標題123標題？'
-const defaultType = TYPE.default
+const defaultType = H1.Type.DEFAULT
 
 export const h1 = args => <H1 {...args} />
 h1.args = { text: defaultText, type: defaultType }

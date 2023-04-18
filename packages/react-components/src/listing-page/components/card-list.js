@@ -18,7 +18,6 @@ import {
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
-import { SIZE } from '@twreporter/core/lib/constants/size'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -130,10 +129,10 @@ const CardList = ({
       <Item key={id}>
         <Link {...link}>
           <DesktopOnly>
-            <Card {...articleCardProps} size={SIZE.L} />
+            <Card {...articleCardProps} size={ArticleCard.Size.L} />
           </DesktopOnly>
           <MobileOnly>
-            <Card {...articleCardProps} size={SIZE.S} />
+            <Card {...articleCardProps} size={ArticleCard.Size.S} />
           </MobileOnly>
           <StyledDivider />
         </Link>

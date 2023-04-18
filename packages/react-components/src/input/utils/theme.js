@@ -3,10 +3,11 @@ import {
   colorGrayscale,
   colorOpacity,
 } from '@twreporter/core/lib/constants/color'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 export const selectThemeStyle = theme => {
   switch (theme) {
-    case 'photography':
+    case THEME.photography:
       return {
         bgColor: colorOpacity['white_0.8'],
         focusBgColor: colorGrayscale.gray100,
@@ -16,7 +17,7 @@ export const selectThemeStyle = theme => {
         focusColor: colorGrayscale.gray500,
         placeholderColor: colorGrayscale.gray800,
       }
-    case 'transpareant':
+    case THEME.transpareant:
       return {
         bgColor: colorOpacity['gray100_0.8'],
         focusBgColor: colorOpacity['gray100_0.8'],
@@ -26,7 +27,7 @@ export const selectThemeStyle = theme => {
         focusColor: colorGrayscale.gray500,
         placeholderColor: colorGrayscale.gray500,
       }
-    case 'normal':
+    case THEME.normal:
     default:
       return {
         bgColor: colorOpacity['gray100_0.8'],

@@ -13,10 +13,8 @@ import {
   BUTTON_WIDTH_TYPE,
   BUTTON_SIZE_TYPE,
 } from '../constants/action-item-types'
-import {
-  THEME,
-  THEME_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/theme'
+import { THEME_STORYBOOK_ARG_TYPE } from '../storybook/constants'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 export default {
   title: 'Action Button',

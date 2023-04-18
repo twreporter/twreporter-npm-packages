@@ -11,8 +11,13 @@ import {
 
 const LogoContainer = styled.img``
 
+const logoType = {
+  DEFAULT: 'default',
+  BLACK: 'black',
+  WHITE: 'white',
+}
 const LogoSymbol = ({
-  type = 'default',
+  type = logoType.DEFAULT,
   releaseBranch = BRANCH.master,
   ...props
 }) => {
@@ -21,8 +26,9 @@ const LogoSymbol = ({
   return <LogoContainer src={logoSrc} alt="The Reporter Logo" {...props} />
 }
 LogoSymbol.propTypes = {
-  type: PropTypes.oneOf(['default', 'black', 'white']),
+  type: PropTypes.oneOf(Object.values(logoType)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
+LogoSymbol.Type = logoType
 
 export default LogoSymbol

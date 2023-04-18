@@ -1,11 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import {
-  TYPE,
-  TYPE_PROP_TYPES,
-  TYPE_FONT_FAMILY,
-} from './constants/headline-type'
+import { TYPE_FONT_FAMILY } from './constants/headline-type'
+import { Type } from './enums'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { fontWeight } from '@twreporter/core/lib/constants/font'
 
@@ -70,7 +67,7 @@ const H6Container = styled(DefaultContainer)`
 const withContainer = HeadlineContainer => {
   const headline = ({
     text = '',
-    type = TYPE.default,
+    type = Type.DEFAULT,
     className = '',
     ...props
   }) => {
@@ -89,9 +86,10 @@ const withContainer = HeadlineContainer => {
   headline.displayName = 'headline'
   headline.propTypes = {
     text: PropTypes.string,
-    type: TYPE_PROP_TYPES,
+    type: PropTypes.oneOf(Object.values(Type)),
     className: PropTypes.string,
   }
+  headline.Type = Type
 
   return headline
 }

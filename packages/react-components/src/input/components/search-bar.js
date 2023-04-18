@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 // utils
 import { selectThemeStyle } from '../utils/theme'
-// constants
-import { WIDTH_TYPE, WIDTH_PROP_TYPE } from '../constants/type'
+// enums
+import { WidthType } from '../enums'
 // components
 import { Cross, Search } from '../../icon'
 import { IconButton } from '../../button'
@@ -14,7 +14,7 @@ import {
   BRANCH,
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -95,7 +95,7 @@ const SearchBar = ({
   onClose = defaultFunc,
   handleBlur = defaultFunc,
   autofocus = true,
-  widthType = WIDTH_TYPE.fit,
+  widthType = WidthType.FIT,
   ...props
 }) => {
   const [keywords, setKeywords] = useState('')
@@ -172,13 +172,15 @@ const SearchBar = ({
 }
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
-  theme: THEME_PROP_TYPES,
+  theme: PropTypes.oneOf(Object.values(THEME)),
   releaseBranch: BRANCH_PROP_TYPES,
   onSearch: PropTypes.func,
   onClose: PropTypes.func,
   handleBlur: PropTypes.func,
   autofocus: PropTypes.bool,
-  widthType: WIDTH_PROP_TYPE,
+  widthType: PropTypes.oneOf(Object.values(WidthType)),
 }
+SearchBar.THEME = THEME
+SearchBar.WidthType = WidthType
 
 export default SearchBar

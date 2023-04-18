@@ -1,6 +1,6 @@
 import React from 'react'
 import LogoSymbol from '../components/logo-symbol'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
+import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
   title: 'Logo/Symbol',
@@ -11,4 +11,4 @@ export default {
 }
 
 export const symbol = args => <LogoSymbol {...args} />
-symbol.args = { type: 'default' }
+symbol.args = { type: LogoSymbol.Type.DEFAULT }

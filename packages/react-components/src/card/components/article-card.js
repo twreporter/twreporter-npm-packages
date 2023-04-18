@@ -7,10 +7,10 @@ import { P1, P2, P3 } from '../../text/paragraph'
 import { H4 } from '../../text/headline'
 import { Bookmark } from '../../icon'
 import { IconButton, TextButton } from '../../button'
+// enum
+import { Size } from '../../shared-enum'
 // @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
-import { THEME, TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
-import { SIZE, SIZE_PROP_TYPES } from '@twreporter/core/lib/constants/size'
 import {
   BRANCH,
   BRANCH_PROP_TYPES,
@@ -18,28 +18,28 @@ import {
 
 const imageStyle = {
   width: {
-    [SIZE.S]: '72px',
-    [SIZE.L]: '216px',
+    [Size.S]: '72px',
+    [Size.L]: '216px',
   },
   height: {
-    [SIZE.S]: '72px',
-    [SIZE.L]: '144px',
+    [Size.S]: '72px',
+    [Size.L]: '144px',
   },
   marginLeft: {
-    [SIZE.S]: '8px',
-    [SIZE.L]: '32px',
+    [Size.S]: '8px',
+    [Size.L]: '32px',
   },
 }
 const bookmarkStyle = {
   marginTop: {
-    [SIZE.S]: '16px',
-    [SIZE.L]: '8px',
+    [Size.S]: '16px',
+    [Size.L]: '8px',
   },
 }
 const metaStyle = {
   marginBottom: {
-    [SIZE.S]: '4px',
-    [SIZE.L]: '8px',
+    [Size.S]: '4px',
+    [Size.L]: '8px',
   },
 }
 
@@ -102,7 +102,7 @@ const ArticleCard = ({
   date = '',
   image = {},
   category = '',
-  size = SIZE.S,
+  size = Size.S,
   isBookmarked = false,
   toggleBookmark,
   releaseBranch = BRANCH.master,
@@ -112,22 +112,27 @@ const ArticleCard = ({
   const dateJSX = date ? <P3 text={date} /> : null
   const categoryJSX = category ? <P3 text={category} /> : null
   const descriptionJSX = description ? (
-    size === SIZE.S ? (
+    size === Size.S ? (
       <P2 text={description} />
     ) : (
       <P1 text={description} />
     )
   ) : null
-  const bookmarkIcon = <Bookmark type="saved" releaseBranch={releaseBranch} />
+  const bookmarkIcon = (
+    <Bookmark type={Bookmark.Type.SAVED} releaseBranch={releaseBranch} />
+  )
   const bookmarkButton =
-    size === SIZE.S ? (
+    size === Size.S ? (
       <TextButton
-        theme={TEXT_BUTTON_THEME.light}
+        theme={TextButton.THEME.light}
         leftIconComponent={bookmarkIcon}
         text="取消收藏"
       />
     ) : (
-      <IconButton theme={THEME.normal} iconComponent={bookmarkIcon} />
+      <IconButton
+        theme={IconButton.THEME.normal}
+        iconComponent={bookmarkIcon}
+      />
     )
   const bookmarkJSX = isBookmarked ? (
     <BookmarkContainer onClick={toggleBookmark} size={size}>
@@ -146,7 +151,7 @@ const ArticleCard = ({
     </ImageContainer>
   )
 
-  if (size === SIZE.S) {
+  if (size === Size.S) {
     return (
       <FlexGroupColumn>
         <FlexSpaceBetween>
@@ -189,10 +194,11 @@ ArticleCard.propTypes = {
     srcSet: PropTypes.string,
   }),
   category: PropTypes.string,
-  size: SIZE_PROP_TYPES,
+  size: PropTypes.oneOf(Object.values(Size)),
   isBookmarked: PropTypes.bool,
   toggleBookmark: PropTypes.func,
   releaseBranch: BRANCH_PROP_TYPES,
 }
+ArticleCard.Size = Size
 
 export default ArticleCard
