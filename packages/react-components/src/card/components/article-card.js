@@ -30,6 +30,18 @@ const imageStyle = {
     [Size.L]: '32px',
   },
 }
+const bookmarkStyle = {
+  marginTop: {
+    [Size.S]: '16px',
+    [Size.L]: '8px',
+  },
+}
+const metaStyle = {
+  marginBottom: {
+    [Size.S]: '4px',
+    [Size.L]: '8px',
+  },
+}
 
 const FlexGroup = styled.div`
   display: flex;
@@ -45,7 +57,7 @@ const Meta = styled(FlexGroup)`
   color: ${colorGrayscale.gray600};
   flex-direction: row;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: ${props => metaStyle.marginBottom[props.size]};
   & > div {
     margin-right: 8px;
   }
@@ -55,6 +67,7 @@ const Meta = styled(FlexGroup)`
   ${props => (props.hide ? `display: none;` : '')}
 `
 const DescContainer = styled.div`
+  color: ${colorGrayscale.gray800};
   margin-top: 8px;
   div {
     display: -webkit-box;
@@ -66,8 +79,8 @@ const DescContainer = styled.div`
   }
 `
 const BookmarkContainer = styled(FlexGroup)`
-  margin-top: 8px;
   align-self: flex-end;
+  margin-top: ${props => bookmarkStyle.marginTop[props.size]};
 `
 const ImageContainer = styled(FlexGroup)`
   flex: 0 0 auto;
@@ -75,6 +88,12 @@ const ImageContainer = styled(FlexGroup)`
   width: ${props => imageStyle.width[props.size]};
   height: ${props => imageStyle.height[props.size]};
   margin-left: ${props => imageStyle.marginLeft[props.size]};
+`
+const LeftColumn = styled(FlexGroupColumn)`
+  flex: 1;
+`
+const TitleText = styled(H4)`
+  color: ${colorGrayscale.gray800};
 `
 
 const ArticleCard = ({
@@ -89,7 +108,7 @@ const ArticleCard = ({
   releaseBranch = BRANCH.master,
 }) => {
   const hideMeta = !category && !date
-  const titleJSX = title ? <H4 text={title} type="article" /> : null
+  const titleJSX = title ? <TitleText text={title} type="article" /> : null
   const dateJSX = date ? <P3 text={date} /> : null
   const categoryJSX = category ? <P3 text={category} /> : null
   const descriptionJSX = description ? (
@@ -116,12 +135,12 @@ const ArticleCard = ({
       />
     )
   const bookmarkJSX = isBookmarked ? (
-    <BookmarkContainer onClick={toggleBookmark}>
+    <BookmarkContainer onClick={toggleBookmark} size={size}>
       {bookmarkButton}
     </BookmarkContainer>
   ) : null
   const metaJSX = (
-    <Meta hide={hideMeta}>
+    <Meta hide={hideMeta} size={size}>
       {categoryJSX}
       {dateJSX}
     </Meta>
@@ -153,14 +172,14 @@ const ArticleCard = ({
   // L size
   return (
     <FlexSpaceBetween>
-      <FlexGroupColumn>
+      <LeftColumn>
         {metaJSX}
         <FlexGroupColumn>
           {titleJSX}
           <DescContainer>{descriptionJSX}</DescContainer>
           {bookmarkJSX}
         </FlexGroupColumn>
-      </FlexGroupColumn>
+      </LeftColumn>
       {imageJSX}
     </FlexSpaceBetween>
   )

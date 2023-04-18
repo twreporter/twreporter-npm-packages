@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.17.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.4...@twreporter/react-components@8.17.0-rc.5) (2023-04-17)
+
+### Bug Fixes
+
+- article card list style ([d4806cd](https://github.com/twreporter/twreporter-npm-packages/commit/d4806cdded043777ba184f02810e02a0d4ef2809))
+
+# [8.17.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.3...@twreporter/react-components@8.17.0-rc.4) (2023-04-14)
+
+**Note:** Version bump only for package @twreporter/react-components
+
 # [8.17.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.2...@twreporter/react-components@8.17.0-rc.3) (2023-04-13)
 
 ### Bug Fixes
