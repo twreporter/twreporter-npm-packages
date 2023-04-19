@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { WEIGHT, WEIGHT_PROP_TYPES } from './constants/font-weight'
+import { Weight } from './enums'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const defaultContainer = styled.div`
@@ -31,21 +31,25 @@ const P4Container = styled(defaultContainer)`
 const withContainer = ParagraphContainer => {
   const paragraph = ({
     text = '',
-    weight = WEIGHT.normal,
+    weight = Weight.NORMAL,
     className = '',
+    children,
     ...props
   }) => (
     <ParagraphContainer weight={weight} className={className} {...props}>
       {text}
+      {children}
     </ParagraphContainer>
   )
 
   paragraph.displayName = 'paragraph'
   paragraph.propTypes = {
     text: PropTypes.string,
-    weight: WEIGHT_PROP_TYPES,
+    weight: PropTypes.oneOf(Object.values(Weight)),
     className: PropTypes.string,
+    children: PropTypes.element,
   }
+  paragraph.Weight = Weight
 
   return paragraph
 }

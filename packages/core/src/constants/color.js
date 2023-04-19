@@ -1,39 +1,39 @@
 // brand: red
-export const colorBrand = {
+export const colorBrand = Object.freeze({
   faded: '#f4c6c6',
   pastel: '#f76977',
   main: '#f80b28',
   heavy: '#c40d23',
   dark: '#9b051e',
-}
+})
 
 // photography: blue
-export const colorPhoto = {
+export const colorPhoto = Object.freeze({
   faded: '#abdef4',
   pastel: '#6d9be0',
   main: '#2f58cc',
   heavy: '#143071',
   dark: '#052142',
-}
+})
 
 // podcast: green
-export const colorPodcast = {
+export const colorPodcast = Object.freeze({
   faded: '#c4f2dc',
   pastel: '#99ecc9',
   main: '#6ee5b5',
   heavy: '#3c927a',
   dark: '#0e3532',
-}
+})
 
 // supportive: brown
-export const colorSupportive = {
+export const colorSupportive = Object.freeze({
   main: '#edc39d',
   heavy: '#9e7a4e',
   dark: '#493018',
-}
+})
 
 // neutral: grayscale
-export const colorGrayscale = {
+export const colorGrayscale = Object.freeze({
   white: '#ffffff',
   gray100: '#f1f1f1',
   gray200: '#e2e2e2',
@@ -45,15 +45,22 @@ export const colorGrayscale = {
   gray800: '#404040',
   gray900: '#262626',
   black: '#000000',
-}
+})
 
-export const colorOpacity = {
+export const colorOpacity = Object.freeze({
   'white_0.2': 'rgba(255, 255, 255, 0.2)',
   'white_0.5': 'rgba(255, 255, 255, 0.5)',
   'white_0.8': 'rgba(255, 255, 255, 0.8)',
   'gray100_0.8': 'rgba(241, 241, 241, 0.8)',
   'black_0.2': 'rgba(0, 0, 0, 0.2)',
-}
+})
+
+export const COLOR_SEMANTIC = Object.freeze({
+  danger: '#c7000a',
+  success: '#4db41d',
+  info: '#1a7aeb',
+  warning: '#fcaa0c',
+})
 
 // article
 export const COLOR_ARTICLE = {
@@ -99,5 +106,6 @@ export default {
   colorSupportive,
   colorGrayscale,
   colorOpacity,
+  COLOR_SEMANTIC,
   COLOR_ARTICLE,
 }

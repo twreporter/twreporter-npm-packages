@@ -18,6 +18,9 @@ function selectLogoPath(logoType, branch, type) {
       }
       return path[type]
     }
+    case 'loading-fallback': {
+      return `${baseGCSDir}logo-loading-fallback.${branch}.svg`
+    }
     default: {
       return ''
     }

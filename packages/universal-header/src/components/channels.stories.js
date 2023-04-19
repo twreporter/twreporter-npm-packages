@@ -2,8 +2,10 @@
 import React from 'react'
 import Channel from './channels'
 import HeaderContext from '../contexts/header-context'
-import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
+import {
+  THEME_STORYBOOK_ARG_TYPE,
+  BRANCH_STORYBOOK_ARG_TYPE,
+} from '../storybook/constants'
 
 export default {
   title: 'Channel',

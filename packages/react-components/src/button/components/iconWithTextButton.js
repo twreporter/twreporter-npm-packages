@@ -7,7 +7,7 @@ import { getIconWithTextButtonTheme } from '../utils/theme'
 import { P4 } from '../../text/paragraph'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
   cursor: pointer;
@@ -61,10 +61,11 @@ const IconWithTextButton = ({
 IconWithTextButton.propTypes = {
   text: PropTypes.string,
   iconComponent: PropTypes.element.isRequired,
-  theme: THEME_PROP_TYPES,
+  theme: PropTypes.oneOf(Object.values(THEME)),
   disabled: PropTypes.bool,
   active: PropTypes.bool,
   hideText: PropTypes.bool,
 }
+IconWithTextButton.THEME = THEME
 
 export default IconWithTextButton

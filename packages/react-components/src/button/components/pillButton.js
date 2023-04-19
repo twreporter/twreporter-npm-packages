@@ -8,11 +8,11 @@ import {
   getOutlinePillButtonTheme,
 } from '../utils/theme'
 import { getSizeStyle } from '../utils/size'
-// constants
-import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
-import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
+// enums
+import { Style, Type } from '../enums'
+import { Size } from '../../shared-enum'
 // @twreporter
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
   width: fit-content;
@@ -20,7 +20,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   border-radius: 40px;
   background-color: ${props =>
-    props.type === TYPE.primary ? props.bgColor : 'transparent'};
+    props.type === Type.PRIMARY ? props.bgColor : 'transparent'};
   border-color: ${props => props.bgColor};
   border-style: solid;
   border-width: 1.5px;
@@ -28,7 +28,6 @@ const ButtonContainer = styled.div`
   padding: ${props => props.padding};
   cursor: pointer;
   svg {
-    margin-left: 4px;
     height: ${props => props.iconSize};
     width: ${props => props.iconSize};
     background-color: ${props => props.color};
@@ -36,36 +35,56 @@ const ButtonContainer = styled.div`
   &:hover {
     color: ${props => props.hoverColor};
     background-color: ${props =>
-      props.type === TYPE.primary ? props.hoverBgColor : 'transparent'};
+      props.type === Type.PRIMARY ? props.hoverBgColor : 'transparent'};
     border-color: ${props => props.hoverBgColor};
     svg {
       background-color: ${props => props.hoverColor};
     }
   }
 `
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  &:first-child {
+    margin-right: 4px;
+  }
+  &:last-child {
+    margin-left: 4px;
+  }
+`
 
 const PillButton = ({
   text = '',
-  iconComponent,
-  size = SIZE.S,
+  leftIconComponent = null,
+  rightIconComponent = null,
+  size = Size.S,
   theme = THEME.normal,
-  type = TYPE.primary,
+  type = Type.PRIMARY,
+  style = Style.BRAND,
   disabled = false,
   ...props
 }) => {
   const themeFunc =
-    type === TYPE.primary ? getFilledPillButtonTheme : getOutlinePillButtonTheme
+    type === Type.PRIMARY ? getFilledPillButtonTheme : getOutlinePillButtonTheme
   const { color, bgColor, hoverColor, hoverBgColor } = themeFunc(
     theme,
-    disabled
+    disabled,
+    style
   )
   const { padding, iconSize } = getSizeStyle(size)
   const textJSX =
-    size === SIZE.S ? (
+    size === Size.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
     )
+  const leftIconJSX = leftIconComponent ? (
+    <IconContainer>{leftIconComponent}</IconContainer>
+  ) : null
+  const rightIconJSX = rightIconComponent ? (
+    <IconContainer>{rightIconComponent}</IconContainer>
+  ) : null
+
   return (
     <ButtonContainer
       type={type}
@@ -77,18 +96,25 @@ const PillButton = ({
       hoverBgColor={hoverBgColor}
       {...props}
     >
+      {leftIconJSX}
       {textJSX}
-      {iconComponent}
+      {rightIconJSX}
     </ButtonContainer>
   )
 }
 PillButton.propTypes = {
-  iconComponent: PropTypes.element,
+  leftIconComponent: PropTypes.element,
+  rightIconComponent: PropTypes.element,
   text: PropTypes.string,
-  size: SIZE_PROP_TYPES,
-  theme: THEME_PROP_TYPES,
-  type: TYPE_PROP_TYPES,
+  size: PropTypes.oneOf(Object.values(Size)),
+  theme: PropTypes.oneOf(Object.values(THEME)),
+  type: PropTypes.oneOf(Object.values(Type)),
+  style: PropTypes.oneOf(Object.values(Style)),
   disabled: PropTypes.bool,
 }
+PillButton.THEME = THEME
+PillButton.Type = Type
+PillButton.Size = Size
+PillButton.Style = Style
 
 export default PillButton

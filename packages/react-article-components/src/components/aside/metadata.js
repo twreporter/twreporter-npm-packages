@@ -1,17 +1,12 @@
-import React, { PureComponent, useContext } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, ThemeContext } from 'styled-components'
-import get from 'lodash/get'
-import map from 'lodash/map'
-import sortBy from 'lodash/sortBy'
-
+import styled, { css } from 'styled-components'
 // components
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import predefinedProps from '../../constants/prop-types/aside'
 import typography from '../../constants/typography'
 import { idToPathSegment } from '../../constants/category'
-
-// twreporter
+// @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 import { COLOR_ARTICLE } from '@twreporter/core/lib/constants/color'
@@ -19,9 +14,13 @@ import {
   GET_CATEGORY_PATH_FROM_ID,
   GET_SUBCATEGORY_PATH_FROM_ID,
 } from '@twreporter/core/lib/constants/category-set'
+import { LinkButton } from '@twreporter/react-components/lib/button'
+// feature toggle
 import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
-import TextLink from '@twreporter/react-components/lib/text/link'
-
+// lodash
+import get from 'lodash/get'
+import map from 'lodash/map'
+import sortBy from 'lodash/sortBy'
 const _ = {
   get,
   map,
@@ -202,6 +201,10 @@ const TagsSection = styled.div`
   ${props => createLine('bottom', props.theme.name)}
 `
 
+const TextLink = styled(LinkButton)`
+  padding: 0 0 0 5px;
+`
+
 const MetadataContainer = styled.div`
   ${props => getMetadataContainerStyles(props.theme.name)}
   letter-spacing: 0.4px;
@@ -239,6 +242,9 @@ function getMetadataContainerStyles(themeName) {
             border-color: ${COLOR_ARTICLE.white};
           }
         }
+        ${TextLink} {
+          color: ${COLOR_ARTICLE.milkTea};
+        }
       `
     case ARTICLE_THEME.v2.pink:
       return css`
@@ -257,6 +263,9 @@ function getMetadataContainerStyles(themeName) {
           &:hover {
             background-color: ${COLOR_ARTICLE.white};
           }
+        }
+        ${TextLink} {
+          color: ${COLOR_ARTICLE.blue};
         }
       `
     case ARTICLE_THEME.v2.default:
@@ -278,23 +287,23 @@ function getMetadataContainerStyles(themeName) {
             background-color: ${COLOR_ARTICLE.white};
           }
         }
+        ${TextLink} {
+          color: ${COLOR_ARTICLE.brown};
+        }
       `
   }
 }
 
 const CategorySet = props => {
-  const themeContext = useContext(ThemeContext)
   const categorySetJSX = _.map(props.categorySet, (set, index) => {
     const genLink = (path, name, isCategory = false) => {
+      const link = { to: path, isExternal: false }
+      const weight = isCategory
+        ? LinkButton.Weight.BOLD
+        : LinkButton.Weight.NORMAL
       return (
         <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
-          <TextLink
-            path={path}
-            name={name}
-            theme={themeContext.name}
-            isBold={isCategory}
-            padding={'0 0 0 5px'}
-          />
+          <TextLink link={link} text={name} weight={weight} />
         </CategorySetFlex>
       )
     }

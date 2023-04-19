@@ -2,9 +2,10 @@
 import React from 'react'
 import Header from './header'
 import HeaderContext from '../contexts/header-context'
-// @twerporter
-import { THEME_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/theme'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '@twreporter/core/lib/constants/release-branch'
+import {
+  THEME_STORYBOOK_ARG_TYPE,
+  BRANCH_STORYBOOK_ARG_TYPE,
+} from '../storybook/constants'
 
 export default {
   title: 'Header/Universal',
