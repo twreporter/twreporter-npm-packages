@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 // components
 import Bookmark from './bookmark'
-import EmptyGuide from './empty-guide'
+import EmptyState from '../empty-state'
 import { H1 } from '../text/headline'
 import { P1 } from '../text/paragraph'
 import Divider from '../divider'
@@ -96,7 +96,7 @@ function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
     )
   const contentJSX =
     total === 0 ? (
-      <EmptyGuide releaseBranch={releaseBranch} />
+      <EmptyState releaseBranch={releaseBranch} />
     ) : (
       <BookmarksContainer>{_.map(bookmarks, buildBookmark)}</BookmarksContainer>
     )

@@ -1,11 +1,11 @@
 import React from 'react'
-import EmptyGuide from '../empty-guide'
+import EmptyState from '../index'
 import releaseBranch from '@twreporter/core/lib/constants/release-branch'
 const { master, staging, preview, release } = releaseBranch
 
 export default {
-  title: 'Bookmark/Empty Guide',
-  component: EmptyGuide,
+  title: 'Empty State',
+  component: EmptyState,
   argTypes: {
     releaseBranch: {
       defaultValue: master,
@@ -15,4 +15,4 @@ export default {
   },
 }
 
-export const emptyGuide = args => <EmptyGuide {...args} />
+export const emptyState = args => <EmptyState {...args} />

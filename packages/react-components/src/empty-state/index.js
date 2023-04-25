@@ -10,12 +10,19 @@ import { Bookmark } from '../icon'
 import { P1, P2 } from '../text/paragraph'
 import { PillButton } from '../button'
 
-const Container = styled.div`
+const OuterContainer = styled.div`
   width: 100%;
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8px;
+`
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 280px;
 `
 
 const TextContainer = styled.div`
@@ -43,28 +50,30 @@ const GuideContainer = styled.div`
   }
 `
 
-const EmptyGuide = ({ releaseBranch = releaseBranchConsts.master }) => {
+const EmptyState = ({ releaseBranch = releaseBranchConsts.master }) => {
   const homepageUrl = requestOrigin.forClientSideRendering[releaseBranch].main
   const seekImageUrl = `https://www.twreporter.org/assets/bookmark/${releaseBranch}/seek.png`
   return (
-    <Container>
-      <img alt="Seek Bookmark" src={seekImageUrl} width="170" />
-      <TextContainer>
-        <P1 text="你還沒有儲存任何文章！" weight="bold" />
-        <GuideContainer>
-          <P2 text="點擊" />
-          <Bookmark type="add" releaseBranch={releaseBranch} />
-          <P2 text="將喜愛的文章加入我的書籤" />
-        </GuideContainer>
-      </TextContainer>
-      <ButtonContainer href={homepageUrl}>
-        <PillButton text="開始探索" size="L" />
-      </ButtonContainer>
-    </Container>
+    <OuterContainer>
+      <Container>
+        <img alt="Seek Bookmark" src={seekImageUrl} width="170" />
+        <TextContainer>
+          <P1 text="你還沒有儲存任何文章！" weight="bold" />
+          <GuideContainer>
+            <P2 text="點擊" />
+            <Bookmark type="add" releaseBranch={releaseBranch} />
+            <P2 text="將喜愛的文章加入我的書籤" />
+          </GuideContainer>
+        </TextContainer>
+        <ButtonContainer href={homepageUrl}>
+          <PillButton text="開始探索" size="L" />
+        </ButtonContainer>
+      </Container>
+    </OuterContainer>
   )
 }
-EmptyGuide.propTypes = {
+EmptyState.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
 }
 
-export default EmptyGuide
+export default EmptyState
