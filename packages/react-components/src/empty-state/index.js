@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 // @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
@@ -9,6 +10,7 @@ import requestOrigin from '@twreporter/core/lib/constants/request-origins'
 import { Bookmark } from '../icon'
 import { P1, P2 } from '../text/paragraph'
 import { PillButton } from '../button'
+import { Style } from './enums'
 
 const OuterContainer = styled.div`
   width: 100%;
@@ -50,30 +52,86 @@ const GuideContainer = styled.div`
   }
 `
 
-const EmptyState = ({ releaseBranch = releaseBranchConsts.master }) => {
+const getImageUrl = (style, releaseBranch) => {
+  switch (style) {
+    case Style.BOOKMARK:
+      // due to cache, use the old url
+      // return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
+      return `https://www.twreporter.org/assets/bookmark/${releaseBranch}/seek.png`
+    case Style.PENCIL:
+      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`
+    case Style.UNDER_CONSTRUCTION:
+      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`
+    default:
+      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
+  }
+}
+
+const BookMarkContainer = releaseBranch => {
   const homepageUrl = requestOrigin.forClientSideRendering[releaseBranch].main
-  const seekImageUrl = `https://www.twreporter.org/assets/bookmark/${releaseBranch}/seek.png`
+  const seekImageUrl = getImageUrl(Style.BOOKMARK, releaseBranch)
+  return (
+    <Container>
+      <img alt="Seek Bookmark" src={seekImageUrl} width="170" />
+      <TextContainer>
+        <P1 text="你還沒有儲存任何文章！" weight="bold" />
+        <GuideContainer>
+          <P2 text="點擊" />
+          <Bookmark type="add" releaseBranch={releaseBranch} />
+          <P2 text="將喜愛的文章加入我的書籤" />
+        </GuideContainer>
+      </TextContainer>
+      <ButtonContainer href={homepageUrl}>
+        <PillButton text="開始探索" size="L" />
+      </ButtonContainer>
+    </Container>
+  )
+}
+
+const EmptyState = ({
+  releaseBranch = releaseBranchConsts.master,
+  style = Style.DEFAULT,
+  title = '',
+  showGuide = true,
+  guide = '',
+  showButton = true,
+  buttonText = '',
+  buttonUrl = '/',
+}) => {
   return (
     <OuterContainer>
-      <Container>
-        <img alt="Seek Bookmark" src={seekImageUrl} width="170" />
-        <TextContainer>
-          <P1 text="你還沒有儲存任何文章！" weight="bold" />
-          <GuideContainer>
-            <P2 text="點擊" />
-            <Bookmark type="add" releaseBranch={releaseBranch} />
-            <P2 text="將喜愛的文章加入我的書籤" />
-          </GuideContainer>
-        </TextContainer>
-        <ButtonContainer href={homepageUrl}>
-          <PillButton text="開始探索" size="L" />
-        </ButtonContainer>
-      </Container>
+      {style === Style.BOOKMARK ? (
+        BookMarkContainer(releaseBranch)
+      ) : (
+        <Container>
+          <img src={getImageUrl(style, releaseBranch)} width="170" />
+          <TextContainer>
+            <P1 text={title} weight="bold" />
+            {showGuide && (
+              <GuideContainer>
+                <P2 text={guide} />
+              </GuideContainer>
+            )}
+          </TextContainer>
+          {showButton && (
+            <ButtonContainer href={buttonUrl}>
+              <PillButton text={buttonText} size="L" />
+            </ButtonContainer>
+          )}
+        </Container>
+      )}
     </OuterContainer>
   )
 }
 EmptyState.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
+  style: PropTypes.oneOf(Object.values(Style)),
+  title: PropTypes.string,
+  showGuide: PropTypes.bool,
+  guide: PropTypes.string,
+  showButton: PropTypes.bool,
+  buttonText: PropTypes.string,
+  buttonUrl: PropTypes.string,
 }
 
 export default EmptyState
