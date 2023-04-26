@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.17.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.6...@twreporter/react-components@8.17.0-rc.7) (2023-04-24)
+
+
+### Bug Fixes
+
+* card list rwd ([f28ef4f](https://github.com/twreporter/twreporter-npm-packages/commit/f28ef4f77401bbbdd741d37349b94d00df5d3ba6))
+
+
+
+
+
 # [8.17.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.5...@twreporter/react-components@8.17.0-rc.6) (2023-04-18)
 
 ### Bug Fixes
