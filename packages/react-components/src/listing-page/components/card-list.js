@@ -6,7 +6,7 @@ import { ArticleCard } from '../../card'
 import FetchingWrapper from '../../is-fetching-wrapper'
 import Divider from '../../divider'
 import Link from '../../customized-link'
-import { DesktopOnly, MobileOnly } from '../../rwd'
+import { DesktopAndAbove, TabletAndBelow } from '../../rwd'
 // constants
 import mockup from '../constants/mockup-spec'
 // @twreporter
@@ -128,12 +128,12 @@ const CardList = ({
     return (
       <Item key={id}>
         <Link {...link}>
-          <DesktopOnly>
+          <DesktopAndAbove>
             <Card {...articleCardProps} size={ArticleCard.Size.L} />
-          </DesktopOnly>
-          <MobileOnly>
+          </DesktopAndAbove>
+          <TabletAndBelow>
             <Card {...articleCardProps} size={ArticleCard.Size.S} />
-          </MobileOnly>
+          </TabletAndBelow>
           <StyledDivider />
         </Link>
       </Item>
