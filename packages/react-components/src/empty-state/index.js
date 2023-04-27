@@ -3,14 +3,17 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 // @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
-import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
-import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import {
+  BRANCH,
+  BRANCH_PROP_TYPES,
+} from '@twreporter/core/lib/constants/release-branch'
 import requestOrigin from '@twreporter/core/lib/constants/request-origins'
 // components
 import { Bookmark } from '../icon'
 import { P1, P2 } from '../text/paragraph'
 import { PillButton } from '../button'
 import { Style } from './enums'
+import { Size } from '../shared-enum'
 
 const OuterContainer = styled.div`
   width: 100%;
@@ -55,9 +58,7 @@ const GuideContainer = styled.div`
 const getImageUrl = (style, releaseBranch) => {
   switch (style) {
     case Style.BOOKMARK:
-      // due to cache, use the old url
-      // return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
-      return `https://www.twreporter.org/assets/bookmark/${releaseBranch}/seek.png`
+      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
     case Style.PENCIL:
       return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`
     case Style.UNDER_CONSTRUCTION:
@@ -89,7 +90,7 @@ const BookMarkContainer = releaseBranch => {
 }
 
 const EmptyState = ({
-  releaseBranch = releaseBranchConsts.master,
+  releaseBranch = BRANCH.master,
   style = Style.DEFAULT,
   title = '',
   showGuide = true,
@@ -106,7 +107,7 @@ const EmptyState = ({
         <Container>
           <img src={getImageUrl(style, releaseBranch)} width="170" />
           <TextContainer>
-            <P1 text={title} weight="bold" />
+            <P1 text={title} weight={P1.Weight.BOLD} />
             {showGuide && (
               <GuideContainer>
                 <P2 text={guide} />
@@ -115,7 +116,7 @@ const EmptyState = ({
           </TextContainer>
           {showButton && (
             <ButtonContainer href={buttonUrl}>
-              <PillButton text={buttonText} size="L" />
+              <PillButton text={buttonText} size={Size.L} />
             </ButtonContainer>
           )}
         </Container>
@@ -124,7 +125,7 @@ const EmptyState = ({
   )
 }
 EmptyState.propTypes = {
-  releaseBranch: predefinedPropTypes.releaseBranch,
+  releaseBranch: BRANCH_PROP_TYPES,
   style: PropTypes.oneOf(Object.values(Style)),
   title: PropTypes.string,
   showGuide: PropTypes.bool,
@@ -133,5 +134,7 @@ EmptyState.propTypes = {
   buttonText: PropTypes.string,
   buttonUrl: PropTypes.string,
 }
+
+EmptyState.Style = Style
 
 export default EmptyState

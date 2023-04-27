@@ -2,14 +2,13 @@ import React from 'react'
 import EmptyState from '../index'
 import { Style } from '../enums'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
-import releaseBranch from '@twreporter/core/lib/constants/release-branch'
-const { master, staging, preview, release } = releaseBranch
+import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
 export default {
-  title: 'Empty State/Empty State',
+  title: 'Empty State',
   component: EmptyState,
   argTypes: {
-    releaseBranch: getRadioArg([master, staging, preview, release], master),
+    releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
     style: getRadioArg(Style, Style.DEFAULT),
   },
 }

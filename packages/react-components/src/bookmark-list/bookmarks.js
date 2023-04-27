@@ -7,7 +7,6 @@ import EmptyState from '../empty-state'
 import { H1 } from '../text/headline'
 import { P1 } from '../text/paragraph'
 import Divider from '../divider'
-import { Style as EmptyStateStyle } from '../empty-state/enums'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
@@ -98,7 +97,7 @@ function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
   const contentJSX =
     total === 0 ? (
       <EmptyState
-        style={EmptyStateStyle.BOOKMARK}
+        style={EmptyState.Style.BOOKMARK}
         releaseBranch={releaseBranch}
       />
     ) : (
