@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.17.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.8...@twreporter/react-components@8.17.0-rc.9) (2023-04-28)
+
+
+### Bug Fixes
+
+* add `showCategory` prop for List component ([20da390](https://github.com/twreporter/twreporter-npm-packages/commit/20da3909f564a660490e81391d989df452a0ac9c))
+
+
+
+
+
 # [8.17.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.7...@twreporter/react-components@8.17.0-rc.8) (2023-04-27)
 
 **Note:** Version bump only for package @twreporter/react-components
