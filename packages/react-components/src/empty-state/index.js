@@ -7,9 +7,7 @@ import {
   BRANCH,
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
-import requestOrigin from '@twreporter/core/lib/constants/request-origins'
 // components
-import { Bookmark } from '../icon'
 import { P1, P2 } from '../text/paragraph'
 import { PillButton } from '../button'
 import { Style } from './enums'
@@ -57,7 +55,7 @@ const GuideContainer = styled.div`
 
 const getImageUrl = (style, releaseBranch) => {
   switch (style) {
-    case Style.BOOKMARK:
+    case Style.DEFAULT:
       return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
     case Style.PENCIL:
       return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`
@@ -68,59 +66,34 @@ const getImageUrl = (style, releaseBranch) => {
   }
 }
 
-const BookMarkContainer = releaseBranch => {
-  const homepageUrl = requestOrigin.forClientSideRendering[releaseBranch].main
-  const seekImageUrl = getImageUrl(Style.BOOKMARK, releaseBranch)
-  return (
-    <Container>
-      <img alt="Seek Bookmark" src={seekImageUrl} width="170" />
-      <TextContainer>
-        <P1 text="你還沒有儲存任何文章！" weight="bold" />
-        <GuideContainer>
-          <P2 text="點擊" />
-          <Bookmark type="add" releaseBranch={releaseBranch} />
-          <P2 text="將喜愛的文章加入我的書籤" />
-        </GuideContainer>
-      </TextContainer>
-      <ButtonContainer href={homepageUrl}>
-        <PillButton text="開始探索" size="L" />
-      </ButtonContainer>
-    </Container>
-  )
-}
-
 const EmptyState = ({
   releaseBranch = BRANCH.master,
   style = Style.DEFAULT,
   title = '',
   showGuide = true,
-  guide = '',
+  guide = null,
   showButton = true,
   buttonText = '',
   buttonUrl = '/',
 }) => {
   return (
     <OuterContainer>
-      {style === Style.BOOKMARK ? (
-        BookMarkContainer(releaseBranch)
-      ) : (
-        <Container>
-          <img src={getImageUrl(style, releaseBranch)} width="170" />
-          <TextContainer>
-            <P1 text={title} weight={P1.Weight.BOLD} />
-            {showGuide && (
-              <GuideContainer>
-                <P2 text={guide} />
-              </GuideContainer>
-            )}
-          </TextContainer>
-          {showButton && (
-            <ButtonContainer href={buttonUrl}>
-              <PillButton text={buttonText} size={Size.L} />
-            </ButtonContainer>
+      <Container>
+        <img src={getImageUrl(style, releaseBranch)} width="170" />
+        <TextContainer>
+          <P1 text={title} weight={P1.Weight.BOLD} />
+          {showGuide && (
+            <GuideContainer>
+              {typeof guide === 'string' ? <P2 text={guide} /> : guide}
+            </GuideContainer>
           )}
-        </Container>
-      )}
+        </TextContainer>
+        {showButton && (
+          <ButtonContainer href={buttonUrl}>
+            <PillButton text={buttonText} size={Size.L} />
+          </ButtonContainer>
+        )}
+      </Container>
     </OuterContainer>
   )
 }
@@ -129,7 +102,7 @@ EmptyState.propTypes = {
   style: PropTypes.oneOf(Object.values(Style)),
   title: PropTypes.string,
   showGuide: PropTypes.bool,
-  guide: PropTypes.string,
+  guide: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   showButton: PropTypes.bool,
   buttonText: PropTypes.string,
   buttonUrl: PropTypes.string,
