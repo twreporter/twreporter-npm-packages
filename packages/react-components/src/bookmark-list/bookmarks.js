@@ -104,7 +104,10 @@ function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
         guide={
           <>
             <P2 text="點擊" />
-            <BookMarkIcon type="add" releaseBranch={releaseBranch} />
+            <BookMarkIcon
+              type={BookMarkIcon.Type.ADD}
+              releaseBranch={releaseBranch}
+            />
             <P2 text="將喜愛的文章加入我的書籤" />
           </>
         }

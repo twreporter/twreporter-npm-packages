@@ -56,13 +56,12 @@ const GuideContainer = styled.div`
 const getImageUrl = (style, releaseBranch) => {
   switch (style) {
     case Style.DEFAULT:
+    default:
       return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
     case Style.PENCIL:
       return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`
     case Style.UNDER_CONSTRUCTION:
       return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`
-    default:
-      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
   }
 }
 
