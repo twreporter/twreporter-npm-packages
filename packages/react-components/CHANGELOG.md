@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.17.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.9...@twreporter/react-components@8.17.0-rc.10) (2023-05-03)
+
+
+### Bug Fixes
+
+* add MaterialIcon component to support google material symbols ([af520b1](https://github.com/twreporter/twreporter-npm-packages/commit/af520b1c300c9b092d6c79d983b777c5ce6646e2))
+* use `material-symbols` package instead of `react-material-symbols` ([1937a3f](https://github.com/twreporter/twreporter-npm-packages/commit/1937a3fbf7841aad7176d644cc3c9bb77575fb64))
+
+
+
+
+
 # [8.17.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.8...@twreporter/react-components@8.17.0-rc.9) (2023-04-28)
 
 
