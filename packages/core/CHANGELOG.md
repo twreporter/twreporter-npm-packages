@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0-rc.0...@twreporter/core@1.9.0-rc.1) (2023-04-27)
+
+
+### Features
+
+* change core packages newsLetter link to new one ([5b92f00](https://github.com/twreporter/twreporter-npm-packages/commit/5b92f00f75a6addc5d9958cadfa3c86685ba3484))
+
+
+
+
+
 # [1.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.3-rc.2...@twreporter/core@1.9.0-rc.0) (2023-04-18)
 
 ### Bug Fixes

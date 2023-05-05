@@ -59,7 +59,14 @@ const Items = FetchingWrapper(FlexItems)
 
 class List extends PureComponent {
   render() {
-    const { data, catName, tagName, isFetching, showSpinner } = this.props
+    const {
+      data,
+      catName,
+      tagName,
+      isFetching,
+      showSpinner,
+      showCategory,
+    } = this.props
     const listJSX = []
     _.forEach(data, item => {
       const style = _.get(item, 'style')
@@ -98,7 +105,9 @@ class List extends PureComponent {
               _.get(item, 'hero_image.resized_targets.mobile.url') ||
               _.get(item, 'og_image.resized_targets.mobile.url'),
           }}
-          category={_.get(item, 'categories.0.name', '')}
+          category={
+            showCategory && _.get(item, 'category_set.0.category.name', '')
+          }
           pubDate={date2yyyymmdd(_.get(item, 'published_date', ''), '.')}
           tags={tags}
           link={{
@@ -129,6 +138,7 @@ List.defaultProps = {
   tagName: '',
   isFetching: false,
   showSpinner: false,
+  showCategory: false,
 }
 
 List.propTypes = {
@@ -148,6 +158,7 @@ List.propTypes = {
   catName: PropTypes.string,
   isFetching: PropTypes.bool,
   showSpinner: PropTypes.bool,
+  showCategory: PropTypes.bool,
 }
 
 export default List
