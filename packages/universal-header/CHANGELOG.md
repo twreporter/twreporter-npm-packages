@@ -51,14 +51,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [2.4.3-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.9...@twreporter/universal-header@2.4.3-rc.10) (2023-04-18)
 
-
 ### Bug Fixes
 
-* remove storybook related const from @twreporter/core packages ([4d22736](https://github.com/twreporter/twreporter-npm-packages/commit/4d22736f409a002537d1912300ff911197582729))
-
-
-
-
+- remove storybook related const from @twreporter/core packages ([4d22736](https://github.com/twreporter/twreporter-npm-packages/commit/4d22736f409a002537d1912300ff911197582729))
 
 ## [2.4.3-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.8...@twreporter/universal-header@2.4.3-rc.9) (2023-04-17)
 

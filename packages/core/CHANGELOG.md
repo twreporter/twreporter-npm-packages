@@ -16,19 +16,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.3-rc.2...@twreporter/core@1.9.0-rc.0) (2023-04-18)
 
-
 ### Bug Fixes
 
-* remove storybook related const from @twreporter/core packages ([4d22736](https://github.com/twreporter/twreporter-npm-packages/commit/4d22736f409a002537d1912300ff911197582729))
-
+- remove storybook related const from @twreporter/core packages ([4d22736](https://github.com/twreporter/twreporter-npm-packages/commit/4d22736f409a002537d1912300ff911197582729))
 
 ### Features
 
-* add design guideline color set `semantic` ([6e3ab2a](https://github.com/twreporter/twreporter-npm-packages/commit/6e3ab2a1da422b6b6d5ed573de19fcee3d99a227))
-
-
-
-
+- add design guideline color set `semantic` ([6e3ab2a](https://github.com/twreporter/twreporter-npm-packages/commit/6e3ab2a1da422b6b6d5ed573de19fcee3d99a227))
 
 ## [1.8.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.3-rc.1...@twreporter/core@1.8.3-rc.2) (2023-04-13)
 

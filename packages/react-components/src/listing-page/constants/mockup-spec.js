@@ -4,7 +4,7 @@ const marginBetweenItems = 20
 export default {
   marginBetweenItems,
   mobile: {
-    maxWidth: 375,
+    maxWidth: 325 * 2 + marginBetweenItems,
     cardWidth: 325,
     tagsWidth: 240,
     imgHeight: 205,

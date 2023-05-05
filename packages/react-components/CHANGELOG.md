@@ -64,27 +64,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [8.17.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.5...@twreporter/react-components@8.17.0-rc.6) (2023-04-18)
 
-
 ### Bug Fixes
 
-* add type prop for Icon component & refactor ([06a1f9c](https://github.com/twreporter/twreporter-npm-packages/commit/06a1f9c1b00c6741a2b0cbd878cd24dd11d26a30))
-* address review comments ([022d112](https://github.com/twreporter/twreporter-npm-packages/commit/022d112baa7001db775b55ef604e909aa7f76462))
-* adjust PillButton style ([f17124a](https://github.com/twreporter/twreporter-npm-packages/commit/f17124a0a884ec26d2838d869264e711644f2d90))
-* make paragraph & link button support inline style ([822a864](https://github.com/twreporter/twreporter-npm-packages/commit/822a8645bf1ea1f65dc86c7f636c7db840b56c68))
-* merge text/link into buttom/link component & migrate ([0b526b2](https://github.com/twreporter/twreporter-npm-packages/commit/0b526b2c9171169377d188add257c062811f7758))
-* refactor use of enums in react-components ([fadd2a5](https://github.com/twreporter/twreporter-npm-packages/commit/fadd2a5e963a3fa6f55dbcba82f1dc3b5c03b6d2))
-* remove storybook related const from @twreporter/core packages ([4d22736](https://github.com/twreporter/twreporter-npm-packages/commit/4d22736f409a002537d1912300ff911197582729))
-* use component defined enums to assign props ([2e0ff41](https://github.com/twreporter/twreporter-npm-packages/commit/2e0ff41dec714b4a9c97a02027dc4fdb91c958b9))
-
+- add type prop for Icon component & refactor ([06a1f9c](https://github.com/twreporter/twreporter-npm-packages/commit/06a1f9c1b00c6741a2b0cbd878cd24dd11d26a30))
+- address review comments ([022d112](https://github.com/twreporter/twreporter-npm-packages/commit/022d112baa7001db775b55ef604e909aa7f76462))
+- adjust PillButton style ([f17124a](https://github.com/twreporter/twreporter-npm-packages/commit/f17124a0a884ec26d2838d869264e711644f2d90))
+- make paragraph & link button support inline style ([822a864](https://github.com/twreporter/twreporter-npm-packages/commit/822a8645bf1ea1f65dc86c7f636c7db840b56c68))
+- merge text/link into buttom/link component & migrate ([0b526b2](https://github.com/twreporter/twreporter-npm-packages/commit/0b526b2c9171169377d188add257c062811f7758))
+- refactor use of enums in react-components ([fadd2a5](https://github.com/twreporter/twreporter-npm-packages/commit/fadd2a5e963a3fa6f55dbcba82f1dc3b5c03b6d2))
+- remove storybook related const from @twreporter/core packages ([4d22736](https://github.com/twreporter/twreporter-npm-packages/commit/4d22736f409a002537d1912300ff911197582729))
+- use component defined enums to assign props ([2e0ff41](https://github.com/twreporter/twreporter-npm-packages/commit/2e0ff41dec714b4a9c97a02027dc4fdb91c958b9))
 
 ### Features
 
-* add Letter & Google icon components ([fbf1dfc](https://github.com/twreporter/twreporter-npm-packages/commit/fbf1dfc111a021d5d9fd9254cef8e402e0f2384e))
-* add LinkButton component with storybook ([25a9976](https://github.com/twreporter/twreporter-npm-packages/commit/25a9976bfe0998dc9985fb6aa3ab921dae00f6a8))
-
-
-
-
+- add Letter & Google icon components ([fbf1dfc](https://github.com/twreporter/twreporter-npm-packages/commit/fbf1dfc111a021d5d9fd9254cef8e402e0f2384e))
+- add LinkButton component with storybook ([25a9976](https://github.com/twreporter/twreporter-npm-packages/commit/25a9976bfe0998dc9985fb6aa3ab921dae00f6a8))
 
 # [8.17.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.4...@twreporter/react-components@8.17.0-rc.5) (2023-04-17)
 

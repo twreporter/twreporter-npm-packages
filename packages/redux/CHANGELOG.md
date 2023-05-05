@@ -15,10 +15,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 ## [7.5.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.1-rc.1...@twreporter/redux@7.5.1-rc.2) (2023-04-13)
 
 **Note:** Version bump only for package @twreporter/redux

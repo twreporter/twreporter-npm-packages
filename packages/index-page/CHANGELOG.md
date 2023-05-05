@@ -47,10 +47,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.4-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.6...@twreporter/index-page@1.4.4-rc.7) (2023-04-17)
 
 **Note:** Version bump only for package @twreporter/index-page
