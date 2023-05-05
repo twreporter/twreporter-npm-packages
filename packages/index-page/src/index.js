@@ -1,6 +1,7 @@
 import CategorySection from './components/category-section'
 import DonationBoxSection from './components/donation-box-section'
-import EditorPicks from './components/editor-picks'
+import EditorPicksNew from './components/editor-picks'
+import EditorPicksOld from './components/editor-picks-old'
 import InforgraphicSection from './components/infographic-section'
 import JuniorBoxSection from './components/junior-box-section'
 import LatestSectionNew from './components/latest-section'
@@ -16,6 +17,7 @@ import TopicsSection from './components/topics-section'
 // feature toggle
 import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 const LatestSection = ENABLE_NEW_INFO_ARCH ? LatestSectionNew : LatestSectionOld
+const EditorPicks = ENABLE_NEW_INFO_ARCH ? EditorPicksNew : EditorPicksOld
 
 export default {
   components: {
