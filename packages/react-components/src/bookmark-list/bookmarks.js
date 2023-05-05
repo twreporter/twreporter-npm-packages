@@ -3,15 +3,17 @@ import React from 'react'
 import styled from 'styled-components'
 // components
 import Bookmark from './bookmark'
-import EmptyGuide from './empty-guide'
+import EmptyState from '../empty-state'
 import { H1 } from '../text/headline'
-import { P1 } from '../text/paragraph'
+import { P1, P2 } from '../text/paragraph'
 import Divider from '../divider'
+import { Bookmark as BookMarkIcon } from '../icon'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import requestOrigin from '@twreporter/core/lib/constants/request-origins'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -96,7 +98,23 @@ function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
     )
   const contentJSX =
     total === 0 ? (
-      <EmptyGuide releaseBranch={releaseBranch} />
+      <EmptyState
+        style={EmptyState.Style.DEFAULT}
+        title="你還沒有儲存任何文章！"
+        guide={
+          <>
+            <P2 text="點擊" />
+            <BookMarkIcon
+              type={BookMarkIcon.Type.ADD}
+              releaseBranch={releaseBranch}
+            />
+            <P2 text="將喜愛的文章加入我的書籤" />
+          </>
+        }
+        buttonText="開始探索"
+        buttonUrl={requestOrigin.forClientSideRendering[releaseBranch].main}
+        releaseBranch={releaseBranch}
+      />
     ) : (
       <BookmarksContainer>{_.map(bookmarks, buildBookmark)}</BookmarksContainer>
     )
