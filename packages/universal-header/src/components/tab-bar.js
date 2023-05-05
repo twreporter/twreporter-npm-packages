@@ -7,51 +7,56 @@ import { getTabBarLinks, checkPathnameParent } from '../utils/links'
 import { selectTabBarTheme } from '../utils/theme'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
-import {
-  Home,
-  Clock,
-  Bookmark,
-  Hamburger,
-} from '@twreporter/react-components/lib/icon'
+import MaterialSymbol from '@twreporter/react-components/lib/material-icon'
 import { IconWithTextButton } from '@twreporter/react-components/lib/button'
 
 const TabBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 4px 16px;
-  border-top: 1px solid ${props => props.borderColor};
-  background-color: ${props => props.bgColor};
-  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding: 8px 16px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
+  background-color: ${(props) => props.bgColor};
+  padding-bottom: calc(8px + env(safe-area-inset-bottom, 0));
   a {
     text-decoration: none;
   }
+  a:visited,
+  a:active {
+    color: inherit;
+  }
 `
-const ButtonContainer = styled.div`
+const ButtonContainer = styled(Link)`
   display: flex;
   justify-content: center;
   margin-right: 8px;
   flex: 1;
+  text-decoration: none;
   &:last-child {
     margin-right: 0;
-  }
-  a {
-    text-decoration: none;
   }
 `
 
 const TabBar = () => {
-  const { theme, releaseBranch, isLinkExternal, pathname } = useContext(
-    HeaderContext
-  )
-  const { toggleHamburger, isHamburgerMenuOpen } = useContext(HamburgerContext)
+  const { theme, releaseBranch, isLinkExternal, pathname } =
+    useContext(HeaderContext)
+  const { closeHamburgerMenu, toggleHamburger, isHamburgerMenuOpen } =
+    useContext(HamburgerContext)
   const { home, latest, bookmark } = getTabBarLinks(
     isLinkExternal,
     releaseBranch
   )
-  const HomeIcon = <Home releaseBranch={releaseBranch} />
-  const ClockIcon = <Clock releaseBranch={releaseBranch} />
-  const BookmarkIcon = <Bookmark releaseBranch={releaseBranch} />
-  const HamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
+  const HomeIcon = (
+    <MaterialSymbol icon="home" weight={400} grade={0} size={24} />
+  )
+  const ClockIcon = (
+    <MaterialSymbol icon="schedule" weight={400} grade={0} size={24} />
+  )
+  const BookmarkIcon = (
+    <MaterialSymbol icon="bookmark" weight={400} grade={0} size={24} />
+  )
+  const HamburgerIcon = (
+    <MaterialSymbol icon="menu" weight={400} grade={0} size={24} />
+  )
   const { bgColor, borderColor } = selectTabBarTheme(theme)
   const isHomeActive = !isHamburgerMenuOpen && pathname === '/'
   const isLatestActive =
@@ -61,35 +66,29 @@ const TabBar = () => {
 
   return (
     <TabBarContainer bgColor={bgColor} borderColor={borderColor}>
-      <ButtonContainer>
-        <Link {...home}>
-          <IconWithTextButton
-            text="首頁"
-            iconComponent={HomeIcon}
-            theme={theme}
-            active={isHomeActive}
-          />
-        </Link>
+      <ButtonContainer {...home} onClick={closeHamburgerMenu}>
+        <IconWithTextButton
+          text="首頁"
+          iconComponent={HomeIcon}
+          theme={theme}
+          active={isHomeActive}
+        />
       </ButtonContainer>
-      <ButtonContainer>
-        <Link {...latest}>
-          <IconWithTextButton
-            text="最新"
-            iconComponent={ClockIcon}
-            theme={theme}
-            active={isLatestActive}
-          />
-        </Link>
+      <ButtonContainer {...latest} onClick={closeHamburgerMenu}>
+        <IconWithTextButton
+          text="最新"
+          iconComponent={ClockIcon}
+          theme={theme}
+          active={isLatestActive}
+        />
       </ButtonContainer>
-      <ButtonContainer>
-        <Link {...bookmark}>
-          <IconWithTextButton
-            text="我的書籤"
-            iconComponent={BookmarkIcon}
-            theme={theme}
-            active={isBookmarkActive}
-          />
-        </Link>
+      <ButtonContainer {...bookmark} onClick={closeHamburgerMenu}>
+        <IconWithTextButton
+          text="我的書籤"
+          iconComponent={BookmarkIcon}
+          theme={theme}
+          active={isBookmarkActive}
+        />
       </ButtonContainer>
       <ButtonContainer onClick={toggleHamburger}>
         <IconWithTextButton

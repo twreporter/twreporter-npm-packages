@@ -6,8 +6,7 @@ export default {
   rss: 'https://www.twreporter.org/a/rss2.xml',
   instagram: 'https://www.instagram.com/twreporter/',
   ccLicense: 'https://creativecommons.org/licenses/by-nc-nd/3.0/tw/',
-  newsLetter:
-    'https://twreporter.us14.list-manage.com/subscribe/post?u=4da5a7d3b98dbc9fdad009e7e&id=e0eb0c8c32',
+  newsLetter: 'http://eepurl.com/djVwF9',
   medium: 'https://medium.com/twreporter',
   twitter: 'https://twitter.com/tw_reporter_org',
   IJMBrochureDownloadLink:

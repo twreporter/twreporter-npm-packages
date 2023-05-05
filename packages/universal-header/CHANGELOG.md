@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.0-rc.1...@twreporter/universal-header@2.5.0-rc.2) (2023-05-03)
+
+
+### Bug Fixes
+
+* add MaterialIcon component to support google material symbols ([af520b1](https://github.com/twreporter/twreporter-npm-packages/commit/af520b1c300c9b092d6c79d983b777c5ce6646e2))
+
+
+
+
+
+# [2.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.0-rc.0...@twreporter/universal-header@2.5.0-rc.1) (2023-04-28)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.11...@twreporter/universal-header@2.5.0-rc.0) (2023-04-27)
+
+
+### Features
+
+* change universal-header newsLetter link to new one ([aa489a6](https://github.com/twreporter/twreporter-npm-packages/commit/aa489a6290797363def5a32511b882fda238f95b))
+
+
+
+
+
+## [2.4.3-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.10...@twreporter/universal-header@2.4.3-rc.11) (2023-04-24)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
 ## [2.4.3-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.4.3-rc.9...@twreporter/universal-header@2.4.3-rc.10) (2023-04-18)
 
 
