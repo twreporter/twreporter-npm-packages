@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import 'material-symbols/outlined.css'
 
 const StyledSymbol = styled.span`
-  font-variation-settings: ${(props) => `
+  font-variation-settings: ${props => `
     'FILL': ${props.fill},
     'wght': ${props.weight},
     'GRAD': ${props.grade},
