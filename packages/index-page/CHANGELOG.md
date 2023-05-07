@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.4-rc.15](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.14...@twreporter/index-page@1.4.4-rc.15) (2023-05-07)
+
+
+### Bug Fixes
+
+* editor pick section should show category_set info ([33e97dd](https://github.com/twreporter/twreporter-npm-packages/commit/33e97dd03554a132dd8d195a554e2fd2c705a12f))
+
+
+
+
+
 ## [1.4.4-rc.14](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.13...@twreporter/index-page@1.4.4-rc.14) (2023-05-05)
 
 **Note:** Version bump only for package @twreporter/index-page
