@@ -321,20 +321,20 @@ class EditorPicks extends React.Component {
           position: 'left',
           component: SideCategory,
           propsForComponent: { top: null, left: '10%' },
-          dataPath: 'category_set[0].category.name',
+          dataPath: 'categories[0].name',
         },
         {
           position: 'middle',
           component: MiddleCategory,
           propsForComponent: { top: '60px', left: '50%' },
-          dataPath: 'category_set[0].category.name',
+          dataPath: 'categories[0].name',
         },
         {
           position: 'right',
           middle: false,
           component: SideCategory,
           propsForComponent: { top: null, left: '90%' },
-          dataPath: 'category_set[0].category.name',
+          dataPath: 'categories[0].name',
         },
         {
           position: 'middle',
