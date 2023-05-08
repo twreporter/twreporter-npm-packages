@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.0-rc.4...@twreporter/universal-header@2.5.0-rc.5) (2023-05-08)
+
+
+### Bug Fixes
+
+* cannot open hamburger menu ([38e38d8](https://github.com/twreporter/twreporter-npm-packages/commit/38e38d8ffe9471a2f2c91476b375ac532177c17d))
+
+
+
+
+
 # [2.5.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.0-rc.3...@twreporter/universal-header@2.5.0-rc.4) (2023-05-05)
 
 **Note:** Version bump only for package @twreporter/universal-header
