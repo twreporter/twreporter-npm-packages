@@ -48,9 +48,6 @@ const Item = styled.div`
     margin-bottom: 0;
   }
   width: 100%;
-  ${mq.mobileOnly`
-    width: ${(mockup.mobile.cardWidth / mockup.mobile.maxWidth) * 100}%;
-  `}
 `
 const StyledDivider = styled(Divider)`
   margin-top: 24px;

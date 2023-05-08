@@ -8,6 +8,7 @@ const styles = {
     mobile: 100, // %
     tablet: 698, // px
     desktop: 922, // px
+    hd: 1130, // px
   },
   titlePadding: 0,
   titleMargin: {
@@ -22,8 +23,11 @@ const PageContent = styled.div`
   ${mq.tabletOnly`
     width: ${styles.contentWidth.tablet}px;
   `}
-  ${mq.desktopAndAbove`
+  ${mq.desktopOnly`
     width: ${styles.contentWidth.desktop}px;
+  `}
+  ${mq.hdOnly`
+    width: ${styles.contentWidth.hd}px;
   `}
   margin: 0 auto;
   ${resetLinkStyle}
