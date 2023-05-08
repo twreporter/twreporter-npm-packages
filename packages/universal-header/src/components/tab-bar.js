@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 // context
 import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
@@ -15,7 +15,7 @@ const TabBarContainer = styled.div`
   justify-content: space-between;
   padding: 8px 16px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
-  background-color: ${(props) => props.bgColor};
+  background-color: ${props => props.bgColor};
   padding-bottom: calc(8px + env(safe-area-inset-bottom, 0));
   a {
     text-decoration: none;
@@ -23,24 +23,35 @@ const TabBarContainer = styled.div`
   a:visited,
   a:active {
     color: inherit;
+    background-color: inherit;
   }
 `
-const ButtonContainer = styled(Link)`
+const buttonContainerCss = css`
   display: flex;
   justify-content: center;
   margin-right: 8px;
   flex: 1;
-  text-decoration: none;
   &:last-child {
     margin-right: 0;
   }
 `
+const ButtonLinkContainer = styled(Link)`
+  text-decoration: none;
+  ${buttonContainerCss}
+`
+const ButtonContainer = styled.div`
+  ${buttonContainerCss}
+`
 
 const TabBar = () => {
-  const { theme, releaseBranch, isLinkExternal, pathname } =
-    useContext(HeaderContext)
-  const { closeHamburgerMenu, toggleHamburger, isHamburgerMenuOpen } =
-    useContext(HamburgerContext)
+  const { theme, releaseBranch, isLinkExternal, pathname } = useContext(
+    HeaderContext
+  )
+  const {
+    closeHamburgerMenu,
+    toggleHamburger,
+    isHamburgerMenuOpen,
+  } = useContext(HamburgerContext)
   const { home, latest, bookmark } = getTabBarLinks(
     isLinkExternal,
     releaseBranch
@@ -66,30 +77,30 @@ const TabBar = () => {
 
   return (
     <TabBarContainer bgColor={bgColor} borderColor={borderColor}>
-      <ButtonContainer {...home} onClick={closeHamburgerMenu}>
+      <ButtonLinkContainer {...home} onClick={closeHamburgerMenu}>
         <IconWithTextButton
           text="首頁"
           iconComponent={HomeIcon}
           theme={theme}
           active={isHomeActive}
         />
-      </ButtonContainer>
-      <ButtonContainer {...latest} onClick={closeHamburgerMenu}>
+      </ButtonLinkContainer>
+      <ButtonLinkContainer {...latest} onClick={closeHamburgerMenu}>
         <IconWithTextButton
           text="最新"
           iconComponent={ClockIcon}
           theme={theme}
           active={isLatestActive}
         />
-      </ButtonContainer>
-      <ButtonContainer {...bookmark} onClick={closeHamburgerMenu}>
+      </ButtonLinkContainer>
+      <ButtonLinkContainer {...bookmark} onClick={closeHamburgerMenu}>
         <IconWithTextButton
           text="我的書籤"
           iconComponent={BookmarkIcon}
           theme={theme}
           active={isBookmarkActive}
         />
-      </ButtonContainer>
+      </ButtonLinkContainer>
       <ButtonContainer onClick={toggleHamburger}>
         <IconWithTextButton
           text={hamburgerIconText}
