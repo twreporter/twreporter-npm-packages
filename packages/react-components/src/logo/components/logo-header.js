@@ -11,24 +11,27 @@ import {
 
 const LogoContainer = styled.img``
 
-const LogoHeader = ({ type, releaseBranch }) => {
+const logoType = {
+  DEFAULT: 'default',
+  WHITE: 'white',
+}
+const LogoHeader = ({ type, releaseBranch, ...props }) => {
   const logoSrc = pathUtil.selectLogoPath('header', releaseBranch, type)
 
   return (
     <React.Fragment>
-      <LogoContainer alt="The Reporter Logo" src={logoSrc} />
+      <LogoContainer alt="The Reporter Logo" src={logoSrc} {...props} />
     </React.Fragment>
   )
 }
-
 LogoHeader.propTypes = {
-  type: PropTypes.oneOf(['default', 'white']),
+  type: PropTypes.oneOf(Object.values(logoType)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
-
 LogoHeader.defaultProps = {
-  type: 'default',
+  type: logoType.DEFAULT,
   releaseBranch: BRANCH.master,
 }
+LogoHeader.Type = logoType
 
 export default LogoHeader

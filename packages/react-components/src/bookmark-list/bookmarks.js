@@ -3,15 +3,17 @@ import React from 'react'
 import styled from 'styled-components'
 // components
 import Bookmark from './bookmark'
-import EmptyGuide from './empty-guide'
+import EmptyState from '../empty-state'
 import { H1 } from '../text/headline'
-import { P1 } from '../text/paragraph'
+import { P1, P2 } from '../text/paragraph'
 import Divider from '../divider'
+import { Bookmark as BookMarkIcon } from '../icon'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import requestOrigin from '@twreporter/core/lib/constants/request-origins'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -37,10 +39,10 @@ const PageContainer = styled.div`
 const Column = styled.div`
   margin: 0 auto;
   width: 97%;
-  max-width: 834px;
+  max-width: 922px;
   ${mq.tabletOnly`
     width: 100%;
-    max-width: 707px;
+    max-width: 698px;
   `}
   ${mq.mobileOnly`
     width: 100%;
@@ -49,8 +51,12 @@ const Column = styled.div`
 
 const StatusBar = styled.div`
   ${mq.mobileOnly`
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+  `}
+  ${mq.tabletOnly`
+    padding-bottom: 32px;
   `}
   padding-bottom: 64px;
   width: stretch;
@@ -96,7 +102,23 @@ function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
     )
   const contentJSX =
     total === 0 ? (
-      <EmptyGuide releaseBranch={releaseBranch} />
+      <EmptyState
+        style={EmptyState.Style.DEFAULT}
+        title="你還沒有儲存任何文章！"
+        guide={
+          <>
+            <P2 text="點擊" />
+            <BookMarkIcon
+              type={BookMarkIcon.Type.ADD}
+              releaseBranch={releaseBranch}
+            />
+            <P2 text="將喜愛的文章加入我的書籤" />
+          </>
+        }
+        buttonText="開始探索"
+        buttonUrl={requestOrigin.forClientSideRendering[releaseBranch].main}
+        releaseBranch={releaseBranch}
+      />
     ) : (
       <BookmarksContainer>{_.map(bookmarks, buildBookmark)}</BookmarksContainer>
     )

@@ -127,6 +127,9 @@ const MobileLogoContainer = styled.div`
   img {
     height: 21px;
   }
+  a {
+    display: flex;
+  }
 `
 const HideWhenNarrow = styled.div``
 const ShowWhenNarrow = styled.div``

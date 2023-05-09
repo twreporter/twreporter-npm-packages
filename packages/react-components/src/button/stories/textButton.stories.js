@@ -1,20 +1,29 @@
 import React from 'react'
+import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
-import { SIZE, SIZE_STORYBOOK_ARG_TYPE } from '../constants/size'
-import { TYPE, TYPE_STORYBOOK_ARG_TYPE } from '../constants/type'
+import { Type } from '../enums'
 import {
-  THEME,
   THEME_STORYBOOK_ARG_TYPE,
-} from '@twreporter/core/lib/constants/theme'
+  SIZE_STORYBOOK_ARG_TYPE,
+} from '../../storybook/constants'
 
 export default {
   title: 'Button/Text Button',
   component: TextButton,
   argTypes: {
     theme: THEME_STORYBOOK_ARG_TYPE,
-    type: TYPE_STORYBOOK_ARG_TYPE,
+    type: getRadioArg(Type, Type.PRIMARY),
     size: SIZE_STORYBOOK_ARG_TYPE,
+    // showLeft & showRight args are only for storybook check
+    showLeft: {
+      defaultValue: true,
+      control: { type: 'boolean' },
+    },
+    showRight: {
+      defaultValue: true,
+      control: { type: 'boolean' },
+    },
   },
 }
 
@@ -23,20 +32,32 @@ const Template = args => <TextButton {...args} />
 export const textButton = Template.bind({})
 textButton.args = {
   text: '文字',
-  size: SIZE.S,
-  theme: THEME.normal,
-  type: TYPE.primary,
+  size: TextButton.Size.S,
+  theme: TextButton.THEME.normal,
+  type: TextButton.Type.PRIMARY,
+  active: false,
+  disabled: false,
+  leftIconComponent: <Arrow direction="left" />,
+  rightIconComponent: <Arrow direction="right" />,
+}
+textButton.parameters = { controls: { exclude: ['showLeft', 'showRight'] } }
+
+export const toggleIconDisplay = args => {
+  args.leftIconComponent = args.showLeft ? <Arrow direction="left" /> : null
+  args.rightIconComponent = args.showRight ? <Arrow direction="right" /> : null
+
+  return <TextButton {...args} />
+}
+toggleIconDisplay.args = {
+  showLeft: true,
+  showRight: true,
+  text: '文字',
+  size: TextButton.Size.S,
+  theme: TextButton.THEME.normal,
+  type: TextButton.Type.PRIMARY,
   active: false,
   disabled: false,
 }
-
-export const withArrowIcon = Template.bind({})
-withArrowIcon.args = {
-  iconComponent: <Arrow direction="right" />,
-  text: '文字',
-  size: SIZE.S,
-  theme: THEME.normal,
-  type: TYPE.primary,
-  active: false,
-  disabled: false,
+toggleIconDisplay.parameters = {
+  controls: { exclude: ['leftIconComponent', 'rightIconComponent'] },
 }

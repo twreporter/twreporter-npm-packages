@@ -1,17 +1,18 @@
 import React from 'react'
+import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import { P1, P2, P3, P4 } from '../paragraph'
-import { WEIGHT, WEIGHT_STORYBOOK_ARG_TYPE } from '../constants/font-weight'
+import { Weight } from '../enums'
 
 export default {
   title: 'Text/Paragraph',
   component: P1,
   argTypes: {
-    weight: WEIGHT_STORYBOOK_ARG_TYPE,
+    weight: getRadioArg(Weight, Weight.NORMAL),
   },
 }
 
 const defaultText = '內文「內文」：內文，《內文》內文English內文123內文？'
-const defaultWeight = WEIGHT.normal
+const defaultWeight = P1.Weight.NORMAL
 
 export const p1 = args => <P1 {...args} />
 p1.args = { text: defaultText, weight: defaultWeight }

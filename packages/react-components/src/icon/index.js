@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+// enum
+import { IconType, ArrowDirection, BookmarkType, MediaType } from './enum'
 // @twreporter
 import {
   BRANCH,
@@ -16,147 +18,98 @@ const IconContainer = styled.svg`
   mask-image: url(${props => props.src});
   mask-size: cover;
 `
-
+const RawIconContainer = styled.img`
+  height: 24px;
+  width: 24px;
+`
 export const Icon = ({
+  type = IconType.MASK,
   filename = '',
   releaseBranch = BRANCH.master,
   ...restProps
 }) => {
   const src = `${baseGCSDir}${releaseBranch}/${filename}.svg`
-  return <IconContainer alt={filename} src={src} {...restProps} />
+  const IconComponent = type === IconType.RAW ? RawIconContainer : IconContainer
+  return <IconComponent alt={filename} src={src} {...restProps} />
 }
 Icon.propTypes = {
+  type: PropTypes.oneOf(Object.values(IconType)),
   filename: PropTypes.string,
   releaseBranch: BRANCH_PROP_TYPES,
 }
+Icon.type = IconType
+Icon.releaseBranch = BRANCH
 
-export const Arrow = ({ direction = 'right', releaseBranch }) => {
+const getIcon = gcsFileName => {
+  const gcsIcon = ({ releaseBranch = BRANCH.master, ...props }) => (
+    <Icon filename={gcsFileName} releaseBranch={releaseBranch} {...props} />
+  )
+  gcsIcon.propTypes = {
+    type: PropTypes.oneOf(Object.values(IconType)),
+    releaseBranch: BRANCH_PROP_TYPES,
+  }
+  gcsIcon.displayName = gcsFileName || 'icon'
+  gcsIcon.Type = IconType
+
+  return gcsIcon
+}
+
+export const Hamburger = getIcon('hamburger')
+export const Cross = getIcon('cross')
+export const Search = getIcon('search')
+export const Member = getIcon('member')
+export const Home = getIcon('home')
+export const Share = getIcon('share')
+export const Text = getIcon('text')
+export const Clock = getIcon('clock')
+export const Article = getIcon('article')
+export const Topic = getIcon('topic')
+export const Copy = getIcon('copy')
+export const Loading = getIcon('loading')
+export const Printer = getIcon('printer')
+export const Letter = getIcon('letter')
+export const Facebook = getIcon('facebook')
+export const Instagram = getIcon('instagram')
+export const Medium = getIcon('medium')
+export const Twitter = getIcon('twitter')
+export const Youtube = getIcon('youtube')
+export const Line = getIcon('line')
+export const Google = getIcon('google')
+
+export const Arrow = ({
+  direction = ArrowDirection.RIGHT,
+  releaseBranch,
+  ...props
+}) => {
   const filename = `arrow_${direction}`
-  return <Icon filename={filename} releaseBranch={releaseBranch} />
+  return <Icon filename={filename} releaseBranch={releaseBranch} {...props} />
 }
 Arrow.propTypes = {
-  direction: PropTypes.oneOf(['right', 'left', 'up', 'down']),
+  direction: PropTypes.oneOf(Object.values(ArrowDirection)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
+Arrow.Direction = ArrowDirection
 
-export const Bookmark = ({ type = 'basic', releaseBranch }) => {
+export const Bookmark = ({ type = BookmarkType.BASIC, releaseBranch }) => {
   const filename = `bookmark_${type}`
   return <Icon filename={filename} releaseBranch={releaseBranch} />
 }
 Bookmark.propTypes = {
-  type: PropTypes.oneOf(['basic', 'add', 'saved']),
+  type: PropTypes.oneOf(Object.values(BookmarkType)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
+Bookmark.Type = BookmarkType
 
-export const Hamburger = args => <Icon filename="hamburger" {...args} />
-Hamburger.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Cross = args => <Icon filename="cross" {...args} />
-Cross.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Search = args => <Icon filename="search" {...args} />
-Search.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Member = args => <Icon filename="member" {...args} />
-Member.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Home = args => <Icon filename="home" {...args} />
-Home.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Share = args => <Icon filename="share" {...args} />
-Share.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Text = args => <Icon filename="text" {...args} />
-Text.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Clock = args => <Icon filename="clock" {...args} />
-Clock.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Article = args => <Icon filename="article" {...args} />
-Article.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Topic = args => <Icon filename="topic" {...args} />
-Topic.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Copy = args => <Icon filename="copy" {...args} />
-Copy.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Loading = args => <Icon filename="loading" {...args} />
-Loading.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Printer = args => <Icon filename="printer" {...args} />
-Printer.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Facebook = args => <Icon filename="facebook" {...args} />
-Facebook.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Instagram = args => <Icon filename="instagram" {...args} />
-Instagram.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Medium = args => <Icon filename="medium" {...args} />
-Medium.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Twitter = args => <Icon filename="twitter" {...args} />
-Twitter.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Youtube = args => <Icon filename="youtube" {...args} />
-Youtube.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const Line = args => <Icon filename="line" {...args} />
-Line.propTypes = {
-  releaseBranch: BRANCH_PROP_TYPES,
-}
-
-export const SocialMedia = ({ mediaType, ...args }) => (
+export const SocialMedia = ({ mediaType = MediaType.GOOGLE, ...args }) => (
   <Icon filename={mediaType} {...args} />
 )
 SocialMedia.propTypes = {
-  mediaType: PropTypes.oneOf([
-    'facebook',
-    'instagram',
-    'medium',
-    'twitter',
-    'youtube',
-    'line',
-  ]),
+  type: Icon.propTypes.type,
+  mediaType: PropTypes.oneOf(Object.values(MediaType)),
   releaseBranch: BRANCH_PROP_TYPES,
 }
+SocialMedia.Type = IconType
+SocialMedia.MediaType = MediaType
 
 export default {
   Arrow,
@@ -172,6 +125,7 @@ export default {
   Line,
   Loading,
   Printer,
+  Letter,
   Medium,
   Member,
   Search,
@@ -180,5 +134,6 @@ export default {
   Topic,
   Twitter,
   Youtube,
+  Google,
   SocialMedia,
 }

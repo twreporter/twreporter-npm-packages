@@ -38,7 +38,6 @@ const mockup = {
 }
 
 const headerPadding = {
-  desktop: '47px',
   tablet: '34px',
   mobile: '16px',
 }
@@ -53,9 +52,16 @@ const Container = styled.div`
 
 const ContentContainer = styled(ContentWrapper)`
   display: flex;
-  padding: 30px ${headerPadding.desktop};
+  padding: 30px 0;
   overflow-x: hidden;
   justify-content: center;
+  ${mq.hdOnly`
+    max-width: 1280px;
+    transform: translateX(8px); // side-bar width / 2
+  `}
+  ${mq.desktopOnly`
+    padding: 30px 32px 30px 48px; // side-bar width 16px
+  `}
   ${mq.tabletOnly`
     padding: 30px ${headerPadding.tablet};
   `}
@@ -157,9 +163,7 @@ class LatestSection extends React.Component {
         'category_set[0].subcategory.name',
         ''
       )
-      const categorySetName = `${categoryName}/${
-        subcategoryName || '全部'
-      }`
+      const categorySetName = `${categoryName}/${subcategoryName || '全部'}`
       return (
         <ItemFrame key={_.get(item, 'id')}>
           <TRLink href={href} redirect={isExternal}>

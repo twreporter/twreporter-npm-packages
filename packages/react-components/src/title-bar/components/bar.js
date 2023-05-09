@@ -23,9 +23,9 @@ const BarContainer = styled.div`
 
 const TitleBar = ({ title = '', subtitle = '' }) => (
   <BarContainer>
-    <H1 text={title} />
-    <P1 text={subtitle} weight="bold" />
-    <Divider direction="horizontal" />
+    {title ? <H1 text={title} /> : null}
+    {subtitle ? <P1 text={subtitle} weight={P1.Weight.BOLD} /> : null}
+    <Divider direction={Divider.Direction.HORIZONTAL} />
   </BarContainer>
 )
 TitleBar.propTypes = {

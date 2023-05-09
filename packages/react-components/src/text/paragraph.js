@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { WEIGHT, WEIGHT_PROP_TYPES } from './constants/font-weight'
+import { Weight } from './enums'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const defaultContainer = styled.div`
   font-weight: ${props => fontWeight[props.weight]};
   font-family: ${fontFamily.default};
   line-height: 150%;
+  display: flex;
+  align-items: center;
 `
 
 const P1Container = styled(defaultContainer)`
@@ -26,56 +28,35 @@ const P4Container = styled(defaultContainer)`
   font-size: 10px;
 `
 
-export const P1 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
-  return (
-    <P1Container weight={weight} className={className}>
+const withContainer = ParagraphContainer => {
+  const paragraph = ({
+    text = '',
+    weight = Weight.NORMAL,
+    className = '',
+    children,
+    ...props
+  }) => (
+    <ParagraphContainer weight={weight} className={className} {...props}>
       {text}
-    </P1Container>
+      {children}
+    </ParagraphContainer>
   )
-}
-P1.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
+
+  paragraph.displayName = 'paragraph'
+  paragraph.propTypes = {
+    text: PropTypes.string,
+    weight: PropTypes.oneOf(Object.values(Weight)),
+    className: PropTypes.string,
+    children: PropTypes.element,
+  }
+  paragraph.Weight = Weight
+
+  return paragraph
 }
 
-export const P2 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
-  return (
-    <P2Container weight={weight} className={className}>
-      {text}
-    </P2Container>
-  )
-}
-P2.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const P3 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
-  return (
-    <P3Container weight={weight} className={className}>
-      {text}
-    </P3Container>
-  )
-}
-P3.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
-}
-
-export const P4 = ({ text = '', weight = WEIGHT.normal, className = '' }) => {
-  return (
-    <P4Container weight={weight} className={className}>
-      {text}
-    </P4Container>
-  )
-}
-P4.propTypes = {
-  text: PropTypes.string,
-  weight: WEIGHT_PROP_TYPES,
-  className: PropTypes.string,
-}
+export const P1 = withContainer(P1Container)
+export const P2 = withContainer(P2Container)
+export const P3 = withContainer(P3Container)
+export const P4 = withContainer(P4Container)
 
 export default { P1, P2, P3, P4 }

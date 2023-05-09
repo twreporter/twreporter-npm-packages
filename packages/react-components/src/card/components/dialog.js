@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+// component
 import { P1, P2 } from '../../text/paragraph'
+// enum
+import { Size } from '../../shared-enum'
 
 const Container = styled.div`
   display: flex;
@@ -24,9 +27,9 @@ const Triangle = styled.div`
   transform: translateX(-16px);
 `
 
-const Dialog = ({ text = '', size = 'S', ...props }) => {
+const Dialog = ({ text = '', size = Size.S, ...props }) => {
   const textIcon =
-    size === 'S' ? (
+    size === Size.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
@@ -40,7 +43,8 @@ const Dialog = ({ text = '', size = 'S', ...props }) => {
 }
 Dialog.propTypes = {
   text: PropTypes.string,
-  size: PropTypes.oneOf(['S', 'L']),
+  size: PropTypes.oneOf(Object.values(Size)),
 }
+Dialog.Size = Size
 
 export default Dialog

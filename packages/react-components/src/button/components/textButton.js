@@ -11,12 +11,12 @@ import {
 import { getSizeStyle } from '../utils/size'
 // component
 import { P1, P2 } from '../../text/paragraph'
-// constants
-import { SIZE, SIZE_PROP_TYPES } from '../constants/size'
-import { TYPE, TYPE_PROP_TYPES } from '../constants/type'
+// enums
+import { Type } from '../enums'
+import { Size } from '../../shared-enum'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import { THEME, THEME_PROP_TYPES } from '@twreporter/core/lib/constants/theme'
+import { TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
   cursor: pointer;
@@ -39,12 +39,19 @@ const ButtonContainer = styled.div`
   `}
 `
 
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: ${props => (props.isLeft ? '0 4px 0 0' : '0 0 0 4px')};
+`
+
 const TextButton = ({
   text = '',
-  iconComponent,
-  size = SIZE.S,
-  theme = THEME.normal,
-  type = TYPE.primary,
+  leftIconComponent = null,
+  rightIconComponent = null,
+  size = Size.S,
+  theme = TEXT_BUTTON_THEME.normal,
+  type = Type.PRIMARY,
   active = false,
   disabled = false,
   ...props
@@ -56,14 +63,14 @@ const TextButton = ({
     themeFunc = getActiveTextButtonTheme
   } else {
     themeFunc =
-      type === TYPE.primary
+      type === Type.PRIMARY
         ? getPrimaryTextButtonTheme
         : getSecondaryTextButtonTheme
   }
   const { color, hoverColor } = themeFunc(theme, active)
   const { iconSize } = getSizeStyle(size)
   const textJSX =
-    size === SIZE.S ? (
+    size === Size.S ? (
       <P2 text={text} weight="bold" />
     ) : (
       <P1 text={text} weight="bold" />
@@ -76,19 +83,32 @@ const TextButton = ({
       iconSize={iconSize}
       {...props}
     >
+      {size === Size.L ? (
+        <IconContainer isLeft={true}>{leftIconComponent}</IconContainer>
+      ) : (
+        leftIconComponent
+      )}
       {textJSX}
-      {iconComponent}
+      {size === Size.L ? (
+        <IconContainer>{rightIconComponent}</IconContainer>
+      ) : (
+        rightIconComponent
+      )}
     </ButtonContainer>
   )
 }
 TextButton.propTypes = {
-  iconComponent: PropTypes.element,
+  leftIconComponent: PropTypes.element,
+  rightIconComponent: PropTypes.element,
   text: PropTypes.string,
-  size: SIZE_PROP_TYPES,
-  theme: THEME_PROP_TYPES,
-  type: TYPE_PROP_TYPES,
+  size: PropTypes.oneOf(Object.values(Size)),
+  theme: PropTypes.oneOf(Object.values(TEXT_BUTTON_THEME)),
+  type: PropTypes.oneOf(Object.values(Type)),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
 }
+TextButton.THEME = TEXT_BUTTON_THEME
+TextButton.Size = Size
+TextButton.Type = Type
 
 export default TextButton
