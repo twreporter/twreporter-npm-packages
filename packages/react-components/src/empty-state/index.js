@@ -53,18 +53,6 @@ const GuideContainer = styled.div`
   }
 `
 
-const getImageUrl = (style, releaseBranch) => {
-  switch (style) {
-    case Style.DEFAULT:
-    default:
-      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
-    case Style.PENCIL:
-      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`
-    case Style.UNDER_CONSTRUCTION:
-      return `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`
-  }
-}
-
 const EmptyState = ({
   releaseBranch = BRANCH.master,
   style = Style.DEFAULT,
@@ -75,10 +63,28 @@ const EmptyState = ({
   buttonText = '',
   buttonUrl = '/',
 }) => {
+  let imageUrl = ''
+  let imageWidth = ''
+
+  switch (style) {
+    case Style.DEFAULT:
+    default:
+      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
+      imageWidth = '170'
+      break
+    case Style.PENCIL:
+      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`
+      imageWidth = '232'
+      break
+    case Style.UNDER_CONSTRUCTION:
+      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`
+      imageWidth = '177'
+      break
+  }
   return (
     <OuterContainer>
       <Container>
-        <img src={getImageUrl(style, releaseBranch)} width="170" />
+        <img src={imageUrl} width={imageWidth} />
         <TextContainer>
           <P1 text={title} weight={P1.Weight.BOLD} />
           {showGuide && (
