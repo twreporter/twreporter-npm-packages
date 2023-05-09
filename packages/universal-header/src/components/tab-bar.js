@@ -5,6 +5,8 @@ import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
 import { getTabBarLinks, checkPathnameParent } from '../utils/links'
 import { selectTabBarTheme } from '../utils/theme'
+// constants
+import themeConst from '../constants/theme'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import MaterialSymbol from '@twreporter/react-components/lib/material-icon'
@@ -52,6 +54,7 @@ const TabBar = () => {
     toggleHamburger,
     isHamburgerMenuOpen,
   } = useContext(HamburgerContext)
+  const iconTheme = theme === themeConst.photography ? theme : themeConst.normal
   const { home, latest, bookmark } = getTabBarLinks(
     isLinkExternal,
     releaseBranch
@@ -81,7 +84,7 @@ const TabBar = () => {
         <IconWithTextButton
           text="首頁"
           iconComponent={HomeIcon}
-          theme={theme}
+          theme={iconTheme}
           active={isHomeActive}
         />
       </ButtonLinkContainer>
@@ -89,7 +92,7 @@ const TabBar = () => {
         <IconWithTextButton
           text="最新"
           iconComponent={ClockIcon}
-          theme={theme}
+          theme={iconTheme}
           active={isLatestActive}
         />
       </ButtonLinkContainer>
@@ -97,7 +100,7 @@ const TabBar = () => {
         <IconWithTextButton
           text="我的書籤"
           iconComponent={BookmarkIcon}
-          theme={theme}
+          theme={iconTheme}
           active={isBookmarkActive}
         />
       </ButtonLinkContainer>
@@ -105,7 +108,7 @@ const TabBar = () => {
         <IconWithTextButton
           text={hamburgerIconText}
           iconComponent={HamburgerIcon}
-          theme={theme}
+          theme={iconTheme}
           active={isHamburgerMenuOpen}
         />
       </ButtonContainer>
