@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.17.0-rc.15](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.14...@twreporter/react-components@8.17.0-rc.15) (2023-05-09)
+
+
+### Bug Fixes
+
+* change image width ([8fabb25](https://github.com/twreporter/twreporter-npm-packages/commit/8fabb254101f39019e39db1c0dc9a3d2bf5403da))
+
+
+
+
+
 # [8.17.0-rc.14](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.13...@twreporter/react-components@8.17.0-rc.14) (2023-05-09)
 
 
