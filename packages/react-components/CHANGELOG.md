@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.17.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.1-rc.0...@twreporter/react-components@8.17.1) (2023-05-09)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
 ## [8.17.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0...@twreporter/react-components@8.17.1-rc.0) (2023-05-09)
 
 
