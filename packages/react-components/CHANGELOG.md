@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.17.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0...@twreporter/react-components@8.17.1-rc.0) (2023-05-09)
+
+
+### Bug Fixes
+
+* tab bar icon theme ([315e822](https://github.com/twreporter/twreporter-npm-packages/commit/315e822fd7514393af2b05da30e52216c8728a04))
+
+
+
+
+
 # [8.17.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.0-rc.15...@twreporter/react-components@8.17.0) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/react-components
