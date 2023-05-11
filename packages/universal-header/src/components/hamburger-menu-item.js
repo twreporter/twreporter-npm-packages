@@ -10,6 +10,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import Link from '@twreporter/react-components/lib/customized-link'
 import { Arrow } from '@twreporter/react-components/lib/icon'
 import { P1, P2 } from '@twreporter/react-components/lib/text/paragraph'
+import MenuButton from '@twreporter/react-components/lib/menu-button'
 
 const StyledP1 = styled(P1)``
 const StyledP2 = styled(P2)``
@@ -60,16 +61,15 @@ export const MenuLinkItem = ({ text = '', link = {}, ...props }) => {
   const { color, hoverBgColor, activeBgColor } = selectHamburgerItemTheme(theme)
 
   return (
-    <ItemContainer
+    <MenuButton
+      text={text}
+      link={link}
       color={color}
+      fontWeight={P1.Weight.BOLD}
       hoverBgColor={hoverBgColor}
       activeBgColor={activeBgColor}
       {...props}
-    >
-      <Link {...link}>
-        <StyledP1 text={text} weight="bold" />
-      </Link>
-    </ItemContainer>
+    />
   )
 }
 MenuLinkItem.propTypes = {
