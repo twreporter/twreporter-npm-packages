@@ -88,7 +88,6 @@ const HeaderContainer = styled.div`
     props.theme === themeConst.transparent ? 'fixed' : 'sticky'};
   top: 0;
   width: 100%;
-  z-index: 1000; // other components in twreporter-react has z-index 999
   background-color: ${props => props.bgColor};
   transform: translateY(
     ${props => (props.hideHeader ? `${-narrowHeaderHeight}px` : '0')}
