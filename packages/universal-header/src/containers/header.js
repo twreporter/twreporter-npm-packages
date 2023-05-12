@@ -1,5 +1,4 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
 import HeaderContext from '../contexts/header-context'
 // constant
@@ -20,16 +19,6 @@ const _ = {
 const HIDE_HEADER_THRESHOLD = 8
 const TRANSFORM_HEADER_THRESHOLD = 40
 const TRANSFORM_TIMEOUT = 800
-
-const stickyTop = css`
-  position: sticky;
-  top: 0;
-  z-index: 1000; // other components in twreporter-react has z-index 999
-`
-
-const HeaderContainer = styled.div`
-  ${stickyTop}
-`
 
 class Container extends React.PureComponent {
   static defaultProps = {
@@ -176,14 +165,12 @@ class Container extends React.PureComponent {
 
     return (
       <HeaderContext.Provider value={contextValue}>
-        <HeaderContainer>
-          <Header
-            actions={actionProps.desktop}
-            mobileActions={actionProps.mobile}
-            hbActions={actionProps.hamburger}
-            {...passThrough}
-          />
-        </HeaderContainer>
+        <Header
+          actions={actionProps.desktop}
+          mobileActions={actionProps.mobile}
+          hbActions={actionProps.hamburger}
+          {...passThrough}
+        />
       </HeaderContext.Provider>
     )
   }

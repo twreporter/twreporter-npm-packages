@@ -157,13 +157,11 @@ class LatestSection extends React.Component {
       const isExternal = _.get(item, 'is_external', false)
       const href = getHref(_.get(item, 'slug', 'error'), isExternal)
       const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
-      const categoryName = _.get(item, 'category_set[0].category.name', '')
-      const subcategoryName = _.get(
+      const categoryName = _.get(
         item,
-        'category_set[0].subcategory.name',
-        ''
+        'category_set[0].category.name',
+        '基金會新聞'
       )
-      const categorySetName = `${categoryName}/${subcategoryName || '全部'}`
       return (
         <ItemFrame key={_.get(item, 'id')}>
           <TRLink href={href} redirect={isExternal}>
@@ -180,7 +178,7 @@ class LatestSection extends React.Component {
               />
             </ImageFrame>
             <ContentFrame>
-              <Category>{categorySetName}</Category>
+              <Category>{categoryName}</Category>
               <Title>{_.get(item, 'title', '')}</Title>
             </ContentFrame>
           </TRLink>
