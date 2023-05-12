@@ -2,7 +2,7 @@ import React from 'react'
 import MenuButton from '../index'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
-import { P1 } from '@twreporter/react-components/lib/text/paragraph'
+import { P1 } from '../../text/paragraph'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 
 export default {

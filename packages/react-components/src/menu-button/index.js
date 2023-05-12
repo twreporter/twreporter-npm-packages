@@ -4,9 +4,9 @@ import styled from 'styled-components'
 
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import Link from '@twreporter/react-components/lib/customized-link'
-import { P1 } from '@twreporter/react-components/lib/text/paragraph'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import Link from '../customized-link'
+import { P1 } from '../text/paragraph'
 
 const StyledP1 = styled(P1)``
 const ItemContainer = styled.div`
