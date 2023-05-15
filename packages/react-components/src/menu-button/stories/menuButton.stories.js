@@ -22,4 +22,6 @@ menuButton.args = {
   color: colorGrayscale.gray800,
   hoverBgColor: colorGrayscale.gray100,
   activeBgColor: colorGrayscale.gray200,
+  paddingLeft: 32,
+  paddingRight: 32,
 }

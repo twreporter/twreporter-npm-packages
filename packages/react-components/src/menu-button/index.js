@@ -11,7 +11,10 @@ import { P1 } from '../text/paragraph'
 const StyledP1 = styled(P1)``
 const ItemContainer = styled.div`
   ${StyledP1} {
-    padding: 8px 32px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: ${props => props.paddingLeft}px;
+    padding-right: ${props => props.paddingRight}px;
   }
   cursor: pointer;
   color: ${props => props.color};
@@ -43,6 +46,8 @@ const MenuButton = ({
   fontWeight = P1.Weight.NORMAL,
   hoverBgColor = colorGrayscale.gray100,
   activeBgColor = colorGrayscale.gray200,
+  paddingLeft = 32,
+  paddingRight = 32,
   ...props
 }) => {
   return (
@@ -50,6 +55,8 @@ const MenuButton = ({
       color={color}
       hoverBgColor={hoverBgColor}
       activeBgColor={activeBgColor}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
       {...props}
     >
       <Link {...link}>
@@ -66,6 +73,8 @@ MenuButton.propTypes = {
   fontWeight: PropTypes.oneOf(Object.values(P1.Weight)),
   hoverBgColor: PropTypes.string,
   activeBgColor: PropTypes.string,
+  paddingLeft: PropTypes.number,
+  paddingRight: PropTypes.number,
 }
 
 export default MenuButton
