@@ -33,33 +33,42 @@ const CardContainer = styled.div`
     inset -2px -2px 2px rgba(0, 0, 0, 0.15);
   aspect-ratio: 1/1.6;
   background-color: ${props => props.bgColor};
+  padding: 24px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+`
+
+const RelaticeDiv = styled.div`
   position: relative;
+  width: 100%;
+  height: 100%;
 `
 
-const LogoContainer = styled.div`
+const LogoImg = styled.img`
   position: absolute;
-  left: 24px;
-  top: 24px;
+  top: 0;
+  left: 0;
 `
 
-const TitleContainer = styled.div`
+const TitleImg = styled.img`
   position: absolute;
-  top: 24px;
-  right: 24px;
-  height: calc(100% - 48px);
+  top: 0;
+  right: 0;
+  height: 100%;
 `
 
-const MarkContainer = styled.div`
+const MarkImg = styled.img`
   position: absolute;
-  left: 24px;
+  left: 0;
   top: ${props => props.top}px;
-  transform: translateY(-${props => props.translateY}px);
+  transform: translateY(${props => props.translateY});
 `
 
 const DataContainer = styled.div`
   position: absolute;
-  left: 24px;
-  bottom: 24px;
+  left: 0;
+  bottom: 0;
 `
 
 function useWindowSize() {
@@ -84,34 +93,30 @@ const MobileMemberRoleCard = ({
 }) => {
   const [width] = useWindowSize()
   const [logoHeight, setLogoHeight] = useState(0)
-  const [logoHeightPlusPagging, setLogoHeightPlusPagging] = useState(0)
-  const [
-    dataContainerDistanceFromTop,
-    setDataContainerDistanceFromTop,
-  ] = useState(0)
+  const [dataContainerDistanceToTop, setDataContainerDistanceToTop] = useState(
+    0
+  )
   const [markContainerTop, setMarkContainerTop] = useState(0)
+  const [markContainerTranslateY, setMarkContainerTranslateY] = useState('')
 
   const logoContainerRef = useRef()
   const dataContainerRef = useRef()
 
   useEffect(() => {
     if (dataContainerRef.current) {
-      setDataContainerDistanceFromTop(dataContainerRef.current.offsetTop)
+      setDataContainerDistanceToTop(dataContainerRef.current.offsetTop)
     }
     if (logoContainerRef.current) {
       setLogoHeight(logoContainerRef.current.offsetHeight)
-      setLogoHeightPlusPagging(
-        logoContainerRef.current.offsetTop +
-          logoContainerRef.current.offsetHeight
-      )
     }
   }, [width, role])
 
   useEffect(() => {
     setMarkContainerTop(
-      Math.floor((dataContainerDistanceFromTop - logoHeightPlusPagging) / 2)
+      Math.round((dataContainerDistanceToTop - logoHeight) / 2)
     )
-  }, [logoHeight, logoHeightPlusPagging, dataContainerDistanceFromTop])
+    setMarkContainerTranslateY(`calc((-50% + ${logoHeight}px))`)
+  }, [logoHeight, dataContainerDistanceToTop])
 
   const logoUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_logo.png`
   const titleUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_title.png`
@@ -119,39 +124,39 @@ const MobileMemberRoleCard = ({
 
   return (
     <CardContainer bgColor={CardBgColor[role]}>
-      <LogoContainer ref={logoContainerRef}>
-        <img src={logoUrl}></img>
-      </LogoContainer>
-      <TitleContainer>
-        <img style={{ height: '100%' }} src={titleUrl}></img>
-      </TitleContainer>
-      <MarkContainer top={markContainerTop} translateY={logoHeight + 24}>
-        <img src={markUrl}></img>
-      </MarkContainer>
-      <DataContainer ref={dataContainerRef}>
-        {role !== MEMBER_ROLE.EXPLORER && (
-          <div>
-            <div style={{ color: colorGrayscale.gray500 }}>
-              <P3 text={'姓名'}></P3>
+      <RelaticeDiv>
+        <LogoImg ref={logoContainerRef} src={logoUrl} />
+        <TitleImg src={titleUrl} />
+        <MarkImg
+          top={markContainerTop}
+          src={markUrl}
+          translateY={markContainerTranslateY}
+        />
+        <DataContainer ref={dataContainerRef}>
+          {role !== MEMBER_ROLE.EXPLORER && (
+            <div>
+              <div style={{ color: colorGrayscale.gray500 }}>
+                <P3 text={'姓名'}></P3>
+              </div>
+              <div style={{ color: CardTextColor[role], paddingBottom: '8px' }}>
+                <P1 text={name}></P1>
+              </div>
             </div>
-            <div style={{ color: CardTextColor[role], paddingBottom: '8px' }}>
-              <P1 text={name}></P1>
-            </div>
+          )}
+          <div style={{ color: colorGrayscale.gray500 }}>
+            <P3 text={'電子信箱'}></P3>
           </div>
-        )}
-        <div style={{ color: colorGrayscale.gray500 }}>
-          <P3 text={'電子信箱'}></P3>
-        </div>
-        <div style={{ color: CardTextColor[role], paddingBottom: '8px' }}>
-          <P1 text={email}></P1>
-        </div>
-        <div style={{ color: colorGrayscale.gray500 }}>
-          <P3 text={'加入日期'}></P3>
-        </div>
-        <div style={{ color: CardTextColor[role] }}>
-          <P1 text={joinDate}></P1>
-        </div>
-      </DataContainer>
+          <div style={{ color: CardTextColor[role], paddingBottom: '8px' }}>
+            <P1 text={email}></P1>
+          </div>
+          <div style={{ color: colorGrayscale.gray500 }}>
+            <P3 text={'加入日期'}></P3>
+          </div>
+          <div style={{ color: CardTextColor[role] }}>
+            <P1 text={joinDate}></P1>
+          </div>
+        </DataContainer>
+      </RelaticeDiv>
     </CardContainer>
   )
 }
