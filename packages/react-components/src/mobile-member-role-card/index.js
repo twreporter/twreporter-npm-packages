@@ -87,8 +87,8 @@ function useWindowSize() {
 const MobileMemberRoleCard = ({
   role = MEMBER_ROLE.EXPLORER,
   releaseBranch = BRANCH.master,
-  email,
-  joinDate,
+  email = '',
+  joinDate = '',
   name = '',
 }) => {
   const [width] = useWindowSize()
