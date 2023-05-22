@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.3-rc.0...@twreporter/universal-header@2.5.3) (2023-05-12)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.5.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.2...@twreporter/universal-header@2.5.3-rc.0) (2023-05-12)
+
+
+### Bug Fixes
+
+* remove redundent z-index ([6801ec7](https://github.com/twreporter/twreporter-npm-packages/commit/6801ec7d55b319b0c8a0dc301aa5119434be7e2a))
+
+
+
+
+
+## [2.5.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.2-rc.0...@twreporter/universal-header@2.5.2) (2023-05-12)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
 ## [2.5.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.1...@twreporter/universal-header@2.5.2-rc.0) (2023-05-11)
 
 
