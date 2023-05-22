@@ -7,7 +7,10 @@ export default {
   title: 'Button/Menu Button',
   component: MenuButton,
   argTypes: {
-    fontWeight: getRadioArg(MenuButton.fonWieght, MenuButton.fonWieght.NORMAL),
+    fontWeight: getRadioArg(
+      MenuButton.fontWeight,
+      MenuButton.fontWeight.NORMAL
+    ),
   },
 }
 
