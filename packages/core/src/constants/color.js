@@ -52,7 +52,9 @@ export const colorOpacity = Object.freeze({
   'white_0.5': 'rgba(255, 255, 255, 0.5)',
   'white_0.8': 'rgba(255, 255, 255, 0.8)',
   'gray100_0.8': 'rgba(241, 241, 241, 0.8)',
+  'black_0.1': 'rgba(0, 0, 0, 0.1)',
   'black_0.2': 'rgba(0, 0, 0, 0.2)',
+  'black_0.05': 'rgba(0, 0, 0, 0.05)',
 })
 
 export const COLOR_SEMANTIC = Object.freeze({
