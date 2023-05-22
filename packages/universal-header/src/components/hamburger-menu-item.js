@@ -65,7 +65,7 @@ export const MenuLinkItem = ({ text = '', link = {}, ...props }) => {
       text={text}
       link={link}
       color={color}
-      fontWeight={MenuButton.fontWeight.BOLD}
+      fontWeight={MenuButton.FontWeight.BOLD}
       hoverBgColor={hoverBgColor}
       activeBgColor={activeBgColor}
       {...props}

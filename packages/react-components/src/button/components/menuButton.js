@@ -74,6 +74,6 @@ MenuButton.propTypes = {
   paddingRight: PropTypes.number,
 }
 
-MenuButton.fontWeight = P1.Weight
+MenuButton.FontWeight = P1.Weight
 
 export default MenuButton
