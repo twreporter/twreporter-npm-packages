@@ -1,16 +1,13 @@
 import React from 'react'
-import MenuButton from '../index'
-import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
+import MenuButton from '../components/menuButton'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
-import { P1 } from '../../text/paragraph'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 
 export default {
-  title: 'Menu Button',
+  title: 'Button/Menu Button',
   component: MenuButton,
   argTypes: {
-    releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
-    fontWeight: getRadioArg(P1.Weight, P1.Weight.NORMAL),
+    fontWeight: getRadioArg(MenuButton.fonWieght, MenuButton.fonWieght.NORMAL),
   },
 }
 
