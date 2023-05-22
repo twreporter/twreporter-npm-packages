@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.3...@twreporter/universal-header@2.6.0-rc.0) (2023-05-22)
+
+
+### Bug Fixes
+
+* font weight ([9b83e7a](https://github.com/twreporter/twreporter-npm-packages/commit/9b83e7a271758e3b1b87d124198235debb968d5f))
+* fontWeight => FontWeight ([faf0200](https://github.com/twreporter/twreporter-npm-packages/commit/faf0200fc47a5109da74640085a597f5edb1e02b))
+
+
+### Features
+
+* import new menu button ([1f6b58b](https://github.com/twreporter/twreporter-npm-packages/commit/1f6b58b7ca36dd4996332fd63b54dbcb0f660dc9))
+* replace by menu button ([aa8b5d8](https://github.com/twreporter/twreporter-npm-packages/commit/aa8b5d82be8e8baf2755f515487c2eb70a40f47c))
+* undo hambuger-menu-item ([2a52d33](https://github.com/twreporter/twreporter-npm-packages/commit/2a52d331badc934fbe04a49e9dff5fc537ca9557))
+* use menu button fontWeight ([2bac7ca](https://github.com/twreporter/twreporter-npm-packages/commit/2bac7cad05f831c94fb7c4a1a6d4d0f937323142))
+* use MenuButton ([6f60889](https://github.com/twreporter/twreporter-npm-packages/commit/6f608897eacc6cad8f6f062d1864df01efa78891))
+
+
+
+
+
 ## [2.5.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.3-rc.0...@twreporter/universal-header@2.5.3) (2023-05-12)
 
 **Note:** Version bump only for package @twreporter/universal-header
