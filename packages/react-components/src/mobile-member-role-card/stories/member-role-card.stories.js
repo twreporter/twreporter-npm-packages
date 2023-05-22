@@ -9,7 +9,7 @@ export default {
   component: MobileMemberRoleCard,
   argTypes: {
     releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
-    role: getRadioArg(MEMBER_ROLE, MEMBER_ROLE.EXPLORER),
+    role: getRadioArg(MEMBER_ROLE, MEMBER_ROLE.explorer),
   },
 }
 

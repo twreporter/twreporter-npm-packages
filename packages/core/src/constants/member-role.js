@@ -1,7 +1,7 @@
 export const MEMBER_ROLE = {
-  EXPLORER: 'explorer',
-  ACTION_TAKER: 'action_taker',
-  TRAILBLAZER: 'trailblazer',
+  explorer: 'explorer',
+  action_taker: 'action_taker',
+  trailblazer: 'trailblazer',
 }
 
 export const MEMBER_ROLE_ZH_TW = {

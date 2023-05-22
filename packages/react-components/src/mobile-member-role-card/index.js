@@ -12,15 +12,15 @@ import { MEMBER_ROLE } from '@twreporter/core/lib/constants/member-role'
 import { P1, P3 } from '../text/paragraph'
 
 const CardBgColor = {
-  [MEMBER_ROLE.EXPLORER]: colorGrayscale.white,
-  [MEMBER_ROLE.ACTION_TAKER]: colorGrayscale.gray200,
-  [MEMBER_ROLE.TRAILBLAZER]: colorGrayscale.gray900,
+  [MEMBER_ROLE.explorer]: colorGrayscale.white,
+  [MEMBER_ROLE.action_taker]: colorGrayscale.gray200,
+  [MEMBER_ROLE.trailblazer]: colorGrayscale.gray900,
 }
 
 const CardTextColor = {
-  [MEMBER_ROLE.EXPLORER]: colorGrayscale.gray800,
-  [MEMBER_ROLE.ACTION_TAKER]: colorGrayscale.gray800,
-  [MEMBER_ROLE.TRAILBLAZER]: colorGrayscale.white,
+  [MEMBER_ROLE.explorer]: colorGrayscale.gray800,
+  [MEMBER_ROLE.action_taker]: colorGrayscale.gray800,
+  [MEMBER_ROLE.trailblazer]: colorGrayscale.white,
 }
 
 const CardContainer = styled.div`
@@ -70,6 +70,10 @@ const DataContainer = styled.div`
   left: 0;
   bottom: 0;
 `
+const TextContainer = styled.div`
+  color: ${props => props.color};
+  padding-bottom: ${props => props.paddingBottom || 0}px;
+`
 
 function useWindowSize() {
   const [size, setSize] = useState([0, 0])
@@ -85,7 +89,7 @@ function useWindowSize() {
 }
 
 const MobileMemberRoleCard = ({
-  role = MEMBER_ROLE.EXPLORER,
+  role = MEMBER_ROLE.explorer,
   releaseBranch = BRANCH.master,
   email = '',
   joinDate = '',
@@ -133,28 +137,28 @@ const MobileMemberRoleCard = ({
           translateY={markContainerTranslateY}
         />
         <DataContainer ref={dataContainerRef}>
-          {role !== MEMBER_ROLE.EXPLORER && (
+          {role !== MEMBER_ROLE.explorer && (
             <div>
-              <div style={{ color: colorGrayscale.gray500 }}>
+              <TextContainer color={colorGrayscale.gray500}>
                 <P3 text={'姓名'}></P3>
-              </div>
-              <div style={{ color: CardTextColor[role], paddingBottom: '8px' }}>
+              </TextContainer>
+              <TextContainer color={CardTextColor[role]} paddingBottom={8}>
                 <P1 text={name}></P1>
-              </div>
+              </TextContainer>
             </div>
           )}
-          <div style={{ color: colorGrayscale.gray500 }}>
+          <TextContainer color={colorGrayscale.gray500}>
             <P3 text={'電子信箱'}></P3>
-          </div>
-          <div style={{ color: CardTextColor[role], paddingBottom: '8px' }}>
+          </TextContainer>
+          <TextContainer color={CardTextColor[role]} paddingBottom={8}>
             <P1 text={email}></P1>
-          </div>
-          <div style={{ color: colorGrayscale.gray500 }}>
+          </TextContainer>
+          <TextContainer color={colorGrayscale.gray500}>
             <P3 text={'加入日期'}></P3>
-          </div>
-          <div style={{ color: CardTextColor[role] }}>
+          </TextContainer>
+          <TextContainer color={CardTextColor[role]}>
             <P1 text={joinDate}></P1>
-          </div>
+          </TextContainer>
         </DataContainer>
       </RelaticeDiv>
     </CardContainer>

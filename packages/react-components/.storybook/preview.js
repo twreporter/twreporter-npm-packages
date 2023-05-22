@@ -26,7 +26,6 @@ export const parameters = {
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      // 2023/05/17 disable auto convert to datepicker
       // date: /Date$/,
     },
   },
