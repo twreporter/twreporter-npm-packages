@@ -10,7 +10,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import Link from '@twreporter/react-components/lib/customized-link'
 import { Arrow } from '@twreporter/react-components/lib/icon'
 import { P1, P2 } from '@twreporter/react-components/lib/text/paragraph'
-import MenuButton from '@twreporter/react-components/lib/menu-button'
+import { MenuButton } from '@twreporter/react-components/lib/button/'
 
 const StyledP1 = styled(P1)``
 const StyledP2 = styled(P2)``
