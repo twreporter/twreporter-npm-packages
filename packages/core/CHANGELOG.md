@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.0...@twreporter/core@1.10.0-rc.1) (2023-05-23)
+
+
+### Features
+
+* fix comment ([e2d4ffb](https://github.com/twreporter/twreporter-npm-packages/commit/e2d4ffbf543eed2461e5c380183b753070f0723b))
+* member role constants ([9c9ac5d](https://github.com/twreporter/twreporter-npm-packages/commit/9c9ac5d5ea94f125f082b5f7b112b0dbf626250b))
+
+
+
+
+
 # [1.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0...@twreporter/core@1.10.0-rc.0) (2023-05-22)
 
 
