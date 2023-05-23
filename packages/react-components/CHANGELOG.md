@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.1...@twreporter/react-components@8.18.0-rc.0) (2023-05-22)
+
+
+### Bug Fixes
+
+* fontWeight => FontWeight ([faf0200](https://github.com/twreporter/twreporter-npm-packages/commit/faf0200fc47a5109da74640085a597f5edb1e02b))
+* typo ([f237e4a](https://github.com/twreporter/twreporter-npm-packages/commit/f237e4a93c688431e3a20748cc37297515197a72))
+
+
+### Features
+
+* add menu button ([b090d6b](https://github.com/twreporter/twreporter-npm-packages/commit/b090d6bceba69a72e7204e2e96c70e1ce34e975c))
+* add padding option ([9b6dadb](https://github.com/twreporter/twreporter-npm-packages/commit/9b6dadbdbf3dec5c970d8cf174308df27fbdb87a))
+* import path ([1dc85bd](https://github.com/twreporter/twreporter-npm-packages/commit/1dc85bd28929a6ea180be55c112873ba14238625))
+* move menu button to button ([d4acf07](https://github.com/twreporter/twreporter-npm-packages/commit/d4acf07831fd7ad0ab8b27df001407ceaec8d015))
+
+
+
+
+
 ## [8.17.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.1-rc.0...@twreporter/react-components@8.17.1) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/react-components

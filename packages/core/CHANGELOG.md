@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0...@twreporter/core@1.10.0-rc.0) (2023-05-22)
+
+
+### Features
+
+* add padding option ([9b6dadb](https://github.com/twreporter/twreporter-npm-packages/commit/9b6dadbdbf3dec5c970d8cf174308df27fbdb87a))
+
+
+
+
+
 # [1.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0-rc.1...@twreporter/core@1.9.0) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/core

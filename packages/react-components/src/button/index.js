@@ -4,6 +4,7 @@ import IconWithTextButton from './components/iconWithTextButton'
 import TextButton from './components/textButton'
 import ToggleButton from './components/toggleButton'
 import LinkButton from './components/link'
+import MenuButton from './components/menuButton'
 
 export {
   PillButton,
@@ -12,6 +13,7 @@ export {
   TextButton,
   ToggleButton,
   LinkButton,
+  MenuButton,
 }
 
 export default {
@@ -21,4 +23,5 @@ export default {
   TextButton,
   ToggleButton,
   LinkButton,
+  MenuButton,
 }
