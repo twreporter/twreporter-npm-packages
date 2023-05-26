@@ -23,6 +23,21 @@ const CardTextColor = {
   [MEMBER_ROLE.trailblazer]: colorGrayscale.white,
 }
 
+const CardMarkStyle = {
+  [MEMBER_ROLE.explorer]: {
+    width: '193px',
+    height: '120px',
+  },
+  [MEMBER_ROLE.action_taker]: {
+    width: '193px',
+    height: '157px',
+  },
+  [MEMBER_ROLE.trailblazer]: {
+    width: '166px',
+    height: '196px',
+  },
+}
+
 const CardContainer = styled.div`
   max-width: 320px;
   width: 100%;
@@ -52,12 +67,23 @@ const FlexContainer = styled.div`
 `
 const LogoContainer = styled.div``
 
+const LogoImg = styled.img`
+  width: 16px;
+  height: 17px;
+`
+
 const MarkContainer = styled.div`
   flex: 1;
   display: flex;
   justify-content: start;
   align-items: center;
 `
+
+const MarkImgs = styled.img`
+  width: ${props => CardMarkStyle[props.role].width};
+  height: ${props => CardMarkStyle[props.role].height};
+`
+
 const DataContainer = styled.div``
 
 const TextContainer = styled.div`
@@ -88,10 +114,10 @@ const MobileMemberRoleCard = ({
       <RelativeDiv>
         <FlexContainer>
           <LogoContainer>
-            <img src={logoUrl} />
+            <LogoImg src={logoUrl} />
           </LogoContainer>
           <MarkContainer>
-            <img src={markUrl} />
+            <MarkImgs role={role} src={markUrl} />
           </MarkContainer>
           <DataContainer>
             {role !== MEMBER_ROLE.explorer && (
