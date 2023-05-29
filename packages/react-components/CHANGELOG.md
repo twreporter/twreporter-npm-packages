@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.1...@twreporter/react-components@8.18.0-rc.2) (2023-05-29)
+
+
+### Bug Fixes
+
+* set img height and width ([b3fe328](https://github.com/twreporter/twreporter-npm-packages/commit/b3fe328ff8e751cc670194e321b007c7b07a6efb))
+* use flex for auto fill ([117e492](https://github.com/twreporter/twreporter-npm-packages/commit/117e4920a3cd8e522c4d75366f9333f561ab2e71))
+
+
+
+
+
 # [8.18.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.0...@twreporter/react-components@8.18.0-rc.1) (2023-05-23)
 
 
