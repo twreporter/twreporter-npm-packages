@@ -4,7 +4,8 @@ import styled from 'styled-components'
 // util
 import { getSnackBarTheme } from '../utils/theme'
 // component
-import { P3 } from '../../text/paragraph'
+import { P3, P2 } from '../../text/paragraph'
+import { MobileOnly, TabletAndAbove } from '../../rwd'
 // @twreporter
 import { THEME } from '@twreporter/core/lib/constants/theme'
 
@@ -23,7 +24,12 @@ const SnackBar = ({ text = '', theme = THEME.normal }) => {
   const { color, bgColor } = getSnackBarTheme(theme)
   return (
     <SnackBarContainer color={color} bgColor={bgColor}>
-      <P3 text={text} />
+      <MobileOnly>
+        <P3 text={text} />
+      </MobileOnly>
+      <TabletAndAbove>
+        <P2 text={text} />
+      </TabletAndAbove>
     </SnackBarContainer>
   )
 }
