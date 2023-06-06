@@ -143,4 +143,17 @@ export default {
   dataAlreadyExists: 'data already exists',
   noMoreItemsToFetch: 'no more items to fetch',
   lastActionIsStillProcessing: 'last action is still processing',
+
+  user: {
+    read: {
+      request: 'request to fetch single user data',
+      success: 'succes to fetch single user data',
+      failure: 'fail to fetch single user data',
+    },
+    update: {
+      request: 'request to fetch user data',
+      success: 'succes to fetch user data',
+      failure: 'fail to fetch user data',
+    },
+  },
 }

@@ -17,6 +17,8 @@ const bookmarkWidget = 'bookmarkWidget'
 const entitiesForAuthors = 'entitiesForAuthors'
 const searchedAuthorsList = 'searchedAuthorsList'
 
+const user = 'user'
+
 // sections in index_page
 const editorPicksSection = 'editor_picks_section'
 const infographicsSection = 'infographics_section'
@@ -103,4 +105,5 @@ export default {
   settings,
   relatedPostsOf: 'relatedPostsOf',
   featureTopic: 'featureTopic',
+  user,
 }
