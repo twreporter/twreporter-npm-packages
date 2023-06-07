@@ -6,7 +6,7 @@ import {
   colorGrayscale,
 } from '@twreporter/core/lib/constants/color'
 import { Style } from '../enums'
-import { THEME, TEXT_BUTTON_THEME } from '@twreporter/core/lib/constants/theme'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 export const getFilledPillButtonTheme = (theme, disabled, style) => {
   if (disabled) {
@@ -275,94 +275,89 @@ export const getIconWithTextButtonTheme = (theme, isActive, isDisabled) => {
   }
 }
 
-export const getPrimaryTextButtonTheme = theme => {
+export const getPrimaryTextButtonTheme = (theme, style) => {
   switch (theme) {
-    case TEXT_BUTTON_THEME.photography:
+    case THEME.photography:
       return {
         color: colorGrayscale.white,
         hoverColor: colorSupportive.main,
       }
-    case TEXT_BUTTON_THEME.transparent:
+    case THEME.transparent:
       return {
         color: colorGrayscale.white,
         hoverColor: colorGrayscale.gray800,
       }
-    case TEXT_BUTTON_THEME.brand:
-      return {
-        color: colorBrand.heavy,
-        hoverColor: colorBrand.dark,
-      }
-    case TEXT_BUTTON_THEME.dark:
-      return {
-        color: colorGrayscale.gray800,
-        hoverColor: colorBrand.heavy,
-      }
-    case TEXT_BUTTON_THEME.light:
-      return {
-        color: colorGrayscale.gray600,
-        hoverColor: colorGrayscale.gray800,
-      }
-    case TEXT_BUTTON_THEME.normal:
+    case THEME.normal:
     default:
-      return {
-        color: colorGrayscale.gray800,
-        hoverColor: colorBrand.heavy,
+      switch (style) {
+        case Style.DARK:
+          return {
+            color: colorGrayscale.gray800,
+            hoverColor: colorBrand.heavy,
+          }
+        case Style.LIGHT:
+          return {
+            color: colorGrayscale.gray600,
+            hoverColor: colorGrayscale.gray800,
+          }
+        case Style.BRAND:
+        default:
+          return {
+            color: colorBrand.heavy,
+            hoverColor: colorBrand.dark,
+          }
       }
   }
 }
 
-export const getSecondaryTextButtonTheme = theme => {
+export const getSecondaryTextButtonTheme = (theme, style) => {
   switch (theme) {
-    case TEXT_BUTTON_THEME.photography:
+    case THEME.photography:
       return {
         color: colorGrayscale.gray400,
         hoverColor: colorSupportive.main,
       }
-    case TEXT_BUTTON_THEME.transparent:
+    case THEME.transparent:
       return {
         color: colorGrayscale.gray600,
         hoverColor: colorGrayscale.gray800,
       }
-    case TEXT_BUTTON_THEME.brand:
-      return {
-        color: colorBrand.heavy,
-        hoverColor: colorBrand.dark,
-      }
-    case TEXT_BUTTON_THEME.dark:
-      return {
-        color: colorGrayscale.gray800,
-        hoverColor: colorBrand.heavy,
-      }
-    case TEXT_BUTTON_THEME.light:
-      return {
-        color: colorGrayscale.gray600,
-        hoverColor: colorGrayscale.gray800,
-      }
-    case TEXT_BUTTON_THEME.normal:
+    case THEME.normal:
     default:
-      return {
-        color: colorGrayscale.gray600,
-        hoverColor: colorBrand.heavy,
+      switch (style) {
+        case Style.DARK:
+          return {
+            color: colorGrayscale.gray800,
+            hoverColor: colorBrand.heavy,
+          }
+        case Style.LIGHT:
+          return {
+            color: colorGrayscale.gray600,
+            hoverColor: colorGrayscale.gray800,
+          }
+        case Style.BRAND:
+        default:
+          return {
+            color: colorBrand.heavy,
+            hoverColor: colorBrand.dark,
+          }
       }
   }
 }
 
 export const getDisabledTextButtonTheme = theme => {
   switch (theme) {
-    case TEXT_BUTTON_THEME.photography:
+    case THEME.photography:
       return {
         color: colorGrayscale.gray600,
         hoverColor: colorGrayscale.gray600,
       }
-    case TEXT_BUTTON_THEME.transparent:
+    case THEME.transparent:
       return {
         color: colorGrayscale.gray200,
         hoverColor: colorGrayscale.gray200,
       }
-    case TEXT_BUTTON_THEME.brand:
-    case TEXT_BUTTON_THEME.dark:
-    case TEXT_BUTTON_THEME.light:
-    case TEXT_BUTTON_THEME.normal:
+    case THEME.normal:
     default:
       return {
         color: colorGrayscale.gray400,
@@ -371,38 +366,37 @@ export const getDisabledTextButtonTheme = theme => {
   }
 }
 
-export const getActiveTextButtonTheme = theme => {
+export const getActiveTextButtonTheme = (theme, style) => {
   switch (theme) {
-    case TEXT_BUTTON_THEME.photography:
+    case THEME.photography:
       return {
         color: colorSupportive.main,
         hoverColor: colorSupportive.main,
       }
-    case TEXT_BUTTON_THEME.transparent:
+    case THEME.transparent:
       return {
         color: colorGrayscale.white,
         hoverColor: colorGrayscale.white,
       }
-    case TEXT_BUTTON_THEME.brand:
-      return {
-        color: colorBrand.dark,
-        hoverColor: colorBrand.dark,
-      }
-    case TEXT_BUTTON_THEME.dark:
-      return {
-        color: colorBrand.heavy,
-        hoverColor: colorBrand.heavy,
-      }
-    case TEXT_BUTTON_THEME.light:
-      return {
-        color: colorGrayscale.gray800,
-        hoverColor: colorGrayscale.gray800,
-      }
-    case TEXT_BUTTON_THEME.normal:
+    case THEME.normal:
     default:
-      return {
-        color: colorBrand.heavy,
-        hoverColor: colorBrand.heavy,
+      switch (style) {
+        case Style.DARK:
+          return {
+            color: colorBrand.heavy,
+            hoverColor: colorBrand.heavy,
+          }
+        case Style.LIGHT:
+          return {
+            color: colorGrayscale.gray800,
+            hoverColor: colorGrayscale.gray800,
+          }
+        case Style.BRAND:
+        default:
+          return {
+            color: colorBrand.dark,
+            hoverColor: colorBrand.dark,
+          }
       }
   }
 }
