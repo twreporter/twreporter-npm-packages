@@ -55,7 +55,12 @@ const ChannelItem = ({ link = {}, label = '' }) => {
   return (
     <Item>
       <Link {...link}>
-        <TextButton text={label} size="L" theme={theme} />
+        <TextButton
+          text={label}
+          size="L"
+          theme={theme}
+          style={TextButton.Style.DARK}
+        />
       </Link>
     </Item>
   )

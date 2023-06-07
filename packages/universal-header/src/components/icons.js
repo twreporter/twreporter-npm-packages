@@ -94,7 +94,7 @@ const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
     loginButtonType === 'icon' || isAuthed ? (
       <IconButton iconComponent={Icon} theme={theme} />
     ) : (
-      <TextButton text="登入" theme={theme} />
+      <TextButton text="登入" theme={theme} style={TextButton.Style.DARK} />
     )
 
   return (

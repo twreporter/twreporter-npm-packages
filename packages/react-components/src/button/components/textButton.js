@@ -52,7 +52,7 @@ const TextButton = ({
   size = Size.S,
   theme = THEME.normal,
   type = Type.PRIMARY,
-  style = Style.BRAND,
+  style = Style.DARK,
   active = false,
   disabled = false,
   ...props
