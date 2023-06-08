@@ -1,5 +1,7 @@
 import types from '../constants/action-types'
 
+import { MEMBER_ROLE } from '@twreporter/core/lib/constants/member-role'
+
 // lodash
 import get from 'lodash/get'
 import merge from 'lodash/merge'
@@ -14,7 +16,9 @@ const initState = {
   isFetching: false,
   isReady: false,
   userID: -1,
-  name: '',
+  firstName: '',
+  lastName: '',
+  role: MEMBER_ROLE.explorer,
   email: '',
   activated: false,
   readPreference: [],
