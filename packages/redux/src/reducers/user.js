@@ -1,6 +1,6 @@
 import types from '../constants/action-types'
 
-import { MEMBER_ROLE } from '@twreporter/core/lib/constants/member-role'
+// import { MEMBER_ROLE } from '@twreporter/core/lib/constants/member-role'
 
 // lodash
 import get from 'lodash/get'
@@ -15,12 +15,13 @@ const initState = {
   error: null,
   isFetching: false,
   isReady: false,
-  userID: -1,
-  firstName: '',
-  lastName: '',
-  role: MEMBER_ROLE.explorer,
-  email: '',
-  activated: false,
+  // TODO: need add other user state after connect to getUser api
+  // userID: -1,
+  // firstName: '',
+  // lastName: '',
+  // role: MEMBER_ROLE.explorer,
+  // email: '',
+  // activated: false,
   readPreference: [],
   maillist: [],
 }
@@ -28,7 +29,6 @@ const initState = {
 export default function user(state = initState, action) {
   const { payload } = action
   switch (action.type) {
-    case types.user.read.request:
     case types.user.update.request: {
       return _.merge({}, state, {
         isFetching: true,
@@ -36,26 +36,28 @@ export default function user(state = initState, action) {
       })
     }
 
-    case types.user.read.success:
     case types.user.update.success: {
       const readPreference = _.get(payload, 'data.record.read_preference', [])
       const maillist = _.get(payload, 'data.record.maillist', [])
-      return _.merge({}, state, {
+      state.readPreference = readPreference
+      state.maillist = maillist
+      return {
+        ...state,
         error: null,
         isFetching: false,
         isReady: true,
-        readPreference,
         maillist,
-      })
+        readPreference,
+      }
     }
 
-    case types.user.read.failure:
     case types.user.update.failure: {
-      return _.merge({}, state, {
+      return {
+        ...state,
         error: payload.error,
         isFetching: false,
         isReady: false,
-      })
+      }
     }
 
     default:

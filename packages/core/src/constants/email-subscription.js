@@ -8,10 +8,3 @@ export const EMAIL_SUBSCRIPTION_KEY = {
   operationalJournal: 'operational_journal',
   eventUpdates: 'event_updates',
 }
-
-export const EMAIL_SUBSCRIPTION_KEY_ID = {
-  [EMAIL_SUBSCRIPTION_KEY.featured]: '2f1c91a75a',
-  [EMAIL_SUBSCRIPTION_KEY.behindTheScenes]: '219df4131b',
-  [EMAIL_SUBSCRIPTION_KEY.operationalJournal]: 'ca9d491549',
-  [EMAIL_SUBSCRIPTION_KEY.eventUpdates]: '0345c43d67',
-}

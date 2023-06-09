@@ -151,9 +151,9 @@ export default {
       failure: 'fail to fetch single user data',
     },
     update: {
-      request: 'request to fetch user data',
-      success: 'succes to fetch user data',
-      failure: 'fail to fetch user data',
+      request: 'request to update user data',
+      success: 'succes to update user data',
+      failure: 'fail to update user data',
     },
   },
 }
