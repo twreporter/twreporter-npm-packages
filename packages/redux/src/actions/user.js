@@ -35,9 +35,7 @@ const apiTimeout = apiConfig.timeout
  * @property {string} type - The type of action
  * @property {string} payload
  * @property {Object} payload.data - Response data
- * @property {Object} payload.headers - The response header
  * @property {string} payload.statusCode - Response status code
- * @property {Object} payload.config - details of response
  */
 
 /**
@@ -49,9 +47,7 @@ function buildSuccessActionFromRes(axiosResponse, actionType) {
   return {
     type: actionType,
     payload: {
-      config: _.get(axiosResponse, 'config'),
       data: _.get(axiosResponse, 'data'),
-      headers: _.get(axiosResponse, 'headers'),
       statusCode: _.get(axiosResponse, 'status'),
     },
   }
