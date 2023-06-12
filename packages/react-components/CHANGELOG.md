@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.2...@twreporter/react-components@8.18.0-rc.3) (2023-06-12)
+
+
+### Features
+
+* use P3 for mobile and P2 for rest ([e4ecb29](https://github.com/twreporter/twreporter-npm-packages/commit/e4ecb29f3c8fac1f2a75c8b3be70b84bcbbb275a))
+
+
+
+
+
 # [8.18.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.1...@twreporter/react-components@8.18.0-rc.2) (2023-05-29)
 
 

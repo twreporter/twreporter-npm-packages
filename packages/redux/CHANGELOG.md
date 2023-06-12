@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.2-rc.1...@twreporter/redux@7.6.0-rc.0) (2023-06-12)
+
+
+### Features
+
+* add firstName and lastName and role for user store ([ea21518](https://github.com/twreporter/twreporter-npm-packages/commit/ea21518b60ccd1d7ae098895af1a01c94d35e846))
+* add user action test ([c8d5fc8](https://github.com/twreporter/twreporter-npm-packages/commit/c8d5fc8d25eac02a245653383ddf0c72935617d8))
+* add user reducer test ([28cc793](https://github.com/twreporter/twreporter-npm-packages/commit/28cc793bdf68559a4f81e44ab62e6ee62b58a1b7))
+* get and set user data ([17668f3](https://github.com/twreporter/twreporter-npm-packages/commit/17668f34eee9e305fd9c27278b986c1c2d251b99))
+
+
+
+
+
 ## [7.5.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.5.2-rc.0...@twreporter/redux@7.5.2-rc.1) (2023-05-23)
 
 **Note:** Version bump only for package @twreporter/redux
