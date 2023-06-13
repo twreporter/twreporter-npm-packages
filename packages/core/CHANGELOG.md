@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.2...@twreporter/core@1.10.0-rc.3) (2023-06-13)
+
+
+### Bug Fixes
+
+* add `style` props for TextButton & deprecate TEXT_BUTTON_THEME ([0d697b8](https://github.com/twreporter/twreporter-npm-packages/commit/0d697b804cb4c0d5b0b505614008a939e7bd0212))
+
+
+
+
+
 # [1.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.1...@twreporter/core@1.10.0-rc.2) (2023-06-12)
 
 

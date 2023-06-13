@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.3...@twreporter/react-components@8.18.0-rc.4) (2023-06-13)
+
+
+### Bug Fixes
+
+* add `style` props for TextButton & deprecate TEXT_BUTTON_THEME ([0d697b8](https://github.com/twreporter/twreporter-npm-packages/commit/0d697b804cb4c0d5b0b505614008a939e7bd0212))
+* address review comments ([f346356](https://github.com/twreporter/twreporter-npm-packages/commit/f34635625eb9d638bc0ca03768ecc14c9b5944d2))
+* deprecate TEXT_BUTTON_THEME_PROP_TYPES ([9a661de](https://github.com/twreporter/twreporter-npm-packages/commit/9a661de3ce68953c083e8677e39c0b87887e1749))
+* migrate TextButton usage in other place ([1f812f3](https://github.com/twreporter/twreporter-npm-packages/commit/1f812f36d77ff9c32800ff41ca73298537c5dce1))
+
+
+### Features
+
+* add TextField component ([40eb6b1](https://github.com/twreporter/twreporter-npm-packages/commit/40eb6b1358e45c89b5d531599db5b1361e1fbad5))
+
+
+
+
+
 # [8.18.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.2...@twreporter/react-components@8.18.0-rc.3) (2023-06-12)
 
 
