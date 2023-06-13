@@ -10,10 +10,6 @@ import {
 } from '@twreporter/core/lib/constants/color'
 import { P3 } from '../../text/paragraph'
 
-const textAlign = {
-  [TextAlign.LEFT]: 'left',
-  [TextAlign.CENTER]: 'center',
-}
 const textColor = {
   [TextState.DEFAULT]: colorGrayscale.gray800,
   [TextState.ERROR]: colorGrayscale.gray800,
@@ -48,8 +44,8 @@ const Message = styled(P3)`
 const Container = styled.form`
   ${Input}, ${Message} {
     width: 100%;
-    text-align: ${props => textAlign[props.align]};
-    justify-content: ${props => textAlign[props.align]};
+    text-align: ${props => props.align};
+    justify-content: ${props => props.align};
   }
 `
 

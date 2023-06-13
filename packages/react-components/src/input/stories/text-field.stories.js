@@ -19,11 +19,14 @@ export const textField = args => <Form {...args} />
 const onSubmit = value => {
   console.log('submit', value)
 }
+const onChange = value => {
+  console.log('change', value)
+}
 textField.args = {
   onSubmit,
+  onChange,
   placeholder: 'test',
   align: TextField.Align.LEFT,
   state: TextField.State.DEFAULT,
   message: '系統文字',
-  type: 'text',
 }
