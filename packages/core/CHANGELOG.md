@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.1...@twreporter/core@1.10.0-rc.2) (2023-06-12)
+
+
+### Features
+
+* add email subscription options ([2f97f82](https://github.com/twreporter/twreporter-npm-packages/commit/2f97f82a2d754c462dbbfef8a3e0ff9e9db0435c))
+* add read preference ([3d11197](https://github.com/twreporter/twreporter-npm-packages/commit/3d1119766205a566d504452e3325e260b395d63f))
+* add user reducer test ([28cc793](https://github.com/twreporter/twreporter-npm-packages/commit/28cc793bdf68559a4f81e44ab62e6ee62b58a1b7))
+
+
+
+
+
 # [1.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.0...@twreporter/core@1.10.0-rc.1) (2023-05-23)
 
 
