@@ -124,7 +124,8 @@ const ArticleCard = ({
   const bookmarkButton =
     size === Size.S ? (
       <TextButton
-        theme={TextButton.THEME.light}
+        theme={TextButton.THEME.normal}
+        style={TextButton.Style.LIGHT}
         leftIconComponent={bookmarkIcon}
         text="取消收藏"
       />
