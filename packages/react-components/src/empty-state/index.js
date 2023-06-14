@@ -29,7 +29,7 @@ const Container = styled.div`
 `
 
 const TextContainer = styled.div`
-  margin: 48px 0 24px 0;
+  margin-top: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,6 +37,7 @@ const TextContainer = styled.div`
 `
 
 const ButtonContainer = styled.a`
+  margin-top: 24px;
   text-decoration: none;
 `
 
