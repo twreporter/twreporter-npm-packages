@@ -7,6 +7,7 @@ export const BRANCH = {
   staging: 'staging',
   release: 'release',
   next: 'next',
+  dev: 'dev',
 }
 
 export const BRANCH_PROP_TYPES = PropTypes.oneOf([
@@ -14,6 +15,7 @@ export const BRANCH_PROP_TYPES = PropTypes.oneOf([
   BRANCH.staging,
   BRANCH.preview,
   BRANCH.release,
+  BRANCH.dev,
 ])
 
 export default {
@@ -24,19 +26,5 @@ export default {
   preview: 'preview',
   staging: 'staging',
   release: 'release',
-  // `next` release branch is reserved for online migration purpose
-  // for example,
-  // we want to migrate our k8s cluster from old to new one.
-  // old cluster: `release` branch, serve right now
-  // new cluster: `next` branch, plan to serve requests afterwards
-  // we could build `next` branch on new cluster
-  // to test web functionalities before switching requests to new cluster.
-  // `next` branch is applied end-to-end,
-  // including cloudflare, nginx, frontend and backend.
-  // for users, the hostname of url would be
-  // - main site: next.twreporter.org
-  // - accounts site: next-accounts.twreporter.org
-  // - support site: next-support.twreporter.org
-  // - backend: next-go-api.twreporter.org
-  next: 'next',
+  dev: 'dev',
 }
