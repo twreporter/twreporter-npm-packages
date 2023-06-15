@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.5...@twreporter/react-components@8.18.0-rc.6) (2023-06-15)
+
+
+### Bug Fixes
+
+* fix empty state margin ([0f347dd](https://github.com/twreporter/twreporter-npm-packages/commit/0f347dd04744dfc0edf7ff12b90b2247f4f0115c))
+
+
+
+
+
 # [8.18.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.4...@twreporter/react-components@8.18.0-rc.5) (2023-06-15)
 
 **Note:** Version bump only for package @twreporter/react-components
