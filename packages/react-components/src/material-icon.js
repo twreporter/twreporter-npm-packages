@@ -9,6 +9,7 @@ const StyledSymbol = styled.span`
     'GRAD': ${props.grade},
     'opsz': ${props.size}
   `};
+  font-size: ${props => props.size}px;
 `
 
 const MeterialSymbol = ({
