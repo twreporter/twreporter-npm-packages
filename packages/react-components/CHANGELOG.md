@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.6...@twreporter/react-components@8.18.0-rc.7) (2023-06-17)
+
+
+### Bug Fixes
+
+* address defects ([5d0898c](https://github.com/twreporter/twreporter-npm-packages/commit/5d0898c18f5930538b15844432c748e40ab0b23b))
+
+
+
+
+
 # [8.18.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.5...@twreporter/react-components@8.18.0-rc.6) (2023-06-15)
 
 
