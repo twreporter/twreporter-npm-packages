@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.8...@twreporter/react-components@8.18.0-rc.9) (2023-06-19)
+
+
+### Bug Fixes
+
+* remove input border radius ([7e9a6d7](https://github.com/twreporter/twreporter-npm-packages/commit/7e9a6d7806a9944dd239d0a497568cd1dc9d41fd))
+
+
+
+
+
 # [8.18.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.7...@twreporter/react-components@8.18.0-rc.8) (2023-06-17)
 
 
