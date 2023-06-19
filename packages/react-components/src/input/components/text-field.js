@@ -28,6 +28,7 @@ const Input = styled.input`
   border-width: 0 0 1px 0;
   background-color: inherit;
   padding: 0;
+  border-radius: 0;
   color: ${props => textColor[props.state]};
   border-color: ${props => borderColor[props.state]};
   &:focus,
