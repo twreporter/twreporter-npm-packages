@@ -328,9 +328,9 @@ const HamburgerMenu = ({ ...props }) => {
             </Link>
           </FlexGroup>
           <FlexGroup>
-            <MobileHeaderAction />
+            <MobileHeaderAction isForHambuger={true} />
             <IconContainer>
-              <MobileIcons />
+              <MobileIcons isForHambuger={true} />
             </IconContainer>
           </FlexGroup>
         </HeaderSection>
