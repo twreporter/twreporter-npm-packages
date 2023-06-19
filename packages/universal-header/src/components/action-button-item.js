@@ -76,7 +76,8 @@ const ActionButtonItem = ({
 }) => {
   const { theme } = useContext(HeaderContext)
   const buttonTheme =
-    direction === DIRECTION_TYPE.row || theme === THEME.photography
+    (direction === DIRECTION_TYPE.row && theme !== THEME.transparent) ||
+    theme === THEME.photography
       ? theme
       : THEME.noraml
   const actionKey = action.key
