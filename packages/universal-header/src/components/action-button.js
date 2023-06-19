@@ -36,6 +36,7 @@ export const DesktopHamburgerAction = ({ ...props }) => {
       textType={TEXT_TYPE.full}
       buttonWidth={BUTTON_WIDTH_TYPE.stretch}
       buttonSize={BUTTON_SIZE_TYPE.L}
+      isForHambuger={true}
       {...props}
     />
   )
@@ -49,6 +50,7 @@ export const MobileHamburgerAction = ({ ...props }) => {
       textType={TEXT_TYPE.full}
       buttonWidth={BUTTON_WIDTH_TYPE.stretch}
       buttonSize={BUTTON_SIZE_TYPE.L}
+      isForHambuger={true}
       {...props}
     />
   )
