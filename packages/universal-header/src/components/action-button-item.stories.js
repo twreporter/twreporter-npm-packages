@@ -84,7 +84,7 @@ transparentTheme.parameters = {
 export const hamburger = props => (
   <HeaderContext.Provider value={{ theme: props.theme }}>
     <Container>
-      <ActionButton {...props} />
+      <ActionButton isForHambuger={true} {...props} />
     </Container>
   </HeaderContext.Provider>
 )
