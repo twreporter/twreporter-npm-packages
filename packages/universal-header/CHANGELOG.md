@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.8...@twreporter/universal-header@2.6.0-rc.9) (2023-06-19)
+
+
+### Bug Fixes
+
+* add isForHambuger prop for action button ([7595714](https://github.com/twreporter/twreporter-npm-packages/commit/75957143b6ea5707c08f37e65a2647c0383da5c4))
+* fix action button theme ([435a7d1](https://github.com/twreporter/twreporter-npm-packages/commit/435a7d1063af96b0f0f7b23b9e6067dce026cbed))
+
+
+
+
+
 # [2.6.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.7...@twreporter/universal-header@2.6.0-rc.8) (2023-06-17)
 
 **Note:** Version bump only for package @twreporter/universal-header
