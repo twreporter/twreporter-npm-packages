@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.10...@twreporter/universal-header@2.6.0-rc.11) (2023-06-19)
+
+
+### Bug Fixes
+
+* add isForHambuger prop for MobileIcons ([40d25d4](https://github.com/twreporter/twreporter-npm-packages/commit/40d25d4e2c45215bc3ae0b4ea757db103805a60d))
+
+
+
+
+
 # [2.6.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.9...@twreporter/universal-header@2.6.0-rc.10) (2023-06-19)
 
 **Note:** Version bump only for package @twreporter/universal-header
