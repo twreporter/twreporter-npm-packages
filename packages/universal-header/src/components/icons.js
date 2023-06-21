@@ -20,6 +20,7 @@ import { Dialog } from '@twreporter/react-components/lib/card'
 import { SearchBar } from '@twreporter/react-components/lib/input'
 import { useOutsideClick } from '@twreporter/react-components/lib/hook'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const IconsContainer = styled.div`
   display: flex;
@@ -66,7 +67,7 @@ const StyledDialog = styled(Dialog)`
   color: ${colorGrayscale.gray800};
 `
 
-const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
+const LogInOutIcon = ({ loginButtonType = 'icon', isForHambuger = false }) => {
   const [showDialog, setShowDialog] = useState(false)
   const { releaseBranch, theme, isAuthed } = useContext(HeaderContext)
   const onClickIcon = e => {
@@ -90,11 +91,25 @@ const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
   const closeDialog = () => setShowDialog(false)
   const ref = useOutsideClick(closeDialog)
   const Icon = <Member releaseBranch={releaseBranch} />
+  let buttonTheme
+  if (isForHambuger) {
+    if (theme === THEME.transparent) {
+      buttonTheme = THEME.normal
+    } else {
+      buttonTheme = theme
+    }
+  } else {
+    buttonTheme = theme
+  }
   const LoginButton =
     loginButtonType === 'icon' || isAuthed ? (
-      <IconButton iconComponent={Icon} theme={theme} />
+      <IconButton iconComponent={Icon} theme={buttonTheme} />
     ) : (
-      <TextButton text="登入" theme={theme} />
+      <TextButton
+        text="登入"
+        theme={buttonTheme}
+        style={TextButton.Style.DARK}
+      />
     )
 
   return (
@@ -120,6 +135,7 @@ const LogInOutIcon = ({ loginButtonType = 'icon' }) => {
 }
 LogInOutIcon.propTypes = {
   loginButtonType: PropTypes.oneOf(['icon', 'text']),
+  isForHambuger: PropTypes.bool,
 }
 
 const SearchIcon = () => {
@@ -191,10 +207,14 @@ const Icons = () => (
   </IconsContainer>
 )
 
-export const MobileIcons = () => (
+export const MobileIcons = ({ isForHambuger = false }) => (
   <IconsContainer>
-    <LogInOutIcon loginButtonType="text" />
+    <LogInOutIcon loginButtonType="text" isForHambuger={isForHambuger} />
   </IconsContainer>
 )
+
+MobileIcons.propTypes = {
+  isForHambuger: PropTypes.bool,
+}
 
 export default Icons

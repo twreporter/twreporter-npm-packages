@@ -23,10 +23,3 @@ export const ARTICLE_THEME = Object.freeze({
     interactive: 'interactive',
   },
 })
-
-export const TEXT_BUTTON_THEME = Object.freeze({
-  ...THEME,
-  brand: 'brand',
-  dark: 'dark',
-  light: 'light',
-})

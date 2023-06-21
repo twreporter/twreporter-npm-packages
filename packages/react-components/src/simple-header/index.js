@@ -4,9 +4,9 @@ import { LogoHeader } from '../logo'
 
 const HeaderContainer = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  padding: 16px 24px;
+  align-items: center;
+  height: 64px;
 `
 
 const Logo = styled(LogoHeader)`

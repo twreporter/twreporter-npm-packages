@@ -73,12 +73,19 @@ const ActionButtonItem = ({
   buttonWidth = BUTTON_WIDTH_TYPE.fit,
   buttonSize = BUTTON_SIZE_TYPE.S,
   callback = defaultFunc,
+  isForHambuger = false,
 }) => {
   const { theme } = useContext(HeaderContext)
-  const buttonTheme =
-    direction === DIRECTION_TYPE.row || theme === THEME.photography
-      ? theme
-      : THEME.noraml
+  let buttonTheme
+  if (isForHambuger) {
+    if (theme === THEME.transparent) {
+      buttonTheme = THEME.normal
+    } else {
+      buttonTheme = theme
+    }
+  } else {
+    buttonTheme = theme
+  }
   const actionKey = action.key
   const actionLabel = ACTION_LABEL[textType][actionKey]
   const actionLink = getActionLinks()[actionKey]
@@ -108,6 +115,7 @@ ActionButtonItem.propTypes = {
   buttonWidth: BUTTON_WIDTH_PROP_TYPE,
   buttonSize: BUTTON_SIZE_PROP_TYPE,
   callback: PropTypes.func,
+  isForHambuger: PropTypes.bool,
 }
 
 const ActionButton = ({
@@ -117,6 +125,7 @@ const ActionButton = ({
   buttonWidth = BUTTON_WIDTH_TYPE.fit,
   buttonSize = BUTTON_SIZE_TYPE.S,
   callback = defaultFunc,
+  isForHambuger = false,
   ...rest
 }) => (
   <ActionsContainer direction={direction} buttonWidth={buttonWidth} {...rest}>
@@ -129,6 +138,7 @@ const ActionButton = ({
           buttonWidth={buttonWidth}
           buttonSize={buttonSize}
           key={action.key}
+          isForHambuger={isForHambuger}
         />
       )
     })}
@@ -142,6 +152,7 @@ ActionButton.propTypes = {
   buttonWidth: ActionButtonItem.propTypes.buttonWidth,
   buttonSize: ActionButtonItem.propTypes.buttonSize,
   callback: PropTypes.func,
+  isForHambuger: PropTypes.bool,
 }
 
 export default ActionButton

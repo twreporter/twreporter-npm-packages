@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.3...@twreporter/core@1.10.0-rc.4) (2023-06-15)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
+# [1.10.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.2...@twreporter/core@1.10.0-rc.3) (2023-06-13)
+
+
+### Bug Fixes
+
+* add `style` props for TextButton & deprecate TEXT_BUTTON_THEME ([0d697b8](https://github.com/twreporter/twreporter-npm-packages/commit/0d697b804cb4c0d5b0b505614008a939e7bd0212))
+
+
+
+
+
+# [1.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.1...@twreporter/core@1.10.0-rc.2) (2023-06-12)
+
+
+### Features
+
+* add email subscription options ([2f97f82](https://github.com/twreporter/twreporter-npm-packages/commit/2f97f82a2d754c462dbbfef8a3e0ff9e9db0435c))
+* add read preference ([3d11197](https://github.com/twreporter/twreporter-npm-packages/commit/3d1119766205a566d504452e3325e260b395d63f))
+* add user reducer test ([28cc793](https://github.com/twreporter/twreporter-npm-packages/commit/28cc793bdf68559a4f81e44ab62e6ee62b58a1b7))
+
+
+
+
+
+# [1.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.0...@twreporter/core@1.10.0-rc.1) (2023-05-23)
+
+
+### Features
+
+* fix comment ([e2d4ffb](https://github.com/twreporter/twreporter-npm-packages/commit/e2d4ffbf543eed2461e5c380183b753070f0723b))
+* member role constants ([9c9ac5d](https://github.com/twreporter/twreporter-npm-packages/commit/9c9ac5d5ea94f125f082b5f7b112b0dbf626250b))
+
+
+
+
+
+# [1.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0...@twreporter/core@1.10.0-rc.0) (2023-05-22)
+
+
+### Features
+
+* add padding option ([9b6dadb](https://github.com/twreporter/twreporter-npm-packages/commit/9b6dadbdbf3dec5c970d8cf174308df27fbdb87a))
+
+
+
+
+
 # [1.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0-rc.1...@twreporter/core@1.9.0) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/core

@@ -20,6 +20,7 @@ import origins from './reducers/origins'
 import relatedPostsOf from './reducers/related-posts-of'
 import { post, posts } from './reducers/posts'
 import { topic, topics } from './reducers/topics'
+import user from './reducers/user'
 
 export default {
   actions,
@@ -36,6 +37,7 @@ export default {
     relatedPostsOf,
     topic,
     topics,
+    user,
   },
   reduxStateFields,
   ReduxStoreContext,

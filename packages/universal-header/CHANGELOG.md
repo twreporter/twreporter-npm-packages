@@ -3,6 +3,125 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.10...@twreporter/universal-header@2.6.0-rc.11) (2023-06-19)
+
+
+### Bug Fixes
+
+* add isForHambuger prop for MobileIcons ([40d25d4](https://github.com/twreporter/twreporter-npm-packages/commit/40d25d4e2c45215bc3ae0b4ea757db103805a60d))
+
+
+
+
+
+# [2.6.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.9...@twreporter/universal-header@2.6.0-rc.10) (2023-06-19)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.8...@twreporter/universal-header@2.6.0-rc.9) (2023-06-19)
+
+
+### Bug Fixes
+
+* add isForHambuger prop for action button ([7595714](https://github.com/twreporter/twreporter-npm-packages/commit/75957143b6ea5707c08f37e65a2647c0383da5c4))
+* fix action button theme ([435a7d1](https://github.com/twreporter/twreporter-npm-packages/commit/435a7d1063af96b0f0f7b23b9e6067dce026cbed))
+
+
+
+
+
+# [2.6.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.7...@twreporter/universal-header@2.6.0-rc.8) (2023-06-17)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.6...@twreporter/universal-header@2.6.0-rc.7) (2023-06-17)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.5...@twreporter/universal-header@2.6.0-rc.6) (2023-06-15)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.4...@twreporter/universal-header@2.6.0-rc.5) (2023-06-15)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.3...@twreporter/universal-header@2.6.0-rc.4) (2023-06-13)
+
+
+### Bug Fixes
+
+* migrate TextButton usage in other place ([1f812f3](https://github.com/twreporter/twreporter-npm-packages/commit/1f812f36d77ff9c32800ff41ca73298537c5dce1))
+
+
+
+
+
+# [2.6.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.2...@twreporter/universal-header@2.6.0-rc.3) (2023-06-12)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.1...@twreporter/universal-header@2.6.0-rc.2) (2023-05-29)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.0...@twreporter/universal-header@2.6.0-rc.1) (2023-05-23)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.3...@twreporter/universal-header@2.6.0-rc.0) (2023-05-22)
+
+
+### Bug Fixes
+
+* font weight ([9b83e7a](https://github.com/twreporter/twreporter-npm-packages/commit/9b83e7a271758e3b1b87d124198235debb968d5f))
+* fontWeight => FontWeight ([faf0200](https://github.com/twreporter/twreporter-npm-packages/commit/faf0200fc47a5109da74640085a597f5edb1e02b))
+
+
+### Features
+
+* import new menu button ([1f6b58b](https://github.com/twreporter/twreporter-npm-packages/commit/1f6b58b7ca36dd4996332fd63b54dbcb0f660dc9))
+* replace by menu button ([aa8b5d8](https://github.com/twreporter/twreporter-npm-packages/commit/aa8b5d82be8e8baf2755f515487c2eb70a40f47c))
+* undo hambuger-menu-item ([2a52d33](https://github.com/twreporter/twreporter-npm-packages/commit/2a52d331badc934fbe04a49e9dff5fc537ca9557))
+* use menu button fontWeight ([2bac7ca](https://github.com/twreporter/twreporter-npm-packages/commit/2bac7cad05f831c94fb7c4a1a6d4d0f937323142))
+* use MenuButton ([6f60889](https://github.com/twreporter/twreporter-npm-packages/commit/6f608897eacc6cad8f6f062d1864df01efa78891))
+
+
+
+
+
 ## [2.5.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.5.3-rc.0...@twreporter/universal-header@2.5.3) (2023-05-12)
 
 **Note:** Version bump only for package @twreporter/universal-header

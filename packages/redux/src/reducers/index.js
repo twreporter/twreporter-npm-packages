@@ -15,6 +15,7 @@ import reduxStatePropKey from '../constants/redux-state-field-names'
 import relatedPostsOf from './related-posts-of'
 import settings from './settings'
 import latest from './latest'
+import user from './user'
 
 const rootReducer = combineReducers({
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.origins]: origins,
   [reduxStatePropKey.settings]: settings,
   [reduxStatePropKey.latest]: latest,
+  [reduxStatePropKey.user]: user,
 })
 
 export default rootReducer

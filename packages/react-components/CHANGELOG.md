@@ -3,6 +3,136 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.18.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.8...@twreporter/react-components@8.18.0-rc.9) (2023-06-19)
+
+
+### Bug Fixes
+
+* remove input border radius ([7e9a6d7](https://github.com/twreporter/twreporter-npm-packages/commit/7e9a6d7806a9944dd239d0a497568cd1dc9d41fd))
+
+
+
+
+
+# [8.18.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.7...@twreporter/react-components@8.18.0-rc.8) (2023-06-17)
+
+
+### Bug Fixes
+
+* simple-header style ([ee20a9c](https://github.com/twreporter/twreporter-npm-packages/commit/ee20a9c8d1b8adb0b985ae1c06d51cd5b697e042))
+
+
+
+
+
+# [8.18.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.6...@twreporter/react-components@8.18.0-rc.7) (2023-06-17)
+
+
+### Bug Fixes
+
+* address defects ([5d0898c](https://github.com/twreporter/twreporter-npm-packages/commit/5d0898c18f5930538b15844432c748e40ab0b23b))
+
+
+
+
+
+# [8.18.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.5...@twreporter/react-components@8.18.0-rc.6) (2023-06-15)
+
+
+### Bug Fixes
+
+* fix empty state margin ([0f347dd](https://github.com/twreporter/twreporter-npm-packages/commit/0f347dd04744dfc0edf7ff12b90b2247f4f0115c))
+
+
+
+
+
+# [8.18.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.4...@twreporter/react-components@8.18.0-rc.5) (2023-06-15)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.18.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.3...@twreporter/react-components@8.18.0-rc.4) (2023-06-13)
+
+
+### Bug Fixes
+
+* add `style` props for TextButton & deprecate TEXT_BUTTON_THEME ([0d697b8](https://github.com/twreporter/twreporter-npm-packages/commit/0d697b804cb4c0d5b0b505614008a939e7bd0212))
+* address review comments ([f346356](https://github.com/twreporter/twreporter-npm-packages/commit/f34635625eb9d638bc0ca03768ecc14c9b5944d2))
+* deprecate TEXT_BUTTON_THEME_PROP_TYPES ([9a661de](https://github.com/twreporter/twreporter-npm-packages/commit/9a661de3ce68953c083e8677e39c0b87887e1749))
+* migrate TextButton usage in other place ([1f812f3](https://github.com/twreporter/twreporter-npm-packages/commit/1f812f36d77ff9c32800ff41ca73298537c5dce1))
+
+
+### Features
+
+* add TextField component ([40eb6b1](https://github.com/twreporter/twreporter-npm-packages/commit/40eb6b1358e45c89b5d531599db5b1361e1fbad5))
+
+
+
+
+
+# [8.18.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.2...@twreporter/react-components@8.18.0-rc.3) (2023-06-12)
+
+
+### Features
+
+* use P3 for mobile and P2 for rest ([e4ecb29](https://github.com/twreporter/twreporter-npm-packages/commit/e4ecb29f3c8fac1f2a75c8b3be70b84bcbbb275a))
+
+
+
+
+
+# [8.18.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.1...@twreporter/react-components@8.18.0-rc.2) (2023-05-29)
+
+
+### Bug Fixes
+
+* set img height and width ([b3fe328](https://github.com/twreporter/twreporter-npm-packages/commit/b3fe328ff8e751cc670194e321b007c7b07a6efb))
+* use flex for auto fill ([117e492](https://github.com/twreporter/twreporter-npm-packages/commit/117e4920a3cd8e522c4d75366f9333f561ab2e71))
+
+
+
+
+
+# [8.18.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.0...@twreporter/react-components@8.18.0-rc.1) (2023-05-23)
+
+
+### Features
+
+* change default value ([acfdd16](https://github.com/twreporter/twreporter-npm-packages/commit/acfdd169a63f08e6221747eb1754ae0d295ca675))
+* disable auto convert to datepicker ([7fb9726](https://github.com/twreporter/twreporter-npm-packages/commit/7fb9726f840bc7ec78f2fd76fd9295eec8fcbefa))
+* fix comment ([e2d4ffb](https://github.com/twreporter/twreporter-npm-packages/commit/e2d4ffbf543eed2461e5c380183b753070f0723b))
+* mobile member role card ([4cc37e6](https://github.com/twreporter/twreporter-npm-packages/commit/4cc37e6a0215ddcff781ee2fb408fe46ea9b19b0))
+* translateY ([33f0e48](https://github.com/twreporter/twreporter-npm-packages/commit/33f0e4882ed7d375e306b3e71c209ea49ce68902))
+* useEffect instead of useLayoutEffect ([4109ffc](https://github.com/twreporter/twreporter-npm-packages/commit/4109ffc551fed06f94d7f6586953147b25b65d8e))
+
+
+
+
+
+# [8.18.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.1...@twreporter/react-components@8.18.0-rc.0) (2023-05-22)
+
+
+### Bug Fixes
+
+* fontWeight => FontWeight ([faf0200](https://github.com/twreporter/twreporter-npm-packages/commit/faf0200fc47a5109da74640085a597f5edb1e02b))
+* typo ([f237e4a](https://github.com/twreporter/twreporter-npm-packages/commit/f237e4a93c688431e3a20748cc37297515197a72))
+
+
+### Features
+
+* add menu button ([b090d6b](https://github.com/twreporter/twreporter-npm-packages/commit/b090d6bceba69a72e7204e2e96c70e1ce34e975c))
+* add padding option ([9b6dadb](https://github.com/twreporter/twreporter-npm-packages/commit/9b6dadbdbf3dec5c970d8cf174308df27fbdb87a))
+* import path ([1dc85bd](https://github.com/twreporter/twreporter-npm-packages/commit/1dc85bd28929a6ea180be55c112873ba14238625))
+* move menu button to button ([d4acf07](https://github.com/twreporter/twreporter-npm-packages/commit/d4acf07831fd7ad0ab8b27df001407ceaec8d015))
+
+
+
+
+
 ## [8.17.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.17.1-rc.0...@twreporter/react-components@8.17.1) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/react-components
