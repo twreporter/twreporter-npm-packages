@@ -46,7 +46,7 @@ export default function user(state = initState, action) {
       const maillist = _.get(payload, 'data.data.maillist')
       state.readPreference = readPreference
       state.maillist = maillist
-      return _.merge({}, state, {
+      return {
         ...state,
         error: null,
         isFetching: false,
@@ -60,7 +60,7 @@ export default function user(state = initState, action) {
         activated,
         readPreference,
         maillist,
-      })
+      }
     }
 
     case types.user.read.failure: {
