@@ -5,7 +5,6 @@ import styled, { css } from 'styled-components'
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import predefinedProps from '../../constants/prop-types/aside'
 import typography from '../../constants/typography'
-import { idToPathSegment } from '../../constants/category'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
@@ -15,8 +14,6 @@ import {
   GET_SUBCATEGORY_PATH_FROM_ID,
 } from '@twreporter/core/lib/constants/category-set'
 import { LinkButton } from '@twreporter/react-components/lib/button'
-// feature toggle
-import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -49,25 +46,6 @@ const createLine = (topOrBottom, themeName) => {
     }
   `
 }
-
-const CategoryFlexBox = styled.div`
-  display: flex;
-`
-
-const CategoryFlex = styled.div`
-  ${props => createLine('top', props.theme.name)}
-  flex-grow: ${props => props.flexGrow};
-
-  ${mq.tabletAndBelow`
-    padding-right: 15px;
-    padding-left: 15px;
-  `}
-
-  ${mq.desktopAndAbove`
-    padding-right: 5px;
-    padding-left: 5px;
-  `}
-`
 
 const CategorySetFlexBox = styled.div`
   display: flex;
@@ -294,8 +272,8 @@ function getMetadataContainerStyles(themeName) {
   }
 }
 
-const CategorySet = props => {
-  const categorySetJSX = _.map(props.categorySet, (set, index) => {
+const CategorySet = ({ categorySet = [] }) => {
+  const categorySetJSX = _.map(categorySet, (set, index) => {
     const genLink = (path, name, isCategory = false) => {
       const link = { to: path, isExternal: false }
       const weight = isCategory
@@ -332,7 +310,6 @@ class Metadata extends PureComponent {
   static propTypes = predefinedProps.metadata
 
   static defaultProps = {
-    categories: [],
     categorySet: [],
     tags: [],
     writers: [],
@@ -340,42 +317,6 @@ class Metadata extends PureComponent {
     designers: [],
     engineers: [],
     rawAutherText: '',
-  }
-
-  renderCategorySection() {
-    const { categories } = this.props
-
-    _.sortBy(categories, ['sort_order'])
-
-    return (
-      <CategoryFlexBox>
-        <DynamicComponentsContext.Consumer>
-          {components => {
-            const numOfCats = _.get(categories, 'length', 0)
-            const categoriesJSX = _.map(categories, (cat, index) => {
-              // if only one category,
-              // then `flexGrow = 1`,
-              // which makes flex item fill the flex box.
-              const flexGrow = numOfCats === 1 ? 1 : index
-              return (
-                <CategoryFlex key={`category_${cat.id}`} flexGrow={flexGrow}>
-                  <components.Link
-                    to={`/categories/${idToPathSegment[cat.id]}`}
-                  >
-                    <CategoryText
-                      style={{ fontWeight: index === 0 ? 'bold' : 'normal' }}
-                    >
-                      {cat.name}
-                    </CategoryText>
-                  </components.Link>
-                </CategoryFlex>
-              )
-            })
-            return categoriesJSX
-          }}
-        </DynamicComponentsContext.Consumer>
-      </CategoryFlexBox>
-    )
   }
 
   renderTagsSection() {
@@ -459,8 +400,7 @@ class Metadata extends PureComponent {
 
     return (
       <MetadataContainer>
-        {ENABLE_NEW_INFO_ARCH && <CategorySet categorySet={categorySet} />}
-        {!ENABLE_NEW_INFO_ARCH && this.renderCategorySection()}
+        <CategorySet categorySet={categorySet} />
         <DateSection>{dateStr}</DateSection>
         {this.renderAuthorsSection()}
         {this.renderTagsSection()}

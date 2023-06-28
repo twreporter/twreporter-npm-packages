@@ -3,7 +3,6 @@
 import fieldNames from '../../constants/redux-state-field-names'
 import reducer from '../index-page'
 import types from '../../constants/action-types'
-import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import reduce from 'lodash/reduce'
 import snakeCase from 'lodash/snakeCase'
@@ -70,44 +69,26 @@ describe('index-page reducer', () => {
   })
 
   test('should handle `types.indexPage.read.success`', () => {
-    const categoryPayload = ENABLE_NEW_INFO_ARCH
-      ? {
-          [beFieldNames.categories.world]: [post1],
-          [beFieldNames.categories.humanrights]: [post2],
-          [beFieldNames.categories.politicsAndSociety]: [post3],
-          [beFieldNames.categories.health]: [post4],
-          [beFieldNames.categories.environment]: [],
-          [beFieldNames.categories.econ]: [],
-          [beFieldNames.categories.culture]: [],
-          [beFieldNames.categories.education]: [],
-        }
-      : {
-          [beFieldNames.categories.humanRightsAndSociety]: [post1],
-          [beFieldNames.categories.environmentAndEducation]: [post2],
-          [beFieldNames.categories.politicsAndEconomy]: [post3],
-          [beFieldNames.categories.cultureAndArt]: [post4],
-          [beFieldNames.categories.livingAndMedicalCare]: [],
-          [beFieldNames.categories.international]: [],
-        }
-    const categoryResponse = ENABLE_NEW_INFO_ARCH
-      ? {
-          [fieldNames.categories.world]: [post1.id],
-          [fieldNames.categories.humanrights]: [post2.id],
-          [fieldNames.categories.politicsAndSociety]: [post3.id],
-          [fieldNames.categories.health]: [post4.id],
-          [fieldNames.categories.environment]: [],
-          [fieldNames.categories.econ]: [],
-          [fieldNames.categories.culture]: [],
-          [fieldNames.categories.education]: [],
-        }
-      : {
-          [fieldNames.categories.humanRightsAndSociety]: [post1.id],
-          [fieldNames.categories.environmentAndEducation]: [post2.id],
-          [fieldNames.categories.politicsAndEconomy]: [post3.id],
-          [fieldNames.categories.cultureAndArt]: [post4.id],
-          [fieldNames.categories.livingAndMedicalCare]: [],
-          [fieldNames.categories.international]: [],
-        }
+    const categoryPayload = {
+      [beFieldNames.categories.world]: [post1],
+      [beFieldNames.categories.humanrights]: [post2],
+      [beFieldNames.categories.politicsAndSociety]: [post3],
+      [beFieldNames.categories.health]: [post4],
+      [beFieldNames.categories.environment]: [],
+      [beFieldNames.categories.econ]: [],
+      [beFieldNames.categories.culture]: [],
+      [beFieldNames.categories.education]: [],
+    }
+    const categoryResponse = {
+      [fieldNames.categories.world]: [post1.id],
+      [fieldNames.categories.humanrights]: [post2.id],
+      [fieldNames.categories.politicsAndSociety]: [post3.id],
+      [fieldNames.categories.health]: [post4.id],
+      [fieldNames.categories.environment]: [],
+      [fieldNames.categories.econ]: [],
+      [fieldNames.categories.culture]: [],
+      [fieldNames.categories.education]: [],
+    }
     expect(
       reducer(
         {
