@@ -4,8 +4,10 @@ import HeaderContext from '../contexts/header-context'
 // constant
 import { ACTION_ORDER } from '../constants/actions'
 import { CONTEXT_PROP } from '../constants/prop-types'
-// component
-import Header from '../components/header'
+// feature toggle
+import HeaderNew from '../components/header'
+import HeaderOld from '../components/header-old'
+import { MEMBERSHIP } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -15,6 +17,8 @@ const _ = {
   map,
   reduce,
 }
+
+const Header = MEMBERSHIP ? HeaderNew : HeaderOld
 
 const HIDE_HEADER_THRESHOLD = 8
 const TRANSFORM_HEADER_THRESHOLD = 40
