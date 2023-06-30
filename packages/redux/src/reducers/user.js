@@ -44,8 +44,6 @@ export default function user(state = initState, action) {
       const activated = _.get(payload, 'data.data.activated')
       const readPreference = _.get(payload, 'data.data.read_preference')
       const maillist = _.get(payload, 'data.data.maillist')
-      state.readPreference = readPreference
-      state.maillist = maillist
       return {
         ...state,
         error: null,
@@ -82,8 +80,6 @@ export default function user(state = initState, action) {
     case types.user.update.success: {
       const readPreference = _.get(payload, 'data.record.read_preference', [])
       const maillist = _.get(payload, 'data.record.maillist', [])
-      state.readPreference = readPreference
-      state.maillist = maillist
       return {
         ...state,
         error: null,
