@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.6.1-rc.0...@twreporter/redux@7.7.0-rc.0) (2023-07-03)
+
+
+### Bug Fixes
+
+* remove unused code ([8f5f72c](https://github.com/twreporter/twreporter-npm-packages/commit/8f5f72c6e48a478b9cc8bbbf458aab51fa94c7b8))
+
+
+### Features
+
+* add test for getUserData ([f6e8854](https://github.com/twreporter/twreporter-npm-packages/commit/f6e8854b953d49217b2785c1dd2d7195fb0e1ef8))
+* getUserData from api ([bff225b](https://github.com/twreporter/twreporter-npm-packages/commit/bff225bfeb16460b35851ca47712cd488e059414))
+
+
+
+
+
 ## [7.6.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.6.0...@twreporter/redux@7.6.1-rc.0) (2023-06-28)
 
 **Note:** Version bump only for package @twreporter/redux

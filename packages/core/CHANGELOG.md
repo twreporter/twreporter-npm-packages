@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.1-rc.0...@twreporter/core@1.11.0-rc.0) (2023-07-03)
+
+
+### Features
+
+* remove MEMBER_ROLE_ZH_TW ([3586031](https://github.com/twreporter/twreporter-npm-packages/commit/3586031ef0e9c8959be8ec763530b9fca8a9f69e))
+
+
+
+
+
 ## [1.10.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0...@twreporter/core@1.10.1-rc.0) (2023-06-28)
 
 **Note:** Version bump only for package @twreporter/core
