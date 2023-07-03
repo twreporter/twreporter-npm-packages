@@ -70,49 +70,45 @@ function buildSuccessActionFromRes(axiosResponse, actionType) {
  * @param {number} userID - id of user
  * @return {Function} - function will be executed in Redux Thunk middleware
  */
-// TODO: wait till api ready
 export function getUserData(jwt, userID) {
   /**
    * @param {Function} dispatch - Redux store dispatch function
    * @param {Function} getState - Redux store getState function
    * @return {Promise} resolve with success action or reject with fail action
    */
-  // return function(dispatch, getState) {
-  //   const state = getState()
-  //   const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-  //   const url = formURL(
-  //     apiOrigin,
-  //     `/v2/${apiEndpoints.users}/${userID}`,
-  //   )
-  //   dispatch({
-  //     type: types.user.read.request,
-  //     url
-  //   })
-  //   const axiosConfig = {
-  //     timeout: apiTimeout,
-  //     headers: {
-  //       Authorization: `Bearer ${jwt}`,
-  //     },
-  //   }
-  //   return axios
-  //     .get(url, axiosConfig)
-  //     .then(res => {
-  //       const successAction = buildSuccessActionFromRes(
-  //         res,
-  //         types.user.read.success
-  //       )
-  //       dispatch(successAction)
-  //       return successAction
-  //     })
-  //     .catch(error => {
-  //       const failAction = failActionCreators.axios(
-  //         error,
-  //         types.user.read.failure
-  //       )
-  //       dispatch(failAction)
-  //       return Promise.reject(failAction)
-  //     })
-  // }
+  return function(dispatch, getState) {
+    const state = getState()
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const url = formURL(apiOrigin, `/v2/${apiEndpoints.users}/${userID}`)
+    dispatch({
+      type: types.user.read.request,
+      url,
+    })
+    const axiosConfig = {
+      timeout: apiTimeout,
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    }
+    return axios
+      .get(url, axiosConfig)
+      .then(res => {
+        const successAction = buildSuccessActionFromRes(
+          res,
+          types.user.read.success
+        )
+        dispatch(successAction)
+        return successAction
+      })
+      .catch(error => {
+        const failAction = failActionCreators.axios(
+          error,
+          types.user.read.failure
+        )
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      })
+  }
 }
 
 /**
