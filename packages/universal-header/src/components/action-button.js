@@ -7,13 +7,17 @@ import {
   BUTTON_WIDTH_TYPE,
   BUTTON_SIZE_TYPE,
 } from '../constants/action-item-types'
-// component
-import ActionButton from './action-button-item'
+// feature toggle
+import ActionButtonNew from './action-button-item'
+import ActionButtonOld from './action-button-item-old'
+import { MEMBERSHIP } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import map from 'lodash/map'
 const _ = {
   map,
 }
+
+const ActionButton = MEMBERSHIP ? ActionButtonNew : ActionButtonOld
 
 const getActionProps = type => _.map(ACTION_ORDER[type], key => ({ key }))
 
