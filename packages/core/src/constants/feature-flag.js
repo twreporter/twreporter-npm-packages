@@ -1,1 +1,1 @@
-export const MEMBERSHIP = false
+export const MEMBERSHIP = true
