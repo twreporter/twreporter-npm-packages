@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.0...@twreporter/core@1.11.0-rc.1) (2023-07-04)
+
+
+### Features
+
+* add MEMBERSHIP feature flag ([fb25ecb](https://github.com/twreporter/twreporter-npm-packages/commit/fb25ecb3b6113dee66f2e311bd93c995c772a3c7))
+
+
+
+
+
 # [1.11.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.1-rc.0...@twreporter/core@1.11.0-rc.0) (2023-07-03)
 
 
