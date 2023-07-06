@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.1...@twreporter/universal-header@2.7.0-rc.2) (2023-07-06)
+
+
+### Bug Fixes
+
+* signin path typo ([a72142e](https://github.com/twreporter/twreporter-npm-packages/commit/a72142e4a6c2cb132c1b61fd710f4c7bee092371))
+
+
+
+
+
 # [2.7.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.0...@twreporter/universal-header@2.7.0-rc.1) (2023-07-04)
 
 **Note:** Version bump only for package @twreporter/universal-header
