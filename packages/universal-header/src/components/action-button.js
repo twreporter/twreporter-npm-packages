@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // constant
 import { ACTION_ORDER } from '../constants/actions'
 import {
@@ -7,6 +7,8 @@ import {
   BUTTON_WIDTH_TYPE,
   BUTTON_SIZE_TYPE,
 } from '../constants/action-item-types'
+// context
+import { HamburgerContext } from '../contexts/header-context'
 // feature toggle
 import ActionButtonNew from './action-button-item'
 import ActionButtonOld from './action-button-item-old'
@@ -32,6 +34,7 @@ export const MobileHeaderAction = ({ ...props }) => {
 }
 
 export const DesktopHamburgerAction = ({ ...props }) => {
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   const actionProps = getActionProps('hamburger')
   return (
     <ActionButton
@@ -41,12 +44,14 @@ export const DesktopHamburgerAction = ({ ...props }) => {
       buttonWidth={BUTTON_WIDTH_TYPE.stretch}
       buttonSize={BUTTON_SIZE_TYPE.L}
       isForHambuger={true}
+      callback={closeHamburgerMenu}
       {...props}
     />
   )
 }
 
 export const MobileHamburgerAction = ({ ...props }) => {
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   const actionProps = getActionProps('hamburger')
   return (
     <ActionButton
@@ -55,6 +60,7 @@ export const MobileHamburgerAction = ({ ...props }) => {
       buttonWidth={BUTTON_WIDTH_TYPE.stretch}
       buttonSize={BUTTON_SIZE_TYPE.L}
       isForHambuger={true}
+      callback={closeHamburgerMenu}
       {...props}
     />
   )

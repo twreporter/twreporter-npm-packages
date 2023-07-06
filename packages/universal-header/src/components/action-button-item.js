@@ -139,6 +139,7 @@ const ActionButton = ({
           buttonSize={buttonSize}
           key={action.key}
           isForHambuger={isForHambuger}
+          callback={callback}
         />
       )
     })}
