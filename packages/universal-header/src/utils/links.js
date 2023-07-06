@@ -92,7 +92,7 @@ export function getLink(
 
 export function getLoginLink(releaseBranch = defaultReleaseBranch) {
   return {
-    to: accountsBaseURL[releaseBranch] + '/login',
+    to: accountsBaseURL[releaseBranch] + '/signin',
     isExternal: true,
   }
 }
