@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.2...@twreporter/redux@7.7.0-rc.3) (2023-07-14)
+
+
+### Bug Fixes
+
+* **redux:** `politics-and-society` category not shown on index page ([d37560d](https://github.com/twreporter/twreporter-npm-packages/commit/d37560d614a64ee485007517bfbb48d6fcefc53b))
+
+
+
+
+
 # [7.7.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.1...@twreporter/redux@7.7.0-rc.2) (2023-07-04)
 
 **Note:** Version bump only for package @twreporter/redux
