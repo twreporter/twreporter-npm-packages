@@ -7,12 +7,14 @@ import concat from 'lodash/concat'
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import values from 'lodash/values'
+import snakeCase from 'lodash/snakeCase'
 
 const _ = {
   concat,
   forEach,
   get,
   values,
+  snakeCase,
 }
 
 const defaultState = {
@@ -90,11 +92,12 @@ function entities(state = defaultState, action = {}) {
       let posts = []
       let topics = []
       _.forEach(fieldKeys, fieldKey => {
-        const entities = _.get(action, ['payload', 'items', fieldKey])
+        const key = _.snakeCase(fieldKey)
+        const entities = _.get(action, ['payload', 'items', key])
         if (Array.isArray(entities)) {
           if (
-            fieldKey !== fieldNames.sections.latestTopicSection &&
-            fieldKey !== fieldNames.sections.topicsSection
+            key !== fieldNames.sections.latestTopicSection &&
+            key !== fieldNames.sections.topicsSection
           ) {
             posts = _.concat(posts, entities)
           } else {
