@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.18.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.4...@twreporter/react-components@8.18.1-rc.5) (2023-07-27)
+
+
+### Bug Fixes
+
+* **react-components:** wrong url path for interactive posts ([ac4d132](https://github.com/twreporter/twreporter-npm-packages/commit/ac4d132d658037a7fc16c1eacecd7b50cce7d548))
+
+
+
+
+
 ## [8.18.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.3...@twreporter/react-components@8.18.1-rc.4) (2023-07-14)
 
 **Note:** Version bump only for package @twreporter/react-components
