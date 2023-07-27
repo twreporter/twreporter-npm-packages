@@ -71,7 +71,7 @@ class List extends PureComponent {
     _.forEach(data, item => {
       const style = _.get(item, 'style')
       const slug = _.get(item, 'slug')
-      const isInteractiveArticle = style === ARTICLE_THEME.interactive
+      const isInteractiveArticle = style === ARTICLE_THEME.v2.interactive
       const to = `${
         isInteractiveArticle
           ? entityPaths.interactiveArticle
