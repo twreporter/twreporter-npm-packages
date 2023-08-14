@@ -9,7 +9,6 @@ import color from './constants/color'
 // @twreporter
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
-import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
 import origins from '@twreporter/core/lib/constants/request-origins'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
@@ -92,8 +91,8 @@ function getItemGroups(mainOrigin) {
       {
         slug: 'subcribe',
         text: '訂閱電子報',
-        link: externalLinks.newsLetter,
-        target: '_blank',
+        link: `${mainOrigin}${entityPaths.account}/email-subscription`,
+        target: '_self',
       },
       {
         slug: 'podcast-list',
@@ -112,7 +111,6 @@ function getItemGroups(mainOrigin) {
         text: '品牌設計規範',
         link: 'https://twreporter.gitbook.io/the-reporter-brand-guidelines',
         target: '_blank',
-        newFlag: true,
       },
     ],
   ]
