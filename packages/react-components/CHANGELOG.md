@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.18.1-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.6...@twreporter/react-components@8.18.1-rc.7) (2023-08-14)
+
+
+### Bug Fixes
+
+* remove unused code ([05a9110](https://github.com/twreporter/twreporter-npm-packages/commit/05a9110cb7775b17c5cdade6f0ef7a3b437f3957))
+
+
+
+
+
 ## [8.18.1-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.5...@twreporter/react-components@8.18.1-rc.6) (2023-08-11)
 
 **Note:** Version bump only for package @twreporter/react-components

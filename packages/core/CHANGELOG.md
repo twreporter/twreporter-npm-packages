@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.3...@twreporter/core@1.11.0-rc.4) (2023-08-14)
+
+
+### Bug Fixes
+
+* remove unused code ([05a9110](https://github.com/twreporter/twreporter-npm-packages/commit/05a9110cb7775b17c5cdade6f0ef7a3b437f3957))
+
+
+
+
+
 # [1.11.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.2...@twreporter/core@1.11.0-rc.3) (2023-08-11)
 
 **Note:** Version bump only for package @twreporter/core
