@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import CSSTransition from 'react-transition-group/CSSTransition'
 // context
@@ -28,14 +28,15 @@ import {
   DesktopAndAbove,
   TabletAndBelow,
 } from '@twreporter/react-components/lib/rwd'
+import EntityPath from '@twreporter/core/lib/constants/entity-path'
 // lodash
-import split from 'lodash/split'
 import some from 'lodash/some'
 import includes from 'lodash/includes'
+import throttle from 'lodash/throttle'
 const _ = {
-  split,
   some,
   includes,
+  throttle,
 }
 
 const narrowHeaderHeight = 65
@@ -262,17 +263,30 @@ const Header = () => {
     closeHamburgerMenu: closeHamburger,
     isHamburgerMenuOpen: showHamburger,
   }
-  const isOnArticlePage = _.split(pathname, '/')[1] === 'a'
+  const isOnArticlePage = _.includes(pathname, EntityPath.article)
   const needPrevIconAccountRoute = [
-    '/account/donation-history',
-    '/account/email-subscription',
+    `${EntityPath.account}/donation-history`,
+    `${EntityPath.account}/email-subscription`,
   ]
-  const isOnNeedPrevIconAcoountPage = _.some(needPrevIconAccountRoute, el =>
+  const isOnNeedPrevIconAccountPage = _.some(needPrevIconAccountRoute, el =>
     _.includes(pathname, el)
   )
+
+  const [currentClientWidth, setCurrentClientWidth] = useState(0)
+  useEffect(() => {
+    const handleResize = _.throttle(() => {
+      setCurrentClientWidth(document.body.clientWidth)
+    })
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   const showPrevIcon =
-    isOnArticlePage ||
-    (isOnNeedPrevIconAcoountPage && document.body.clientWidth < 768)
+    isOnArticlePage || (isOnNeedPrevIconAccountPage && currentClientWidth < 768) // only show it on mobile
   const BackToPrevIcon = (
     <Arrow direction="left" releaseBranch={releaseBranch} />
   )
