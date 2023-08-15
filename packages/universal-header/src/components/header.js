@@ -30,8 +30,12 @@ import {
 } from '@twreporter/react-components/lib/rwd'
 // lodash
 import split from 'lodash/split'
+import some from 'lodash/some'
+import includes from 'lodash/includes'
 const _ = {
   split,
+  some,
+  includes,
 }
 
 const narrowHeaderHeight = 65
@@ -227,8 +231,8 @@ const TabBarContainer = styled.div`
 const HideOnArticle = styled.div`
   ${props => (props.isOnArticlePage ? 'display: none;' : '')}
 `
-const ShowOnArticle = styled.div`
-  ${props => (props.isOnArticlePage ? '' : 'display: none;')}
+const PrevButton = styled.div`
+  ${props => (props.isShow ? '' : 'display: none;')}
   margin-right: 16px;
 `
 
@@ -259,6 +263,16 @@ const Header = () => {
     isHamburgerMenuOpen: showHamburger,
   }
   const isOnArticlePage = _.split(pathname, '/')[1] === 'a'
+  const needPrevIconAccountRoute = [
+    '/account/donation-history',
+    '/account/email-subscription',
+  ]
+  const isOnNeedPrevIconAcoountPage = _.some(needPrevIconAccountRoute, el =>
+    _.includes(pathname, el)
+  )
+  const showPrevIcon =
+    isOnArticlePage ||
+    (isOnNeedPrevIconAcoountPage && document.body.clientWidth < 768)
   const BackToPrevIcon = (
     <Arrow direction="left" releaseBranch={releaseBranch} />
   )
@@ -317,13 +331,13 @@ const Header = () => {
     <HeaderSection>
       <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
         <FlexGroup>
-          <ShowOnArticle isOnArticlePage={isOnArticlePage}>
+          <PrevButton isShow={showPrevIcon}>
             <IconButton
               iconComponent={BackToPrevIcon}
               theme={theme}
               onClick={gotoPrev}
             />
-          </ShowOnArticle>
+          </PrevButton>
           <MobileLogoContainer>
             <Link {...logoLink}>
               <LogoHeader type={logoType} releaseBranch={releaseBranch} />
