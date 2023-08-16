@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.18.1-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.7...@twreporter/react-components@8.18.1-rc.8) (2023-08-16)
+
+
+### Bug Fixes
+
+* wrap member role card text when overflow ([7d3549d](https://github.com/twreporter/twreporter-npm-packages/commit/7d3549d6ec4925f0cefcd80832fbcdb76895ada3))
+
+
+
+
+
 ## [8.18.1-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.6...@twreporter/react-components@8.18.1-rc.7) (2023-08-14)
 
 
