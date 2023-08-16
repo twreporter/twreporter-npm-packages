@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.18.1-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.8...@twreporter/react-components@8.18.1-rc.9) (2023-08-16)
+
+
+### Bug Fixes
+
+* text align center ([f58c887](https://github.com/twreporter/twreporter-npm-packages/commit/f58c887e2cff2b21a2089c9d72b97f78b13d6553))
+
+
+
+
+
 ## [8.18.1-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.7...@twreporter/react-components@8.18.1-rc.8) (2023-08-16)
 
 
