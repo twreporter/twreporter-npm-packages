@@ -58,6 +58,7 @@ const RelativeDiv = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
 `
 
 const FlexContainer = styled.div`
@@ -89,10 +90,11 @@ const DataContainer = styled.div``
 const TextContainer = styled.div`
   color: ${props => props.color};
   padding-bottom: ${props => props.paddingBottom || 0}px;
+  overflow-wrap: anywhere;
 `
 
 const TitleImg = styled.img`
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   height: 100%;
