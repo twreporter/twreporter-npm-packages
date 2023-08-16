@@ -59,6 +59,7 @@ const RelativeDiv = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  justify-content: space-between;
 `
 
 const FlexContainer = styled.div`
