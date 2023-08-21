@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.18.1-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.9...@twreporter/react-components@8.18.1-rc.10) (2023-08-21)
+
+
+### Bug Fixes
+
+* member role card layout ([a345231](https://github.com/twreporter/twreporter-npm-packages/commit/a345231a42f5fd3a867c231d944a56c02a250a8f))
+
+
+
+
+
 ## [8.18.1-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.8...@twreporter/react-components@8.18.1-rc.9) (2023-08-16)
 
 
