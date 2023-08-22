@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import HeaderContext from '../contexts/header-context'
 // constant
-import { ACTION_ORDER } from '../constants/actions'
 import { CONTEXT_PROP } from '../constants/prop-types'
 // feature toggle
 import HeaderNew from '../components/header'
@@ -10,12 +9,8 @@ import HeaderOld from '../components/header-old'
 import { MEMBERSHIP } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import get from 'lodash/get'
-import map from 'lodash/map'
-import reduce from 'lodash/reduce'
 const _ = {
   get,
-  map,
-  reduce,
 }
 
 const Header = MEMBERSHIP ? HeaderNew : HeaderOld
@@ -132,17 +127,6 @@ class Container extends React.PureComponent {
     return scrollState
   }
 
-  __prepareActionProps() {
-    return _.reduce(
-      ACTION_ORDER,
-      (res, value, key) => {
-        res[key] = _.map(value, itemKey => ({ key: itemKey }))
-        return res
-      },
-      {}
-    )
-  }
-
   render() {
     const {
       releaseBranch,
@@ -151,7 +135,7 @@ class Container extends React.PureComponent {
       theme,
       pathname,
       referrerPath,
-      ...passThrough
+      hamburgerContext,
     } = this.props
     const { toUseNarrow, hideHeader } = this.state
     const contextValue = {
@@ -165,16 +149,9 @@ class Container extends React.PureComponent {
       hideHeader,
     }
 
-    const actionProps = this.__prepareActionProps()
-
     return (
       <HeaderContext.Provider value={contextValue}>
-        <Header
-          actions={actionProps.desktop}
-          mobileActions={actionProps.mobile}
-          hbActions={actionProps.hamburger}
-          {...passThrough}
-        />
+        <Header hamburgerContext={hamburgerContext} />
       </HeaderContext.Provider>
     )
   }

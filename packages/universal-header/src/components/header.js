@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 import CSSTransition from 'react-transition-group/CSSTransition'
 // context
@@ -237,7 +238,7 @@ const PrevButton = styled.div`
   margin-right: 16px;
 `
 
-const Header = () => {
+const Header = ({ hamburgerContext = {} }) => {
   const {
     releaseBranch,
     isLinkExternal,
@@ -247,7 +248,11 @@ const Header = () => {
     pathname,
     referrerPath,
   } = useContext(HeaderContext)
-  const [showHamburger, setShowHamburger] = useState(false)
+  const [defaultShowHamburger, setDefaultShowHamburger] = useState(false)
+  let showHamburger = hamburgerContext?.showHamburger || defaultShowHamburger
+  let setShowHamburger =
+    hamburgerContext?.setShowHamburger || setDefaultShowHamburger
+
   const logoLink = getLogoLink(isLinkExternal, releaseBranch)
   const logoType = selectLogoType(theme)
   const HamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
@@ -263,6 +268,10 @@ const Header = () => {
     closeHamburgerMenu: closeHamburger,
     isHamburgerMenuOpen: showHamburger,
   }
+  useEffect(() => {
+    closeHamburger()
+  }, [pathname])
+
   const isOnArticlePage = _.includes(pathname, EntityPath.article)
   const needPrevIconAccountRoute = [
     `${EntityPath.account}/donation-history`,
@@ -271,7 +280,6 @@ const Header = () => {
   const isOnNeedPrevIconAccountPage = _.some(needPrevIconAccountRoute, el =>
     _.includes(pathname, el)
   )
-
   const [currentClientWidth, setCurrentClientWidth] = useState(0)
   useEffect(() => {
     const handleResize = _.throttle(() => {
@@ -398,6 +406,9 @@ const Header = () => {
       </TabletAndBelow>
     </HamburgerContext.Provider>
   )
+}
+Header.propTypes = {
+  hamburgerContext: PropTypes.object,
 }
 
 export default Header
