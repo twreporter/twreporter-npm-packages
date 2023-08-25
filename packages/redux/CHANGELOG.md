@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.5...@twreporter/redux@7.7.0-rc.6) (2023-08-25)
+
+
+### Bug Fixes
+
+* add `onboarding` action ([df87bb1](https://github.com/twreporter/twreporter-npm-packages/commit/df87bb1b35f2e66b4cdb3185002c20b207aaede9))
+
+
+
+
+
 # [7.7.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.4...@twreporter/redux@7.7.0-rc.5) (2023-08-14)
 
 **Note:** Version bump only for package @twreporter/redux
