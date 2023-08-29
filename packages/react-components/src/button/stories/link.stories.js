@@ -47,3 +47,11 @@ changeTextComponent.args = {
 changeTextComponent.parameters = {
   controls: { exclude: ['TextComponent'] },
 }
+
+export const disabledLink = Template.bind({ disabled: true })
+disabledLink.args = {
+  text: '文字',
+  type: Link.Type.DEFAULT,
+  link: { to: 'https://www.twreporter.org' },
+}
+disabledLink.parameters = { controls: { exclude: ['textComponent'] } }

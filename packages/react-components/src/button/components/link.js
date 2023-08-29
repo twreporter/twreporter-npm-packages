@@ -33,6 +33,8 @@ const LinkContainer = styled(Link)`
   &:hover {
     text-decoration-line: underline;
   }
+
+  ${props => props.disabled ?? 'opacity: 0.5;'}
 `
 
 const LinkButton = ({
