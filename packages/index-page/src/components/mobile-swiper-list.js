@@ -44,7 +44,10 @@ const MobileSwiperList = ({ children }) => {
 }
 
 MobileSwiperList.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.oneOf([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element,
+  ]),
 }
 
 export default MobileSwiperList
