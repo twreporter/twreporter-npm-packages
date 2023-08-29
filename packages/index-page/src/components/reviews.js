@@ -9,12 +9,11 @@ import { breakPoints, truncate } from '../utils/style-utils'
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import MobileListUtils from './common-utils/mobile-list'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
 import Section from './common-utils/section'
 import TRLink from './common-utils/twreporter-link'
+import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
@@ -39,7 +38,6 @@ const mockup = {
 
 const desktopMinWidth = breakPoints.desktopMinWidth
 const tabletMinWidth = breakPoints.tabletMinWidth
-const maxSwipableItems = 3
 const moreText = '更多評論文章'
 
 const Container = styled(Section)`
@@ -189,14 +187,7 @@ class Reviews extends React.PureComponent {
           <span>{sectionStrings.review}</span>
         </SectionName>
         <FlexBox>{ReviewsItem}</FlexBox>
-        <MobileListUtils>
-          <MobileFlexSwipeable.SwipableFlexItems
-            alignItems={'flex-start'}
-            maxSwipableItems={maxSwipableItems}
-          >
-            {ReviewsItem}
-          </MobileFlexSwipeable.SwipableFlexItems>
-        </MobileListUtils>
+        <MobileSwiperList>{ReviewsItem}</MobileSwiperList>
         <More>
           <BottomLink text={moreText} path={moreURI} />
         </More>
