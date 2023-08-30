@@ -30,11 +30,17 @@ const LinkContainer = styled(Link)`
   text-decoration-line: ${props => style.decoration[props.type]};
   color: ${props => style.color[props.type]};
 
-  &:hover {
-    text-decoration-line: underline;
-  }
-
-  ${props => props.disabled ?? 'opacity: 0.5;'}
+  ${props =>
+    props.disabled
+      ? `
+    opacity: 0.5;
+    cursor: auto;
+  `
+      : `
+    &:hover {
+      text-decoration-line: underline;
+    }
+  `}
 `
 
 const LinkButton = ({
@@ -43,8 +49,10 @@ const LinkButton = ({
   text = '',
   weight = P1.Weight.NORMAL,
   TextComponent = null,
+  disabled = false,
   ...props
 }) => {
+  console.log('disabled', disabled)
   const textJSX = TextComponent ? (
     <TextComponent text={text} weight={weight} />
   ) : (
@@ -52,7 +60,7 @@ const LinkButton = ({
   )
 
   return (
-    <LinkContainer type={type} {...link} {...props}>
+    <LinkContainer type={type} disabled={disabled} {...link} {...props}>
       {textJSX}
     </LinkContainer>
   )
@@ -63,6 +71,7 @@ LinkButton.propTypes = {
   text: PropTypes.string.isRequired,
   weight: P1.propTypes.weight,
   TextComponent: PropTypes.elementType,
+  disabled: PropTypes.bool,
 }
 LinkButton.Type = LinkType
 LinkButton.Weight = P1.Weight
