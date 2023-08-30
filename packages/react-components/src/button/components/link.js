@@ -52,7 +52,6 @@ const LinkButton = ({
   disabled = false,
   ...props
 }) => {
-  console.log('disabled', disabled)
   const textJSX = TextComponent ? (
     <TextComponent text={text} weight={weight} />
   ) : (
