@@ -1,116 +1,60 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import CSSTransition from 'react-transition-group/CSSTransition'
+import React, { useContext, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import HeaderContext from '../contexts/header-context'
-import linkUtils from '../utils/links-old'
-import themeUtils from '../utils/theme-old'
-import animationUtils from '../utils/animations'
-import Channels from './channels-old'
-import ActionButton from './action-button-old'
-import Icons from './icons-old'
-import Link from './customized-link'
-import Slogan from './slogan-old'
+import CSSTransition from 'react-transition-group/CSSTransition'
+// context
+import HeaderContext, { HamburgerContext } from '../contexts/header-context'
+// utils
+import { getLogoLink, checkReferrer } from '../utils/links'
+import { selectLogoType, selectHeaderTheme } from '../utils/theme'
+// constants
+import themeConst from '../constants/theme'
+import { MENU_WIDTH } from '../constants/hamburger-menu'
+// components
+import Channel from './channels'
+import { DesktopHeaderAction, MobileHeaderAction } from './action-button'
+import Icons, { MobileIcons } from './icons-old'
+import Slogan from './slogan'
+import HamburgerMenu from './hamburger-menu-old'
+import TabBar from './tab-bar'
 // @twreporter
+import Link from '@twreporter/react-components/lib/customized-link'
 import mq from '@twreporter/core/lib/utils/media-query'
-import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
+import Divider from '@twreporter/react-components/lib/divider'
 import { LogoHeader } from '@twreporter/react-components/lib/logo'
-
-const CHANNEL_HEIGHT = 36 // px
-
-const styles = {
-  headerHeight: {
-    wide: 83, // px
-    narrow: 46, // px
-  },
-  topRowPadding: {
-    desktop: [0, 60], // px
-  },
-  topRowMaxWidth: {
-    desktop: 1024,
-    hd: 1440, // px
-  },
-  channelMaxWidth: {
-    hd: 1320, // px
-  },
-  channelTopBorderWidth: [0, 1, 1, 0], // px
-  channelBottomBorderWidth: [1, 0, 1, 0], // px
-  iconBorderWidth: {
-    wide: [0, 0, 0, 0], // px
-    narrow: [0, 0, 1, 0], // px
-  },
-  zIndex: {
-    flexGroup: 3,
-    channelBottom: 1,
-    channelTop: {
-      wide: 2,
-      narrow: 4,
-    },
-  },
+import { IconButton } from '@twreporter/react-components/lib/button'
+import { Hamburger, Arrow } from '@twreporter/react-components/lib/icon'
+import { useOutsideClick } from '@twreporter/react-components/lib/hook'
+import {
+  DesktopAndAbove,
+  TabletAndBelow,
+} from '@twreporter/react-components/lib/rwd'
+// lodash
+import split from 'lodash/split'
+const _ = {
+  split,
 }
 
-const headerWide = animationUtils.changeHeight(
-  `${styles.headerHeight.narrow}px`,
-  `${styles.headerHeight.wide}px`
-)
-const headerNarrow = animationUtils.changeHeight(
-  `${styles.headerHeight.wide}px`,
-  `${styles.headerHeight.narrow}px`
-)
-const HeaderEffect = css`
-  .header-effect-enter {
-    height: ${styles.headerHeight.narrow}px;
-  }
-  .header-effect-enter-active {
-    animation: ${headerWide} 0.2s linear;
-    animation-delay: 300ms;
-  }
-  .header-effect-exit-active {
-    animation: ${headerNarrow} 0.2s linear;
-    animation-delay: 300ms;
-  }
-  .header-effect-exit-done {
-    height: ${styles.headerHeight.narrow}px;
-  }
-`
-
-const ActionEffect = css`
-  .action-effect-enter {
-    transform: translateX(-40px);
-  }
-  .action-effect-enter-active {
-    animation: ${animationUtils.changeTranslateX('-40px', 0)} 0.2s;
-    animation-delay: 300ms;
-  }
-  .action-effect-exit-active {
-    animation: ${animationUtils.changeTranslateX(0, '-40px')} 0.2s;
-    animation-delay: 300ms;
-  }
-  .action-effect-exit-done {
-    transform: translateX(-40px);
-  }
-`
-
-const SloganEffect = css`
-  .slogan-effect-enter {
-    opacity: 0;
-  }
-  .slogagn-effect-enter-active {
-    animation: ${animationUtils.changeOpacity('0', '1')} 0.2s;
-    animation-delay: 300ms;
-  }
-  .slogan-effect-exit-active {
-    animation: ${animationUtils.changeOpacity('1', '0')} 0.2s;
-    animation-delay: 300ms;
-  }
-  .slogan-effect-exit-done {
-    opacity: 0;
-  }
-`
+const narrowHeaderHeight = 65
+const channelHeight = 50
+const animation = {
+  step1Duration: '200ms',
+  step2Delay: '150ms',
+  step2Duration: '50ms',
+  step3Delay: '150ms',
+  step3Duration: '200ms',
+}
+const zIndex = {
+  tabBarMobile: 10,
+  tabBarTablet: 3,
+  hamburger: 4,
+  header: 3,
+  topRow: 2,
+  channel: 1,
+}
 
 const channelSlideIn = keyframes`
   from {
-    transform: translateY(${-CHANNEL_HEIGHT}px);
+    transform: translateY(${-channelHeight}px);
     opacity: 0;
   }
   to {
@@ -118,266 +62,314 @@ const channelSlideIn = keyframes`
     opacity: 1;
   }
 `
-
 const channelSlideOut = keyframes`
   from {
     transform: translateY(0);
   }
   to {
-    transform: translateY(${-CHANNEL_HEIGHT}px);
+    transform: translateY(${-channelHeight}px);
   }
 `
-
 const ChannelEffect = css`
   .channel-effect-enter {
     opacity: 0;
   }
   .channel-effect-enter-active {
-    animation: ${channelSlideIn} 0.2s linear;
-    animation-delay: 400ms;
+    animation: ${channelSlideIn} ${animation.step1Duration} linear;
+    animation-delay: 150ms;
   }
   .channel-effect-exit-active {
-    animation: ${channelSlideOut} 0.1s linear;
-    animation-delay: 100ms;
+    animation: ${channelSlideOut} ${animation.step1Duration} linear;
+    animation-delay: 0ms;
   }
 `
-
-const LogoEffect = css`
-  .logo-effect-enter {
-    img {
-      width: 80%;
-    }
-  }
-  .logo-effect-enter-active {
-    img {
-      animation: ${animationUtils.changeWidth('80%', '100%')} 0.2s linear;
-      animation-delay: 300ms;
-    }
-  }
-  .logo-effect-exit-active {
-    img {
-      animation: ${animationUtils.changeWidth('100%', '80%')} 0.2s linear;
-      animation-delay: 300ms;
-    }
-  }
-  .logo-effect-exit-done {
-    img {
-      width: 80%;
-    }
-  }
-`
-
-const Box = styled.div`
-  transform: translateY(
-    ${props => (props.isHide ? `${-styles.headerHeight.narrow}px` : 0)}
-  );
-  transition: transform 0.3s linear;
+const HeaderContainer = styled.div`
+  position: ${props =>
+    props.theme === themeConst.transparent ? 'fixed' : 'sticky'};
+  top: 0;
+  width: 100%;
   background-color: ${props => props.bgColor};
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  a:link,
-  a:visited,
-  a:hover,
-  a:active {
-    text-decoration: none;
-  }
-  ${HeaderEffect}
-`
-
-const TopRow = styled.div`
-  height: ${styles.headerHeight.wide}px;
-  padding: ${arrayToCssShorthand(styles.topRowPadding.desktop)};
-  max-width: ${styles.topRowMaxWidth.hd}px;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const ChannelContainer = styled.div`
-  width: calc(100% - 120px);
-  max-width: ${styles.channelMaxWidth.hd}px;
-  z-index: ${styles.zIndex.channelBottom};
-  ${ChannelEffect}
-`
-
-const FlexGroup = styled.div`
-  display: flex;
-  z-index: ${styles.zIndex.flexGroup};
-`
-
-const FlexItem = css`
-  margin-right: 14px;
-  display: flex;
-  align-items: center;
-`
-
-const LogoContainer = styled.div`
-  ${FlexItem}
-  ${LogoEffect}
-  img {
-    width: 210px;
-  }
-`
-
-const SloganContainer = styled.div`
-  ${FlexItem}
-  ${SloganEffect}
-`
-
-const ActionContainer = styled.div`
-  ${FlexItem}
-  ${ActionEffect}
-`
-
-const IconContainer = styled.div`
-  ${FlexItem}
-  height: ${styles.headerHeight.narrow}px;
-  margin: 0;
-  padding-left: 14px; // for border-bottom connect with channel top component
-  border-color: ${props => props.borderColor};
-  border-style: solid;
-  border-width: ${props =>
-    arrayToCssShorthand(styles.iconBorderWidth[props.headerType])};
-  transition: border-width 0.1s linear 0.2s;
-`
-
-const ChannelTopContainer = styled.div`
-  position: absolute;
-  width: calc(100% - 530px);
-  min-width: 480px;
-  max-width: 910px;
-  height: ${styles.headerHeight.narrow}px;
-  right: 186px;
-  z-index: ${props => styles.zIndex.channelTop[props.headerType]};
-  ${FlexItem}
-  ${ChannelEffect}
-  ${mq.hdOnly`
-    right: calc(50% - 540px);
+  transform: translateY(
+    ${props => (props.hideHeader ? `${-narrowHeaderHeight}px` : '0')}
+  );
+  transition: transform 300ms
+    ${props => (props.hideHeader ? 'ease-in' : 'ease-out')};
+  ${mq.mobileOnly`
+    ${props => (props.forceShowOnMobile ? 'transform: translateY(0);' : '')}
   `}
 `
+const HeaderSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  z-index: ${zIndex.header};
 
-const Header = ({ pathname, channels, services, actions, narrowActions }) => {
-  return (
-    <HeaderContext.Consumer>
-      {({ releaseBranch, isLinkExternal, theme, toUseNarrow, hideHeader }) => {
-        const { bgColor, borderColor } = themeUtils.selectHeaderTheme(theme)
-        const logoType = themeUtils.selectLogoType(theme)
-        return (
-          <Box bgColor={bgColor} isHide={hideHeader}>
-            <CSSTransition
-              in={!toUseNarrow}
-              classNames="header-effect"
-              timeout={{ appear: 0, enter: 500, exit: 500 }}
-            >
-              <TopRow>
-                <FlexGroup>
-                  <LogoContainer>
-                    <CSSTransition
-                      in={!toUseNarrow}
-                      classNames="logo-effect"
-                      timeout={{ appear: 0, enter: 500, exit: 500 }}
-                    >
-                      <Link
-                        {...linkUtils.getLogoLink(
-                          isLinkExternal,
-                          releaseBranch
-                        )}
-                      >
-                        <LogoHeader
-                          type={logoType}
-                          releaseBranch={releaseBranch}
-                        />
-                      </Link>
-                    </CSSTransition>
-                  </LogoContainer>
-                  <ActionContainer>
-                    <CSSTransition
-                      in={!toUseNarrow}
-                      classNames="action-effect"
-                      timeout={{ appear: 0, enter: 500, exit: 500 }}
-                    >
-                      <ActionButton
-                        actions={toUseNarrow ? narrowActions : actions}
-                      />
-                    </CSSTransition>
-                  </ActionContainer>
-                  <SloganContainer>
-                    <CSSTransition
-                      in={!toUseNarrow}
-                      classNames="slogan-effect"
-                      timeout={{ appear: 0, enter: 500, exit: 500 }}
-                    >
-                      <Slogan />
-                    </CSSTransition>
-                  </SloganContainer>
-                </FlexGroup>
-                <ChannelTopContainer
-                  headerType={toUseNarrow ? 'narrow' : 'wide'}
-                >
-                  <CSSTransition
-                    in={toUseNarrow}
-                    classNames="channel-effect"
-                    timeout={{ appear: 0, enter: 600, exit: 200 }}
-                    unmountOnExit
-                  >
-                    <Channels
-                      currentPathname={pathname}
-                      data={channels}
-                      borderWidth={styles.channelTopBorderWidth}
-                    />
-                  </CSSTransition>
-                </ChannelTopContainer>
-                <IconContainer
-                  headerType={toUseNarrow ? 'narrow' : 'wide'}
-                  borderColor={borderColor}
-                >
-                  <Icons services={services} />
-                </IconContainer>
-              </TopRow>
-            </CSSTransition>
-            <ChannelContainer>
-              <CSSTransition
-                in={!toUseNarrow}
-                classNames="channel-effect"
-                timeout={{ appear: 0, enter: 600, exit: 200 }}
-                unmountOnExit
-              >
-                <Channels
-                  currentPathname={pathname}
-                  data={channels}
-                  borderWidth={styles.channelBottomBorderWidth}
-                />
-              </CSSTransition>
-            </ChannelContainer>
-          </Box>
-        )
-      }}
-    </HeaderContext.Consumer>
+  ${mq.hdOnly`
+    width: 1280px;
+  `}
+  ${mq.desktopOnly`
+    padding: 0 48px;
+  `}
+  ${mq.tabletOnly`
+    padding: 0 32px;
+  `}
+  ${mq.mobileOnly`
+    padding: 0 24px;
+  `}
+`
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  a {
+    display: flex;
+  }
+`
+const MobileLogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  img {
+    height: 21px;
+  }
+  a {
+    display: flex;
+  }
+`
+const HideWhenNarrow = styled.div``
+const ShowWhenNarrow = styled.div``
+const TopRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${props => (props.toUseNarrow ? '16px' : '24px')} 16px;
+  z-index: ${zIndex.topRow};
+  background-color: ${props => props.topRowBgColor};
+  ${ShowWhenNarrow} {
+    opacity: ${props => (props.toUseNarrow ? '1' : '0')};
+    transition: opacity ${animation.step3Duration};
+    transition-delay: ${props => (props.toUseNarrow ? '350ms' : 0)};
+  }
+  ${HideWhenNarrow} {
+    opacity: ${props => (props.toUseNarrow ? '0' : '1')};
+    transition: opacity ${animation.step3Duration};
+    transition-delay: ${props =>
+      props.toUseNarrow ? animation.step3Delay : 0};
+  }
+  ${LogoContainer} {
+    margin-left: ${props => (props.toUseNarrow ? '24px' : '0')};
+    transform: translateX(${props => (props.toUseNarrow ? '0' : '-24px')});
+    transition: all ${animation.step3Duration};
+    transition-delay: ${props =>
+      props.toUseNarrow ? animation.step3Delay : 0};
+    img,
+    a {
+      height: ${props => (props.toUseNarrow ? '24px' : '32px')};
+      transition: height ${animation.step3Duration};
+      transition-delay: ${props =>
+        props.toUseNarrow ? animation.step3Delay : 0};
+    }
+  }
+  ${mq.tabletAndBelow`
+    padding: 16px 0;
+  `}
+`
+const StyledDivider = styled(Divider)`
+  opacity: ${props => (props.toUseNarrow ? '0' : '1')};
+  transition: opacity ${animation.step2Duration};
+  transition-delay: ${props => (props.toUseNarrow ? animation.step2Delay : 0)};
+`
+const IconContainer = styled.div`
+  margin-left: 24px;
+  ${mq.mobileOnly`
+    margin-left: 16px;
+  `}
+`
+const FlexGroup = styled.div`
+  display: flex;
+  align-items: center;
+`
+const ChannelContainer = styled.div`
+  z-index: ${zIndex.channel};
+  ${ChannelEffect}
+`
+const HamburgerContainer = styled.div`
+  z-index: ${zIndex.hamburger};
+  position: absolute;
+  top: 0;
+  left: -${MENU_WIDTH.desktop};
+  transition: transform 300ms ease-in-out;
+  transform: translateX(
+    ${props => (props.showHamburger ? MENU_WIDTH.desktop : 0)}
+  );
+  ${mq.tabletOnly`
+    left: -${MENU_WIDTH.tablet};
+    transform: translateX(${props =>
+      props.showHamburger ? MENU_WIDTH.tablet : 0});
+  `}
+  ${mq.mobileOnly`
+    left: 0;
+    transform: none;
+    opacity: ${props => (props.showHamburger ? 1 : 0)};
+  `}
+`
+const TabBarContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  ${mq.tabletOnly`
+    z-index: ${zIndex.tabBarTablet};
+  `}
+  ${mq.mobileOnly`
+    z-index: ${zIndex.tabBarMobile};
+  `}
+`
+const HideOnArticle = styled.div`
+  ${props => (props.isOnArticlePage ? 'display: none;' : '')}
+`
+const ShowOnArticle = styled.div`
+  ${props => (props.isOnArticlePage ? '' : 'display: none;')}
+  margin-right: 16px;
+`
+
+const Header = () => {
+  const {
+    releaseBranch,
+    isLinkExternal,
+    theme,
+    toUseNarrow,
+    hideHeader,
+    pathname,
+    referrerPath,
+  } = useContext(HeaderContext)
+  const [showHamburger, setShowHamburger] = useState(false)
+  const logoLink = getLogoLink(isLinkExternal, releaseBranch)
+  const logoType = selectLogoType(theme)
+  const HamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
+  const { bgColor, topRowBgColor } = selectHeaderTheme(theme)
+  const toggleHamburger = e => {
+    e.stopPropagation()
+    setShowHamburger(!showHamburger)
+  }
+  const closeHamburger = () => setShowHamburger(false)
+  const ref = useOutsideClick(closeHamburger)
+  const contextValue = {
+    toggleHamburger,
+    closeHamburgerMenu: closeHamburger,
+    isHamburgerMenuOpen: showHamburger,
+  }
+  const isOnArticlePage = _.split(pathname, '/')[1] === 'a'
+  const BackToPrevIcon = (
+    <Arrow direction="left" releaseBranch={releaseBranch} />
   )
-}
+  const gotoPrev = () => {
+    if (referrerPath || checkReferrer(document.referrer, releaseBranch)) {
+      // go to previous page when referer is twreporter site
+      window.history.back()
+    } else {
+      // go to home page when referer is not twreporter site
+      window.location.href = '/'
+    }
+  }
+  const DesktopHeaderJSX = (
+    <HeaderSection>
+      <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+        <FlexGroup>
+          <ShowWhenNarrow>
+            <IconButton
+              iconComponent={HamburgerIcon}
+              theme={theme}
+              onClick={toggleHamburger}
+            />
+          </ShowWhenNarrow>
+          <LogoContainer>
+            <Link {...logoLink}>
+              <LogoHeader type={logoType} releaseBranch={releaseBranch} />
+            </Link>
+          </LogoContainer>
+          <HideWhenNarrow>
+            <Slogan />
+          </HideWhenNarrow>
+        </FlexGroup>
+        <FlexGroup>
+          <HideWhenNarrow>
+            <DesktopHeaderAction />
+          </HideWhenNarrow>
+          <IconContainer>
+            <Icons />
+          </IconContainer>
+        </FlexGroup>
+      </TopRow>
+      <StyledDivider toUseNarrow={toUseNarrow} />
+      <ChannelContainer>
+        <CSSTransition
+          in={!toUseNarrow}
+          classNames="channel-effect"
+          timeout={{ appear: 0, enter: 350, exit: 200 }}
+          unmountOnExit
+        >
+          <Channel onClickHambuger={toggleHamburger} />
+        </CSSTransition>
+      </ChannelContainer>
+    </HeaderSection>
+  )
+  const MobileHeaderJSX = (
+    <HeaderSection>
+      <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+        <FlexGroup>
+          <ShowOnArticle isOnArticlePage={isOnArticlePage}>
+            <IconButton
+              iconComponent={BackToPrevIcon}
+              theme={theme}
+              onClick={gotoPrev}
+            />
+          </ShowOnArticle>
+          <MobileLogoContainer>
+            <Link {...logoLink}>
+              <LogoHeader type={logoType} releaseBranch={releaseBranch} />
+            </Link>
+          </MobileLogoContainer>
+        </FlexGroup>
+        <FlexGroup>
+          <MobileHeaderAction />
+          <IconContainer>
+            <MobileIcons />
+          </IconContainer>
+        </FlexGroup>
+      </TopRow>
+    </HeaderSection>
+  )
 
-Header.propTypes = {
-  pathname: PropTypes.string,
-  channels: Channels.propTypes.data,
-  services: PropTypes.array,
-  actions: PropTypes.array,
-  narrowActions: PropTypes.array,
-}
-
-Header.defaultProps = {
-  pathname: '',
-  channels: Channels.defaultProps.data,
-  services: [],
-  actions: [],
-  narrowActions: [],
+  return (
+    <HamburgerContext.Provider value={contextValue}>
+      <HeaderContainer
+        bgColor={bgColor}
+        hideHeader={hideHeader}
+        forceShowOnMobile={showHamburger}
+        theme={theme}
+      >
+        <DesktopAndAbove>{DesktopHeaderJSX}</DesktopAndAbove>
+        <TabletAndBelow>{MobileHeaderJSX}</TabletAndBelow>
+      </HeaderContainer>
+      <HamburgerContainer ref={ref} showHamburger={showHamburger}>
+        <CSSTransition
+          in={showHamburger}
+          classNames="hamburger-effect"
+          timeout={{ appear: 0, enter: 300, exit: 300 }}
+          unmountOnExit
+        >
+          <HamburgerMenu />
+        </CSSTransition>
+      </HamburgerContainer>
+      <TabletAndBelow>
+        <HideOnArticle isOnArticlePage={isOnArticlePage}>
+          <TabBarContainer>
+            <TabBar toggleHamburger={toggleHamburger} />
+          </TabBarContainer>
+        </HideOnArticle>
+      </TabletAndBelow>
+    </HamburgerContext.Provider>
+  )
 }
 
 export default Header

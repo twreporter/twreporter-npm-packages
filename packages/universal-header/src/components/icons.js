@@ -2,24 +2,21 @@ import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import querystring from 'querystring'
 import styled from 'styled-components'
-import CSSTransition from 'react-transition-group/CSSTransition'
 // context
 import HeaderContext from '../contexts/header-context'
 // utils
 import {
-  getLogoutLink,
   getLoginLink,
   getSearchLink,
   getBookmarksLink,
+  getMemberLink,
 } from '../utils/links'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import { IconButton, TextButton } from '@twreporter/react-components/lib/button'
 import { Member, Search, Bookmark } from '@twreporter/react-components/lib/icon'
-import { Dialog } from '@twreporter/react-components/lib/card'
 import { SearchBar } from '@twreporter/react-components/lib/input'
 import { useOutsideClick } from '@twreporter/react-components/lib/hook'
-import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const IconsContainer = styled.div`
@@ -56,40 +53,29 @@ const SearchContainer = styled.div`
   z-index: ${props => (props.isSearchOpened ? 999 : -1)};
 `
 
-const StyledDialog = styled(Dialog)`
-  opacity: ${props => (props.showDialog ? '1' : '0')};
-  transition: opacity 100ms;
-  position: absolute;
-  top: 24px;
-  right: -16px;
-  width: max-content;
-  cursor: pointer;
-  color: ${colorGrayscale.gray800};
-`
-
-const LogInOutIcon = ({ loginButtonType = 'icon', isForHambuger = false }) => {
-  const [showDialog, setShowDialog] = useState(false)
-  const { releaseBranch, theme, isAuthed } = useContext(HeaderContext)
+const MemberButtonType = {
+  ICON: 'icon',
+  TEXT: 'text',
+}
+const MemberIcon = ({
+  memberButtonType = MemberButtonType.ICON,
+  isForHambuger = false,
+}) => {
+  const { releaseBranch, theme, isAuthed, isLinkExternal } = useContext(
+    HeaderContext
+  )
   const onClickIcon = e => {
     e.preventDefault()
 
     if (isAuthed) {
-      setShowDialog(!showDialog)
+      window.location = getMemberLink(isLinkExternal, releaseBranch).to
       return
     }
+
     const redirectURL = window.location.href
     const query = querystring.stringify({ destination: redirectURL })
     window.location = getLoginLink(releaseBranch).to + '?' + query
   }
-  const onClickLogOut = e => {
-    e.preventDefault()
-
-    const redirectURL = window.location.href
-    const query = querystring.stringify({ destination: redirectURL })
-    window.location = getLogoutLink(releaseBranch).to + '?' + query
-  }
-  const closeDialog = () => setShowDialog(false)
-  const ref = useOutsideClick(closeDialog)
   const Icon = <Member releaseBranch={releaseBranch} />
   let buttonTheme
   if (isForHambuger) {
@@ -102,7 +88,7 @@ const LogInOutIcon = ({ loginButtonType = 'icon', isForHambuger = false }) => {
     buttonTheme = theme
   }
   const LoginButton =
-    loginButtonType === 'icon' || isAuthed ? (
+    memberButtonType === MemberButtonType.ICON || isAuthed ? (
       <IconButton iconComponent={Icon} theme={buttonTheme} />
     ) : (
       <TextButton
@@ -114,27 +100,12 @@ const LogInOutIcon = ({ loginButtonType = 'icon', isForHambuger = false }) => {
 
   return (
     <IconContainer key="login">
-      <LogContainer onClick={onClickIcon} ref={ref}>
-        {LoginButton}
-        <CSSTransition
-          in={showDialog}
-          classNames="dialog-effect"
-          timeout={{ appear: 0, enter: 100, exit: 100 }}
-          unmountOnExit
-        >
-          <StyledDialog
-            text="登出"
-            size="L"
-            showDialog={showDialog}
-            onClick={onClickLogOut}
-          />
-        </CSSTransition>
-      </LogContainer>
+      <LogContainer onClick={onClickIcon}>{LoginButton}</LogContainer>
     </IconContainer>
   )
 }
-LogInOutIcon.propTypes = {
-  loginButtonType: PropTypes.oneOf(['icon', 'text']),
+MemberIcon.propTypes = {
+  memberButtonType: PropTypes.oneOf(Object.values(MemberButtonType)),
   isForHambuger: PropTypes.bool,
 }
 
@@ -203,13 +174,16 @@ const Icons = () => (
   <IconsContainer>
     <SearchIcon />
     <BookmarkIcon />
-    <LogInOutIcon />
+    <MemberIcon />
   </IconsContainer>
 )
 
 export const MobileIcons = ({ isForHambuger = false }) => (
   <IconsContainer>
-    <LogInOutIcon loginButtonType="text" isForHambuger={isForHambuger} />
+    <MemberIcon
+      memberButtonType={MemberButtonType.TEXT}
+      isForHambuger={isForHambuger}
+    />
   </IconsContainer>
 )
 

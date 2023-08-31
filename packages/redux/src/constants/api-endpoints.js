@@ -6,4 +6,5 @@ export default {
   users: 'users',
   authors: 'authors',
   tags: 'tags',
+  onboarding: 'onboarding',
 }

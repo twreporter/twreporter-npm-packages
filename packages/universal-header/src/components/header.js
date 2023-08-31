@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
 import CSSTransition from 'react-transition-group/CSSTransition'
 // context
@@ -28,10 +29,15 @@ import {
   DesktopAndAbove,
   TabletAndBelow,
 } from '@twreporter/react-components/lib/rwd'
+import EntityPath from '@twreporter/core/lib/constants/entity-path'
 // lodash
-import split from 'lodash/split'
+import some from 'lodash/some'
+import includes from 'lodash/includes'
+import throttle from 'lodash/throttle'
 const _ = {
-  split,
+  some,
+  includes,
+  throttle,
 }
 
 const narrowHeaderHeight = 65
@@ -227,12 +233,12 @@ const TabBarContainer = styled.div`
 const HideOnArticle = styled.div`
   ${props => (props.isOnArticlePage ? 'display: none;' : '')}
 `
-const ShowOnArticle = styled.div`
-  ${props => (props.isOnArticlePage ? '' : 'display: none;')}
+const PrevButton = styled.div`
+  ${props => (props.isShow ? '' : 'display: none;')}
   margin-right: 16px;
 `
 
-const Header = () => {
+const Header = ({ hamburgerContext = {} }) => {
   const {
     releaseBranch,
     isLinkExternal,
@@ -242,7 +248,11 @@ const Header = () => {
     pathname,
     referrerPath,
   } = useContext(HeaderContext)
-  const [showHamburger, setShowHamburger] = useState(false)
+  const [defaultShowHamburger, setDefaultShowHamburger] = useState(false)
+  let showHamburger = hamburgerContext?.showHamburger || defaultShowHamburger
+  let setShowHamburger =
+    hamburgerContext?.setShowHamburger || setDefaultShowHamburger
+
   const logoLink = getLogoLink(isLinkExternal, releaseBranch)
   const logoType = selectLogoType(theme)
   const HamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
@@ -258,7 +268,33 @@ const Header = () => {
     closeHamburgerMenu: closeHamburger,
     isHamburgerMenuOpen: showHamburger,
   }
-  const isOnArticlePage = _.split(pathname, '/')[1] === 'a'
+  useEffect(() => {
+    closeHamburger()
+  }, [pathname])
+
+  const isOnArticlePage = _.includes(pathname, EntityPath.article)
+  const needPrevIconAccountRoute = [
+    `${EntityPath.account}/donation-history`,
+    `${EntityPath.account}/email-subscription`,
+  ]
+  const isOnNeedPrevIconAccountPage = _.some(needPrevIconAccountRoute, el =>
+    _.includes(pathname, el)
+  )
+  const [currentClientWidth, setCurrentClientWidth] = useState(0)
+  useEffect(() => {
+    const handleResize = _.throttle(() => {
+      setCurrentClientWidth(document.body.clientWidth)
+    })
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+  const showPrevIcon =
+    isOnArticlePage || (isOnNeedPrevIconAccountPage && currentClientWidth < 768) // only show it on mobile
   const BackToPrevIcon = (
     <Arrow direction="left" releaseBranch={releaseBranch} />
   )
@@ -317,13 +353,13 @@ const Header = () => {
     <HeaderSection>
       <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
         <FlexGroup>
-          <ShowOnArticle isOnArticlePage={isOnArticlePage}>
+          <PrevButton isShow={showPrevIcon}>
             <IconButton
               iconComponent={BackToPrevIcon}
               theme={theme}
               onClick={gotoPrev}
             />
-          </ShowOnArticle>
+          </PrevButton>
           <MobileLogoContainer>
             <Link {...logoLink}>
               <LogoHeader type={logoType} releaseBranch={releaseBranch} />
@@ -370,6 +406,9 @@ const Header = () => {
       </TabletAndBelow>
     </HamburgerContext.Provider>
   )
+}
+Header.propTypes = {
+  hamburgerContext: PropTypes.object,
 }
 
 export default Header

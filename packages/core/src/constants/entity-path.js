@@ -8,4 +8,5 @@ export default {
   author: '/author/',
   authors: '/authors',
   aboutus: '/about-us',
+  account: '/account',
 }

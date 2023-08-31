@@ -33,6 +33,7 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   color: ${colorGrayscale.gray800};
 `
 
@@ -44,6 +45,7 @@ const ButtonContainer = styled.a`
 const GuideContainer = styled.div`
   display: flex;
   align-items: baseline;
+  text-align: center;
   color: ${colorGrayscale.gray600};
   svg {
     background-color: ${colorGrayscale.gray600};

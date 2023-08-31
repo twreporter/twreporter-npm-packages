@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.5...@twreporter/redux@7.7.0-rc.6) (2023-08-25)
+
+
+### Bug Fixes
+
+* add `onboarding` action ([df87bb1](https://github.com/twreporter/twreporter-npm-packages/commit/df87bb1b35f2e66b4cdb3185002c20b207aaede9))
+
+
+
+
+
+# [7.7.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.4...@twreporter/redux@7.7.0-rc.5) (2023-08-14)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.7.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.3...@twreporter/redux@7.7.0-rc.4) (2023-08-11)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.7.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.2...@twreporter/redux@7.7.0-rc.3) (2023-07-14)
+
+
+### Bug Fixes
+
+* **redux:** `politics-and-society` category not shown on index page ([d37560d](https://github.com/twreporter/twreporter-npm-packages/commit/d37560d614a64ee485007517bfbb48d6fcefc53b))
+
+
+
+
+
+# [7.7.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.1...@twreporter/redux@7.7.0-rc.2) (2023-07-04)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.7.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.0-rc.0...@twreporter/redux@7.7.0-rc.1) (2023-07-04)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.6.1-rc.0...@twreporter/redux@7.7.0-rc.0) (2023-07-03)
+
+
+### Bug Fixes
+
+* remove unused code ([8f5f72c](https://github.com/twreporter/twreporter-npm-packages/commit/8f5f72c6e48a478b9cc8bbbf458aab51fa94c7b8))
+
+
+### Features
+
+* add test for getUserData ([f6e8854](https://github.com/twreporter/twreporter-npm-packages/commit/f6e8854b953d49217b2785c1dd2d7195fb0e1ef8))
+* getUserData from api ([bff225b](https://github.com/twreporter/twreporter-npm-packages/commit/bff225bfeb16460b35851ca47712cd488e059414))
+
+
+
+
+
+## [7.6.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.6.0...@twreporter/redux@7.6.1-rc.0) (2023-06-28)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
 # [7.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.6.0-rc.2...@twreporter/redux@7.6.0) (2023-06-21)
 
 **Note:** Version bump only for package @twreporter/redux

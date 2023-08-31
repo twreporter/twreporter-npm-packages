@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.3...@twreporter/core@1.11.0-rc.4) (2023-08-14)
+
+
+### Bug Fixes
+
+* remove unused code ([05a9110](https://github.com/twreporter/twreporter-npm-packages/commit/05a9110cb7775b17c5cdade6f0ef7a3b437f3957))
+
+
+
+
+
+# [1.11.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.2...@twreporter/core@1.11.0-rc.3) (2023-08-11)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
+# [1.11.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.1...@twreporter/core@1.11.0-rc.2) (2023-07-04)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
+# [1.11.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.0...@twreporter/core@1.11.0-rc.1) (2023-07-04)
+
+
+### Features
+
+* add MEMBERSHIP feature flag ([fb25ecb](https://github.com/twreporter/twreporter-npm-packages/commit/fb25ecb3b6113dee66f2e311bd93c995c772a3c7))
+
+
+
+
+
+# [1.11.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.1-rc.0...@twreporter/core@1.11.0-rc.0) (2023-07-03)
+
+
+### Features
+
+* remove MEMBER_ROLE_ZH_TW ([3586031](https://github.com/twreporter/twreporter-npm-packages/commit/3586031ef0e9c8959be8ec763530b9fca8a9f69e))
+
+
+
+
+
+## [1.10.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0...@twreporter/core@1.10.1-rc.0) (2023-06-28)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
 # [1.10.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.4...@twreporter/core@1.10.0) (2023-06-21)
 
 **Note:** Version bump only for package @twreporter/core

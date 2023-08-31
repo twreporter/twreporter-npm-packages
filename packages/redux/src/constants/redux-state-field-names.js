@@ -1,4 +1,3 @@
-import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
 import { CATEGORY_PATH } from '@twreporter/core/lib/constants/category-set'
 
 const entities = 'entities'
@@ -29,33 +28,16 @@ const reviewsSection = 'reviews_section'
 const topicsSection = 'topics_section'
 
 // categories in index_page
-const humanRightsAndSociety = 'human_rights_and_society'
-const environmentAndEducation = 'environment_and_education'
-const politicsAndEconomy = 'politics_and_economy'
-const cultureAndArt = 'culture_and_art'
-const international = 'international'
-const livingAndMedicalCare = 'living_and_medical_care'
-
-// feature toggle
-const categories = ENABLE_NEW_INFO_ARCH
-  ? {
-      world: CATEGORY_PATH.world,
-      humanrights: CATEGORY_PATH.humanrights,
-      politicsAndSociety: CATEGORY_PATH.politicsAndSociety,
-      health: CATEGORY_PATH.health,
-      environment: CATEGORY_PATH.environment,
-      econ: CATEGORY_PATH.econ,
-      culture: CATEGORY_PATH.culture,
-      education: CATEGORY_PATH.education,
-    }
-  : {
-      humanRightsAndSociety,
-      environmentAndEducation,
-      politicsAndEconomy,
-      cultureAndArt,
-      international,
-      livingAndMedicalCare,
-    }
+const categories = {
+  world: CATEGORY_PATH.world,
+  humanrights: CATEGORY_PATH.humanrights,
+  politicsAndSociety: CATEGORY_PATH.politicsAndSociety,
+  health: CATEGORY_PATH.health,
+  environment: CATEGORY_PATH.environment,
+  econ: CATEGORY_PATH.econ,
+  culture: CATEGORY_PATH.culture,
+  education: CATEGORY_PATH.education,
+}
 
 // time stamp for next popup
 const nextNotifyPopupTS = 'nextNotifyPopupTS'

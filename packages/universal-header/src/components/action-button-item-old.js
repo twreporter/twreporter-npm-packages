@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderContext from '../contexts/header-context'
 // util
-import { getActionLinks } from '../utils/links'
+import { getActionLinks } from '../utils/links-old'
 // constant
 import { ACTION_LABEL, ACTION_BUTTON_TYPE } from '../constants/actions'
 import {
@@ -75,7 +75,7 @@ const ActionButtonItem = ({
   callback = defaultFunc,
   isForHambuger = false,
 }) => {
-  const { theme, isLinkExternal, releaseBranch } = useContext(HeaderContext)
+  const { theme } = useContext(HeaderContext)
   let buttonTheme
   if (isForHambuger) {
     if (theme === THEME.transparent) {
@@ -88,7 +88,7 @@ const ActionButtonItem = ({
   }
   const actionKey = action.key
   const actionLabel = ACTION_LABEL[textType][actionKey]
-  const actionLink = getActionLinks(isLinkExternal, releaseBranch)[actionKey]
+  const actionLink = getActionLinks()[actionKey]
   const buttonType = ACTION_BUTTON_TYPE[actionKey]
 
   return (
@@ -139,7 +139,6 @@ const ActionButton = ({
           buttonSize={buttonSize}
           key={action.key}
           isForHambuger={isForHambuger}
-          callback={callback}
         />
       )
     })}

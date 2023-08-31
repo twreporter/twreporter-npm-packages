@@ -70,54 +70,48 @@ function buildSuccessActionFromRes(axiosResponse, actionType) {
  * @param {number} userID - id of user
  * @return {Function} - function will be executed in Redux Thunk middleware
  */
-// TODO: wait till api ready
 export function getUserData(jwt, userID) {
   /**
    * @param {Function} dispatch - Redux store dispatch function
    * @param {Function} getState - Redux store getState function
    * @return {Promise} resolve with success action or reject with fail action
    */
-  // return function(dispatch, getState) {
-  //   const state = getState()
-  //   const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-  //   const url = formURL(
-  //     apiOrigin,
-  //     `/v2/${apiEndpoints.users}/${userID}`,
-  //   )
-  //   dispatch({
-  //     type: types.user.read.request,
-  //     url
-  //   })
-  //   const axiosConfig = {
-  //     timeout: apiTimeout,
-  //     headers: {
-  //       Authorization: `Bearer ${jwt}`,
-  //     },
-  //   }
-  //   return axios
-  //     .get(url, axiosConfig)
-  //     .then(res => {
-  //       const successAction = buildSuccessActionFromRes(
-  //         res,
-  //         types.user.read.success
-  //       )
-  //       dispatch(successAction)
-  //       return successAction
-  //     })
-  //     .catch(error => {
-  //       const failAction = failActionCreators.axios(
-  //         error,
-  //         types.user.read.failure
-  //       )
-  //       dispatch(failAction)
-  //       return Promise.reject(failAction)
-  //     })
-  // }
+  return function(dispatch, getState) {
+    const state = getState()
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const url = formURL(apiOrigin, `/v2/${apiEndpoints.users}/${userID}`)
+    dispatch({
+      type: types.user.read.request,
+      url,
+    })
+    const axiosConfig = {
+      timeout: apiTimeout,
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    }
+    return axios
+      .get(url, axiosConfig)
+      .then(res => {
+        const successAction = buildSuccessActionFromRes(
+          res,
+          types.user.read.success
+        )
+        dispatch(successAction)
+        return successAction
+      })
+      .catch(error => {
+        const failAction = failActionCreators.axios(
+          error,
+          types.user.read.failure
+        )
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      })
+  }
 }
 
 /**
- *
- *
  * @export
  * @param {string} jwt - access_token granted for the user
  * @param {number} userID - id of user
@@ -144,6 +138,63 @@ export function setUserData(jwt, userID, readPreference, maillist) {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
+    }
+    const body = {
+      read_preference: readPreference,
+      maillist,
+    }
+    return axios
+      .post(url, body, axiosConfig)
+      .then(res => {
+        const successAction = buildSuccessActionFromRes(
+          res,
+          types.user.update.success
+        )
+        dispatch(successAction)
+        return successAction
+      })
+      .catch(error => {
+        const failAction = failActionCreators.axios(
+          error,
+          types.user.update.failure
+        )
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      })
+  }
+}
+
+/**
+ * @export
+ * @param {string} jwt - access_token granted for the user
+ * @param {number} userID - id of user
+ * @param {string[]} readPreference - subscribed topics
+ * @param {string[]} maillist - subscribed mail list
+ * @param {string} destination - redirect destination
+ * @return {Function} - function will be executed in Redux Thunk middleware
+ */
+export function onboarding(jwt, userID, readPreference, maillist, destination) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
+  return function(dispatch, getState) {
+    const state = getState()
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const url = formURL(apiOrigin, `/v2/${apiEndpoints.onboarding}/${userID}`, {
+      destination,
+    })
+    dispatch({
+      type: types.user.update.request,
+      url,
+    })
+    const axiosConfig = {
+      timeout: apiTimeout,
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+      withCredentials: true,
     }
     const body = {
       read_preference: readPreference,

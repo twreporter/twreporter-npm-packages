@@ -19,10 +19,7 @@ export const servicePathnames = {
   [serviceKeys.search]: '/search',
 }
 
-export const serviceOrder = [
-    serviceKeys.search,
-    serviceKeys.bookmarks,
-]
+export const serviceOrder = [serviceKeys.search, serviceKeys.bookmarks]
 
 export default {
   serviceKeys,

@@ -3,6 +3,117 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.18.1-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.10...@twreporter/react-components@8.18.1-rc.11) (2023-08-25)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.18.1-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.9...@twreporter/react-components@8.18.1-rc.10) (2023-08-21)
+
+
+### Bug Fixes
+
+* member role card layout ([a345231](https://github.com/twreporter/twreporter-npm-packages/commit/a345231a42f5fd3a867c231d944a56c02a250a8f))
+
+
+
+
+
+## [8.18.1-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.8...@twreporter/react-components@8.18.1-rc.9) (2023-08-16)
+
+
+### Bug Fixes
+
+* text align center ([f58c887](https://github.com/twreporter/twreporter-npm-packages/commit/f58c887e2cff2b21a2089c9d72b97f78b13d6553))
+
+
+
+
+
+## [8.18.1-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.7...@twreporter/react-components@8.18.1-rc.8) (2023-08-16)
+
+
+### Bug Fixes
+
+* wrap member role card text when overflow ([7d3549d](https://github.com/twreporter/twreporter-npm-packages/commit/7d3549d6ec4925f0cefcd80832fbcdb76895ada3))
+
+
+
+
+
+## [8.18.1-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.6...@twreporter/react-components@8.18.1-rc.7) (2023-08-14)
+
+
+### Bug Fixes
+
+* remove unused code ([05a9110](https://github.com/twreporter/twreporter-npm-packages/commit/05a9110cb7775b17c5cdade6f0ef7a3b437f3957))
+
+
+
+
+
+## [8.18.1-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.5...@twreporter/react-components@8.18.1-rc.6) (2023-08-11)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.18.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.4...@twreporter/react-components@8.18.1-rc.5) (2023-07-27)
+
+
+### Bug Fixes
+
+* **react-components:** wrong url path for interactive posts ([ac4d132](https://github.com/twreporter/twreporter-npm-packages/commit/ac4d132d658037a7fc16c1eacecd7b50cce7d548))
+
+
+
+
+
+## [8.18.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.3...@twreporter/react-components@8.18.1-rc.4) (2023-07-14)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.18.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.2...@twreporter/react-components@8.18.1-rc.3) (2023-07-04)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.18.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.1...@twreporter/react-components@8.18.1-rc.2) (2023-07-04)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.18.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1-rc.0...@twreporter/react-components@8.18.1-rc.1) (2023-07-03)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.18.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0...@twreporter/react-components@8.18.1-rc.0) (2023-06-28)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
 # [8.18.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.0-rc.9...@twreporter/react-components@8.18.0) (2023-06-21)
 
 **Note:** Version bump only for package @twreporter/react-components

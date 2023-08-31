@@ -1,9 +1,7 @@
 import StandaloneHeader from './standalone-header'
-import HeaderNew from './containers/header'
-import HeaderOld from './containers/header-old'
-// feature toggle
-import { ENABLE_NEW_INFO_ARCH } from '@twreporter/core/lib/constants/feature-flag'
-export const Header = ENABLE_NEW_INFO_ARCH ? HeaderNew : HeaderOld
+import UniversalHeader from './containers/header'
+
+export const Header = UniversalHeader
 
 export default {
   Header,

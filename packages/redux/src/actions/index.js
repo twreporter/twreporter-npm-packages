@@ -19,7 +19,7 @@ import {
   getMultipleBookmarks,
 } from './bookmarks'
 import { fetchLatestTags } from './latest'
-import { getUserData, setUserData } from './user'
+import { getUserData, setUserData, onboarding } from './user'
 
 export default {
   createSingleBookmark,
@@ -43,4 +43,5 @@ export default {
   searchAuthorsIfNeeded,
   getUserData,
   setUserData,
+  onboarding,
 }

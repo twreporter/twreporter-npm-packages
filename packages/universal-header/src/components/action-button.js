@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // constant
 import { ACTION_ORDER } from '../constants/actions'
 import {
@@ -7,13 +7,19 @@ import {
   BUTTON_WIDTH_TYPE,
   BUTTON_SIZE_TYPE,
 } from '../constants/action-item-types'
-// component
-import ActionButton from './action-button-item'
+// context
+import { HamburgerContext } from '../contexts/header-context'
+// feature toggle
+import ActionButtonNew from './action-button-item'
+import ActionButtonOld from './action-button-item-old'
+import { MEMBERSHIP } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import map from 'lodash/map'
 const _ = {
   map,
 }
+
+const ActionButton = MEMBERSHIP ? ActionButtonNew : ActionButtonOld
 
 const getActionProps = type => _.map(ACTION_ORDER[type], key => ({ key }))
 
@@ -28,6 +34,7 @@ export const MobileHeaderAction = ({ ...props }) => {
 }
 
 export const DesktopHamburgerAction = ({ ...props }) => {
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   const actionProps = getActionProps('hamburger')
   return (
     <ActionButton
@@ -37,12 +44,14 @@ export const DesktopHamburgerAction = ({ ...props }) => {
       buttonWidth={BUTTON_WIDTH_TYPE.stretch}
       buttonSize={BUTTON_SIZE_TYPE.L}
       isForHambuger={true}
+      callback={closeHamburgerMenu}
       {...props}
     />
   )
 }
 
 export const MobileHamburgerAction = ({ ...props }) => {
+  const { closeHamburgerMenu } = useContext(HamburgerContext)
   const actionProps = getActionProps('hamburger')
   return (
     <ActionButton
@@ -51,6 +60,7 @@ export const MobileHamburgerAction = ({ ...props }) => {
       buttonWidth={BUTTON_WIDTH_TYPE.stretch}
       buttonSize={BUTTON_SIZE_TYPE.L}
       isForHambuger={true}
+      callback={closeHamburgerMenu}
       {...props}
     />
   )

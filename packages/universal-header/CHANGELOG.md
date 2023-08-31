@@ -3,6 +3,157 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0-rc.13](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.12...@twreporter/universal-header@2.7.0-rc.13) (2023-08-25)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.12](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.11...@twreporter/universal-header@2.7.0-rc.12) (2023-08-22)
+
+
+### Bug Fixes
+
+* add `hamburgerContext` props ([d7d2f51](https://github.com/twreporter/twreporter-npm-packages/commit/d7d2f51cce33958fcf38c36f39b4d17be8840b25))
+
+
+
+
+
+# [2.7.0-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.10...@twreporter/universal-header@2.7.0-rc.11) (2023-08-21)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.9...@twreporter/universal-header@2.7.0-rc.10) (2023-08-16)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.8...@twreporter/universal-header@2.7.0-rc.9) (2023-08-16)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.7...@twreporter/universal-header@2.7.0-rc.8) (2023-08-15)
+
+
+### Bug Fixes
+
+* typo and clientWidth ([3bb5f97](https://github.com/twreporter/twreporter-npm-packages/commit/3bb5f977164cb7ad835eae2037b89a5640d2dcb5))
+
+
+### Features
+
+* check if is at account page ([948f941](https://github.com/twreporter/twreporter-npm-packages/commit/948f941f6ff8b8082282d6bdd686aa5dfb7267a7))
+
+
+
+
+
+# [2.7.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.6...@twreporter/universal-header@2.7.0-rc.7) (2023-08-14)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.5...@twreporter/universal-header@2.7.0-rc.6) (2023-08-11)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.4...@twreporter/universal-header@2.7.0-rc.5) (2023-07-27)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.3...@twreporter/universal-header@2.7.0-rc.4) (2023-07-14)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.2...@twreporter/universal-header@2.7.0-rc.3) (2023-07-07)
+
+
+### Bug Fixes
+
+* close hamburger menu after clicking action button ([7237a79](https://github.com/twreporter/twreporter-npm-packages/commit/7237a79aaf70bb3c60be119dcacc281207b3c7b2))
+
+
+
+
+
+# [2.7.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.1...@twreporter/universal-header@2.7.0-rc.2) (2023-07-06)
+
+
+### Bug Fixes
+
+* signin path typo ([a72142e](https://github.com/twreporter/twreporter-npm-packages/commit/a72142e4a6c2cb132c1b61fd710f4c7bee092371))
+
+
+
+
+
+# [2.7.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0-rc.0...@twreporter/universal-header@2.7.0-rc.1) (2023-07-04)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.1-rc.1...@twreporter/universal-header@2.7.0-rc.0) (2023-07-04)
+
+
+### Features
+
+* add MEMBERSHIP feature flag ([fb25ecb](https://github.com/twreporter/twreporter-npm-packages/commit/fb25ecb3b6113dee66f2e311bd93c995c772a3c7))
+
+
+
+
+
+## [2.6.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.1-rc.0...@twreporter/universal-header@2.6.1-rc.1) (2023-07-03)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.6.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0...@twreporter/universal-header@2.6.1-rc.0) (2023-06-28)
+
+
+### Bug Fixes
+
+* remove redundant files ([63487c9](https://github.com/twreporter/twreporter-npm-packages/commit/63487c922395de5e8ee07aa2eebdf2b5f79ff438))
+
+
+
+
+
 # [2.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.6.0-rc.11...@twreporter/universal-header@2.6.0) (2023-06-21)
 
 **Note:** Version bump only for package @twreporter/universal-header
