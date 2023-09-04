@@ -13,7 +13,7 @@ module.exports = {
     ],
   ],
   plugins: [
-    ['react-css-modules'],
+    ['css-modules-transform'],
     [
       'babel-plugin-styled-components',
       {
