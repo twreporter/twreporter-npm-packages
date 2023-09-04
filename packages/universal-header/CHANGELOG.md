@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.1-rc.0...@twreporter/universal-header@2.7.1-rc.1) (2023-09-04)
+
+
+### Bug Fixes
+
+* remove close on blur ([844f367](https://github.com/twreporter/twreporter-npm-packages/commit/844f367ceff94f623b8e19e6c262ba12698c71f6))
+
+
+
+
+
 ## [2.7.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.0...@twreporter/universal-header@2.7.1-rc.0) (2023-09-04)
 
 **Note:** Version bump only for package @twreporter/universal-header
