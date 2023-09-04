@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.9-rc.0...@twreporter/index-page@1.5.0-rc.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* category name ([f345c58](https://github.com/twreporter/twreporter-npm-packages/commit/f345c58656b743f5c6e964229c3c1375ae7f742a))
+* prop types ([2427d22](https://github.com/twreporter/twreporter-npm-packages/commit/2427d2201f25104281922fd672f28a2740857dfe))
+* remove unused code ([c2dcd83](https://github.com/twreporter/twreporter-npm-packages/commit/c2dcd83ecb99b62d3898c6294e25da92d401e951))
+
+
+### Features
+
+* use swiper for swipe ([e159573](https://github.com/twreporter/twreporter-npm-packages/commit/e159573508c83d0f24329a41b970e7cc37663da2))
+
+
+
+
+
 ## [1.4.9-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8...@twreporter/index-page@1.4.9-rc.0) (2023-09-04)
 
 **Note:** Version bump only for package @twreporter/index-page
