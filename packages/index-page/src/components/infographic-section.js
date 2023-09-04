@@ -9,12 +9,11 @@ import { getHref } from '../utils/getHref'
 import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import MobileListBase from './common-utils/mobile-list'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
+import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
@@ -68,7 +67,7 @@ const LowerList = styled(UpperList)`
   `}
 `
 
-const MobileList = styled(MobileListBase)`
+const MobileList = styled.div`
   margin-bottom: 39px;
 `
 
@@ -271,12 +270,7 @@ class InfographicSection extends React.PureComponent {
           <UpperList>{postComps.slice(0, listNumber)}</UpperList>
           <LowerList>{postComps.slice(listNumber, listNumber * 2)}</LowerList>
           <MobileList>
-            <MobileFlexSwipeable.SwipableFlexItems
-              maxSwipableItems={5}
-              alignItems="flex-start"
-            >
-              {postComps}
-            </MobileFlexSwipeable.SwipableFlexItems>
+            <MobileSwiperList>{postComps}</MobileSwiperList>
           </MobileList>
           <More>
             <BottomLink path={moreURI} text="更多多媒體新聞" isDarkBg />

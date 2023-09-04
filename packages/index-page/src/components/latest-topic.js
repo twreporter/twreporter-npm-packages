@@ -10,11 +10,10 @@ import BottomLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import TRLink from './common-utils/twreporter-link'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import MobileListUtils from './common-utils/mobile-list'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
+import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
@@ -129,7 +128,7 @@ const FlexItem = styled.div`
   `}
 `
 
-const MobileList = styled(MobileListUtils)`
+const MobileList = styled.div`
   margin-top: 30px;
 `
 
@@ -186,7 +185,6 @@ const ImgFrame = styled.div`
 class LatestTopic extends React.PureComponent {
   render() {
     const { data, useTinyImg } = this.props
-    const maxSwipableItems = 2
     const relateds = _.get(data, 'relateds', [])
     let relatedsJsx = []
     _.forEach(relateds, post => {
@@ -247,12 +245,7 @@ class LatestTopic extends React.PureComponent {
           </TopicFrame>
           <FlexBox>{relatedsJsx}</FlexBox>
           <MobileList>
-            <MobileFlexSwipeable.SwipableFlexItems
-              alignItems={'flex-start'}
-              maxSwipableItems={maxSwipableItems}
-            >
-              {relatedsJsx}
-            </MobileFlexSwipeable.SwipableFlexItems>
+            <MobileSwiperList>{relatedsJsx}</MobileSwiperList>
           </MobileList>
           <MoreFrame>
             <BottomLink

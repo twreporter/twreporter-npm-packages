@@ -7,13 +7,13 @@ import styled from 'styled-components'
 import { getHref } from '../utils/getHref'
 import { truncate, breakPoints } from '../utils/style-utils'
 // components
-import MobileFlexSwipeable from './mobile-flex-swipeable'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import Section from './common-utils/section'
 import SectionName from './common-utils/section-name'
 import SwipableMixin from './common-utils/swipable-mixin'
 import TRLink from './common-utils/twreporter-link'
+import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
@@ -133,14 +133,7 @@ class EditorPicksMobile extends SwipableMixin {
 
     const { data } = this.props
     const flexItems = data.map(post => {
-      return (
-        <MobileFlexSwipeable.FlexItem
-          key={_.get(post, 'id')}
-          mobileWidth={mobileWidth}
-        >
-          {ImageComp(post)}
-        </MobileFlexSwipeable.FlexItem>
-      )
+      return ImageComp(post)
     })
 
     const textFrameContent = data.map((post, index) => {
@@ -156,7 +149,9 @@ class EditorPicksMobile extends SwipableMixin {
           key={_.get(post, 'id')}
           isSelected={index === this.state.selected}
         >
-          <Category>{_.get(post, 'categories[0].name', '')}</Category>
+          <Category>
+            {_.get(post, 'category_set[0].category.name', '')}
+          </Category>
           <Title style={fadingStyle}>
             <TRLink href={href} redirect={isExternal}>
               <TitleSpan>{_.get(post, 'title', '')}</TitleSpan>
@@ -178,12 +173,7 @@ class EditorPicksMobile extends SwipableMixin {
             <span>{sectionStrings.editorPick}</span>
           </SectionName>
           <TextFrame>{textFrameContent}</TextFrame>
-          <MobileFlexSwipeable.FlexList
-            selected={this.state.selected}
-            mobileWidth={mobileWidth}
-          >
-            {flexItems}
-          </MobileFlexSwipeable.FlexList>
+          <MobileSwiperList>{flexItems}</MobileSwiperList>
         </Swipeable>
       </CarouselContainer>
     )
