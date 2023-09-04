@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.0...@twreporter/index-page@1.5.0-rc.1) (2023-09-04)
+
+
+### Bug Fixes
+
+* add key ([a0f9fb3](https://github.com/twreporter/twreporter-npm-packages/commit/a0f9fb32e6011238cf9ca601ab5e4005bbdd8851))
+
+
+
+
+
 # [1.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.9-rc.0...@twreporter/index-page@1.5.0-rc.0) (2023-09-04)
 
 
