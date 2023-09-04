@@ -58,18 +58,36 @@ const LinkContainer = styled.div`
 
 const CategorySetFlex = styled.div`
   ${props => props.isTop && createLine('top', props.theme.name)}
-  ${props => props.isCategory && 'min-width: 100px;'}
-  flex-basis: ${props => (props.isCategory ? '100px' : 'calc(100% - 100px)')};
-
   ${mq.tabletAndBelow`
     padding-right: 10px;
     padding-left: 10px;
   `}
-
-  ${mq.desktopAndAbove`
-    padding-right: 5px;
-    padding-left: 5px;
-  `}
+  ${props =>
+    props.isCategory
+      ? css`
+          min-width: 100px;
+          flex-basis: 100px;
+          padding-left: 10px;
+          padding-right: 10px;
+          ${mq.desktopAndAbove`
+      padding-left: 0px;
+      padding-right: 5px;
+    `}
+          ${mq.desktopOnly`
+      min-width: 80px;
+      flex-basis: 80px;
+    `}
+        `
+      : css`
+          flex-basis: calc(100% - 100px);
+          ${mq.desktopOnly`
+      flex-basis: calc(100% - 80px);
+    `}
+          ${mq.desktopAndAbove`
+      padding-left: 10px;
+      padding-right: 0px;
+    `}
+        `}
 `
 
 const CategoryText = styled.div`
@@ -179,9 +197,7 @@ const TagsSection = styled.div`
   ${props => createLine('bottom', props.theme.name)}
 `
 
-const TextLink = styled(LinkButton)`
-  padding: 0 0 0 5px;
-`
+const TextLink = styled(LinkButton)``
 
 const MetadataContainer = styled.div`
   ${props => getMetadataContainerStyles(props.theme.name)}
