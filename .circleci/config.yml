@@ -3,7 +3,7 @@ version: 2.1
 executors:
   node-executor:
     docker:
-      - image: cimg/node:16.14.2
+      - image: cimg/node:18.17.1
     working_directory: ~/repo
     environment:
       - NODE_BIN_DIR: "node_modules/.bin"
