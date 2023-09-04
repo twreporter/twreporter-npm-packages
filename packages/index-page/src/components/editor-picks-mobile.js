@@ -113,8 +113,9 @@ class EditorPicksMobile extends SwipableMixin {
       const isExternal = _.get(post, 'is_external', false)
       const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
+      const key = _.get(post, 'id')
       return (
-        <TRLink href={href} redirect={isExternal}>
+        <TRLink href={href} redirect={isExternal} key={key}>
           <ImgFrame>
             <ImgWrapper
               alt={_.get(imgObj, 'description')}
