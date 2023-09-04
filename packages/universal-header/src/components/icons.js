@@ -149,7 +149,6 @@ const SearchIcon = () => {
           theme={theme}
           onClose={closeSearchBox}
           onSearch={onSearch}
-          handleBlur={closeSearchBox}
         />
       </SearchContainer>
     </IconContainer>
