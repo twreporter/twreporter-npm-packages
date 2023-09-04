@@ -14,7 +14,6 @@ import { MobileOnly } from '@twreporter/react-components/lib/rwd'
 const MobileList = styled(MobileOnly)`
   .swiper-container {
     width: 100%;
-    height: 100%;
   }
   .swiper-slide {
     width: ${itemWidthPct}%;
