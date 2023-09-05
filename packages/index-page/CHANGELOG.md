@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.2...@twreporter/index-page@1.5.0-rc.3) (2023-09-05)
+
+
+### Bug Fixes
+
+* use css modules transform ([b0bc465](https://github.com/twreporter/twreporter-npm-packages/commit/b0bc465513781b9d18545a7e8e8558320dc8cce4))
+
+
+
+
+
 # [1.5.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.1...@twreporter/index-page@1.5.0-rc.2) (2023-09-04)
 
 
