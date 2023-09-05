@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/swiper.min.css'
+
 // constants
 import {
   itemWidthPct,
@@ -19,8 +19,8 @@ const MobileList = styled(MobileOnly)`
     width: ${itemWidthPct}%;
   }
 `
-
-const MobileSwiperList = ({ children }) => {
+const defaultFunc = () => {}
+const MobileSwiperList = ({ children, onSlideChange = defaultFunc }) => {
   let render
   if (children) {
     render = Array.isArray(children) ? (
@@ -32,6 +32,7 @@ const MobileSwiperList = ({ children }) => {
   return (
     <MobileList>
       <Swiper
+        onSlideChange={onSlideChange}
         slidesPerView={'auto'}
         centeredSlides={true}
         spaceBetween={`${itemPaddingRightPct}%`}
@@ -47,6 +48,7 @@ MobileSwiperList.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]),
+  onSlideChange: PropTypes.func,
 }
 
 export default MobileSwiperList

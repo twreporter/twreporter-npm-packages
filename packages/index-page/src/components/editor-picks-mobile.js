@@ -1,5 +1,4 @@
 import React from 'react'
-import Swipeable from 'react-swipeable'
 import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
@@ -101,14 +100,6 @@ const FadeInFadeOut = styled.div`
 
 class EditorPicksMobile extends SwipableMixin {
   render() {
-    const onSwiping = (e, deltaX, deltaY, absX, absY) => {
-      // In order to avoid slightly vibrating while swiping left and right,
-      // we set a threshold to prevent scrolling.
-      // 10 is the the threshold value we set after manually testing.
-      if (absY < 10) {
-        e.preventDefault()
-      }
-    }
     const ImageComp = post => {
       const isExternal = _.get(post, 'is_external', false)
       const href = getHref(_.get(post, 'slug', 'error'), isExternal)
@@ -163,19 +154,23 @@ class EditorPicksMobile extends SwipableMixin {
       )
     })
 
+    const onSlideChange = e => {
+      if (e) {
+        this.setState({
+          selected: e.activeIndex,
+        })
+      }
+    }
+
     return (
       <CarouselContainer mobileWidth={mobileWidth}>
-        <Swipeable
-          onSwipedRight={this.onSwipedRight}
-          onSwipedLeft={this.onSwipedLeft}
-          onSwiping={onSwiping}
-        >
-          <SectionName mobileWidth={mobileWidth}>
-            <span>{sectionStrings.editorPick}</span>
-          </SectionName>
-          <TextFrame>{textFrameContent}</TextFrame>
-          <MobileSwiperList>{flexItems}</MobileSwiperList>
-        </Swipeable>
+        <SectionName mobileWidth={mobileWidth}>
+          <span>{sectionStrings.editorPick}</span>
+        </SectionName>
+        <TextFrame>{textFrameContent}</TextFrame>
+        <MobileSwiperList onSlideChange={onSlideChange}>
+          {flexItems}
+        </MobileSwiperList>
       </CarouselContainer>
     )
   }
