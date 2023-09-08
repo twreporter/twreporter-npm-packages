@@ -10,13 +10,11 @@ import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import Section from './common-utils/section'
 import SectionName from './common-utils/section-name'
-import SwipableMixin from './common-utils/swipable-mixin'
 import TRLink from './common-utils/twreporter-link'
 import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
-import { itemWidthPct } from '../constants/mobile-mockup-specification'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 // lodash
@@ -24,8 +22,6 @@ import get from 'lodash/get'
 const _ = {
   get,
 }
-
-const mobileWidth = breakPoints.mobileMaxWidth
 
 const mockup = {
   img: {
@@ -40,9 +36,6 @@ const mockup = {
 const CarouselContainer = styled(Section)`
   padding-top: 0;
   background: ${color.white};
-  @media (min-width: ${breakPoints.tabletMinWidth}) {
-    display: none;
-  }
 `
 
 const TextFrame = styled.div`
@@ -63,7 +56,7 @@ const Title = styled.div`
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  width: ${itemWidthPct}%;
+  width: 100%;
   font-size: 24px;
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
@@ -82,7 +75,7 @@ const Description = styled.div`
   left: 50%;
   font-size: 18px;
   transform: translateX(-50%);
-  width: ${itemWidthPct}%;
+  width: 100%;
   text-align: left;
   color: ${color.darkGray};
   ${truncate('absolute', 1.43, 3, 'white')};
@@ -92,21 +85,27 @@ const ImgFrame = styled.div`
   height: 186px;
 `
 
-const FadeInFadeOut = styled.div`
-  opacity: ${props => (props.isSelected ? '1' : '0')};
-  z-index: ${props => (props.isSelected ? '1' : '0')};
-  transition: 0.5s opacity linear;
-`
-
-class EditorPicksMobile extends SwipableMixin {
+class EditorPicksMobile extends React.Component {
   render() {
-    const ImageComp = post => {
+    const { data } = this.props
+    const flexItems = data.map(post => {
       const isExternal = _.get(post, 'is_external', false)
       const href = getHref(_.get(post, 'slug', 'error'), isExternal)
       const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
       const key = _.get(post, 'id')
       return (
         <TRLink href={href} redirect={isExternal} key={key}>
+          <TextFrame>
+            <Category>
+              {_.get(post, 'category_set[0].category.name', '')}
+            </Category>
+            <Title>
+              <TRLink href={href} redirect={isExternal}>
+                <TitleSpan>{_.get(post, 'title', '')}</TitleSpan>
+              </TRLink>
+            </Title>
+            <Description>{_.get(post, 'og_description', '')}</Description>
+          </TextFrame>
           <ImgFrame>
             <ImgWrapper
               alt={_.get(imgObj, 'description')}
@@ -121,56 +120,14 @@ class EditorPicksMobile extends SwipableMixin {
           </ImgFrame>
         </TRLink>
       )
-    }
-
-    const { data } = this.props
-    const flexItems = data.map(post => {
-      return ImageComp(post)
     })
-
-    const textFrameContent = data.map((post, index) => {
-      const isExternal = _.get(post, 'is_external', false)
-      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
-      const fadingStyle = {
-        opacity: this.state.selected === index ? '1' : '0',
-        zIndex: this.state.selected === index ? '1' : '0',
-        transition: 'opacity .5s linear',
-      }
-      return (
-        <FadeInFadeOut
-          key={_.get(post, 'id')}
-          isSelected={index === this.state.selected}
-        >
-          <Category>
-            {_.get(post, 'category_set[0].category.name', '')}
-          </Category>
-          <Title style={fadingStyle}>
-            <TRLink href={href} redirect={isExternal}>
-              <TitleSpan>{_.get(post, 'title', '')}</TitleSpan>
-            </TRLink>
-          </Title>
-          <Description>{_.get(post, 'og_description', '')}</Description>
-        </FadeInFadeOut>
-      )
-    })
-
-    const onSlideChange = e => {
-      if (e) {
-        this.setState({
-          selected: e.activeIndex,
-        })
-      }
-    }
 
     return (
-      <CarouselContainer mobileWidth={mobileWidth}>
-        <SectionName mobileWidth={mobileWidth}>
+      <CarouselContainer>
+        <SectionName>
           <span>{sectionStrings.editorPick}</span>
         </SectionName>
-        <TextFrame>{textFrameContent}</TextFrame>
-        <MobileSwiperList onSlideChange={onSlideChange}>
-          {flexItems}
-        </MobileSwiperList>
+        <MobileSwiperList>{flexItems}</MobileSwiperList>
       </CarouselContainer>
     )
   }
