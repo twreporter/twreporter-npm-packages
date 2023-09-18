@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.19.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.0-rc.0...@twreporter/react-components@8.19.0-rc.1) (2023-09-18)
+
+
+### Bug Fixes
+
+* safari input bottom border dissapear ([b28a8e6](https://github.com/twreporter/twreporter-npm-packages/commit/b28a8e6b289a56508bcb61f05f100bcc3f3b92d4))
+
+
+
+
+
 # [8.19.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.18.1...@twreporter/react-components@8.19.0-rc.0) (2023-09-04)
 
 
