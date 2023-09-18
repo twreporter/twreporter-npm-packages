@@ -31,6 +31,7 @@ const Input = styled.input`
   border-radius: 0;
   color: ${props => textColor[props.state]};
   border-color: ${props => borderColor[props.state]};
+  border-style: solid;
   &:focus,
   &:focus-visible {
     outline-width: 0;
