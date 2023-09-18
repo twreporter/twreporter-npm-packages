@@ -40,6 +40,7 @@ const LinkContainer = styled(Link)`
     &:hover {
       text-decoration-line: underline;
     }
+    -webkit-tap-highlight-color: transparent;
   `}
 `
 
