@@ -92,7 +92,8 @@ const FlexItem = styled.div`
   ${mq.mobileOnly`
     width: 100%;
     height: 100%;
-    margin-bottom: 0;
+    margin-bottom: 20px;
+    padding-bottom: 0px;
   `}
 `
 
@@ -149,7 +150,7 @@ const More = styled.div`
   width: 101%;
   background-color: ${backgroundColor};
   ${mq.mobileOnly`
-    bottom: -24px;
+    position: relative;
   `}
 `
 
