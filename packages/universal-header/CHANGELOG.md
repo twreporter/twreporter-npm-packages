@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.1-rc.3...@twreporter/universal-header@2.7.1-rc.4) (2023-09-19)
+
+
+### Bug Fixes
+
+* universal header close search bar while search ([9dedbd0](https://github.com/twreporter/twreporter-npm-packages/commit/9dedbd0d52c9f8a727495f93af8e9aa37559c554))
+
+
+
+
+
 ## [2.7.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.1-rc.2...@twreporter/universal-header@2.7.1-rc.3) (2023-09-19)
 
 **Note:** Version bump only for package @twreporter/universal-header
