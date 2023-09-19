@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.6...@twreporter/index-page@1.5.0-rc.7) (2023-09-19)
+
+
+### Bug Fixes
+
+* index page more link ([9fe8f3f](https://github.com/twreporter/twreporter-npm-packages/commit/9fe8f3fc66c1935c28debba0f8df4d3de94edbf4))
+
+
+
+
+
 # [1.5.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.5...@twreporter/index-page@1.5.0-rc.6) (2023-09-19)
 
 **Note:** Version bump only for package @twreporter/index-page
