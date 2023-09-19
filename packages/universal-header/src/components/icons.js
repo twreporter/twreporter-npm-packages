@@ -128,6 +128,7 @@ const SearchIcon = () => {
     }
   }
   const onSearch = keywords => {
+    setSearchOpened(false)
     if (!window) {
       return
     }
