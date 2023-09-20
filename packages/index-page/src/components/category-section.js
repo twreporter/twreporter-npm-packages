@@ -7,13 +7,12 @@ import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import { breakPoints } from '../utils/style-utils'
 import { getHref } from '../utils/getHref'
 // components
-import MobileFlexSwipeable from './mobile-flex-swipeable'
 import BottomLink from './common-utils/bottom-link'
-import MobileListUtils from './common-utils/mobile-list'
 import Section from './common-utils/section'
 import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
 import ImgWrapper from './common-utils/img-wrapper'
+import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import color from '../constants/color'
@@ -93,7 +92,8 @@ const FlexItem = styled.div`
   ${mq.mobileOnly`
     width: 100%;
     height: 100%;
-    margin-bottom: 0;
+    margin-bottom: 20px;
+    padding-bottom: 0px;
   `}
 `
 
@@ -150,7 +150,7 @@ const More = styled.div`
   width: 101%;
   background-color: ${backgroundColor};
   ${mq.mobileOnly`
-    bottom: -24px;
+    position: relative;
   `}
 `
 
@@ -202,15 +202,7 @@ class Category extends React.PureComponent {
             <span>{sectionStrings.category}</span>
           </SectionName>
           <FlexBox>{items}</FlexBox>
-          <MobileListUtils>
-            <MobileFlexSwipeable.SwipableFlexItems
-              alignItems="stretch"
-              maxSwipableItems={_.get(this.props, 'data.length', 1) - 1}
-              categorySection
-            >
-              {items}
-            </MobileFlexSwipeable.SwipableFlexItems>
-          </MobileListUtils>
+          <MobileSwiperList>{items}</MobileSwiperList>
         </SectionWrapper>
       </Container>
     )

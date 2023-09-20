@@ -99,7 +99,7 @@ const DesktopAsideBlock = styled.div`
   `}
 
   ${mq.desktopOnly`
-    width: 180px;
+    width: 190px;
     left: 28px;
   `}
 

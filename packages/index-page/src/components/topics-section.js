@@ -8,12 +8,11 @@ import { breakPoints, truncate } from '../utils/style-utils'
 import BottomTRLink from './common-utils/bottom-link'
 import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
-import MobileFlexSwipeable from './mobile-flex-swipeable'
-import MobileList from './common-utils/mobile-list'
 import Section from './common-utils/section'
 import SectionAnimationWrapper from './animations/section-animation-wrapper'
 import SectionName from './common-utils/section-name'
 import TRLink from './common-utils/twreporter-link'
+import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
@@ -403,13 +402,7 @@ class TopicsSection extends React.PureComponent {
             data={data.slice(2, totalTopics)}
             useTinyImg={useTinyImg}
           />
-          <MobileList>
-            <MobileFlexSwipeable.SwipableFlexItems
-              maxSwipableItems={totalTopics - 1}
-            >
-              {mobileTopicComps}
-            </MobileFlexSwipeable.SwipableFlexItems>
-          </MobileList>
+          <MobileSwiperList>{mobileTopicComps}</MobileSwiperList>
           <More>
             <BottomTRLink text="更多報導者專題" path={moreURI} />
           </More>

@@ -128,6 +128,7 @@ const SearchIcon = () => {
     }
   }
   const onSearch = keywords => {
+    setSearchOpened(false)
     if (!window) {
       return
     }
@@ -149,7 +150,6 @@ const SearchIcon = () => {
           theme={theme}
           onClose={closeSearchBox}
           onSearch={onSearch}
-          handleBlur={closeSearchBox}
         />
       </SearchContainer>
     </IconContainer>
