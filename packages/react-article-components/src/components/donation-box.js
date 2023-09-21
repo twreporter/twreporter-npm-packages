@@ -1,8 +1,11 @@
-import DonationLink from '@twreporter/react-components/lib/donation-link'
-import mq from '@twreporter/core/lib/utils/media-query'
-import predefinedCss from '../constants/css'
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+// @twreporter
+import externalLinks from '@twreporter/core/lib/constants/external-links'
+import mq from '@twreporter/core/lib/utils/media-query'
+import { DONATION_LINK_ANCHOR } from '@twreporter/core/lib/constants/donation-link-anchor'
+// constants
+import predefinedCss from '../constants/css'
 import typography from '../constants/typography'
 import color from '../constants/color'
 
@@ -94,9 +97,13 @@ export default class DonationBox extends PureComponent {
           return <Text key={`donation-box-desc-${index + 1}`}>{p}</Text>
         })}
         <Donate>
-          <DonationLink>
+          <a
+            href={`${externalLinks.donation}#${DONATION_LINK_ANCHOR.impact}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <p>{_content.bt}</p>
-          </DonationLink>
+          </a>
         </Donate>
       </Container>
     )
