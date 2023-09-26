@@ -35,12 +35,12 @@ const LinkContainer = styled(Link)`
       ? `
     opacity: 0.5;
     cursor: auto;
+    -webkit-tap-highlight-color: transparent;
   `
       : `
     &:hover {
       text-decoration-line: underline;
     }
-    -webkit-tap-highlight-color: transparent;
   `}
 `
 
