@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.10...@twreporter/react-article-components@1.8.0-rc.0) (2023-09-28)
+
+
+### Features
+
+* add donation anchor & change link ([83b3c18](https://github.com/twreporter/twreporter-npm-packages/commit/83b3c1868b9e54250762d5223b541868fc757410))
+
+
+
+
+
 ## [1.7.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.7.10-rc.5...@twreporter/react-article-components@1.7.10) (2023-09-20)
 
 **Note:** Version bump only for package @twreporter/react-article-components
