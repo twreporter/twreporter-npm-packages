@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.19.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.1-rc.0...@twreporter/react-components@8.19.1-rc.1) (2023-10-01)
+
+
+### Bug Fixes
+
+* remove click effect when link disabled on mobile ([09899d9](https://github.com/twreporter/twreporter-npm-packages/commit/09899d91ae54b2a153cbff17fe860122287ffd0a))
+
+
+
+
+
 ## [8.19.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.0...@twreporter/react-components@8.19.1-rc.0) (2023-09-28)
 
 **Note:** Version bump only for package @twreporter/react-components
