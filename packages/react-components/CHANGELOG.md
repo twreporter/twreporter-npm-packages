@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.20.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.1-rc.1...@twreporter/react-components@8.20.0-rc.0) (2023-10-05)
+
+
+### Features
+
+* add `loading` props for PillButton ([6ded8f1](https://github.com/twreporter/twreporter-npm-packages/commit/6ded8f193777b384933f27fbd925b7daf372b0c9))
+
+
+
+
+
 ## [8.19.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.1-rc.0...@twreporter/react-components@8.19.1-rc.1) (2023-10-01)
 
 
