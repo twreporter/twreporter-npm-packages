@@ -55,6 +55,9 @@ const IconContainer = styled.div`
 `
 const HideOnLoading = styled.div`
   opacity: ${props => (props.show ? 1 : 0)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 const RelativeParent = styled.div`
   position: relative;
