@@ -38,6 +38,7 @@ pillButton.args = {
   style: PillButton.Style.BRAND,
   type: PillButton.Type.PRIMARY,
   disabled: false,
+  loading: false,
 }
 pillButton.parameters = { controls: { exclude: ['showLeft', 'showRight'] } }
 
@@ -56,6 +57,7 @@ toggleIconDisplay.args = {
   style: PillButton.Style.BRAND,
   type: PillButton.Type.PRIMARY,
   disabled: false,
+  loading: false,
 }
 toggleIconDisplay.parameters = {
   controls: { exclude: ['leftIconComponent', 'rightIconComponent'] },

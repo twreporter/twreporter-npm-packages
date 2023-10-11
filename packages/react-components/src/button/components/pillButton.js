@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { P1, P2 } from '../../text/paragraph'
 // utils
 import {
@@ -13,6 +13,7 @@ import { Style, Type } from '../enums'
 import { Size } from '../../shared-enum'
 // @twreporter
 import { THEME } from '@twreporter/core/lib/constants/theme'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const ButtonContainer = styled.div`
   width: fit-content;
@@ -52,6 +53,38 @@ const IconContainer = styled.div`
     margin-left: 4px;
   }
 `
+const HideOnLoading = styled.div`
+  opacity: ${props => (props.show ? 1 : 0)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const RelativeParent = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const spin = keyframes`
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+`
+const Loader = styled.span`
+  position: absolute;
+  opacity: ${props => (props.show ? 1 : 0)};
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  border: 2px solid ${colorGrayscale.gray400};
+  border-top-color: ${colorGrayscale.gray600};
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: ${spin} 1s linear infinite;
+`
 
 const PillButton = ({
   text = '',
@@ -62,6 +95,7 @@ const PillButton = ({
   type = Type.PRIMARY,
   style = Style.BRAND,
   disabled = false,
+  loading = false,
   ...props
 }) => {
   const themeFunc =
@@ -96,9 +130,14 @@ const PillButton = ({
       hoverBgColor={hoverBgColor}
       {...props}
     >
-      {leftIconJSX}
-      {textJSX}
-      {rightIconJSX}
+      <RelativeParent>
+        <HideOnLoading show={!loading}>
+          {leftIconJSX}
+          {textJSX}
+          {rightIconJSX}
+        </HideOnLoading>
+        <Loader show={loading} size={size === Size.S ? 18 : 24} />
+      </RelativeParent>
     </ButtonContainer>
   )
 }
@@ -111,6 +150,7 @@ PillButton.propTypes = {
   type: PropTypes.oneOf(Object.values(Type)),
   style: PropTypes.oneOf(Object.values(Style)),
   disabled: PropTypes.bool,
+  loading: PropTypes.bool,
 }
 PillButton.THEME = THEME
 PillButton.Type = Type

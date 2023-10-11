@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.20.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.20.0-rc.0...@twreporter/react-components@8.20.0-rc.1) (2023-10-06)
+
+
+### Bug Fixes
+
+* pillbutton layout with icons ([48dbf3e](https://github.com/twreporter/twreporter-npm-packages/commit/48dbf3e7726817f880e76047a94d6cd9fa41d868))
+
+
+
+
+
+# [8.20.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.1-rc.1...@twreporter/react-components@8.20.0-rc.0) (2023-10-05)
+
+
+### Features
+
+* add `loading` props for PillButton ([6ded8f1](https://github.com/twreporter/twreporter-npm-packages/commit/6ded8f193777b384933f27fbd925b7daf372b0c9))
+
+
+
+
+
+## [8.19.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.1-rc.0...@twreporter/react-components@8.19.1-rc.1) (2023-10-01)
+
+
+### Bug Fixes
+
+* remove click effect when link disabled on mobile ([09899d9](https://github.com/twreporter/twreporter-npm-packages/commit/09899d91ae54b2a153cbff17fe860122287ffd0a))
+
+
+
+
+
+## [8.19.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.0...@twreporter/react-components@8.19.1-rc.0) (2023-09-28)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
 # [8.19.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.19.0-rc.2...@twreporter/react-components@8.19.0) (2023-09-20)
 
 **Note:** Version bump only for package @twreporter/react-components

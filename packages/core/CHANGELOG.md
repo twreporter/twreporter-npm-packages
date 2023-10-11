@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0...@twreporter/core@1.12.0-rc.0) (2023-09-28)
+
+
+### Features
+
+* add donation anchor & change link ([83b3c18](https://github.com/twreporter/twreporter-npm-packages/commit/83b3c1868b9e54250762d5223b541868fc757410))
+
+
+
+
+
 # [1.11.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.4...@twreporter/core@1.11.0) (2023-08-31)
 
 **Note:** Version bump only for package @twreporter/core
