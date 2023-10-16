@@ -26,6 +26,7 @@ export const mockActions = {
               name: '探索者',
               name_us: 'explorer',
               key: MEMBER_ROLE.explorer,
+              weight: 1,
             },
           ],
           registration_date: '2023-06-02T11:19:32Z',
@@ -107,7 +108,13 @@ export const mockStates = {
     firstName: 'first',
     lastName: 'last',
     roles: [
-      { id: 1, name: '探索者', name_us: 'explorer', key: MEMBER_ROLE.explorer },
+      {
+        id: 1,
+        name: '探索者',
+        name_us: 'explorer',
+        key: MEMBER_ROLE.explorer,
+        weight: 1,
+      },
     ],
     registrationDate: '2023-06-02T11:19:32Z',
     activated: '2023-06-02T11:19:32Z',
@@ -124,7 +131,13 @@ export const mockStates = {
     firstName: 'first',
     lastName: 'last',
     roles: [
-      { id: 1, name: '探索者', name_us: 'explorer', key: MEMBER_ROLE.explorer },
+      {
+        id: 1,
+        name: '探索者',
+        name_us: 'explorer',
+        key: MEMBER_ROLE.explorer,
+        weight: 1,
+      },
     ],
     registrationDate: '2023-06-02T11:19:32Z',
     activated: '2023-06-02T11:19:32Z',
@@ -141,7 +154,13 @@ export const mockStates = {
     firstName: 'first',
     lastName: 'last',
     roles: [
-      { id: 1, name: '探索者', name_us: 'explorer', key: MEMBER_ROLE.explorer },
+      {
+        id: 1,
+        name: '探索者',
+        name_us: 'explorer',
+        key: MEMBER_ROLE.explorer,
+        weight: 1,
+      },
     ],
     registrationDate: '2023-06-02T11:19:32Z',
     activated: '2023-06-02T11:19:32Z',
@@ -176,7 +195,13 @@ export const mockStates = {
     firstName: 'first',
     lastName: 'last',
     roles: [
-      { id: 1, name: '探索者', name_us: 'explorer', key: MEMBER_ROLE.explorer },
+      {
+        id: 1,
+        name: '探索者',
+        name_us: 'explorer',
+        key: MEMBER_ROLE.explorer,
+        weight: 1,
+      },
     ],
     registrationDate: '2023-06-02T11:19:32Z',
     activated: '2023-06-02T11:19:32Z',
@@ -211,7 +236,13 @@ export const mockStates = {
     firstName: 'first',
     lastName: 'last',
     roles: [
-      { id: 1, name: '探索者', name_us: 'explorer', key: MEMBER_ROLE.explorer },
+      {
+        id: 1,
+        name: '探索者',
+        name_us: 'explorer',
+        key: MEMBER_ROLE.explorer,
+        weight: 1,
+      },
     ],
     registrationDate: '2023-06-02T11:19:32Z',
     activated: '2023-06-02T11:19:32Z',
