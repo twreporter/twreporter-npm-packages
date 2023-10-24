@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.1...@twreporter/redux@7.8.0-rc.0) (2023-10-24)
+
+
+### Bug Fixes
+
+* fix comment ([66389ed](https://github.com/twreporter/twreporter-npm-packages/commit/66389ed9483c4e86bde25d1b76f12ac93ae9beef))
+
+
+### Features
+
+* new user role ([74f8231](https://github.com/twreporter/twreporter-npm-packages/commit/74f823191f302d194b23034b356d2c219b149e58))
+
+
+
+
+
 ## [7.7.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.7.1-rc.0...@twreporter/redux@7.7.1) (2023-10-11)
 
 **Note:** Version bump only for package @twreporter/redux
