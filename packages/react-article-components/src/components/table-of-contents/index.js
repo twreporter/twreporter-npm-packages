@@ -18,6 +18,7 @@ class TableOfContents extends React.PureComponent {
     className: PropTypes.string,
     manager: TOC.React.TableOfContents.propTypes.manager,
     onStartScrollingToAnchor: PropTypes.func,
+    onToggleTabExpanded: PropTypes.func,
   }
 
   static defaultProps = {
@@ -51,6 +52,12 @@ class TableOfContents extends React.PureComponent {
       passive: true,
       capture: true,
     })
+  }
+
+  componentDidUpdate(_prevProps, prevStates) {
+    if (prevStates.isExpanded !== this.state.isExpanded) {
+      this.props.onToggleTabExpanded(this.state.isExpanded)
+    }
   }
 
   _setIsExpanded(isExpanded) {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.8.0...@twreporter/react-article-components@1.9.0-rc.0) (2023-10-24)
+
+
+### Features
+
+* emit onToggleTabExpanded ([73a37c1](https://github.com/twreporter/twreporter-npm-packages/commit/73a37c1822eb93aeb4a8712a3c711ac3c77c7035))
+
+
+
+
+
 # [1.8.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.8.0-rc.3...@twreporter/react-article-components@1.8.0) (2023-10-11)
 
 **Note:** Version bump only for package @twreporter/react-article-components
