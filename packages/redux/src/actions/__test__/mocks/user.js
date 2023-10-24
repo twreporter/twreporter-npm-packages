@@ -10,7 +10,12 @@ const mockGetUserData = {
   firstName: 'first',
   lastName: 'last',
   roles: [
-    { id: 1, name: '探索者', name_us: 'explorer', key: MEMBER_ROLE.explorer },
+    {
+      id: 1,
+      name: '探索者',
+      name_us: 'explorer',
+      key: MEMBER_ROLE.explorer,
+    },
   ],
   registrationDate: '2023-06-02T11:19:32Z',
   activated: '2023-06-02T11:19:32Z',
