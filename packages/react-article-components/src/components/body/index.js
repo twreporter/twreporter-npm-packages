@@ -427,11 +427,13 @@ export default class Body extends Component {
   static propTypes = {
     brief: PropTypes.arrayOf(predefinedPropTypes.elementData),
     content: PropTypes.arrayOf(predefinedPropTypes.elementData),
+    onToggleTabExpanded: PropTypes.func,
   }
 
   static defaultProps = {
     brief: [],
     content: [],
+    onToggleTabExpanded: () => {},
   }
 
   constructor(props) {
@@ -491,7 +493,7 @@ export default class Body extends Component {
   }
 
   render() {
-    const { brief, content } = this.props
+    const { brief, content, onToggleTabExpanded } = this.props
     let enableTOC = false
 
     const contentJsx = Array.isArray(content)
@@ -523,6 +525,7 @@ export default class Body extends Component {
           <TOC.React.TableOfContents
             manager={this.tocManager}
             onStartScrollingToAnchor={this._onStartScrollingToAnchor}
+            onToggleTabExpanded={onToggleTabExpanded}
           />
         ) : null}
       </div>
