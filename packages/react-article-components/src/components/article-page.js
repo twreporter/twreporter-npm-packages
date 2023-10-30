@@ -299,6 +299,7 @@ export default class Article extends PureComponent {
     hasMoreRelateds: PropTypes.bool,
     loadMoreRelateds: PropTypes.func,
     releaseBranch: predefinedPropTypes.releaseBranch,
+    onToggleTabExpanded: PropTypes.func,
   }
 
   static defaultProps = {
@@ -309,6 +310,7 @@ export default class Article extends PureComponent {
     hasMoreRelateds: false,
     loadMoreRelateds: noop,
     releaseBranch: releaseBranchConsts.master,
+    onToggleTabExpanded: () => {},
   }
 
   changeFontLevel = () => {
@@ -360,6 +362,7 @@ export default class Article extends PureComponent {
       hasMoreRelateds,
       loadMoreRelateds,
       releaseBranch,
+      onToggleTabExpanded,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -451,6 +454,7 @@ export default class Article extends PureComponent {
                     key={_.get(post, 'slug', 'article-page-body-key')}
                     brief={_.get(post, 'brief.api_data')}
                     content={_.get(post, 'content.api_data')}
+                    onToggleTabExpanded={onToggleTabExpanded}
                   />
                 </ContentBlock>
                 {metadataAndToolsJSX}
