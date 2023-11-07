@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import color from '../../../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 export const Rail = styled.div`
   width: 100%;
   height: 100%;
-  background: ${color.gray55};
+  background: ${colorGrayscale.gray400};
   position: relative;
   cursor: ${props => (props.isHeld ? 'grabbing' : 'pointer')};
 `
@@ -30,7 +30,7 @@ export const Indicator = styled.div.attrs(({ x }) => ({
 }))`
   width: 10px;
   height: 100%;
-  background: black;
+  background: ${colorGrayscale.black};
   position: absolute;
   top: 0;
   cursor: ${props => (props.isHeld ? 'grabbing' : 'grab')};

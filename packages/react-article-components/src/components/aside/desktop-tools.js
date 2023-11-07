@@ -170,11 +170,11 @@ const ToolsBlock = styled.div`
             }
 
             &::after {
-              color: ${colorSupportive.main};
+              color: ${colorSupportive.pastel};
             }
 
             &:hover svg{
-              background-color: ${colorSupportive.main};
+              background-color: ${colorSupportive.pastel};
             }
           }
         `

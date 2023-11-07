@@ -6,10 +6,14 @@ import Img from '../img-with-placeholder'
 // constants
 import predefinedPropTypes from '../../constants/prop-types/leading'
 import themeConst from '../../constants/theme'
-import color from '../../constants/color'
 import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -129,31 +133,31 @@ function getBackgroundBlockStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        background-color: ${color.darkBlue};
+        background-color: ${COLOR_PINK_ARTICLE.darkBlue};
         ${FigCaption} {
-          color: ${color.gray5};
+          color: ${colorGrayscale.gray600};
         }
         ${Topic} {
-          color: ${color.milkTea};
-          border-color: ${color.brown};
+          color: ${colorSupportive.main};
+          border-color: ${colorSupportive.heavy};
         }
         ${Subtitle}, ${Title} {
-          color: ${color.notSoWhite};
+          color: ${colorGrayscale.gray300};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        background-color: ${color.gray30};
+        background-color: ${colorGrayscale.gray100};
         ${FigCaption} {
-          color: ${color.gray80};
+          color: ${colorGrayscale.gray600};
         }
         ${Topic} {
-          color: ${color.brown};
-          border-color: ${color.milkTea};
+          color: ${colorSupportive.heavy};
+          border-color: ${colorSupportive.main};
         }
         ${Subtitle}, ${Title} {
-          color: ${color.gray90};
+          color: ${colorGrayscale.gray800};
         }
       `
   }

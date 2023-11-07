@@ -10,8 +10,12 @@ import memoize from 'memoize-one'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
-import colorConst from '../../../constants/color'
 import typography from '../../../constants/typography'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 
 const _ = {
   get,
@@ -431,56 +435,56 @@ function getSlideshowFlexBoxStyles(themeName) {
     case themeConst.article.v2.photo:
       return css`
         ${PrevButton} {
-          border-color: ${colorConst.gray10};
+          border-color: ${colorGrayscale.gray400};
         }
         ${ImageNumberCircle} {
-          background-color: ${colorConst.milkTea};
+          background-color: ${colorSupportive.main};
           &::after {
-            border-color: ${colorConst.darkBlue};
+            border-color: ${COLOR_PINK_ARTICLE.darkBlue};
           }
         }
         ${ImageNumber} {
-          color: ${colorConst.darkBlue};
+          color: ${COLOR_PINK_ARTICLE.darkBlue};
         }
         ${SlideMask} {
-          background-color: ${colorConst.milkTea};
+          background-color: ${colorSupportive.main};
         }
       `
     case themeConst.article.v2.pink:
       return css`
         ${PrevButton} {
-          border-color: ${colorConst.gray50};
+          border-color: ${colorGrayscale.gray300};
         }
         ${ImageNumberCircle} {
-          background-color: ${colorConst.pink};
+          background-color: ${COLOR_PINK_ARTICLE.pink};
           &::after {
-            border-color: ${colorConst.white};
+            border-color: ${colorGrayscale.white};
           }
         }
         ${ImageNumber} {
-          color: ${colorConst.white};
+          color: ${colorGrayscale.white};
         }
         ${SlideMask} {
-          background-color: ${colorConst.lightBlue};
+          background-color: ${COLOR_PINK_ARTICLE.lightBlue};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${PrevButton} {
-          border-color: ${colorConst.gray50};
+          border-color: ${colorGrayscale.gray300};
         }
         ${ImageNumberCircle} {
-          background-color: ${colorConst.milkTea};
+          background-color: ${colorSupportive.main};
           &::after {
-            border-color: ${colorConst.white};
+            border-color: ${colorGrayscale.white};
           }
         }
         ${ImageNumber} {
-          color: ${colorConst.white};
+          color: ${colorGrayscale.white};
         }
         ${SlideMask} {
-          background-color: ${colorConst.milkTea};
+          background-color: ${colorSupportive.main};
         }
       `
   }

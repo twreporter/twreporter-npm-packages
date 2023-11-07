@@ -1,24 +1,12 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import themeConst from '../constants/theme'
-import colorConst from '../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const Text = styled.p`
   /* clear default browser styles */
   margin: 0;
-
-  color: ${props => {
-    switch (props.theme.name) {
-      case themeConst.article.v2.photo:
-        return colorConst.gray5
-      case themeConst.article.v2.pink:
-      case themeConst.article.v2.default:
-      default:
-        return colorConst.gray80
-    }
-  }};
-
+  color: ${colorGrayscale.gray600};
   font-size: 16px;
   line-height: 1.38;
 `

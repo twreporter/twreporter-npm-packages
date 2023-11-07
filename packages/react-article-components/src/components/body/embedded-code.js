@@ -8,11 +8,13 @@ import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import merge from 'lodash/merge'
 
-// twreporter
-import colorConst from '../../constants/color'
+// constants
 import predefinedPropTypes from '../../constants/prop-types/body'
 import themeConst from '../../constants/theme'
 import zIndexConst from '../../constants/position-z-index'
+
+// twreporter
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const _ = {
   forEach,
@@ -45,11 +47,11 @@ export const Caption = styled.div`
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return colorConst.notSoWhite
+        return colorGrayscale.gray300
       case themeConst.article.v2.pink:
       case themeConst.article.v2.default:
       default:
-        return colorConst.gray80
+        return colorGrayscale.gray600
     }
   }};
   padding: 15px 15px 0 15px;
