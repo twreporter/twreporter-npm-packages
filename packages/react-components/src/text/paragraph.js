@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Weight } from './enums'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
-const defaultContainer = styled.div`
+const defaultContainer = styled.p`
   font-weight: ${props => fontWeight[props.weight]};
   font-family: ${fontFamily.default};
   line-height: 150%;

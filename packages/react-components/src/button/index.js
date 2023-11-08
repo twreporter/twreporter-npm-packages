@@ -3,7 +3,7 @@ import IconButton from './components/iconButton'
 import IconWithTextButton from './components/iconWithTextButton'
 import TextButton from './components/textButton'
 import ToggleButton from './components/toggleButton'
-import LinkButton from './components/link'
+import LinkButton, { InheritLinkButton } from './components/link'
 import MenuButton from './components/menuButton'
 
 export {
@@ -13,6 +13,7 @@ export {
   TextButton,
   ToggleButton,
   LinkButton,
+  InheritLinkButton,
   MenuButton,
 }
 
@@ -23,5 +24,6 @@ export default {
   TextButton,
   ToggleButton,
   LinkButton,
+  InheritLinkButton,
   MenuButton,
 }
