@@ -1,3 +1,4 @@
+/* eslint react/display-name:0 */
 import React from 'react'
 import Divider from './divider'
 import styled from 'styled-components'
@@ -31,23 +32,30 @@ const VerticalContainer = styled.div`
   height: 200px;
 `
 
-export const divider = args => (
-  <FlexContainer {...args}>
-    <Cube />
-    <Divider {...args} />
-    <Cube />
-  </FlexContainer>
-)
-divider.args = { direction: Divider.Direction.HORIZONTAL }
+export const divider = {
+  render: args => (
+    <FlexContainer {...args}>
+      <Cube />
+      <Divider {...args} />
+      <Cube />
+    </FlexContainer>
+  ),
 
-export const horizontal = () => (
-  <Divider direction={Divider.Direction.HORIZONTAL} />
-)
-horizontal.parameters = { controls: { exclude: ['direction'] } }
+  args: { direction: Divider.Direction.HORIZONTAL },
+}
 
-export const vertical = () => (
-  <VerticalContainer>
-    <Divider direction={Divider.Direction.VERTICAL} />
-  </VerticalContainer>
-)
-vertical.parameters = { controls: { exclude: ['direction'] } }
+export const horizontal = {
+  render: () => <Divider direction={Divider.Direction.HORIZONTAL} />,
+
+  parameters: { controls: { exclude: ['direction'] } },
+}
+
+export const vertical = {
+  render: () => (
+    <VerticalContainer>
+      <Divider direction={Divider.Direction.VERTICAL} />
+    </VerticalContainer>
+  ),
+
+  parameters: { controls: { exclude: ['direction'] } },
+}

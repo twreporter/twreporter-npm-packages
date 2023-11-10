@@ -1,3 +1,4 @@
+/* eslint react/display-name:0 */
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -22,10 +23,11 @@ export default {
   },
 }
 
-export const snackBar = props => <SnackBar {...props} />
-snackBar.args = {
-  text: '系統作業文字',
-  theme: SnackBar.THEME.normal,
+export const snackBar = {
+  args: {
+    text: '系統作業文字',
+    theme: SnackBar.THEME.normal,
+  },
 }
 
 const Container = styled.div`
@@ -62,8 +64,11 @@ ClickToShowSnackBar.propTypes = {
   timeout: PropTypes.number,
 }
 
-export const clickToShow = props => <ClickToShowSnackBar {...props} />
-clickToShow.parameters = { controls: { exclude: ['text', 'theme'] } }
-clickToShow.args = {
-  timeout: 800,
+export const clickToShow = {
+  render: props => <ClickToShowSnackBar {...props} />,
+  parameters: { controls: { exclude: ['text', 'theme'] } },
+
+  args: {
+    timeout: 800,
+  },
 }

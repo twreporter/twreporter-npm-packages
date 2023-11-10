@@ -1,4 +1,3 @@
-import React from 'react'
 import LogoFallback from '../components/logo-loading-fallback'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
@@ -10,4 +9,4 @@ export default {
   },
 }
 
-export const fallback = args => <LogoFallback {...args} />
+export const fallback = {}

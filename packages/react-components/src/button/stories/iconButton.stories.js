@@ -14,22 +14,22 @@ export default {
   },
 }
 
-const Template = args => <IconButton {...args} />
-
-export const iconButton = Template.bind({})
-iconButton.args = {
-  iconComponent: <Arrow direction="down" />,
-  theme: IconButton.THEME.normal,
-  type: IconButton.Type.PRIMARY,
-  disabled: false,
-  active: false,
+export const iconButton = {
+  args: {
+    iconComponent: <Arrow direction="down" />,
+    theme: IconButton.THEME.normal,
+    type: IconButton.Type.PRIMARY,
+    disabled: false,
+    active: false,
+  },
 }
 
-export const shareButton = Template.bind({})
-shareButton.args = {
-  iconComponent: <Share />,
-  theme: IconButton.THEME.normal,
-  type: IconButton.Type.PRIMARY,
-  disabled: false,
-  active: false,
+export const shareButton = {
+  args: {
+    iconComponent: <Share />,
+    theme: IconButton.THEME.normal,
+    type: IconButton.Type.PRIMARY,
+    disabled: false,
+    active: false,
+  },
 }

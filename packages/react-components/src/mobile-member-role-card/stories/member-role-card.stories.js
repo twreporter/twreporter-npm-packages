@@ -1,4 +1,3 @@
-import React from 'react'
 import MobileMemberRoleCard from '../index'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
@@ -18,13 +17,13 @@ export default {
   },
 }
 
-export const moblieMemberRoleCard = args => <MobileMemberRoleCard {...args} />
-
-moblieMemberRoleCard.args = {
-  email: 'abc@mail.com',
-  joinDate: '2022/1/8',
-  name: '報導者',
-  articleReadCount: 12,
-  articleReadingTime: 380,
-  hideInfo: false,
+export const moblieMemberRoleCard = {
+  args: {
+    email: 'abc@mail.com',
+    joinDate: '2022/1/8',
+    name: '報導者',
+    articleReadCount: 12,
+    articleReadingTime: 380,
+    hideInfo: false,
+  },
 }

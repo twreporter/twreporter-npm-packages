@@ -1,17 +1,25 @@
+import { dirname, join } from 'path'
 const path = require('path')
 
-module.exports = {
+const config = {
   stories: [
     '../src/**/**/*.stories.mdx',
     '../src/**/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-viewport',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    getAbsolutePath('@storybook/addon-viewport'),
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
   ],
-  framework: '@storybook/react',
+
+  framework: {
+    name: getAbsolutePath('@storybook/react-webpack5'),
+    options: {},
+  },
+
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias['@twreporter/core/lib'] = path.resolve(
       __dirname,
@@ -19,4 +27,21 @@ module.exports = {
     )
     return config
   },
+
+  babel: config => {
+    return {
+      ...config,
+      configFile: path.resolve(__dirname, './.babelrc.json'),
+    }
+  },
+
+  docs: {
+    autodocs: false,
+  },
+}
+
+export default config
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, 'package.json')))
 }

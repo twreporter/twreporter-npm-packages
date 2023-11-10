@@ -1,3 +1,4 @@
+/* eslint react/display-name:0 */
 import React from 'react'
 import styled from 'styled-components'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
@@ -29,66 +30,71 @@ export default {
   },
 }
 
-const Template = args => <Link {...args} />
-
-export const link = Template.bind({})
-link.args = {
-  text: '文字',
-  type: Link.Type.DEFAULT,
-  link: { to: 'https://www.twreporter.org' },
-}
-link.parameters = {
-  controls: { exclude: ['textComponent', 'leftWord', 'rightWord'] },
+export const link = {
+  args: {
+    text: '文字',
+    type: Link.Type.DEFAULT,
+    link: { to: 'https://www.twreporter.org' },
+  },
+  parameters: { controls: { exclude: ['textComponent', 'leftWord', 'rightWord'] } },
 }
 
-export const changeTextComponent = args => {
-  if (args.textComponent === 'P2') {
-    args.TextComponent = P2
-  }
-  if (args.textComponent === 'H4') {
-    args.TextComponent = H4
-  }
+export const changeTextComponent = {
+  render: args => {
+    if (args.textComponent === 'P2') {
+      args.TextComponent = P2
+    }
+    if (args.textComponent === 'H4') {
+      args.TextComponent = H4
+    }
 
-  return <Link {...args} />
-}
-changeTextComponent.args = {
-  text: '文字',
-  type: Link.Type.DEFAULT,
-  textComponent: 'P2',
-  link: { to: 'https://www.twreporter.org' },
-}
-changeTextComponent.parameters = {
-  controls: { exclude: ['TextComponent', 'leftWord', 'rightWord'] },
+    return <Link {...args} />
+  },
+
+  args: {
+    text: '文字',
+    type: Link.Type.DEFAULT,
+    textComponent: 'P2',
+    link: { to: 'https://www.twreporter.org' },
+  },
+
+  parameters: {
+    controls: { exclude: ['TextComponent', 'leftWord', 'rightWord'] },
+  },
 }
 
-export const disabledLink = Template.bind({})
-disabledLink.args = {
-  text: '文字',
-  type: Link.Type.DEFAULT,
-  link: { to: 'https://www.twreporter.org' },
-  disabled: true,
-}
-disabledLink.parameters = {
-  controls: { exclude: ['textComponent', 'disabled', 'leftWord', 'rightWord'] },
+export const disabledLink = {
+  args: {
+    text: '文字',
+    type: Link.Type.DEFAULT,
+    link: { to: 'https://www.twreporter.org' },
+    disabled: true,
+  },
+
+  parameters: {
+    controls: { exclude: ['textComponent', 'disabled', 'leftWord', 'rightWord'] },
+  },
 }
 
 const StyledP1 = styled(P1)`
   display: unset;
 `
-export const linkInParagraph = args => (
-  <StyledP1>
-    {args.leftWord}
-    <InheritLinkButton {...args} />
-    {args.rightWord}
-  </StyledP1>
-)
-linkInParagraph.args = {
-  text: '文字',
-  type: Link.Type.DEFAULT,
-  link: { to: 'https://www.twreporter.org' },
-}
-linkInParagraph.parameters = {
-  controls: {
-    exclude: ['textComponent', 'disabled', 'weight', 'TextComponent'],
+export const linkInParagraph = {
+  render: args => (
+    <StyledP1>
+      {args.leftWord}
+      <InheritLinkButton {...args} />
+      {args.rightWord}
+    </StyledP1>
+  ),
+  args: {
+    text: '文字',
+    type: Link.Type.DEFAULT,
+    link: { to: 'https://www.twreporter.org' },
+  },
+  parameters: {
+    controls: {
+      exclude: ['textComponent', 'disabled', 'weight', 'TextComponent'],
+    },
   },
 }
