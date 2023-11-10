@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
 import React from 'react'
 import styled from 'styled-components'
 import TabBar from './tab-bar'
@@ -20,18 +21,20 @@ export default {
 const Container = styled.div`
   width: 320px;
 `
-export const tabBar = props => {
-  const { theme, releaseBranch } = props
-  const context = {
-    theme,
-    releaseBranch,
-    isLinkExternal: true,
-  }
-  return (
-    <HeaderContext.Provider value={context}>
-      <Container>
-        <TabBar />
-      </Container>
-    </HeaderContext.Provider>
-  )
+export const tabBar = {
+  render: props => {
+    const { theme, releaseBranch } = props
+    const context = {
+      theme,
+      releaseBranch,
+      isLinkExternal: true,
+    }
+    return (
+      <HeaderContext.Provider value={context}>
+        <Container>
+          <TabBar />
+        </Container>
+      </HeaderContext.Provider>
+    )
+  },
 }

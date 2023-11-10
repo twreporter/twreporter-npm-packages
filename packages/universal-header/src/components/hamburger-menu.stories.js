@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
 import React from 'react'
 import HamburgerMenu from './hamburger-menu'
 import HeaderContext from '../contexts/header-context'
@@ -17,22 +18,27 @@ export default {
 }
 
 const onClose = () => window?.alert('click close !')
-export const menu = props => {
-  const { theme, releaseBranch } = props
-  const context = {
-    theme,
-    releaseBranch,
-    isLinkExternal: true,
-  }
-  return (
-    <HeaderContext.Provider value={context}>
-      <HamburgerMenu {...props} />
-    </HeaderContext.Provider>
-  )
-}
-menu.args = {
-  handleClose: onClose,
-}
-menu.parameter = {
-  controls: { exclude: ['handleClose'] },
+
+export const menu = {
+  render: props => {
+    const { theme, releaseBranch } = props
+    const context = {
+      theme,
+      releaseBranch,
+      isLinkExternal: true,
+    }
+    return (
+      <HeaderContext.Provider value={context}>
+        <HamburgerMenu {...props} />
+      </HeaderContext.Provider>
+    )
+  },
+
+  args: {
+    handleClose: onClose,
+  },
+
+  parameter: {
+    controls: { exclude: ['handleClose'] },
+  },
 }

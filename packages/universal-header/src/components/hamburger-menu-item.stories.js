@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
+/* eslint react-hooks/rules-of-hooks:0 */
 import React from 'react'
 import styled from 'styled-components'
 import { useArgs } from '@storybook/client-api'
@@ -40,71 +42,81 @@ const getBgColor = theme => {
     bgColor: 'white',
   }
 }
-export const menuLinkItem = props => {
-  const { theme, releaseBranch } = props
-  const context = {
-    theme,
-    releaseBranch,
-    isLinkExternal: true,
-  }
-  const { bgColor } = getBgColor(theme)
 
-  return (
-    <HeaderContext.Provider value={context}>
-      <Container bgColor={bgColor}>
-        <MenuLinkItem {...props} />
-      </Container>
-    </HeaderContext.Provider>
-  )
-}
-menuLinkItem.args = {
-  text: '深度專題',
-}
+export const menuLinkItem = {
+  render: props => {
+    const { theme, releaseBranch } = props
+    const context = {
+      theme,
+      releaseBranch,
+      isLinkExternal: true,
+    }
+    const { bgColor } = getBgColor(theme)
 
-export const MenuDropdownItemExample = props => {
-  const [{ isActive }, updateArgs] = useArgs()
-  const { theme, releaseBranch, text } = props
-  const context = {
-    theme,
-    releaseBranch,
-    isLinkExternal: true,
-  }
-  const { bgColor } = getBgColor(theme)
-  const handleClick = () => updateArgs({ isActive: !isActive })
+    return (
+      <HeaderContext.Provider value={context}>
+        <Container bgColor={bgColor}>
+          <MenuLinkItem {...props} />
+        </Container>
+      </HeaderContext.Provider>
+    )
+  },
 
-  return (
-    <HeaderContext.Provider value={context}>
-      <Container bgColor={bgColor}>
-        <MenuDropdownItem
-          text={text}
-          isActive={isActive}
-          onClick={handleClick}
-        />
-      </Container>
-    </HeaderContext.Provider>
-  )
-}
-MenuDropdownItemExample.args = {
-  text: '議題',
-  isActive: false,
+  args: {
+    text: '深度專題',
+  },
 }
 
-export const menuSubItem = props => {
-  const { theme } = props
-  const context = {
-    theme,
-    isLinkExternal: true,
-  }
-  const { bgColor } = getBgColor(theme)
+export const MenuDropdownItemExample = {
+  render: props => {
+    const [{ isActive }, updateArgs] = useArgs()
+    const { theme, releaseBranch, text } = props
+    const context = {
+      theme,
+      releaseBranch,
+      isLinkExternal: true,
+    }
+    const { bgColor } = getBgColor(theme)
+    const handleClick = () => updateArgs({ isActive: !isActive })
 
-  return (
-    <HeaderContext.Provider value={context}>
-      <Container bgColor={bgColor}>
-        <MenuSubItem {...props} />
-      </Container>
-    </HeaderContext.Provider>
-  )
+    return (
+      <HeaderContext.Provider value={context}>
+        <Container bgColor={bgColor}>
+          <MenuDropdownItem
+            text={text}
+            isActive={isActive}
+            onClick={handleClick}
+          />
+        </Container>
+      </HeaderContext.Provider>
+    )
+  },
+
+  args: {
+    text: '議題',
+    isActive: false,
+  },
 }
-menuSubItem.args = {
-  text: '小標題',
+
+export const menuSubItem = {
+  render: props => {
+    const { theme } = props
+    const context = {
+      theme,
+      isLinkExternal: true,
+    }
+    const { bgColor } = getBgColor(theme)
+
+    return (
+      <HeaderContext.Provider value={context}>
+        <Container bgColor={bgColor}>
+          <MenuSubItem {...props} />
+        </Container>
+      </HeaderContext.Provider>
+    )
+  },
+
+  args: {
+    text: '小標題',
+  },
 }

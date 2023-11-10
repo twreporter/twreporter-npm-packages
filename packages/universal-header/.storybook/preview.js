@@ -70,7 +70,6 @@ const removeBackgrounds = args => {
 }
 
 function setupBackgroundListener() {
-  channel.removeAllListeners()
   channel.addListener(STORY_ARGS_UPDATED, storyListener)
   channel.addListener(STORY_CHANGED, removeBackgrounds)
 }

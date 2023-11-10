@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
 import React from 'react'
 import Channel from './channels'
 import HeaderContext from '../contexts/header-context'
@@ -16,16 +17,18 @@ export default {
   },
 }
 
-export const channel = props => {
-  const { theme, releaseBranch } = props
-  const context = {
-    theme,
-    releaseBranch,
-    isLinkExternal: true,
-  }
-  return (
-    <HeaderContext.Provider value={context}>
-      <Channel />
-    </HeaderContext.Provider>
-  )
+export const channel = {
+  render: props => {
+    const { theme, releaseBranch } = props
+    const context = {
+      theme,
+      releaseBranch,
+      isLinkExternal: true,
+    }
+    return (
+      <HeaderContext.Provider value={context}>
+        <Channel />
+      </HeaderContext.Provider>
+    )
+  },
 }

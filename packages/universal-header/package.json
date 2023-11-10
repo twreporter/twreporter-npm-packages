@@ -8,8 +8,8 @@
     "build": "make build",
     "dev": "make dev",
     "prepublishOnly": "make build",
-    "storybook": "start-storybook -p 3000",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 3000",
+    "build-storybook": "storybook build"
   },
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -38,14 +38,17 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.19.1",
-    "@storybook/addon-actions": "^6.5.12",
-    "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-interactions": "^6.5.12",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/builder-webpack4": "^6.5.12",
-    "@storybook/manager-webpack4": "^6.5.12",
-    "@storybook/react": "^6.5.12",
-    "@storybook/testing-library": "^0.0.13",
-    "babel-loader": "^8.2.5"
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "@storybook/addon-actions": "7.0.0",
+    "@storybook/addon-essentials": "7.0.0",
+    "@storybook/addon-interactions": "7.0.0",
+    "@storybook/addon-links": "7.0.0",
+    "@storybook/addon-mdx-gfm": "7.0.0",
+    "@storybook/react": "7.0.0",
+    "@storybook/react-webpack5": "7.0.0",
+    "@storybook/testing-library": "^0.2.2",
+    "babel-loader": "^8.2.5",
+    "react-dom": "16.8.6"
   }
 }
