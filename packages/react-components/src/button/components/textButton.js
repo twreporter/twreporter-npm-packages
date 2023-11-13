@@ -19,7 +19,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   display: flex;
   align-items: center;
   color: ${props => props.color};
@@ -82,6 +82,7 @@ const TextButton = ({
       color={color}
       hoverColor={hoverColor}
       iconSize={iconSize}
+      disabled={disabled}
       {...props}
     >
       {size === Size.L ? (

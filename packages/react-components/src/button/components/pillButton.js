@@ -27,7 +27,7 @@ const ButtonContainer = styled.div`
   border-width: 1.5px;
   color: ${props => props.color};
   padding: ${props => props.padding};
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   svg {
     height: ${props => props.iconSize};
     width: ${props => props.iconSize};
@@ -128,6 +128,7 @@ const PillButton = ({
       iconSize={iconSize}
       hoverColor={hoverColor}
       hoverBgColor={hoverBgColor}
+      disabled={disabled}
       {...props}
     >
       <RelativeParent>
