@@ -11,7 +11,7 @@ import { MEMBER_ROLE } from '@twreporter/core/lib/constants/member-role'
 import {
   READING_TIME_UNIT,
   READING_TIME_UNIT_TEXT,
-} from '@twreporter/core/src/constants/reading-time-unit'
+} from '@twreporter/core/lib/constants/reading-time-unit'
 
 import { P1, P2, P3 } from '../text/paragraph'
 
@@ -143,7 +143,7 @@ const P2TextContainer = styled.div`
   overflow-wrap: anywhere;
 `
 
-const P1TextContainer = styled(P1)`
+const StyledP1 = styled(P1)`
   color: ${props => props.color};
   line-height: 125%;
   letter-spacing: 10%;
@@ -180,10 +180,10 @@ const MobileMemberRoleCard = ({
               <TextContainer>
                 <P3Gray500 text={'閱讀篇數'} />
                 <Gray500BottomLine />
-                <P1TextContainer
+                <StyledP1
                   color={CardP1TextColor[role]}
                   weight={P1.Weight.BOLD}
-                  text={articleReadCount.toLocaleString()}
+                  text={articleReadCount.toLocaleString('en-US')}
                 />
               </TextContainer>
               <TextContainer>
@@ -191,13 +191,13 @@ const MobileMemberRoleCard = ({
                   text={`閱讀${READING_TIME_UNIT_TEXT[articleReadingTimeUnit]}`}
                 />
                 <Gray500BottomLine />
-                <P1TextContainer
+                <StyledP1
                   color={CardP1TextColor[role]}
                   weight={P1.Weight.BOLD}
                   text={
                     articleReadingTime > 99999
                       ? '99,999+'
-                      : articleReadingTime.toLocaleString()
+                      : articleReadingTime.toLocaleString('en-US')
                   }
                 />
               </TextContainer>
@@ -206,7 +206,7 @@ const MobileMemberRoleCard = ({
           <TextContainer>
             <P3Gray500 text={'加入日期'} />
             <Gray500BottomLine />
-            <P1TextContainer
+            <StyledP1
               color={CardP1TextColor[role]}
               weight={P1.Weight.BOLD}
               text={joinDate}
