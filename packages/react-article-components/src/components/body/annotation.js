@@ -5,7 +5,11 @@ import styled, { css, keyframes } from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
-import color from '../../constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -75,11 +79,11 @@ const Indicator = styled.span`
 
 const AnnotationContent = styled.div`
   display: ${props => (props.isExpanded ? 'block' : 'none')};
-  background: ${color.white};
+  background: ${colorGrayscale.white};
   font-size: ${props => props.theme.fontSizeOffset + 16}px;
   line-height: 2.11;
   letter-spacing: 0.5px;
-  color: ${color.gray85};
+  color: ${colorGrayscale.gray700};
   font-weight: ${typography.font.weight.normal};
   border-width: 2px 0 0 0;
   border-style: solid;
@@ -105,50 +109,50 @@ function getContainerStyles(themeName) {
     case themeConst.article.v2.pink:
       return css`
         ${AnnotatedText} {
-          color: ${color.blue};
+          color: ${COLOR_PINK_ARTICLE.blue};
         }
         ${Indicator} {
-          border-color: ${color.blue};
+          border-color: ${COLOR_PINK_ARTICLE.blue};
           &::before,
           &::after {
-            background-color: ${color.blue};
+            background-color: ${COLOR_PINK_ARTICLE.blue};
           }
         }
         ${AnnotationContent} {
-          border-color: ${color.pink};
+          border-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
     case themeConst.article.v2.photo:
       return css`
         ${AnnotatedText} {
-          color: ${color.milkTea};
+          color: ${colorSupportive.main};
         }
         ${Indicator} {
-          border-color: ${color.milkTea};
+          border-color: ${colorSupportive.main};
           &::before,
           &::after {
-            background-color: ${color.milkTea};
+            background-color: ${colorSupportive.main};
           }
         }
         ${AnnotationContent} {
-          border-color: ${color.milkTea};
+          border-color: ${colorSupportive.main};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${AnnotatedText} {
-          color: ${color.brown};
+          color: ${colorSupportive.heavy};
         }
         ${Indicator} {
-          border-color: ${color.milkTea};
+          border-color: ${colorSupportive.main};
           &::before,
           &::after {
-            background-color: ${color.milkTea};
+            background-color: ${colorSupportive.main};
           }
         }
         ${AnnotationContent} {
-          border-color: ${color.milkTea};
+          border-color: ${colorSupportive.main};
         }
       `
   }

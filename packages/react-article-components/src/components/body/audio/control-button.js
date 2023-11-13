@@ -5,17 +5,21 @@ import PlayIcon from '../../../assets/body/audio/play.svg'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
-import colorConst from '../../../constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 
 function getIconColor(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
-      return colorConst.milkTea
+      return colorSupportive.main
     case themeConst.article.v2.pink:
-      return colorConst.darkPink
+      return COLOR_PINK_ARTICLE.darkPink
     case themeConst.article.v2.default:
     default:
-      return colorConst.brown
+      return colorSupportive.heavy
   }
 }
 
@@ -23,19 +27,19 @@ function getIconWrapperStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        background-color: ${colorConst.darkBlue};
-        border-color: ${colorConst.gray10};
+        background-color: ${COLOR_PINK_ARTICLE.darkBlue};
+        border-color: ${colorGrayscale.gray400};
       `
     case themeConst.article.v2.pink:
       return css`
-        background-color: ${colorConst.gray20};
-        border-color: ${colorConst.gray50};
+        background-color: ${colorGrayscale.gray100};
+        border-color: ${colorGrayscale.gray300};
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        background-color: ${colorConst.gray30};
-        border-color: ${colorConst.gray50};
+        background-color: ${colorGrayscale.gray100};
+        border-color: ${colorGrayscale.gray300};
       `
   }
 }

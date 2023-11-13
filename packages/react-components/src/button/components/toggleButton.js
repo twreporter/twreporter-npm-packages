@@ -24,7 +24,7 @@ const Label = styled.label`
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 `
 
 const Switch = styled.div`
@@ -79,7 +79,7 @@ const ToggleButton = ({
   return (
     <Container>
       <ColorP2 text={value ? labelOn : labelOff} />
-      <Label {...props}>
+      <Label disabled={disabled} {...props}>
         <Input
           type="checkbox"
           disabled={disabled}

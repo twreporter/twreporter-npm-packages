@@ -1,19 +1,23 @@
 import { css } from 'styled-components'
 import themeConst from './theme'
 import typography from './typography'
-import color from './color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 
 function getParagraphTextStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        color: ${color.notSoWhite};
+        color: ${colorGrayscale.gray300};
       `
     case themeConst.article.v2.pink:
     case themeConst.article.v2.default:
     default:
       return css`
-        color: ${color.gray90};
+        color: ${colorGrayscale.gray800};
       `
   }
 }
@@ -36,12 +40,12 @@ function getLinkChildrenStyles(themeName) {
         a:link,
         a:visited,
         a:active {
-          color: ${color.milkTea};
+          color: ${colorSupportive.main};
           text-decoration: none;
-          border-bottom: 1px solid ${color.gray10};
+          border-bottom: 1px solid ${colorGrayscale.gray400};
         }
         a:hover {
-          border-color: ${color.milkTea};
+          border-color: ${colorSupportive.main};
         }
       `
     case themeConst.article.v2.pink:
@@ -49,12 +53,12 @@ function getLinkChildrenStyles(themeName) {
         a:link,
         a:visited,
         a:active {
-          color: ${color.blue};
+          color: ${COLOR_PINK_ARTICLE.blue};
           text-decoration: none;
-          border-bottom: 1px solid ${color.gray50};
+          border-bottom: 1px solid ${colorGrayscale.gray300};
         }
         a:hover {
-          border-color: ${color.blue};
+          border-color: ${COLOR_PINK_ARTICLE.blue};
         }
       `
     case themeConst.article.v2.default:
@@ -63,12 +67,12 @@ function getLinkChildrenStyles(themeName) {
         a:link,
         a:visited,
         a:active {
-          color: ${color.brown};
+          color: ${colorSupportive.heavy};
           text-decoration: none;
-          border-bottom: 1px solid ${color.gray50};
+          border-bottom: 1px solid ${colorGrayscale.gray300};
         }
         a:hover {
-          border-color: ${color.brown};
+          border-color: ${colorSupportive.heavy};
         }
       `
   }

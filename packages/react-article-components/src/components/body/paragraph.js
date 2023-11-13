@@ -4,7 +4,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
-import colorConst from '../../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -21,7 +21,7 @@ const P = styled.p`
       case themeConst.article.v2.photo:
         return css`
           strong {
-            color: ${colorConst.notSoWhite};
+            color: ${colorGrayscale.gray300};
           }
         `
       default:

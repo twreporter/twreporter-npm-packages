@@ -12,7 +12,7 @@ export const selectThemeStyle = theme => {
         bgColor: colorOpacity['white_0.8'],
         focusBgColor: colorGrayscale.gray100,
         desktopBgColor: colorGrayscale.gray100,
-        borderColor: colorSupportive.main,
+        borderColor: colorSupportive.pastel,
         color: colorGrayscale.gray800,
         focusColor: colorGrayscale.gray500,
         placeholderColor: colorGrayscale.gray800,

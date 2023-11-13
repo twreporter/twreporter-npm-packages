@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.0...@twreporter/react-article-components@1.9.1-rc.1) (2023-11-13)
+
+
+### Bug Fixes
+
+* use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
+
+
+
+
+
+## [1.9.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.0...@twreporter/react-article-components@1.9.1-rc.0) (2023-11-13)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 # [1.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.0-rc.1...@twreporter/react-article-components@1.9.0) (2023-10-30)
 
 **Note:** Version bump only for package @twreporter/react-article-components

@@ -3,38 +3,42 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import Slider, { Indicator, Rail, Progress } from '../slider'
 import themeConst from '../../../constants/theme'
-import colorConst from '../../../constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 
 function getContainerStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.pink:
       return css`
         ${Indicator} {
-          background-color: ${colorConst.darkPink};
+          background-color: ${COLOR_PINK_ARTICLE.darkPink};
         }
 
         ${Progress} {
-          background-color: ${colorConst.pink};
+          background-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
     case themeConst.article.v2.photo:
       return css`
         ${Indicator} {
-          background-color: ${colorConst.brown};
+          background-color: ${colorSupportive.heavy};
         }
 
         ${Progress} {
-          background-color: ${colorConst.milkTea};
+          background-color: ${colorSupportive.main};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${Indicator} {
-          background-color: ${colorConst.brown};
+          background-color: ${colorSupportive.heavy};
         }
         ${Progress} {
-          background-color: ${colorConst.milkTea};
+          background-color: ${colorSupportive.main};
         }
       `
   }
@@ -54,7 +58,7 @@ const Container = styled.div`
     transform: translateY(-50%);
   }
   ${Rail} {
-    background: ${colorConst.gray50};
+    background: ${colorGrayscale.gray300};
   }
 `
 let resumePlayingAfterSeek = false

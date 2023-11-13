@@ -6,9 +6,9 @@ import List from './list'
 // constants
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
-import color from '../../constants/color'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import debounce from 'lodash/debounce'
 import get from 'lodash/get'
@@ -44,11 +44,11 @@ const Descriptor = styled.div`
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
         return css`
-          color: ${color.gray5};
+          color: ${colorGrayscale.gray600};
           ${mq.desktopAndAbove`
-            border-color: ${color.gray10};
+            border-color: ${colorGrayscale.gray400};
             &::after {
-              border-color: ${color.gray10};
+              border-color: ${colorGrayscale.gray400};
             }
           `}
         `
@@ -56,11 +56,11 @@ const Descriptor = styled.div`
       case themeConst.article.v2.default:
       default:
         return css`
-          color: ${color.gray80};
+          color: ${colorGrayscale.gray600};
           ${mq.desktopAndAbove`
-            border-color: ${color.gray50};
+            border-color: ${colorGrayscale.gray300};
             &::after {
-              border-color: ${color.gray50};
+              border-color: ${colorGrayscale.gray300};
             }
           `}
         `

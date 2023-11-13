@@ -3,7 +3,7 @@ import get from 'lodash/get'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
-import color from '../../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const _ = {
   get,
@@ -18,11 +18,11 @@ const heading = css`
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return color.notSoWhite
+        return colorGrayscale.gray300
       case themeConst.article.v2.pink:
       case themeConst.article.v2.default:
       default:
-        return color.gray90
+        return colorGrayscale.gray800
     }
   }};
 `

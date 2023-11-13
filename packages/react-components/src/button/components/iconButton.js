@@ -13,7 +13,7 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   display: flex;
   svg {
     width: 24px;
@@ -43,7 +43,12 @@ const IconButton = ({
   const { color, hoverColor } = themeFunc(theme, active, disabled)
 
   return (
-    <ButtonContainer color={color} hoverColor={hoverColor} {...props}>
+    <ButtonContainer
+      color={color}
+      hoverColor={hoverColor}
+      disabled={disabled}
+      {...props}
+    >
       {iconComponent}
     </ButtonContainer>
   )

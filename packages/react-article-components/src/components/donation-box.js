@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { DONATION_LINK_ANCHOR } from '@twreporter/core/lib/constants/donation-link-anchor'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // constants
 import predefinedCss from '../constants/css'
 import typography from '../constants/typography'
-import color from '../constants/color'
 
 const _content = {
   title: '用行動支持報導者',
@@ -24,7 +24,7 @@ const Container = styled.div`
   padding: 40px 30px 30px 30px;
   width: 502px;
   min-height: 284px;
-  background: ${color.white};
+  background: ${colorGrayscale.white};
   border-left: solid 1px ${props => props.theme.colors.secondary.support};
   ${mq.mobileOnly`
     margin: 40px auto;
@@ -37,10 +37,10 @@ const Title = styled.p`
   display: inline-block;
   background: ${props => props.theme.colors.secondary.background};
   padding-right: 2px;
-  box-shadow: 5px 15px 0 ${color.white} inset;
+  box-shadow: 5px 15px 0 ${colorGrayscale.white} inset;
   font-size: 22px;
   font-weight: ${typography.font.weight.bold};
-  color: ${color.gray95};
+  color: ${colorGrayscale.gray900};
   margin-bottom: 15px;
   ${mq.mobileOnly`
     margin-bottom: 18px;
@@ -50,7 +50,7 @@ const Title = styled.p`
 const Text = styled.p`
   font-size: 16px;
   line-height: 1.75;
-  color: ${color.gray95};
+  color: ${colorGrayscale.gray900};
   margin-bottom: 0.5em;
   &:last-of-type {
     margin-bottom: 0;
@@ -68,7 +68,7 @@ const Donate = styled.div`
   a {
     width: 140px;
     height: 55px;
-    background: ${color.black};
+    background: ${colorGrayscale.black};
     display: table;
     float: right;
     cursor: pointer;
@@ -78,7 +78,7 @@ const Donate = styled.div`
       text-align: center;
       vertical-align: middle;
       font-size: 14px;
-      color: ${color.white};
+      color: ${colorGrayscale.white};
       font-weight: ${typography.font.weight.normal};
       letter-spacing: 1.3px;
     }
