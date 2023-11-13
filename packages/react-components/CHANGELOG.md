@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.1...@twreporter/react-components@8.21.0-rc.2) (2023-11-13)
+
+
+### Features
+
+* add `InheritLinkButton` component & story ([81788c5](https://github.com/twreporter/twreporter-npm-packages/commit/81788c5cbe4ac208656a83ae9dd565f1e06bb587))
+
+
+
+
+
 # [8.21.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.0...@twreporter/react-components@8.21.0-rc.1) (2023-11-13)
 
 
