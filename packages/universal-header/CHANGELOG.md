@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.4-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.4-rc.0...@twreporter/universal-header@2.7.4-rc.1) (2023-11-13)
+
+
+### Bug Fixes
+
+* use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
+
+
+
+
+
 ## [2.7.4-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.3...@twreporter/universal-header@2.7.4-rc.0) (2023-11-13)
 
 **Note:** Version bump only for package @twreporter/universal-header
