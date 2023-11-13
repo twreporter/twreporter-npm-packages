@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.1-rc.0...@twreporter/core@1.14.0-rc.0) (2023-11-13)
+
+
+### Bug Fixes
+
+* use Object.freeze and use en-US ([e4ff2a0](https://github.com/twreporter/twreporter-npm-packages/commit/e4ff2a0dda08003eb762d3009b6670b6c84cbcf1))
+
+
+### Features
+
+* new moblie member role card ([2e01669](https://github.com/twreporter/twreporter-npm-packages/commit/2e01669144c072d5bd89d88fe68b97d69e8b6e6f))
+
+
+
+
+
 ## [1.13.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.0...@twreporter/core@1.13.1-rc.0) (2023-11-13)
 
 
