@@ -23,12 +23,19 @@ const style = {
   },
 }
 
-const LinkContainer = styled(Link)`
-  display: flex;
-  align-items: center;
+const BaseContainer = styled(Link)`
   text-underline-offset: 4px;
   text-decoration-line: ${props => style.decoration[props.type]};
   color: ${props => style.color[props.type]};
+
+  &:hover {
+    text-decoration-line: underline;
+  }
+`
+
+const LinkContainer = styled(BaseContainer)`
+  display: flex;
+  align-items: center;
 
   ${props =>
     props.disabled
@@ -38,11 +45,10 @@ const LinkContainer = styled(Link)`
     -webkit-tap-highlight-color: transparent;
   `
       : `
-    &:hover {
-      text-decoration-line: underline;
-    }
   `}
 `
+
+const InheritLinkContainer = styled(BaseContainer)``
 
 const LinkButton = ({
   type = LinkType.DEFAULT,
@@ -75,5 +81,22 @@ LinkButton.propTypes = {
 }
 LinkButton.Type = LinkType
 LinkButton.Weight = P1.Weight
+
+export const InheritLinkButton = ({
+  type = LinkType.DEFAULT,
+  link = {},
+  text = '',
+  ...props
+}) => (
+  <InheritLinkContainer type={type} {...props}>
+    {text}
+  </InheritLinkContainer>
+)
+InheritLinkButton.propTypes = {
+  type: PropTypes.oneOf(Object.values(LinkType)),
+  link: PropTypes.object,
+  text: PropTypes.string.isRequired,
+}
+InheritLinkButton.Type = LinkType
 
 export default LinkButton
