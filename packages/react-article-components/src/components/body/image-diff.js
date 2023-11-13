@@ -5,8 +5,12 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import Slider, { Rail, Progress, Indicator } from './slider'
 import themeConst from '../../constants/theme'
-import colorConst from '../../constants/color'
 import styled, { css } from 'styled-components'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -46,16 +50,16 @@ const sharedStyleOfIndicatorPointer = css`
   top: 0;
   width: 24px;
   height: 24px;
-  background: ${colorConst.white};
+  background: ${colorGrayscale.white};
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
-        return colorConst.brown
+        return colorSupportive.heavy
       case themeConst.article.v2.pink:
-        return colorConst.pink
+        return COLOR_PINK_ARTICLE.pink
       case themeConst.article.v2.default:
       default:
-        return colorConst.milkTea
+        return colorSupportive.main
     }
   }};
 `
@@ -85,7 +89,7 @@ const ImageContainer = styled.div`
   }
   ${Indicator} {
     width: 3px;
-    background: ${colorConst.white};
+    background: ${colorGrayscale.white};
     &::after {
       content: "${unicodeToString(
         '25C4'

@@ -1,5 +1,9 @@
 import themeConst from '../constants/theme'
-import colorConst from '../constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 
 /**
  *  @module ThemeManager
@@ -23,39 +27,38 @@ import colorConst from '../constants/color'
  */
 
 const secondaryColorSet = {
-  text: colorConst.brown,
-  accent: colorConst.brown,
-  support: colorConst.milkTea,
-  background: colorConst.lightBrown,
+  text: colorSupportive.heavy,
+  accent: colorSupportive.heavy,
+  support: colorSupportive.main,
+  background: colorSupportive.pastel,
 }
 
 const baseColorSet = {
-  text: colorConst.gray90,
-  lightText: colorConst.gray80,
+  text: colorGrayscale.gray800,
+  lightText: colorGrayscale.gray600,
   button: {
     text: {
-      color: colorConst.gray80,
+      color: colorGrayscale.gray600,
     },
     border: {
-      color: colorConst.gray80,
+      color: colorGrayscale.gray600,
     },
     background: {
       color: 'initial',
     },
     hover: {
       text: {
-        color: colorConst.gray80,
+        color: colorGrayscale.gray600,
       },
       border: {
-        color: colorConst.gray80,
+        color: colorGrayscale.gray600,
       },
       background: {
-        color: colorConst.white,
+        color: colorGrayscale.white,
       },
     },
   },
-  line: colorConst.gray60,
-  background: colorConst.gray20,
+  background: colorGrayscale.gray100,
 }
 
 /**
@@ -68,80 +71,79 @@ export default class ThemeManager {
   static colors = {
     pink: {
       primary: {
-        text: colorConst.blue,
-        accent: colorConst.drakPink,
-        support: colorConst.pink,
-        background: colorConst.lightPink,
+        text: COLOR_PINK_ARTICLE.blue,
+        accent: COLOR_PINK_ARTICLE.drakPink,
+        support: COLOR_PINK_ARTICLE.pink,
+        background: COLOR_PINK_ARTICLE.lightPink,
       },
       secondary: secondaryColorSet,
       base: baseColorSet,
       toc: {
-        text: colorConst.gray70,
-        accent: colorConst.darkPink,
-        support: colorConst.pink,
-        background: colorConst.lightPink,
+        text: colorGrayscale.gray500,
+        accent: COLOR_PINK_ARTICLE.darkPink,
+        support: COLOR_PINK_ARTICLE.pink,
+        background: COLOR_PINK_ARTICLE.lightPink,
       },
     },
     default: {
       primary: {
-        text: colorConst.brown,
-        accent: colorConst.brown,
-        support: colorConst.milkTea,
-        background: colorConst.gray30,
+        text: colorSupportive.heavy,
+        accent: colorSupportive.heavy,
+        support: colorSupportive.main,
+        background: colorGrayscale.gray100,
       },
       secondary: secondaryColorSet,
       base: {
         ...baseColorSet,
-        background: colorConst.gray30,
+        background: colorGrayscale.gray100,
       },
       toc: {
-        text: colorConst.gray60,
-        accent: colorConst.brown,
-        support: colorConst.milkTea,
-        background: colorConst.almostWhite,
+        text: colorGrayscale.gray500,
+        accent: colorSupportive.heavy,
+        support: colorSupportive.main,
+        background: colorGrayscale.white,
       },
     },
     photo: {
       primary: {
-        text: colorConst.brown,
-        accent: colorConst.brown,
-        support: colorConst.milkTea,
-        background: colorConst.darkBlue,
+        text: colorSupportive.heavy,
+        accent: colorSupportive.heavy,
+        support: colorSupportive.main,
+        background: COLOR_PINK_ARTICLE.darkBlue,
       },
       secondary: secondaryColorSet,
       base: {
-        text: colorConst.notSoWhite,
-        lightText: colorConst.gray5,
+        text: colorGrayscale.gray300,
+        lightText: colorGrayscale.gray600,
         button: {
           text: {
-            color: colorConst.gray80,
+            color: colorGrayscale.gray600,
           },
           border: {
-            color: colorConst.gray80,
+            color: colorGrayscale.gray600,
           },
           background: {
             color: 'initial',
           },
           hover: {
             text: {
-              color: colorConst.white,
+              color: colorGrayscale.white,
             },
             border: {
-              color: colorConst.white,
+              color: colorGrayscale.white,
             },
             background: {
               color: 'initial',
             },
           },
         },
-        line: colorConst.gray35,
-        background: colorConst.darkBlue,
+        background: COLOR_PINK_ARTICLE.darkBlue,
       },
       toc: {
-        text: colorConst.gray60,
-        accent: colorConst.brown,
-        support: colorConst.milkTea,
-        background: colorConst.almostWhite,
+        text: colorGrayscale.gray500,
+        accent: colorSupportive.heavy,
+        support: colorSupportive.main,
+        background: colorGrayscale.white,
       },
     },
   }

@@ -5,7 +5,11 @@ import styled, { css } from 'styled-components'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
-import color from '../../constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -54,32 +58,32 @@ function getQuoteContainerStyles(themeName) {
     case themeConst.article.v2.pink:
       return css`
         ${QuoteContent}, ${QuoteBy} {
-          color: ${color.gray90};
+          color: ${colorGrayscale.gray800};
         }
 
         ${VerticalLine} {
-          background-color: ${color.pink};
+          background-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
     case themeConst.article.v2.photo:
       return css`
         ${QuoteContent}, ${QuoteBy} {
-          color: ${color.notSoWhite};
+          color: ${colorGrayscale.gray300};
         }
 
         ${VerticalLine} {
-          background-color: ${color.brown};
+          background-color: ${colorSupportive.heavy};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
         ${QuoteContent}, ${QuoteBy} {
-          color: ${color.gray90};
+          color: ${colorGrayscale.gray800};
         }
 
         ${VerticalLine} {
-          background-color: ${color.milkTea};
+          background-color: ${colorSupportive.main};
         }
       `
   }

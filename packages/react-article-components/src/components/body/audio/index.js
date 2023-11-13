@@ -9,7 +9,7 @@ import SeekBar from './seek-bar'
 import styled, { css } from 'styled-components'
 import themeConst from '../../../constants/theme'
 import typography from '../../../constants/typography'
-import color from '../../../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const TimeRow = styled.div`
   width: 100%;
@@ -107,43 +107,43 @@ function getContainerStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        border-color: ${color.gray10};
+        border-color: ${colorGrayscale.gray400};
 
         ${TimeRow} {
-          color: ${color.notSoWhite};
+          color: ${colorGrayscale.gray300};
         }
 
         ${Title} {
-          color: ${color.white};
+          color: ${colorGrayscale.white};
         }
 
         ${Desc} {
-          color: ${color.notSoWhite};
+          color: ${colorGrayscale.gray300};
         }
       `
     case themeConst.article.v2.pink:
       return css`
-        border-color: ${color.gray50};
+        border-color: ${colorGrayscale.gray300};
 
         ${TimeRow} {
-          color: ${color.gray80};
+          color: ${colorGrayscale.gray600};
         }
 
         ${Title}, ${Desc} {
-          color: ${color.gray85};
+          color: ${colorGrayscale.gray700};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        border-color: ${color.gray50};
+        border-color: ${colorGrayscale.gray300};
 
         ${TimeRow} {
-          color: ${color.gray80};
+          color: ${colorGrayscale.gray600};
         }
 
         ${Title}, ${Desc} {
-          color: ${color.gray90};
+          color: ${colorGrayscale.gray800};
         }
       `
   }
