@@ -10,6 +10,8 @@ const defaultContainer = styled.p`
   line-height: 150%;
   display: flex;
   align-items: center;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
 `
 
 const P1Container = styled(defaultContainer)`
