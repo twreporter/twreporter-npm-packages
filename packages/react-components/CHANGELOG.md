@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.4...@twreporter/react-components@8.21.0-rc.5) (2023-11-14)
+
+
+### Bug Fixes
+
+* paragraph margin block ([949efb7](https://github.com/twreporter/twreporter-npm-packages/commit/949efb7c2d3213b9e0ebc35bdbc3739a14fa8b0e))
+
+
+
+
+
 # [8.21.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.3...@twreporter/react-components@8.21.0-rc.4) (2023-11-14)
 
 
