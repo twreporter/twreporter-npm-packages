@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.3...@twreporter/react-components@8.21.0-rc.4) (2023-11-14)
+
+
+### Features
+
+* upgrade storybook to v7 ([fa85736](https://github.com/twreporter/twreporter-npm-packages/commit/fa85736bd60eda26596bc89c5bccaf74892774f2))
+
+
+
+
+
 # [8.21.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.2...@twreporter/react-components@8.21.0-rc.3) (2023-11-13)
 
 
