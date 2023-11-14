@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
 import React from 'react'
 import styled from 'styled-components'
 import Footer from './hamburger-footer'
@@ -34,20 +35,24 @@ const getBgColor = theme => {
     bgColor: 'white',
   }
 }
-export const footer = props => {
-  const { theme, releaseBranch } = props
-  const context = {
-    theme,
-    releaseBranch,
-    isLinkExternal: true,
-  }
-  const { bgColor } = getBgColor(theme)
-  return (
-    <HeaderContext.Provider value={context}>
-      <StyledFooter bgColor={bgColor} />
-    </HeaderContext.Provider>
-  )
-}
-footer.parameters = {
-  backgrounds: { default: 'white' },
+
+export const footer = {
+  render: props => {
+    const { theme, releaseBranch } = props
+    const context = {
+      theme,
+      releaseBranch,
+      isLinkExternal: true,
+    }
+    const { bgColor } = getBgColor(theme)
+    return (
+      <HeaderContext.Provider value={context}>
+        <StyledFooter bgColor={bgColor} />
+      </HeaderContext.Provider>
+    )
+  },
+
+  parameters: {
+    backgrounds: { default: 'white' },
+  },
 }

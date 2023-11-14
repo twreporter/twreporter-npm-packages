@@ -1,4 +1,3 @@
-import React from 'react'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import { SocialMedia } from '../index'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
@@ -13,4 +12,4 @@ export default {
   },
 }
 
-export const socialMedia = args => <SocialMedia {...args} />
+export const socialMedia = {}

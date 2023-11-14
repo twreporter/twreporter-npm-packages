@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
 import React from 'react'
 import Header from './header'
 import HeaderContext from '../contexts/header-context'
@@ -28,22 +29,25 @@ export default {
   },
 }
 
-export const universal = props => {
-  const { theme, releaseBranch, toUseNarrow, hideHeader, isAuthed } = props
-  const context = {
-    theme,
-    releaseBranch,
-    toUseNarrow,
-    hideHeader,
-    isAuthed,
-    isLinkExternal: true,
-  }
-  return (
-    <HeaderContext.Provider value={context}>
-      <Header />
-    </HeaderContext.Provider>
-  )
-}
-universal.parameters = {
-  controls: { exclude: ['pathname'] },
+export const universal = {
+  render: props => {
+    const { theme, releaseBranch, toUseNarrow, hideHeader, isAuthed } = props
+    const context = {
+      theme,
+      releaseBranch,
+      toUseNarrow,
+      hideHeader,
+      isAuthed,
+      isLinkExternal: true,
+    }
+    return (
+      <HeaderContext.Provider value={context}>
+        <Header />
+      </HeaderContext.Provider>
+    )
+  },
+
+  parameters: {
+    controls: { exclude: ['pathname'] },
+  },
 }

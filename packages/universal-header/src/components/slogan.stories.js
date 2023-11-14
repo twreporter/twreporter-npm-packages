@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
 import React from 'react'
 import Slogan from './slogan'
 import HeaderContext from '../contexts/header-context'
@@ -12,14 +13,16 @@ export default {
   },
 }
 
-export const slogan = props => {
-  const { theme } = props
-  const context = {
-    theme,
-  }
-  return (
-    <HeaderContext.Provider value={context}>
-      <Slogan />
-    </HeaderContext.Provider>
-  )
+export const slogan = {
+  render: props => {
+    const { theme } = props
+    const context = {
+      theme,
+    }
+    return (
+      <HeaderContext.Provider value={context}>
+        <Slogan />
+      </HeaderContext.Provider>
+    )
+  },
 }

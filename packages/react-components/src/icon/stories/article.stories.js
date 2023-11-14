@@ -1,4 +1,3 @@
-import React from 'react'
 import { Article } from '../index'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
@@ -10,4 +9,4 @@ export default {
   },
 }
 
-export const article = args => <Article {...args} />
+export const article = {}
