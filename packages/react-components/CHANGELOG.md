@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.5...@twreporter/react-components@8.21.0-rc.6) (2023-11-15)
+
+
+### Bug Fixes
+
+* `InheritLinkButton` cannot set link & style ([a1b1a64](https://github.com/twreporter/twreporter-npm-packages/commit/a1b1a6466f288e435b8bcc28c9c1cea2a2e667fc))
+
+
+
+
+
 # [8.21.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.4...@twreporter/react-components@8.21.0-rc.5) (2023-11-14)
 
 
