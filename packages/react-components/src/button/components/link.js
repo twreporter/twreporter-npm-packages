@@ -25,7 +25,7 @@ const style = {
 
 const BaseContainer = styled(Link)`
   text-underline-offset: 4px;
-  text-decoration-line: ${props => style.decoration[props.type]};
+  text-decoration-line: ${props => style.decoration[props.type]}!important;
   color: ${props => style.color[props.type]};
 
   &:hover {
@@ -88,7 +88,7 @@ export const InheritLinkButton = ({
   text = '',
   ...props
 }) => (
-  <InheritLinkContainer type={type} {...props}>
+  <InheritLinkContainer type={type} {...link} {...props}>
     {text}
   </InheritLinkContainer>
 )
