@@ -41,6 +41,7 @@ export const actionButton = {
     const { theme } = props
     const context = {
       theme,
+      isLinkExternal: true,
     }
     return (
       <HeaderContext.Provider value={context}>
@@ -58,7 +59,9 @@ export const actionButton = {
 
 export const photographyTheme = {
   render: props => (
-    <HeaderContext.Provider value={{ theme: THEME.photography }}>
+    <HeaderContext.Provider
+      value={{ theme: THEME.photography, isLinkExternal: true }}
+    >
       <Container>
         <ActionButton {...props} />
       </Container>
@@ -77,7 +80,9 @@ export const photographyTheme = {
 
 export const transparentTheme = {
   render: props => (
-    <HeaderContext.Provider value={{ theme: THEME.transparent }}>
+    <HeaderContext.Provider
+      value={{ theme: THEME.transparent, isLinkExternal: true }}
+    >
       <Container>
         <ActionButton {...props} />
       </Container>
@@ -96,7 +101,9 @@ export const transparentTheme = {
 
 export const hamburger = {
   render: props => (
-    <HeaderContext.Provider value={{ theme: props.theme }}>
+    <HeaderContext.Provider
+      value={{ theme: props.theme, isLinkExternal: true }}
+    >
       <Container>
         <ActionButton isForHambuger={true} {...props} />
       </Container>
