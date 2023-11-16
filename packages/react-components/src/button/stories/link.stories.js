@@ -36,7 +36,9 @@ export const link = {
     type: Link.Type.DEFAULT,
     link: { to: 'https://www.twreporter.org' },
   },
-  parameters: { controls: { exclude: ['textComponent', 'leftWord', 'rightWord'] } },
+  parameters: {
+    controls: { exclude: ['textComponent', 'leftWord', 'rightWord'] },
+  },
 }
 
 export const changeTextComponent = {
@@ -72,7 +74,9 @@ export const disabledLink = {
   },
 
   parameters: {
-    controls: { exclude: ['textComponent', 'disabled', 'leftWord', 'rightWord'] },
+    controls: {
+      exclude: ['textComponent', 'disabled', 'leftWord', 'rightWord'],
+    },
   },
 }
 
@@ -91,6 +95,8 @@ export const linkInParagraph = {
     text: '文字',
     type: Link.Type.DEFAULT,
     link: { to: 'https://www.twreporter.org' },
+    leftWord: '～連結左邊～',
+    rightWord: '～連結右邊～',
   },
   parameters: {
     controls: {
