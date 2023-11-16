@@ -10,7 +10,7 @@ import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import { MEMBER_ROLE } from '@twreporter/core/lib/constants/member-role'
 import {
   READING_TIME_UNIT,
-  READING_TIME_UNIT_TEXT,
+  READING_TIME_UNIT_CARD_TEXT,
 } from '@twreporter/core/lib/constants/reading-time-unit'
 
 import { P1, P2, P3 } from '../text/paragraph'
@@ -105,7 +105,7 @@ const MarkImgs = styled.img`
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 `
 
 const TextContainer = styled.div`
@@ -115,6 +115,7 @@ const TextContainer = styled.div`
 `
 
 const TitleContainer = styled.div`
+  width: 42px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -125,8 +126,9 @@ const TitleImg = styled.img`
   width: 100%;
 `
 
-const P3Gray500 = styled(P3)`
+const StyledP3 = styled(P3)`
   color: ${colorGrayscale.gray500};
+  letter-spacing: 0px;
 `
 
 const Gray500BottomLine = styled.div`
@@ -146,7 +148,7 @@ const P2TextContainer = styled.div`
 const StyledP1 = styled(P1)`
   color: ${props => props.color};
   line-height: 125%;
-  letter-spacing: 10%;
+  letter-spacing: 1.6px;
 `
 
 const MobileMemberRoleCard = ({
@@ -158,7 +160,7 @@ const MobileMemberRoleCard = ({
   articleReadCount = 0,
   articleReadingTimeUnit = READING_TIME_UNIT.minute,
   articleReadingTime = 0,
-  hideInfo = false,
+  hideInfo = true,
 }) => {
   const logoUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_logo.png`
   const titleUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_title.svg`
@@ -178,7 +180,7 @@ const MobileMemberRoleCard = ({
           {!hideInfo && (
             <>
               <TextContainer>
-                <P3Gray500 text={'閱讀篇數'} />
+                <StyledP3 text={'閱讀篇數'} />
                 <Gray500BottomLine />
                 <StyledP1
                   color={CardP1TextColor[role]}
@@ -187,8 +189,8 @@ const MobileMemberRoleCard = ({
                 />
               </TextContainer>
               <TextContainer>
-                <P3Gray500
-                  text={`閱讀${READING_TIME_UNIT_TEXT[articleReadingTimeUnit]}`}
+                <StyledP3
+                  text={`閱讀${READING_TIME_UNIT_CARD_TEXT[articleReadingTimeUnit]}`}
                 />
                 <Gray500BottomLine />
                 <StyledP1
@@ -204,7 +206,7 @@ const MobileMemberRoleCard = ({
             </>
           )}
           <TextContainer>
-            <P3Gray500 text={'加入日期'} />
+            <StyledP3 text={'加入日期'} />
             <Gray500BottomLine />
             <StyledP1
               color={CardP1TextColor[role]}
