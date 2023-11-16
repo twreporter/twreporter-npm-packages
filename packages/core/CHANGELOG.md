@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0-rc.0...@twreporter/core@1.14.0-rc.1) (2023-11-16)
+
+
+### Bug Fixes
+
+* mobile role card text style ([f197cb7](https://github.com/twreporter/twreporter-npm-packages/commit/f197cb7711ee1b9f5120996e65382fa4e22aef76))
+
+
+
+
+
 # [1.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.1-rc.0...@twreporter/core@1.14.0-rc.0) (2023-11-13)
 
 

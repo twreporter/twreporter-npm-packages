@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.6...@twreporter/react-components@8.21.0-rc.7) (2023-11-16)
+
+
+### Bug Fixes
+
+* mobile role card text style ([f197cb7](https://github.com/twreporter/twreporter-npm-packages/commit/f197cb7711ee1b9f5120996e65382fa4e22aef76))
+
+
+
+
+
 # [8.21.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.5...@twreporter/react-components@8.21.0-rc.6) (2023-11-15)
 
 
