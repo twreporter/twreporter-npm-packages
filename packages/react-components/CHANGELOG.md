@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.8...@twreporter/react-components@8.21.0-rc.9) (2023-11-16)
+
+
+### Bug Fixes
+
+* mobile-member-role-card width ([d40e5ff](https://github.com/twreporter/twreporter-npm-packages/commit/d40e5ffa944d403e2061e66c41128de70c8cb025))
+
+
+
+
+
 # [8.21.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.7...@twreporter/react-components@8.21.0-rc.8) (2023-11-16)
 
 **Note:** Version bump only for package @twreporter/react-components
