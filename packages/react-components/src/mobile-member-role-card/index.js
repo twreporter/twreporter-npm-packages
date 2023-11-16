@@ -49,6 +49,7 @@ const CardMarkStyle = {
 }
 
 const CardContainer = styled.div`
+  width: 100%;
   max-width: 320px;
   min-width: 296px;
   border-radius: 16px;
