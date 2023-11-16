@@ -34,7 +34,7 @@ const selectButtonColors = theme => {
     case themeConsts.article.v2.photo:
       return css`
         color: ${colorGrayscale.gray300};
-        background-color: ${colorGrayscale.gray200};
+        background-color: ${colorGrayscale.white}1a; // add 10% opacity with hex alpha
         &:hover {
           color: ${colorGrayscale.white};
           background-color: ${colorGrayscale.gray400};
