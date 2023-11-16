@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.9...@twreporter/react-components@8.21.0-rc.10) (2023-11-16)
+
+
+### Bug Fixes
+
+* add default value for `link in p` story ([fdb017b](https://github.com/twreporter/twreporter-npm-packages/commit/fdb017b206f0a957c712136438cfba10844fcd5a))
+
+
+
+
+
 # [8.21.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.8...@twreporter/react-components@8.21.0-rc.9) (2023-11-16)
 
 

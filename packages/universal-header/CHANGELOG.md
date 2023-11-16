@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.5...@twreporter/universal-header@2.8.0-rc.6) (2023-11-16)
+
+
+### Bug Fixes
+
+* `Link` should be in `Route` error ([2028609](https://github.com/twreporter/twreporter-npm-packages/commit/2028609ba60a51328317b0dda8447259ba72627c))
+
+
+
+
+
 # [2.8.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.4...@twreporter/universal-header@2.8.0-rc.5) (2023-11-16)
 
 **Note:** Version bump only for package @twreporter/universal-header
