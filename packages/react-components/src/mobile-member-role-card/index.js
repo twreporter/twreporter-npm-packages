@@ -8,8 +8,12 @@ import {
 } from '@twreporter/core/lib/constants/release-branch'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import { MEMBER_ROLE } from '@twreporter/core/lib/constants/member-role'
+import {
+  READING_TIME_UNIT,
+  READING_TIME_UNIT_CARD_TEXT,
+} from '@twreporter/core/lib/constants/reading-time-unit'
 
-import { P1, P3 } from '../text/paragraph'
+import { P1, P2, P3 } from '../text/paragraph'
 
 const CardBgColor = {
   [MEMBER_ROLE.explorer]: colorGrayscale.white,
@@ -17,7 +21,13 @@ const CardBgColor = {
   [MEMBER_ROLE.trailblazer]: colorGrayscale.gray900,
 }
 
-const CardTextColor = {
+const CardP2TextColor = {
+  [MEMBER_ROLE.explorer]: colorGrayscale.gray700,
+  [MEMBER_ROLE.action_taker]: colorGrayscale.gray700,
+  [MEMBER_ROLE.trailblazer]: colorGrayscale.gray200,
+}
+
+const CardP1TextColor = {
   [MEMBER_ROLE.explorer]: colorGrayscale.gray800,
   [MEMBER_ROLE.action_taker]: colorGrayscale.gray800,
   [MEMBER_ROLE.trailblazer]: colorGrayscale.white,
@@ -25,22 +35,22 @@ const CardTextColor = {
 
 const CardMarkStyle = {
   [MEMBER_ROLE.explorer]: {
-    width: '193px',
-    height: '120px',
+    width: '214px',
+    height: '343px',
   },
   [MEMBER_ROLE.action_taker]: {
-    width: '193px',
-    height: '157px',
+    width: '208px',
+    height: '307px',
   },
   [MEMBER_ROLE.trailblazer]: {
-    width: '166px',
-    height: '196px',
+    width: '219px',
+    height: '328px',
   },
 }
 
 const CardContainer = styled.div`
-  max-width: 320px;
   width: 100%;
+  max-width: 320px;
   min-width: 296px;
   border-radius: 16px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05),
@@ -52,22 +62,30 @@ const CardContainer = styled.div`
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box; /* Opera/IE 8+ */
+  display: flex;
+  flex-direction: row;
+  position: relative;
 `
 
-const RelativeDiv = styled.div`
-  position: relative;
+const LeftColumn = styled.div`
   width: 100%;
   height: 100%;
+  margin-right: 16px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 `
 
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+const RightColumn = styled.div`
+  width: 42px;
 `
-const LogoContainer = styled.div``
+
+const LogoContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+`
 
 const LogoImg = styled.img`
   width: 16px;
@@ -75,10 +93,9 @@ const LogoImg = styled.img`
 `
 
 const MarkContainer = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: start;
-  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
 `
 
 const MarkImgs = styled.img`
@@ -86,19 +103,53 @@ const MarkImgs = styled.img`
   height: ${props => CardMarkStyle[props.role].height};
 `
 
-const DataContainer = styled.div``
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`
 
 const TextContainer = styled.div`
-  color: ${props => props.color};
-  padding-bottom: ${props => props.paddingBottom || 0}px;
-  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+const TitleContainer = styled.div`
+  width: 42px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const TitleImg = styled.img`
-  position: relative;
-  top: 0;
-  right: 0;
-  height: 100%;
+  width: 100%;
+`
+
+const StyledP3 = styled(P3)`
+  color: ${colorGrayscale.gray500};
+  letter-spacing: 0px;
+`
+
+const Gray500BottomLine = styled.div`
+  border-bottom: 0.5px solid;
+  border-color: ${colorGrayscale.gray500};
+  flex: 1;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 4.5px;
+`
+
+const P2TextContainer = styled.div`
+  color: ${props => props.color};
+  overflow-wrap: anywhere;
+`
+
+const StyledP1 = styled(P1)`
+  color: ${props => props.color};
+  line-height: 125%;
+  letter-spacing: 1.6px;
 `
 
 const MobileMemberRoleCard = ({
@@ -107,48 +158,73 @@ const MobileMemberRoleCard = ({
   email = '',
   joinDate = '',
   name = '',
+  articleReadCount = 0,
+  articleReadingTimeUnit = READING_TIME_UNIT.minute,
+  articleReadingTime = 0,
+  hideInfo = true,
 }) => {
   const logoUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_logo.png`
-  const titleUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_title.png`
+  const titleUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_title.svg`
   const markUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_mark.png`
 
   return (
     <CardContainer bgColor={CardBgColor[role]}>
-      <RelativeDiv>
-        <FlexContainer>
+      <MarkContainer>
+        <MarkImgs role={role} src={markUrl} />
+      </MarkContainer>
+      <LeftColumn>
+        <P2TextContainer color={CardP2TextColor[role]}>
+          {role !== MEMBER_ROLE.explorer && <P2 text={name} />}
+          <P2 text={email} />
+        </P2TextContainer>
+        <InfoContainer>
+          {!hideInfo && (
+            <>
+              <TextContainer>
+                <StyledP3 text={'閱讀篇數'} />
+                <Gray500BottomLine />
+                <StyledP1
+                  color={CardP1TextColor[role]}
+                  weight={P1.Weight.BOLD}
+                  text={articleReadCount.toLocaleString('en-US')}
+                />
+              </TextContainer>
+              <TextContainer>
+                <StyledP3
+                  text={`閱讀${READING_TIME_UNIT_CARD_TEXT[articleReadingTimeUnit]}`}
+                />
+                <Gray500BottomLine />
+                <StyledP1
+                  color={CardP1TextColor[role]}
+                  weight={P1.Weight.BOLD}
+                  text={
+                    articleReadingTime > 99999
+                      ? '99,999+'
+                      : articleReadingTime.toLocaleString('en-US')
+                  }
+                />
+              </TextContainer>
+            </>
+          )}
+          <TextContainer>
+            <StyledP3 text={'加入日期'} />
+            <Gray500BottomLine />
+            <StyledP1
+              color={CardP1TextColor[role]}
+              weight={P1.Weight.BOLD}
+              text={joinDate}
+            />
+          </TextContainer>
+        </InfoContainer>
+      </LeftColumn>
+      <RightColumn>
+        <TitleContainer>
+          <TitleImg src={titleUrl} />
           <LogoContainer>
             <LogoImg src={logoUrl} />
           </LogoContainer>
-          <MarkContainer>
-            <MarkImgs role={role} src={markUrl} />
-          </MarkContainer>
-          <DataContainer>
-            {role !== MEMBER_ROLE.explorer && (
-              <div>
-                <TextContainer color={colorGrayscale.gray500}>
-                  <P3 text={'姓名'}></P3>
-                </TextContainer>
-                <TextContainer color={CardTextColor[role]} paddingBottom={8}>
-                  <P1 text={name}></P1>
-                </TextContainer>
-              </div>
-            )}
-            <TextContainer color={colorGrayscale.gray500}>
-              <P3 text={'電子信箱'}></P3>
-            </TextContainer>
-            <TextContainer color={CardTextColor[role]} paddingBottom={8}>
-              <P1 text={email}></P1>
-            </TextContainer>
-            <TextContainer color={colorGrayscale.gray500}>
-              <P3 text={'加入日期'}></P3>
-            </TextContainer>
-            <TextContainer color={CardTextColor[role]}>
-              <P1 text={joinDate}></P1>
-            </TextContainer>
-          </DataContainer>
-        </FlexContainer>
-        <TitleImg src={titleUrl} />
-      </RelativeDiv>
+        </TitleContainer>
+      </RightColumn>
     </CardContainer>
   )
 }
@@ -159,6 +235,10 @@ MobileMemberRoleCard.propTypes = {
   email: PropTypes.string,
   joinDate: PropTypes.string,
   name: PropTypes.string,
+  articleReadCount: PropTypes.number,
+  articleReadingTimeUnit: PropTypes.oneOf(Object.values(READING_TIME_UNIT)),
+  articleReadingTime: PropTypes.number,
+  hideInfo: PropTypes.bool,
 }
 
 export default MobileMemberRoleCard

@@ -1,4 +1,3 @@
-import React from 'react'
 import LogoHeader from '../components/logo-header'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
@@ -10,5 +9,6 @@ export default {
   },
 }
 
-export const header = args => <LogoHeader {...args} />
-header.args = { type: LogoHeader.Type.DEFAULT }
+export const header = {
+  args: { type: LogoHeader.Type.DEFAULT },
+}

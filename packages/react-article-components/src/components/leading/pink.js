@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import Img from '../img-with-placeholder'
 // constants
 import predefinedPropTypes from '../../constants/prop-types/leading'
-import color from '../../constants/color'
 import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -74,7 +74,7 @@ const TextBlock = styled.div`
 
 const TopicTextBlock = styled.div`
   background-color: ${props => props.theme.colors.primary.support};
-  border: solid 2px ${color.white};
+  border: solid 2px ${colorGrayscale.white};
   display: inline-block;
 
   position: relative;
@@ -89,7 +89,7 @@ const TopicTextBlock = styled.div`
   line-height: 1.8;
   letter-spacing: 0.4px;
 
-  box-shadow: 5px 5px ${color.white};
+  box-shadow: 5px 5px ${colorGrayscale.white};
 `
 
 const TitleTextBlock = styled.h1`
@@ -123,8 +123,8 @@ const TitleTextBlock = styled.h1`
     font-size: 34px;
     > span {
       line-height: 1.6;
-      background-color: ${color.white};
-      box-shadow: 10px 0 0 ${color.white}, -10px 0 0 ${color.white};
+      background-color: ${colorGrayscale.white};
+      box-shadow: 10px 0 0 ${colorGrayscale.white}, -10px 0 0 ${colorGrayscale.white};
     }
   `}
 
@@ -146,7 +146,7 @@ const SubtitleTextBlock = styled.h2`
 
   ${mq.desktopAndAbove`
     > span {
-      background-color: ${color.white};
+      background-color: ${colorGrayscale.white};
     }
   `}
 `

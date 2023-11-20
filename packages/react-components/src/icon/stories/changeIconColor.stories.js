@@ -28,4 +28,4 @@ export default {
   },
 }
 
-export const changeIconColor = args => <ChangeIconColor {...args} />
+export const changeIconColor = {}

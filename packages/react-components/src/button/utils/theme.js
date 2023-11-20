@@ -31,7 +31,7 @@ export const getFilledPillButtonTheme = (theme, disabled, style) => {
     case THEME.photography:
       return {
         color: colorPhoto.dark,
-        bgColor: colorSupportive.main,
+        bgColor: colorSupportive.pastel,
         hoverColor: colorGrayscale.white,
         hoverBgColor: colorSupportive.heavy,
       }
@@ -101,8 +101,8 @@ export const getOutlinePillButtonTheme = (theme, disabled, style) => {
   switch (theme) {
     case THEME.photography:
       return {
-        color: colorSupportive.main,
-        bgColor: colorSupportive.main,
+        color: colorSupportive.pastel,
+        bgColor: colorSupportive.pastel,
         hoverColor: colorSupportive.heavy,
         hoverBgColor: colorSupportive.heavy,
       }
@@ -156,12 +156,12 @@ export const getPrimaryIconButtonTheme = (theme, isActive, isDisabled) => {
     case THEME.photography:
       return {
         color: colorGrayscale.white,
-        hoverColor: colorSupportive.main,
+        hoverColor: colorSupportive.pastel,
       }
     case `${THEME.photography}-active`:
       return {
-        color: colorSupportive.main,
-        hoverColor: colorSupportive.main,
+        color: colorSupportive.pastel,
+        hoverColor: colorSupportive.pastel,
       }
     case THEME.transparent:
       return {
@@ -200,12 +200,12 @@ export const getSecondaryIconButtonTheme = (theme, isActive, isDisabled) => {
     case THEME.photography:
       return {
         color: colorGrayscale.gray400,
-        hoverColor: colorSupportive.main,
+        hoverColor: colorSupportive.pastel,
       }
     case `${THEME.photography}-active`:
       return {
-        color: colorSupportive.main,
-        hoverColor: colorSupportive.main,
+        color: colorSupportive.pastel,
+        hoverColor: colorSupportive.pastel,
       }
     case THEME.transparent:
       return {
@@ -244,12 +244,12 @@ export const getIconWithTextButtonTheme = (theme, isActive, isDisabled) => {
     case THEME.photography:
       return {
         color: colorGrayscale.gray200,
-        hoverColor: colorSupportive.main,
+        hoverColor: colorSupportive.pastel,
       }
     case `${THEME.photography}-active`:
       return {
-        color: colorSupportive.main,
-        hoverColor: colorSupportive.main,
+        color: colorSupportive.pastel,
+        hoverColor: colorSupportive.pastel,
       }
     case THEME.transparent:
       return {
@@ -280,7 +280,7 @@ export const getPrimaryTextButtonTheme = (theme, style) => {
     case THEME.photography:
       return {
         color: colorGrayscale.white,
-        hoverColor: colorSupportive.main,
+        hoverColor: colorSupportive.pastel,
       }
     case THEME.transparent:
       return {
@@ -315,7 +315,7 @@ export const getSecondaryTextButtonTheme = (theme, style) => {
     case THEME.photography:
       return {
         color: colorGrayscale.gray400,
-        hoverColor: colorSupportive.main,
+        hoverColor: colorSupportive.pastel,
       }
     case THEME.transparent:
       return {
@@ -370,8 +370,8 @@ export const getActiveTextButtonTheme = (theme, style) => {
   switch (theme) {
     case THEME.photography:
       return {
-        color: colorSupportive.main,
-        hoverColor: colorSupportive.main,
+        color: colorSupportive.pastel,
+        hoverColor: colorSupportive.pastel,
       }
     case THEME.transparent:
       return {

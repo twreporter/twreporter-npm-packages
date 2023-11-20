@@ -1,4 +1,3 @@
-import React from 'react'
 import { Share } from '../index'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
@@ -10,4 +9,4 @@ export default {
   },
 }
 
-export const share = args => <Share {...args} />
+export const share = {}

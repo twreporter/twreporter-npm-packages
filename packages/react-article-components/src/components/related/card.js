@@ -7,7 +7,11 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import themeConsts from '../../constants/theme'
 import typography from '../../constants/typography'
-import color from '../../constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 
 const StyledImg = styled(Img)``
 
@@ -30,7 +34,7 @@ const Desc = styled.p`
   display: block;
   font-size: 14px;
   line-height: 1.43;
-  color: ${color.gray80};
+  color: ${colorGrayscale.gray600};
   padding: 15px 0 15px 0;
   transition: opacity 200ms ease 100ms;
 `
@@ -114,7 +118,7 @@ const PublishedDate = styled.p`
   margin: 0;
   font-size: 12px;
   line-height: 2;
-  color: ${color.gray60};
+  color: ${colorGrayscale.gray500};
 
   ${mq.desktopAndAbove`
     position: absolute;
@@ -158,38 +162,38 @@ function getBlockStyles(themeName) {
     case themeConsts.article.v2.photo:
       return css`
         ${Category} {
-          color: ${color.milkTea};
+          color: ${colorSupportive.main};
         }
         ${Title} {
-          color: ${color.notSoWhite};
+          color: ${colorGrayscale.gray300};
         }
         ${StyledImg} {
-          background-color: ${color.gray10};
+          background-color: ${colorGrayscale.gray400};
         }
       `
     case themeConsts.article.v2.pink:
       return css`
         ${Category} {
-          color: ${color.darkPink};
+          color: ${COLOR_PINK_ARTICLE.darkPink};
         }
         ${Title} {
-          color: ${color.gray90};
+          color: ${colorGrayscale.gray800};
         }
         ${StyledImg} {
-          background-color: ${color.gray40};
+          background-color: ${colorGrayscale.gray200};
         }
       `
     case themeConsts.article.v2.default:
     default:
       return css`
         ${Category} {
-          color: ${color.brown};
+          color: ${colorSupportive.heavy};
         }
         ${Title} {
-          color: ${color.gray90};
+          color: ${colorGrayscale.gray800};
         }
         ${StyledImg} {
-          background-color: ${color.gray40};
+          background-color: ${colorGrayscale.gray200};
         }
       `
   }

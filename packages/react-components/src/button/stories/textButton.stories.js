@@ -1,3 +1,4 @@
+/* eslint react/display-name:0 */
 import React from 'react'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import TextButton from '../components/textButton'
@@ -28,39 +29,45 @@ export default {
   },
 }
 
-const Template = args => <TextButton {...args} />
+export const textButton = {
+  args: {
+    text: '文字',
+    size: TextButton.Size.S,
+    theme: TextButton.THEME.normal,
+    type: TextButton.Type.PRIMARY,
+    style: TextButton.Style.DARK,
+    active: false,
+    disabled: false,
+    leftIconComponent: <Arrow direction="left" />,
+    rightIconComponent: <Arrow direction="right" />,
+  },
 
-export const textButton = Template.bind({})
-textButton.args = {
-  text: '文字',
-  size: TextButton.Size.S,
-  theme: TextButton.THEME.normal,
-  type: TextButton.Type.PRIMARY,
-  style: TextButton.Style.DARK,
-  active: false,
-  disabled: false,
-  leftIconComponent: <Arrow direction="left" />,
-  rightIconComponent: <Arrow direction="right" />,
+  parameters: { controls: { exclude: ['showLeft', 'showRight'] } },
 }
-textButton.parameters = { controls: { exclude: ['showLeft', 'showRight'] } }
 
-export const toggleIconDisplay = args => {
-  args.leftIconComponent = args.showLeft ? <Arrow direction="left" /> : null
-  args.rightIconComponent = args.showRight ? <Arrow direction="right" /> : null
+export const toggleIconDisplay = {
+  render: args => {
+    args.leftIconComponent = args.showLeft ? <Arrow direction="left" /> : null
+    args.rightIconComponent = args.showRight ? (
+      <Arrow direction="right" />
+    ) : null
 
-  return <TextButton {...args} />
-}
-toggleIconDisplay.args = {
-  showLeft: true,
-  showRight: true,
-  text: '文字',
-  size: TextButton.Size.S,
-  theme: TextButton.THEME.normal,
-  type: TextButton.Type.PRIMARY,
-  style: TextButton.Style.DARK,
-  active: false,
-  disabled: false,
-}
-toggleIconDisplay.parameters = {
-  controls: { exclude: ['leftIconComponent', 'rightIconComponent'] },
+    return <TextButton {...args} />
+  },
+
+  args: {
+    showLeft: true,
+    showRight: true,
+    text: '文字',
+    size: TextButton.Size.S,
+    theme: TextButton.THEME.normal,
+    type: TextButton.Type.PRIMARY,
+    style: TextButton.Style.DARK,
+    active: false,
+    disabled: false,
+  },
+
+  parameters: {
+    controls: { exclude: ['leftIconComponent', 'rightIconComponent'] },
+  },
 }

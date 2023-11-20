@@ -1,4 +1,3 @@
-import React from 'react'
 import { Printer } from '../index'
 import { BRANCH_STORYBOOK_ARG_TYPE } from '../../storybook/constants'
 
@@ -10,4 +9,4 @@ export default {
   },
 }
 
-export const printer = args => <Printer {...args} />
+export const printer = {}

@@ -2,7 +2,11 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
-import color from '../../constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 
 const mockup = {
   mobile: {
@@ -49,24 +53,24 @@ function getCaptionStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.photo:
       return css`
-        color: ${color.notSoWhite};
+        color: ${colorGrayscale.gray300};
         &::after {
-          border-color: ${color.gray10};
+          border-color: ${colorGrayscale.gray400};
         }
       `
     case themeConst.article.v2.pink:
       return css`
-        color: ${color.gray85};
+        color: ${colorGrayscale.gray700};
         &::after {
-          border-color: ${color.pink};
+          border-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        color: ${color.gray85};
+        color: ${colorGrayscale.gray700};
         &::after {
-          border-color: ${color.milkTea};
+          border-color: ${colorSupportive.main};
         }
       `
   }

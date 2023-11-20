@@ -1,3 +1,4 @@
+/* eslint react/display-name:0 */
 import React from 'react'
 import Bookmarks from '../bookmarks'
 
@@ -6,8 +7,11 @@ export default {
   component: Bookmarks,
 }
 
-export const emptyList = () => <Bookmarks />
-emptyList.args = {
-  bookmarks: [],
-  total: 0,
+export const emptyList = {
+  render: () => <Bookmarks />,
+
+  args: {
+    bookmarks: [],
+    total: 0,
+  },
 }

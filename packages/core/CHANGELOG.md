@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0-rc.1...@twreporter/core@1.14.0-rc.2) (2023-11-16)
+
+
+### Bug Fixes
+
+* request origin typo ([ede7f76](https://github.com/twreporter/twreporter-npm-packages/commit/ede7f764d27f232c8ec43193a8579171c3db6167))
+
+
+
+
+
+# [1.14.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0-rc.0...@twreporter/core@1.14.0-rc.1) (2023-11-16)
+
+
+### Bug Fixes
+
+* mobile role card text style ([f197cb7](https://github.com/twreporter/twreporter-npm-packages/commit/f197cb7711ee1b9f5120996e65382fa4e22aef76))
+
+
+
+
+
+# [1.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.1-rc.0...@twreporter/core@1.14.0-rc.0) (2023-11-13)
+
+
+### Bug Fixes
+
+* use Object.freeze and use en-US ([e4ff2a0](https://github.com/twreporter/twreporter-npm-packages/commit/e4ff2a0dda08003eb762d3009b6670b6c84cbcf1))
+
+
+### Features
+
+* new moblie member role card ([2e01669](https://github.com/twreporter/twreporter-npm-packages/commit/2e01669144c072d5bd89d88fe68b97d69e8b6e6f))
+
+
+
+
+
+## [1.13.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.0...@twreporter/core@1.13.1-rc.0) (2023-11-13)
+
+
+### Bug Fixes
+
+* use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
+
+
+
+
+
 # [1.13.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.0-rc.0...@twreporter/core@1.13.0) (2023-10-30)
 
 **Note:** Version bump only for package @twreporter/core

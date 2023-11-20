@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint react/display-name:0 */
 import React from 'react'
 import styled from 'styled-components'
 import Icons from './icons'
@@ -25,19 +26,21 @@ const Container = styled.div`
   transform: translateX(300px);
 `
 
-export const desktop = props => {
-  const { isAuthed, theme, releaseBranch } = props
-  const context = {
-    isAuthed,
-    theme,
-    releaseBranch,
-    isLinkExternal: true,
-  }
-  return (
-    <HeaderContext.Provider value={context}>
-      <Container>
-        <Icons />
-      </Container>
-    </HeaderContext.Provider>
-  )
+export const desktop = {
+  render: props => {
+    const { isAuthed, theme, releaseBranch } = props
+    const context = {
+      isAuthed,
+      theme,
+      releaseBranch,
+      isLinkExternal: true,
+    }
+    return (
+      <HeaderContext.Provider value={context}>
+        <Container>
+          <Icons />
+        </Container>
+      </HeaderContext.Provider>
+    )
+  },
 }

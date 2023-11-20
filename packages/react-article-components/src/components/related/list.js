@@ -7,11 +7,11 @@ import mockup from './mockup'
 import Card from './card'
 // constants
 import themeConsts from '../../constants/theme'
-import color from '../../constants/color'
 import predefinedProps from '../../constants/prop-types/related'
 import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -33,22 +33,22 @@ const selectButtonColors = theme => {
   switch (theme) {
     case themeConsts.article.v2.photo:
       return css`
-        color: ${color.notSoWhite};
-        background-color: ${color.gray25};
+        color: ${colorGrayscale.gray300};
+        background-color: ${colorGrayscale.white}1a; // add 10% opacity with hex alpha
         &:hover {
-          color: ${color.white};
-          background-color: ${color.gray10};
+          color: ${colorGrayscale.white};
+          background-color: ${colorGrayscale.gray400};
         }
       `
     case themeConsts.article.v2.pink:
     case themeConsts.article.v2.default:
     default:
       return css`
-        color: ${color.gray80};
-        background-color: ${color.gray45};
+        color: ${colorGrayscale.gray600};
+        background-color: ${colorGrayscale.gray300};
         &:hover {
-          color: ${color.gray90};
-          background-color: ${color.gray53};
+          color: ${colorGrayscale.gray800};
+          background-color: ${colorGrayscale.gray400};
         }
       `
   }
@@ -97,9 +97,9 @@ const Item = styled.div`
   border-color: ${props => {
     switch (props.theme.name) {
       case themeConsts.article.v2.photo:
-        return color.gray10
+        return colorGrayscale.gray400
       default:
-        return color.gray50
+        return colorGrayscale.gray300
     }
   }};
   margin-bottom: 40px;

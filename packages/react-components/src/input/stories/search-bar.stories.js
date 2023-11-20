@@ -1,4 +1,3 @@
-import React from 'react'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import SearchBar from '../components/search-bar'
 import {
@@ -17,15 +16,16 @@ export default {
   },
 }
 
-export const searchBar = props => <SearchBar {...props} />
 const onSearch = keyword => window?.alert(`search keyword: ${keyword}`)
 const onClose = () => window?.alert('click close !')
-searchBar.args = {
-  placeholder: '關鍵字搜尋',
-  theme: SearchBar.THEME.normal,
-  releaseBranch: BRANCH.master,
-  onSearch,
-  onClose,
-  autofocus: false,
-  widthType: SearchBar.WidthType.FIT,
+export const searchBar = {
+  args: {
+    placeholder: '關鍵字搜尋',
+    theme: SearchBar.THEME.normal,
+    releaseBranch: BRANCH.master,
+    onSearch,
+    onClose,
+    autofocus: false,
+    widthType: SearchBar.WidthType.FIT,
+  },
 }

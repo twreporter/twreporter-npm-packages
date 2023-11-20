@@ -1,4 +1,3 @@
-import React from 'react'
 import Checkbox from '.'
 
 export default {
@@ -12,13 +11,13 @@ export default {
   },
 }
 
-const Template = args => <Checkbox {...args} />
-export const checkbox = Template.bind({})
-checkbox.args = {
-  label: '藝術',
-  value: false,
-  disabled: false,
-  onChange: e => {
-    console.log('callback', e.target.checked)
+export const checkbox = {
+  args: {
+    label: '藝術',
+    value: false,
+    disabled: false,
+    onChange: e => {
+      console.log('callback', e.target.checked)
+    },
   },
 }

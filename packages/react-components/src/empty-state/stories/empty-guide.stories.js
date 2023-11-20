@@ -1,4 +1,3 @@
-import React from 'react'
 import EmptyState from '../index'
 import { Style } from '../enums'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
@@ -13,13 +12,13 @@ export default {
   },
 }
 
-export const emptyState = args => <EmptyState {...args} />
-
-emptyState.args = {
-  title: '文字',
-  showGuide: true,
-  guide: '文字文字',
-  showButton: true,
-  buttonText: '按鈕',
-  buttonUrl: '/',
+export const emptyState = {
+  args: {
+    title: '文字',
+    showGuide: true,
+    guide: '文字文字',
+    showButton: true,
+    buttonText: '按鈕',
+    buttonUrl: '/',
+  },
 }

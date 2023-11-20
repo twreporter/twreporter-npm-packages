@@ -3,6 +3,108 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.10...@twreporter/react-article-components@1.9.1-rc.11) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.9...@twreporter/react-article-components@1.9.1-rc.10) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.8...@twreporter/react-article-components@1.9.1-rc.9) (2023-11-16)
+
+
+### Bug Fixes
+
+* update style ([7e945d5](https://github.com/twreporter/twreporter-npm-packages/commit/7e945d56a2defac872a15561ad47bcd1db306235))
+
+
+
+
+
+## [1.9.1-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.7...@twreporter/react-article-components@1.9.1-rc.8) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.6...@twreporter/react-article-components@1.9.1-rc.7) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.5...@twreporter/react-article-components@1.9.1-rc.6) (2023-11-15)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.4...@twreporter/react-article-components@1.9.1-rc.5) (2023-11-14)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.3...@twreporter/react-article-components@1.9.1-rc.4) (2023-11-14)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.2...@twreporter/react-article-components@1.9.1-rc.3) (2023-11-13)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.1...@twreporter/react-article-components@1.9.1-rc.2) (2023-11-13)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.0...@twreporter/react-article-components@1.9.1-rc.1) (2023-11-13)
+
+
+### Bug Fixes
+
+* use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
+
+
+
+
+
+## [1.9.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.0...@twreporter/react-article-components@1.9.1-rc.0) (2023-11-13)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 # [1.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.0-rc.1...@twreporter/react-article-components@1.9.0) (2023-10-30)
 
 **Note:** Version bump only for package @twreporter/react-article-components

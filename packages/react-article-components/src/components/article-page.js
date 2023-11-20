@@ -16,12 +16,15 @@ import UIManager from '../managers/ui-manager'
 import Tools from './aside/desktop-tools'
 // constants
 import themeConst from '../constants/theme'
-import colorConst from '../constants/color'
 import { RELATED_POST_ANCHOR_ID } from '../constants/anchor'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import {
+  colorGrayscale,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -51,7 +54,7 @@ const SeprationLine = styled.div`
       props.visible
         ? css`
             width: 100%;
-            border-bottom: solid 1px ${colorConst.gray40};
+            border-bottom: solid 1px ${colorGrayscale.gray200};
             padding-bottom: 60px;
           `
         : css`
@@ -200,24 +203,24 @@ function getBackgroundBlockStyles(themeName) {
   switch (themeName) {
     case themeConst.article.v2.pink:
       return css`
-        background-color: ${colorConst.lightPink};
+        background-color: ${COLOR_PINK_ARTICLE.lightPink};
         ${BodyBackground} {
-          background-color: ${colorConst.gray20};
+          background-color: ${colorGrayscale.gray100};
         }
       `
     case themeConst.article.v2.photo:
       return css`
-        background-color: ${colorConst.darkBlue};
+        background-color: ${COLOR_PINK_ARTICLE.darkBlue};
         ${BodyBackground} {
-          background-color: ${colorConst.darkBlue};
+          background-color: ${COLOR_PINK_ARTICLE.darkBlue};
         }
       `
     case themeConst.article.v2.default:
     default:
       return css`
-        background-color: ${colorConst.gray30};
+        background-color: ${colorGrayscale.gray100};
         ${BodyBackground} {
-          background-color: ${colorConst.gray30};
+          background-color: ${colorGrayscale.gray100};
         }
       `
   }

@@ -3,6 +3,103 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.5...@twreporter/universal-header@2.8.0-rc.6) (2023-11-16)
+
+
+### Bug Fixes
+
+* `Link` should be in `Route` error ([2028609](https://github.com/twreporter/twreporter-npm-packages/commit/2028609ba60a51328317b0dda8447259ba72627c))
+
+
+
+
+
+# [2.8.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.4...@twreporter/universal-header@2.8.0-rc.5) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.8.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.3...@twreporter/universal-header@2.8.0-rc.4) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.8.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.2...@twreporter/universal-header@2.8.0-rc.3) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.8.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.1...@twreporter/universal-header@2.8.0-rc.2) (2023-11-15)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.8.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.0...@twreporter/universal-header@2.8.0-rc.1) (2023-11-14)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+# [2.8.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.4-rc.3...@twreporter/universal-header@2.8.0-rc.0) (2023-11-14)
+
+
+### Features
+
+* upgrade universal-header storybook to v7 ([0590db4](https://github.com/twreporter/twreporter-npm-packages/commit/0590db47349a17b619447ac3409c6b0b3dc344a8))
+
+
+
+
+
+## [2.7.4-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.4-rc.2...@twreporter/universal-header@2.7.4-rc.3) (2023-11-13)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.7.4-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.4-rc.1...@twreporter/universal-header@2.7.4-rc.2) (2023-11-13)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
+## [2.7.4-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.4-rc.0...@twreporter/universal-header@2.7.4-rc.1) (2023-11-13)
+
+
+### Bug Fixes
+
+* use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
+
+
+
+
+
+## [2.7.4-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.3...@twreporter/universal-header@2.7.4-rc.0) (2023-11-13)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
 ## [2.7.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.7.3-rc.0...@twreporter/universal-header@2.7.3) (2023-10-30)
 
 **Note:** Version bump only for package @twreporter/universal-header

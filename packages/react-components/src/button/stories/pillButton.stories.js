@@ -1,3 +1,4 @@
+/* eslint react/display-name:0 */
 import React from 'react'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import PillButton from '../components/pillButton'
@@ -28,37 +29,41 @@ export default {
   },
 }
 
-const Template = args => <PillButton {...args} />
+export const pillButton = {
+  args: {
+    text: '文字',
+    size: PillButton.Size.S,
+    theme: PillButton.THEME.normal,
+    style: PillButton.Style.BRAND,
+    type: PillButton.Type.PRIMARY,
+    disabled: false,
+    loading: false,
+  },
 
-export const pillButton = Template.bind({})
-pillButton.args = {
-  text: '文字',
-  size: PillButton.Size.S,
-  theme: PillButton.THEME.normal,
-  style: PillButton.Style.BRAND,
-  type: PillButton.Type.PRIMARY,
-  disabled: false,
-  loading: false,
+  parameters: { controls: { exclude: ['showLeft', 'showRight'] } },
 }
-pillButton.parameters = { controls: { exclude: ['showLeft', 'showRight'] } }
 
-export const toggleIconDisplay = args => {
-  args.leftIconComponent = args.showLeft ? <Cross /> : null
-  args.rightIconComponent = args.showRight ? <Cross /> : null
+export const toggleIconDisplay = {
+  render: args => {
+    args.leftIconComponent = args.showLeft ? <Cross /> : null
+    args.rightIconComponent = args.showRight ? <Cross /> : null
 
-  return <PillButton {...args} />
-}
-toggleIconDisplay.args = {
-  showLeft: true,
-  showRight: true,
-  text: '文字',
-  size: PillButton.Size.S,
-  theme: PillButton.THEME.normal,
-  style: PillButton.Style.BRAND,
-  type: PillButton.Type.PRIMARY,
-  disabled: false,
-  loading: false,
-}
-toggleIconDisplay.parameters = {
-  controls: { exclude: ['leftIconComponent', 'rightIconComponent'] },
+    return <PillButton {...args} />
+  },
+
+  args: {
+    showLeft: true,
+    showRight: true,
+    text: '文字',
+    size: PillButton.Size.S,
+    theme: PillButton.THEME.normal,
+    style: PillButton.Style.BRAND,
+    type: PillButton.Type.PRIMARY,
+    disabled: false,
+    loading: false,
+  },
+
+  parameters: {
+    controls: { exclude: ['leftIconComponent', 'rightIconComponent'] },
+  },
 }

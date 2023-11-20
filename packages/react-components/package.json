@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.20.1",
+  "version": "8.21.0-rc.10",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -10,13 +10,13 @@
     "build": "make build",
     "dev": "make dev",
     "prepublishOnly": "make build",
-    "storybook": "start-storybook -p 3000",
-    "build-storybook": "build-storybook",
+    "storybook": "storybook dev -p 3000",
+    "build-storybook": "storybook build",
     "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@twreporter/core": "^1.13.0",
-    "@twreporter/redux": "^7.8.0",
+    "@twreporter/core": "^1.14.0-rc.2",
+    "@twreporter/redux": "^7.8.1-rc.3",
     "fontfaceobserver-es": "^3.3.3",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",
@@ -34,14 +34,21 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.17.9",
-    "@storybook/addon-actions": "^6.4.21",
-    "@storybook/addon-essentials": "^6.4.21",
-    "@storybook/addon-interactions": "^6.4.21",
-    "@storybook/addon-links": "^6.4.21",
-    "@storybook/addon-viewport": "^6.4.21",
-    "@storybook/react": "^6.4.21",
-    "@storybook/testing-library": "^0.0.9",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/preset-typescript": "^7.23.2",
+    "@storybook/addon-actions": "^7.5.2",
+    "@storybook/addon-essentials": "^7.5.2",
+    "@storybook/addon-interactions": "^7.5.2",
+    "@storybook/addon-links": "^7.5.2",
+    "@storybook/addon-mdx-gfm": "^7.5.2",
+    "@storybook/addon-viewport": "^7.5.2",
+    "@storybook/react": "^7.5.2",
+    "@storybook/react-webpack5": "^7.5.2",
+    "@storybook/testing-library": "^0.2.2",
     "babel-loader": "^8.2.4",
-    "chromatic": "^6.5.4"
+    "chromatic": "^6.5.4",
+    "react-dom": "^16.0.0",
+    "storybook": "^7.5.2"
   }
 }

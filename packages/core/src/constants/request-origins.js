@@ -16,7 +16,7 @@ const forServerSideRendering = {
   [releaseBranch.staging]: {
     accounts: 'https://staging-accounts.twreporter.org',
     api: 'https://staging-go-api.twreporter.org',
-    main: 'http://staging.twreporter.org',
+    main: 'https://staging.twreporter.org',
     support: 'https://staging-support.twreporter.org',
   },
   [releaseBranch.preview]: {

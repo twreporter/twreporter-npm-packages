@@ -8,7 +8,11 @@ import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
-import { COLOR_ARTICLE } from '@twreporter/core/lib/constants/color'
+import {
+  colorGrayscale,
+  colorSupportive,
+  COLOR_PINK_ARTICLE,
+} from '@twreporter/core/lib/constants/color'
 import {
   GET_CATEGORY_PATH_FROM_ID,
   GET_SUBCATEGORY_PATH_FROM_ID,
@@ -25,9 +29,9 @@ const _ = {
 }
 
 const createLine = (topOrBottom, themeName) => {
-  let borderColor = COLOR_ARTICLE.gray50
+  let borderColor = colorGrayscale.gray300
   if (themeName === ARTICLE_THEME.v2.photo) {
-    borderColor = COLOR_ARTICLE.gray10
+    borderColor = colorGrayscale.gray400
   }
 
   return css`
@@ -106,7 +110,7 @@ const CategoryText = styled.div`
 const DateSection = styled.div`
   ${props => createLine('top', props.theme.name)}
   font-size: 14px;
-  color: ${COLOR_ARTICLE.gray70};
+  color: ${colorGrayscale.gray500};
   margin-left: 5px;
   margin-top: 15px;
 
@@ -129,7 +133,7 @@ const AuthorRow = styled.div`
 
 const AuthorJobTitle = styled.div`
   font-size: 14px;
-  color: ${COLOR_ARTICLE.gray80};
+  color: ${colorGrayscale.gray600};
   margin-left: 5px;
   padding-top: 2px;
   line-height: 1;
@@ -162,7 +166,7 @@ const AuthorName = styled.div`
 
 const RawAuthorText = styled.div`
   font-size: 14px;
-  color: ${COLOR_ARTICLE.gray80};
+  color: ${colorGrayscale.gray600};
   padding-left: 5px;
 `
 
@@ -220,69 +224,69 @@ function getMetadataContainerStyles(themeName) {
     case ARTICLE_THEME.v2.photo:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: ${COLOR_ARTICLE.milkTea};
+          color: ${colorSupportive.main};
           &:hover {
-            border-color: ${COLOR_ARTICLE.milkTea};
+            border-color: ${colorSupportive.main};
           }
         }
         ${AngledSeparationLine} {
-          border-color: ${COLOR_ARTICLE.brown};
+          border-color: ${colorSupportive.heavy};
         }
         ${TagButton} {
-          border-color: ${COLOR_ARTICLE.gray80};
-          color: ${COLOR_ARTICLE.gray80};
+          border-color: ${colorGrayscale.gray600};
+          color: ${colorGrayscale.gray600};
           &:hover {
-            color: ${COLOR_ARTICLE.white};
-            border-color: ${COLOR_ARTICLE.white};
+            color: ${colorGrayscale.white};
+            border-color: ${colorGrayscale.white};
           }
         }
         ${TextLink} {
-          color: ${COLOR_ARTICLE.milkTea};
+          color: ${colorSupportive.main};
         }
       `
     case ARTICLE_THEME.v2.pink:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: ${COLOR_ARTICLE.blue};
+          color: ${COLOR_PINK_ARTICLE.blue};
           &:hover {
-            border-color: ${COLOR_ARTICLE.blue};
+            border-color: ${COLOR_PINK_ARTICLE.blue};
           }
         }
         ${AngledSeparationLine} {
-          border-color: ${COLOR_ARTICLE.pink};
+          border-color: ${COLOR_PINK_ARTICLE.pink};
         }
         ${TagButton} {
-          border-color: ${COLOR_ARTICLE.gray80};
-          color: ${COLOR_ARTICLE.gray80};
+          border-color: ${colorGrayscale.gray600};
+          color: ${colorGrayscale.gray600};
           &:hover {
-            background-color: ${COLOR_ARTICLE.white};
+            background-color: ${colorGrayscale.white};
           }
         }
         ${TextLink} {
-          color: ${COLOR_ARTICLE.blue};
+          color: ${COLOR_PINK_ARTICLE.blue};
         }
       `
     case ARTICLE_THEME.v2.default:
     default:
       return css`
         ${CategoryText}, ${AuthorName} {
-          color: ${COLOR_ARTICLE.brown};
+          color: ${colorSupportive.heavy};
           &:hover {
-            border-color: ${COLOR_ARTICLE.brown};
+            border-color: ${colorSupportive.heavy};
           }
         }
         ${AngledSeparationLine} {
-          border-color: ${COLOR_ARTICLE.milkTea};
+          border-color: ${colorSupportive.main};
         }
         ${TagButton} {
-          border-color: ${COLOR_ARTICLE.gray80};
-          color: ${COLOR_ARTICLE.gray80};
+          border-color: ${colorGrayscale.gray600};
+          color: ${colorGrayscale.gray600};
           &:hover {
-            background-color: ${COLOR_ARTICLE.white};
+            background-color: ${colorGrayscale.white};
           }
         }
         ${TextLink} {
-          color: ${COLOR_ARTICLE.brown};
+          color: ${colorSupportive.heavy};
         }
       `
   }

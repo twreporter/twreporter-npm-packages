@@ -3,6 +3,129 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.21.0-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.9...@twreporter/react-components@8.21.0-rc.10) (2023-11-16)
+
+
+### Bug Fixes
+
+* add default value for `link in p` story ([fdb017b](https://github.com/twreporter/twreporter-npm-packages/commit/fdb017b206f0a957c712136438cfba10844fcd5a))
+
+
+
+
+
+# [8.21.0-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.8...@twreporter/react-components@8.21.0-rc.9) (2023-11-16)
+
+
+### Bug Fixes
+
+* mobile-member-role-card width ([d40e5ff](https://github.com/twreporter/twreporter-npm-packages/commit/d40e5ffa944d403e2061e66c41128de70c8cb025))
+
+
+
+
+
+# [8.21.0-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.7...@twreporter/react-components@8.21.0-rc.8) (2023-11-16)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.21.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.6...@twreporter/react-components@8.21.0-rc.7) (2023-11-16)
+
+
+### Bug Fixes
+
+* mobile role card text style ([f197cb7](https://github.com/twreporter/twreporter-npm-packages/commit/f197cb7711ee1b9f5120996e65382fa4e22aef76))
+
+
+
+
+
+# [8.21.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.5...@twreporter/react-components@8.21.0-rc.6) (2023-11-15)
+
+
+### Bug Fixes
+
+* `InheritLinkButton` cannot set link & style ([a1b1a64](https://github.com/twreporter/twreporter-npm-packages/commit/a1b1a6466f288e435b8bcc28c9c1cea2a2e667fc))
+
+
+
+
+
+# [8.21.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.4...@twreporter/react-components@8.21.0-rc.5) (2023-11-14)
+
+
+### Bug Fixes
+
+* paragraph margin block ([949efb7](https://github.com/twreporter/twreporter-npm-packages/commit/949efb7c2d3213b9e0ebc35bdbc3739a14fa8b0e))
+
+
+
+
+
+# [8.21.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.3...@twreporter/react-components@8.21.0-rc.4) (2023-11-14)
+
+
+### Features
+
+* upgrade storybook to v7 ([fa85736](https://github.com/twreporter/twreporter-npm-packages/commit/fa85736bd60eda26596bc89c5bccaf74892774f2))
+
+
+
+
+
+# [8.21.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.2...@twreporter/react-components@8.21.0-rc.3) (2023-11-13)
+
+
+### Bug Fixes
+
+* use Object.freeze and use en-US ([e4ff2a0](https://github.com/twreporter/twreporter-npm-packages/commit/e4ff2a0dda08003eb762d3009b6670b6c84cbcf1))
+
+
+### Features
+
+* new moblie member role card ([2e01669](https://github.com/twreporter/twreporter-npm-packages/commit/2e01669144c072d5bd89d88fe68b97d69e8b6e6f))
+
+
+
+
+
+# [8.21.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.1...@twreporter/react-components@8.21.0-rc.2) (2023-11-13)
+
+
+### Features
+
+* add `InheritLinkButton` component & story ([81788c5](https://github.com/twreporter/twreporter-npm-packages/commit/81788c5cbe4ac208656a83ae9dd565f1e06bb587))
+
+
+
+
+
+# [8.21.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.0...@twreporter/react-components@8.21.0-rc.1) (2023-11-13)
+
+
+### Bug Fixes
+
+* use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
+
+
+
+
+
+# [8.21.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.20.1...@twreporter/react-components@8.21.0-rc.0) (2023-11-13)
+
+
+### Features
+
+* cursor default while disabled ([301b3a5](https://github.com/twreporter/twreporter-npm-packages/commit/301b3a577e15a4be479686e8db35239d2fa55490))
+
+
+
+
+
 ## [8.20.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.20.1-rc.0...@twreporter/react-components@8.20.1) (2023-10-30)
 
 **Note:** Version bump only for package @twreporter/react-components

@@ -4,11 +4,15 @@ import styled from 'styled-components'
 // components
 import Img from '../img-with-placeholder'
 // constants
-import color from '../../constants/color'
 import predefinedPropTypes from '../../constants/prop-types/leading'
 import typography from '../../constants/typography'
 // @twerporter
 import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorOpacity,
+  colorSupportive,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -57,9 +61,9 @@ const Title = styled.h1`
   font-weight: ${typography.font.weight.bold};
   font-family: ${typography.font.family.title};
   line-height: 1.4;
-  color: ${color.white};
+  color: ${colorGrayscale.white};
   font-size: 50px;
-  text-shadow: 0 2px 4px ${color.gray75};
+  text-shadow: 0 2px 4px ${colorOpacity['black_0.5']};
 
   ${mq.mobileOnly`
     font-size: 32px;
@@ -67,8 +71,8 @@ const Title = styled.h1`
 `
 
 const Subtitle = styled.div`
-  color: ${color.white};
-  text-shadow: 0 2px 4px ${color.gray75};
+  color: ${colorGrayscale.white};
+  text-shadow: 0 2px 4px ${colorOpacity['black_0.5']};
   font-size: 40px;
   font-weight: ${typography.font.weight.normal};
   ${mq.tabletAndAbove`
@@ -82,14 +86,14 @@ const Subtitle = styled.div`
 const Topic = styled.div`
   display: inline-block;
   padding: 5px;
-  background-color: ${color.paleBrown};
-  color: ${color.white};
+  background-color: ${colorSupportive.heavy}7f; // 50% opacity of supportive heavy
+  color: ${colorGrayscale.white};
   font-size: 16px;
   font-weight: ${typography.font.weight.bold};
 `
 
 const RightArrow = styled.div`
-  border: solid ${color.white};
+  border: solid ${colorGrayscale.white};
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 4px;
@@ -115,8 +119,8 @@ const FigureOverlayMask = styled.div`
   bottom: 0;
   background-image: linear-gradient(
     to bottom,
-    ${color.transparent},
-    ${color.black}
+    transparent,
+    ${colorGrayscale.black}
   );
 `
 

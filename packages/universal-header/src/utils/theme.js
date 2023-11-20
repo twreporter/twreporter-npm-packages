@@ -83,7 +83,7 @@ export const selectHamburgerItemTheme = (theme, active = false) => {
   switch (theme) {
     case themeConst.photography:
       return {
-        color: active ? colorSupportive.main : colorGrayscale.white,
+        color: active ? colorSupportive.pastel : colorGrayscale.white,
         hoverBgColor: colorOpacity['white_0.2'],
         activeBgColor: colorOpacity['white_0.5'],
       }
