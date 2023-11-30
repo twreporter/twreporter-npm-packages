@@ -1,5 +1,5 @@
 import { ACTION_KEY } from '../constants/actions'
-import { FOOTER_KEY, FOOTER_PATH } from '../constants/footer'
+import { FOOTER_KEY, FOOTER_PATH } from '../constants/footer-old'
 import { SOCIAL_MEDIA_KEY } from '../constants/social-media'
 import { CHANNEL_KEY, CHANNEL_PATH } from '../constants/channels'
 import externalLinks from '../constants/external-links'
