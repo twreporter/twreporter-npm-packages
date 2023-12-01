@@ -15,7 +15,7 @@ const H1Container = styled(DefaultContainer)`
   font-size: 36px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 32px;
+    font-size: 28px;
   `}
 `
 
