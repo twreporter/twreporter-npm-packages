@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.4-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.2...@twreporter/index-page@1.5.4-rc.3) (2023-12-05)
+
+
+### Bug Fixes
+
+* `index-page` use design guideline color ([c754325](https://github.com/twreporter/twreporter-npm-packages/commit/c75432566c275fc20cb9465a84712d39a47afa7f))
+
+
+
+
+
 ## [1.5.4-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.1...@twreporter/index-page@1.5.4-rc.2) (2023-12-05)
 
 **Note:** Version bump only for package @twreporter/index-page

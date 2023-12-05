@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.22.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.0...@twreporter/react-components@8.22.0-rc.1) (2023-12-05)
+
+
+### Bug Fixes
+
+* `react-components` use design guideline color ([8715b02](https://github.com/twreporter/twreporter-npm-packages/commit/8715b026c5acda328f465f6985288ff4d5e07639))
+
+
+
+
+
 # [8.22.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.1-rc.1...@twreporter/react-components@8.22.0-rc.0) (2023-12-05)
 
 
