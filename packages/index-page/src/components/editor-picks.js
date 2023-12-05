@@ -12,14 +12,13 @@ import ImgWrapper from './common-utils/img-wrapper'
 import CategoryName from './common-utils/category-name'
 import ContentWrapper from './common-utils/section-content-wrapper'
 import TRLink from './common-utils/twreporter-link'
-// constants
-import color from '../constants/color'
 // assets
 import LeftArrowIcon from '../static/left-arrow.svg'
 import RightArrowIcon from '../static/right-arrow.svg'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import clone from 'lodash/clone'
 import get from 'lodash/get'
@@ -163,7 +162,7 @@ const Title = styled.div`
   font-size: ${props => (props.middle ? `32px` : `16px`)};
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   width: ${props => (props.middle ? '450px' : '150px')};
   position: absolute;
   text-align: center;
@@ -187,7 +186,7 @@ const Description = styled.div`
   width: 450px;
   top: ${props => (props.top ? props.top : '0')};
   left: ${props => (props.left ? props.left : '0')};
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   transform: translateX(-50%);
   ${truncate('absolute', 1.43, 2, 'white')};
   ${mq.tabletAndAbove`
@@ -200,7 +199,7 @@ const Description = styled.div`
 const HoverEffect = styled.div`
   cursor: pointer;
   text-decoration: none;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   ${mq.tabletAndAbove`
     ${props => (props.ifHover ? 'opacity: 0.7;' : 'opacity: 1;')}
     transition: .2s opacity linear;

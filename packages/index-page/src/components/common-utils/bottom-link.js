@@ -4,11 +4,11 @@ import LinkIcon from '../../static/link-arrow.svg'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import color from '../../constants/color'
+import { colorSupportive } from '@twreporter/core/lib/constants/color'
 
 const Wrapper = styled.div`
   font-size: 14px;
-  color: ${props => (props.isDarkBg ? color.lightBlue : color.blue)};
+  color: ${colorSupportive.heavy};
   cursor: pointer;
   display: inline-block;
   > span {
@@ -28,17 +28,13 @@ const Wrapper = styled.div`
 `
 
 const TextSpan = styled.span`
-  color: ${props => {
-    return props.isDarkBg ? color.lightBlue : color.blue
-  }};
+  color: ${colorSupportive.heavy};
 `
 
 const A = styled.a`
   text-decoration: none;
   &:visited {
-    color: ${props => {
-      return props.isDarkBg ? color.lightBlue : color.blue
-    }};
+    color: ${colorSupportive.heavy};
   }
 `
 

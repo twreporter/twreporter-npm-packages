@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 // constants
 import app from '../constants/app'
-import color from '../constants/color'
 // assets
 import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
 // @twreporter
@@ -13,6 +12,10 @@ import {
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
 import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorSupportive,
+} from '@twreporter/core/lib/constants/color'
 
 const mockup = {
   defaultWidth: 320,
@@ -50,7 +53,7 @@ const ContentContainer = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 100px;
-  color: ${color.black};
+  color: ${colorGrayscale.black};
   font-family: ${fontFamily.default};
   h3 {
     margin: 0;
@@ -96,9 +99,9 @@ const ListenButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: ${color.brown};
+    background: ${colorSupportive.heavy};
     border: none;
-    color: ${color.white};
+    color: ${colorGrayscale.white};
     font-size: 16px;
     cursor: pointer;
     display: table;

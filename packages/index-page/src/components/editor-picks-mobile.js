@@ -14,9 +14,9 @@ import TRLink from './common-utils/twreporter-link'
 import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -35,7 +35,7 @@ const mockup = {
 
 const CarouselContainer = styled(Section)`
   padding-top: 0;
-  background: ${color.white};
+  background: ${colorGrayscale.white};
 `
 
 const TextFrame = styled.div`
@@ -60,14 +60,14 @@ const Title = styled.div`
   font-size: 24px;
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   position: absolute;
 `
 
 const TitleSpan = styled.span`
   width: 100%;
   height: 3.99;
-  ${truncate('absolute', 1.33, 3, color.white, 'center')};
+  ${truncate('absolute', 1.33, 3, colorGrayscale.white, 'center')};
 `
 
 const Description = styled.div`
@@ -77,8 +77,8 @@ const Description = styled.div`
   transform: translateX(-50%);
   width: 100%;
   text-align: left;
-  color: ${color.darkGray};
-  ${truncate('absolute', 1.43, 3, 'white')};
+  color: ${colorGrayscale.gray800};
+  ${truncate('absolute', 1.43, 3, colorGrayscale.white)};
 `
 
 const ImgFrame = styled.div`

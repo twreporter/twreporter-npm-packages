@@ -1,6 +1,9 @@
 import styled from 'styled-components'
-import color from '../../constants/color'
 import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorBrand,
+} from '@twreporter/core/lib/constants/color'
 
 const SectionName = styled.div`
   display: none;
@@ -15,10 +18,10 @@ const SectionName = styled.div`
     right: 0;
     text-align: center;
     >span {
-      color: ${color.white};
+      color: ${colorGrayscale.white};
       padding-left: 5px;
       padding-right: 5px;
-      background-color: ${color.red};
+      background-color: ${colorBrand.heavy};
     }
   `}
 `

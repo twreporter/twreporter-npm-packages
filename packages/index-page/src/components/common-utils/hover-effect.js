@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { breakPoints } from '../../utils/style-utils'
-import color from '../../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const HoverEffect = styled.div`
   cursor: pointer;
   text-decoration: none;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   @media (min-width: ${breakPoints.tabletMinWidth}) {
     &:hover {
       opacity: 0.7;
