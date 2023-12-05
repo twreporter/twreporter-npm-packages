@@ -2,8 +2,12 @@ import React from 'react'
 import get from 'lodash/get'
 import styled, { css } from 'styled-components'
 import themeConst from '../../constants/theme'
-import typography from '../../constants/typography'
+// @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import {
+  H2 as twreporterH2,
+  H3 as twreporterH3,
+} from '@twreporter/react-components/lib/text/headline'
 
 const _ = {
   get,
@@ -12,9 +16,6 @@ const _ = {
 const heading = css`
   /* clear default margin */
   margin: 0;
-
-  font-weight: ${typography.font.weight.bold};
-
   color: ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
@@ -27,34 +28,22 @@ const heading = css`
   }};
 `
 
-const StyledH1 = styled.h1`
+const StyledH1 = styled(twreporterH2)`
   ${heading}
-  font-size: 34px;
 `
 
-const StyledH2 = styled.h2`
+const StyledH2 = styled(twreporterH3)`
   ${heading}
-  font-size: 28px;
 `
 
 const H1 = props => {
   const content = _.get(props, 'data.content.0', '')
-  return (
-    <StyledH1
-      className={_.get(props, 'className', '')}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  )
+  return <StyledH1 className={_.get(props, 'className', '')} text={content} />
 }
 
 const H2 = props => {
   const content = _.get(props, 'data.content.0', '')
-  return (
-    <StyledH2
-      className={_.get(props, 'className', '')}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  )
+  return <StyledH2 className={_.get(props, 'className', '')} text={content} />
 }
 
 export default {

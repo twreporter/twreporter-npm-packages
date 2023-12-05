@@ -15,7 +15,7 @@ const H1Container = styled(DefaultContainer)`
   font-size: 36px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 32px;
+    font-size: 28px;
   `}
 `
 
@@ -33,7 +33,7 @@ const H3Container = styled(DefaultContainer)`
   font-size: 28px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 20px;
+    font-size: 22px;
   `}
 `
 
@@ -42,7 +42,7 @@ const H4Container = styled(DefaultContainer)`
   font-size: 22px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 18px;
+    font-size: 20px;
   `}
 `
 
@@ -51,7 +51,7 @@ const H5Container = styled(DefaultContainer)`
   font-size: 18px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 16px;
+    font-size: 18px;
   `}
 `
 
@@ -60,7 +60,7 @@ const H6Container = styled(DefaultContainer)`
   font-size: 16px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 14px;
+    font-size: 16px;
   `}
 `
 
