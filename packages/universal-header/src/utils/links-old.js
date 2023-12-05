@@ -1,6 +1,5 @@
-import { servicePathnames } from '../constants/services-old'
 import { ACTION_KEY } from '../constants/actions'
-import { FOOTER_KEY, FOOTER_PATH } from '../constants/footer'
+import { FOOTER_KEY, FOOTER_PATH } from '../constants/footer-old'
 import { SOCIAL_MEDIA_KEY } from '../constants/social-media'
 import { CHANNEL_KEY, CHANNEL_PATH } from '../constants/channels'
 import externalLinks from '../constants/external-links'
@@ -34,7 +33,6 @@ function getOriginsByType(domain) {
 }
 
 const accountsBaseURL = getOriginsByType('accounts')
-const apiBaseURL = getOriginsByType('api')
 const mainBaseURL = getOriginsByType('main')
 // const support = getOriginsByType('support')
 
@@ -92,42 +90,32 @@ export function getLink(
   return __getLink(isExternal, releaseBranch, mainBaseURL, path)
 }
 
-export function getLogoutLink(releaseBranch = defaultReleaseBranch) {
+export function getLoginLink(releaseBranch = defaultReleaseBranch) {
   return {
-    to: apiBaseURL[releaseBranch] + servicePathnames.logout,
+    to: accountsBaseURL[releaseBranch] + '/signin',
     isExternal: true,
   }
 }
 
-export function getLoginLink(releaseBranch = defaultReleaseBranch) {
-  return {
-    to: accountsBaseURL[releaseBranch] + servicePathnames.login,
-    isExternal: true,
-  }
+export function getMemberLink(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
+  return __getLink(isExternal, releaseBranch, mainBaseURL, '/account')
 }
 
 export function getBookmarksLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
 ) {
-  return __getLink(
-    isExternal,
-    releaseBranch,
-    mainBaseURL,
-    servicePathnames.bookmarks
-  )
+  return __getLink(isExternal, releaseBranch, mainBaseURL, '/bookmarks')
 }
 
 export function getSearchLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
 ) {
-  return __getLink(
-    isExternal,
-    releaseBranch,
-    mainBaseURL,
-    servicePathnames.search
-  )
+  return __getLink(isExternal, releaseBranch, mainBaseURL, '/search')
 }
 
 export function getLogoLink(
@@ -137,13 +125,19 @@ export function getLogoLink(
   return __getLink(isExternal, releaseBranch, mainBaseURL, '')
 }
 
-export function getActionLinks() {
+export function getActionLinks(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
   return {
     [ACTION_KEY.support]: __composeExternalLink(
       __getExternalLinks().monthlyDonation
     ),
-    [ACTION_KEY.newsLetter]: __composeExternalLink(
-      __getExternalLinks().newsLetter
+    [ACTION_KEY.newsLetter]: __getLink(
+      isExternal,
+      releaseBranch,
+      mainBaseURL,
+      '/account/email-subscription'
     ),
   }
 }
@@ -153,6 +147,12 @@ export function getFooterLinks(
   releaseBranch = defaultReleaseBranch
 ) {
   return {
+    [FOOTER_KEY.foundation]: __getLink(
+      true,
+      releaseBranch,
+      mainBaseURL,
+      FOOTER_PATH[FOOTER_KEY.foundation]
+    ),
     [FOOTER_KEY.aboutUs]: __getLink(
       true,
       releaseBranch,
@@ -216,11 +216,6 @@ export function getTabBarLinks(
   return {
     home: __getLink(isExternal, releaseBranch, mainBaseURL, ''),
     latest: __getLink(isExternal, releaseBranch, mainBaseURL, '/latest'),
-    bookmark: __getLink(
-      isExternal,
-      releaseBranch,
-      mainBaseURL,
-      servicePathnames.bookmarks
-    ),
+    bookmark: __getLink(isExternal, releaseBranch, mainBaseURL, '/bookmarks'),
   }
 }
