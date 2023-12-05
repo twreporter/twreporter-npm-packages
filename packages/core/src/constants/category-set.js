@@ -54,7 +54,7 @@ export const CATEGORY_ID = {
   [categoryPath.podcast]: '63206383207bf7c5f8716266',
   [categoryPath.opinion]: '63206383207bf7c5f8716269',
   [categoryPath.photography]: '574d028748fa171000c45d48',
-  [categoryPath.foundation]: '',
+  [categoryPath.foundation]: '656ecd09822294615dce5ad3',
 }
 
 // flip CATEGORY_ID to a {id: path} object
@@ -249,9 +249,9 @@ export const SUBCATEGORY_ID = {
   [subcategoryPath.onTheGround]: '63206383207bf7c5f8716268',
   [subcategoryPath.bookReview]: '63206383207bf7c5f871626a',
   [subcategoryPath.letter]: '63206383207bf7c5f871626b',
-  [subcategoryPath.milestone]: '',
-  [subcategoryPath.award]: '',
-  [subcategoryPath.cooperation]: '',
+  [subcategoryPath.milestone]: '656ecd09822294615dce5ad4',
+  [subcategoryPath.award]: '656ecd09822294615dce5ad5',
+  [subcategoryPath.cooperation]: '656ecd09822294615dce5ad6',
 }
 
 // flip SUBCATEGORY_ID to a {id: path} object
