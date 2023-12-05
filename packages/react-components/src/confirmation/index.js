@@ -1,10 +1,15 @@
-import { fontWeight } from '@twreporter/core/lib/constants/font'
-import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+// assets
 import WarningSign from './assets/delete-warning-sign.svg'
-import color from './constants/color'
+// @twreporter
+import { fontWeight } from '@twreporter/core/lib/constants/font'
+import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorBrand,
+} from '@twreporter/core/lib/constants/color'
 
 const Container = styled.div`
   width: 100%;
@@ -13,7 +18,7 @@ const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 5;
-  background-color: ${color.gray};
+  background-color: ${colorGrayscale.gray600};
 `
 
 const Dialog = styled.div`
@@ -23,7 +28,7 @@ const Dialog = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 75px 60px 58px 60px;
-  background-color: white;
+  background-color: ${colorGrayscale.white};
   text-align: center;
   ${mq.mobileOnly`
     width: 100%;
@@ -50,7 +55,7 @@ const FunctionButton = styled.button`
   width: 127px;
   height: 46.7px;
   border-radius: 40px;
-  background-color: Transparent;
+  background-color: transparent;
   outline: 0;
   ${mq.mobileOnly`
     font-size: 16px;
@@ -59,13 +64,13 @@ const FunctionButton = styled.button`
 `
 
 const Cancel = styled(FunctionButton)`
-  border: solid 2px ${color.darkGray};
+  border: solid 2px ${colorGrayscale.gray900};
   margin-right: 25px;
 `
 
 const Confirm = styled(FunctionButton)`
-  border: solid 2px ${color.lightRed};
-  color: ${color.red};
+  border: solid 2px currentcolor;
+  color: ${colorBrand.heavy};
 `
 
 const IconContainer = styled.div`

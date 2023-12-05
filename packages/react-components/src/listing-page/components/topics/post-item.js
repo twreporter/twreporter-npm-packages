@@ -9,11 +9,11 @@ import {
   linkHoverFadeOut,
   resetLinkStyle,
 } from '../../constants/predefined-css'
-import color from '../../constants/color'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const styles = {
   imgLandscape: {
@@ -53,7 +53,7 @@ const PostBox = styled(Link)`
     width: ${styles.imgLandscape.desktop.width}px;
   `}
   ${mq.tabletAndAbove`
-    border: solid .5px ${color.gray};
+    border: solid .5px ${colorGrayscale.gray300};
     overflow: hidden;
     flex-direction: column;
   `}
@@ -83,7 +83,7 @@ const PostImage = styled.div`
   }
 `
 const PostText = styled.div`
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray900};
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
   font-size: 16px;

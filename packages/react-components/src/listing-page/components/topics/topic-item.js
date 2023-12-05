@@ -10,10 +10,10 @@ import {
   resetLinkStyle,
 } from '../../constants/predefined-css'
 import { TEXT } from '../../constants/topics'
-import color from '../../constants/color'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const styles = {
   imgPortrait: {
@@ -120,7 +120,7 @@ const TextBlock = styled.div`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray900};
 `
 
 const TopicTitle = styled.h2`

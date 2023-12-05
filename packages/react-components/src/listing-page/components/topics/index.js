@@ -10,10 +10,10 @@ import PageContent from '../page-content'
 import { TopSectionContent, ListSectionContent } from './section'
 // constants
 import { TEXT } from '../../constants/topics'
-import color from '../../constants/color'
 // @twreporter
 import { fontWeight } from '@twreporter/core/lib/constants/font'
 import { TitleBar } from '@twreporter/react-components/lib/title-bar'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -26,7 +26,7 @@ const _ = {
 const NoData = styled.div`
   width: 100%;
   font-size: 16px;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray900};
   font-weight: ${fontWeight.normal};
   text-align: center;
 `

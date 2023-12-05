@@ -8,10 +8,13 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import color from './constants/color'
 // @twreporter
 import corePropTypes from '@twreporter/core/lib/constants/prop-types'
 import truncate from '@twreporter/core/lib/utils/truncate'
+import {
+  colorGrayscale,
+  colorBrand,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -44,7 +47,7 @@ const styles = {
 const BookmarkIconComp = styled(BookmarkIcon)`
   &:hover {
     path {
-      fill: ${color.darkRed};
+      fill: ${colorBrand.dark};
       transition: fill 200ms linear;
     }
   }
@@ -57,7 +60,7 @@ const BookmarkFrame = styled.div`
 const BookmarkContentContainer = styled.li`
   position: relative;
   width: 100%;
-  background-color: ${color.white};
+  background-color: ${colorGrayscale.white};
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -147,7 +150,7 @@ const Category = styled.span`
     font-size: 14px;
   `}
   line-height: 1;
-  color: ${color.red};
+  color: ${colorBrand.heavy};
 `
 
 const FirstRow = styled.div`
@@ -170,16 +173,16 @@ const Title = styled.div`
     margin-bottom: 0;
   `}
   font-weight: ${fontWeight.bold};
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   flex-basis: auto;
   flex-grow: 0;
 `
 
 const Description = styled.div`
   width: 98%;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   font-size: 18px;
-  ${truncate('relative', 1.57, 2, color.white, 'justify')};
+  ${truncate('relative', 1.57, 2, colorGrayscale.white, 'justify')};
   flex-basis: auto;
   flex-grow: 0;
   ${mq.mobileOnly`
@@ -197,7 +200,7 @@ const LastRow = styled.div`
 const ReadMore = styled.div`
   font-size: 14px;
   text-align: left;
-  color: ${color.gray};
+  color: ${colorGrayscale.gray500};
   cursor: pointer;
   display: inline-block;
 `
@@ -206,7 +209,7 @@ const Date = styled.span`
   vertical-align: top;
   font-size: 16px;
   font-weight: ${fontWeight.default};
-  color: ${color.gray};
+  color: ${colorGrayscale.gray500};
   float: right;
 `
 

@@ -7,7 +7,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
-import color from '../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 // lodash
 import get from 'lodash/get'
@@ -45,7 +45,7 @@ const LogoCenteringBlock = styled(ImgContainer)`
   position: absolute;
   justify-content: center;
   align-items: center;
-  background-color: ${color.white};
+  background-color: ${colorGrayscale.white};
   display: ${props => props.display};
 `
 

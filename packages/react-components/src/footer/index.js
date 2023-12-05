@@ -6,7 +6,6 @@ import Content from './content'
 import IconList from './icon-list'
 // constants
 import styles from './constants/styles'
-import color from './constants/color'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -14,9 +13,10 @@ import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import { fontWeight } from '@twreporter/core/lib/constants/font'
 import fundraisingId from '@twreporter/core/lib/constants/fundraising'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const FooterContainer = styled.div`
-  border-top: solid 0.5px ${color.lightGray};
+  border-top: solid 0.5px ${colorGrayscale.gray300};
   width: 100%;
   background-color: ${props => props.bgColor};
   padding: 0;
@@ -79,7 +79,7 @@ const InfoContainer = styled.p`
   font-size: 12px;
   font-weight: ${fontWeight.normal};
   letter-spacing: 0.4px;
-  color: ${color.gray};
+  color: ${colorGrayscale.gray500};
   ${mq.mobileOnly`
     text-align: center;
   `}
@@ -127,7 +127,7 @@ Footer.propTypes = {
 }
 
 Footer.defaultProps = {
-  bgColor: color.white,
+  bgColor: colorGrayscale.white,
   releaseBranch: releaseBranchConsts.release,
   host: '',
   pathname: '',
