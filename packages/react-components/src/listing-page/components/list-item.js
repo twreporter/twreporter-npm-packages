@@ -6,11 +6,14 @@ import styled from 'styled-components'
 import ImgWrapper from './image'
 // constants
 import mockup from '../constants/mockup-spec'
-import color from '../constants/color'
 // @twreporter
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import {
+  colorGrayscale,
+  colorBrand,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -33,7 +36,7 @@ const Container = styled.div`
   `}
 
   a {
-    color: ${color.darkGray};
+    color: ${colorGrayscale.gray900};
   }
 `
 
@@ -70,7 +73,7 @@ const TextBlock = styled.div`
 `
 
 const Category = styled.div`
-  color: ${color.red};
+  color: ${colorBrand.heavy};
   font-size: 12px;
   line-height: 1.33;
   margin-bottom: 10px;
@@ -81,7 +84,7 @@ const Title = styled.div`
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
   line-height: 1.4;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray900};
   margin-bottom: 10px;
 `
 
@@ -115,12 +118,12 @@ const PubDate = styled.div`
 
 const Tag = styled.li`
   background-color: ${props => {
-    return props.selected ? color.red : color.lightGray
+    return props.selected ? colorBrand.heavy : colorGrayscale.gray100
   }};
-  border: 2px solid ${color.darkRed};
+  border: 2px solid ${colorBrand.dark};
   border-radius: 68px;
   color: ${props => {
-    return props.selected ? color.white : color.red
+    return props.selected ? colorGrayscale.white : colorBrand.heavy
   }};
   display: inline-block;
   text-decoration: none;

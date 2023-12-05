@@ -15,10 +15,10 @@ import ImgWrapper from './common-utils/img-wrapper'
 import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -27,7 +27,7 @@ const _ = {
 
 const desktopMinWidth = breakPoints.desktopMinWidth
 const tabletMinWidth = breakPoints.tabletMinWidth
-const backgroundColor = color.gray
+const backgroundColor = colorGrayscale.gray200
 
 const mockup = {
   mobile: {
@@ -66,7 +66,7 @@ const FlexBox = styled.div`
 `
 
 const FlexItem = styled.div`
-  background-color: white;
+  background-color: ${colorGrayscale.white};
   position: relative;
   margin-bottom: 70px;
   padding-bottom: 20px;
@@ -113,7 +113,7 @@ const ImgFrame = styled.div`
 const CategoryName = styled.div`
   background-color: ${backgroundColor};
   width: 100%;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   font-weight: ${fontWeight.bold};
   line-height: 1.4;
   text-align: center;
@@ -131,7 +131,7 @@ const Title = styled.div`
   font-family: ${fontFamily.title};
   font-weight: ${fontWeight.bold};
   font-size: 20px;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   line-height: 1.4;
   width: 92%;
   margin: 0 auto;

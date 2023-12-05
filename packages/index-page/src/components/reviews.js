@@ -16,10 +16,10 @@ import TRLink from './common-utils/twreporter-link'
 import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -41,7 +41,7 @@ const tabletMinWidth = breakPoints.tabletMinWidth
 const moreText = '更多評論文章'
 
 const Container = styled(Section)`
-  background-color: white;
+  background-color: ${colorGrayscale.white};
   ${mq.tabletAndBelow`
     padding-top: 36px;
   `}
@@ -125,20 +125,20 @@ const Title = styled.div`
   ${mq.tabletOnly`
     width: 144px;
   `}
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
 `
 
 const Description = styled.div`
   margin-top: 8px;
   font-size: 16px;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   ${mq.tabletOnly`
     width: 144px;
   `}
   ${mq.mobileOnly`
     font-size: 18px;
   `}
-  ${truncate('relative', 1.5, 5, 'white')}
+  ${truncate('relative', 1.5, 5, colorGrayscale.white)}
 `
 
 const More = styled.div`

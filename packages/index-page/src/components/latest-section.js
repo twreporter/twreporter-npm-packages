@@ -10,11 +10,10 @@ import CategoryName from './common-utils/category-name'
 import ImgWrapper from './common-utils/img-wrapper'
 import ContentWrapper from './common-utils/section-content-wrapper'
 import TRLink from './common-utils/twreporter-link'
-// constants
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -43,7 +42,7 @@ const headerPadding = {
 }
 
 const Container = styled.div`
-  background-color: ${color.lightGray};
+  background-color: ${colorGrayscale.gray100};
   position: relative;
   ${mq.mobileOnly`
     padding: 0;
@@ -148,7 +147,7 @@ const Title = styled.div`
   font-size: 16px;
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
 `
 
 class LatestSection extends React.Component {

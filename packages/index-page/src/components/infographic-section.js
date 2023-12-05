@@ -16,10 +16,10 @@ import TRLink from './common-utils/twreporter-link'
 import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -37,7 +37,7 @@ const mockup = {
 }
 
 const Container = styled.div`
-  background-color: ${color.lightGray};
+  background-color: ${colorGrayscale.gray100};
 `
 
 const UpperList = styled.div`
@@ -114,7 +114,7 @@ const Item = styled.div`
   `}
 `
 const WordBlock = styled.div`
-  background-color: ${color.white};
+  background-color: ${colorGrayscale.white};
   width: 430px;
   min-height: 115px;
   padding: 8px 20px 15px 12px;
@@ -139,14 +139,14 @@ const Title = styled.h3`
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
   font-size: 20px;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   ${mq.desktopAndAbove`
-    ${truncate('relative', 1.4, 2, color.white)};
+    ${truncate('relative', 1.4, 2, colorGrayscale.white)};
   `}
 
   ${mq.tabletOnly`
     font-size: 16px;
-    ${truncate('relative', 1.4, 3, color.white)};
+    ${truncate('relative', 1.4, 3, colorGrayscale.white)};
   `}
 `
 

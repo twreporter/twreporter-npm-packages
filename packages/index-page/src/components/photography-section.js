@@ -16,10 +16,13 @@ import TRLink from './common-utils/twreporter-link'
 // constants
 import sectionStrings from '../constants/section-strings'
 import categoryStrings from '../constants/category-strings'
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorPhoto,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -43,7 +46,7 @@ const oneColumnWidthInt = 768
 const Section = styled.div`
   position: relative;
   background-color: ${props => {
-    return props.isAutoHover ? color.white : color.darkBlue
+    return props.isAutoHover ? colorGrayscale.white : colorPhoto.dark
   }};
   padding-bottom: ${props => {
     return props.isAutoHover ? '40px' : '80px'
@@ -99,7 +102,7 @@ const Item = styled.li`
 `
 const Title = styled.div`
   position: absolute;
-  color: ${color.white};
+  color: ${colorGrayscale.white};
   font-size: 14px;
   position: absolute;
   top: 50%;
@@ -145,7 +148,7 @@ const Overlay = styled.div`
     return props.isHover ? 1 : 0
   }};
   transition: 0.5s ease;
-  background-color: ${color.ashBlue};
+  background-color: ${colorPhoto.heavy}b3; // add 70% opacity
 
   ${mq.tabletAndAbove`
     &:hover {

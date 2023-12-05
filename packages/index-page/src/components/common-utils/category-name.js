@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import color from '../../constants/color'
+import { colorBrand } from '@twreporter/core/lib/constants/color'
 
 const CategoryName = styled.div`
-  color: ${color.red};
+  color: ${colorBrand.heavy};
   font-size: 12px;
 `
 
