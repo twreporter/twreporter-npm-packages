@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0-rc.0...@twreporter/core@1.15.0-rc.1) (2023-12-05)
+
+
+### Bug Fixes
+
+* add new added category set ids ([addbd75](https://github.com/twreporter/twreporter-npm-packages/commit/addbd75add3f09282d4fe00551314835c8507367))
+
+
+
+
+
 # [1.15.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0...@twreporter/core@1.15.0-rc.0) (2023-12-05)
 
 
