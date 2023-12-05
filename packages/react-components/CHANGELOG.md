@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.22.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.1-rc.1...@twreporter/react-components@8.22.0-rc.0) (2023-12-05)
+
+
+### Features
+
+* change article content h1 h2 ([9912503](https://github.com/twreporter/twreporter-npm-packages/commit/99125037d81eef23fd66140d93e87ddd3cb13ab7))
+* change h1 tablet and mobile font size ([6a6a3be](https://github.com/twreporter/twreporter-npm-packages/commit/6a6a3be5f8888d03a03c3a90b715c197be8126f7))
+
+
+
+
+
 ## [8.21.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.1-rc.0...@twreporter/react-components@8.21.1-rc.1) (2023-12-05)
 
 **Note:** Version bump only for package @twreporter/react-components
