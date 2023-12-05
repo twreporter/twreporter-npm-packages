@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0...@twreporter/universal-header@2.9.0-rc.0) (2023-12-05)
+
+
+### Bug Fixes
+
+* remove *-old file of MEMBERSHIP feature flag ([91cdfd2](https://github.com/twreporter/twreporter-npm-packages/commit/91cdfd2b04f36c2af40410d4d0cdcbc6a77831e5))
+
+
+### Features
+
+* add foundation category set ([29259ef](https://github.com/twreporter/twreporter-npm-packages/commit/29259efe78e37aa148631a31e7f1bd5a3b2ecfe3))
+
+
+
+
+
 # [2.8.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.8.0-rc.6...@twreporter/universal-header@2.8.0) (2023-11-20)
 
 **Note:** Version bump only for package @twreporter/universal-header

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0...@twreporter/core@1.15.0-rc.0) (2023-12-05)
+
+
+### Features
+
+* add foundation category set ([29259ef](https://github.com/twreporter/twreporter-npm-packages/commit/29259efe78e37aa148631a31e7f1bd5a3b2ecfe3))
+
+
+
+
+
 # [1.14.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0-rc.2...@twreporter/core@1.14.0) (2023-11-20)
 
 **Note:** Version bump only for package @twreporter/core
