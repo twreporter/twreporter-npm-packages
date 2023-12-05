@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.22.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.1...@twreporter/react-components@8.22.0-rc.2) (2023-12-05)
+
+
+### Bug Fixes
+
+* link to category page for footer foundation ([40a8911](https://github.com/twreporter/twreporter-npm-packages/commit/40a8911681d4b846fb0c0a44a5cbb73edce92d2c))
+
+
+
+
+
 # [8.22.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.0...@twreporter/react-components@8.22.0-rc.1) (2023-12-05)
 
 
