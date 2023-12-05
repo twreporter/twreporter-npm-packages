@@ -18,6 +18,8 @@ import {
   colorBrand,
   colorSupportive,
 } from '@twreporter/core/lib/constants/color'
+// feature toggle
+import { FOUNDATION_CATEGORY_SET } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import map from 'lodash/map'
 
@@ -26,6 +28,9 @@ const _ = {
 }
 
 function getItemGroups(mainOrigin) {
+  const foundationUrl = FOUNDATION_CATEGORY_SET
+    ? `${mainOrigin}${entityPaths.categories}foundation`
+    : `${mainOrigin}${entityPaths.topics}media-center`
   return [
     [
       {
@@ -80,8 +85,8 @@ function getItemGroups(mainOrigin) {
       },
       {
         slug: 'media-center',
-        text: '基金會新聞',
-        link: `${mainOrigin}${entityPaths.topics}media-center`,
+        text: '基金會消息',
+        link: foundationUrl,
         target: '_blank',
       },
       {
