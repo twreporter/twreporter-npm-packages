@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 // components
 import ImgWrapper from './image'
+import { P3 } from '../../text/paragraph'
 // constants
 import mockup from '../constants/mockup-spec'
 // @twreporter
@@ -84,7 +85,7 @@ const Title = styled.div`
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
   line-height: 1.4;
-  color: ${colorGrayscale.gray900};
+  color: ${colorGrayscale.gray800};
   margin-bottom: 10px;
 `
 
@@ -93,18 +94,18 @@ const Desc = styled.div`
   font-size: 16px;
   line-height: 1.5;
   text-align: justify;
-  padding-bottom: 30px;
+  padding-bottom: 16px;
+  color: ${colorGrayscale.gray800};
 `
 
-const Tags = styled.ul`
-  list-style: none;
-  width: ${(mockup.desktop.tagsWidth / mockup.desktop.cardWidth) * 100}%;
+const Tags = styled.div`
+  width: 100%;
+  margin-top: 32px;
   margin-bottom: 40px;
   padding-left: 15px;
   line-height: 1;
 
   ${mq.mobileOnly`
-    width: ${(mockup.mobile.tagsWidth / mockup.mobile.cardWidth) * 100}%;
     padding-left: 0;
   `}
 `
@@ -116,11 +117,11 @@ const PubDate = styled.div`
   right: 0;
 `
 
-const Tag = styled.li`
+const Tag = styled(P3)`
   background-color: ${props => {
     return props.selected ? colorBrand.heavy : colorGrayscale.gray100
   }};
-  border: 2px solid ${colorBrand.dark};
+  border: 1px solid ${colorBrand.heavy};
   border-radius: 68px;
   color: ${props => {
     return props.selected ? colorGrayscale.white : colorBrand.heavy
@@ -131,7 +132,7 @@ const Tag = styled.li`
   font-size: 12px;
   font-weight: ${fontWeight.bold};
   padding: 2px 10px;
-  margin-right: 13px;
+  margin-right: 8px;
   margin-bottom: 10px;
 `
 
