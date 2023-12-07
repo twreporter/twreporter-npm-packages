@@ -6,9 +6,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { colorSupportive } from '@twreporter/core/lib/constants/color'
 
+const TextSpan = styled.span``
+const StyledA = styled.a`
+  text-decoration: none;
+`
 const Wrapper = styled.div`
   font-size: 14px;
-  color: ${colorSupportive.heavy};
+  color: ${props =>
+    props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
   cursor: pointer;
   display: inline-block;
   > span {
@@ -25,16 +30,15 @@ const Wrapper = styled.div`
       transform: translateX(5px);
     }
   }
-`
-
-const TextSpan = styled.span`
-  color: ${colorSupportive.heavy};
-`
-
-const A = styled.a`
-  text-decoration: none;
-  &:visited {
-    color: ${colorSupportive.heavy};
+  ${TextSpan} {
+    color: ${props =>
+      props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
+  }
+  ${StyledA} {
+    &:visited {
+      color: ${props =>
+        props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
+    }
   }
 `
 
@@ -43,20 +47,15 @@ const BottomLink = props => {
   return (
     <Wrapper isDarkBg={isDarkBg}>
       {redirect ? (
-        <A
-          href={path}
-          target={target}
-          rel="noreferrer noopener"
-          isDarkBg={isDarkBg}
-        >
+        <StyledA href={path} target={target} rel="noreferrer noopener">
           <TextSpan>{text}</TextSpan>
-        </A>
+        </StyledA>
       ) : (
         <Link to={`/${path}`}>
           <TextSpan>{text}</TextSpan>
         </Link>
       )}
-      {isDarkBg ? <LinkIcon /> : <DarkBgIcon />}
+      {isDarkBg ? <DarkBgIcon /> : <LinkIcon />}
     </Wrapper>
   )
 }
@@ -78,4 +77,4 @@ BottomLink.defaultProps = {
 
 export default BottomLink
 
-export { A, TextSpan, Wrapper, LinkIcon, DarkBgIcon }
+export { StyledA, TextSpan, Wrapper, LinkIcon, DarkBgIcon }
