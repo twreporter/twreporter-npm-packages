@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.22.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.2...@twreporter/react-components@8.22.0-rc.3) (2023-12-07)
+
+
+### Bug Fixes
+
+* update listing item style ([da71d62](https://github.com/twreporter/twreporter-npm-packages/commit/da71d623641a92aa9a61dc5228ffb7a25a8ae484))
+
+
+
+
+
 # [8.22.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.1...@twreporter/react-components@8.22.0-rc.2) (2023-12-05)
 
 

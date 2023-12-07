@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/index-page",
-  "version": "1.5.4-rc.4",
+  "version": "1.5.4-rc.5",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@twreporter/core": "^1.15.0-rc.1",
-    "@twreporter/react-components": "^8.22.0-rc.2",
+    "@twreporter/react-components": "^8.22.0-rc.3",
     "lodash": "^4.0.0",
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
