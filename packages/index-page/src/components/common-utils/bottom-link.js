@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { colorSupportive } from '@twreporter/core/lib/constants/color'
 
 const TextSpan = styled.span``
-const A = styled.a`
+const StyledA = styled.a`
   text-decoration: none;
 `
 const Wrapper = styled.div`
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     color: ${props =>
       props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
   }
-  ${A} {
+  ${StyledA} {
     &:visited {
       color: ${props =>
         props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
@@ -47,9 +47,9 @@ const BottomLink = props => {
   return (
     <Wrapper isDarkBg={isDarkBg}>
       {redirect ? (
-        <A href={path} target={target} rel="noreferrer noopener">
+        <StyledA href={path} target={target} rel="noreferrer noopener">
           <TextSpan>{text}</TextSpan>
-        </A>
+        </StyledA>
       ) : (
         <Link to={`/${path}`}>
           <TextSpan>{text}</TextSpan>
@@ -77,4 +77,4 @@ BottomLink.defaultProps = {
 
 export default BottomLink
 
-export { A, TextSpan, Wrapper, LinkIcon, DarkBgIcon }
+export { StyledA, TextSpan, Wrapper, LinkIcon, DarkBgIcon }
