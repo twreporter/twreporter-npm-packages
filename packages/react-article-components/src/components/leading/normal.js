@@ -48,7 +48,9 @@ const TextBlock = styled.div`
 
 const Title = styled(H1)`
   margin: 0 0 40px 0;
-
+  ${mq.desktopAndAbove`
+    font-size: 40px;
+  `}
   ${mq.mobileOnly`
     margin-bottom: 38px;
   `}
@@ -223,7 +225,7 @@ export default class NormalLeading extends React.PureComponent {
               </DynamicComponentsContext.Consumer>
             ) : null}
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-            <Title text={title} />
+            <Title type={H1.Type.ARTICLE} text={title} />
           </TextBlock>
           <Figure css={this.getFigureCSS()}>
             <Img
