@@ -147,6 +147,12 @@ export function getFooterLinks(
   releaseBranch = defaultReleaseBranch
 ) {
   return {
+    [FOOTER_KEY.foundation]: __getLink(
+      true,
+      releaseBranch,
+      mainBaseURL,
+      FOOTER_PATH[FOOTER_KEY.foundation]
+    ),
     [FOOTER_KEY.aboutUs]: __getLink(
       true,
       releaseBranch,

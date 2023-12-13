@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.22.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.3...@twreporter/react-components@8.22.0-rc.4) (2023-12-12)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.22.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.2...@twreporter/react-components@8.22.0-rc.3) (2023-12-07)
+
+
+### Bug Fixes
+
+* update listing item style ([da71d62](https://github.com/twreporter/twreporter-npm-packages/commit/da71d623641a92aa9a61dc5228ffb7a25a8ae484))
+
+
+
+
+
+# [8.22.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.1...@twreporter/react-components@8.22.0-rc.2) (2023-12-05)
+
+
+### Bug Fixes
+
+* link to category page for footer foundation ([40a8911](https://github.com/twreporter/twreporter-npm-packages/commit/40a8911681d4b846fb0c0a44a5cbb73edce92d2c))
+
+
+
+
+
+# [8.22.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.22.0-rc.0...@twreporter/react-components@8.22.0-rc.1) (2023-12-05)
+
+
+### Bug Fixes
+
+* `react-components` use design guideline color ([8715b02](https://github.com/twreporter/twreporter-npm-packages/commit/8715b026c5acda328f465f6985288ff4d5e07639))
+
+
+
+
+
+# [8.22.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.1-rc.1...@twreporter/react-components@8.22.0-rc.0) (2023-12-05)
+
+
+### Features
+
+* change article content h1 h2 ([9912503](https://github.com/twreporter/twreporter-npm-packages/commit/99125037d81eef23fd66140d93e87ddd3cb13ab7))
+* change h1 tablet and mobile font size ([6a6a3be](https://github.com/twreporter/twreporter-npm-packages/commit/6a6a3be5f8888d03a03c3a90b715c197be8126f7))
+
+
+
+
+
+## [8.21.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.1-rc.0...@twreporter/react-components@8.21.1-rc.1) (2023-12-05)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.21.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0...@twreporter/react-components@8.21.1-rc.0) (2023-12-05)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
 # [8.21.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.21.0-rc.10...@twreporter/react-components@8.21.0) (2023-11-20)
 
 **Note:** Version bump only for package @twreporter/react-components

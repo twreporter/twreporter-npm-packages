@@ -14,6 +14,7 @@ import {
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { H1 } from '@twreporter/react-components/lib/text/headline'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -45,21 +46,13 @@ const TextBlock = styled.div`
   `}
 `
 
-const Title = styled.h1`
-  /* clear h1 default style */
-  letter-spacing: 0.4px;
-  font-weight: ${typography.font.weight.bold};
-  font-family: ${typography.font.family.title};
+const Title = styled(H1)`
   margin: 0 0 40px 0;
-
-  ${mq.mobileOnly`
-    font-size: 34px;
-    margin-bottom: 38px;
+  ${mq.desktopAndAbove`
+    font-size: 40px;
   `}
-
-  ${mq.tabletAndAbove`
-    font-size: 42px;
-    line-height: 1.38;
+  ${mq.mobileOnly`
+    margin-bottom: 38px;
   `}
 `
 
@@ -232,7 +225,7 @@ export default class NormalLeading extends React.PureComponent {
               </DynamicComponentsContext.Consumer>
             ) : null}
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-            <Title>{title}</Title>
+            <Title type={H1.Type.ARTICLE} text={title} />
           </TextBlock>
           <Figure css={this.getFigureCSS()}>
             <Img

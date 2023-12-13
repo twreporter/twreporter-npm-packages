@@ -1,6 +1,6 @@
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled from 'styled-components'
-import color from '../../constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
 const PostsContainer = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const PostsContainer = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     a {
-      border-bottom: solid 1px ${color.gray};
+      border-bottom: solid 1px ${colorGrayscale.gray300};
     }
     a:last-child {
       border-bottom: medium none currentcolor;

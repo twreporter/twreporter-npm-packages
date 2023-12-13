@@ -18,10 +18,10 @@ import MobileSwiperList from './mobile-swiper-list'
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
 import { itemWidthPct } from '../constants/mobile-mockup-specification'
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -42,7 +42,7 @@ const mockup = {
 
 const categoryPrefix = strings.topic + strings.fullShapeDot
 const Container = styled.div`
-  background-color: ${color.lightGray};
+  background-color: ${colorGrayscale.gray100};
 `
 
 const ContentContainer = styled(Section)`
@@ -63,7 +63,7 @@ const Title = styled.div`
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
   line-height: 1.25;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   text-align: center;
   margin: 2px auto 0 auto;
   ${mq.mobileOnly`
@@ -78,7 +78,7 @@ const Description = styled.div`
   font-size: 16px;
   line-height: 1.5;
   text-align: justify;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   ${mq.mobileOnly`
     width: ${itemWidthPct}%;
     margin: 6px auto 0 auto;
@@ -147,7 +147,7 @@ const RelatedTitle = styled.div`
   font-size: 20px;
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   line-height: 1.5;
 `
 
@@ -156,8 +156,8 @@ const RelatedDescription = styled.div`
   height: auto;
   font-size: 16px;
   line-height: 20px;
-  color: ${color.darkGray};
-  ${truncate('relative', 1.43, 4, color.lightGray)};
+  color: ${colorGrayscale.gray800};
+  ${truncate('relative', 1.43, 4, colorGrayscale.gray100)};
   ${mq.mobileOnly`
     font-size: 18px;
   `}

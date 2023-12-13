@@ -16,10 +16,13 @@ import MobileSwiperList from './mobile-swiper-list'
 // constants
 import sectionStrings from '../constants/section-strings'
 import strings from '../constants/strings'
-import color from '../constants/color'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
+import {
+  colorGrayscale,
+  colorBrand,
+} from '@twreporter/core/lib/constants/color'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -55,7 +58,7 @@ const mockup = {
 }
 
 const Container = styled.div`
-  background-color: ${color.lightGray};
+  background-color: ${colorGrayscale.gray100};
 `
 
 const Rows = styled.div`
@@ -118,7 +121,7 @@ const Column = styled.div`
 const TopicNameColumn = styled(Column)`
   margin-bottom: 0;
   font-size: 12px;
-  color: ${color.red};
+  color: ${colorBrand.heavy};
 `
 
 const TitleColumn = styled(Column)`
@@ -128,7 +131,7 @@ const TitleColumn = styled(Column)`
 `
 
 const Title = styled.div`
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
   line-height: 1.25;
 `
 
@@ -153,7 +156,7 @@ const DescColumn = styled(Column)`
 const Desc = styled.div`
   width: ${(mockup.desktop.width.desc / mockup.desktop.width.default) * 100}%;
   margin: 0 auto;
-  color: ${color.darkGray};
+  color: ${colorGrayscale.gray800};
 `
 
 const Mobile = {
@@ -186,7 +189,7 @@ const Mobile = {
   Desc: styled(Desc)`
     width: 100%;
     font-size: 18px;
-    ${truncate('relative', 1.5, 6, color.lightGray)}
+    ${truncate('relative', 1.5, 6, colorGrayscale.gray100)}
     margin-left: 0;
   `,
 }

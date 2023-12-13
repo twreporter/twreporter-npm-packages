@@ -5,7 +5,6 @@ import DonationLink from '../donation-link'
 import Logo from './logo'
 // constants
 import styles from './constants/styles'
-import color from './constants/color'
 // @twreporter
 import { shortDescription as siteIntro } from '@twreporter/core/lib/constants/site-meta'
 import entityPaths from '@twreporter/core/lib/constants/entity-path'
@@ -14,6 +13,13 @@ import origins from '@twreporter/core/lib/constants/request-origins'
 import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
+import {
+  colorGrayscale,
+  colorBrand,
+  colorSupportive,
+} from '@twreporter/core/lib/constants/color'
+// feature toggle
+import { FOUNDATION_CATEGORY_SET } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import map from 'lodash/map'
 
@@ -22,6 +28,9 @@ const _ = {
 }
 
 function getItemGroups(mainOrigin) {
+  const foundationUrl = FOUNDATION_CATEGORY_SET
+    ? `${mainOrigin}${entityPaths.categories}foundation`
+    : `${mainOrigin}${entityPaths.topics}media-center`
   return [
     [
       {
@@ -76,8 +85,8 @@ function getItemGroups(mainOrigin) {
       },
       {
         slug: 'media-center',
-        text: '基金會新聞',
-        link: `${mainOrigin}${entityPaths.topics}media-center`,
+        text: '基金會消息',
+        link: foundationUrl,
         target: '_blank',
       },
       {
@@ -122,7 +131,7 @@ const Intro = styled.p`
   font-weight: ${fontWeight.normal};
   line-height: 1.5;
   letter-spacing: 0.4px;
-  color: ${color.gray};
+  color: ${colorGrayscale.gray500};
   ${mq.mobileOnly`
     font-size: 16px;
     line-height: 1.63;
@@ -179,7 +188,7 @@ const LinksColumn = styled(Column)`
   `}
   ${mq.tabletAndAbove`
     float: right;
-    border-left: solid 0.25px ${color.lightGray};
+    border-left: solid 0.25px ${colorGrayscale.gray300};
     margin-bottom: 50px;
   `}
   ${mq.tabletOnly`
@@ -237,12 +246,12 @@ const Item = styled.a`
     font-family: ${fontFamily.default};
     font-weight: ${fontWeight.normal};
     letter-spacing: 1.3px;
-    color: ${color.gray};
+    color: ${colorGrayscale.gray500};
   }
   span {
     visibility: ${props => (props.visible ? 'visible' : 'hidden')};
-    background: ${color.red};
-    color: ${color.white};
+    background: ${colorBrand.heavy};
+    color: ${colorGrayscale.white};
     font-size: 9px;
     font-family: ${fontFamily.default};
     margin-left: 5px;
@@ -252,7 +261,7 @@ const Item = styled.a`
   }
   &:hover {
     p {
-      color: ${color.notSoBlack};
+      color: ${colorGrayscale.gray900};
     }
   }
   ${mq.desktopAndAbove`
@@ -272,22 +281,22 @@ const DonateButton = styled.div`
     text-decoration: none !important;
     width: 140px;
     height: 55px;
-    background-color: ${color.white};
-    border: solid 0.5px ${color.gold};
+    background-color: ${colorGrayscale.white};
+    border: solid 0.5px ${colorSupportive.heavy};
     display: table;
     &:hover{
-      background-color: ${color.gold};
+      background-color: ${colorSupportive.heavy};
     }
     p {
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-      color: ${color.gold};
+      color: ${colorSupportive.heavy};
       font-size: 14px;
       font-weight: ${fontWeight.normal};
       letter-spacing: 1.3px;
       &:hover{
-        color: ${color.white};
+        color: ${colorGrayscale.white};
       }
     }
     ${mq.tabletAndAbove`

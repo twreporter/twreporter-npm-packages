@@ -10,10 +10,9 @@ const categoryPath = {
   podcast: 'podcast',
   opinion: 'opinion',
   photography: 'photography',
-  foundation: 'foundation',
 }
 
-export const CATEGORY_PATH = Object.freeze(categoryPath)
+export const CATEGORY_PATH = categoryPath
 
 export const CATEGORY_ORDER = [
   categoryPath.world,
@@ -26,6 +25,7 @@ export const CATEGORY_ORDER = [
   categoryPath.education,
 ]
 
+// todo: update id when db ready
 export const CATEGORY_LABEL = {
   [categoryPath.world]: '國際兩岸',
   [categoryPath.humanrights]: '人權司法',
@@ -38,10 +38,8 @@ export const CATEGORY_LABEL = {
   [categoryPath.podcast]: 'Podcast',
   [categoryPath.opinion]: '評論',
   [categoryPath.photography]: '影像',
-  [categoryPath.foundation]: '基金會消息',
 }
 
-// todo: update id when db ready
 export const CATEGORY_ID = {
   [categoryPath.world]: '63206383207bf7c5f871622c',
   [categoryPath.humanrights]: '63206383207bf7c5f8716234',
@@ -54,7 +52,6 @@ export const CATEGORY_ID = {
   [categoryPath.podcast]: '63206383207bf7c5f8716266',
   [categoryPath.opinion]: '63206383207bf7c5f8716269',
   [categoryPath.photography]: '574d028748fa171000c45d48',
-  [categoryPath.foundation]: '656ecd09822294615dce5ad3',
 }
 
 // flip CATEGORY_ID to a {id: path} object
@@ -123,12 +120,9 @@ const subcategoryPath = {
   onTheGround: 'on-the-ground',
   bookReview: 'book-review',
   letter: 'letter',
-  milestone: 'milestone',
-  award: 'award',
-  cooperation: 'cooperation',
 }
 
-export const SUBCATEGORY_PATH = Object.freeze(subcategoryPath)
+export const SUBCATEGORY_PATH = subcategoryPath
 
 export const SUBCATEGORY_LABEL = {
   [subcategoryPath.all]: '全部',
@@ -187,9 +181,6 @@ export const SUBCATEGORY_LABEL = {
   [subcategoryPath.onTheGround]: 'On the Ground 路邊攤計畫',
   [subcategoryPath.bookReview]: '書摘與書評',
   [subcategoryPath.letter]: '讀者投書',
-  [subcategoryPath.milestone]: '營運紀事',
-  [subcategoryPath.award]: '得獎肯定',
-  [subcategoryPath.cooperation]: '公益合作',
 }
 
 export const SUBCATEGORY_ID = {
@@ -249,9 +240,6 @@ export const SUBCATEGORY_ID = {
   [subcategoryPath.onTheGround]: '63206383207bf7c5f8716268',
   [subcategoryPath.bookReview]: '63206383207bf7c5f871626a',
   [subcategoryPath.letter]: '63206383207bf7c5f871626b',
-  [subcategoryPath.milestone]: '656ecd09822294615dce5ad4',
-  [subcategoryPath.award]: '656ecd09822294615dce5ad5',
-  [subcategoryPath.cooperation]: '656ecd09822294615dce5ad6',
 }
 
 // flip SUBCATEGORY_ID to a {id: path} object
@@ -350,12 +338,6 @@ export const CATEGORY_SET = {
     subcategoryPath.all,
     subcategoryPath.bookReview,
     subcategoryPath.letter,
-  ],
-  [categoryPath.foundation]: [
-    subcategoryPath.all,
-    subcategoryPath.milestone,
-    subcategoryPath.award,
-    subcategoryPath.cooperation,
   ],
 }
 

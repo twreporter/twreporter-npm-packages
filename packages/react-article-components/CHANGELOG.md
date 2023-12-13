@@ -3,6 +3,77 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.0-rc.4...@twreporter/react-article-components@1.10.0-rc.5) (2023-12-12)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.10.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.0-rc.3...@twreporter/react-article-components@1.10.0-rc.4) (2023-12-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.10.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.0-rc.2...@twreporter/react-article-components@1.10.0-rc.3) (2023-12-07)
+
+
+### Bug Fixes
+
+* font family and font size for article title ([bbc51f0](https://github.com/twreporter/twreporter-npm-packages/commit/bbc51f03b7cac1b6e5d0f7958cc5d3eb12dd43c2))
+
+
+
+
+
+# [1.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.0-rc.1...@twreporter/react-article-components@1.10.0-rc.2) (2023-12-05)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.0-rc.0...@twreporter/react-article-components@1.10.0-rc.1) (2023-12-05)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.2-rc.1...@twreporter/react-article-components@1.10.0-rc.0) (2023-12-05)
+
+
+### Features
+
+* change article content h1 h2 ([9912503](https://github.com/twreporter/twreporter-npm-packages/commit/99125037d81eef23fd66140d93e87ddd3cb13ab7))
+* use design system h1 for article title ([b7c0223](https://github.com/twreporter/twreporter-npm-packages/commit/b7c0223f43f0a87086804b7e514589e3d526504f))
+
+
+
+
+
+## [1.9.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.2-rc.0...@twreporter/react-article-components@1.9.2-rc.1) (2023-12-05)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.9.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1...@twreporter/react-article-components@1.9.2-rc.0) (2023-12-05)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.9.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.9.1-rc.11...@twreporter/react-article-components@1.9.1) (2023-11-20)
 
 **Note:** Version bump only for package @twreporter/react-article-components

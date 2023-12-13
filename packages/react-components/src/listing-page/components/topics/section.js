@@ -6,11 +6,11 @@ import styled from 'styled-components'
 import RightArrowIcon from '../../assets/arrow-right.svg'
 // constants
 import { resetLinkStyle } from '../../constants/predefined-css'
-import color from '../../constants/color'
 // @twreporter
 import { arrayToCssShorthand } from '@twreporter/core/lib/utils/css'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { fontWeight } from '@twreporter/core/lib/constants/font'
+import { colorSupportive } from '@twreporter/core/lib/constants/color'
 
 const styles = {
   goToTopicMargin: [20, 'auto', 0, 'auto'],
@@ -48,7 +48,7 @@ const SectionContent = styled.div`
 `
 
 const GoToTopic = styled.div`
-  color: ${color.blue};
+  color: ${colorSupportive.heavy};
   text-align: center;
   line-height: 1;
   padding: ${arrayToCssShorthand(styles.goToTopicPadding)};
@@ -69,6 +69,9 @@ const GoToTopic = styled.div`
     height: 16px;
     vertical-align: baseline;
     margin-left: 0.5em;
+    path {
+      stroke: currentcolor;
+    }
   }
 `
 

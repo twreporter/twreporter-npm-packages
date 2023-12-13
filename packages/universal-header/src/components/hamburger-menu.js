@@ -27,7 +27,6 @@ import {
   MobileHamburgerAction,
   MobileHeaderAction,
 } from './action-button'
-import Footer from './hamburger-footer'
 import {
   MenuLinkItem,
   MenuSubItem,
@@ -53,8 +52,13 @@ import {
   TabletAndAbove,
   MobileOnly,
 } from '@twreporter/react-components/lib/rwd'
+// feature toggle
+import FooterNew from './hamburger-footer'
+import FooterOld from './hamburger-footer-old'
+import { FOUNDATION_CATEGORY_SET } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import map from 'lodash/map'
+const Footer = FOUNDATION_CATEGORY_SET ? FooterNew : FooterOld
 const _ = {
   map,
 }
