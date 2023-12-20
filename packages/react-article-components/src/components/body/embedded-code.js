@@ -11,10 +11,10 @@ import merge from 'lodash/merge'
 // constants
 import predefinedPropTypes from '../../constants/prop-types/body'
 import themeConst from '../../constants/theme'
-import zIndexConst from '../../constants/position-z-index'
 
 // twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import zIndexConst from '@twreporter/core/lib/constants/z-index'
 
 const _ = {
   forEach,
@@ -29,7 +29,8 @@ const embedNamespace = {
 
 export const Block = styled.div`
   position: relative;
-  z-index: ${props => (props.shouldEscalateZIndex ? zIndexConst.embed : 0)};
+  z-index: ${props =>
+    props.shouldEscalateZIndex ? zIndexConst.embedUp : zIndexConst.embedDown};
 
   /* styles for image link */
   img.img-responsive {

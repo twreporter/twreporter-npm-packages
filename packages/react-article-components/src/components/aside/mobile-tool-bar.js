@@ -34,6 +34,7 @@ import {
   SnackBar,
   useSnackBar,
 } from '@twreporter/react-components/lib/snack-bar'
+import zIndexConst from '@twreporter/core/lib/constants/z-index'
 // lodash
 import isNil from 'lodash/isNil'
 const _ = {
@@ -97,7 +98,7 @@ const ToolBarContainer = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   bottom: calc(env(safe-area-inset-bottom, 0) + 8px);
-  z-index: 999; // header hamburger menu has z-index 1000
+  z-index: ${zIndexConst.mobileToolBar};
   height: ${props => (props.hideText ? '38px' : '56px')};
   transition: height 100ms;
   box-shadow: ${props => props.shadow};
