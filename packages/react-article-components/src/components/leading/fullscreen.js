@@ -43,7 +43,7 @@ const TextBlock = styled.div`
     width: 70%;
   `}
   ${mq.mobileOnly`
-    width: 60%;
+    width: 80%;
     bottom: 60px;
     left: 30px;
   `}
