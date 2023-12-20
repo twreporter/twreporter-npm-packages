@@ -1,4 +1,5 @@
 export default {
+  loadingCover: 6000,
   popup: 5000,
   hamburgerMenu: 4000,
   toc: 3000, // table of contents
