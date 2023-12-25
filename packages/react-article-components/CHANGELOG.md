@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.1...@twreporter/react-article-components@1.11.0-rc.0) (2023-12-25)
+
+
+### Features
+
+* hide tool bar while print screen ([1489b01](https://github.com/twreporter/twreporter-npm-packages/commit/1489b01e7cc3e9bd3ef0671a080bd17fe4bcc966))
+
+
+
+
+
 ## [1.10.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.1-rc.0...@twreporter/react-article-components@1.10.1) (2023-12-21)
 
 **Note:** Version bump only for package @twreporter/react-article-components
