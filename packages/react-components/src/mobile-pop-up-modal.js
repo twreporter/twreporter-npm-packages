@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+// twreporter
+import zIndexConst from '@twreporter/core/lib/constants/z-index'
 
 const Modal = styled.div`
   height: ${props => props.height};
   width: ${props => props.width};
   position: fixed;
   top: 0;
-  z-index: 1000; // other component in twreporter-react has z-index 999
+  z-index: ${zIndexConst.popup};
   overflow-y: scroll;
 `
 

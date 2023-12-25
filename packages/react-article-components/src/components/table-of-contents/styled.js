@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+// @twerporter
 import mq from '@twreporter/core/lib/utils/media-query'
-import zIndexConst from '../../constants/position-z-index'
+import zIndexConst from '@twreporter/core/lib/constants/z-index'
+// constants
 import typography from '../../constants/typography'
 
 const tocWidth = 190 // px

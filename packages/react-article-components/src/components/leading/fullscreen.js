@@ -13,6 +13,7 @@ import {
   colorOpacity,
   colorSupportive,
 } from '@twreporter/core/lib/constants/color'
+import zIndexConst from '@twreporter/core/lib/constants/z-index'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -23,10 +24,10 @@ const FullScreenBlock = styled.div`
   width: 100%;
   height: 100vh;
   position: relative;
+  z-index: ${zIndexConst.articleFullScreenHeroImage};
 `
 
 const TextBlock = styled.div`
-  z-index: 100;
   position: absolute;
   left: 65px;
   ${mq.hdOnly`
@@ -43,7 +44,7 @@ const TextBlock = styled.div`
     width: 70%;
   `}
   ${mq.mobileOnly`
-    width: 60%;
+    width: 80%;
     bottom: 60px;
     left: 30px;
   `}
