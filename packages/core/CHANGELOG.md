@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0...@twreporter/core@1.15.1-rc.0) (2023-12-25)
+
+
+### Bug Fixes
+
+* update 2024 fundraising code ([cc096a5](https://github.com/twreporter/twreporter-npm-packages/commit/cc096a570e886325f0e7981a48fa4a5d13ed33bb))
+
+
+
+
+
 # [1.15.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0-rc.2...@twreporter/core@1.15.0) (2023-12-13)
 
 **Note:** Version bump only for package @twreporter/core

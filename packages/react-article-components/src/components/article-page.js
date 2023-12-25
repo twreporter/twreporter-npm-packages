@@ -432,6 +432,7 @@ export default class Article extends PureComponent {
             <BodyBackground>
               <BodyBlock>
                 <MobileToolBar
+                  className={'hidden-print'}
                   backToTopic={backToTopic}
                   articleMetaForBookmark={articleMetaForBookmark}
                   onFontLevelChange={this.changeFontLevel}
