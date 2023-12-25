@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.1-rc.0...@twreporter/core@1.16.0-rc.0) (2023-12-25)
+
+
+### Bug Fixes
+
+* **core/src/constants:** remove unused embed ([5e3efa9](https://github.com/twreporter/twreporter-npm-packages/commit/5e3efa9cffb5b8818925c471337338f84efca909))
+
+
+### Features
+
+* **core:** add loading cover z-index ([c135945](https://github.com/twreporter/twreporter-npm-packages/commit/c135945f7318cadced1bdd4c148fc0536532372f))
+* **core:** add z-index constants ([d886736](https://github.com/twreporter/twreporter-npm-packages/commit/d8867366b4ee6e61fb262e7ae4d3998514a30dc9))
+
+
+
+
+
 ## [1.15.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0...@twreporter/core@1.15.1-rc.0) (2023-12-25)
 
 
