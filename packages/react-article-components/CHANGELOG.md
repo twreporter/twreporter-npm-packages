@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.1-rc.0...@twreporter/react-article-components@1.10.1) (2023-12-21)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.10.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.0...@twreporter/react-article-components@1.10.1-rc.0) (2023-12-21)
+
+
+### Bug Fixes
+
+* **react-article-components:** filter html tag for text render ([3ead77c](https://github.com/twreporter/twreporter-npm-packages/commit/3ead77ce32e47e5b66ae64390aeb698c90ab02e0))
+
+
+
+
+
 # [1.10.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.10.0-rc.5...@twreporter/react-article-components@1.10.0) (2023-12-13)
 
 **Note:** Version bump only for package @twreporter/react-article-components
