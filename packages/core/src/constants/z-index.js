@@ -10,5 +10,4 @@ export default {
   embedUp: 800,
   mobileToolBar: 700,
   embedDown: 600,
-  embed: 500,
 }
