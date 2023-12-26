@@ -38,12 +38,20 @@ const StyledH2 = styled(twreporterH3)`
 
 const H1 = props => {
   const content = _.get(props, 'data.content.0', '')
-  return <StyledH1 className={_.get(props, 'className', '')} text={content} />
+  const text = content
+    .split(/<strong>|<\/strong>/)
+    .filter(Boolean)
+    .join('')
+  return <StyledH1 className={_.get(props, 'className', '')} text={text} />
 }
 
 const H2 = props => {
   const content = _.get(props, 'data.content.0', '')
-  return <StyledH2 className={_.get(props, 'className', '')} text={content} />
+  const text = content
+    .split(/<strong>|<\/strong>/)
+    .filter(Boolean)
+    .join('')
+  return <StyledH2 className={_.get(props, 'className', '')} text={text} />
 }
 
 export default {
