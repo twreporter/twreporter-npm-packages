@@ -156,4 +156,12 @@ export default {
       failure: 'fail to update user data',
     },
   },
+
+  analytics: {
+    update: {
+      request: 'request to update user analytics data',
+      success: 'succes to update user analytics data',
+      failure: 'fail to update user analytics data',
+    },
+  },
 }

@@ -20,6 +20,7 @@ import {
 } from './bookmarks'
 import { fetchLatestTags } from './latest'
 import { getUserData, setUserData, onboarding } from './user'
+import { setUserAnalyticsData } from './analytics'
 
 export default {
   createSingleBookmark,
@@ -44,4 +45,5 @@ export default {
   getUserData,
   setUserData,
   onboarding,
+  setUserAnalyticsData,
 }

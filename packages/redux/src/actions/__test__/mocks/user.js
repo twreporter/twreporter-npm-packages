@@ -21,6 +21,9 @@ const mockGetUserData = {
   activated: '2023-06-02T11:19:32Z',
   readPreference: [READ_PREFERENCE.art],
   maillist: [EMAIL_SUBSCRIPTION_KEY.featured],
+  agreeDataCollection: true,
+  readPostsCount: 5,
+  readPostsSec: 1234,
 }
 
 const mockSetUserData = {

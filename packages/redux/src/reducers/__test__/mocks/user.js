@@ -32,6 +32,9 @@ export const mockActions = {
           activated: '2023-06-02T11:19:32Z',
           read_preference: [READ_PREFERENCE.art],
           maillist: [EMAIL_SUBSCRIPTION_KEY.featured],
+          agree_data_collection: true,
+          read_posts_count: 5,
+          read_posts_sec: 1234,
         },
       },
     },
@@ -81,6 +84,9 @@ export const mockStates = {
     activated: false,
     readPreference: [],
     maillist: [],
+    agreeDataCollection: true,
+    readPostsCount: 0,
+    readPostsSec: 0,
   },
 
   ExpStateReqwithInit: {
@@ -96,6 +102,9 @@ export const mockStates = {
     activated: false,
     readPreference: [],
     maillist: [],
+    agreeDataCollection: true,
+    readPostsCount: 0,
+    readPostsSec: 0,
   },
 
   ExpStateReqwithPre: {
@@ -118,6 +127,9 @@ export const mockStates = {
     activated: '2023-06-02T11:19:32Z',
     readPreference: [READ_PREFERENCE.art],
     maillist: [EMAIL_SUBSCRIPTION_KEY.featured],
+    agreeDataCollection: true,
+    readPostsCount: 5,
+    readPostsSec: 1234,
   },
 
   ExpStateSucwithInit: {
@@ -140,6 +152,9 @@ export const mockStates = {
     activated: '2023-06-02T11:19:32Z',
     readPreference: [READ_PREFERENCE.art],
     maillist: [EMAIL_SUBSCRIPTION_KEY.featured],
+    agreeDataCollection: true,
+    readPostsCount: 5,
+    readPostsSec: 1234,
   },
 
   ExpStateSucAfterGetUser: {
@@ -162,6 +177,9 @@ export const mockStates = {
     activated: '2023-06-02T11:19:32Z',
     readPreference: [READ_PREFERENCE.art],
     maillist: [EMAIL_SUBSCRIPTION_KEY.featured],
+    agreeDataCollection: true,
+    readPostsCount: 5,
+    readPostsSec: 1234,
   },
 
   ExpStateSucPreIsInitAfterSetUser: {
@@ -180,6 +198,9 @@ export const mockStates = {
       EMAIL_SUBSCRIPTION_KEY.featured,
       EMAIL_SUBSCRIPTION_KEY.behindTheScenes,
     ],
+    agreeDataCollection: true,
+    readPostsCount: 0,
+    readPostsSec: 0,
   },
 
   ExpStateSucPreIsExistAfterSetUser: {
@@ -205,6 +226,9 @@ export const mockStates = {
       EMAIL_SUBSCRIPTION_KEY.featured,
       EMAIL_SUBSCRIPTION_KEY.behindTheScenes,
     ],
+    agreeDataCollection: true,
+    readPostsCount: 5,
+    readPostsSec: 1234,
   },
 
   ExpStateFailwithInit: {
@@ -220,6 +244,9 @@ export const mockStates = {
     activated: false,
     readPreference: [],
     maillist: [],
+    agreeDataCollection: true,
+    readPostsCount: 0,
+    readPostsSec: 0,
   },
 
   ExpStateFailwithPre: {
@@ -242,5 +269,8 @@ export const mockStates = {
     activated: '2023-06-02T11:19:32Z',
     readPreference: [READ_PREFERENCE.art],
     maillist: [EMAIL_SUBSCRIPTION_KEY.featured],
+    agreeDataCollection: true,
+    readPostsCount: 5,
+    readPostsSec: 1234,
   },
 }

@@ -16,6 +16,7 @@ import relatedPostsOf from './related-posts-of'
 import settings from './settings'
 import latest from './latest'
 import user from './user'
+import analytics from './analytics'
 
 const rootReducer = combineReducers({
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.settings]: settings,
   [reduxStatePropKey.latest]: latest,
   [reduxStatePropKey.user]: user,
+  [reduxStatePropKey.analytics]: analytics,
 })
 
 export default rootReducer
