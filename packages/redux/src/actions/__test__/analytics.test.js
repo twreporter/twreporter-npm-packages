@@ -62,47 +62,86 @@ describe('Test analytics action', () => {
           expect(store.getActions()[1]).toEqual(successExp)
         })
     })
-    test('should dispatch an action created by `setUserAnalyticsData` if updating failed', () => {
-      const mockStatusCode = 500
-      const mockAPIRes = {
-        status: 'error',
-        message: 'Unexpected error.',
-      }
-      nock(apiOrigin)
-        .post(`/v2/${apiEndpoints.users}/${mockUserId}/analytics`)
-        .reply(mockStatusCode, mockAPIRes)
-      return store
-        .dispatch(
-          actions.setUserAnalyticsData(
-            'jwt',
-            mockUserId,
-            mockSetUserAnalyticsData.postID,
-            {
+    describe('should dispatch an action created by `setUserAnalyticsData` if updating failed', () => {
+      test('should dispatch an action created by `setUserAnalyticsData` with status code 500', () => {
+        const mockStatusCode = 500
+        const mockAPIRes = {
+          status: 'error',
+          message: 'Unexpected error.',
+        }
+        nock(apiOrigin)
+          .post(`/v2/${apiEndpoints.users}/${mockUserId}/analytics`)
+          .reply(mockStatusCode, mockAPIRes)
+        return store
+          .dispatch(
+            actions.setUserAnalyticsData(
+              'jwt',
+              mockUserId,
+              mockSetUserAnalyticsData.postID,
+              {
+                readPostCount: mockSetUserAnalyticsData.readPostsCount,
+                readPostSec: mockSetUserAnalyticsData.readPostsSec,
+              }
+            )
+          )
+          .catch(failAction => {
+            const requestExp = {
+              type: actionTypes.analytics.update.request,
+              url: `${apiOrigin}/v2/${apiEndpoints.users}/${mockUserId}/analytics`,
+            }
+            const errorExp = {
+              type: actionTypes.analytics.update.failure,
+              payload: {
+                error: expect.any(Error),
+              },
+            }
+            expect(store.getActions()[0]).toEqual(requestExp)
+            expect(store.getActions()[1]).toEqual(failAction)
+            expect(store.getActions()[1]).toEqual(errorExp)
+            expectActionErrorObj(
+              store.getActions()[1].payload.error,
+              mockStatusCode,
+              mockAPIRes
+            )
+          })
+      })
+      test('should dispatch an action created by `setUserAnalyticsData` with status code 400 ', () => {
+        const mockStatusCode = 400
+        const mockAPIRes = {
+          status: 'error',
+          message: 'post_id is required',
+        }
+        nock(apiOrigin)
+          .post(`/v2/${apiEndpoints.users}/${mockUserId}/analytics`)
+          .reply(mockStatusCode, mockAPIRes)
+        return store
+          .dispatch(
+            actions.setUserAnalyticsData('jwt', mockUserId, '', {
               readPostCount: mockSetUserAnalyticsData.readPostsCount,
               readPostSec: mockSetUserAnalyticsData.readPostsSec,
+            })
+          )
+          .catch(failAction => {
+            const requestExp = {
+              type: actionTypes.analytics.update.request,
+              url: `${apiOrigin}/v2/${apiEndpoints.users}/${mockUserId}/analytics`,
             }
-          )
-        )
-        .catch(failAction => {
-          const requestExp = {
-            type: actionTypes.analytics.update.request,
-            url: `${apiOrigin}/v2/${apiEndpoints.users}/${mockUserId}/analytics`,
-          }
-          const errorExp = {
-            type: actionTypes.analytics.update.failure,
-            payload: {
-              error: expect.any(Error),
-            },
-          }
-          expect(store.getActions()[0]).toEqual(requestExp)
-          expect(store.getActions()[1]).toEqual(failAction)
-          expect(store.getActions()[1]).toEqual(errorExp)
-          expectActionErrorObj(
-            store.getActions()[1].payload.error,
-            mockStatusCode,
-            mockAPIRes
-          )
-        })
+            const errorExp = {
+              type: actionTypes.analytics.update.failure,
+              payload: {
+                error: expect.any(Error),
+              },
+            }
+            expect(store.getActions()[0]).toEqual(requestExp)
+            expect(store.getActions()[1]).toEqual(failAction)
+            expect(store.getActions()[1]).toEqual(errorExp)
+            expectActionErrorObj(
+              store.getActions()[1].payload.error,
+              mockStatusCode,
+              mockAPIRes
+            )
+          })
+      })
     })
   })
 })
