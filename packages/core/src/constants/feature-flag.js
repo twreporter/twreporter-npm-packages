@@ -1,1 +1,1 @@
-export const FOUNDATION_CATEGORY_SET = false
+export const FOUNDATION_CATEGORY_SET = true
