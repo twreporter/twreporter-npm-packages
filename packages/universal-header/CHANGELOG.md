@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.9.1-rc.1...@twreporter/universal-header@2.9.1-rc.2) (2023-12-26)
+
+
+### Bug Fixes
+
+* foundation link in spa ([9113ca8](https://github.com/twreporter/twreporter-npm-packages/commit/9113ca8f2731432d84a2bd0f673a14131b2ccc32))
+
+
+
+
+
 ## [2.9.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.9.1-rc.0...@twreporter/universal-header@2.9.1-rc.1) (2023-12-25)
 
 **Note:** Version bump only for package @twreporter/universal-header
