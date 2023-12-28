@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0-rc.1...@twreporter/core@1.16.0-rc.2) (2023-12-28)
+
+
+### Bug Fixes
+
+* add black_0.8 color in design system ([f070e3f](https://github.com/twreporter/twreporter-npm-packages/commit/f070e3f5d2a7cef4763f9de47a22984c8f7be946))
+
+
+
+
+
 # [1.16.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0-rc.0...@twreporter/core@1.16.0-rc.1) (2023-12-26)
 
 **Note:** Version bump only for package @twreporter/core
