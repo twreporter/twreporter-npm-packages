@@ -57,6 +57,7 @@ export const colorOpacity = Object.freeze({
   'black_0.1': 'rgba(0, 0, 0, 0.1)',
   'black_0.2': 'rgba(0, 0, 0, 0.2)',
   'black_0.5': 'rgba(0, 0, 0, 0.5)',
+  'black_0.8': 'rgba(0, 0, 0, 0.8)',
   'black_0.05': 'rgba(0, 0, 0, 0.05)',
 })
 
