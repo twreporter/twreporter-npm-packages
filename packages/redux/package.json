@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/redux",
-  "version": "7.9.0",
+  "version": "7.9.1-rc.0",
   "description": "redux actions and reducers for twreporter website",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -31,6 +31,7 @@
     "humps": "^0.6.0",
     "localforage": "^1.7.3",
     "lodash": "^4.17.4",
+    "node-fetch": "^2.6.0",
     "normalizr": "^3.2.4",
     "prop-types": "^15.0.0",
     "react": "^16.3.0",
