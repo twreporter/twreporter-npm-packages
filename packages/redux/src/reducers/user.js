@@ -22,6 +22,9 @@ const initState = {
   activated: false,
   readPreference: [],
   maillist: [],
+  agreeDataCollection: true,
+  readPostsCount: 0,
+  readPostsSec: 0,
 }
 
 export default function user(state = initState, action) {
@@ -44,6 +47,12 @@ export default function user(state = initState, action) {
       const activated = _.get(payload, 'data.data.activated')
       const readPreference = _.get(payload, 'data.data.read_preference')
       const maillist = _.get(payload, 'data.data.maillist')
+      const agreeDataCollection = _.get(
+        payload,
+        'data.data.agree_data_collection'
+      )
+      const readPostsCount = _.get(payload, 'data.data.read_posts_count')
+      const readPostsSec = _.get(payload, 'data.data.read_posts_sec')
       return {
         ...state,
         error: null,
@@ -58,6 +67,9 @@ export default function user(state = initState, action) {
         activated,
         readPreference,
         maillist,
+        agreeDataCollection,
+        readPostsCount,
+        readPostsSec,
       }
     }
 

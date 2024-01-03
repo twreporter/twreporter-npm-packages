@@ -17,6 +17,7 @@ const entitiesForAuthors = 'entitiesForAuthors'
 const searchedAuthorsList = 'searchedAuthorsList'
 
 const user = 'user'
+const analytics = 'analytics'
 
 // sections in index_page
 const editorPicksSection = 'editor_picks_section'
@@ -88,4 +89,5 @@ export default {
   relatedPostsOf: 'relatedPostsOf',
   featureTopic: 'featureTopic',
   user,
+  analytics,
 }

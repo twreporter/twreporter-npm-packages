@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.9.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.9.0-rc.0...@twreporter/redux@7.9.0-rc.1) (2023-12-28)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.8.3-rc.2...@twreporter/redux@7.9.0-rc.0) (2023-12-26)
+
+
+### Features
+
+* **redux/src/actions/__test__/analytics.test:** add 400 error test case ([0aa8530](https://github.com/twreporter/twreporter-npm-packages/commit/0aa853077bf87edd24e02508ae0b2b15ab7a04bf))
+* analytics action & test ([f303c78](https://github.com/twreporter/twreporter-npm-packages/commit/f303c780d1f65cdbb856560e7481d6238e9675f8))
+* analytics reducer & test ([d63f9b4](https://github.com/twreporter/twreporter-npm-packages/commit/d63f9b4388f113416bd9132cb7001f62441fd3bc))
+* get analytics data from getUser ([45570fc](https://github.com/twreporter/twreporter-npm-packages/commit/45570fc2a8d081cf92bc52cf86230bfb3f752742))
+
+
+
+
+
+## [7.8.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.8.3-rc.1...@twreporter/redux@7.8.3-rc.2) (2023-12-26)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.8.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.8.3-rc.0...@twreporter/redux@7.8.3-rc.1) (2023-12-25)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.8.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.8.2...@twreporter/redux@7.8.3-rc.0) (2023-12-25)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
 ## [7.8.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.8.2-rc.2...@twreporter/redux@7.8.2) (2023-12-13)
 
 **Note:** Version bump only for package @twreporter/redux
