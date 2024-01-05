@@ -41,5 +41,7 @@ export const article = {
       alt: 'test',
     },
     releaseBranch: BRANCH.master,
+    isBookmarked: true,
+    showIsBookmarked: false,
   },
 }

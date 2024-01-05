@@ -6,7 +6,7 @@ import Image from '../../image-with-fallback'
 import { P1, P2, P3 } from '../../text/paragraph'
 import { H4 } from '../../text/headline'
 import { Bookmark } from '../../icon'
-import { IconButton, TextButton } from '../../button'
+import { TextButton } from '../../button'
 // enum
 import { Size } from '../../shared-enum'
 // @twreporter
@@ -54,6 +54,7 @@ const FlexSpaceBetween = styled(FlexGroup)`
   justify-content: space-between;
 `
 const Meta = styled(FlexGroup)`
+  gap: 8px;
   color: ${colorGrayscale.gray600};
   flex-direction: row;
   align-items: center;
@@ -106,6 +107,7 @@ const ArticleCard = ({
   isBookmarked = false,
   toggleBookmark,
   releaseBranch = BRANCH.master,
+  showIsBookmarked = false,
 }) => {
   const hideMeta = !category && !date
   const titleJSX = title ? <TitleText text={title} type="article" /> : null
@@ -118,28 +120,32 @@ const ArticleCard = ({
       <P1 text={description} />
     )
   ) : null
+
+  const onBookmarkClick = event => {
+    event.preventDefault()
+    toggleBookmark()
+  }
+
   const bookmarkIcon = (
-    <Bookmark type={Bookmark.Type.SAVED} releaseBranch={releaseBranch} />
+    <Bookmark
+      type={isBookmarked ? Bookmark.Type.SAVED : Bookmark.Type.ADD}
+      releaseBranch={releaseBranch}
+    />
   )
-  const bookmarkButton =
-    size === Size.S ? (
-      <TextButton
-        theme={TextButton.THEME.normal}
-        style={TextButton.Style.LIGHT}
-        leftIconComponent={bookmarkIcon}
-        text="取消收藏"
-      />
-    ) : (
-      <IconButton
-        theme={IconButton.THEME.normal}
-        iconComponent={bookmarkIcon}
-      />
-    )
-  const bookmarkJSX = isBookmarked ? (
-    <BookmarkContainer onClick={toggleBookmark} size={size}>
+  const bookmarkButton = (
+    <TextButton
+      theme={TextButton.THEME.normal}
+      style={TextButton.Style.LIGHT}
+      leftIconComponent={bookmarkIcon}
+      text={isBookmarked ? '已收藏' : '收藏'}
+    />
+  )
+  const bookmarkJSX = showIsBookmarked ? (
+    <BookmarkContainer onClick={onBookmarkClick} size={size}>
       {bookmarkButton}
     </BookmarkContainer>
   ) : null
+
   const metaJSX = (
     <Meta hide={hideMeta} size={size}>
       {categoryJSX}
@@ -199,6 +205,7 @@ ArticleCard.propTypes = {
   isBookmarked: PropTypes.bool,
   toggleBookmark: PropTypes.func,
   releaseBranch: BRANCH_PROP_TYPES,
+  showIsBookmarked: PropTypes.bool,
 }
 ArticleCard.Size = Size
 
