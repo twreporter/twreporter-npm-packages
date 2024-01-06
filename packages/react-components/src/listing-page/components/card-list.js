@@ -5,19 +5,16 @@ import styled from 'styled-components'
 import { ArticleCard } from '../../card'
 import FetchingWrapper from '../../is-fetching-wrapper'
 import Divider from '../../divider'
-import Link from '../../customized-link'
 import { DesktopAndAbove, TabletAndBelow } from '../../rwd'
 // constants
 import mockup from '../constants/mockup-spec'
 // @twreporter
-import entityPaths from '@twreporter/core/lib/constants/entity-path'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { date2yyyymmdd } from '@twreporter/core/lib/utils/date'
 import {
   BRANCH,
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
-import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
@@ -34,16 +31,9 @@ const Card = styled(ArticleCard)`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
 `
 const Item = styled.div`
   margin-bottom: 24px;
-  &:hover {
-    opacity: 0.7;
-  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -80,6 +70,7 @@ const CardList = ({
   isFetching = false,
   showSpinner = false,
   releaseBranch = BRANCH.master,
+  showIsBookmarked = false,
 }) => {
   if (!data || data.length === 0) {
     return null
@@ -99,15 +90,6 @@ const CardList = ({
 
   const listJSX = _.map(data, item => {
     const { id, title, slug, style } = item
-    const isInteractiveArticle = style === ARTICLE_THEME.interactive
-    const link = {
-      to: `${
-        isInteractiveArticle
-          ? entityPaths.interactiveArticle
-          : entityPaths.article
-      }${slug}`,
-      target: isInteractiveArticle ? '_blank' : '',
-    }
     const articleCardProps = {
       title,
       description: _.get(item, 'og_description', ''),
@@ -120,19 +102,27 @@ const CardList = ({
       category: getFirstCategory(_.get(item, 'category_set', [])),
       date: date2yyyymmdd(_.get(item, 'published_date'), '/'),
       releaseBranch,
+      style,
+      slug,
     }
 
     return (
       <Item key={id}>
-        <Link {...link}>
-          <DesktopAndAbove>
-            <Card {...articleCardProps} size={ArticleCard.Size.L} />
-          </DesktopAndAbove>
-          <TabletAndBelow>
-            <Card {...articleCardProps} size={ArticleCard.Size.S} />
-          </TabletAndBelow>
-          <StyledDivider />
-        </Link>
+        <DesktopAndAbove>
+          <Card
+            {...articleCardProps}
+            showIsBookmarked={showIsBookmarked}
+            size={ArticleCard.Size.L}
+          />
+        </DesktopAndAbove>
+        <TabletAndBelow>
+          <Card
+            {...articleCardProps}
+            showIsBookmarked={showIsBookmarked}
+            size={ArticleCard.Size.S}
+          />
+        </TabletAndBelow>
+        <StyledDivider />
       </Item>
     )
   })
@@ -162,6 +152,7 @@ CardList.propTypes = {
   isFetching: PropTypes.bool,
   showSpinner: PropTypes.bool,
   releaseBranch: BRANCH_PROP_TYPES,
+  showIsBookmarked: PropTypes.bool,
 }
 
 export default CardList

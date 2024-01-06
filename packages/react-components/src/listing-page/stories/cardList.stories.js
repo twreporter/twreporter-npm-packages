@@ -61,5 +61,6 @@ export const card = {
       },
     ],
     releaseBranch: BRANCH.master,
+    showIsBookmarked: false,
   },
 }

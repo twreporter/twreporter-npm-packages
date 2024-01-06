@@ -7,6 +7,7 @@ import { P1, P2, P3 } from '../../text/paragraph'
 import { H4 } from '../../text/headline'
 import { Bookmark } from '../../icon'
 import { TextButton } from '../../button'
+import Link from '../../customized-link'
 // enum
 import { Size } from '../../shared-enum'
 // @twreporter
@@ -15,6 +16,8 @@ import {
   BRANCH,
   BRANCH_PROP_TYPES,
 } from '@twreporter/core/lib/constants/release-branch'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
+import entityPaths from '@twreporter/core/lib/constants/entity-path'
 
 const imageStyle = {
   width: {
@@ -43,6 +46,13 @@ const metaStyle = {
   },
 }
 
+const Container = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    opacity: 0.8;
+  }
+`
+
 const FlexGroup = styled.div`
   display: flex;
 `
@@ -54,12 +64,12 @@ const FlexSpaceBetween = styled(FlexGroup)`
   justify-content: space-between;
 `
 const Meta = styled(FlexGroup)`
-  gap: 8px;
+  /* gap: 8px; */
   color: ${colorGrayscale.gray600};
   flex-direction: row;
   align-items: center;
   margin-bottom: ${props => metaStyle.marginBottom[props.size]};
-  & > div {
+  & > p {
     margin-right: 8px;
   }
   &:last-child {
@@ -108,6 +118,8 @@ const ArticleCard = ({
   toggleBookmark,
   releaseBranch = BRANCH.master,
   showIsBookmarked = false,
+  style = ARTICLE_THEME.v2.default,
+  slug = '',
 }) => {
   const hideMeta = !category && !date
   const titleJSX = title ? <TitleText text={title} type="article" /> : null
@@ -120,6 +132,16 @@ const ArticleCard = ({
       <P1 text={description} />
     )
   ) : null
+
+  const isInteractiveArticle = style === ARTICLE_THEME.v2.interactive
+  const link = {
+    to: `${
+      isInteractiveArticle
+        ? entityPaths.interactiveArticle
+        : entityPaths.article
+    }${slug}`,
+    target: isInteractiveArticle ? '_blank' : '',
+  }
 
   const onBookmarkClick = event => {
     event.preventDefault()
@@ -160,35 +182,39 @@ const ArticleCard = ({
 
   if (size === Size.S) {
     return (
-      <FlexGroupColumn>
-        <FlexSpaceBetween>
-          <FlexGroupColumn>
-            {metaJSX}
-            {titleJSX}
-          </FlexGroupColumn>
-          <FlexGroup>{imageJSX}</FlexGroup>
-        </FlexSpaceBetween>
+      <Container {...link}>
         <FlexGroupColumn>
-          <DescContainer>{descriptionJSX}</DescContainer>
-          {bookmarkJSX}
+          <FlexSpaceBetween>
+            <FlexGroupColumn>
+              {metaJSX}
+              {titleJSX}
+            </FlexGroupColumn>
+            <FlexGroup>{imageJSX}</FlexGroup>
+          </FlexSpaceBetween>
+          <FlexGroupColumn>
+            <DescContainer>{descriptionJSX}</DescContainer>
+            {bookmarkJSX}
+          </FlexGroupColumn>
         </FlexGroupColumn>
-      </FlexGroupColumn>
+      </Container>
     )
   }
 
   // L size
   return (
-    <FlexSpaceBetween>
-      <LeftColumn>
-        {metaJSX}
-        <FlexGroupColumn>
-          {titleJSX}
-          <DescContainer>{descriptionJSX}</DescContainer>
-          {bookmarkJSX}
-        </FlexGroupColumn>
-      </LeftColumn>
-      {imageJSX}
-    </FlexSpaceBetween>
+    <Container {...link}>
+      <FlexSpaceBetween>
+        <LeftColumn>
+          {metaJSX}
+          <FlexGroupColumn>
+            {titleJSX}
+            <DescContainer>{descriptionJSX}</DescContainer>
+            {bookmarkJSX}
+          </FlexGroupColumn>
+        </LeftColumn>
+        {imageJSX}
+      </FlexSpaceBetween>
+    </Container>
   )
 }
 ArticleCard.propTypes = {
@@ -206,6 +232,8 @@ ArticleCard.propTypes = {
   toggleBookmark: PropTypes.func,
   releaseBranch: BRANCH_PROP_TYPES,
   showIsBookmarked: PropTypes.bool,
+  style: PropTypes.oneOf(Object.values(ARTICLE_THEME.v2)),
+  slug: PropTypes.string,
 }
 ArticleCard.Size = Size
 
