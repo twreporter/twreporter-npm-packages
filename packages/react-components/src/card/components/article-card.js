@@ -82,7 +82,7 @@ const Meta = styled(FlexGroup)`
 const DescContainer = styled.div`
   color: ${colorGrayscale.gray800};
   margin-top: 8px;
-  div {
+  p {
     display: -webkit-box;
     text-overflow: ellipsis;
     overflow: hidden;
