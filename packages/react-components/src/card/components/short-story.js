@@ -57,12 +57,11 @@ const FlexSpaceBetween = styled(FlexGroup)`
   justify-content: space-between;
 `
 const Meta = styled(FlexGroup)`
-  gap: 8px;
   color: ${colorGrayscale.gray600};
   flex-direction: row;
   align-items: center;
   margin-bottom: ${props => metaStyle.marginBottom[props.size]};
-  & > div {
+  & > p {
     margin-right: 8px;
   }
   &:last-child {
