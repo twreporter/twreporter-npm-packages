@@ -49,7 +49,9 @@ const metaStyle = {
 const Container = styled(Link)`
   text-decoration: none;
   &:hover {
-    opacity: 0.8;
+    .hover {
+      opacity: 0.8;
+    }
   }
 `
 
@@ -122,14 +124,16 @@ const ArticleCard = ({
   slug = '',
 }) => {
   const hideMeta = !category && !date
-  const titleJSX = title ? <TitleText text={title} type="article" /> : null
-  const dateJSX = date ? <P3 text={date} /> : null
-  const categoryJSX = category ? <P3 text={category} /> : null
+  const titleJSX = title ? (
+    <TitleText text={title} type="article" className="hover" />
+  ) : null
+  const dateJSX = date ? <P3 text={date} className="hover" /> : null
+  const categoryJSX = category ? <P3 text={category} className="hover" /> : null
   const descriptionJSX = description ? (
     size === Size.S ? (
-      <P2 text={description} />
+      <P2 text={description} className="hover" />
     ) : (
-      <P1 text={description} />
+      <P1 text={description} className="hover" />
     )
   ) : null
 
@@ -169,13 +173,13 @@ const ArticleCard = ({
   ) : null
 
   const metaJSX = (
-    <Meta hide={hideMeta} size={size}>
+    <Meta hide={hideMeta} size={size} className="hover">
       {categoryJSX}
       {dateJSX}
     </Meta>
   )
   const imageJSX = (
-    <ImageContainer size={size}>
+    <ImageContainer size={size} className="hover">
       <Image src={image.src} alt={image.alt} releaseBranch={releaseBranch} />
     </ImageContainer>
   )
