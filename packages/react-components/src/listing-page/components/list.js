@@ -11,7 +11,7 @@ import mockup from '../constants/mockup-spec'
 // components
 import ListItem from './list-item'
 import PageContent from './page-content'
-import { TitleBar } from '../../title-bar'
+import { Title1 } from '../../title-bar'
 import FetchingWrapper from '../../is-fetching-wrapper'
 // lodash
 import forEach from 'lodash/forEach'
@@ -118,9 +118,7 @@ class List extends PureComponent {
       )
     })
     const headerTitle = catName || (tagName ? `#${tagName}` : '')
-    const headerJSX = headerTitle ? (
-      <TitleBar title={headerTitle ?? ''} />
-    ) : null
+    const headerJSX = headerTitle ? <Title1 title={headerTitle ?? ''} /> : null
     return (
       <PageContent>
         {headerJSX}
