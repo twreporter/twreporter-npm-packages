@@ -20,7 +20,7 @@ export const title2 = {
   render: args => {
     args.buttonComponent = args.showButton ? (
       <TextButton
-        text="按鈕"
+        text="RWD 按鈕"
         rightIconComponent={<Arrow direction="right" />}
       />
     ) : null
@@ -28,7 +28,7 @@ export const title2 = {
   },
 
   args: {
-    title: '標題',
+    title: 'RWD 標題',
     subtitle: '副標',
     showButton: true,
   },

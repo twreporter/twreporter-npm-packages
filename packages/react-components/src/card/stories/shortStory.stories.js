@@ -14,7 +14,7 @@ import { BRANCH } from '@twreporter/core/lib/constants/release-branch'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 export default {
-  title: 'Card/ShortStory',
+  title: 'Card/Short Story',
   component: ShortStory,
   argTypes: {
     releaseBranch: BRANCH_STORYBOOK_ARG_TYPE,
