@@ -27,6 +27,7 @@ export const card = {
           description: 'test',
         },
         slug: 'this-is-a-test-article',
+        is_bookmarked: true,
       },
       {
         id: '12347',
@@ -62,5 +63,6 @@ export const card = {
     ],
     releaseBranch: BRANCH.master,
     showIsBookmarked: false,
+    width: 100,
   },
 }

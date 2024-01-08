@@ -43,7 +43,8 @@ const StyledDivider = styled(Divider)`
   margin-top: 24px;
 `
 const FlexItem = styled.div`
-  width: ${mockup.hd.maxWidth}px;
+  width: ${props =>
+    props.width !== 0 ? `${props.width}%` : mockup.hd.maxWidth}px;
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
@@ -51,11 +52,13 @@ const FlexItem = styled.div`
   flex-wrap: wrap;
 
   ${mq.desktopOnly`
-    width: ${mockup.desktop.maxWidth}px;
+    width: ${props =>
+      props.width !== 0 ? `${props.width}%` : mockup.desktop.maxWidth}px;
   `}
 
   ${mq.tabletOnly`
-    width: ${mockup.tablet.maxWidth}px;
+    width: ${props =>
+      props.width !== 0 ? `${props.width}%` : mockup.tablet.maxWidth}px;
   `}
 
   ${mq.mobileOnly`
@@ -71,6 +74,7 @@ const CardList = ({
   showSpinner = false,
   releaseBranch = BRANCH.master,
   showIsBookmarked = false,
+  width = 0,
 }) => {
   if (!data || data.length === 0) {
     return null
@@ -104,6 +108,7 @@ const CardList = ({
       releaseBranch,
       style,
       slug,
+      isBookmarked: _.get(item, 'is_bookmarked', false),
     }
 
     return (
@@ -129,7 +134,7 @@ const CardList = ({
 
   return (
     <Container>
-      <Content isFetching={isFetching} showSpinner={showSpinner}>
+      <Content isFetching={isFetching} showSpinner={showSpinner} width={width}>
         {listJSX}
       </Content>
     </Container>
@@ -147,12 +152,14 @@ CardList.propTypes = {
       published_date: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
       style: PropTypes.string,
+      is_bookmarked: PropTypes.bool,
     })
   ),
   isFetching: PropTypes.bool,
   showSpinner: PropTypes.bool,
   releaseBranch: BRANCH_PROP_TYPES,
   showIsBookmarked: PropTypes.bool,
+  width: PropTypes.number,
 }
 
 export default CardList
