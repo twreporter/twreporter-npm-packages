@@ -109,6 +109,7 @@ const CardList = ({
       style,
       slug,
       isBookmarked: _.get(item, 'is_bookmarked', false),
+      toggleBookmark: _.get(item, 'toggle_bookmark'),
     }
 
     return (
@@ -153,6 +154,7 @@ CardList.propTypes = {
       slug: PropTypes.string.isRequired,
       style: PropTypes.string,
       is_bookmarked: PropTypes.bool,
+      toggle_bookmark: PropTypes.func,
     })
   ),
   isFetching: PropTypes.bool,

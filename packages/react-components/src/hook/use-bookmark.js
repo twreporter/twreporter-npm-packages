@@ -46,8 +46,8 @@ const { createSingleBookmark, deleteSingleBookmark } = twreporterRedux.actions
  */
 const useBookmark = (store, bookmark) => {
   const [state, dispatch] = store
-  const jwt = _.get(state, ['auth', 'accessToken'])
-  const userID = _.get(state, ['auth', 'userInfo', 'user_id'])
+  const jwt = _.get(state, 'auth.accessToken')
+  const userID = _.get(state, 'auth.userInfo.user_id')
 
   const addCurrentPageToBookmarks = () => {
     const bookmarkToBeCreated = {
@@ -59,9 +59,9 @@ const useBookmark = (store, bookmark) => {
 
   const removeCurrentPageFromBookmarks = bookmarkID => {
     if (bookmarkID) {
-      dispatch(deleteSingleBookmark(jwt, userID, bookmarkID))
+      return dispatch(deleteSingleBookmark(jwt, userID, bookmarkID))
     } else {
-      console.error('Error on deleting bookmark: No valid bookmark id.')
+      throw new Error('Error on deleting bookmark: No valid bookmark id.')
     }
   }
 
