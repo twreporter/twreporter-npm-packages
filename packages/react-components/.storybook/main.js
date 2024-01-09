@@ -25,6 +25,10 @@ const config = {
       __dirname,
       '../../core/src/'
     )
+    config.resolve.alias['@twreporter/redux/lib'] = path.resolve(
+      __dirname,
+      '../../redux/src/'
+    )
     return config
   },
 
