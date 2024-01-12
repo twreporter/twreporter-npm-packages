@@ -373,10 +373,11 @@ export function fetchPostsByTagListId(
   listId,
   limit = 10,
   page = 0,
+  jwt = '',
   timeout = apiConfig.timeout
 ) {
   return (dispatch, getState) => {
-    return fetchPostsByListId(listId, 'tag_id', limit, page, timeout)(
+    return fetchPostsByListId(listId, 'tag_id', limit, page, timeout, jwt)(
       dispatch,
       getState
     )
@@ -396,18 +397,13 @@ export function fetchPostsByCategorySetListId(
   listId,
   limit = 10,
   page = 0,
-  jwt = '',
   timeout = apiConfig.timeout
 ) {
   return (dispatch, getState) => {
-    return fetchPostsByListId(
-      listId,
-      'category_set_id',
-      limit,
-      page,
-      timeout,
-      jwt
-    )(dispatch, getState)
+    return fetchPostsByListId(listId, 'category_set_id', limit, page, timeout)(
+      dispatch,
+      getState
+    )
   }
 }
 
