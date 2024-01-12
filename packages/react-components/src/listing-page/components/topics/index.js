@@ -140,7 +140,7 @@ class Topics extends Component {
 Topics.propTypes = {
   topics: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       linkTo: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       topic_name: PropTypes.string.isRequired,
