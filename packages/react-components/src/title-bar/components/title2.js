@@ -41,7 +41,7 @@ const DividerGray800 = styled(Divider)`
   border-color: ${colorGrayscale.gray800};
 `
 
-const Title2 = ({ title = '', subtitle = '', buttonComponent = null }) => {
+const Title2 = ({ title = '', subtitle = '', renderButton }) => {
   return (
     <>
       <DesktopAndAbove>
@@ -50,9 +50,7 @@ const Title2 = ({ title = '', subtitle = '', buttonComponent = null }) => {
             <H5Gray800 text={title} />
             {subtitle ? <P2Gray600 text={subtitle} /> : null}
           </Text>
-          {buttonComponent
-            ? React.cloneElement(buttonComponent, { size: Size.L })
-            : null}
+          {renderButton ? renderButton(Size.L) : null}
         </BarContainer>
         <DividerGray800 direction={Divider.Direction.HORIZONTAL} />
       </DesktopAndAbove>
@@ -62,9 +60,7 @@ const Title2 = ({ title = '', subtitle = '', buttonComponent = null }) => {
             <H5Gray800 text={title} />
             {subtitle ? <P2Gray600 text={subtitle} /> : null}
           </Text>
-          {buttonComponent
-            ? React.cloneElement(buttonComponent, { size: Size.S })
-            : null}
+          {renderButton ? renderButton(Size.S) : null}
         </BarContainer>
         <DividerGray800 direction={Divider.Direction.HORIZONTAL} />
       </TabletAndBelow>
@@ -75,7 +71,7 @@ const Title2 = ({ title = '', subtitle = '', buttonComponent = null }) => {
 Title2.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  buttonComponent: PropTypes.element,
+  renderButton: PropTypes.func,
 }
 
 export default Title2

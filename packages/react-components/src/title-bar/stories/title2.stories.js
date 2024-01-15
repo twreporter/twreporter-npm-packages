@@ -18,12 +18,15 @@ export default {
 
 export const title2 = {
   render: args => {
-    args.buttonComponent = args.showButton ? (
-      <TextButton
-        text="RWD 按鈕"
-        rightIconComponent={<Arrow direction="right" />}
-      />
-    ) : null
+    args.renderButton = args.showButton
+      ? size => (
+          <TextButton
+            text="RWD 按鈕"
+            rightIconComponent={<Arrow direction="right" />}
+            size={size}
+          />
+        )
+      : null
     return <Title2 {...args} />
   },
 
@@ -34,6 +37,6 @@ export const title2 = {
   },
 
   parameters: {
-    controls: { exclude: ['buttonComponent'] },
+    controls: { exclude: ['renderButton'] },
   },
 }
