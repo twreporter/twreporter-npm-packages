@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0-rc.0...@twreporter/redux@7.10.0-rc.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* remove unused sort ([26b7f52](https://github.com/twreporter/twreporter-npm-packages/commit/26b7f52a9984da298f978a67855c6b55a53890e3))
+
+
+
+
+
 # [7.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.9.1...@twreporter/redux@7.10.0-rc.0) (2024-01-15)
 
 

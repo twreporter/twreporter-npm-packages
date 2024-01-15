@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0...@twreporter/core@1.17.0-rc.0) (2024-01-15)
+
+
+### Features
+
+* add MY_READING feature flag ([d3b7175](https://github.com/twreporter/twreporter-npm-packages/commit/d3b71759c61daaefe470c9255a169a52136fa987))
+* add myreading path for header ([cd0a42c](https://github.com/twreporter/twreporter-npm-packages/commit/cd0a42cec3cc78e9eb421f9ddb892633a7f42d4a))
+
+
+
+
+
 # [1.16.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0-rc.2...@twreporter/core@1.16.0) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/core

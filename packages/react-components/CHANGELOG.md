@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.24.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.1...@twreporter/react-components@8.24.0-rc.2) (2024-01-15)
+
+
+### Bug Fixes
+
+* add twreporter-redex to storybook config ([22f32ac](https://github.com/twreporter/twreporter-npm-packages/commit/22f32ac1fe777ea8c3a7b1992696b114b72847ae))
+* article card description line climp ([97102e8](https://github.com/twreporter/twreporter-npm-packages/commit/97102e81916ec4cfac09736f3532f2338e6547e5))
+* import title1 & title2 ([4818159](https://github.com/twreporter/twreporter-npm-packages/commit/4818159b12923e107720a590b89e2ec8dade88b5))
+* import title1 to listing-page ([6c69a1d](https://github.com/twreporter/twreporter-npm-packages/commit/6c69a1d37192f29eaa56e1940da149d364a0e304))
+* replace TitleBar by Title1 ([64ec60b](https://github.com/twreporter/twreporter-npm-packages/commit/64ec60b596200eea00bfe240a4a6a1dd1cd3239f))
+* topic id prop types fix ([c66ff8a](https://github.com/twreporter/twreporter-npm-packages/commit/c66ff8a0a4d59ec9023e978522f8242f712181fd))
+* use renderButton istead of cloneElement ([826eda9](https://github.com/twreporter/twreporter-npm-packages/commit/826eda908f6052bf920f22fe1eb93bfe38eaa731))
+* useBookmark throw error ([b332f96](https://github.com/twreporter/twreporter-npm-packages/commit/b332f96f0bf8b0c6bbe9cea7fbf8b0dd3851dd53))
+
+
+### Features
+
+* add short story components ([8f07375](https://github.com/twreporter/twreporter-npm-packages/commit/8f07375709beb48e234a1b2ad4076e27795b73f1))
+* add title2 ([eaf58ae](https://github.com/twreporter/twreporter-npm-packages/commit/eaf58ae4da5d57f73ae7778011b0424a58fd6381))
+* add useBookmark & useStore ([7fd48e5](https://github.com/twreporter/twreporter-npm-packages/commit/7fd48e521e659307b1b91a6b4acdfb4d0a2fd683))
+* article card bookmark button ([824c138](https://github.com/twreporter/twreporter-npm-packages/commit/824c1386f2fa60330fdd7352ad5236715e2b447d))
+* change headline font size ([74b83a1](https://github.com/twreporter/twreporter-npm-packages/commit/74b83a1b853e061dcce10c14a0e7ad4a1986f888))
+* change storybook description ([b9e24d1](https://github.com/twreporter/twreporter-npm-packages/commit/b9e24d11b500f13950d03452f790315c0a68b475))
+* change title bar to title 1 ([951803d](https://github.com/twreporter/twreporter-npm-packages/commit/951803d77cbc22c365f4ad5ef55cc66ee8999aa2))
+* hover on article-card ([4004040](https://github.com/twreporter/twreporter-npm-packages/commit/4004040431825f56b8a5ba1e9c1b02efe1fa3608))
+* no hover effect on bookmark button ([769f0f9](https://github.com/twreporter/twreporter-npm-packages/commit/769f0f9918e4098d8925c9dc4c2196aea258e01d))
+* remove comment ([945f59f](https://github.com/twreporter/twreporter-npm-packages/commit/945f59fc69e1e73168bff6758bd8e423bbd4d013))
+
+
+
+
+
 # [8.24.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.0...@twreporter/react-components@8.24.0-rc.1) (2024-01-15)
 
 **Note:** Version bump only for package @twreporter/react-components
