@@ -26,7 +26,7 @@ module.exports = {
       __dirname,
       '../../core/src/'
     )
-    config.resolve.alias['@twreporter/redux/lib'] = path.resolve(
+    config.resolve.alias['@twreporter/redux'] = path.resolve(
       __dirname,
       '../../redux/src/'
     )
