@@ -1,9 +1,11 @@
-import TitleBar from './components/bar'
+import Title1 from './components/title1'
+import Title2 from './components/title2'
 import TitleTab from './components/tab'
 
-export { TitleBar, TitleTab }
+export { Title1, Title2, TitleTab }
 
 export default {
-  TitleBar,
+  Title1,
+  Title2,
   TitleTab,
 }

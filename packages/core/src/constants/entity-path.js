@@ -9,4 +9,5 @@ export default {
   authors: '/authors',
   aboutus: '/about-us',
   account: '/account',
+  myReading: '/myreading',
 }

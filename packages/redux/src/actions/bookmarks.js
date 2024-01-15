@@ -176,10 +176,9 @@ export function createSingleBookmark(jwt, userID, bookmarkToBeCreated) {
  * @param {number} userID - id of user
  * @param {number} offset - the offset of the request
  * @param {number} limit - max amount of records per fetch
- * @param {string} sort - sort by
  * @return {Function} - function will be executed in Redux Thunk middleware
  */
-export function getMultipleBookmarks(jwt, userID, offset, limit, sort) {
+export function getMultipleBookmarks(jwt, userID, offset, limit) {
   /**
    * @param {Function} dispatch - Redux store dispatch function
    * @param {Function} getState - Redux store getState function
@@ -193,7 +192,7 @@ export function getMultipleBookmarks(jwt, userID, offset, limit, sort) {
     const url = formURL(
       apiOrigin,
       `/v1/users/${userID}/bookmarks`,
-      { offset, limit, sort },
+      { offset, limit },
       false
     )
     const axiosConfig = {

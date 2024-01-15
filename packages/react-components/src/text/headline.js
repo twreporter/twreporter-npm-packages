@@ -42,7 +42,7 @@ const H4Container = styled(DefaultContainer)`
   font-size: 22px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 20px;
+    font-size: 18px;
   `}
 `
 
@@ -51,7 +51,7 @@ const H5Container = styled(DefaultContainer)`
   font-size: 18px;
   font-family: ${props => props.fontFamily};
   ${mq.tabletAndBelow`
-    font-size: 18px;
+    font-size: 17px;
   `}
 `
 

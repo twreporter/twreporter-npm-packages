@@ -26,6 +26,10 @@ module.exports = {
       __dirname,
       '../../core/src/'
     )
+    config.resolve.alias['@twreporter/redux/lib'] = path.resolve(
+      __dirname,
+      '../../redux/src/'
+    )
     config.resolve.alias['@twreporter/react-components/lib'] = path.resolve(
       __dirname,
       '../../react-components/src/'
