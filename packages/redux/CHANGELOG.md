@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.9.1...@twreporter/redux@7.10.0-rc.0) (2024-01-15)
+
+
+### Bug Fixes
+
+* pass jwt on `fetchPostsByTagListId` for latest page ([a9e1a19](https://github.com/twreporter/twreporter-npm-packages/commit/a9e1a19f8ae86c27a04ddc94ce641f60138b9b85))
+
+
+### Features
+
+* pass authentication token when getting latest posts ([d94ae3b](https://github.com/twreporter/twreporter-npm-packages/commit/d94ae3b7f27b4e49b7495be7f28a7747585d0f4b))
+
+
+
+
+
 ## [7.9.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.9.1-rc.0...@twreporter/redux@7.9.1) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/redux

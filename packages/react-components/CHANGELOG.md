@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.24.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.0...@twreporter/react-components@8.24.0-rc.1) (2024-01-15)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.24.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.23.1...@twreporter/react-components@8.24.0-rc.0) (2024-01-15)
+
+
+### Features
+
+* add `buttonOnclick` props for `EmptyState` component ([25af2dc](https://github.com/twreporter/twreporter-npm-packages/commit/25af2dca4de781b6889a8e4c99d16b55d04aed24))
+
+
+
+
+
 ## [8.23.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.23.1-rc.0...@twreporter/react-components@8.23.1) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/react-components

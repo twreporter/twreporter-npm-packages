@@ -55,7 +55,7 @@ const GuideContainer = styled.div`
     transform: translateY(3px);
   }
 `
-
+const defaultFunc = () => {}
 const EmptyState = ({
   releaseBranch = BRANCH.master,
   style = Style.DEFAULT,
@@ -65,6 +65,7 @@ const EmptyState = ({
   showButton = true,
   buttonText = '',
   buttonUrl = '/',
+  buttonOnclick = defaultFunc,
 }) => {
   let imageUrl = ''
   let imageWidth = ''
@@ -97,7 +98,7 @@ const EmptyState = ({
           )}
         </TextContainer>
         {showButton && (
-          <ButtonContainer href={buttonUrl}>
+          <ButtonContainer href={buttonUrl} onClick={buttonOnclick}>
             <PillButton text={buttonText} size={Size.L} />
           </ButtonContainer>
         )}
@@ -114,6 +115,7 @@ EmptyState.propTypes = {
   showButton: PropTypes.bool,
   buttonText: PropTypes.string,
   buttonUrl: PropTypes.string,
+  buttonOnclick: PropTypes.func,
 }
 
 EmptyState.Style = Style
