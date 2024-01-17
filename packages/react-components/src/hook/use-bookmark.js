@@ -44,12 +44,12 @@ const { createSingleBookmark, deleteSingleBookmark } = twreporterRedux.actions
  * @param {string} bookmark.thumbnail
  * @param {string} bookmark.published_date
  */
-const useBookmark = (store, bookmark) => {
+const useBookmark = store => {
   const [state, dispatch] = store
   const jwt = _.get(state, 'auth.accessToken')
   const userID = _.get(state, 'auth.userInfo.user_id')
 
-  const addCurrentPageToBookmarks = () => {
+  const addCurrentPageToBookmarks = bookmark => {
     const bookmarkToBeCreated = {
       ...bookmark,
       host: getHostFromWindowLocation(),
