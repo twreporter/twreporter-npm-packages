@@ -8,6 +8,7 @@ import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import values from 'lodash/values'
 import snakeCase from 'lodash/snakeCase'
+import find from 'lodash/find'
 
 const _ = {
   concat,
@@ -15,6 +16,7 @@ const _ = {
   get,
   values,
   snakeCase,
+  find,
 }
 
 const defaultState = {
@@ -226,6 +228,35 @@ function entities(state = defaultState, action = {}) {
           ),
         },
       }
+    }
+
+    case types.singleBookmark.delete.success: {
+      const bookmarkId = _.get(action, 'payload.bookmarkID')
+      if (!bookmarkId) {
+        return state
+      }
+      const targetPost = _.find(_.get(state, 'posts.byId', {}), post => {
+        return post.bookmarkId === bookmarkId
+      })
+      if (targetPost && targetPost.bookmarkId) {
+        targetPost.bookmarkId = ''
+      }
+      return state
+    }
+
+    case types.singleBookmark.create.success: {
+      const bookmarkId = _.get(action, 'payload.data.record.id')
+      const slug = _.get(action, 'payload.data.record.slug')
+      if (!bookmarkId || !slug) {
+        return state
+      }
+      const targetPost = _.find(_.get(state, 'posts.byId', {}), post => {
+        return post.slug === slug
+      })
+      if (targetPost) {
+        targetPost.bookmarkId = bookmarkId
+      }
+      return state
     }
 
     default: {
