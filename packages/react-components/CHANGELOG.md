@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.24.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.2...@twreporter/react-components@8.24.0-rc.3) (2024-01-17)
+
+
+### Bug Fixes
+
+* pass bookmark as parameter when create ([c467e68](https://github.com/twreporter/twreporter-npm-packages/commit/c467e68afc1bb401d9a7e9718d9514d69d4564a2))
+
+
+
+
+
 # [8.24.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.1...@twreporter/react-components@8.24.0-rc.2) (2024-01-15)
 
 

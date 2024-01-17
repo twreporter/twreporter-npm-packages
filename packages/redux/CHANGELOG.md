@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0-rc.1...@twreporter/redux@7.10.0-rc.2) (2024-01-17)
+
+
+### Bug Fixes
+
+* update bookmarkId in post entity state ([7cd22c1](https://github.com/twreporter/twreporter-npm-packages/commit/7cd22c1a65f756fb54e313ce52ef387372bdd5d4))
+
+
+
+
+
 # [7.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0-rc.0...@twreporter/redux@7.10.0-rc.1) (2024-01-15)
 
 
