@@ -5,9 +5,6 @@ import styled from 'styled-components'
 import { H5 } from '../../text/headline'
 import { P2 } from '../../text/paragraph'
 import Divider from '../../divider'
-import { DesktopAndAbove, TabletAndBelow } from '../../rwd'
-// enums
-import { Size } from '../../shared-enum'
 // @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -44,26 +41,14 @@ const DividerGray800 = styled(Divider)`
 const Title2 = ({ title = '', subtitle = '', renderButton }) => {
   return (
     <>
-      <DesktopAndAbove>
-        <BarContainer>
-          <Text>
-            <H5Gray800 text={title} />
-            {subtitle ? <P2Gray600 text={subtitle} /> : null}
-          </Text>
-          {renderButton ? renderButton(Size.L) : null}
-        </BarContainer>
-        <DividerGray800 direction={Divider.Direction.HORIZONTAL} />
-      </DesktopAndAbove>
-      <TabletAndBelow>
-        <BarContainer>
-          <Text>
-            <H5Gray800 text={title} />
-            {subtitle ? <P2Gray600 text={subtitle} /> : null}
-          </Text>
-          {renderButton ? renderButton(Size.S) : null}
-        </BarContainer>
-        <DividerGray800 direction={Divider.Direction.HORIZONTAL} />
-      </TabletAndBelow>
+      <BarContainer>
+        <Text>
+          <H5Gray800 text={title} />
+          {subtitle ? <P2Gray600 text={subtitle} /> : null}
+        </Text>
+        {renderButton || null}
+      </BarContainer>
+      <DividerGray800 direction={Divider.Direction.HORIZONTAL} />
     </>
   )
 }
@@ -71,7 +56,7 @@ const Title2 = ({ title = '', subtitle = '', renderButton }) => {
 Title2.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  renderButton: PropTypes.func,
+  renderButton: PropTypes.element,
 }
 
 export default Title2
