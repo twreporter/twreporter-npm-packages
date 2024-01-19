@@ -85,17 +85,9 @@ const TextButton = ({
       disabled={disabled}
       {...props}
     >
-      {size === Size.L ? (
-        <IconContainer isLeft={true}>{leftIconComponent}</IconContainer>
-      ) : (
-        leftIconComponent
-      )}
+      <IconContainer isLeft={true}>{leftIconComponent}</IconContainer>
       {textJSX}
-      {size === Size.L ? (
-        <IconContainer>{rightIconComponent}</IconContainer>
-      ) : (
-        rightIconComponent
-      )}
+      <IconContainer>{rightIconComponent}</IconContainer>
     </ButtonContainer>
   )
 }
