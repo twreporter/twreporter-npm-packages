@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.24.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.4...@twreporter/react-components@8.24.0-rc.5) (2024-01-19)
+
+
+### Bug Fixes
+
+* add margin between text and icon ([d4d3f91](https://github.com/twreporter/twreporter-npm-packages/commit/d4d3f911fc4ee37ed141c14e7e31e54bde9bf4c2))
+
+
+
+
+
 # [8.24.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.3...@twreporter/react-components@8.24.0-rc.4) (2024-01-19)
 
 
