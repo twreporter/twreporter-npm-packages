@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.24.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.3...@twreporter/react-components@8.24.0-rc.4) (2024-01-19)
+
+
+### Bug Fixes
+
+* title 2 spec changed ([21b94e9](https://github.com/twreporter/twreporter-npm-packages/commit/21b94e95c568f2a20f059af27c125320f0491632))
+* title 2 storybook demo text ([f2b1eca](https://github.com/twreporter/twreporter-npm-packages/commit/f2b1eca9f781eed26b2025d7a09060701d206861))
+
+
+
+
+
 # [8.24.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.0-rc.2...@twreporter/react-components@8.24.0-rc.3) (2024-01-17)
 
 
