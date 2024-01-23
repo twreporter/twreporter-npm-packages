@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.2-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.11.2-rc.6...@twreporter/react-article-components@1.11.2-rc.7) (2024-01-23)
+
+
+### Bug Fixes
+
+* use first category name in `category_set` for bookmark ([8b26c1a](https://github.com/twreporter/twreporter-npm-packages/commit/8b26c1a75d47569d10569487b69733416873e679))
+
+
+
+
+
 ## [1.11.2-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.11.2-rc.5...@twreporter/react-article-components@1.11.2-rc.6) (2024-01-19)
 
 **Note:** Version bump only for package @twreporter/react-article-components
