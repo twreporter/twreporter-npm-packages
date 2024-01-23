@@ -377,8 +377,7 @@ export default class Article extends PureComponent {
         _.get(post, 'og_image.resized_targets.mobile.url', ''),
       is_external: _.get(post, 'is_external', false),
       published_date: _.get(post, 'published_date', ''),
-      topicSlug: _.get(relatedTopic, 'slug', ''),
-      topicTitle: _.get(relatedTopic, 'title', ''),
+      category: _.get(post, 'category_set[0].category.name', ''),
     }
 
     const uiManager = new UIManager(post, relatedTopic)
