@@ -244,6 +244,7 @@ function entities(state = defaultState, action = {}) {
       return state
     }
 
+    case types.singleBookmark.read.success:
     case types.singleBookmark.create.success: {
       const bookmarkId = _.get(action, 'payload.data.record.id')
       const slug = _.get(action, 'payload.data.record.slug')
