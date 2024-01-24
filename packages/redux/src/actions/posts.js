@@ -118,12 +118,16 @@ function _fetchPosts(
   successActionType,
   failureActionType,
   defaultPayload = {},
-  timeout
+  timeout,
+  jwt
 ) {
+  const config = { timeout }
+  if (jwt) {
+    config.headers = { Authorization: `Bearer ${jwt}` }
+    config.withCredentials = true
+  }
   return axios
-    .get(url, {
-      timeout,
-    })
+    .get(url, config)
     .then(response => {
       const successAction = {
         type: successActionType,
@@ -257,7 +261,8 @@ function fetchPostsByListId(
   listType,
   limit = 10,
   page = startPage,
-  timeout
+  timeout,
+  jwt
 ) {
   return (dispatch, getState) => {
     const fail = reason => {
@@ -328,7 +333,8 @@ function fetchPostsByListId(
       types.postsByListId.read.success,
       types.postsByListId.read.failure,
       { listId, page },
-      timeout
+      timeout,
+      jwt
     )
   }
 }
@@ -367,10 +373,11 @@ export function fetchPostsByTagListId(
   listId,
   limit = 10,
   page = 0,
+  jwt = '',
   timeout = apiConfig.timeout
 ) {
   return (dispatch, getState) => {
-    return fetchPostsByListId(listId, 'tag_id', limit, page, timeout)(
+    return fetchPostsByListId(listId, 'tag_id', limit, page, timeout, jwt)(
       dispatch,
       getState
     )
@@ -411,12 +418,17 @@ export function fetchPostsByCategorySetListId(
 export function fetchLatestPosts(
   limit = 10,
   page = 0,
+  jwt = '',
   timeout = apiConfig.timeout
 ) {
   return (dispatch, getState) => {
-    return fetchPostsByListId(LATEST_LIST_ID, 'latest', limit, page, timeout)(
-      dispatch,
-      getState
-    )
+    return fetchPostsByListId(
+      LATEST_LIST_ID,
+      'latest',
+      limit,
+      page,
+      timeout,
+      jwt
+    )(dispatch, getState)
   }
 }

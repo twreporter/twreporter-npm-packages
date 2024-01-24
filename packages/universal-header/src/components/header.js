@@ -273,11 +273,13 @@ const Header = ({ hamburgerContext = {} }) => {
   }, [pathname])
 
   const isOnArticlePage = _.includes(pathname, EntityPath.article)
-  const needPrevIconAccountRoute = [
+  const needPrevIconRoute = [
     `${EntityPath.account}/donation-history`,
     `${EntityPath.account}/email-subscription`,
+    `${EntityPath.myReading}/saved`,
+    `${EntityPath.myReading}/history`,
   ]
-  const isOnNeedPrevIconAccountPage = _.some(needPrevIconAccountRoute, el =>
+  const isOnNeedPrevIconPage = _.some(needPrevIconRoute, el =>
     _.includes(pathname, el)
   )
   const [currentClientWidth, setCurrentClientWidth] = useState(0)
@@ -294,7 +296,7 @@ const Header = ({ hamburgerContext = {} }) => {
     }
   }, [])
   const showPrevIcon =
-    isOnArticlePage || (isOnNeedPrevIconAccountPage && currentClientWidth < 768) // only show it on mobile
+    isOnArticlePage || (isOnNeedPrevIconPage && currentClientWidth < 768) // only show it on mobile
   const BackToPrevIcon = (
     <Arrow direction="left" releaseBranch={releaseBranch} />
   )

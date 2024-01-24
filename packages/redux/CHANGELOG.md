@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.10.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0-rc.2...@twreporter/redux@7.10.0-rc.3) (2024-01-24)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0-rc.1...@twreporter/redux@7.10.0-rc.2) (2024-01-17)
+
+
+### Bug Fixes
+
+* update bookmarkId in post entity state ([7cd22c1](https://github.com/twreporter/twreporter-npm-packages/commit/7cd22c1a65f756fb54e313ce52ef387372bdd5d4))
+
+
+
+
+
+# [7.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0-rc.0...@twreporter/redux@7.10.0-rc.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* remove unused sort ([26b7f52](https://github.com/twreporter/twreporter-npm-packages/commit/26b7f52a9984da298f978a67855c6b55a53890e3))
+
+
+
+
+
+# [7.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.9.1...@twreporter/redux@7.10.0-rc.0) (2024-01-15)
+
+
+### Bug Fixes
+
+* pass jwt on `fetchPostsByTagListId` for latest page ([a9e1a19](https://github.com/twreporter/twreporter-npm-packages/commit/a9e1a19f8ae86c27a04ddc94ce641f60138b9b85))
+
+
+### Features
+
+* pass authentication token when getting latest posts ([d94ae3b](https://github.com/twreporter/twreporter-npm-packages/commit/d94ae3b7f27b4e49b7495be7f28a7747585d0f4b))
+
+
+
+
+
 ## [7.9.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.9.1-rc.0...@twreporter/redux@7.9.1) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/redux

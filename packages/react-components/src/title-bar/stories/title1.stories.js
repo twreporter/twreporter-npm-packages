@@ -1,8 +1,8 @@
-import Bar from '../components/bar'
+import Title1 from '../components/title1'
 
 export default {
-  title: 'Title Bar/Bar',
-  component: Bar,
+  title: 'Title Bar/Title 1',
+  component: Title1,
 }
 
 export const bar = {

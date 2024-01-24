@@ -12,7 +12,7 @@ import { TopSectionContent, ListSectionContent } from './section'
 import { TEXT } from '../../constants/topics'
 // @twreporter
 import { fontWeight } from '@twreporter/core/lib/constants/font'
-import { TitleBar } from '@twreporter/react-components/lib/title-bar'
+import { Title1 } from '@twreporter/react-components/lib/title-bar'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
@@ -98,7 +98,7 @@ class Topics extends Component {
       topTopicName = _.get(topics, [0, 'topic_name'], '')
       topicUrl = _.get(topics, [0, 'linkTo'], '')
       topSectionJSX = [
-        <TitleBar
+        <Title1
           key="top-title"
           title="深度專題"
           subtitle={TEXT.SECTION_TITLE_FEATURED}
@@ -126,7 +126,7 @@ class Topics extends Component {
       <PageContent>
         {topSectionJSX}
         {isFetching && isFirstPage ? null : (
-          <TitleBar subtitle={TEXT.SECTION_TITLE_OTHERS} />
+          <Title1 subtitle={TEXT.SECTION_TITLE_OTHERS} />
         )}
         <WrappedListSectionContent
           isFetching={isFetching}
@@ -140,7 +140,7 @@ class Topics extends Component {
 Topics.propTypes = {
   topics: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
       linkTo: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       topic_name: PropTypes.string.isRequired,
