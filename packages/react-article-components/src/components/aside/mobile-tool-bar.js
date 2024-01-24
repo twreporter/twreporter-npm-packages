@@ -320,7 +320,7 @@ const BookmarkBlock = ({ articleMeta }) => {
   return (
     <React.Fragment>
       <BookmarkWidget
-        toAutoCheck={false}
+        toAutoCheck={true}
         articleMeta={articleMeta}
         renderIcon={renderIcon}
       />

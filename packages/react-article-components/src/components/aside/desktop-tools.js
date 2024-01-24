@@ -269,7 +269,7 @@ const BookmarkBlock = ({ articleMeta }) => {
 
   return (
     <BookmarkWidget
-      toAutoCheck={false}
+      toAutoCheck={true}
       articleMeta={articleMeta}
       renderIcon={renderIcon}
     />
