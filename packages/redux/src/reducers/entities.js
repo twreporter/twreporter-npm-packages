@@ -181,7 +181,22 @@ function entities(state = defaultState, action = {}) {
       }
     }
 
-    case types.postsByListId.read.success:
+    case types.postsByListId.read.success: {
+      const allPostIds = state.posts.allIds
+      const posts = _.get(action, 'payload.items', [])
+
+      const { allIds, byId, slugToId } = _buildState(allPostIds, posts, true)
+
+      return {
+        ...state,
+        posts: {
+          allIds,
+          byId: Object.assign({}, state.posts.byId, byId),
+          slugToId: Object.assign({}, state.posts.slugToId, slugToId),
+        },
+      }
+    }
+
     case types.relatedPosts.read.success: {
       const allPostIds = state.posts.allIds
       const posts = _.get(action, 'payload.items', [])
