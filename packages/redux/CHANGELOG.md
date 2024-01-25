@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.10.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.1-rc.0...@twreporter/redux@7.10.1-rc.1) (2024-01-25)
+
+
+### Bug Fixes
+
+* force update post entity after get post on latest page ([0031d69](https://github.com/twreporter/twreporter-npm-packages/commit/0031d69db0da0eb05a9d13e00785f2d947539b9f))
+
+
+
+
+
 ## [7.10.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0...@twreporter/redux@7.10.1-rc.0) (2024-01-24)
 
 
