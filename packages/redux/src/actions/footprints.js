@@ -80,7 +80,6 @@ export function getUserFootprints(jwt, userID, offset, limit) {
       `/v2/${apiEndpoints.users}/${userID}/analytics/reading-footprint`,
       { limit, offset }
     )
-    console.log('url: ', url)
     dispatch({
       type: types.footprints.read.request,
       url,
