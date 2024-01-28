@@ -78,8 +78,9 @@ export function getUserFootprints(jwt, userID, offset, limit) {
     const url = formURL(
       apiOrigin,
       `/v2/${apiEndpoints.users}/${userID}/analytics/reading-footprint`,
-      { offset, limit }
+      { limit, offset }
     )
+    console.log('url: ', url)
     dispatch({
       type: types.footprints.read.request,
       url,
@@ -127,7 +128,10 @@ export function setUserFootprint(jwt, userID, postID) {
   return function(dispatch, getState) {
     const state = getState()
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
-    const url = formURL(apiOrigin, `/v2/${apiEndpoints.users}/${userID}`)
+    const url = formURL(
+      apiOrigin,
+      `/v2/${apiEndpoints.users}/${userID}/analytics/reading-footprint`
+    )
     dispatch({
       type: types.footprints.update.request,
       url,
