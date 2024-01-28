@@ -18,6 +18,7 @@ const searchedAuthorsList = 'searchedAuthorsList'
 
 const user = 'user'
 const analytics = 'analytics'
+const footprints = 'footprints'
 
 // sections in index_page
 const editorPicksSection = 'editor_picks_section'
@@ -90,4 +91,5 @@ export default {
   featureTopic: 'featureTopic',
   user,
   analytics,
+  footprints,
 }

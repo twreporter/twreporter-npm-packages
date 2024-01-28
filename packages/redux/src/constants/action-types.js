@@ -164,4 +164,17 @@ export default {
       failure: 'fail to update user analytics data',
     },
   },
+
+  footprints: {
+    read: {
+      request: 'request to fetch single user footprints',
+      success: 'succes to fetch single user footprints',
+      failure: 'fail to fetch single user footprints',
+    },
+    update: {
+      request: 'request to update user footprint',
+      success: 'succes to update user footprint',
+      failure: 'fail to update user footprint',
+    },
+  },
 }
