@@ -33,6 +33,7 @@ import {
   MenuDropdownItem,
 } from './hamburger-menu-item'
 import { MobileIcons } from './icons'
+import Footer from './hamburger-footer'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import Link from '@twreporter/react-components/lib/customized-link'
@@ -52,13 +53,8 @@ import {
   TabletAndAbove,
   MobileOnly,
 } from '@twreporter/react-components/lib/rwd'
-// feature toggle
-import FooterNew from './hamburger-footer'
-import FooterOld from './hamburger-footer-old'
-import { FOUNDATION_CATEGORY_SET } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import map from 'lodash/map'
-const Footer = FOUNDATION_CATEGORY_SET ? FooterNew : FooterOld
 const _ = {
   map,
 }
