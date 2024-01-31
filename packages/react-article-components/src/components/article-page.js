@@ -378,6 +378,7 @@ export default class Article extends PureComponent {
       is_external: _.get(post, 'is_external', false),
       published_date: _.get(post, 'published_date', ''),
       category: _.get(post, 'category_set[0].category.name', ''),
+      post_id: _.get(post, 'id', ''),
     }
 
     const uiManager = new UIManager(post, relatedTopic)
