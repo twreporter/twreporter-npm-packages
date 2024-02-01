@@ -15,6 +15,7 @@ import { THEME } from '@twreporter/core/lib/constants/theme'
 const ButtonContainer = styled.div`
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   display: flex;
+  color: ${props => props.color};
   svg {
     width: 24px;
     height: 24px;
@@ -22,9 +23,11 @@ const ButtonContainer = styled.div`
   }
 
   ${mq.desktopAndAbove`
-    &:hover svg {
-      background-color: ${props => props.hoverColor};
-    }
+    &:hover {
+      color: ${props => props.hoverColor};
+      svg {
+        background-color: ${props => props.hoverColor};
+      }
   `}
 `
 
