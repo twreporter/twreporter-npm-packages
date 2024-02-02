@@ -12,11 +12,28 @@ export const getFilledPillButtonTheme = (theme, disabled, style) => {
   if (disabled) {
     switch (theme) {
       case THEME.transparent:
+        switch (style) {
+          case Style.LIGHT:
+            return {
+              color: colorGrayscale.white,
+              bgColor: colorGrayscale.gray400,
+              hoverColor: colorGrayscale.white,
+              hoverBgColor: colorGrayscale.gray400,
+            }
+          default:
+            return {
+              color: colorGrayscale.gray700,
+              bgColor: colorGrayscale.gray500,
+              hoverColor: colorGrayscale.gray700,
+              hoverBgColor: colorGrayscale.gray500,
+            }
+        }
+      case THEME.photography:
         return {
-          color: colorGrayscale.white,
-          bgColor: colorGrayscale.gray200,
-          hoverColor: colorGrayscale.white,
-          hoverBgColor: colorGrayscale.gray200,
+          color: colorGrayscale.gray700,
+          bgColor: colorGrayscale.gray500,
+          hoverColor: colorGrayscale.gray700,
+          hoverBgColor: colorGrayscale.gray500,
         }
       default:
         return {
@@ -29,18 +46,54 @@ export const getFilledPillButtonTheme = (theme, disabled, style) => {
   }
   switch (theme) {
     case THEME.photography:
-      return {
-        color: colorPhoto.dark,
-        bgColor: colorSupportive.pastel,
-        hoverColor: colorGrayscale.white,
-        hoverBgColor: colorSupportive.heavy,
+      switch (style) {
+        case Style.DARK:
+          return {
+            color: colorPhoto.dark,
+            bgColor: colorGrayscale.white,
+            hoverColor: colorPhoto.dark,
+            hoverBgColor: colorGrayscale.gray200,
+          }
+        case Style.LIGHT:
+          return {
+            color: colorPhoto.dark,
+            bgColor: colorGrayscale.gray300,
+            hoverColor: colorPhoto.dark,
+            hoverBgColor: colorGrayscale.gray400,
+          }
+        case Style.BRAND:
+        default:
+          return {
+            color: colorPhoto.dark,
+            bgColor: colorSupportive.faded,
+            hoverColor: colorPhoto.dark,
+            hoverBgColor: colorSupportive.pastel,
+          }
       }
     case THEME.transparent:
-      return {
-        color: colorGrayscale.gray600,
-        bgColor: colorGrayscale.white,
-        hoverColor: colorGrayscale.white,
-        hoverBgColor: colorGrayscale.gray400,
+      switch (style) {
+        case Style.DARK:
+          return {
+            color: colorGrayscale.gray800,
+            bgColor: colorGrayscale.gray300,
+            hoverColor: colorGrayscale.gray800,
+            hoverBgColor: colorGrayscale.gray400,
+          }
+        case Style.LIGHT:
+          return {
+            color: colorGrayscale.white,
+            bgColor: colorGrayscale.gray800,
+            hoverColor: colorGrayscale.white,
+            hoverBgColor: colorGrayscale.black,
+          }
+        case Style.BRAND:
+        default:
+          return {
+            color: colorGrayscale.gray800,
+            bgColor: colorGrayscale.white,
+            hoverColor: colorGrayscale.gray800,
+            hoverBgColor: colorGrayscale.gray200,
+          }
       }
     case THEME.normal:
     case THEME.index:
@@ -76,18 +129,28 @@ export const getOutlinePillButtonTheme = (theme, disabled, style) => {
   if (disabled) {
     switch (theme) {
       case THEME.transparent:
-        return {
-          color: colorGrayscale.gray200,
-          bgColor: colorGrayscale.gray200,
-          hoverColor: colorGrayscale.gray200,
-          hoverBgColor: colorGrayscale.gray200,
+        switch (style) {
+          case Style.LIGHT:
+            return {
+              color: colorGrayscale.gray400,
+              bgColor: colorGrayscale.gray400,
+              hoverColor: colorGrayscale.gray400,
+              hoverBgColor: colorGrayscale.gray400,
+            }
+          default:
+            return {
+              color: colorGrayscale.gray500,
+              bgColor: colorGrayscale.gray500,
+              hoverColor: colorGrayscale.gray500,
+              hoverBgColor: colorGrayscale.gray500,
+            }
         }
       case THEME.photography:
         return {
-          color: colorGrayscale.gray600,
-          bgColor: colorGrayscale.gray200,
-          hoverColor: colorGrayscale.gray600,
-          hoverBgColor: colorGrayscale.gray200,
+          color: colorGrayscale.gray500,
+          bgColor: colorGrayscale.gray500,
+          hoverColor: colorGrayscale.gray500,
+          hoverBgColor: colorGrayscale.gray500,
         }
       default:
         return {
@@ -100,18 +163,54 @@ export const getOutlinePillButtonTheme = (theme, disabled, style) => {
   }
   switch (theme) {
     case THEME.photography:
-      return {
-        color: colorSupportive.pastel,
-        bgColor: colorSupportive.pastel,
-        hoverColor: colorSupportive.heavy,
-        hoverBgColor: colorSupportive.heavy,
+      switch (style) {
+        case Style.DARK:
+          return {
+            color: colorGrayscale.white,
+            bgColor: colorGrayscale.white,
+            hoverColor: colorGrayscale.gray200,
+            hoverBgColor: colorGrayscale.gray200,
+          }
+        case Style.LIGHT:
+          return {
+            color: colorGrayscale.gray300,
+            bgColor: colorGrayscale.gray300,
+            hoverColor: colorGrayscale.gray400,
+            hoverBgColor: colorGrayscale.gray400,
+          }
+        case Style.BRAND:
+        default:
+          return {
+            color: colorSupportive.faded,
+            bgColor: colorSupportive.faded,
+            hoverColor: colorSupportive.pastel,
+            hoverBgColor: colorSupportive.pastel,
+          }
       }
     case THEME.transparent:
-      return {
-        color: colorGrayscale.white,
-        bgColor: colorGrayscale.white,
-        hoverColor: colorGrayscale.gray600,
-        hoverBgColor: colorGrayscale.gray600,
+      switch (style) {
+        case Style.DARK:
+          return {
+            color: colorGrayscale.gray300,
+            bgColor: colorGrayscale.gray300,
+            hoverColor: colorGrayscale.gray400,
+            hoverBgColor: colorGrayscale.gray400,
+          }
+        case Style.LIGHT:
+          return {
+            color: colorGrayscale.gray800,
+            bgColor: colorGrayscale.gray800,
+            hoverColor: colorGrayscale.black,
+            hoverBgColor: colorGrayscale.black,
+          }
+        case Style.BRAND:
+        default:
+          return {
+            color: colorGrayscale.white,
+            bgColor: colorGrayscale.white,
+            hoverColor: colorGrayscale.gray200,
+            hoverBgColor: colorGrayscale.gray200,
+          }
       }
     case THEME.normal:
     case THEME.index:
