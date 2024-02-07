@@ -4,10 +4,12 @@ import HeaderContext from '../contexts/header-context'
 // constant
 import { CONTEXT_PROP } from '../constants/prop-types'
 // feature toggle
-// components
-import Header from '../components/header'
+import HeaderNew from '../components/header'
+import HeaderOld from '../components/header-old'
+import { MY_READING } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import get from 'lodash/get'
+const Header = MY_READING ? HeaderNew : HeaderOld
 const _ = {
   get,
 }

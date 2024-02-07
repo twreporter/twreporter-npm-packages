@@ -9,11 +9,9 @@ import DonationBox from './donation-box'
 import License from './license'
 import Link from './link'
 import Metadata from './aside/metadata'
-import ToolBar from './aside/mobile-tool-bar'
 import Related from './related'
 import SeparationCurve from './separation-curve'
 import UIManager from '../managers/ui-manager'
-import Tools from './aside/desktop-tools'
 // constants
 import themeConst from '../constants/theme'
 import { RELATED_POST_ANCHOR_ID } from '../constants/anchor'
@@ -25,8 +23,16 @@ import {
   colorGrayscale,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+// feature toggle
+import { MY_READING } from '@twreporter/core/lib/constants/feature-flag'
+import ToolsNew from './aside/desktop-tools'
+import ToolsOld from './aside/desktop-tools-old'
+import ToolBarNew from './aside/mobile-tool-bar'
+import ToolBarOld from './aside/mobile-tool-bar-old'
 // lodash
 import get from 'lodash/get'
+const Tools = MY_READING ? ToolsNew : ToolsOld
+const ToolBar = MY_READING ? ToolBarNew : ToolBarOld
 const _ = {
   get,
 }

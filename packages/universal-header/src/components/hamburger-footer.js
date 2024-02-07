@@ -3,10 +3,19 @@ import styled from 'styled-components'
 // context
 import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
-import { getFooterLinks, getSocialMediaLinks } from '../utils/links'
+import {
+  getMemberLinks,
+  getFooterLinks,
+  getSocialMediaLinks,
+} from '../utils/links'
 import { selectHamburgerFooterTheme } from '../utils/theme'
 // constants
-import { FOOTER_ORDER, FOOTER_LABEL } from '../constants/footer'
+import {
+  MEMBER_ORDER,
+  FOOTER_ICON,
+  FOOTER_ORDER,
+  FOOTER_LABEL,
+} from '../constants/footer'
 import { SOCIAL_MEDIA_ORDER } from '../constants/social-media'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -14,7 +23,7 @@ import Divider from '@twreporter/react-components/lib/divider'
 import Link from '@twreporter/react-components/lib/customized-link'
 import { P2 } from '@twreporter/react-components/lib/text/paragraph'
 import { IconButton } from '@twreporter/react-components/lib/button'
-import { SocialMedia } from '@twreporter/react-components/lib/icon'
+import { SocialMedia, Icon } from '@twreporter/react-components/lib/icon'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import map from 'lodash/map'
@@ -28,16 +37,30 @@ const FooterContainer = styled.div`
 `
 const LinkItem = styled.div`
   padding: 8px 32px;
+  display: flex;
+  align-items: center;
   color: ${props => props.color};
+  svg {
+    height: 18px;
+    width: 18px;
+    margin-right: 4px;
+    background-color: ${props => props.color};
+  }
   ${mq.desktopAndAbove`
     &:hover {
       color: ${props => props.hoverColor};
       background-color: ${props => props.hoverBgColor};
+      svg {
+        background-color: ${props => props.hoverColor};
+      }
     }
   `}
   &:active {
     color: ${props => props.activeColor};
     background-color: ${props => props.activeBgColor};
+    svg {
+      background-color: ${props => props.activeColor};
+    }
   }
 `
 const LinkSection = styled.div`
@@ -78,6 +101,32 @@ const Footer = ({ ...props }) => {
     activeColor,
     activeBgColor,
   } = selectHamburgerFooterTheme(footerTheme)
+  const memberLinks = getMemberLinks(isLinkExternal, releaseBranch)
+  const memberJSX = memberLinks ? (
+    <LinkSection>
+      {_.map(MEMBER_ORDER, key => {
+        const link = memberLinks[key]
+        const label = FOOTER_LABEL[key]
+        if (!link || !label) {
+          return
+        }
+        return (
+          <Link {...link} key={key} onClick={closeHamburgerMenu}>
+            <LinkItem
+              color={color}
+              hoverColor={hoverColor}
+              hoverBgColor={hoverBgColor}
+              activeColor={activeColor}
+              activeBgColor={activeBgColor}
+            >
+              <Icon filename={FOOTER_ICON[key]} releaseBranch={releaseBranch} />
+              <P2 text={label} />
+            </LinkItem>
+          </Link>
+        )
+      })}
+    </LinkSection>
+  ) : null
 
   const footerLinks = getFooterLinks(isLinkExternal, releaseBranch)
   const linkJSX = footerLinks ? (
@@ -129,6 +178,10 @@ const Footer = ({ ...props }) => {
 
   return (
     <FooterContainer {...props}>
+      {memberJSX}
+      <DividerContainer>
+        <Divider />
+      </DividerContainer>
       {linkJSX}
       <DividerContainer>
         <Divider />

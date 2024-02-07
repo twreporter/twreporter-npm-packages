@@ -1,5 +1,5 @@
 import { ACTION_KEY } from '../constants/actions'
-import { FOOTER_KEY, FOOTER_PATH } from '../constants/footer'
+import { FOOTER_KEY, FOOTER_PATH, MEMBER_ORDER } from '../constants/footer'
 import { SOCIAL_MEDIA_KEY } from '../constants/social-media'
 import { CHANNEL_KEY, CHANNEL_PATH } from '../constants/channels'
 import externalLinks from '../constants/external-links'
@@ -108,7 +108,14 @@ export function getBookmarksLink(
   isExternal = defaultIsExternal,
   releaseBranch = defaultReleaseBranch
 ) {
-  return __getLink(isExternal, releaseBranch, mainBaseURL, '/bookmarks')
+  return __getLink(isExternal, releaseBranch, mainBaseURL, '/myreading/saved')
+}
+
+export function getMyReadingLink(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
+  return __getLink(isExternal, releaseBranch, mainBaseURL, '/myreading')
 }
 
 export function getSearchLink(
@@ -173,6 +180,25 @@ export function getFooterLinks(
   }
 }
 
+export function getMemberLinks(
+  isExternal = defaultIsExternal,
+  releaseBranch = defaultReleaseBranch
+) {
+  return _.reduce(
+    MEMBER_ORDER,
+    (res, memberKey) => {
+      res[memberKey] = __getLink(
+        isExternal,
+        releaseBranch,
+        mainBaseURL,
+        FOOTER_PATH[memberKey]
+      )
+      return res
+    },
+    {}
+  )
+}
+
 export function getSocialMediaLinks() {
   const externalLinks = __getExternalLinks()
   return _.reduce(
@@ -216,6 +242,7 @@ export function getTabBarLinks(
   return {
     home: __getLink(isExternal, releaseBranch, mainBaseURL, ''),
     latest: __getLink(isExternal, releaseBranch, mainBaseURL, '/latest'),
-    bookmark: __getLink(isExternal, releaseBranch, mainBaseURL, '/bookmarks'),
+    topic: __getLink(isExternal, releaseBranch, mainBaseURL, '/topics'),
+    myreading: __getLink(isExternal, releaseBranch, mainBaseURL, '/myreading'),
   }
 }

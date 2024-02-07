@@ -55,10 +55,10 @@ import {
 // feature toggle
 import FooterNew from './hamburger-footer'
 import FooterOld from './hamburger-footer-old'
-import { FOUNDATION_CATEGORY_SET } from '@twreporter/core/lib/constants/feature-flag'
+import { MY_READING } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import map from 'lodash/map'
-const Footer = FOUNDATION_CATEGORY_SET ? FooterNew : FooterOld
+const Footer = MY_READING ? FooterNew : FooterOld
 const _ = {
   map,
 }

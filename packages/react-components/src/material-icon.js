@@ -10,6 +10,7 @@ const StyledSymbol = styled.span`
     'opsz': ${props.size}
   `};
   font-size: ${props => props.size}px;
+  font-weight: ${props => props.weight};
 `
 
 const MeterialSymbol = ({
