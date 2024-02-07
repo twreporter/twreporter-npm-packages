@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.25.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.1-rc.1...@twreporter/react-components@8.25.0-rc.0) (2024-02-07)
+
+
+### Features
+
+* add `my reading` related entry on universal navigator ([79cadc2](https://github.com/twreporter/twreporter-npm-packages/commit/79cadc293493bc517fcf95139ff208633acd699b))
+
+
+
+
+
 ## [8.24.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.1-rc.0...@twreporter/react-components@8.24.1-rc.1) (2024-01-25)
 
 **Note:** Version bump only for package @twreporter/react-components
