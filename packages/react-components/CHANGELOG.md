@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.25.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.25.0-rc.0...@twreporter/react-components@8.25.0-rc.1) (2024-02-07)
+
+
+### Features
+
+* add more PillButton theme color ([6e28d07](https://github.com/twreporter/twreporter-npm-packages/commit/6e28d079c9c54cd60d75c8fac453ff5d378aece9))
+* add more TextButton theme color & loading ([d72c845](https://github.com/twreporter/twreporter-npm-packages/commit/d72c845e4f73857ff10d6a0293d37402c0d29775))
+* iconWithTextButton P3 => P4 ([27caf83](https://github.com/twreporter/twreporter-npm-packages/commit/27caf832bf455be2d139aa55adfecc9996700596))
+
+
+
+
+
 # [8.25.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.24.1-rc.1...@twreporter/react-components@8.25.0-rc.0) (2024-02-07)
 
 
