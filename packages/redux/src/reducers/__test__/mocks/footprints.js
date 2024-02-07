@@ -77,6 +77,7 @@ export const mockActions = {
             ],
             published_date: '2015-12-16T00:00:00Z',
             is_external: false,
+            bookmark_id: 123,
           },
         ],
         status: 'ok',

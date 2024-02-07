@@ -66,7 +66,7 @@ function buildSuccessActionFromRes(axiosResponse, actionType) {
  * @param {number} limit - max amount of records per fetch
  * @returns {Function} - function will be executed in Redux Thunk middleware
  */
-export function getUserFootprints(jwt, userID, offset, limit) {
+export function getUserFootprints(jwt, userID, offset = 0, limit = 10) {
   /**
    * @param {Function} dispatch - Redux store dispatch function
    * @param {Function} getState - Redux store getState function

@@ -55,7 +55,7 @@ describe('Test footprints action', () => {
           expect(store.getActions()[1]).toEqual(successExp)
         })
     })
-    test('should dispatch an action created by `getUserFootprints` if updating failed', () => {
+    test('should dispatch an action created by `getUserFootprints` if fetching failed', () => {
       const mockStatusCode = 500
       const mockAPIRes = {
         status: 'error',

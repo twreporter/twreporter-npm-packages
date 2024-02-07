@@ -23,6 +23,7 @@ const articleMetaForBookmark = PropTypes.shape({
   thumbnail: PropTypes.string.isRequired,
   published_date: PropTypes.string,
   post_id: PropTypes.string,
+  category: PropTypes.string,
 })
 
 const releaseBranch = PropTypes.oneOf([
