@@ -8,13 +8,13 @@ import HeaderContext from '../contexts/header-context'
 import {
   getLoginLink,
   getSearchLink,
-  getMyReadingLink,
+  getBookmarksLink,
   getMemberLink,
-} from '../utils/links'
+} from '../utils/links-old'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import { IconButton, TextButton } from '@twreporter/react-components/lib/button'
-import { Member, Search, KidStar } from '@twreporter/react-components/lib/icon'
+import { Member, Search, Bookmark } from '@twreporter/react-components/lib/icon'
 import { SearchBar } from '@twreporter/react-components/lib/input'
 import { useOutsideClick } from '@twreporter/react-components/lib/hook'
 import { THEME } from '@twreporter/core/lib/constants/theme'
@@ -156,10 +156,10 @@ const SearchIcon = () => {
   )
 }
 
-const MyReadingIcon = () => {
+const BookmarkIcon = () => {
   const { releaseBranch, isLinkExternal, theme } = useContext(HeaderContext)
-  const link = getMyReadingLink(isLinkExternal, releaseBranch)
-  const Icon = <KidStar releaseBranch={releaseBranch} />
+  const link = getBookmarksLink(isLinkExternal, releaseBranch)
+  const Icon = <Bookmark releaseBranch={releaseBranch} />
 
   return (
     <IconContainer key="bookmark">
@@ -173,7 +173,7 @@ const MyReadingIcon = () => {
 const Icons = () => (
   <IconsContainer>
     <SearchIcon />
-    <MyReadingIcon />
+    <BookmarkIcon />
     <MemberIcon />
   </IconsContainer>
 )

@@ -5,7 +5,7 @@ import CSSTransition from 'react-transition-group/CSSTransition'
 // context
 import HeaderContext, { HamburgerContext } from '../contexts/header-context'
 // utils
-import { getLogoLink, checkReferrer } from '../utils/links'
+import { getLogoLink, checkReferrer } from '../utils/links-old'
 import { selectLogoType, selectHeaderTheme } from '../utils/theme'
 // constants
 import themeConst from '../constants/theme'
@@ -13,10 +13,10 @@ import { MENU_WIDTH } from '../constants/hamburger-menu'
 // components
 import Channel from './channels'
 import { DesktopHeaderAction, MobileHeaderAction } from './action-button'
-import Icons, { MobileIcons } from './icons'
+import Icons, { MobileIcons } from './icons-old'
 import Slogan from './slogan'
 import HamburgerMenu from './hamburger-menu'
-import TabBar from './tab-bar'
+import TabBar from './tab-bar-old'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -235,9 +235,7 @@ const HideOnArticle = styled.div`
 `
 const PrevButton = styled.div`
   ${props => (props.isShow ? '' : 'display: none;')}
-  margin-right: 8px;
-  padding: 4px;
-  transform: translateX(-8px);
+  margin-right: 16px;
 `
 
 const Header = ({ hamburgerContext = {} }) => {
@@ -357,8 +355,12 @@ const Header = ({ hamburgerContext = {} }) => {
     <HeaderSection>
       <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
         <FlexGroup>
-          <PrevButton isShow={showPrevIcon} onClick={gotoPrev}>
-            <IconButton iconComponent={BackToPrevIcon} theme={theme} />
+          <PrevButton isShow={showPrevIcon}>
+            <IconButton
+              iconComponent={BackToPrevIcon}
+              theme={theme}
+              onClick={gotoPrev}
+            />
           </PrevButton>
           <MobileLogoContainer>
             <Link {...logoLink}>

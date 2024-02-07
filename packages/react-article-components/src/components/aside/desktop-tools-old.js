@@ -106,7 +106,7 @@ const PrintIconBlock = styled.div`
 const BookmarkIconBlock = styled.div`
   ${iconBlockCSS}
   &::after {
-    content: '${props => (props.isBookmarked ? '取消收藏' : '收藏')}';
+    content: '${props => (props.isBookmarked ? '取消書籤' : '加入書籤')}';
   }
 `
 
