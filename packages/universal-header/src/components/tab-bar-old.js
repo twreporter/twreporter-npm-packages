@@ -55,7 +55,7 @@ const TabBar = () => {
     isHamburgerMenuOpen,
   } = useContext(HamburgerContext)
   const iconTheme = theme === themeConst.photography ? theme : themeConst.normal
-  const { home, latest, topic, myreading } = getTabBarLinks(
+  const { home, latest, bookmark } = getTabBarLinks(
     isLinkExternal,
     releaseBranch
   )
@@ -65,11 +65,8 @@ const TabBar = () => {
   const ClockIcon = (
     <MaterialSymbol icon="schedule" weight={400} grade={0} size={24} />
   )
-  const TopicIcon = (
-    <MaterialSymbol icon="import_contacts" weight={400} grade={0} size={24} />
-  )
-  const MyReadingIcon = (
-    <MaterialSymbol icon="kid_star" weight={400} grade={0} size={24} />
+  const BookmarkIcon = (
+    <MaterialSymbol icon="bookmark" weight={400} grade={0} size={24} />
   )
   const HamburgerIcon = (
     <MaterialSymbol icon="menu" weight={400} grade={0} size={24} />
@@ -78,8 +75,7 @@ const TabBar = () => {
   const isHomeActive = !isHamburgerMenuOpen && pathname === '/'
   const isLatestActive =
     !isHamburgerMenuOpen && checkPathnameParent(pathname, 'latest')
-  const isTopicActive = !isHamburgerMenuOpen && pathname === '/topics'
-  const isMyReadingActive = !isHamburgerMenuOpen && pathname === '/myreading'
+  const isBookmarkActive = !isHamburgerMenuOpen && pathname === '/bookmarks'
   const hamburgerIconText = isHamburgerMenuOpen ? '關閉選單' : '選單'
 
   return (
@@ -100,20 +96,12 @@ const TabBar = () => {
           active={isLatestActive}
         />
       </ButtonLinkContainer>
-      <ButtonLinkContainer {...topic} onClick={closeHamburgerMenu}>
+      <ButtonLinkContainer {...bookmark} onClick={closeHamburgerMenu}>
         <IconWithTextButton
-          text="深度專題"
-          iconComponent={TopicIcon}
+          text="我的書籤"
+          iconComponent={BookmarkIcon}
           theme={iconTheme}
-          active={isTopicActive}
-        />
-      </ButtonLinkContainer>
-      <ButtonLinkContainer {...myreading} onClick={closeHamburgerMenu}>
-        <IconWithTextButton
-          text="我的閱讀"
-          iconComponent={MyReadingIcon}
-          theme={iconTheme}
-          active={isMyReadingActive}
+          active={isBookmarkActive}
         />
       </ButtonLinkContainer>
       <ButtonContainer onClick={toggleHamburger}>
