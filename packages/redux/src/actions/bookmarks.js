@@ -47,6 +47,7 @@ const apiTimeout = apiConfig.timeout
  * @property {string} desc
  * @property {string} thumbnail
  * @property {string} published_date
+ * @property {string} post_id
  */
 
 /**
