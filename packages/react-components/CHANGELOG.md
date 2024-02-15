@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.25.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.25.0-rc.2...@twreporter/react-components@8.25.0-rc.3) (2024-02-15)
+
+
+### Bug Fixes
+
+* export ShortStory ([e3f2c6d](https://github.com/twreporter/twreporter-npm-packages/commit/e3f2c6d8f6c0f03483abe4efbd173dd3ccc55b07))
+
+
+
+
+
 # [8.25.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.25.0-rc.1...@twreporter/react-components@8.25.0-rc.2) (2024-02-15)
 
 **Note:** Version bump only for package @twreporter/react-components

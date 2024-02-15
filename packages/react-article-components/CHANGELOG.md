@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.2...@twreporter/react-article-components@1.12.0-rc.3) (2024-02-15)
+
+
+### Features
+
+* add post_id while create bookmark ([ee9c6f9](https://github.com/twreporter/twreporter-npm-packages/commit/ee9c6f98d08ebe00b86a91250a2da4cdf69b84ab))
+
+
+
+
+
 # [1.12.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.1...@twreporter/react-article-components@1.12.0-rc.2) (2024-02-15)
 
 **Note:** Version bump only for package @twreporter/react-article-components

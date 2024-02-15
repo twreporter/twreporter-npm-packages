@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.1-rc.1...@twreporter/core@1.18.0-rc.0) (2024-02-15)
+
+
+### Bug Fixes
+
+* fix comments ([0f54e88](https://github.com/twreporter/twreporter-npm-packages/commit/0f54e88ef3e2bb94687669b59c5b207efcccc4ba))
+
+
+### Features
+
+* add post_id while create bookmark ([ee9c6f9](https://github.com/twreporter/twreporter-npm-packages/commit/ee9c6f98d08ebe00b86a91250a2da4cdf69b84ab))
+
+
+
+
+
 ## [1.17.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.1-rc.0...@twreporter/core@1.17.1-rc.1) (2024-02-15)
 
 **Note:** Version bump only for package @twreporter/core
