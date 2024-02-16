@@ -196,7 +196,7 @@ const LinksColumn = styled(Column)`
     padding-left: 31px;
   `}
   ${mq.mobileOnly`
-    margin-top: 60px;
+    margin-top: 48px;
     padding-left: 0;
   `}
 `
@@ -269,7 +269,7 @@ const Item = styled.a`
   `}
   ${mq.mobileOnly`
     p {
-      font-size: 18px;
+      font-size: 14px;
       letter-spacing: 1.6px;
       line-height: 2;
     }
