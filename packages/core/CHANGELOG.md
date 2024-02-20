@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0-rc.1...@twreporter/core@1.18.0-rc.2) (2024-02-20)
+
+
+### Bug Fixes
+
+* turn off MY_READING feature toggle ([18cbce0](https://github.com/twreporter/twreporter-npm-packages/commit/18cbce0d07e1d5c27fffbd6e46ef55eacbfeae91))
+
+
+
+
+
 # [1.18.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0-rc.0...@twreporter/core@1.18.0-rc.1) (2024-02-20)
 
 
