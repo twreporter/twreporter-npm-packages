@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0-rc.0...@twreporter/core@1.18.0-rc.1) (2024-02-20)
+
+
+### Bug Fixes
+
+* add `white_0.9` to colorOpacity ([3fbbdd7](https://github.com/twreporter/twreporter-npm-packages/commit/3fbbdd7e30d84f2682388bdb55cc2e49001ec5f8))
+
+
+
+
+
 # [1.18.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.1-rc.1...@twreporter/core@1.18.0-rc.0) (2024-02-15)
 
 
