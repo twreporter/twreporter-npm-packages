@@ -1,1 +1,1 @@
-export const MY_READING = true
+export const MY_READING = false
