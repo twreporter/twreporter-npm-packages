@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0...@twreporter/core@1.18.1-rc.0) (2024-02-21)
+
+
+### Bug Fixes
+
+* change ntch roles ([5e0eaf6](https://github.com/twreporter/twreporter-npm-packages/commit/5e0eaf6b6770e9aee55b807b30b54bd6da50e75c))
+
+
+
+
+
 # [1.18.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0-rc.2...@twreporter/core@1.18.0) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/core
