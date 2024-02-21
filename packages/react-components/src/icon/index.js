@@ -75,6 +75,8 @@ export const Twitter = getIcon('twitter')
 export const Youtube = getIcon('youtube')
 export const Line = getIcon('line')
 export const Google = getIcon('google')
+export const History = getIcon('history')
+export const KidStar = getIcon('kid_star')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
@@ -136,4 +138,6 @@ export default {
   Youtube,
   Google,
   SocialMedia,
+  History,
+  KidStar,
 }

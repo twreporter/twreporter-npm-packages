@@ -21,6 +21,7 @@ import {
 import { fetchLatestTags } from './latest'
 import { getUserData, setUserData, onboarding } from './user'
 import { setUserAnalyticsData } from './analytics'
+import { getUserFootprints, setUserFootprint } from './footprints'
 
 export default {
   createSingleBookmark,
@@ -46,4 +47,6 @@ export default {
   setUserData,
   onboarding,
   setUserAnalyticsData,
+  getUserFootprints,
+  setUserFootprint,
 }

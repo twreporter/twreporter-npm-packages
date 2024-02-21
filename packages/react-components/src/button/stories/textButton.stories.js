@@ -3,7 +3,7 @@ import React from 'react'
 import { getRadioArg } from '../../storybook/utils/get-enum-arg'
 import TextButton from '../components/textButton'
 import { Arrow } from '../../icon'
-import { Style, Type } from '../enums'
+import { Style } from '../enums'
 import {
   THEME_STORYBOOK_ARG_TYPE,
   SIZE_STORYBOOK_ARG_TYPE,
@@ -14,7 +14,6 @@ export default {
   component: TextButton,
   argTypes: {
     theme: THEME_STORYBOOK_ARG_TYPE,
-    type: getRadioArg(Type, Type.PRIMARY),
     style: getRadioArg(Style, Style.DARK),
     size: SIZE_STORYBOOK_ARG_TYPE,
     // showLeft & showRight args are only for storybook check
@@ -34,10 +33,10 @@ export const textButton = {
     text: '文字',
     size: TextButton.Size.S,
     theme: TextButton.THEME.normal,
-    type: TextButton.Type.PRIMARY,
     style: TextButton.Style.DARK,
     active: false,
     disabled: false,
+    loading: false,
     leftIconComponent: <Arrow direction="left" />,
     rightIconComponent: <Arrow direction="right" />,
   },
@@ -61,10 +60,10 @@ export const toggleIconDisplay = {
     text: '文字',
     size: TextButton.Size.S,
     theme: TextButton.THEME.normal,
-    type: TextButton.Type.PRIMARY,
     style: TextButton.Style.DARK,
     active: false,
     disabled: false,
+    loading: false,
   },
 
   parameters: {

@@ -12,7 +12,7 @@ const iconList = [
     target: '_blank',
   },
   {
-    slug: 'twitter',
+    slug: 'X',
     link: externalLinks.twitter,
     target: '_blank',
   },

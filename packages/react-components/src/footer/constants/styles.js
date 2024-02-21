@@ -27,8 +27,8 @@ export default {
   footerContentPadding: {
     hd: [60, 60, 41, 60], // px
     desktop: [60, 50, 40, 50], // px
-    tablet: [50, 35, 0, 35], // px
-    mobile: [60, 40, 60, 35], // px
+    tablet: [48, 32, 72, 32], // px
+    mobile: [48, 24, 96, 24], // px
   },
   footerContentMaxWidth: {
     desktop: 1024, // px

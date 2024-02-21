@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.5...@twreporter/react-article-components@1.12.0-rc.6) (2024-02-20)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.12.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.4...@twreporter/react-article-components@1.12.0-rc.5) (2024-02-20)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.12.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.3...@twreporter/react-article-components@1.12.0-rc.4) (2024-02-16)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.12.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.2...@twreporter/react-article-components@1.12.0-rc.3) (2024-02-15)
+
+
+### Features
+
+* add post_id while create bookmark ([ee9c6f9](https://github.com/twreporter/twreporter-npm-packages/commit/ee9c6f98d08ebe00b86a91250a2da4cdf69b84ab))
+
+
+
+
+
+# [1.12.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.1...@twreporter/react-article-components@1.12.0-rc.2) (2024-02-15)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.12.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.0-rc.0...@twreporter/react-article-components@1.12.0-rc.1) (2024-02-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.11.4-rc.1...@twreporter/react-article-components@1.12.0-rc.0) (2024-02-07)
+
+
+### Features
+
+* add `my reading` related entry on universal navigator ([79cadc2](https://github.com/twreporter/twreporter-npm-packages/commit/79cadc293493bc517fcf95139ff208633acd699b))
+
+
+
+
+
+## [1.11.4-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.11.4-rc.0...@twreporter/react-article-components@1.11.4-rc.1) (2024-01-25)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [1.11.4-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.11.3...@twreporter/react-article-components@1.11.4-rc.0) (2024-01-24)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.11.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.11.3-rc.0...@twreporter/react-article-components@1.11.3) (2024-01-24)
 
 **Note:** Version bump only for package @twreporter/react-article-components

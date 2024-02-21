@@ -288,7 +288,7 @@ const BookmarkBlock = ({ articleMeta }) => {
   const { releaseBranch } = themeContext
   const renderIcon = (isBookmarked, addAction, removeAction) => {
     const iconType = isBookmarked ? 'saved' : 'add'
-    const text = isBookmarked ? '已收藏' : '收藏'
+    const text = isBookmarked ? '已儲存' : '加入書籤'
     const id = isBookmarked ? 'remove-bookmark' : 'add-bookmark'
     const handleClick = async () => {
       const action = isBookmarked ? removeAction : addAction
@@ -313,7 +313,7 @@ const BookmarkBlock = ({ articleMeta }) => {
     )
   }
   const onClickButton = isBookmarked => {
-    const text = isBookmarked ? '已取消收藏' : '已收藏'
+    const text = isBookmarked ? '已取消書籤' : '已儲存'
     toastr({ text, timeout: 3000 })
   }
 

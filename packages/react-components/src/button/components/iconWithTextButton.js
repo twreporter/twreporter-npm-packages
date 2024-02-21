@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // utils
 import { getIconWithTextButtonTheme } from '../utils/theme'
 // components
-import { P3 } from '../../text/paragraph'
+import { P4 } from '../../text/paragraph'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { THEME } from '@twreporter/core/lib/constants/theme'
@@ -31,7 +31,7 @@ const ButtonContainer = styled.div`
   `}
 `
 
-const StyledP3 = styled(P3)`
+const StyledP4 = styled(P4)`
   margin-top: 2px;
   max-height: ${props => (props.hideText ? '0px' : 'none')};
   opacity: ${props => (props.hideText ? '0' : '1')};
@@ -55,7 +55,7 @@ const IconWithTextButton = ({
   return (
     <ButtonContainer color={color} hoverColor={hoverColor} disabled={disabled}>
       {iconComponent}
-      <StyledP3 text={text} weight={P3.Weight.NORMAL} hideText={hideText} />
+      <StyledP4 text={text} weight={P4.Weight.NORMAL} hideText={hideText} />
     </ButtonContainer>
   )
 }

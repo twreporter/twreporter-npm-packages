@@ -148,7 +148,7 @@ export function getFooterLinks(
 ) {
   return {
     [FOOTER_KEY.foundation]: __getLink(
-      true,
+      isExternal,
       releaseBranch,
       mainBaseURL,
       FOOTER_PATH[FOOTER_KEY.foundation]

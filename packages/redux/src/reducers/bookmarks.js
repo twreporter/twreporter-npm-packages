@@ -43,8 +43,7 @@ export default function bookmarks(state = initState, action) {
       const fetchedRecords = _.get(action, 'payload.data.records', [])
       const meta = _.get(action, 'payload.data.meta')
       const { offset, total, limit } = meta
-      const entities = { ...state.entities }
-      // Push new fetched records to stored ones and push ids to id list
+      const entities = {}
       fetchedRecords.forEach(record => {
         const id = _.get(record, 'id')
         if (!id) {

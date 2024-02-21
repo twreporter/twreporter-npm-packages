@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.11.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.0-rc.1...@twreporter/redux@7.11.0-rc.2) (2024-02-20)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.11.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.0-rc.0...@twreporter/redux@7.11.0-rc.1) (2024-02-20)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [7.11.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.1-rc.3...@twreporter/redux@7.11.0-rc.0) (2024-02-15)
+
+
+### Bug Fixes
+
+* add bookmark_id to mock test ([7cbb3f1](https://github.com/twreporter/twreporter-npm-packages/commit/7cbb3f1f3dc14ab5cd5f959719878b6c2ba774a5))
+* bookmark_id type ([8d9e296](https://github.com/twreporter/twreporter-npm-packages/commit/8d9e296bb757e00d69515dba938886b0c01e6f3a))
+* fix comments ([0f54e88](https://github.com/twreporter/twreporter-npm-packages/commit/0f54e88ef3e2bb94687669b59c5b207efcccc4ba))
+* no need to add state bookmarks ([4eaf988](https://github.com/twreporter/twreporter-npm-packages/commit/4eaf988fb5307005daf39fdb0ad1747a8c161bff))
+* remove console log ([be3d531](https://github.com/twreporter/twreporter-npm-packages/commit/be3d531f1b4435b02af8edb2a56e522016ef4902))
+
+
+### Features
+
+* add footprints action ([cbf157f](https://github.com/twreporter/twreporter-npm-packages/commit/cbf157fed34acde9a9aaebd4ed64cf579bc2b2aa))
+* add footprints reducers ([930235a](https://github.com/twreporter/twreporter-npm-packages/commit/930235a69e3884a8984618cbc62273721551fd72))
+* add post_id while create bookmark ([ee9c6f9](https://github.com/twreporter/twreporter-npm-packages/commit/ee9c6f98d08ebe00b86a91250a2da4cdf69b84ab))
+* add test for footprints actions ([f381f21](https://github.com/twreporter/twreporter-npm-packages/commit/f381f216e0a561ef174586270e71fcb38b485a00))
+* add test for footprints reducers ([d1db2de](https://github.com/twreporter/twreporter-npm-packages/commit/d1db2deaca531529a46df07100ff073b2df5e9d5))
+
+
+
+
+
+## [7.10.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.1-rc.2...@twreporter/redux@7.10.1-rc.3) (2024-02-15)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.10.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.1-rc.1...@twreporter/redux@7.10.1-rc.2) (2024-02-07)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.10.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.1-rc.0...@twreporter/redux@7.10.1-rc.1) (2024-01-25)
+
+
+### Bug Fixes
+
+* force update post entity after get post on latest page ([0031d69](https://github.com/twreporter/twreporter-npm-packages/commit/0031d69db0da0eb05a9d13e00785f2d947539b9f))
+
+
+
+
+
+## [7.10.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0...@twreporter/redux@7.10.1-rc.0) (2024-01-24)
+
+
+### Bug Fixes
+
+* update bookmarkId in post entity after get single bookmark ([cfedcc6](https://github.com/twreporter/twreporter-npm-packages/commit/cfedcc6a8a918f06bcbe46bdb3809165b7cf6d8e))
+
+
+
+
+
 # [7.10.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.10.0-rc.3...@twreporter/redux@7.10.0) (2024-01-24)
 
 **Note:** Version bump only for package @twreporter/redux
