@@ -17,7 +17,7 @@ const _ = {
   map,
 }
 
-const getActionProps = type => _.map(ACTION_ORDER[type], key => ({ key }))
+const getActionProps = type => _.map(ACTION_ORDER[type], item => item)
 
 export const DesktopHeaderAction = ({ ...props }) => {
   const actionProps = getActionProps('desktop')

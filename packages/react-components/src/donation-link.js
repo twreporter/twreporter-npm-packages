@@ -2,25 +2,17 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 
-export default class DonationLink extends React.PureComponent {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-  }
+const DonationLink = ({ children, ...props }) => {
+  const donationURL = externalLinks.donation
 
-  render() {
-    const { className, children } = this.props
-    const donationURL = externalLinks.donation
-
-    return (
-      <a
-        className={className}
-        href={donationURL}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    )
-  }
+  return (
+    <a href={donationURL} target="_blank" rel="noopener noreferrer" {...props}>
+      {children}
+    </a>
+  )
 }
+DonationLink.propTypes = {
+  children: PropTypes.node,
+}
+
+export default DonationLink

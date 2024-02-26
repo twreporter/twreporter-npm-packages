@@ -87,13 +87,14 @@ const ActionButtonItem = ({
     buttonTheme = theme
   }
   const actionKey = action.key
+  const actionId = action.id
   const actionLabel = ACTION_LABEL[textType][actionKey]
   const actionLink = getActionLinks(isLinkExternal, releaseBranch)[actionKey]
   const buttonType = ACTION_BUTTON_TYPE[actionKey]
 
   return (
     <ActionItem onClick={callback} direction={direction}>
-      <Link {...actionLink}>
+      <Link id={actionId} {...actionLink}>
         <StyledPillButton
           text={actionLabel}
           theme={buttonTheme}
