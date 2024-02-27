@@ -84,6 +84,7 @@ const Footer = ({ ...props }) => {
     <LinkSection>
       {_.map(FOOTER_ORDER, key => {
         const link = footerLinks[key]
+        console.log('link: ', link)
         const label = FOOTER_LABEL[key]
         if (!link || !label) {
           return
