@@ -8,6 +8,8 @@ const links = {
   twitter: 'https://twitter.com/tw_reporter_org',
   youtube: 'https://www.youtube.com/c/TwreporterOrg',
   kidsReporter: 'https://kids.twreporter.org/',
+  publicationAndMerchandise:
+    'https://twreporter.backme.tw/shops/3589?locale=zh-TW',
 }
 
 export default links

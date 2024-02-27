@@ -7,6 +7,7 @@ const footerKey = {
   myReading: 'myreading',
   bookmark: 'bookmark',
   history: 'history',
+  publicationAndMerchandise: 'publication-and-merchandise',
 }
 
 export const FOOTER_KEY = Object.freeze(footerKey)
@@ -30,6 +31,7 @@ export const FOOTER_LABEL = {
   [footerKey.myReading]: '我的閱讀',
   [footerKey.bookmark]: '已收藏',
   [footerKey.history]: '造訪紀錄',
+  [footerKey.publicationAndMerchandise]: '出版品與周邊',
 }
 
 export const FOOTER_ICON = {
@@ -44,6 +46,7 @@ export const FOOTER_ORDER = [
   footerKey.aboutUs,
   footerKey.influenceReport,
   footerKey.openLab,
+  footerKey.publicationAndMerchandise,
 ]
 
 export const MEMBER_ORDER = [
