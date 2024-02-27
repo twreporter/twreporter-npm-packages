@@ -96,11 +96,12 @@ const ToolBarContainer = styled.div`
   border-radius: 60px;
   position: fixed;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: ${props =>
+    props.isHidden ? 'translate(-50%, 150%)' : 'translate(-50%, 0)'};
   bottom: calc(env(safe-area-inset-bottom, 0) + 8px);
   z-index: ${zIndexConst.mobileToolBar};
   height: ${props => (props.hideText ? '38px' : '56px')};
-  transition: height 100ms;
+  transition: height 100ms, transform 100ms ease-in-out;
   box-shadow: ${props => props.shadow};
   ${ShareContainer} {
     background-color: ${props => props.bgColor};
@@ -389,8 +390,10 @@ const ToolBar = ({
   className,
 }) => {
   const [scrollDirection, setScrollDirection] = useState('init')
+  const [hideToolBar, setHideToolBar] = useState(false)
   useEffect(() => {
-    const threshold = 8
+    const scrollThreshold = 8 // Threshold to check scrollDirection
+    const hideThreshold = 16 // Threshold to hide toolbar
     let lastScrollY = window.pageYOffset
     let ticking = false
 
@@ -401,12 +404,20 @@ const ToolBar = ({
         return
       }
 
-      if (Math.abs(scrollY - lastScrollY) < threshold) {
+      const scrollDistance = Math.abs(scrollY - lastScrollY)
+
+      if (scrollDistance < scrollThreshold) {
         ticking = false
         return
       }
-      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up'
-      setScrollDirection(scrollDirection)
+
+      const newScrollDirection = scrollY > lastScrollY ? 'down' : 'up'
+      setScrollDirection(newScrollDirection)
+
+      if (scrollDistance > hideThreshold) {
+        setHideToolBar(newScrollDirection === 'down')
+      }
+
       lastScrollY = scrollY > 0 ? scrollY : 0
       ticking = false
     }
@@ -444,6 +455,7 @@ const ToolBar = ({
         shadow={shadow}
         hideText={hideText}
         className={className}
+        isHidden={hideToolBar}
       >
         <FontLevel changeFontLevel={onFontLevelChange} />
         <ShareBy fbAppID={fbAppID} />
