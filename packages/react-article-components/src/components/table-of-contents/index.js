@@ -1,152 +1,172 @@
-import * as Styled from './styled'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import React from 'react'
+// @twrreporters
 import TOC from '@twreporter/react-components/lib/table-of-contents'
-import map from 'lodash/map'
-import Tab from '../../assets/table-of-contents/long-form-tab.svg'
+// constants
 import {
   ANCHOR_SCROLL_DURATION,
   WAIT_AFTER_REACH_ANCHOR,
 } from '../../constants/anchor'
+// styled
+import * as Styled from './styled'
+import Tab from '../../assets/table-of-contents/long-form-tab.svg'
+// lodash
+import map from 'lodash/map'
+import isNil from 'lodash/isNil'
 
 const _ = {
   map,
+  isNil,
 }
+const TableOfContents = ({
+  className,
+  manager,
+  onStartScrollingToAnchor,
+  onToggleTabExpanded,
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const tocRef = useRef(null)
 
-class TableOfContents extends React.PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    manager: TOC.React.TableOfContents.propTypes.manager,
-    onStartScrollingToAnchor: PropTypes.func,
-    onToggleTabExpanded: PropTypes.func,
-  }
+  const handleMouseEnter = () => setIsExpanded(true)
+  const handleMouseLeave = () => setIsExpanded(false)
+  const handleTabClick = () => setIsExpanded(!isExpanded)
 
-  static defaultProps = {
-    className: '',
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      isExpanded: false,
-    }
-
-    this.handleMouseEnter = this._setIsExpanded.bind(this, true)
-    this.handleMouseLeave = this._setIsExpanded.bind(this, false)
-    this.handleTabClick = this._toggleIsExpanded.bind(this)
-    this.handleTouchOutside = this._handleTouchOutside.bind(this)
-
-    this._ref = React.createRef()
-  }
-
-  componentDidMount() {
-    document.addEventListener('touchstart', this.handleTouchOutside, {
-      passive: true,
-      capture: true,
-    })
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('touchstart', this.handleTouchOutside, {
-      passive: true,
-      capture: true,
-    })
-  }
-
-  componentDidUpdate(_prevProps, prevStates) {
-    if (prevStates.isExpanded !== this.state.isExpanded) {
-      this.props.onToggleTabExpanded(this.state.isExpanded)
-    }
-  }
-
-  _setIsExpanded(isExpanded) {
-    this.setState({
-      isExpanded,
-    })
-  }
-
-  _toggleIsExpanded(e) {
-    this.setState({
-      isExpanded: !this.state.isExpanded,
-    })
-  }
-
-  _handleTouchOutside(e) {
+  const handleTouchOutside = e => {
     try {
-      if (!this._ref.current.contains(e.target) && this.state.isExpanded) {
-        this.setState({
-          isExpanded: false,
-        })
+      if (tocRef.current && !tocRef.current.contains(e.target) && isExpanded) {
+        setIsExpanded(false)
       }
-    } catch (e) {
-      console.warn('TableOfContents#handleTouchOutside occurs error:', e)
+    } catch (error) {
+      console.warn('TableOfContents#handleTouchOutside error:', error)
     }
   }
 
-  render() {
-    const { className, manager, onStartScrollingToAnchor } = this.props
-    const { isExpanded } = this.state
+  useEffect(() => {
+    document.addEventListener('touchstart', handleTouchOutside, {
+      passive: true,
+      capture: true,
+    })
 
-    return (
-      <div className="hidden-print" ref={this._ref}>
-        <TOC.React.TableOfContents
-          className={className}
-          manager={manager}
-          scrollDuration={ANCHOR_SCROLL_DURATION}
-          render={(anchors, highlightAnchor, handleAnchorClick) => {
-            const anchorsJSX = _.map(anchors, anchor => {
-              const toHighlight = anchor === highlightAnchor
+    return () => {
+      document.removeEventListener('touchstart', handleTouchOutside, {
+        passive: true,
+        capture: true,
+      })
+    }
+  }, [isExpanded])
 
-              return (
-                <Styled.TOCRow
-                  key={anchor.anchorID}
-                  onClick={() => {
-                    onStartScrollingToAnchor(true, () =>
-                      handleAnchorClick(anchor.anchorID, () => {
-                        // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
-                        setTimeout(
-                          () => onStartScrollingToAnchor(false),
-                          WAIT_AFTER_REACH_ANCHOR
-                        )
-                      })
-                    )
-                  }}
-                >
-                  <Styled.TOCIndicator
-                    toHighlight={toHighlight}
-                    isExpanded={isExpanded}
-                  />
-                  <Styled.TOCText toHighlight={toHighlight}>
-                    {anchor.anchorLable}
-                  </Styled.TOCText>
-                </Styled.TOCRow>
-              )
-            })
+  const [scrollDirection, setScrollDirection] = useState('init')
+  useEffect(() => {
+    const threshold = 16
+    let lastScrollY = window.pageYOffset
+    let ticking = false
+
+    const updateScrollDirection = () => {
+      const scrollY = window.pageYOffset
+      if (_.isNil(lastScrollY)) {
+        ticking = false
+        return
+      }
+
+      if (Math.abs(scrollY - lastScrollY) < threshold) {
+        ticking = false
+        return
+      }
+      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up'
+      setScrollDirection(scrollDirection)
+      lastScrollY = scrollY > 0 ? scrollY : 0
+      ticking = false
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDirection)
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      lastScrollY = null
+      ticking = null
+    }
+  }, [scrollDirection])
+
+  useEffect(() => {
+    onToggleTabExpanded(isExpanded)
+  }, [isExpanded, onToggleTabExpanded])
+
+  const hideTOC = scrollDirection === 'down'
+  return (
+    <div className="hidden-print" ref={tocRef}>
+      <TOC.React.TableOfContents
+        className={className}
+        manager={manager}
+        scrollDuration={ANCHOR_SCROLL_DURATION}
+        render={(anchors, highlightAnchor, handleAnchorClick) => {
+          const anchorsJSX = _.map(anchors, anchor => {
+            const toHighlight = anchor === highlightAnchor
 
             return (
-              <React.Fragment>
-                <Styled.TOCTab
-                  onClick={this.handleTabClick}
+              <Styled.TOCRow
+                key={anchor.anchorID}
+                onClick={() => {
+                  onStartScrollingToAnchor(true, () =>
+                    handleAnchorClick(anchor.anchorID, () => {
+                      // Wait for a short time to avoid trigger waypoint's onEnter() of infogram embed close to the anchor
+                      setTimeout(
+                        () => onStartScrollingToAnchor(false),
+                        WAIT_AFTER_REACH_ANCHOR
+                      )
+                    })
+                  )
+                }}
+              >
+                <Styled.TOCIndicator
+                  toHighlight={toHighlight}
                   isExpanded={isExpanded}
-                >
+                />
+                <Styled.TOCText toHighlight={toHighlight}>
+                  {anchor.anchorLable}
+                </Styled.TOCText>
+              </Styled.TOCRow>
+            )
+          })
+
+          return (
+            <React.Fragment>
+              <Styled.TOCTabWrapper isHidden={hideTOC}>
+                <Styled.TOCTab onClick={handleTabClick} isExpanded={isExpanded}>
                   <div>索引</div>
                   <Tab />
                 </Styled.TOCTab>
-                <Styled.TOCBackground
-                  onMouseEnter={this.handleMouseEnter}
-                  onMouseLeave={this.handleMouseLeave}
-                  isExpanded={isExpanded}
-                >
-                  <Styled.TOCBlock>{anchorsJSX}</Styled.TOCBlock>
-                </Styled.TOCBackground>
-              </React.Fragment>
-            )
-          }}
-        />
-      </div>
-    )
-  }
+              </Styled.TOCTabWrapper>
+              <Styled.TOCBackground
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                isExpanded={isExpanded}
+              >
+                <Styled.TOCBlock>{anchorsJSX}</Styled.TOCBlock>
+              </Styled.TOCBackground>
+            </React.Fragment>
+          )
+        }}
+      />
+    </div>
+  )
+}
+
+TableOfContents.propTypes = {
+  className: PropTypes.string,
+  manager: TOC.React.TableOfContents.propTypes.manager,
+  onStartScrollingToAnchor: PropTypes.func,
+  onToggleTabExpanded: PropTypes.func,
+}
+
+TableOfContents.defaultProps = {
+  className: '',
 }
 
 export default {
