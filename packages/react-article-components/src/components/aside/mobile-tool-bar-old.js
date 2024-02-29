@@ -456,6 +456,7 @@ const ToolBar = ({
         hideText={hideText}
         className={className}
         isHidden={hideToolBar}
+        id="tool-bar"
       >
         <FontLevel changeFontLevel={onFontLevelChange} />
         <ShareBy fbAppID={fbAppID} />
