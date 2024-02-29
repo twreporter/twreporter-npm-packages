@@ -361,6 +361,58 @@ export default class Article extends PureComponent {
     }
   }
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      scrollStage: 1,
+    }
+    this.lastY = 0
+    this.currentY = 0
+    this.ticking = false
+    this.handleScroll = this._handleScroll.bind(this)
+  }
+
+  _handleScroll() {
+    const scrollThreshold = 16
+    this.lastY = window.pageYOffset
+    const scrollDistance = Math.abs(this.currentY - this.lastY)
+    if (scrollDistance < scrollThreshold) {
+      this.ticking = false
+      return
+    }
+    if (!this.ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollDirection = this.lastY > this.currentY ? 'down' : 'up'
+        this.currentY = this.lastY
+        if (scrollDirection === 'up') {
+          this.setState(prevState => ({
+            scrollStage:
+              prevState.scrollStage - 1 < 1 ? 1 : prevState.scrollStage - 1,
+          }))
+        } else {
+          this.setState(prevState => ({
+            scrollStage:
+              prevState.scrollStage + 1 > 3 ? 3 : prevState.scrollStage + 1,
+          }))
+        }
+        this.ticking = false
+      })
+      this.ticking = true
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+    this.lastY = null
+    this.currentY = null
+    this.ticking = null
+    this.handleScroll = null
+  }
+
   render() {
     const {
       LinkComponent,
@@ -442,6 +494,7 @@ export default class Article extends PureComponent {
                   backToTopic={backToTopic}
                   articleMetaForBookmark={articleMetaForBookmark}
                   onFontLevelChange={this.changeFontLevel}
+                  scrollStage={this.state.scrollStage}
                 />
                 <DesktopAsideBlock>
                   <DesktopAside
@@ -465,6 +518,7 @@ export default class Article extends PureComponent {
                     brief={_.get(post, 'brief.api_data')}
                     content={_.get(post, 'content.api_data')}
                     onToggleTabExpanded={onToggleTabExpanded}
+                    scrollStage={this.state.scrollStage}
                   />
                 </ContentBlock>
                 {metadataAndToolsJSX}

@@ -23,6 +23,7 @@ const TableOfContents = ({
   manager,
   onStartScrollingToAnchor,
   onToggleTabExpanded,
+  scrollStage,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const tocRef = useRef(null)
@@ -98,7 +99,7 @@ const TableOfContents = ({
     onToggleTabExpanded(isExpanded)
   }, [isExpanded, onToggleTabExpanded])
 
-  const hideTOC = scrollDirection === 'down'
+  const hideTOC = scrollStage === 3
   return (
     <div className="hidden-print" ref={tocRef}>
       <TOC.React.TableOfContents
@@ -163,6 +164,7 @@ TableOfContents.propTypes = {
   manager: TOC.React.TableOfContents.propTypes.manager,
   onStartScrollingToAnchor: PropTypes.func,
   onToggleTabExpanded: PropTypes.func,
+  scrollStage: PropTypes.number,
 }
 
 TableOfContents.defaultProps = {
