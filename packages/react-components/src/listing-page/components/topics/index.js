@@ -34,6 +34,10 @@ const NoData = styled.div`
 const Title2Wrapper = styled.div`
   padding-top: 24px;
 `
+const Gray800H2 = styled(H2)`
+  color: ${colorGrayscale.gray800};
+`
+
 class Topics extends Component {
   _buildRelatedPosts(posts) {
     const _buildPostJSX = post => {
@@ -101,7 +105,7 @@ class Topics extends Component {
       topTopicName = _.get(topics, [0, 'topic_name'], '')
       topicUrl = _.get(topics, [0, 'linkTo'], '')
       topSectionJSX = [
-        <H2 text={'深度專題'} key="top-title" />,
+        <Gray800H2 text={'深度專題'} key="top-title" />,
         <Title2Wrapper key="section-title">
           <Title2 title={TEXT.SECTION_TITLE_FEATURED} />
         </Title2Wrapper>,
