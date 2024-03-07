@@ -12,7 +12,8 @@ import { TopSectionContent, ListSectionContent } from './section'
 import { TEXT } from '../../constants/topics'
 // @twreporter
 import { fontWeight } from '@twreporter/core/lib/constants/font'
-import { Title1 } from '@twreporter/react-components/lib/title-bar'
+import { Title2 } from '@twreporter/react-components/lib/title-bar'
+import { H2 } from '@twreporter/react-components/lib/text/headline'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
@@ -29,6 +30,12 @@ const NoData = styled.div`
   color: ${colorGrayscale.gray900};
   font-weight: ${fontWeight.normal};
   text-align: center;
+`
+const Title2Wrapper = styled.div`
+  padding-top: 24px;
+`
+const Gray800H2 = styled(H2)`
+  color: ${colorGrayscale.gray800};
 `
 
 class Topics extends Component {
@@ -98,11 +105,10 @@ class Topics extends Component {
       topTopicName = _.get(topics, [0, 'topic_name'], '')
       topicUrl = _.get(topics, [0, 'linkTo'], '')
       topSectionJSX = [
-        <Title1
-          key="top-title"
-          title="深度專題"
-          subtitle={TEXT.SECTION_TITLE_FEATURED}
-        />,
+        <Gray800H2 text={'深度專題'} key="top-title" />,
+        <Title2Wrapper key="section-title">
+          <Title2 title={TEXT.SECTION_TITLE_FEATURED} />
+        </Title2Wrapper>,
         <TopSectionContent
           key="top-section"
           topicName={topTopicName}
@@ -126,7 +132,9 @@ class Topics extends Component {
       <PageContent>
         {topSectionJSX}
         {isFetching && isFirstPage ? null : (
-          <Title1 subtitle={TEXT.SECTION_TITLE_OTHERS} />
+          <Title2Wrapper>
+            <Title2 title={TEXT.SECTION_TITLE_OTHERS} />
+          </Title2Wrapper>
         )}
         <WrappedListSectionContent
           isFetching={isFetching}
