@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.26.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.0...@twreporter/react-components@8.26.0-rc.1) (2024-03-07)
+
+
+### Features
+
+* add publicationAndMerchandise to footer ([aab969c](https://github.com/twreporter/twreporter-npm-packages/commit/aab969c79b62dc1824c64a470dd8dfdd7c5c03d1))
+
+
+
+
+
 # [8.26.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.25.2-rc.0...@twreporter/react-components@8.26.0-rc.0) (2024-03-07)
 
 
