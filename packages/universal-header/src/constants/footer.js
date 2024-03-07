@@ -1,4 +1,4 @@
-import { PUB_AND_MERC_BTN } from '@twreporter/core/src/constants/feature-flag'
+import { PUB_AND_MERC_BTN } from '@twreporter/core/lib/constants/feature-flag'
 
 const footerKey = {
   foundation: 'foundation',
