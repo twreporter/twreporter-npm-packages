@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.26.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.25.2-rc.0...@twreporter/react-components@8.26.0-rc.0) (2024-03-07)
+
+
+### Features
+
+* change topic listing page title components ([bc79321](https://github.com/twreporter/twreporter-npm-packages/commit/bc793217e4ebb30639685343df295a773a67909f))
+* topic listing page title color ([4fcb3cd](https://github.com/twreporter/twreporter-npm-packages/commit/4fcb3cdad6ece175591230734fb398199a7c0bfb))
+
+
+
+
+
 ## [8.25.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.25.1...@twreporter/react-components@8.25.2-rc.0) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/react-components
