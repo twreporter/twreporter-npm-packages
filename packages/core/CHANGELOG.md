@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.2-rc.0...@twreporter/core@1.19.0-rc.0) (2024-03-07)
+
+
+### Features
+
+* add feature toggle for new btn ([77cd2d2](https://github.com/twreporter/twreporter-npm-packages/commit/77cd2d27b922bde59f0abd2f6ef62d581c3f6944))
+
+
+
+
+
 ## [1.18.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.1...@twreporter/core@1.18.2-rc.0) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/core

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.11.2-rc.1...@twreporter/universal-header@2.12.0-rc.0) (2024-03-07)
+
+
+### Bug Fixes
+
+* remove console log ([ab9ee64](https://github.com/twreporter/twreporter-npm-packages/commit/ab9ee6464ca91ff863b05fb1830c93e5e23c9ef2))
+
+
+### Features
+
+* add feature toggle for new btn ([77cd2d2](https://github.com/twreporter/twreporter-npm-packages/commit/77cd2d27b922bde59f0abd2f6ef62d581c3f6944))
+* add publicationAndMerchandise to hambugermenu ([c228997](https://github.com/twreporter/twreporter-npm-packages/commit/c228997548fc66815fb2343cba6266795ac25308))
+
+
+
+
+
+## [2.11.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.11.2-rc.0...@twreporter/universal-header@2.11.2-rc.1) (2024-03-07)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+
+
+
+
 ## [2.11.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@2.11.1...@twreporter/universal-header@2.11.2-rc.0) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/universal-header
