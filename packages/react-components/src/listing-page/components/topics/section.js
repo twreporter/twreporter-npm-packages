@@ -16,9 +16,9 @@ const styles = {
   goToTopicMargin: [20, 'auto', 0, 'auto'],
   goToTopicPadding: [14, 0, 14, 0],
   sectionMargin: {
-    mobile: [24, 0, 36, 0],
-    tablet: [32, 0, 64, 0],
-    desktop: [64, 0, 64, 0],
+    mobile: [24, 0, 24, 0],
+    tablet: [24, 0, 24, 0],
+    desktop: [24, 0, 24, 0],
   },
   titleMargin: {
     mobile: [0, 0, 24, 0],
