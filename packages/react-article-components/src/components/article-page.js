@@ -31,11 +31,13 @@ import ToolBarNew from './aside/mobile-tool-bar'
 import ToolBarOld from './aside/mobile-tool-bar-old'
 // lodash
 import get from 'lodash/get'
-const Tools = MY_READING ? ToolsNew : ToolsOld
-const ToolBar = MY_READING ? ToolBarNew : ToolBarOld
+import throttle from 'lodash/throttle'
 const _ = {
   get,
+  throttle,
 }
+const Tools = MY_READING ? ToolsNew : ToolsOld
+const ToolBar = MY_READING ? ToolBarNew : ToolBarOld
 
 const shiftLeftCss = css`
   position: relative;
@@ -368,8 +370,7 @@ export default class Article extends PureComponent {
     }
     this.lastY = 0
     this.currentY = 0
-    this.ticking = false
-    this.handleScroll = this._handleScroll.bind(this)
+    this.handleScroll = _.throttle(this._handleScroll.bind(this), 50)
   }
 
   _handleScroll() {
@@ -377,27 +378,20 @@ export default class Article extends PureComponent {
     this.lastY = window.pageYOffset
     const scrollDistance = Math.abs(this.currentY - this.lastY)
     if (scrollDistance < scrollThreshold) {
-      this.ticking = false
       return
     }
-    if (!this.ticking) {
-      window.requestAnimationFrame(() => {
-        const scrollDirection = this.lastY > this.currentY ? 'down' : 'up'
-        this.currentY = this.lastY
-        if (scrollDirection === 'up') {
-          this.setState(prevState => ({
-            scrollStage:
-              prevState.scrollStage - 1 < 1 ? 1 : prevState.scrollStage - 1,
-          }))
-        } else {
-          this.setState(prevState => ({
-            scrollStage:
-              prevState.scrollStage + 1 > 3 ? 3 : prevState.scrollStage + 1,
-          }))
-        }
-        this.ticking = false
-      })
-      this.ticking = true
+    const scrollDirection = this.lastY > this.currentY ? 'down' : 'up'
+    this.currentY = this.lastY
+    if (scrollDirection === 'up') {
+      this.setState(prevState => ({
+        scrollStage:
+          prevState.scrollStage - 1 < 1 ? 1 : prevState.scrollStage - 1,
+      }))
+    } else {
+      this.setState(prevState => ({
+        scrollStage:
+          prevState.scrollStage + 1 > 3 ? 3 : prevState.scrollStage + 1,
+      }))
     }
   }
 
@@ -407,10 +401,6 @@ export default class Article extends PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
-    this.lastY = null
-    this.currentY = null
-    this.ticking = null
-    this.handleScroll = null
   }
 
   render() {
