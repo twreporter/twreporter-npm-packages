@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-// @twrreporters
+// @twreporters
 import TOC from '@twreporter/react-components/lib/table-of-contents'
 // constants
 import {
