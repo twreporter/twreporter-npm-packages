@@ -177,6 +177,10 @@ export function getFooterLinks(
       __getExternalLinks().openLab,
       '_blank'
     ),
+    [FOOTER_KEY.publicationAndMerchandise]: __composeExternalLink(
+      __getExternalLinks().publicationAndMerchandise,
+      '_blank'
+    ),
   }
 }
 

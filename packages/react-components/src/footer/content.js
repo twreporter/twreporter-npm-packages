@@ -121,6 +121,12 @@ function getItemGroups(mainOrigin) {
         link: 'https://twreporter.gitbook.io/the-reporter-brand-guidelines',
         target: '_blank',
       },
+      {
+        slug: 'publication-and-merchandise',
+        text: '出版品與周邊',
+        link: 'https://twreporter.backme.tw/shops/3589?locale=zh-TW',
+        target: '_blank',
+      },
     ],
   ]
 }
