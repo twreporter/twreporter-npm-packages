@@ -444,6 +444,7 @@ const ToolBar = ({
         shadow={shadow}
         hideText={hideText}
         className={className}
+        id="mobile-tool-bar"
       >
         <FontLevel changeFontLevel={onFontLevelChange} />
         <ShareBy fbAppID={fbAppID} />
