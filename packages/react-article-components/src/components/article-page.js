@@ -370,7 +370,7 @@ export default class Article extends PureComponent {
     }
     this.lastY = 0
     this.currentY = 0
-    this.handleScroll = _.throttle(this._handleScroll.bind(this), 50)
+    this.handleScroll = _.throttle(this._handleScroll.bind(this), 500)
   }
 
   _handleScroll() {
