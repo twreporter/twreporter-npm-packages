@@ -92,13 +92,13 @@ const ToolBarWrapper = styled.div`
   bottom: env(safe-area-inset-bottom, 0);
   height: ${props => (props.hideText ? '40px' : '55px')};
   transform: ${props =>
-    props.isHidden ? 'translateY(100%)' : 'tanslateY(0%)'};
+    props.isHidden ? 'translateY(150%)' : 'tanslateY(0%)'};
   transition: height 200ms, transform 200ms ease-in-out;
   background-color: ${props => props.bgColor};
   border-top: 1px solid ${props => props.borderColor};
   z-index: ${zIndexConst.mobileToolBar};
   ${ShareContainer} {
-    background-color: ${props => props.bgColor};
+    background-color: ${props => props.shareByBgColor};
     box-shadow: ${props => props.shadow};
   }
   ${SnackBarContainer} {
@@ -395,7 +395,9 @@ const ToolBar = ({
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
-  const { bgColor, borderColor } = getToolBarTheme(themeContext.name)
+  const { bgColor, borderColor, shareByBgColor } = getToolBarTheme(
+    themeContext.name
+  )
   const { showSnackBar, snackBarText, toastr } = useSnackBar()
   const backToTopicJSX = backToTopic ? (
     <BackToTopic backToTopic={backToTopic} />
@@ -408,6 +410,7 @@ const ToolBar = ({
     <ToolBarContext.Provider value={contextValue}>
       <ToolBarWrapper
         bgColor={bgColor}
+        shareByBgColor={shareByBgColor}
         borderColor={borderColor}
         hideText={hideText}
         className={className}
