@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0-rc.2...@twreporter/react-article-components@1.13.0-rc.3) (2024-03-11)
+
+
+### Bug Fixes
+
+* share container bg color & scroll throttle ([a337754](https://github.com/twreporter/twreporter-npm-packages/commit/a337754fca0f4b9cdf2810bb9ff4aaa8363cfa75))
+* translateY 200% ([b07f024](https://github.com/twreporter/twreporter-npm-packages/commit/b07f0241c0c90cb141967e2f57ffff89215a6507))
+
+
+
+
+
 # [1.13.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0-rc.1...@twreporter/react-article-components@1.13.0-rc.2) (2024-03-11)
 
 **Note:** Version bump only for package @twreporter/react-article-components
