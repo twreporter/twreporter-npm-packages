@@ -92,7 +92,7 @@ const ToolBarWrapper = styled.div`
   bottom: env(safe-area-inset-bottom, 0);
   height: ${props => (props.hideText ? '40px' : '55px')};
   transform: ${props =>
-    props.isHidden ? 'translateY(150%)' : 'tanslateY(0%)'};
+    props.isHidden ? 'translateY(200%)' : 'tanslateY(0%)'};
   transition: height 200ms, transform 200ms ease-in-out;
   background-color: ${props => props.bgColor};
   border-top: 1px solid ${props => props.borderColor};
