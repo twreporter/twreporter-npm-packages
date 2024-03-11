@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.26.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.1...@twreporter/react-components@8.26.0-rc.2) (2024-03-11)
+
+
+### Features
+
+* add element id for gtm ([7725be4](https://github.com/twreporter/twreporter-npm-packages/commit/7725be4d5033567797cce595c8ad9f61b33d5ef7))
+
+
+
+
+
 # [8.26.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.0...@twreporter/react-components@8.26.0-rc.1) (2024-03-07)
 
 ### Features
