@@ -3,6 +3,19 @@ const actionKeys = {
   newsLetter: 'newsLetter',
 }
 
+const gtmId = {
+  [actionKeys.support]: {
+    mobile: 'uh-support-header',
+    desktop: 'uh-support-header',
+    hamburger: 'uh-support-hamburger',
+  },
+  [actionKeys.newsLetter]: {
+    mobile: 'uh-newsletter-header',
+    desktop: 'uh-newsletter-header',
+    hamburger: 'uh-newsletter-hamburger',
+  },
+}
+
 export const ACTION_KEY = actionKeys
 
 export const ACTION_LABEL = {
@@ -22,7 +35,25 @@ export const ACTION_BUTTON_TYPE = {
 }
 
 export const ACTION_ORDER = {
-  mobile: [actionKeys.support],
-  desktop: [actionKeys.newsLetter, actionKeys.support],
-  hamburger: [actionKeys.newsLetter, actionKeys.support],
+  mobile: [{ key: actionKeys.support, id: gtmId[actionKeys.support].mobile }],
+  desktop: [
+    {
+      key: actionKeys.newsLetter,
+      id: gtmId[actionKeys.newsLetter].desktop,
+    },
+    {
+      key: actionKeys.support,
+      id: gtmId[actionKeys.support].desktop,
+    },
+  ],
+  hamburger: [
+    {
+      key: actionKeys.newsLetter,
+      id: gtmId[actionKeys.newsLetter].hamburger,
+    },
+    {
+      key: actionKeys.support,
+      id: gtmId[actionKeys.support].hamburger,
+    },
+  ],
 }
