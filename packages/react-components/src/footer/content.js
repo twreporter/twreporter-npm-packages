@@ -130,7 +130,7 @@ function getItemGroups(mainOrigin) {
       {
         slug: 'publication-and-merchandise',
         text: '出版品與周邊',
-        link: 'https://twreporter.backme.tw/shops/3589?locale=zh-TW',
+        link: 'https://twreporter.backme.tw/shops/3619?locale=zh-TW',
         target: '_blank',
       },
     ],
@@ -233,7 +233,7 @@ const ItemGroup = styled.div`
   ${mq.tabletAndBelow`
     width: calc(100% / 2);
     &:last-child{
-      margin-top: 35px;
+      margin-top: 32px;
     }
   `}
 `
