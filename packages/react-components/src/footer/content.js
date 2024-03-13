@@ -27,6 +27,11 @@ const _ = {
   map,
 }
 
+const gtmId = {
+  support: 'footer-support',
+  newsletter: 'footer-newsletter',
+}
+
 function getItemGroups(mainOrigin) {
   const foundationUrl = FOUNDATION_CATEGORY_SET
     ? `${mainOrigin}${entityPaths.categories}foundation`
@@ -102,6 +107,7 @@ function getItemGroups(mainOrigin) {
         text: '訂閱電子報',
         link: `${mainOrigin}${entityPaths.account}/email-subscription`,
         target: '_self',
+        id: gtmId.newsletter,
       },
       {
         slug: 'podcast-list',
@@ -119,6 +125,12 @@ function getItemGroups(mainOrigin) {
         slug: 'branding-design',
         text: '品牌設計規範',
         link: 'https://twreporter.gitbook.io/the-reporter-brand-guidelines',
+        target: '_blank',
+      },
+      {
+        slug: 'publication-and-merchandise',
+        text: '出版品與周邊',
+        link: 'https://twreporter.backme.tw/shops/3619?locale=zh-TW',
         target: '_blank',
       },
     ],
@@ -221,7 +233,7 @@ const ItemGroup = styled.div`
   ${mq.tabletAndBelow`
     width: calc(100% / 2);
     &:last-child{
-      margin-top: 35px;
+      margin-top: 32px;
     }
   `}
 `
@@ -330,6 +342,7 @@ const buildList = itemGroups =>
               visible={item.newFlag}
               href={item.link}
               target={item.target}
+              id={item.id}
             >
               <p>{item.text}</p>
               <span>New</span>
@@ -352,7 +365,7 @@ const Content = ({ releaseBranch }) => {
         <ItemList>{buildList(getItemGroups(mainOrigin))}</ItemList>
       </LinksColumn>
       <DonateButton>
-        <DonationLink>
+        <DonationLink id={gtmId.support}>
           <p>贊助我們</p>
         </DonationLink>
       </DonateButton>

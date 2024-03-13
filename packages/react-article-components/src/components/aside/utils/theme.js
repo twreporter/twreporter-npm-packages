@@ -11,13 +11,15 @@ export const getToolBarTheme = theme => {
     case themeConst.article.v2.photo:
       return {
         bgColor: colorPhoto.dark,
-        shadow: '0px 0px 8px rgba(0, 0, 0, 0.5)',
+        shareByBgColor: colorPhoto.dark,
+        borderColor: colorPhoto.heavy,
       }
     case themeConst.article.v2.default:
     default:
       return {
-        bgColor: colorGrayscale.white,
-        shadow: '0px 0px 8px rgba(0, 0, 0, 0.1)',
+        bgColor: colorGrayscale.gray100,
+        shareByBgColor: colorGrayscale.white,
+        borderColor: colorGrayscale.gray300,
       }
   }
 }

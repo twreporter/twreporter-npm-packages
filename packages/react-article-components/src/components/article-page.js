@@ -31,11 +31,13 @@ import ToolBarNew from './aside/mobile-tool-bar'
 import ToolBarOld from './aside/mobile-tool-bar-old'
 // lodash
 import get from 'lodash/get'
-const Tools = MY_READING ? ToolsNew : ToolsOld
-const ToolBar = MY_READING ? ToolBarNew : ToolBarOld
+import throttle from 'lodash/throttle'
 const _ = {
   get,
+  throttle,
 }
+const Tools = MY_READING ? ToolsNew : ToolsOld
+const ToolBar = MY_READING ? ToolBarNew : ToolBarOld
 
 const shiftLeftCss = css`
   position: relative;
@@ -361,6 +363,46 @@ export default class Article extends PureComponent {
     }
   }
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      scrollStage: 1,
+    }
+    this.lastY = 0
+    this.currentY = 0
+    this.handleScroll = _.throttle(this._handleScroll.bind(this), 500)
+  }
+
+  _handleScroll() {
+    const scrollThreshold = 16
+    this.lastY = window.pageYOffset
+    const scrollDistance = Math.abs(this.currentY - this.lastY)
+    if (scrollDistance < scrollThreshold) {
+      return
+    }
+    const scrollDirection = this.lastY > this.currentY ? 'down' : 'up'
+    this.currentY = this.lastY
+    if (scrollDirection === 'up') {
+      this.setState(prevState => ({
+        scrollStage:
+          prevState.scrollStage - 1 < 1 ? 1 : prevState.scrollStage - 1,
+      }))
+    } else {
+      this.setState(prevState => ({
+        scrollStage:
+          prevState.scrollStage + 1 > 3 ? 3 : prevState.scrollStage + 1,
+      }))
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
+
   render() {
     const {
       LinkComponent,
@@ -442,6 +484,7 @@ export default class Article extends PureComponent {
                   backToTopic={backToTopic}
                   articleMetaForBookmark={articleMetaForBookmark}
                   onFontLevelChange={this.changeFontLevel}
+                  scrollStage={this.state.scrollStage}
                 />
                 <DesktopAsideBlock>
                   <DesktopAside
@@ -465,6 +508,7 @@ export default class Article extends PureComponent {
                     brief={_.get(post, 'brief.api_data')}
                     content={_.get(post, 'content.api_data')}
                     onToggleTabExpanded={onToggleTabExpanded}
+                    scrollStage={this.state.scrollStage}
                   />
                 </ContentBlock>
                 {metadataAndToolsJSX}

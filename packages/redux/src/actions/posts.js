@@ -262,7 +262,8 @@ function fetchPostsByListId(
   limit = 10,
   page = startPage,
   timeout,
-  jwt
+  jwt,
+  isToggleBookmark = false
 ) {
   return (dispatch, getState) => {
     const fail = reason => {
@@ -317,6 +318,9 @@ function fetchPostsByListId(
       params.subcategory_id = subcategoryId
     } else {
       params[listType] = listId
+    }
+    if (isToggleBookmark) {
+      params.toggleBookmark = 1
     }
 
     const url = formURL(apiOrigin, path, params)
@@ -374,13 +378,19 @@ export function fetchPostsByTagListId(
   limit = 10,
   page = 0,
   jwt = '',
+  toggleBookmark = false,
   timeout = apiConfig.timeout
 ) {
   return (dispatch, getState) => {
-    return fetchPostsByListId(listId, 'tag_id', limit, page, timeout, jwt)(
-      dispatch,
-      getState
-    )
+    return fetchPostsByListId(
+      listId,
+      'tag_id',
+      limit,
+      page,
+      timeout,
+      jwt,
+      toggleBookmark
+    )(dispatch, getState)
   }
 }
 
@@ -419,6 +429,7 @@ export function fetchLatestPosts(
   limit = 10,
   page = 0,
   jwt = '',
+  toggleBookmark = false,
   timeout = apiConfig.timeout
 ) {
   return (dispatch, getState) => {
@@ -428,7 +439,8 @@ export function fetchLatestPosts(
       limit,
       page,
       timeout,
-      jwt
+      jwt,
+      toggleBookmark
     )(dispatch, getState)
   }
 }

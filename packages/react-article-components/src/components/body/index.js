@@ -428,12 +428,14 @@ export default class Body extends Component {
     brief: PropTypes.arrayOf(predefinedPropTypes.elementData),
     content: PropTypes.arrayOf(predefinedPropTypes.elementData),
     onToggleTabExpanded: PropTypes.func,
+    scrollStage: PropTypes.number,
   }
 
   static defaultProps = {
     brief: [],
     content: [],
     onToggleTabExpanded: () => {},
+    scollStage: 1,
   }
 
   constructor(props) {
@@ -493,7 +495,7 @@ export default class Body extends Component {
   }
 
   render() {
-    const { brief, content, onToggleTabExpanded } = this.props
+    const { brief, content, onToggleTabExpanded, scrollStage } = this.props
     let enableTOC = false
 
     const contentJsx = Array.isArray(content)
@@ -526,6 +528,7 @@ export default class Body extends Component {
             manager={this.tocManager}
             onStartScrollingToAnchor={this._onStartScrollingToAnchor}
             onToggleTabExpanded={onToggleTabExpanded}
+            scrollStage={scrollStage}
           />
         ) : null}
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, createContext } from 'react'
+import React, { useState, useContext, createContext } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeContext } from 'styled-components'
 // context
@@ -35,11 +35,6 @@ import {
   useSnackBar,
 } from '@twreporter/react-components/lib/snack-bar'
 import zIndexConst from '@twreporter/core/lib/constants/z-index'
-// lodash
-import isNil from 'lodash/isNil'
-const _ = {
-  isNil,
-}
 // global var
 const ToolBarContext = createContext()
 const defaultFbAppID = '962589903815787'
@@ -87,29 +82,37 @@ const SnackBarContainer = styled.div`
   opacity: ${props => (props.showSnackBar ? 1 : 0)};
 `
 
-const ToolBarContainer = styled.div`
+const ToolBarWrapper = styled.div`
   display: flex;
-  align-items: center;
-  width: fit-content;
-  background-color: ${props => props.bgColor};
-  padding: 0 16px;
-  border-radius: 60px;
+  width: 100%;
+  justify-content: center;
+  padding: 8px;
   position: fixed;
-  left: 50%;
-  transform: translate(-50%, 0);
-  bottom: calc(env(safe-area-inset-bottom, 0) + 8px);
+  left: 0px;
+  bottom: env(safe-area-inset-bottom, 0);
+  height: ${props => (props.hideText ? '40px' : '55px')};
+  transform: ${props =>
+    props.isHidden ? 'translateY(200%)' : 'tanslateY(0%)'};
+  transition: height 200ms, transform 200ms ease-in-out;
+  background-color: ${props => props.bgColor};
+  border-top: 1px solid ${props => props.borderColor};
   z-index: ${zIndexConst.mobileToolBar};
-  height: ${props => (props.hideText ? '38px' : '56px')};
-  transition: height 100ms;
-  box-shadow: ${props => props.shadow};
   ${ShareContainer} {
-    background-color: ${props => props.bgColor};
+    background-color: ${props => props.shareByBgColor};
     box-shadow: ${props => props.shadow};
   }
   ${SnackBarContainer} {
     bottom: ${props =>
-      props.hideText ? '46px' : '64px'}; //toolbar height + padding 8px
+      props.hideText ? '48px' : '62px'}; //toolbar height + padding 8px
   }
+`
+
+const ToolBarContainer = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 560px;
+  justify-content: space-evenly;
+  align-items: center;
 `
 
 const FbShare = ({ appID }) => {
@@ -387,76 +390,50 @@ const ToolBar = ({
   articleMetaForBookmark,
   onFontLevelChange,
   className,
+  scrollStage,
 }) => {
-  const [scrollDirection, setScrollDirection] = useState('init')
-  useEffect(() => {
-    const threshold = 8
-    let lastScrollY = window.pageYOffset
-    let ticking = false
-
-    const updateScrollDirection = () => {
-      const scrollY = window.pageYOffset
-      if (_.isNil(lastScrollY)) {
-        ticking = false
-        return
-      }
-
-      if (Math.abs(scrollY - lastScrollY) < threshold) {
-        ticking = false
-        return
-      }
-      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up'
-      setScrollDirection(scrollDirection)
-      lastScrollY = scrollY > 0 ? scrollY : 0
-      ticking = false
-    }
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateScrollDirection)
-        ticking = true
-      }
-    }
-
-    window.addEventListener('scroll', onScroll)
-
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      lastScrollY = null
-      ticking = null
-    }
-  }, [scrollDirection])
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
-  const { bgColor, shadow } = getToolBarTheme(themeContext.name)
+  const { bgColor, borderColor, shareByBgColor } = getToolBarTheme(
+    themeContext.name
+  )
   const { showSnackBar, snackBarText, toastr } = useSnackBar()
   const backToTopicJSX = backToTopic ? (
     <BackToTopic backToTopic={backToTopic} />
   ) : null
-  const hideText = scrollDirection === 'down'
+  const hideText = scrollStage >= 2
+  const hideToolBar = scrollStage >= 3
   const contextValue = { hideText, toastr }
 
   return (
     <ToolBarContext.Provider value={contextValue}>
-      <ToolBarContainer
+      <ToolBarWrapper
         bgColor={bgColor}
-        shadow={shadow}
+        shareByBgColor={shareByBgColor}
+        borderColor={borderColor}
         hideText={hideText}
         className={className}
+        isHidden={hideToolBar}
+        id="mobile-tool-bar"
       >
-        <FontLevel changeFontLevel={onFontLevelChange} />
-        <ShareBy fbAppID={fbAppID} />
-        <BookmarkBlock articleMeta={articleMetaForBookmark} />
-        <RelatedPost />
-        {backToTopicJSX}
+        <ToolBarContainer>
+          <FontLevel changeFontLevel={onFontLevelChange} />
+          <ShareBy fbAppID={fbAppID} />
+          <BookmarkBlock articleMeta={articleMetaForBookmark} />
+          <RelatedPost />
+          {backToTopicJSX}
+        </ToolBarContainer>
         <SnackBarContainer showSnackBar={showSnackBar}>
           <SnackBar text={snackBarText} theme={theme} />
         </SnackBarContainer>
-      </ToolBarContainer>
+      </ToolBarWrapper>
     </ToolBarContext.Provider>
   )
 }
-ToolBar.propTypes = predefinedProps.tools
+ToolBar.propTypes = {
+  ...predefinedProps.tools,
+  scrollStage: PropTypes.number,
+}
 
 export default ToolBar

@@ -67,32 +67,38 @@ export const TOCRow = styled.div`
   margin: 15px 15px 15px 0;
 `
 
-export const TOCTab = styled.div`
+export const TOCTabWrapper = styled.div`
   ${mq.tabletAndBelow`
     width: 30px;
     position: fixed;
     z-index: ${zIndexConst.toc};
     top: 20%;
     left: 0;
-    transition: transform 0.1s ease-in-out 0.1s;
+    transition: transform 200ms;
     transform: ${props =>
-      props.isExpanded ? `translateX(${tocWidth}px)` : 'translateX(0px)'};
-
-    > div {
-      opacity: 0.6;
-      color: ${props => props.theme.colors.base.lightText};
-      font-size: 14px;
-      width: 14px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+      props.isHidden || false ? 'translateX(-100%)' : 'translateX(0%)'};
   `}
 
   ${mq.desktopAndAbove`
     display: none;
   `}
+`
+
+export const TOCTab = styled.div`
+  transition: transform 0.1s ease-in-out 0.1s;
+  transform: ${props =>
+    props.isExpanded ? `translateX(${tocWidth}px)` : 'translateX(0px)'};
+
+  > div {
+    opacity: 0.6;
+    color: ${props => props.theme.colors.base.lightText};
+    font-size: 14px;
+    width: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `
 
 export const TOCBackground = styled.div`

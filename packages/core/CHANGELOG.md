@@ -3,454 +3,260 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.2-rc.0...@twreporter/core@1.19.0-rc.0) (2024-03-07)
+
+### Features
+
+- add feature toggle for new btn ([77cd2d2](https://github.com/twreporter/twreporter-npm-packages/commit/77cd2d27b922bde59f0abd2f6ef62d581c3f6944))
+
+## [1.18.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.1...@twreporter/core@1.18.2-rc.0) (2024-02-21)
+
+**Note:** Version bump only for package @twreporter/core
+
 ## [1.18.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.1-rc.0...@twreporter/core@1.18.1) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 ## [1.18.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0...@twreporter/core@1.18.1-rc.0) (2024-02-21)
-
 
 ### Bug Fixes
 
-* change ntch roles ([5e0eaf6](https://github.com/twreporter/twreporter-npm-packages/commit/5e0eaf6b6770e9aee55b807b30b54bd6da50e75c))
-
-
-
-
+- change ntch roles ([5e0eaf6](https://github.com/twreporter/twreporter-npm-packages/commit/5e0eaf6b6770e9aee55b807b30b54bd6da50e75c))
 
 # [1.18.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0-rc.2...@twreporter/core@1.18.0) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.18.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0-rc.1...@twreporter/core@1.18.0-rc.2) (2024-02-20)
-
 
 ### Bug Fixes
 
-* turn off MY_READING feature toggle ([18cbce0](https://github.com/twreporter/twreporter-npm-packages/commit/18cbce0d07e1d5c27fffbd6e46ef55eacbfeae91))
-
-
-
-
+- turn off MY_READING feature toggle ([18cbce0](https://github.com/twreporter/twreporter-npm-packages/commit/18cbce0d07e1d5c27fffbd6e46ef55eacbfeae91))
 
 # [1.18.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.0-rc.0...@twreporter/core@1.18.0-rc.1) (2024-02-20)
 
-
 ### Bug Fixes
 
-* add `white_0.9` to colorOpacity ([3fbbdd7](https://github.com/twreporter/twreporter-npm-packages/commit/3fbbdd7e30d84f2682388bdb55cc2e49001ec5f8))
-
-
-
-
+- add `white_0.9` to colorOpacity ([3fbbdd7](https://github.com/twreporter/twreporter-npm-packages/commit/3fbbdd7e30d84f2682388bdb55cc2e49001ec5f8))
 
 # [1.18.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.1-rc.1...@twreporter/core@1.18.0-rc.0) (2024-02-15)
 
-
 ### Bug Fixes
 
-* fix comments ([0f54e88](https://github.com/twreporter/twreporter-npm-packages/commit/0f54e88ef3e2bb94687669b59c5b207efcccc4ba))
-
+- fix comments ([0f54e88](https://github.com/twreporter/twreporter-npm-packages/commit/0f54e88ef3e2bb94687669b59c5b207efcccc4ba))
 
 ### Features
 
-* add post_id while create bookmark ([ee9c6f9](https://github.com/twreporter/twreporter-npm-packages/commit/ee9c6f98d08ebe00b86a91250a2da4cdf69b84ab))
-
-
-
-
+- add post_id while create bookmark ([ee9c6f9](https://github.com/twreporter/twreporter-npm-packages/commit/ee9c6f98d08ebe00b86a91250a2da4cdf69b84ab))
 
 ## [1.17.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.1-rc.0...@twreporter/core@1.17.1-rc.1) (2024-02-15)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 ## [1.17.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.0...@twreporter/core@1.17.1-rc.0) (2024-02-07)
 
 **Note:** Version bump only for package @twreporter/core
-
-
-
-
 
 # [1.17.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.0-rc.1...@twreporter/core@1.17.0) (2024-01-24)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.17.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.17.0-rc.0...@twreporter/core@1.17.0-rc.1) (2024-01-24)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.17.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0...@twreporter/core@1.17.0-rc.0) (2024-01-15)
-
 
 ### Features
 
-* add MY_READING feature flag ([d3b7175](https://github.com/twreporter/twreporter-npm-packages/commit/d3b71759c61daaefe470c9255a169a52136fa987))
-* add myreading path for header ([cd0a42c](https://github.com/twreporter/twreporter-npm-packages/commit/cd0a42cec3cc78e9eb421f9ddb892633a7f42d4a))
-
-
-
-
+- add MY_READING feature flag ([d3b7175](https://github.com/twreporter/twreporter-npm-packages/commit/d3b71759c61daaefe470c9255a169a52136fa987))
+- add myreading path for header ([cd0a42c](https://github.com/twreporter/twreporter-npm-packages/commit/cd0a42cec3cc78e9eb421f9ddb892633a7f42d4a))
 
 # [1.16.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0-rc.2...@twreporter/core@1.16.0) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.16.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0-rc.1...@twreporter/core@1.16.0-rc.2) (2023-12-28)
-
 
 ### Bug Fixes
 
-* add black_0.8 color in design system ([f070e3f](https://github.com/twreporter/twreporter-npm-packages/commit/f070e3f5d2a7cef4763f9de47a22984c8f7be946))
-
-
-
-
+- add black_0.8 color in design system ([f070e3f](https://github.com/twreporter/twreporter-npm-packages/commit/f070e3f5d2a7cef4763f9de47a22984c8f7be946))
 
 # [1.16.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.16.0-rc.0...@twreporter/core@1.16.0-rc.1) (2023-12-26)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.16.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.1-rc.0...@twreporter/core@1.16.0-rc.0) (2023-12-25)
-
 
 ### Bug Fixes
 
-* **core/src/constants:** remove unused embed ([5e3efa9](https://github.com/twreporter/twreporter-npm-packages/commit/5e3efa9cffb5b8818925c471337338f84efca909))
-
+- **core/src/constants:** remove unused embed ([5e3efa9](https://github.com/twreporter/twreporter-npm-packages/commit/5e3efa9cffb5b8818925c471337338f84efca909))
 
 ### Features
 
-* **core:** add loading cover z-index ([c135945](https://github.com/twreporter/twreporter-npm-packages/commit/c135945f7318cadced1bdd4c148fc0536532372f))
-* **core:** add z-index constants ([d886736](https://github.com/twreporter/twreporter-npm-packages/commit/d8867366b4ee6e61fb262e7ae4d3998514a30dc9))
-
-
-
-
+- **core:** add loading cover z-index ([c135945](https://github.com/twreporter/twreporter-npm-packages/commit/c135945f7318cadced1bdd4c148fc0536532372f))
+- **core:** add z-index constants ([d886736](https://github.com/twreporter/twreporter-npm-packages/commit/d8867366b4ee6e61fb262e7ae4d3998514a30dc9))
 
 ## [1.15.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0...@twreporter/core@1.15.1-rc.0) (2023-12-25)
 
-
 ### Bug Fixes
 
-* update 2024 fundraising code ([cc096a5](https://github.com/twreporter/twreporter-npm-packages/commit/cc096a570e886325f0e7981a48fa4a5d13ed33bb))
-
-
-
-
+- update 2024 fundraising code ([cc096a5](https://github.com/twreporter/twreporter-npm-packages/commit/cc096a570e886325f0e7981a48fa4a5d13ed33bb))
 
 # [1.15.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0-rc.2...@twreporter/core@1.15.0) (2023-12-13)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.15.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0-rc.1...@twreporter/core@1.15.0-rc.2) (2023-12-12)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.15.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.15.0-rc.0...@twreporter/core@1.15.0-rc.1) (2023-12-05)
-
 
 ### Bug Fixes
 
-* add new added category set ids ([addbd75](https://github.com/twreporter/twreporter-npm-packages/commit/addbd75add3f09282d4fe00551314835c8507367))
-
-
-
-
+- add new added category set ids ([addbd75](https://github.com/twreporter/twreporter-npm-packages/commit/addbd75add3f09282d4fe00551314835c8507367))
 
 # [1.15.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0...@twreporter/core@1.15.0-rc.0) (2023-12-05)
 
-
 ### Features
 
-* add foundation category set ([29259ef](https://github.com/twreporter/twreporter-npm-packages/commit/29259efe78e37aa148631a31e7f1bd5a3b2ecfe3))
-
-
-
-
+- add foundation category set ([29259ef](https://github.com/twreporter/twreporter-npm-packages/commit/29259efe78e37aa148631a31e7f1bd5a3b2ecfe3))
 
 # [1.14.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0-rc.2...@twreporter/core@1.14.0) (2023-11-20)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.14.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0-rc.1...@twreporter/core@1.14.0-rc.2) (2023-11-16)
-
 
 ### Bug Fixes
 
-* request origin typo ([ede7f76](https://github.com/twreporter/twreporter-npm-packages/commit/ede7f764d27f232c8ec43193a8579171c3db6167))
-
-
-
-
+- request origin typo ([ede7f76](https://github.com/twreporter/twreporter-npm-packages/commit/ede7f764d27f232c8ec43193a8579171c3db6167))
 
 # [1.14.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.14.0-rc.0...@twreporter/core@1.14.0-rc.1) (2023-11-16)
 
-
 ### Bug Fixes
 
-* mobile role card text style ([f197cb7](https://github.com/twreporter/twreporter-npm-packages/commit/f197cb7711ee1b9f5120996e65382fa4e22aef76))
-
-
-
-
+- mobile role card text style ([f197cb7](https://github.com/twreporter/twreporter-npm-packages/commit/f197cb7711ee1b9f5120996e65382fa4e22aef76))
 
 # [1.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.1-rc.0...@twreporter/core@1.14.0-rc.0) (2023-11-13)
 
-
 ### Bug Fixes
 
-* use Object.freeze and use en-US ([e4ff2a0](https://github.com/twreporter/twreporter-npm-packages/commit/e4ff2a0dda08003eb762d3009b6670b6c84cbcf1))
-
+- use Object.freeze and use en-US ([e4ff2a0](https://github.com/twreporter/twreporter-npm-packages/commit/e4ff2a0dda08003eb762d3009b6670b6c84cbcf1))
 
 ### Features
 
-* new moblie member role card ([2e01669](https://github.com/twreporter/twreporter-npm-packages/commit/2e01669144c072d5bd89d88fe68b97d69e8b6e6f))
-
-
-
-
+- new moblie member role card ([2e01669](https://github.com/twreporter/twreporter-npm-packages/commit/2e01669144c072d5bd89d88fe68b97d69e8b6e6f))
 
 ## [1.13.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.0...@twreporter/core@1.13.1-rc.0) (2023-11-13)
 
-
 ### Bug Fixes
 
-* use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
-
-
-
-
+- use design guideline color in article page ([5d38172](https://github.com/twreporter/twreporter-npm-packages/commit/5d381721915792919d827d5b3a39785aac3b70bf))
 
 # [1.13.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.13.0-rc.0...@twreporter/core@1.13.0) (2023-10-30)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.13.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.12.0...@twreporter/core@1.13.0-rc.0) (2023-10-24)
-
 
 ### Bug Fixes
 
-* fix comment ([66389ed](https://github.com/twreporter/twreporter-npm-packages/commit/66389ed9483c4e86bde25d1b76f12ac93ae9beef))
-
+- fix comment ([66389ed](https://github.com/twreporter/twreporter-npm-packages/commit/66389ed9483c4e86bde25d1b76f12ac93ae9beef))
 
 ### Features
 
-* new user role ([74f8231](https://github.com/twreporter/twreporter-npm-packages/commit/74f823191f302d194b23034b356d2c219b149e58))
-
-
-
-
+- new user role ([74f8231](https://github.com/twreporter/twreporter-npm-packages/commit/74f823191f302d194b23034b356d2c219b149e58))
 
 # [1.12.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.12.0-rc.0...@twreporter/core@1.12.0) (2023-10-11)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0...@twreporter/core@1.12.0-rc.0) (2023-09-28)
-
 
 ### Features
 
-* add donation anchor & change link ([83b3c18](https://github.com/twreporter/twreporter-npm-packages/commit/83b3c1868b9e54250762d5223b541868fc757410))
-
-
-
-
+- add donation anchor & change link ([83b3c18](https://github.com/twreporter/twreporter-npm-packages/commit/83b3c1868b9e54250762d5223b541868fc757410))
 
 # [1.11.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.4...@twreporter/core@1.11.0) (2023-08-31)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.11.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.3...@twreporter/core@1.11.0-rc.4) (2023-08-14)
-
 
 ### Bug Fixes
 
-* remove unused code ([05a9110](https://github.com/twreporter/twreporter-npm-packages/commit/05a9110cb7775b17c5cdade6f0ef7a3b437f3957))
-
-
-
-
+- remove unused code ([05a9110](https://github.com/twreporter/twreporter-npm-packages/commit/05a9110cb7775b17c5cdade6f0ef7a3b437f3957))
 
 # [1.11.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.2...@twreporter/core@1.11.0-rc.3) (2023-08-11)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.11.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.1...@twreporter/core@1.11.0-rc.2) (2023-07-04)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.11.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.11.0-rc.0...@twreporter/core@1.11.0-rc.1) (2023-07-04)
-
 
 ### Features
 
-* add MEMBERSHIP feature flag ([fb25ecb](https://github.com/twreporter/twreporter-npm-packages/commit/fb25ecb3b6113dee66f2e311bd93c995c772a3c7))
-
-
-
-
+- add MEMBERSHIP feature flag ([fb25ecb](https://github.com/twreporter/twreporter-npm-packages/commit/fb25ecb3b6113dee66f2e311bd93c995c772a3c7))
 
 # [1.11.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.1-rc.0...@twreporter/core@1.11.0-rc.0) (2023-07-03)
 
-
 ### Features
 
-* remove MEMBER_ROLE_ZH_TW ([3586031](https://github.com/twreporter/twreporter-npm-packages/commit/3586031ef0e9c8959be8ec763530b9fca8a9f69e))
-
-
-
-
+- remove MEMBER_ROLE_ZH_TW ([3586031](https://github.com/twreporter/twreporter-npm-packages/commit/3586031ef0e9c8959be8ec763530b9fca8a9f69e))
 
 ## [1.10.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0...@twreporter/core@1.10.1-rc.0) (2023-06-28)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.10.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.4...@twreporter/core@1.10.0) (2023-06-21)
 
 **Note:** Version bump only for package @twreporter/core
-
-
-
-
 
 # [1.10.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.3...@twreporter/core@1.10.0-rc.4) (2023-06-15)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.10.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.2...@twreporter/core@1.10.0-rc.3) (2023-06-13)
-
 
 ### Bug Fixes
 
-* add `style` props for TextButton & deprecate TEXT_BUTTON_THEME ([0d697b8](https://github.com/twreporter/twreporter-npm-packages/commit/0d697b804cb4c0d5b0b505614008a939e7bd0212))
-
-
-
-
+- add `style` props for TextButton & deprecate TEXT_BUTTON_THEME ([0d697b8](https://github.com/twreporter/twreporter-npm-packages/commit/0d697b804cb4c0d5b0b505614008a939e7bd0212))
 
 # [1.10.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.1...@twreporter/core@1.10.0-rc.2) (2023-06-12)
 
-
 ### Features
 
-* add email subscription options ([2f97f82](https://github.com/twreporter/twreporter-npm-packages/commit/2f97f82a2d754c462dbbfef8a3e0ff9e9db0435c))
-* add read preference ([3d11197](https://github.com/twreporter/twreporter-npm-packages/commit/3d1119766205a566d504452e3325e260b395d63f))
-* add user reducer test ([28cc793](https://github.com/twreporter/twreporter-npm-packages/commit/28cc793bdf68559a4f81e44ab62e6ee62b58a1b7))
-
-
-
-
+- add email subscription options ([2f97f82](https://github.com/twreporter/twreporter-npm-packages/commit/2f97f82a2d754c462dbbfef8a3e0ff9e9db0435c))
+- add read preference ([3d11197](https://github.com/twreporter/twreporter-npm-packages/commit/3d1119766205a566d504452e3325e260b395d63f))
+- add user reducer test ([28cc793](https://github.com/twreporter/twreporter-npm-packages/commit/28cc793bdf68559a4f81e44ab62e6ee62b58a1b7))
 
 # [1.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.10.0-rc.0...@twreporter/core@1.10.0-rc.1) (2023-05-23)
 
-
 ### Features
 
-* fix comment ([e2d4ffb](https://github.com/twreporter/twreporter-npm-packages/commit/e2d4ffbf543eed2461e5c380183b753070f0723b))
-* member role constants ([9c9ac5d](https://github.com/twreporter/twreporter-npm-packages/commit/9c9ac5d5ea94f125f082b5f7b112b0dbf626250b))
-
-
-
-
+- fix comment ([e2d4ffb](https://github.com/twreporter/twreporter-npm-packages/commit/e2d4ffbf543eed2461e5c380183b753070f0723b))
+- member role constants ([9c9ac5d](https://github.com/twreporter/twreporter-npm-packages/commit/9c9ac5d5ea94f125f082b5f7b112b0dbf626250b))
 
 # [1.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0...@twreporter/core@1.10.0-rc.0) (2023-05-22)
 
-
 ### Features
 
-* add padding option ([9b6dadb](https://github.com/twreporter/twreporter-npm-packages/commit/9b6dadbdbf3dec5c970d8cf174308df27fbdb87a))
-
-
-
-
+- add padding option ([9b6dadb](https://github.com/twreporter/twreporter-npm-packages/commit/9b6dadbdbf3dec5c970d8cf174308df27fbdb87a))
 
 # [1.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0-rc.1...@twreporter/core@1.9.0) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.9.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.9.0-rc.0...@twreporter/core@1.9.0-rc.1) (2023-04-27)
-
 
 ### Features
 
-* change core packages newsLetter link to new one ([5b92f00](https://github.com/twreporter/twreporter-npm-packages/commit/5b92f00f75a6addc5d9958cadfa3c86685ba3484))
-
-
-
-
+- change core packages newsLetter link to new one ([5b92f00](https://github.com/twreporter/twreporter-npm-packages/commit/5b92f00f75a6addc5d9958cadfa3c86685ba3484))
 
 # [1.9.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.8.3-rc.2...@twreporter/core@1.9.0-rc.0) (2023-04-18)
 

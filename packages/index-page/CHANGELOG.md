@@ -3,878 +3,486 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.5.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.9-rc.0...@twreporter/index-page@1.5.9) (2024-02-21)
+## [1.5.10-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.10-rc.4...@twreporter/index-page@1.5.10-rc.5) (2024-03-12)
 
 **Note:** Version bump only for package @twreporter/index-page
 
 
 
 
+
+## [1.5.10-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.10-rc.3...@twreporter/index-page@1.5.10-rc.4) (2024-03-11)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.5.10-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.10-rc.2...@twreporter/index-page@1.5.10-rc.3) (2024-03-11)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+
+
+
+
+## [1.5.10-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.10-rc.1...@twreporter/index-page@1.5.10-rc.2) (2024-03-07)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+## [1.5.10-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.10-rc.0...@twreporter/index-page@1.5.10-rc.1) (2024-03-07)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+## [1.5.10-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.9...@twreporter/index-page@1.5.10-rc.0) (2024-02-21)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+## [1.5.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.9-rc.0...@twreporter/index-page@1.5.9) (2024-02-21)
+
+**Note:** Version bump only for package @twreporter/index-page
 
 ## [1.5.9-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8...@twreporter/index-page@1.5.9-rc.0) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.8...@twreporter/index-page@1.5.8) (2024-02-21)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.8-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.7...@twreporter/index-page@1.5.8-rc.8) (2024-02-20)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.8-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.6...@twreporter/index-page@1.5.8-rc.7) (2024-02-20)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.8-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.5...@twreporter/index-page@1.5.8-rc.6) (2024-02-16)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.8-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.4...@twreporter/index-page@1.5.8-rc.5) (2024-02-15)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.8-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.3...@twreporter/index-page@1.5.8-rc.4) (2024-02-15)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.8-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.2...@twreporter/index-page@1.5.8-rc.3) (2024-02-07)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.8-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.1...@twreporter/index-page@1.5.8-rc.2) (2024-02-07)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.8-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.8-rc.0...@twreporter/index-page@1.5.8-rc.1) (2024-01-25)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.8-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7...@twreporter/index-page@1.5.8-rc.0) (2024-01-24)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7-rc.6...@twreporter/index-page@1.5.7) (2024-01-24)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.7-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7-rc.5...@twreporter/index-page@1.5.7-rc.6) (2024-01-24)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.7-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7-rc.4...@twreporter/index-page@1.5.7-rc.5) (2024-01-19)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.7-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7-rc.3...@twreporter/index-page@1.5.7-rc.4) (2024-01-19)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.7-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7-rc.2...@twreporter/index-page@1.5.7-rc.3) (2024-01-17)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.7-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7-rc.1...@twreporter/index-page@1.5.7-rc.2) (2024-01-15)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.7-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.7-rc.0...@twreporter/index-page@1.5.7-rc.1) (2024-01-15)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.7-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.6...@twreporter/index-page@1.5.7-rc.0) (2024-01-15)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.6-rc.0...@twreporter/index-page@1.5.6) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.6-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.5...@twreporter/index-page@1.5.6-rc.0) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.5-rc.4...@twreporter/index-page@1.5.5) (2024-01-03)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.5-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.5-rc.3...@twreporter/index-page@1.5.5-rc.4) (2023-12-28)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.5-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.5-rc.2...@twreporter/index-page@1.5.5-rc.3) (2023-12-26)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.5-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.5-rc.1...@twreporter/index-page@1.5.5-rc.2) (2023-12-26)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.5-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.5-rc.0...@twreporter/index-page@1.5.5-rc.1) (2023-12-25)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.5-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4...@twreporter/index-page@1.5.5-rc.0) (2023-12-25)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.6...@twreporter/index-page@1.5.4) (2023-12-13)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.4-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.5...@twreporter/index-page@1.5.4-rc.6) (2023-12-12)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.4-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.4...@twreporter/index-page@1.5.4-rc.5) (2023-12-07)
-
 
 ### Bug Fixes
 
-* color in dark bg ([bc8b124](https://github.com/twreporter/twreporter-npm-packages/commit/bc8b12416ea493aa4a38472534cad49581814dd6))
-* update component naming ([73b9bb5](https://github.com/twreporter/twreporter-npm-packages/commit/73b9bb5ebcbf1a92c4d344f9d298304ea276c32d))
-
-
-
-
+- color in dark bg ([bc8b124](https://github.com/twreporter/twreporter-npm-packages/commit/bc8b12416ea493aa4a38472534cad49581814dd6))
+- update component naming ([73b9bb5](https://github.com/twreporter/twreporter-npm-packages/commit/73b9bb5ebcbf1a92c4d344f9d298304ea276c32d))
 
 ## [1.5.4-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.3...@twreporter/index-page@1.5.4-rc.4) (2023-12-05)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.4-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.2...@twreporter/index-page@1.5.4-rc.3) (2023-12-05)
-
 
 ### Bug Fixes
 
-* `index-page` use design guideline color ([c754325](https://github.com/twreporter/twreporter-npm-packages/commit/c75432566c275fc20cb9465a84712d39a47afa7f))
-
-
-
-
+- `index-page` use design guideline color ([c754325](https://github.com/twreporter/twreporter-npm-packages/commit/c75432566c275fc20cb9465a84712d39a47afa7f))
 
 ## [1.5.4-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.1...@twreporter/index-page@1.5.4-rc.2) (2023-12-05)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.4-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.4-rc.0...@twreporter/index-page@1.5.4-rc.1) (2023-12-05)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.4-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3...@twreporter/index-page@1.5.4-rc.0) (2023-12-05)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.10...@twreporter/index-page@1.5.3) (2023-11-20)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.3-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.9...@twreporter/index-page@1.5.3-rc.10) (2023-11-16)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.3-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.8...@twreporter/index-page@1.5.3-rc.9) (2023-11-16)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.3-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.7...@twreporter/index-page@1.5.3-rc.8) (2023-11-16)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.3-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.6...@twreporter/index-page@1.5.3-rc.7) (2023-11-16)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.3-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.5...@twreporter/index-page@1.5.3-rc.6) (2023-11-15)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.3-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.4...@twreporter/index-page@1.5.3-rc.5) (2023-11-14)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.3-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.3...@twreporter/index-page@1.5.3-rc.4) (2023-11-14)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.3-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.2...@twreporter/index-page@1.5.3-rc.3) (2023-11-13)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.1...@twreporter/index-page@1.5.3-rc.2) (2023-11-13)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.3-rc.0...@twreporter/index-page@1.5.3-rc.1) (2023-11-13)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.2...@twreporter/index-page@1.5.3-rc.0) (2023-11-13)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.2-rc.0...@twreporter/index-page@1.5.2) (2023-10-30)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.1...@twreporter/index-page@1.5.2-rc.0) (2023-10-24)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.1-rc.3...@twreporter/index-page@1.5.1) (2023-10-11)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.1-rc.2...@twreporter/index-page@1.5.1-rc.3) (2023-10-06)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.1-rc.1...@twreporter/index-page@1.5.1-rc.2) (2023-10-05)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.5.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.1-rc.0...@twreporter/index-page@1.5.1-rc.1) (2023-10-01)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.5.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0...@twreporter/index-page@1.5.1-rc.0) (2023-09-28)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 # [1.5.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.7...@twreporter/index-page@1.5.0) (2023-09-20)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 # [1.5.0-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.6...@twreporter/index-page@1.5.0-rc.7) (2023-09-19)
-
 
 ### Bug Fixes
 
-* index page more link ([9fe8f3f](https://github.com/twreporter/twreporter-npm-packages/commit/9fe8f3fc66c1935c28debba0f8df4d3de94edbf4))
-
-
-
-
+- index page more link ([9fe8f3f](https://github.com/twreporter/twreporter-npm-packages/commit/9fe8f3fc66c1935c28debba0f8df4d3de94edbf4))
 
 # [1.5.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.5...@twreporter/index-page@1.5.0-rc.6) (2023-09-19)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 # [1.5.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.4...@twreporter/index-page@1.5.0-rc.5) (2023-09-18)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 # [1.5.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.3...@twreporter/index-page@1.5.0-rc.4) (2023-09-08)
-
 
 ### Bug Fixes
 
-* swiper text and image together ([acefcd5](https://github.com/twreporter/twreporter-npm-packages/commit/acefcd5cb4875dde18879c7893914121530b20fc))
-
-
-
-
+- swiper text and image together ([acefcd5](https://github.com/twreporter/twreporter-npm-packages/commit/acefcd5cb4875dde18879c7893914121530b20fc))
 
 # [1.5.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.2...@twreporter/index-page@1.5.0-rc.3) (2023-09-05)
 
-
 ### Bug Fixes
 
-* use css modules transform ([b0bc465](https://github.com/twreporter/twreporter-npm-packages/commit/b0bc465513781b9d18545a7e8e8558320dc8cce4))
-
-
-
-
+- use css modules transform ([b0bc465](https://github.com/twreporter/twreporter-npm-packages/commit/b0bc465513781b9d18545a7e8e8558320dc8cce4))
 
 # [1.5.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.1...@twreporter/index-page@1.5.0-rc.2) (2023-09-04)
 
-
 ### Bug Fixes
 
-* use react css modules ([80a8e6d](https://github.com/twreporter/twreporter-npm-packages/commit/80a8e6d24677e8b9f1813358d848aed5f63a1c25))
-
-
-
-
+- use react css modules ([80a8e6d](https://github.com/twreporter/twreporter-npm-packages/commit/80a8e6d24677e8b9f1813358d848aed5f63a1c25))
 
 # [1.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.5.0-rc.0...@twreporter/index-page@1.5.0-rc.1) (2023-09-04)
 
-
 ### Bug Fixes
 
-* add key ([a0f9fb3](https://github.com/twreporter/twreporter-npm-packages/commit/a0f9fb32e6011238cf9ca601ab5e4005bbdd8851))
-
-
-
-
+- add key ([a0f9fb3](https://github.com/twreporter/twreporter-npm-packages/commit/a0f9fb32e6011238cf9ca601ab5e4005bbdd8851))
 
 # [1.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.9-rc.0...@twreporter/index-page@1.5.0-rc.0) (2023-09-04)
 
-
 ### Bug Fixes
 
-* category name ([f345c58](https://github.com/twreporter/twreporter-npm-packages/commit/f345c58656b743f5c6e964229c3c1375ae7f742a))
-* prop types ([2427d22](https://github.com/twreporter/twreporter-npm-packages/commit/2427d2201f25104281922fd672f28a2740857dfe))
-* remove unused code ([c2dcd83](https://github.com/twreporter/twreporter-npm-packages/commit/c2dcd83ecb99b62d3898c6294e25da92d401e951))
-
+- category name ([f345c58](https://github.com/twreporter/twreporter-npm-packages/commit/f345c58656b743f5c6e964229c3c1375ae7f742a))
+- prop types ([2427d22](https://github.com/twreporter/twreporter-npm-packages/commit/2427d2201f25104281922fd672f28a2740857dfe))
+- remove unused code ([c2dcd83](https://github.com/twreporter/twreporter-npm-packages/commit/c2dcd83ecb99b62d3898c6294e25da92d401e951))
 
 ### Features
 
-* use swiper for swipe ([e159573](https://github.com/twreporter/twreporter-npm-packages/commit/e159573508c83d0f24329a41b970e7cc37663da2))
-
-
-
-
+- use swiper for swipe ([e159573](https://github.com/twreporter/twreporter-npm-packages/commit/e159573508c83d0f24329a41b970e7cc37663da2))
 
 ## [1.4.9-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8...@twreporter/index-page@1.4.9-rc.0) (2023-09-04)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.11...@twreporter/index-page@1.4.8) (2023-08-31)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.8-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.10...@twreporter/index-page@1.4.8-rc.11) (2023-08-25)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.8-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.9...@twreporter/index-page@1.4.8-rc.10) (2023-08-21)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.8-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.8...@twreporter/index-page@1.4.8-rc.9) (2023-08-16)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.8-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.7...@twreporter/index-page@1.4.8-rc.8) (2023-08-16)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.8-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.6...@twreporter/index-page@1.4.8-rc.7) (2023-08-14)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.8-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.5...@twreporter/index-page@1.4.8-rc.6) (2023-08-11)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.8-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.4...@twreporter/index-page@1.4.8-rc.5) (2023-07-27)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.8-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.3...@twreporter/index-page@1.4.8-rc.4) (2023-07-14)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.8-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.2...@twreporter/index-page@1.4.8-rc.3) (2023-07-04)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.8-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.1...@twreporter/index-page@1.4.8-rc.2) (2023-07-04)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.8-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.8-rc.0...@twreporter/index-page@1.4.8-rc.1) (2023-07-03)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.8-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7...@twreporter/index-page@1.4.8-rc.0) (2023-06-28)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.9...@twreporter/index-page@1.4.7) (2023-06-21)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.7-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.8...@twreporter/index-page@1.4.7-rc.9) (2023-06-19)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.7-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.7...@twreporter/index-page@1.4.7-rc.8) (2023-06-17)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.7-rc.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.6...@twreporter/index-page@1.4.7-rc.7) (2023-06-17)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.7-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.5...@twreporter/index-page@1.4.7-rc.6) (2023-06-15)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.7-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.4...@twreporter/index-page@1.4.7-rc.5) (2023-06-15)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.7-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.3...@twreporter/index-page@1.4.7-rc.4) (2023-06-13)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.7-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.2...@twreporter/index-page@1.4.7-rc.3) (2023-06-12)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.7-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.1...@twreporter/index-page@1.4.7-rc.2) (2023-05-29)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.7-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.7-rc.0...@twreporter/index-page@1.4.7-rc.1) (2023-05-23)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.7-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.6...@twreporter/index-page@1.4.7-rc.0) (2023-05-22)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.6-rc.0...@twreporter/index-page@1.4.6) (2023-05-12)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.6-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.5...@twreporter/index-page@1.4.6-rc.0) (2023-05-11)
-
 
 ### Bug Fixes
 
-* latest section category field wording ([7c479a0](https://github.com/twreporter/twreporter-npm-packages/commit/7c479a0ed3fe7ffd0b8c1a64fd77c9e457db7d7e))
-
-
-
-
+- latest section category field wording ([7c479a0](https://github.com/twreporter/twreporter-npm-packages/commit/7c479a0ed3fe7ffd0b8c1a64fd77c9e457db7d7e))
 
 ## [1.4.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.5-rc.0...@twreporter/index-page@1.4.5) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.5-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4...@twreporter/index-page@1.4.5-rc.0) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.18...@twreporter/index-page@1.4.4) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.4-rc.18](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.17...@twreporter/index-page@1.4.4-rc.18) (2023-05-09)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.4-rc.17](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.16...@twreporter/index-page@1.4.4-rc.17) (2023-05-09)
-
 
 ### Bug Fixes
 
-* index-page latest section style ([fa204ee](https://github.com/twreporter/twreporter-npm-packages/commit/fa204eedc123cd5d84f9e3f56cd44c169c7d1da1))
-
-
-
-
+- index-page latest section style ([fa204ee](https://github.com/twreporter/twreporter-npm-packages/commit/fa204eedc123cd5d84f9e3f56cd44c169c7d1da1))
 
 ## [1.4.4-rc.16](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.15...@twreporter/index-page@1.4.4-rc.16) (2023-05-08)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.4-rc.15](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.14...@twreporter/index-page@1.4.4-rc.15) (2023-05-07)
-
 
 ### Bug Fixes
 
-* editor pick section should show category_set info ([33e97dd](https://github.com/twreporter/twreporter-npm-packages/commit/33e97dd03554a132dd8d195a554e2fd2c705a12f))
-
-
-
-
+- editor pick section should show category_set info ([33e97dd](https://github.com/twreporter/twreporter-npm-packages/commit/33e97dd03554a132dd8d195a554e2fd2c705a12f))
 
 ## [1.4.4-rc.14](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.13...@twreporter/index-page@1.4.4-rc.14) (2023-05-05)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.4-rc.13](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.12...@twreporter/index-page@1.4.4-rc.13) (2023-05-05)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.4-rc.12](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.11...@twreporter/index-page@1.4.4-rc.12) (2023-05-03)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.4-rc.11](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.10...@twreporter/index-page@1.4.4-rc.11) (2023-04-28)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.4-rc.10](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.9...@twreporter/index-page@1.4.4-rc.10) (2023-04-27)
 
 **Note:** Version bump only for package @twreporter/index-page
 
-
-
-
-
 ## [1.4.4-rc.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.8...@twreporter/index-page@1.4.4-rc.9) (2023-04-24)
 
 **Note:** Version bump only for package @twreporter/index-page
-
-
-
-
 
 ## [1.4.4-rc.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@1.4.4-rc.7...@twreporter/index-page@1.4.4-rc.8) (2023-04-18)
 
