@@ -12,6 +12,10 @@ import {
   colorGrayscale,
   colorSupportive,
 } from '@twreporter/core/lib/constants/color'
+import {
+  TabletAndAbove,
+  MobileOnly,
+} from '@twreporter/react-components/lib/rwd'
 // lodash
 import concat from 'lodash/concat'
 import get from 'lodash/get'
@@ -77,9 +81,6 @@ const PageNumberBox = styled(Box)`
     color: ${props =>
       props.isCurrent ? colorGrayscale.white : colorSupportive.heavy};
   }
-  ${mq.mobileOnly`
-    display: ${props => (props.isCurrent ? '' : 'none')};
-  `}
 `
 
 const EllipsisBox = styled(Box)`
@@ -217,6 +218,29 @@ class Pagination extends React.PureComponent {
     )
   }
 
+  _buildMobilePagesArray(currentPage, totalPages) {
+    const pagesArrayMaxLength = 5
+
+    if (totalPages <= pagesArrayMaxLength) {
+      return this._buildCenterJSX(1, totalPages, currentPage)
+    }
+
+    let startPage
+    const edgeRange = pagesArrayMaxLength - 1
+    if (currentPage <= edgeRange) {
+      // First 5 pages
+      startPage = 1
+    } else if (currentPage >= totalPages - edgeRange) {
+      // Last 5 pages
+      startPage = totalPages - edgeRange
+    } else {
+      // Surrounding pages for current page
+      startPage = currentPage - 2
+    }
+
+    return this._buildCenterJSX(startPage, pagesArrayMaxLength, currentPage)
+  }
+
   render() {
     const {
       currentPage,
@@ -231,23 +255,44 @@ class Pagination extends React.PureComponent {
         </PaginationContainer>
       )
     const pagesArrayJSX = this._buildPagesArray(currentPage, totalPages)
+    const mobilePagesArrayJSX = this._buildMobilePagesArray(
+      currentPage,
+      totalPages
+    )
     const belowFirstPage = currentPage <= 1
     const aboveFinalPage = currentPage >= totalPages
     return (
       <PaginationContainer>
-        <Boxes>
-          {belowFirstPage ? null : (
-            <PrevNextBtn key="prev-btn" onClick={handleClickPrev}>
-              <PageUpIcon />
-            </PrevNextBtn>
-          )}
-          {pagesArrayJSX}
-          {aboveFinalPage ? null : (
-            <PrevNextBtn key="next-btn" onClick={handleClickNext}>
-              <PageDownIcon />
-            </PrevNextBtn>
-          )}
-        </Boxes>
+        <TabletAndAbove>
+          <Boxes>
+            {belowFirstPage ? null : (
+              <PrevNextBtn key="prev-btn" onClick={handleClickPrev}>
+                <PageUpIcon />
+              </PrevNextBtn>
+            )}
+            {pagesArrayJSX}
+            {aboveFinalPage ? null : (
+              <PrevNextBtn key="next-btn" onClick={handleClickNext}>
+                <PageDownIcon />
+              </PrevNextBtn>
+            )}
+          </Boxes>
+        </TabletAndAbove>
+        <MobileOnly>
+          <Boxes>
+            {belowFirstPage ? null : (
+              <PrevNextBtn key="prev-btn" onClick={handleClickPrev}>
+                <PageUpIcon />
+              </PrevNextBtn>
+            )}
+            {mobilePagesArrayJSX}
+            {aboveFinalPage ? null : (
+              <PrevNextBtn key="next-btn" onClick={handleClickNext}>
+                <PageDownIcon />
+              </PrevNextBtn>
+            )}
+          </Boxes>
+        </MobileOnly>
       </PaginationContainer>
     )
   }
