@@ -247,10 +247,11 @@ class Pagination extends React.PureComponent {
       totalPages,
       handleClickPrev,
       handleClickNext,
+      className,
     } = this.props
     if (!totalPages || !currentPage)
       return (
-        <PaginationContainer>
+        <PaginationContainer className={className}>
           <Boxes />
         </PaginationContainer>
       )
@@ -262,7 +263,7 @@ class Pagination extends React.PureComponent {
     const belowFirstPage = currentPage <= 1
     const aboveFinalPage = currentPage >= totalPages
     return (
-      <PaginationContainer>
+      <PaginationContainer className={className}>
         <TabletAndAbove>
           <Boxes>
             {belowFirstPage ? null : (
@@ -307,6 +308,7 @@ Pagination.propTypes = {
   nOfCenterPages: PropTypes.number.isRequired,
   nOfMarginPages: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
+  className: PropTypes.string,
 }
 
 Pagination.defaultProps = {
@@ -315,6 +317,7 @@ Pagination.defaultProps = {
   ellipsis: '…',
   nOfCenterPages: 4,
   nOfMarginPages: 1,
+  className: '',
 }
 
 export default Pagination
