@@ -220,24 +220,21 @@ class Pagination extends React.PureComponent {
 
   _buildMobilePagesArray(currentPage, totalPages) {
     const pagesArrayMaxLength = 5
-
     if (totalPages <= pagesArrayMaxLength) {
       return this._buildCenterJSX(1, totalPages, currentPage)
     }
-
     let startPage
-    const edgeRange = pagesArrayMaxLength - 1
-    if (currentPage <= edgeRange) {
-      // First 5 pages
+    // Check if currentPage is within the first two pages or the last two pages
+    if (currentPage <= 2) {
+      // If in the first two pages, start from page 1
       startPage = 1
-    } else if (currentPage >= totalPages - edgeRange) {
-      // Last 5 pages
-      startPage = totalPages - edgeRange
+    } else if (currentPage >= totalPages - 1) {
+      // If in the last two pages, adjust startPage to ensure the array is fully populated
+      startPage = totalPages - pagesArrayMaxLength + 1
     } else {
-      // Surrounding pages for current page
+      // Otherwise, center currentPage by adjusting startPage accordingly
       startPage = currentPage - 2
     }
-
     return this._buildCenterJSX(startPage, pagesArrayMaxLength, currentPage)
   }
 
