@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.27.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0-rc.0...@twreporter/react-components@8.27.0-rc.1) (2024-03-27)
+
+
+### Bug Fixes
+
+* pagination number position center ([6d933f1](https://github.com/twreporter/twreporter-npm-packages/commit/6d933f11695b3aa5ad02190be943dfd51e2a11af))
+
+
+
+
+
 # [8.27.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0...@twreporter/react-components@8.27.0-rc.0) (2024-03-25)
 
 
