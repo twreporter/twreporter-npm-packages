@@ -51,8 +51,8 @@ const PaginationContainer = styled.div`
 `
 
 const Boxes = styled.div`
-  display: inline-block;
-  user-select: none;
+  display: flex;
+  justify-content: center;
 `
 
 const Box = styled.div`
@@ -92,6 +92,7 @@ const EllipsisBox = styled(Box)`
 `
 
 const PrevNextBtn = styled(Box)`
+  visibility: ${props => (props.isHidden ? 'hidden' : 'visible')};
   padding: ${arrayToCssShorthand(styles.prevNextBtnPadding)};
   cursor: pointer;
   path {
@@ -261,36 +262,24 @@ class Pagination extends React.PureComponent {
     const aboveFinalPage = currentPage >= totalPages
     return (
       <PaginationContainer className={className}>
-        <TabletAndAbove>
-          <Boxes>
-            {belowFirstPage ? null : (
-              <PrevNextBtn key="prev-btn" onClick={handleClickPrev}>
-                <PageUpIcon />
-              </PrevNextBtn>
-            )}
-            {pagesArrayJSX}
-            {aboveFinalPage ? null : (
-              <PrevNextBtn key="next-btn" onClick={handleClickNext}>
-                <PageDownIcon />
-              </PrevNextBtn>
-            )}
-          </Boxes>
-        </TabletAndAbove>
-        <MobileOnly>
-          <Boxes>
-            {belowFirstPage ? null : (
-              <PrevNextBtn key="prev-btn" onClick={handleClickPrev}>
-                <PageUpIcon />
-              </PrevNextBtn>
-            )}
-            {mobilePagesArrayJSX}
-            {aboveFinalPage ? null : (
-              <PrevNextBtn key="next-btn" onClick={handleClickNext}>
-                <PageDownIcon />
-              </PrevNextBtn>
-            )}
-          </Boxes>
-        </MobileOnly>
+        <Boxes>
+          <PrevNextBtn
+            key="prev-btn"
+            onClick={handleClickPrev}
+            isHidden={belowFirstPage}
+          >
+            <PageUpIcon />
+          </PrevNextBtn>
+          <TabletAndAbove>{pagesArrayJSX}</TabletAndAbove>
+          <MobileOnly>{mobilePagesArrayJSX}</MobileOnly>
+          <PrevNextBtn
+            key="next-btn"
+            onClick={handleClickNext}
+            isHidden={aboveFinalPage}
+          >
+            <PageDownIcon />
+          </PrevNextBtn>
+        </Boxes>
       </PaginationContainer>
     )
   }
