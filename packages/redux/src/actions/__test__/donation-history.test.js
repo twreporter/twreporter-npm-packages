@@ -32,7 +32,7 @@ describe('Test donation history action', () => {
       const responseObj = mockGetUserDonationHistoryData
       nock(apiOrigin)
         .get(
-          `/v2/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`
+          `/v1/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`
         )
         .reply(200, responseObj)
       return store
@@ -40,7 +40,7 @@ describe('Test donation history action', () => {
         .then(() => {
           const requestExp = {
             type: actionTypes.donationHistory.read.request,
-            url: `${apiOrigin}/v2/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`,
+            url: `${apiOrigin}/v1/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`,
           }
           const successExp = {
             type: actionTypes.donationHistory.read.success,
@@ -61,7 +61,7 @@ describe('Test donation history action', () => {
       }
       nock(apiOrigin)
         .get(
-          `/v2/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`
+          `/v1/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`
         )
         .reply(mockStatusCode, mockAPIRes)
       return store
@@ -69,7 +69,7 @@ describe('Test donation history action', () => {
         .catch(failAction => {
           const requestExp = {
             type: actionTypes.donationHistory.read.request,
-            url: `${apiOrigin}/v2/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`,
+            url: `${apiOrigin}/v1/${apiEndpoints.users}/${mockUserId}/donations?limit=10&offset=0`,
           }
           const errorExp = {
             type: actionTypes.donationHistory.read.failure,

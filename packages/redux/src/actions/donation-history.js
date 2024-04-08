@@ -77,7 +77,7 @@ export function getUserDonationHistory(jwt, userID, offset = 0, limit = 10) {
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const url = formURL(
       apiOrigin,
-      `/v2/${apiEndpoints.users}/${userID}/donations`,
+      `/v1/${apiEndpoints.users}/${userID}/donations`,
       { limit, offset }
     )
     dispatch({

@@ -19,6 +19,7 @@ const searchedAuthorsList = 'searchedAuthorsList'
 const user = 'user'
 const analytics = 'analytics'
 const footprints = 'footprints'
+const donationHistory = 'donationHistory'
 
 // sections in index_page
 const editorPicksSection = 'editor_picks_section'
@@ -92,4 +93,5 @@ export default {
   user,
   analytics,
   footprints,
+  donationHistory,
 }
