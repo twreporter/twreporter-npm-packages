@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.27.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0-rc.0...@twreporter/react-components@8.27.0-rc.1) (2024-03-27)
+
+
+### Bug Fixes
+
+* pagination number position center ([6d933f1](https://github.com/twreporter/twreporter-npm-packages/commit/6d933f11695b3aa5ad02190be943dfd51e2a11af))
+
+
+
+
+
+# [8.27.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0...@twreporter/react-components@8.27.0-rc.0) (2024-03-25)
+
+
+### Features
+
+* add className prop ([f2d85fa](https://github.com/twreporter/twreporter-npm-packages/commit/f2d85fa1fcfc4afa4feddb6a001946580fe0d6cb))
+* add mobile pagination ([d128cba](https://github.com/twreporter/twreporter-npm-packages/commit/d128cbafea8459eb03cdac22614e8ec067a89bad))
+* adjust mobile pagination logic ([708f41b](https://github.com/twreporter/twreporter-npm-packages/commit/708f41bb9df638f1b41a15528c73aec7b24639f3))
+
+
+
+
+
 # [8.26.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.4...@twreporter/react-components@8.26.0) (2024-03-13)
 
 **Note:** Version bump only for package @twreporter/react-components

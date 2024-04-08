@@ -12,6 +12,10 @@ import {
   colorGrayscale,
   colorSupportive,
 } from '@twreporter/core/lib/constants/color'
+import {
+  TabletAndAbove,
+  MobileOnly,
+} from '@twreporter/react-components/lib/rwd'
 // lodash
 import concat from 'lodash/concat'
 import get from 'lodash/get'
@@ -47,8 +51,8 @@ const PaginationContainer = styled.div`
 `
 
 const Boxes = styled.div`
-  display: inline-block;
-  user-select: none;
+  display: flex;
+  justify-content: center;
 `
 
 const Box = styled.div`
@@ -77,9 +81,6 @@ const PageNumberBox = styled(Box)`
     color: ${props =>
       props.isCurrent ? colorGrayscale.white : colorSupportive.heavy};
   }
-  ${mq.mobileOnly`
-    display: ${props => (props.isCurrent ? '' : 'none')};
-  `}
 `
 
 const EllipsisBox = styled(Box)`
@@ -91,6 +92,7 @@ const EllipsisBox = styled(Box)`
 `
 
 const PrevNextBtn = styled(Box)`
+  visibility: ${props => (props.isHidden ? 'hidden' : 'visible')};
   padding: ${arrayToCssShorthand(styles.prevNextBtnPadding)};
   cursor: pointer;
   path {
@@ -217,36 +219,66 @@ class Pagination extends React.PureComponent {
     )
   }
 
+  _buildMobilePagesArray(currentPage, totalPages) {
+    const pagesArrayMaxLength = 5
+    if (totalPages <= pagesArrayMaxLength) {
+      return this._buildCenterJSX(1, totalPages, currentPage)
+    }
+    let startPage
+    // Check if currentPage is within the first two pages or the last two pages
+    if (currentPage <= 2) {
+      // If in the first two pages, start from page 1
+      startPage = 1
+    } else if (currentPage >= totalPages - 1) {
+      // If in the last two pages, adjust startPage to ensure the array is fully populated
+      startPage = totalPages - pagesArrayMaxLength + 1
+    } else {
+      // Otherwise, center currentPage by adjusting startPage accordingly
+      startPage = currentPage - 2
+    }
+    return this._buildCenterJSX(startPage, pagesArrayMaxLength, currentPage)
+  }
+
   render() {
     const {
       currentPage,
       totalPages,
       handleClickPrev,
       handleClickNext,
+      className,
     } = this.props
     if (!totalPages || !currentPage)
       return (
-        <PaginationContainer>
+        <PaginationContainer className={className}>
           <Boxes />
         </PaginationContainer>
       )
     const pagesArrayJSX = this._buildPagesArray(currentPage, totalPages)
+    const mobilePagesArrayJSX = this._buildMobilePagesArray(
+      currentPage,
+      totalPages
+    )
     const belowFirstPage = currentPage <= 1
     const aboveFinalPage = currentPage >= totalPages
     return (
-      <PaginationContainer>
+      <PaginationContainer className={className}>
         <Boxes>
-          {belowFirstPage ? null : (
-            <PrevNextBtn key="prev-btn" onClick={handleClickPrev}>
-              <PageUpIcon />
-            </PrevNextBtn>
-          )}
-          {pagesArrayJSX}
-          {aboveFinalPage ? null : (
-            <PrevNextBtn key="next-btn" onClick={handleClickNext}>
-              <PageDownIcon />
-            </PrevNextBtn>
-          )}
+          <PrevNextBtn
+            key="prev-btn"
+            onClick={handleClickPrev}
+            isHidden={belowFirstPage}
+          >
+            <PageUpIcon />
+          </PrevNextBtn>
+          <TabletAndAbove>{pagesArrayJSX}</TabletAndAbove>
+          <MobileOnly>{mobilePagesArrayJSX}</MobileOnly>
+          <PrevNextBtn
+            key="next-btn"
+            onClick={handleClickNext}
+            isHidden={aboveFinalPage}
+          >
+            <PageDownIcon />
+          </PrevNextBtn>
         </Boxes>
       </PaginationContainer>
     )
@@ -262,6 +294,7 @@ Pagination.propTypes = {
   nOfCenterPages: PropTypes.number.isRequired,
   nOfMarginPages: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
+  className: PropTypes.string,
 }
 
 Pagination.defaultProps = {
@@ -270,6 +303,7 @@ Pagination.defaultProps = {
   ellipsis: '…',
   nOfCenterPages: 4,
   nOfMarginPages: 1,
+  className: '',
 }
 
 export default Pagination
