@@ -177,4 +177,12 @@ export default {
       failure: 'fail to update user footprint',
     },
   },
+
+  donationHistory: {
+    read: {
+      request: 'request to fetch single user donation history',
+      success: 'succes to fetch single user donation history',
+      failure: 'fail to fetch single user donation history',
+    },
+  },
 }
