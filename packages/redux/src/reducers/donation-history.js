@@ -17,6 +17,14 @@ const initState = {
   offset: 0,
   total: 0,
   limit: defaultLimit,
+  periodicDonationHistory: {
+    isFetching: false,
+    records: {},
+    error: null,
+    offset: 0,
+    total: 0,
+    limit: defaultLimit,
+  },
 }
 
 export default function donationHistory(state = initState, action) {
@@ -52,35 +60,54 @@ export default function donationHistory(state = initState, action) {
     case types.donationHistory.periodicDonationHistory.read.request: {
       return {
         ...state,
-        isFetching: true,
-        error: null,
+        periodicDonationHistory: {
+          isFetching: true,
+          records: {},
+          error: null,
+          offset: 0,
+          total: 0,
+          limit: defaultLimit,
+        },
       }
     }
     case types.donationHistory.periodicDonationHistory.read.success: {
+      const statePeriodicHistoryData =
+        state?.periodicDonationHistory?.records || {}
       const orderNumber = _.get(action, 'payload.data.order_number')
       const periodicDonationHistory = _.get(action, 'payload.data.records', [])
+      if (statePeriodicHistoryData[orderNumber]) {
+        statePeriodicHistoryData[orderNumber] = [
+          ...statePeriodicHistoryData[orderNumber],
+          ...periodicDonationHistory,
+        ]
+      } else {
+        statePeriodicHistoryData[orderNumber] = periodicDonationHistory
+      }
       const meta = _.get(action, 'payload.data.meta')
-      const donationHistory = _.map(state.donationHistory, data => {
-        if (data.order_number === orderNumber) {
-          data.periodic_history = {
-            meta,
-            records: periodicDonationHistory,
-          }
-        }
-        return data
-      })
+      const { offset, total, limit } = meta
       return {
         ...state,
-        isFetching: false,
-        donationHistory,
-        error: null,
+        periodicDonationHistory: {
+          isFetching: false,
+          records: statePeriodicHistoryData,
+          error: null,
+          offset,
+          total,
+          limit,
+        },
       }
     }
     case types.donationHistory.periodicDonationHistory.read.failure: {
       return {
         ...state,
-        isFetching: false,
-        error: _.get(action, 'payload.error'),
+        periodicDonationHistory: {
+          isFetching: false,
+          records: {},
+          error: _.get(action, 'payload.error'),
+          offset: 0,
+          total: 0,
+          limit: defaultLimit,
+        },
       }
     }
     default:

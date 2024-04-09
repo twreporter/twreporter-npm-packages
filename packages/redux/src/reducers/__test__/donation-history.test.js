@@ -43,12 +43,12 @@ describe('Donation History Reducer Testing', () => {
   })
 
   test(`should handle ${DontaionHistoryAction.periodicDonationHistory.read.request}`, () => {
-    const initialState = mockStates.InitialState
+    const initialState = mockStates.InitialStateWithHistory
     const action =
       mockActions[DontaionHistoryAction.periodicDonationHistory.read.request]
     const newState = DontaionHistoryReducer(initialState, action)
 
-    expect(newState).toEqual(mockStates.ExpStateReq)
+    expect(newState).toEqual(mockStates.ExpStateReqWithHistory)
   })
 
   test(`should handle ${DontaionHistoryAction.periodicDonationHistory.read.success}`, () => {
@@ -61,11 +61,11 @@ describe('Donation History Reducer Testing', () => {
   })
 
   test(`should handle ${DontaionHistoryAction.periodicDonationHistory.read.failure}`, () => {
-    const initialState = mockStates.InitialState
+    const initialState = mockStates.InitialStateWithHistory
     const action =
       mockActions[DontaionHistoryAction.periodicDonationHistory.read.failure]
     const newState = DontaionHistoryReducer(initialState, action)
 
-    expect(newState).toEqual(mockStates.ExpStateFail)
+    expect(newState).toEqual(mockStates.ExpStateFailWithHistory)
   })
 })

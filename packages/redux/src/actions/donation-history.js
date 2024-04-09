@@ -89,6 +89,7 @@ export function getUserDonationHistory(jwt, userID, offset = 0, limit = 10) {
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
+      withCredentials: true,
     }
     return axios
       .get(url, axiosConfig)
@@ -147,6 +148,7 @@ export function getUserPeriodicDonationHistory(
       headers: {
         Authorization: `Bearer ${jwt}`,
       },
+      withCredentials: true,
     }
     return axios
       .get(url, axiosConfig)
