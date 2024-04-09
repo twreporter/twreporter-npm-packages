@@ -15,25 +15,55 @@ describe('Donation History Reducer Testing', () => {
     expect(newState).toEqual(initialState)
   })
 
-  test(`should handle ${DontaionHistoryAction.read.request}`, () => {
+  test(`should handle ${DontaionHistoryAction.donationHistory.read.request}`, () => {
     const initialState = mockStates.InitialState
-    const action = mockActions[DontaionHistoryAction.read.request]
+    const action =
+      mockActions[DontaionHistoryAction.donationHistory.read.request]
     const newState = DontaionHistoryReducer(initialState, action)
 
     expect(newState).toEqual(mockStates.ExpStateReq)
   })
 
-  test(`should handle ${DontaionHistoryAction.read.success}`, () => {
+  test(`should handle ${DontaionHistoryAction.donationHistory.read.success}`, () => {
     const initialState = mockStates.InitialState
-    const action = mockActions[DontaionHistoryAction.read.success]
+    const action =
+      mockActions[DontaionHistoryAction.donationHistory.read.success]
     const newState = DontaionHistoryReducer(initialState, action)
 
     expect(newState).toEqual(mockStates.ExpStateSuc)
   })
 
-  test(`should handle ${DontaionHistoryAction.read.failure}`, () => {
+  test(`should handle ${DontaionHistoryAction.donationHistory.read.failure}`, () => {
     const initialState = mockStates.InitialState
-    const action = mockActions[DontaionHistoryAction.read.failure]
+    const action =
+      mockActions[DontaionHistoryAction.donationHistory.read.failure]
+    const newState = DontaionHistoryReducer(initialState, action)
+
+    expect(newState).toEqual(mockStates.ExpStateFail)
+  })
+
+  test(`should handle ${DontaionHistoryAction.periodicDonationHistory.read.request}`, () => {
+    const initialState = mockStates.InitialState
+    const action =
+      mockActions[DontaionHistoryAction.periodicDonationHistory.read.request]
+    const newState = DontaionHistoryReducer(initialState, action)
+
+    expect(newState).toEqual(mockStates.ExpStateReq)
+  })
+
+  test(`should handle ${DontaionHistoryAction.periodicDonationHistory.read.success}`, () => {
+    const initialState = mockStates.InitialStateWithHistory
+    const action =
+      mockActions[DontaionHistoryAction.periodicDonationHistory.read.success]
+    const newState = DontaionHistoryReducer(initialState, action)
+
+    expect(newState).toEqual(mockStates.ExpStateSucWithPeriodicHistory)
+  })
+
+  test(`should handle ${DontaionHistoryAction.periodicDonationHistory.read.failure}`, () => {
+    const initialState = mockStates.InitialState
+    const action =
+      mockActions[DontaionHistoryAction.periodicDonationHistory.read.failure]
     const newState = DontaionHistoryReducer(initialState, action)
 
     expect(newState).toEqual(mockStates.ExpStateFail)

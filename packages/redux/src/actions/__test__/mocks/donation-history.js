@@ -1,4 +1,5 @@
 const mockUserId = 1
+const mockOrderNumber = 'twreporter-171030007486335012920'
 
 const mockGetUserDonationHistoryData = {
   meta: {
@@ -12,7 +13,7 @@ const mockGetUserDonationHistoryData = {
       type: 'periodic',
       amount: 300,
       created_at: '2024-03-13T03:21:15Z',
-      order_number: 'twreporter-171030007486335012920',
+      order_number: mockOrderNumber,
       send_receipt: 'no_receipt',
       status: 'paid',
       pay_method: 'credit_card',
@@ -30,4 +31,27 @@ const mockGetUserDonationHistoryData = {
   status: 'ok',
 }
 
-export { mockUserId, mockGetUserDonationHistoryData }
+const getUserPeriodicDonationHistoryData = {
+  order_number: mockOrderNumber,
+  meta: {
+    total: 1,
+    offset: 0,
+    limit: 10,
+  },
+  records: [
+    {
+      created_at: '2024-03-08T07:43:38Z',
+      order_number: 'twreporter-170988381804198200010',
+      status: 'paid',
+      amount: 300,
+    },
+  ],
+  status: 'ok',
+}
+
+export {
+  mockUserId,
+  mockOrderNumber,
+  mockGetUserDonationHistoryData,
+  getUserPeriodicDonationHistoryData,
+}

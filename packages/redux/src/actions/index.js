@@ -22,7 +22,10 @@ import { fetchLatestTags } from './latest'
 import { getUserData, setUserData, onboarding } from './user'
 import { setUserAnalyticsData } from './analytics'
 import { getUserFootprints, setUserFootprint } from './footprints'
-import { getUserDonationHistory } from './donation-history'
+import {
+  getUserDonationHistory,
+  getUserPeriodicDonationHistory,
+} from './donation-history'
 
 export default {
   createSingleBookmark,
@@ -51,4 +54,5 @@ export default {
   getUserFootprints,
   setUserFootprint,
   getUserDonationHistory,
+  getUserPeriodicDonationHistory,
 }

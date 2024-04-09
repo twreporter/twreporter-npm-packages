@@ -179,10 +179,19 @@ export default {
   },
 
   donationHistory: {
-    read: {
-      request: 'request to fetch single user donation history',
-      success: 'succes to fetch single user donation history',
-      failure: 'fail to fetch single user donation history',
+    donationHistory: {
+      read: {
+        request: 'request to fetch single user donation history',
+        success: 'succes to fetch single user donation history',
+        failure: 'fail to fetch single user donation history',
+      },
+    },
+    periodicDonationHistory: {
+      read: {
+        request: 'request to fetch single periodic donation history',
+        success: 'succes to fetch single periodic donation history',
+        failure: 'fail to fetch single periodic donation history',
+      },
     },
   },
 }

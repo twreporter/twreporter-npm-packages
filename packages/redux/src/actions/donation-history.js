@@ -81,7 +81,7 @@ export function getUserDonationHistory(jwt, userID, offset = 0, limit = 10) {
       { limit, offset }
     )
     dispatch({
-      type: types.donationHistory.read.request,
+      type: types.donationHistory.donationHistory.read.request,
       url,
     })
     const axiosConfig = {
@@ -95,7 +95,7 @@ export function getUserDonationHistory(jwt, userID, offset = 0, limit = 10) {
       .then(res => {
         const successAction = buildSuccessActionFromRes(
           res,
-          types.donationHistory.read.success
+          types.donationHistory.donationHistory.read.success
         )
         dispatch(successAction)
         return successAction
@@ -103,7 +103,66 @@ export function getUserDonationHistory(jwt, userID, offset = 0, limit = 10) {
       .catch(error => {
         const failAction = failActionCreators.axios(
           error,
-          types.donationHistory.read.failure
+          types.donationHistory.donationHistory.read.failure
+        )
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      })
+  }
+}
+
+/**
+ * get user's periodic donation history
+ * @param {string} jwt - access_token granted for the user
+ * @param {number} orderNumber -  id of order
+ * @param {number} offset - the offset of the request
+ * @param {number} limit - max amount of records per fetch
+ * @returns {Function} - function will be executed in Redux Thunk middleware
+ */
+export function getUserPeriodicDonationHistory(
+  jwt,
+  orderNumber,
+  offset = 0,
+  limit = 10
+) {
+  /**
+   * @param {Function} dispatch - Redux store dispatch function
+   * @param {Function} getState - Redux store getState function
+   * @return {Promise} resolve with success action or reject with fail action
+   */
+  return function(dispatch, getState) {
+    const state = getState()
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const url = formURL(
+      apiOrigin,
+      `/v1/${apiEndpoints.periodicDonations}/orders/${orderNumber}/payments`,
+      { limit, offset }
+    )
+    dispatch({
+      type: types.donationHistory.periodicDonationHistory.read.request,
+      url,
+    })
+    const axiosConfig = {
+      timeout: apiTimeout,
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    }
+    return axios
+      .get(url, axiosConfig)
+      .then(res => {
+        res.data.order_number = orderNumber
+        const successAction = buildSuccessActionFromRes(
+          res,
+          types.donationHistory.periodicDonationHistory.read.success
+        )
+        dispatch(successAction)
+        return successAction
+      })
+      .catch(error => {
+        const failAction = failActionCreators.axios(
+          error,
+          types.donationHistory.periodicDonationHistory.read.failure
         )
         dispatch(failAction)
         return Promise.reject(failAction)

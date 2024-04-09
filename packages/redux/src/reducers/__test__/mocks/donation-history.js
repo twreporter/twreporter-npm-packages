@@ -5,11 +5,11 @@ const { donationHistory } = actionTypes
 const ERROR_MSG = new Error('Unexpected error')
 
 export const mockActions = {
-  [donationHistory.read.request]: {
-    type: donationHistory.read.request,
+  [donationHistory.donationHistory.read.request]: {
+    type: donationHistory.donationHistory.read.request,
   },
-  [donationHistory.read.success]: {
-    type: donationHistory.read.success,
+  [donationHistory.donationHistory.read.success]: {
+    type: donationHistory.donationHistory.read.success,
     payload: {
       data: {
         meta: {
@@ -42,8 +42,39 @@ export const mockActions = {
       },
     },
   },
-  [donationHistory.read.failure]: {
-    type: donationHistory.read.failure,
+  [donationHistory.donationHistory.read.failure]: {
+    type: donationHistory.donationHistory.read.failure,
+    payload: {
+      error: ERROR_MSG,
+    },
+  },
+  [donationHistory.periodicDonationHistory.read.request]: {
+    type: donationHistory.periodicDonationHistory.read.request,
+  },
+  [donationHistory.periodicDonationHistory.read.success]: {
+    type: donationHistory.periodicDonationHistory.read.success,
+    payload: {
+      data: {
+        order_number: 'twreporter-171030007486335012920',
+        meta: {
+          total: 1,
+          offset: 0,
+          limit: 10,
+        },
+        records: [
+          {
+            created_at: '2024-03-08T07:43:38Z',
+            order_number: 'twreporter-170988381804198200010',
+            status: 'paid',
+            amount: 300,
+          },
+        ],
+        status: 'ok',
+      },
+    },
+  },
+  [donationHistory.periodicDonationHistory.read.failure]: {
+    type: donationHistory.periodicDonationHistory.read.failure,
     payload: {
       error: ERROR_MSG,
     },
@@ -57,6 +88,35 @@ export const mockStates = {
     error: null,
     offset: 0,
     total: 0,
+    limit: 10,
+  },
+
+  InitialStateWithHistory: {
+    isFetching: false,
+    donationHistory: [
+      {
+        id: 11446,
+        type: 'periodic',
+        amount: 300,
+        created_at: '2024-03-13T03:21:15Z',
+        order_number: 'twreporter-171030007486335012920',
+        send_receipt: 'no_receipt',
+        status: 'paid',
+        pay_method: 'credit_card',
+        bin_code: '424242',
+        first_name: null,
+        last_name: null,
+        receipt_header: null,
+        address_country: null,
+        address_state: null,
+        address_city: null,
+        address_detail: null,
+        address_zip_code: null,
+      },
+    ],
+    error: null,
+    offset: 0,
+    total: 1,
     limit: 10,
   },
 
@@ -98,19 +158,54 @@ export const mockStates = {
     limit: 10,
   },
 
+  ExpStateSucWithPeriodicHistory: {
+    isFetching: false,
+    donationHistory: [
+      {
+        id: 11446,
+        type: 'periodic',
+        amount: 300,
+        created_at: '2024-03-13T03:21:15Z',
+        order_number: 'twreporter-171030007486335012920',
+        send_receipt: 'no_receipt',
+        status: 'paid',
+        pay_method: 'credit_card',
+        bin_code: '424242',
+        first_name: null,
+        last_name: null,
+        receipt_header: null,
+        address_country: null,
+        address_state: null,
+        address_city: null,
+        address_detail: null,
+        address_zip_code: null,
+        periodic_history: {
+          meta: {
+            total: 1,
+            offset: 0,
+            limit: 10,
+          },
+          records: [
+            {
+              created_at: '2024-03-08T07:43:38Z',
+              order_number: 'twreporter-170988381804198200010',
+              status: 'paid',
+              amount: 300,
+            },
+          ],
+        },
+      },
+    ],
+    error: null,
+    offset: 0,
+    total: 1,
+    limit: 10,
+  },
+
   ExpStateFail: {
     isFetching: false,
     donationHistory: [],
     error: ERROR_MSG,
-    offset: 0,
-    total: 0,
-    limit: 10,
-  },
-
-  ExpStateUpdateSuc: {
-    isFetching: false,
-    donationHistory: [],
-    error: null,
     offset: 0,
     total: 0,
     limit: 10,
