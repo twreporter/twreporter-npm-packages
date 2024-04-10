@@ -93,9 +93,6 @@ export const mockStates = {
       isFetching: false,
       records: {},
       error: null,
-      offset: 0,
-      total: 0,
-      limit: 10,
     },
   },
 
@@ -130,9 +127,6 @@ export const mockStates = {
       isFetching: false,
       records: {},
       error: null,
-      offset: 0,
-      total: 0,
-      limit: 10,
     },
   },
 
@@ -147,9 +141,6 @@ export const mockStates = {
       isFetching: false,
       records: {},
       error: null,
-      offset: 0,
-      total: 0,
-      limit: 10,
     },
   },
 
@@ -184,9 +175,6 @@ export const mockStates = {
       isFetching: true,
       records: {},
       error: null,
-      offset: 0,
-      total: 0,
-      limit: 10,
     },
   },
 
@@ -221,9 +209,6 @@ export const mockStates = {
       isFetching: false,
       records: {},
       error: null,
-      offset: 0,
-      total: 0,
-      limit: 10,
     },
   },
 
@@ -257,19 +242,21 @@ export const mockStates = {
     periodicDonationHistory: {
       isFetching: false,
       records: {
-        'twreporter-171030007486335012920': [
-          {
-            created_at: '2024-03-08T07:43:38Z',
-            order_number: 'twreporter-170988381804198200010',
-            status: 'paid',
-            amount: 300,
-          },
-        ],
+        'twreporter-171030007486335012920': {
+          offset: 0,
+          total: 1,
+          limit: 10,
+          records: [
+            {
+              created_at: '2024-03-08T07:43:38Z',
+              order_number: 'twreporter-170988381804198200010',
+              status: 'paid',
+              amount: 300,
+            },
+          ],
+        },
       },
       error: null,
-      offset: 0,
-      total: 1,
-      limit: 10,
     },
   },
 
@@ -284,9 +271,6 @@ export const mockStates = {
       isFetching: false,
       records: {},
       error: null,
-      offset: 0,
-      total: 0,
-      limit: 10,
     },
   },
 
@@ -321,9 +305,6 @@ export const mockStates = {
       isFetching: false,
       records: {},
       error: ERROR_MSG,
-      offset: 0,
-      total: 0,
-      limit: 10,
     },
   },
 }
