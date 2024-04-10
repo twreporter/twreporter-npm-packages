@@ -22,6 +22,9 @@ const _ = {
 
 const Container = styled.div`
   display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${props => props.background};
 `
 
 const Box = styled.div`
@@ -37,9 +40,13 @@ const Color = styled.div`
   background-color: ${props => props.color};
 `
 
+const P2Gray600 = styled(P2)`
+  color: ${colorGrayscale.gray600};
+`
+
 const ColorText = styled(P2)`
   ${props => (props.show ? '' : 'display: none;')}
-  color: ${colorGrayscale.gray800};
+  color: ${colorGrayscale.gray500};
 `
 
 const ColorSetEnum = {
@@ -74,20 +81,21 @@ const getColorSet = type => {
   }
 }
 
-const ColorSet = ({ height, width, type, showColorText }) => {
+const ColorSet = ({ height, width, type, showColorText, background }) => {
   const colorSet = getColorSet(type)
   const colorBoxes = _.map(colorSet, (color, key) => {
     return (
       <Box key={`${type}-${key}`}>
-        <P2 text={key} />
+        <P2Gray600 text={key} />
         <Color height={height} width={width} color={color} />
         <ColorText text={color} show={showColorText} />
       </Box>
     )
   })
-  return <Container>{colorBoxes}</Container>
+  return <Container background={background}>{colorBoxes}</Container>
 }
 ColorSet.propTypes = {
+  background: PropTypes.string,
   height: PropTypes.string,
   width: PropTypes.string,
   type: PropTypes.oneOf(Object.values(ColorSetEnum)),
@@ -99,6 +107,16 @@ export default {
   component: ColorSet,
   argTypes: {
     type: getRadioArg(ColorSetEnum, ColorSetEnum.GRAYSCALE),
+    background: {
+      control: {
+        type: 'color',
+        presetColors: [
+          colorGrayscale.gray100,
+          colorPhoto.dark,
+          colorGrayscale.gray600,
+        ],
+      },
+    },
   },
 }
 
@@ -108,5 +126,6 @@ export const colorSet = {
     width: '100px',
     type: ColorSetEnum.GRAYSCALE,
     showColorText: false,
+    background: colorGrayscale.gray100,
   },
 }
