@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [8.27.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0-rc.1...@twreporter/react-components@8.27.0) (2024-04-08)
+## [8.27.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.1-rc.1...@twreporter/react-components@8.27.1-rc.2) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/react-components
 
@@ -11,67 +11,54 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [8.27.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0-rc.0...@twreporter/react-components@8.27.0-rc.1) (2024-03-27)
-
+## [8.27.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.1-rc.0...@twreporter/react-components@8.27.1-rc.1) (2024-04-17)
 
 ### Bug Fixes
 
-* pagination number position center ([6d933f1](https://github.com/twreporter/twreporter-npm-packages/commit/6d933f11695b3aa5ad02190be943dfd51e2a11af))
+- add background color control ([dd103fc](https://github.com/twreporter/twreporter-npm-packages/commit/dd103fc332a5c877e0b078cb98682aefd68ad900))
+- update color in colorGrayscale & add color story ([f27d752](https://github.com/twreporter/twreporter-npm-packages/commit/f27d752ae97e15d64e59126dfed07f09471cff4a))
 
+## [8.27.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0...@twreporter/react-components@8.27.1-rc.0) (2024-04-17)
 
+**Note:** Version bump only for package @twreporter/react-components
 
+# [8.27.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0-rc.1...@twreporter/react-components@8.27.0) (2024-04-08)
 
+**Note:** Version bump only for package @twreporter/react-components
+
+# [8.27.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0-rc.0...@twreporter/react-components@8.27.0-rc.1) (2024-03-27)
+
+### Bug Fixes
+
+- pagination number position center ([6d933f1](https://github.com/twreporter/twreporter-npm-packages/commit/6d933f11695b3aa5ad02190be943dfd51e2a11af))
 
 # [8.27.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0...@twreporter/react-components@8.27.0-rc.0) (2024-03-25)
 
-
 ### Features
 
-* add className prop ([f2d85fa](https://github.com/twreporter/twreporter-npm-packages/commit/f2d85fa1fcfc4afa4feddb6a001946580fe0d6cb))
-* add mobile pagination ([d128cba](https://github.com/twreporter/twreporter-npm-packages/commit/d128cbafea8459eb03cdac22614e8ec067a89bad))
-* adjust mobile pagination logic ([708f41b](https://github.com/twreporter/twreporter-npm-packages/commit/708f41bb9df638f1b41a15528c73aec7b24639f3))
-
-
-
-
+- add className prop ([f2d85fa](https://github.com/twreporter/twreporter-npm-packages/commit/f2d85fa1fcfc4afa4feddb6a001946580fe0d6cb))
+- add mobile pagination ([d128cba](https://github.com/twreporter/twreporter-npm-packages/commit/d128cbafea8459eb03cdac22614e8ec067a89bad))
+- adjust mobile pagination logic ([708f41b](https://github.com/twreporter/twreporter-npm-packages/commit/708f41bb9df638f1b41a15528c73aec7b24639f3))
 
 # [8.26.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.4...@twreporter/react-components@8.26.0) (2024-03-13)
 
 **Note:** Version bump only for package @twreporter/react-components
 
-
-
-
-
 # [8.26.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.3...@twreporter/react-components@8.26.0-rc.4) (2024-03-12)
-
 
 ### Bug Fixes
 
-* spacing and new link ([1da8f3c](https://github.com/twreporter/twreporter-npm-packages/commit/1da8f3cca6b8a79ff9f120cce16d29749cef7333))
-
-
-
-
+- spacing and new link ([1da8f3c](https://github.com/twreporter/twreporter-npm-packages/commit/1da8f3cca6b8a79ff9f120cce16d29749cef7333))
 
 # [8.26.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.2...@twreporter/react-components@8.26.0-rc.3) (2024-03-11)
 
 **Note:** Version bump only for package @twreporter/react-components
 
-
-
-
-
 # [8.26.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.1...@twreporter/react-components@8.26.0-rc.2) (2024-03-11)
-
 
 ### Features
 
-* add element id for gtm ([7725be4](https://github.com/twreporter/twreporter-npm-packages/commit/7725be4d5033567797cce595c8ad9f61b33d5ef7))
-
-
-
-
+- add element id for gtm ([7725be4](https://github.com/twreporter/twreporter-npm-packages/commit/7725be4d5033567797cce595c8ad9f61b33d5ef7))
 
 # [8.26.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.26.0-rc.0...@twreporter/react-components@8.26.0-rc.1) (2024-03-07)
 
