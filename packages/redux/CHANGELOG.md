@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.3-rc.2...@twreporter/redux@7.12.0-rc.0) (2024-04-17)
+
+
+### Features
+
+* add donation history action ([b0cd1fa](https://github.com/twreporter/twreporter-npm-packages/commit/b0cd1fae02cfa8c08ef02f4d202e6867798bbddc))
+* add donation history reducer ([8e41035](https://github.com/twreporter/twreporter-npm-packages/commit/8e41035b968325342eb37d29a819fe62fd8c0ac0))
+* add more card info ([f9aec3e](https://github.com/twreporter/twreporter-npm-packages/commit/f9aec3e3cbef9845c4e9da239ef7171e3c19ee16))
+* add periodic donation history ([8cb80df](https://github.com/twreporter/twreporter-npm-packages/commit/8cb80df60f6f4dafda2cc7670bf2e0854d2537f7))
+* api route and add to index ([95cfdd6](https://github.com/twreporter/twreporter-npm-packages/commit/95cfdd682cc36728dd567175a2ff8a4ac4e2f563))
+* periodic donation history state ([8da2291](https://github.com/twreporter/twreporter-npm-packages/commit/8da22910651025d188ec481df522bf87b4f92690))
+* seprate donation history and periodic donation history ([9fa308c](https://github.com/twreporter/twreporter-npm-packages/commit/9fa308cdc2ae84c7bee408d52f1de810ff333d90))
+
+
+
+
+
 ## [7.11.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.3-rc.1...@twreporter/redux@7.11.3-rc.2) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/redux
