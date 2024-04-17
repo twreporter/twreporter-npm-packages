@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.27.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.1-rc.0...@twreporter/react-components@8.27.1-rc.1) (2024-04-17)
+
+
+### Bug Fixes
+
+* add background color control ([dd103fc](https://github.com/twreporter/twreporter-npm-packages/commit/dd103fc332a5c877e0b078cb98682aefd68ad900))
+* update color in colorGrayscale & add color story ([f27d752](https://github.com/twreporter/twreporter-npm-packages/commit/f27d752ae97e15d64e59126dfed07f09471cff4a))
+
+
+
+
+
 ## [8.27.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.0...@twreporter/react-components@8.27.1-rc.0) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/react-components
