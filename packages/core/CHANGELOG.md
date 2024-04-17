@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.19.1-rc.1...@twreporter/core@1.20.0-rc.0) (2024-04-17)
+
+
+### Features
+
+* add color opacity ([7b7092b](https://github.com/twreporter/twreporter-npm-packages/commit/7b7092b0b6e5c5e4a1870c24f3511d48a2bda6f9))
+* add POST_REVIEW feature flag ([38a889e](https://github.com/twreporter/twreporter-npm-packages/commit/38a889e1f9555c9ea7e88cea24190ad55f7b3085))
+
+
+
+
+
 ## [1.19.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.19.1-rc.0...@twreporter/core@1.19.1-rc.1) (2024-04-17)
 
 ### Bug Fixes
