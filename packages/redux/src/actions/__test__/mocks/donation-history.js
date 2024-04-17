@@ -18,6 +18,8 @@ const mockGetUserDonationHistoryData = {
       status: 'paid',
       pay_method: 'credit_card',
       bin_code: '424242',
+      card_last_four: '4242',
+      card_type: '1',
       first_name: null,
       last_name: null,
       receipt_header: null,
