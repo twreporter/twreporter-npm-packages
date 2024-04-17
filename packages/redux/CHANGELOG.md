@@ -7,36 +7,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 ## [7.11.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.2...@twreporter/redux@7.11.3-rc.0) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/redux
-
-
-
-
 
 ## [7.11.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.2-rc.2...@twreporter/redux@7.11.2) (2024-03-13)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 ## [7.11.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.2-rc.1...@twreporter/redux@7.11.2-rc.2) (2024-03-11)
-
 
 ### Bug Fixes
 
-* add `toggleBookmark` parameter for posts action ([0d36018](https://github.com/twreporter/twreporter-npm-packages/commit/0d3601881fcf9754dbe41a93c944e8092615a770))
-
-
-
-
+- add `toggleBookmark` parameter for posts action ([0d36018](https://github.com/twreporter/twreporter-npm-packages/commit/0d3601881fcf9754dbe41a93c944e8092615a770))
 
 ## [7.11.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.2-rc.0...@twreporter/redux@7.11.2-rc.1) (2024-03-07)
 

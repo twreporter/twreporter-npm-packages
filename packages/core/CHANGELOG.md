@@ -5,30 +5,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.19.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.19.1-rc.0...@twreporter/core@1.19.1-rc.1) (2024-04-17)
 
-
 ### Bug Fixes
 
-* update color in colorGrayscale & add color story ([f27d752](https://github.com/twreporter/twreporter-npm-packages/commit/f27d752ae97e15d64e59126dfed07f09471cff4a))
-
-
-
-
+- update color in colorGrayscale & add color story ([f27d752](https://github.com/twreporter/twreporter-npm-packages/commit/f27d752ae97e15d64e59126dfed07f09471cff4a))
 
 ## [1.19.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.19.0...@twreporter/core@1.19.1-rc.0) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/core
 
-
-
-
-
 # [1.19.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.19.0-rc.0...@twreporter/core@1.19.0) (2024-03-13)
 
 **Note:** Version bump only for package @twreporter/core
-
-
-
-
 
 # [1.19.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.18.2-rc.0...@twreporter/core@1.19.0-rc.0) (2024-03-07)
 
