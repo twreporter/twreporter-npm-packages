@@ -7,4 +7,5 @@ export default {
   authors: 'authors',
   tags: 'tags',
   onboarding: 'onboarding',
+  periodicDonations: 'periodic-donations',
 }
