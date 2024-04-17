@@ -23,12 +23,9 @@ import {
   colorGrayscale,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
-// feature toggle
-import { MY_READING } from '@twreporter/core/lib/constants/feature-flag'
-import ToolsNew from './aside/desktop-tools'
-import ToolsOld from './aside/desktop-tools-old'
-import ToolBarNew from './aside/mobile-tool-bar'
-import ToolBarOld from './aside/mobile-tool-bar-old'
+// aside
+import Tools from './aside/desktop-tools'
+import ToolBar from './aside/mobile-tool-bar'
 // lodash
 import get from 'lodash/get'
 import throttle from 'lodash/throttle'
@@ -36,8 +33,6 @@ const _ = {
   get,
   throttle,
 }
-const Tools = MY_READING ? ToolsNew : ToolsOld
-const ToolBar = MY_READING ? ToolBarNew : ToolBarOld
 
 const shiftLeftCss = css`
   position: relative;

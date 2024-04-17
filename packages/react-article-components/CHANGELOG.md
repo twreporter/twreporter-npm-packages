@@ -3,104 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.13.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.1-rc.1...@twreporter/react-article-components@1.13.1) (2024-04-08)
+## [1.13.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.0...@twreporter/react-article-components@1.13.2-rc.1) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
+## [1.13.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.1...@twreporter/react-article-components@1.13.2-rc.0) (2024-04-17)
 
+**Note:** Version bump only for package @twreporter/react-article-components
 
+## [1.13.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.1-rc.1...@twreporter/react-article-components@1.13.1) (2024-04-08)
 
+**Note:** Version bump only for package @twreporter/react-article-components
 
 ## [1.13.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.1-rc.0...@twreporter/react-article-components@1.13.1-rc.1) (2024-03-27)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [1.13.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0...@twreporter/react-article-components@1.13.1-rc.0) (2024-03-25)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 # [1.13.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0-rc.4...@twreporter/react-article-components@1.13.0) (2024-03-13)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [1.13.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0-rc.3...@twreporter/react-article-components@1.13.0-rc.4) (2024-03-12)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [1.13.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0-rc.2...@twreporter/react-article-components@1.13.0-rc.3) (2024-03-11)
-
 
 ### Bug Fixes
 
-* share container bg color & scroll throttle ([a337754](https://github.com/twreporter/twreporter-npm-packages/commit/a337754fca0f4b9cdf2810bb9ff4aaa8363cfa75))
-* translateY 200% ([b07f024](https://github.com/twreporter/twreporter-npm-packages/commit/b07f0241c0c90cb141967e2f57ffff89215a6507))
-
-
-
-
+- share container bg color & scroll throttle ([a337754](https://github.com/twreporter/twreporter-npm-packages/commit/a337754fca0f4b9cdf2810bb9ff4aaa8363cfa75))
+- translateY 200% ([b07f024](https://github.com/twreporter/twreporter-npm-packages/commit/b07f0241c0c90cb141967e2f57ffff89215a6507))
 
 # [1.13.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0-rc.1...@twreporter/react-article-components@1.13.0-rc.2) (2024-03-11)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [1.13.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.0-rc.0...@twreporter/react-article-components@1.13.0-rc.1) (2024-03-11)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [1.13.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.2-rc.4...@twreporter/react-article-components@1.13.0-rc.0) (2024-03-10)
-
 
 ### Bug Fixes
 
-* change tool-bar to mobile-tool-bar ([f2f90f7](https://github.com/twreporter/twreporter-npm-packages/commit/f2f90f79d95db2523767d5fd55119e2c6964a9e1))
-* remove unused code & fix comments ([0557526](https://github.com/twreporter/twreporter-npm-packages/commit/0557526f7cb169e7fcad44cb40c8de4a024e7cf8))
-* typo ([fbe0cf9](https://github.com/twreporter/twreporter-npm-packages/commit/fbe0cf902fb82be6e9911142169d5fad0197ecf3))
-* use throttle and no need to clean properties ([60f203d](https://github.com/twreporter/twreporter-npm-packages/commit/60f203df7537a7c12868f09c76ac2046b6f915cd))
-
+- change tool-bar to mobile-tool-bar ([f2f90f7](https://github.com/twreporter/twreporter-npm-packages/commit/f2f90f79d95db2523767d5fd55119e2c6964a9e1))
+- remove unused code & fix comments ([0557526](https://github.com/twreporter/twreporter-npm-packages/commit/0557526f7cb169e7fcad44cb40c8de4a024e7cf8))
+- typo ([fbe0cf9](https://github.com/twreporter/twreporter-npm-packages/commit/fbe0cf902fb82be6e9911142169d5fad0197ecf3))
+- use throttle and no need to clean properties ([60f203d](https://github.com/twreporter/twreporter-npm-packages/commit/60f203df7537a7c12868f09c76ac2046b6f915cd))
 
 ### Features
 
-* add id for tool-bar ([88edc01](https://github.com/twreporter/twreporter-npm-packages/commit/88edc015c9323e3abaf405f47c96200083bb5120))
-* hide TOC while scroll down ([686da6b](https://github.com/twreporter/twreporter-npm-packages/commit/686da6bda1fb60b4ba8d4969eb36454c89b33c19))
-* hide tool bar while scroll over 16px ([ceabb98](https://github.com/twreporter/twreporter-npm-packages/commit/ceabb98d81a32706558ca36752c1590299256d92))
-* new tool bar style ([faf6b33](https://github.com/twreporter/twreporter-npm-packages/commit/faf6b330aeb072025bd266660cb67e0e175f622a))
-* use scrollStage ([23fd0c7](https://github.com/twreporter/twreporter-npm-packages/commit/23fd0c7ceab61e28e7bb81e76a07aebe3ca42719))
-
-
-
-
+- add id for tool-bar ([88edc01](https://github.com/twreporter/twreporter-npm-packages/commit/88edc015c9323e3abaf405f47c96200083bb5120))
+- hide TOC while scroll down ([686da6b](https://github.com/twreporter/twreporter-npm-packages/commit/686da6bda1fb60b4ba8d4969eb36454c89b33c19))
+- hide tool bar while scroll over 16px ([ceabb98](https://github.com/twreporter/twreporter-npm-packages/commit/ceabb98d81a32706558ca36752c1590299256d92))
+- new tool bar style ([faf6b33](https://github.com/twreporter/twreporter-npm-packages/commit/faf6b330aeb072025bd266660cb67e0e175f622a))
+- use scrollStage ([23fd0c7](https://github.com/twreporter/twreporter-npm-packages/commit/23fd0c7ceab61e28e7bb81e76a07aebe3ca42719))
 
 ## [1.12.2-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.2-rc.3...@twreporter/react-article-components@1.12.2-rc.4) (2024-03-08)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 ## [1.12.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.12.2-rc.2...@twreporter/react-article-components@1.12.2-rc.3) (2024-03-07)
 
