@@ -125,7 +125,7 @@ export const colorSet = {
     height: '100px',
     width: '100px',
     type: ColorSetEnum.GRAYSCALE,
-    showColorText: false,
+    showColorText: true,
     background: colorGrayscale.gray100,
   },
 }
