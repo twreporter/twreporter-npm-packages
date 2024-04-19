@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.20.0-rc.0...@twreporter/core@1.20.0-rc.1) (2024-04-19)
+
+
+### Features
+
+* add donation history phase 2 feature toggle ([d664295](https://github.com/twreporter/twreporter-npm-packages/commit/d664295db6fca8f98b44288f98dbb59583cfc086))
+
+
+
+
+
 # [1.20.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.19.1-rc.1...@twreporter/core@1.20.0-rc.0) (2024-04-17)
 
 
