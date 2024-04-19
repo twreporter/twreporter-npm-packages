@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.27.1-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.1-rc.3...@twreporter/react-components@8.27.1-rc.4) (2024-04-19)
+
+
+### Bug Fixes
+
+* set `showColorText` init value `true` ([310f489](https://github.com/twreporter/twreporter-npm-packages/commit/310f489db989eec95548670b020b903100f7e0b4))
+
+
+
+
+
 ## [8.27.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.1-rc.2...@twreporter/react-components@8.27.1-rc.3) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/react-components
