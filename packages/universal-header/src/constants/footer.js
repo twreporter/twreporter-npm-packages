@@ -1,6 +1,4 @@
-import { PUB_AND_MERC_BTN } from '@twreporter/core/lib/constants/feature-flag'
-
-const footerKey = {
+export const footerKey = {
   foundation: 'foundation',
   aboutUs: 'about-us',
   influenceReport: 'influence-report',
@@ -9,10 +7,7 @@ const footerKey = {
   myReading: 'myreading',
   bookmark: 'bookmark',
   history: 'history',
-}
-
-if (PUB_AND_MERC_BTN) {
-  footerKey.publicationAndMerchandise = 'publication-and-merchandise'
+  publicationAndMerchandise: 'publication-and-merchandise',
 }
 
 export const FOOTER_KEY = Object.freeze(footerKey)
@@ -27,7 +22,7 @@ export const FOOTER_PATH = {
   [footerKey.history]: '/myreading/history',
 }
 
-const FOOTER_LABEL = {
+export const FOOTER_LABEL = {
   [footerKey.foundation]: '基金會消息',
   [footerKey.aboutUs]: '關於我們',
   [footerKey.influenceReport]: '影響力報告',
@@ -36,10 +31,7 @@ const FOOTER_LABEL = {
   [footerKey.myReading]: '我的閱讀',
   [footerKey.bookmark]: '已收藏',
   [footerKey.history]: '造訪紀錄',
-}
-
-if (PUB_AND_MERC_BTN) {
-  FOOTER_LABEL[footerKey.publicationAndMerchandise] = '出版品與周邊'
+  [footerKey.publicationAndMerchandise]: '出版品與周邊',
 }
 
 export const FOOTER_ICON = {
@@ -49,16 +41,13 @@ export const FOOTER_ICON = {
   [footerKey.history]: 'history',
 }
 
-const FOOTER_ORDER = [
+export const FOOTER_ORDER = [
   footerKey.foundation,
   footerKey.aboutUs,
   footerKey.influenceReport,
   footerKey.openLab,
+  footerKey.publicationAndMerchandise,
 ]
-
-if (PUB_AND_MERC_BTN) {
-  FOOTER_ORDER.push(footerKey.publicationAndMerchandise)
-}
 
 export const MEMBER_ORDER = [
   footerKey.member,
@@ -66,5 +55,3 @@ export const MEMBER_ORDER = [
   footerKey.bookmark,
   footerKey.history,
 ]
-
-export { FOOTER_LABEL, FOOTER_ORDER }

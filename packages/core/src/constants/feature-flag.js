@@ -1,2 +1,2 @@
-export const MY_READING = true
-export const PUB_AND_MERC_BTN = true
+export const POST_REVIEW = false
+export const DONDATION_HISTORY_PHASE_2 = false

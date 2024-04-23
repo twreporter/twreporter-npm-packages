@@ -18,6 +18,7 @@ import latest from './latest'
 import user from './user'
 import analytics from './analytics'
 import footprints from './footprints'
+import donationHistory from './donation-history'
 
 const rootReducer = combineReducers({
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.user]: user,
   [reduxStatePropKey.analytics]: analytics,
   [reduxStatePropKey.footprints]: footprints,
+  [reduxStatePropKey.donationHistory]: donationHistory,
 })
 
 export default rootReducer
