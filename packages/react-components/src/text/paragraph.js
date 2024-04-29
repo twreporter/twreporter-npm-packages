@@ -49,7 +49,7 @@ const withContainer = ParagraphContainer => {
     text: PropTypes.string,
     weight: PropTypes.oneOf(Object.values(Weight)),
     className: PropTypes.string,
-    children: PropTypes.element,
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   }
   paragraph.Weight = Weight
 

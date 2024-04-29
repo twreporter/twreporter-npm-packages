@@ -15,7 +15,11 @@ const logoType = {
   DEFAULT: 'default',
   WHITE: 'white',
 }
-const LogoHeader = ({ type, releaseBranch, ...props }) => {
+const LogoHeader = ({
+  type = logoType.DEFAULT,
+  releaseBranch = BRANCH.master,
+  ...props
+}) => {
   const logoSrc = pathUtil.selectLogoPath('header', releaseBranch, type)
 
   return (
@@ -27,10 +31,6 @@ const LogoHeader = ({ type, releaseBranch, ...props }) => {
 LogoHeader.propTypes = {
   type: PropTypes.oneOf(Object.values(logoType)),
   releaseBranch: BRANCH_PROP_TYPES,
-}
-LogoHeader.defaultProps = {
-  type: logoType.DEFAULT,
-  releaseBranch: BRANCH.master,
 }
 LogoHeader.Type = logoType
 
