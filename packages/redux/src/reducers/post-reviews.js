@@ -23,7 +23,6 @@ export default function postReviews(state = initState, action) {
     }
     case types.postReviews.read.success: {
       const postReviews = _.get(action, 'payload.data', [])
-      console.log('postReviews: ', postReviews)
       return {
         ...state,
         isFetching: false,

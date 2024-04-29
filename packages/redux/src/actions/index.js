@@ -26,6 +26,7 @@ import {
   getUserDonationHistory,
   getUserPeriodicDonationHistory,
 } from './donation-history'
+import { getPostReviews } from './post-reviews'
 
 export default {
   createSingleBookmark,
@@ -55,4 +56,5 @@ export default {
   setUserFootprint,
   getUserDonationHistory,
   getUserPeriodicDonationHistory,
+  getPostReviews,
 }
