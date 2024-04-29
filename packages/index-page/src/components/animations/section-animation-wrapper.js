@@ -1,7 +1,7 @@
-import VelocityComponent from 'velocity-react/velocity-component'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { Waypoint } from 'react-waypoint'
+import { Transition } from 'react-transition-group'
 
 /**
  * SectionAnimationWrapper is a High Order Component,
@@ -12,71 +12,63 @@ import { Waypoint } from 'react-waypoint'
  * @return a wrapped react component
  */
 const SectionAnimationWrapper = WrappedComponent => {
-  class Wrapper extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        toAnimateScroll: false,
-        isScrollAnimated: false,
-      }
-      this.startScrollAnimation = this._startScrollAnimation.bind(this)
-      this.onScrollAnimationFinish = this._onScrollAnimationFinish.bind(this)
-    }
+  const Wrapper = ({ data = [], moreURI }) => {
+    const [toAnimateScroll, setToAnimateScroll] = useState(false)
+    const [isScrollAnimated, setIsScrollAnimated] = useState(false)
+    const nodeRef = useRef(null)
 
-    _startScrollAnimation() {
-      this.setState({
-        toAnimateScroll: true,
-      })
-    }
-
-    _onScrollAnimationFinish() {
-      if (this.state.toAnimateScroll) {
-        this.setState({
-          isScrollAnimated: true,
-        })
+    const startScrollAnimation = () => setToAnimateScroll(true)
+    const onScrollAnimationFinish = () => {
+      if (toAnimateScroll) {
+        setIsScrollAnimated(true)
       }
     }
 
-    render() {
-      const { data, moreURI } = this.props
-      return (
-        <Waypoint
-          onEnter={this.startScrollAnimation}
-          fireOnRapidScroll={false}
-          topOffset="80%"
-          bottomOffset="19%"
-        >
-          <div>
-            <VelocityComponent
-              animation={
-                this.state.toAnimateScroll
-                  ? { paddingTop: 0 }
-                  : { paddingTop: '50px' }
-              }
-              duration={500}
-              complete={this.onScrollAnimationFinish}
-              runOnMount={false}
-              easing="ease-in-out"
-            >
-              <div>
+    const timeout = 500
+    const defaultStyle = {
+      transition: `padding ${timeout}ms ease-in-out`,
+    }
+    const transitionStyles = {
+      entering: { paddingTop: '0' },
+      entered: { paddingTop: '0' },
+      exiting: { paddingTop: '50px' },
+      exited: { paddingTop: '50px' },
+    }
+
+    return (
+      <Waypoint
+        onEnter={startScrollAnimation}
+        fireOnRapidScroll={false}
+        topOffset="80%"
+        bottomOffset="19%"
+      >
+        <div>
+          <Transition
+            nodeRef={nodeRef}
+            in={toAnimateScroll}
+            timeout={timeout}
+            onExited={onScrollAnimationFinish}
+          >
+            {state => (
+              <div
+                ref={nodeRef}
+                style={{
+                  ...defaultStyle,
+                  ...transitionStyles[state],
+                }}
+              >
                 <WrappedComponent
                   data={data}
                   moreURI={moreURI}
-                  useTinyImg={!this.state.isScrollAnimated}
+                  useTinyImg={!isScrollAnimated}
                 />
               </div>
-            </VelocityComponent>
-          </div>
-        </Waypoint>
-      )
-    }
+            )}
+          </Transition>
+        </div>
+      </Waypoint>
+    )
   }
-
-  Wrapper.defaultProps = {
-    data: [],
-    moreURI: undefined,
-  }
-
   Wrapper.propTypes = {
     data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     moreURI: PropTypes.string,

@@ -20,10 +20,10 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.1.2",
     "react-swipeable": "^4.0.1",
+    "react-transition-group": "^4.4.5",
     "react-waypoint": "^9.0.2",
     "styled-components": "^4.0.0",
-    "swiper": "6.8.4",
-    "velocity-react": "^1.4.3"
+    "swiper": "6.8.4"
   },
   "files": [
     "lib"
