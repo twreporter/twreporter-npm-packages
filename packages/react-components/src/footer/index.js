@@ -201,11 +201,13 @@ const Footer = ({ releaseBranch }) => {
               <Logo releaseBranch={releaseBranch} />
               <P2Gray600 text="台灣第一個由公益基金會成立的網路媒體，致力於公共領域調查報導，打造多元進步的媒體環境。" />
             </LogoAndDescription>
-            <PillButton
-              className="button"
-              type={PillButton.Type.SECONDARY}
-              text={'贊助我們'}
-            />
+            <Link to="https://support.twreporter.org/" target="_blank">
+              <PillButton
+                className="button"
+                type={PillButton.Type.SECONDARY}
+                text={'贊助我們'}
+              />
+            </Link>
           </InformationContainer>
           <LinksContainer>
             <FooterLinkButtonGroups releaseBranch={releaseBranch} />
