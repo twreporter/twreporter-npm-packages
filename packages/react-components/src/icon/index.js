@@ -77,6 +77,7 @@ export const Line = getIcon('line')
 export const Google = getIcon('google')
 export const History = getIcon('history')
 export const KidStar = getIcon('kid_star')
+export const Plurk = getIcon('plurk')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
@@ -140,4 +141,5 @@ export default {
   SocialMedia,
   History,
   KidStar,
+  Plurk,
 }

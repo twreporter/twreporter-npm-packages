@@ -24,4 +24,5 @@ export const MediaType = Object.freeze({
   YOUTUBE: 'youtube',
   LINE: 'line',
   GOOGLE: 'google',
+  PLURK: 'plurk',
 })
