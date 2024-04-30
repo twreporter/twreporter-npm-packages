@@ -15,9 +15,6 @@ const LogoContainer = styled.img`
   opacity: 1;
   width: 272px;
   height: 29px;
-  &:hover {
-    src: ${props => `${props.src}`};
-  }
   ${mq.tabletAndBelow`
     width: 232px;
     height: 25px;
