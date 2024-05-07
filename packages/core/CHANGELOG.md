@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.21.0-rc.0...@twreporter/core@1.21.0-rc.1) (2024-05-07)
+
+
+### Bug Fixes
+
+* update zIndex constant file ([3ab9c45](https://github.com/twreporter/twreporter-npm-packages/commit/3ab9c45e503831460108e4320ced1de6ebd3fe74))
+
+
+
+
+
 # [1.21.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.20.0...@twreporter/core@1.21.0-rc.0) (2024-05-07)
 
 
