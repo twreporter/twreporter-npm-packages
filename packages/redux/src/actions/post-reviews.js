@@ -59,7 +59,7 @@ function buildSuccessActionFromRes(axiosResponse, actionType) {
  */
 
 /**
- * get user's donation history
+ * get post reviews
  * @param {string} jwt - access_token granted for the user
  * @param {number} userID -  id of user
  * @param {number} offset - the offset of the request

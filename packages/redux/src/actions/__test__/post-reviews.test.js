@@ -14,8 +14,8 @@ const mockStore = configureStore([thunk])
 
 const apiOrigin = 'http://localhost:8080'
 
-describe('Test footprints action', () => {
-  describe(`Test action getUserFootprints`, () => {
+describe('Test postRewiews action', () => {
+  describe(`Test action getPostReviews`, () => {
     const store = mockStore({
       [fieldNames.origins]: {
         api: apiOrigin,
@@ -25,7 +25,7 @@ describe('Test footprints action', () => {
       store.clearActions()
       nock.cleanAll()
     })
-    test('should dispatch an action created by `getUserFootprints` if fetching successed', () => {
+    test('should dispatch an action created by `getPostReviews` if fetching successed', () => {
       const responseObj = mockPostReviewsData
       nock(apiOrigin)
         .get(`/v2/${apiEndpoints.postReviews}`)
@@ -46,7 +46,7 @@ describe('Test footprints action', () => {
         expect(store.getActions()[1]).toEqual(successExp)
       })
     })
-    test('should dispatch an action created by `getUserFootprints` if fetching failed', () => {
+    test('should dispatch an action created by `getPostReviews` if fetching failed', () => {
       const mockStatusCode = 500
       const mockAPIRes = {
         status: 'error',
