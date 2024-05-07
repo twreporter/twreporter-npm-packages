@@ -144,6 +144,11 @@ const Gray500BottomLine = styled.div`
 const P2TextContainer = styled.div`
   color: ${props => props.color};
   overflow-wrap: anywhere;
+
+  // inject email value with css to prevent format detection in ios chrome
+  #user-email::after {
+    content: '${props => props.email}';
+  }
 `
 
 const StyledP1 = styled(P1)`
@@ -173,9 +178,9 @@ const MobileMemberRoleCard = ({
         <MarkImgs role={role} src={markUrl} />
       </MarkContainer>
       <LeftColumn>
-        <P2TextContainer color={CardP2TextColor[role]}>
+        <P2TextContainer color={CardP2TextColor[role]} email={email}>
           {role !== MEMBER_ROLE.explorer && <P2 text={name} />}
-          <P2 text={email} />
+          <P2 id="user-email" />
         </P2TextContainer>
         <InfoContainer>
           {!hideInfo && (
