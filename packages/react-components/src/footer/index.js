@@ -6,10 +6,12 @@ import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import fundraisingId from '@twreporter/core/lib/constants/fundraising'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import origins from '@twreporter/core/lib/constants/request-origins'
+
 import { PillButton, InheritLinkButton } from '../button'
 import divider from '../divider'
 import { P2, P3 } from '../text/paragraph'
-import { DesktopAndAbove, TabletAndBelow } from '../rwd'
+import { TabletAndBelow } from '../rwd'
 import Link from '../customized-link'
 // components
 import { FooterLinkButtonGroups, FooterSocialMediaIcons } from './link'
@@ -36,11 +38,15 @@ const FooterSection = styled.div`
   `}
 `
 
-const DesktopSection = styled.div`
+const UpperContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  ${mq.tabletAndBelow`
+    flex-direction: column;
+    justify-content: center;
+  `}
 `
 
 const InformationContainer = styled.div`
@@ -135,14 +141,15 @@ const DesktopAndAboveWithFlex = styled.div`
   `}
 `
 
-const InfoLink = () => {
+const InfoLink = ({ releaseBranch = releaseBranchConsts.release }) => {
+  const mainOrigin = origins.forClientSideRendering[releaseBranch].main
   return (
     <DescWithLink>
       <InheritLinkButton
         text="許可協議"
         link={{
           isExternal: true,
-          to: 'https://www.twreporter.org/a/license-footer',
+          to: `${mainOrigin}/a/license-footer`,
           target: '_blank',
         }}
         type={InheritLinkButton.Type.UNDERLINE}
@@ -152,7 +159,7 @@ const InfoLink = () => {
         text="隱私政策"
         link={{
           isExternal: true,
-          to: 'https://www.twreporter.org/a/privacy-footer',
+          to: `${mainOrigin}/a/privacy-footer`,
           target: '_blank',
         }}
         type={InheritLinkButton.Type.UNDERLINE}
@@ -171,37 +178,24 @@ const InfoLink = () => {
   )
 }
 
-const Footer = ({ releaseBranch }) => {
+InfoLink.propTypes = {
+  releaseBranch: predefinedPropTypes.releaseBranch,
+}
+
+const Footer = ({ releaseBranch = releaseBranchConsts.release }) => {
   return (
     <FooterContainer>
       <FooterSection>
-        <DesktopAndAbove>
-          <DesktopSection>
-            <InformationContainer>
-              <LogoAndDescription>
-                <Logo releaseBranch={releaseBranch} />
-                <P2Gray600 text="台灣第一個由公益基金會成立的網路媒體，致力於公共領域調查報導，打造多元進步的媒體環境。" />
-              </LogoAndDescription>
-              <Link to="https://support.twreporter.org/" target="_blank">
-                <PillButton
-                  className="button"
-                  type={PillButton.Type.SECONDARY}
-                  text={'贊助我們'}
-                />
-              </Link>
-            </InformationContainer>
-            <LinksContainer>
-              <FooterLinkButtonGroups releaseBranch={releaseBranch} />
-            </LinksContainer>
-          </DesktopSection>
-        </DesktopAndAbove>
-        <TabletAndBelow>
+        <UpperContainer>
           <InformationContainer>
             <LogoAndDescription>
               <Logo releaseBranch={releaseBranch} />
               <P2Gray600 text="台灣第一個由公益基金會成立的網路媒體，致力於公共領域調查報導，打造多元進步的媒體環境。" />
             </LogoAndDescription>
-            <Link to="https://support.twreporter.org/" target="_blank">
+            <Link
+              to={origins.forClientSideRendering[releaseBranch].accounts}
+              target="_blank"
+            >
               <PillButton
                 className="button"
                 type={PillButton.Type.SECONDARY}
@@ -212,18 +206,18 @@ const Footer = ({ releaseBranch }) => {
           <LinksContainer>
             <FooterLinkButtonGroups releaseBranch={releaseBranch} />
           </LinksContainer>
-        </TabletAndBelow>
+        </UpperContainer>
         <Divider />
         <BottomContainer>
           <InfoContainer>
             <P3Gray600 text={fundraisingId} />
             <DesktopAndAboveWithFlex>
               <P3Gray600 text="｜" />
-              <InfoLink />
+              <InfoLink releaseBranch={releaseBranch} />
               <P3Gray600 text="｜" />
             </DesktopAndAboveWithFlex>
             <TabletAndBelow>
-              <InfoLink />
+              <InfoLink releaseBranch={releaseBranch} />
             </TabletAndBelow>
             <P3Gray600
               text={`Copyright © ${new Date().getFullYear()} The Reporter.`}
@@ -240,10 +234,6 @@ const Footer = ({ releaseBranch }) => {
 
 Footer.propTypes = {
   releaseBranch: predefinedPropTypes.releaseBranch,
-}
-
-Footer.defaultProps = {
-  releaseBranch: releaseBranchConsts.master,
 }
 
 export default Footer

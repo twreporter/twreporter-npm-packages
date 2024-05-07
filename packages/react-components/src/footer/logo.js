@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 // components
 import { LogoFooter } from '../logo'
@@ -8,7 +7,7 @@ import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import origins from '@twreporter/core/lib/constants/request-origins'
 import Link from '../customized-link'
 
-const Logo = ({ releaseBranch }) => {
+const Logo = ({ releaseBranch = releaseBranchConsts.release }) => {
   const mainOrigin = origins.forClientSideRendering[releaseBranch].main
   const [over, setOver] = useState(false)
   return (
@@ -26,13 +25,7 @@ const Logo = ({ releaseBranch }) => {
 }
 
 Logo.propTypes = {
-  mainOrigin: PropTypes.string.isRequired,
   releaseBranch: predefinedPropTypes.releaseBranch,
-}
-
-Logo.defaultProps = {
-  mainOrigin: '',
-  releaseBranch: releaseBranchConsts.release,
 }
 
 export default Logo

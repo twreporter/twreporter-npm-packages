@@ -6,6 +6,7 @@ import predefinedPropTypes from '@twreporter/core/lib/constants/prop-types'
 import mq from '@twreporter/core/lib/utils/media-query'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import origins from '@twreporter/core/lib/constants/request-origins'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 
 import { SocialMedia } from '../icon'
 import { IconButton } from '../button'
@@ -77,7 +78,9 @@ FooterSocialMediaIcon.propTypes = {
   target: PropTypes.oneOf(['_blank', '_self']),
 }
 
-export const FooterLinkButtonGroups = ({ releaseBranch }) => {
+export const FooterLinkButtonGroups = ({
+  releaseBranch = releaseBranchConsts.release,
+}) => {
   const mainOrigin = origins.forClientSideRendering[releaseBranch].main
   const linksGroups = getLinksGroups(mainOrigin)
   return _.map(linksGroups, (links, indexofGroup) => {
@@ -91,7 +94,13 @@ export const FooterLinkButtonGroups = ({ releaseBranch }) => {
   })
 }
 
-export const FooterSocialMediaIcons = ({ releaseBranch }) => {
+FooterLinkButtonGroups.propTypes = {
+  releaseBranch: predefinedPropTypes.releaseBranch,
+}
+
+export const FooterSocialMediaIcons = ({
+  releaseBranch = releaseBranchConsts.release,
+}) => {
   const icons = getSocialMediaLinks()
   return _.map(icons, (icon, index) => {
     return (
@@ -102,4 +111,8 @@ export const FooterSocialMediaIcons = ({ releaseBranch }) => {
       />
     )
   })
+}
+
+FooterSocialMediaIcons.propTypes = {
+  releaseBranch: predefinedPropTypes.releaseBranch,
 }

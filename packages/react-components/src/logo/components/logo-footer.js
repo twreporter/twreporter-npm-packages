@@ -26,17 +26,16 @@ const logoType = {
   WHITE: 'white',
 }
 
-const LogoFooter = ({ releaseBranch, type }) => {
+const LogoFooter = ({
+  releaseBranch = BRANCH.master,
+  type = logoType.DEFAULT,
+}) => {
   const src = pathUtil.selectLogoPath('footer', releaseBranch, type)
   return <LogoContainer alt="The Reporter Logo" src={src} />
 }
 LogoFooter.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
   type: PropTypes.oneOf(Object.values(logoType)),
-}
-LogoFooter.defaultProps = {
-  releaseBranch: BRANCH.master,
-  type: logoType.DEFAULT,
 }
 
 LogoFooter.Type = logoType
