@@ -61,9 +61,6 @@ function buildSuccessActionFromRes(axiosResponse, actionType) {
 /**
  * get post reviews
  * @param {string} jwt - access_token granted for the user
- * @param {number} userID -  id of user
- * @param {number} offset - the offset of the request
- * @param {number} limit - max amount of records per fetch
  * @returns {Function} - function will be executed in Redux Thunk middleware
  */
 export function getPostReviews(jwt) {
