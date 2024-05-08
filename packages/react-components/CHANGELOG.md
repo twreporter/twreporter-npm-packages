@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.28.0-rc.1...@twreporter/react-components@9.0.0-rc.0) (2024-05-08)
+
+
+### Bug Fixes
+
+* align `react-transition-group` version ([562dc11](https://github.com/twreporter/twreporter-npm-packages/commit/562dc11ec8db0ff5cfefca56d6d77a90030f6f66))
+* remove `defaultProps` for functional components to address warnings ([67f7fac](https://github.com/twreporter/twreporter-npm-packages/commit/67f7fac950cfc613adbc233cbe17d9571123cb61))
+
+
+### Features
+
+* upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
+
+
+### BREAKING CHANGES
+
+* react & react-dom version upgrade to ^18.2 in all monorepos
+
+
+
+
+
 # [8.28.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.28.0-rc.0...@twreporter/react-components@8.28.0-rc.1) (2024-05-08)
 
 **Note:** Version bump only for package @twreporter/react-components

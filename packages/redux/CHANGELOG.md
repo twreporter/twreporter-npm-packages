@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.13.0-rc.0...@twreporter/redux@8.0.0-rc.0) (2024-05-08)
+
+
+### Features
+
+* upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
+
+
+### BREAKING CHANGES
+
+* react & react-dom version upgrade to ^18.2 in all monorepos
+
+
+
+
+
 # [7.13.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.1-rc.1...@twreporter/redux@7.13.0-rc.0) (2024-05-08)
 
 
