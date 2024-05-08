@@ -8,4 +8,5 @@ export default {
   tags: 'tags',
   onboarding: 'onboarding',
   periodicDonations: 'periodic-donations',
+  postReviews: 'post_reviews',
 }

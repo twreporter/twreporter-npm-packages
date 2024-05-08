@@ -82,17 +82,17 @@ export default {
   singleBookmark: {
     read: {
       request: 'request to fetch single bookmark',
-      success: 'succes to fetch single bookmark',
+      success: 'success to fetch single bookmark',
       failure: 'fail to fetch single bookmark',
     },
     create: {
       request: 'request to  create single bookmark',
-      success: 'succes to create single bookmark',
+      success: 'success to create single bookmark',
       failure: 'fail to create single bookmark',
     },
     delete: {
       request: 'request to  delete single bookmark',
-      success: 'succes to delete single bookmark',
+      success: 'success to delete single bookmark',
       failure: 'fail to delete single bookmark',
     },
   },
@@ -100,7 +100,7 @@ export default {
   multipleBookMarks: {
     read: {
       request: 'request to fetch multiple bookmarks',
-      success: 'succes to fetch multiple bookmarks',
+      success: 'success to fetch multiple bookmarks',
       failure: 'fail to fetch multiple bookmarks',
     },
   },
@@ -147,12 +147,12 @@ export default {
   user: {
     read: {
       request: 'request to fetch single user data',
-      success: 'succes to fetch single user data',
+      success: 'success to fetch single user data',
       failure: 'fail to fetch single user data',
     },
     update: {
       request: 'request to update user data',
-      success: 'succes to update user data',
+      success: 'success to update user data',
       failure: 'fail to update user data',
     },
   },
@@ -160,7 +160,7 @@ export default {
   analytics: {
     update: {
       request: 'request to update user analytics data',
-      success: 'succes to update user analytics data',
+      success: 'success to update user analytics data',
       failure: 'fail to update user analytics data',
     },
   },
@@ -168,12 +168,12 @@ export default {
   footprints: {
     read: {
       request: 'request to fetch single user footprints',
-      success: 'succes to fetch single user footprints',
+      success: 'success to fetch single user footprints',
       failure: 'fail to fetch single user footprints',
     },
     update: {
       request: 'request to update user footprint',
-      success: 'succes to update user footprint',
+      success: 'success to update user footprint',
       failure: 'fail to update user footprint',
     },
   },
@@ -182,16 +182,24 @@ export default {
     donationHistory: {
       read: {
         request: 'request to fetch single user donation history',
-        success: 'succes to fetch single user donation history',
+        success: 'success to fetch single user donation history',
         failure: 'fail to fetch single user donation history',
       },
     },
     periodicDonationHistory: {
       read: {
         request: 'request to fetch single periodic donation history',
-        success: 'succes to fetch single periodic donation history',
+        success: 'success to fetch single periodic donation history',
         failure: 'fail to fetch single periodic donation history',
       },
+    },
+  },
+
+  postReviews: {
+    read: {
+      request: 'request to fetch post reviews',
+      success: 'success to fetch post reviews',
+      failure: 'fail to fetch post reviews',
     },
   },
 }
