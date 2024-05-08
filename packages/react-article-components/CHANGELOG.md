@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.1...@twreporter/react-article-components@1.14.0-rc.2) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.14.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.0...@twreporter/react-article-components@1.14.0-rc.1) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.3-rc.0...@twreporter/react-article-components@1.14.0-rc.0) (2024-05-07)
+
+
+### Features
+
+* set aspect-ratio for slideshow ([10bc3a9](https://github.com/twreporter/twreporter-npm-packages/commit/10bc3a955873b0d0bf7589e38670d387b70a2b97))
+
+
+
+
+
+## [1.13.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2...@twreporter/react-article-components@1.13.3-rc.0) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.13.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.6...@twreporter/react-article-components@1.13.2) (2024-04-23)
 
 **Note:** Version bump only for package @twreporter/react-article-components
