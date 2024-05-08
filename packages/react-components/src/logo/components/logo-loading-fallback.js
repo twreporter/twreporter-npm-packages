@@ -10,15 +10,12 @@ import {
 
 const LogoContainer = styled.img``
 
-const LogoFallback = ({ releaseBranch }) => {
+const LogoFallback = ({ releaseBranch = BRANCH.master }) => {
   const logoSrc = pathUtil.selectLogoPath('loading-fallback', releaseBranch)
   return <LogoContainer alt="The Reporter Loading Fallback" src={logoSrc} />
 }
 LogoFallback.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
-}
-LogoFallback.defaultProps = {
-  releaseBranch: BRANCH.master,
 }
 
 export default LogoFallback

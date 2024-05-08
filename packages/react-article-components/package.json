@@ -16,7 +16,7 @@
   "devDependencies": {
     "babel-loader": "^8.0.6",
     "html-webpack-plugin": "^3.2.0",
-    "react-dom": "^16.3.0",
+    "react-dom": "^18.2.0",
     "react-redux": "^6.0.0",
     "regenerator-runtime": "^0.13.2",
     "webpack": "^4.38.0",
@@ -32,7 +32,7 @@
     "lodash": "^4.17.11",
     "memoize-one": "^5.0.5",
     "prop-types": "^15.0.0",
-    "react": "^16.3.0",
+    "react": "^18.2.0",
     "react-waypoint": "^9.0.2",
     "smooth-scroll": "16.1.3",
     "styled-components": "^4.0.0"
