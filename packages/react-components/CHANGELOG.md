@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.0...@twreporter/react-components@9.0.0-rc.1) (2024-05-10)
+
+
+### Bug Fixes
+
+* fix defects and add comments ([fda83e3](https://github.com/twreporter/twreporter-npm-packages/commit/fda83e3daafab2b61a9323074abc21f5d5be4b11))
+
+
+
+
+
 # [9.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.28.0-rc.1...@twreporter/react-components@9.0.0-rc.0) (2024-05-08)
 
 
