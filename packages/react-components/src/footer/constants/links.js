@@ -4,9 +4,15 @@ const gtmId = {
   support: 'footer-support',
   newsletter: 'footer-newsletter',
 }
-
+/*
+  display for links group
+  | first column | second column | third column |
+  | XXXX         | XXXX          | XXX          |
+  | XXXXX        | XXXXXX        | XX           |
+*/
 export const getLinksGroups = mainOrigin => {
   return [
+    // first column
     [
       {
         slug: 'about',
@@ -39,6 +45,7 @@ export const getLinksGroups = mainOrigin => {
         target: '_blank',
       },
     ],
+    // second column
     [
       {
         slug: 'donate',
@@ -65,6 +72,7 @@ export const getLinksGroups = mainOrigin => {
         target: '_blank',
       },
     ],
+    // third column
     [
       {
         slug: 'subcribe-email',
