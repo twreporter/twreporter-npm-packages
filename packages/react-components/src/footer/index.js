@@ -34,7 +34,7 @@ const FooterSection = styled.div`
     flex-direction: column;
     justify-content: center;
     max-width: 400px;
-    padding: 48px 16px;
+    padding: 48px 24px 96px;
   `}
 `
 
@@ -193,12 +193,13 @@ const Footer = ({ releaseBranch = releaseBranchConsts.release }) => {
               <P2Gray600 text="台灣第一個由公益基金會成立的網路媒體，致力於公共領域調查報導，打造多元進步的媒體環境。" />
             </LogoAndDescription>
             <Link
-              to={origins.forClientSideRendering[releaseBranch].accounts}
+              to={origins.forClientSideRendering[releaseBranch].support}
               target="_blank"
             >
               <PillButton
                 className="button"
                 type={PillButton.Type.SECONDARY}
+                size={PillButton.Size.L}
                 text={'贊助我們'}
               />
             </Link>

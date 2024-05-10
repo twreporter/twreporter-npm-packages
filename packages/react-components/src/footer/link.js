@@ -25,6 +25,7 @@ const LinkColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 120px;
   ${mq.tabletAndBelow`
     flex-grow: 1;
     flex-basis: 33%;
