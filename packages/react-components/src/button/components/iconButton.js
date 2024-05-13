@@ -13,20 +13,20 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+  cursor: ${(props) => (props.$disabled ? 'default' : 'pointer')};
   display: flex;
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   svg {
     width: 24px;
     height: 24px;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.$color};
   }
 
   ${mq.desktopAndAbove`
     &:hover {
-      color: ${props => props.hoverColor};
+      color: ${(props) => props.$hoverColor};
       svg {
-        background-color: ${props => props.hoverColor};
+        background-color: ${(props) => props.$hoverColor};
       }
   `}
 `
@@ -47,9 +47,9 @@ const IconButton = ({
 
   return (
     <ButtonContainer
-      color={color}
-      hoverColor={hoverColor}
-      disabled={disabled}
+      $color={color}
+      $hoverColor={hoverColor}
+      $disabled={disabled}
       {...props}
     >
       {iconComponent}

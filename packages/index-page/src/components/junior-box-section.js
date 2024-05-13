@@ -25,24 +25,24 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-image: ${props =>
-    `url(${app.assetsPath}/${props.releaseBranch}/KidsReporter_Desktop.jpg)`};
+  background-image: ${(props) =>
+    `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_Desktop.jpg)`};
   background-size: contain;
   padding-top: 30px;
   padding-bottom: 30px;
   ${mq.mobileOnly`
-    background-image: ${props =>
-      `url(${app.assetsPath}/${props.releaseBranch}/KidsReporter_Mobile.jpg)`};
+    background-image: ${(props) =>
+      `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_Mobile.jpg)`};
     padding-top: 40px;
     padding-bottom: 60px;
   `}
   ${mq.tabletOnly`
-    background-image: ${props =>
-      `url(${app.assetsPath}/${props.releaseBranch}/KidsReporter_Tablet.jpg)`};
+    background-image: ${(props) =>
+      `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_Tablet.jpg)`};
   `}
   ${mq.hdOnly`
-    background-image: ${props =>
-      `url(${app.assetsPath}/${props.releaseBranch}/KidsReporter_DesktopHD.jpg)`};
+    background-image: ${(props) =>
+      `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_DesktopHD.jpg)`};
   `}
 `
 
@@ -139,7 +139,7 @@ class JuniorBoxSection extends React.PureComponent {
   render() {
     const { releaseBranch } = this.props
     return (
-      <Container releaseBranch={releaseBranch}>
+      <Container $releaseBranch={releaseBranch}>
         <ContentContainer>
           <TextColumn>
             <h3>看兒少新聞，與孩子對話</h3>

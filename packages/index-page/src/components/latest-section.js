@@ -110,8 +110,6 @@ const ItemFrame = styled.div`
 const ImageFrame = styled.div`
   width: 100%;
   height: 128px;
-  background: ${props =>
-    props.background ? `url(${props.background})` : 'backgroun-image'};
   background-size: cover;
   background-position: center;
   display: block;
@@ -152,7 +150,7 @@ const Title = styled.div`
 
 class LatestSection extends React.Component {
   render() {
-    const latestItems = this.props.data.map(item => {
+    const latestItems = this.props.data.map((item) => {
       const isExternal = _.get(item, 'is_external', false)
       const href = getHref(_.get(item, 'slug', 'error'), isExternal)
       const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')

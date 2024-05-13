@@ -39,27 +39,27 @@ const LinkItem = styled.div`
   padding: 8px 32px;
   display: flex;
   align-items: center;
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   svg {
     height: 18px;
     width: 18px;
     margin-right: 4px;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.$color};
   }
   ${mq.desktopAndAbove`
     &:hover {
-      color: ${props => props.hoverColor};
-      background-color: ${props => props.hoverBgColor};
+      color: ${(props) => props.$hoverColor};
+      background-color: ${(props) => props.$hoverBgColor};
       svg {
-        background-color: ${props => props.hoverColor};
+        background-color: ${(props) => props.$hoverColor};
       }
     }
   `}
   &:active {
-    color: ${props => props.activeColor};
-    background-color: ${props => props.activeBgColor};
+    color: ${(props) => props.$activeColor};
+    background-color: ${(props) => props.$activeBgColor};
     svg {
-      background-color: ${props => props.activeColor};
+      background-color: ${(props) => props.$activeColor};
     }
   }
 `
@@ -94,17 +94,12 @@ const Footer = ({ ...props }) => {
   const { theme, releaseBranch, isLinkExternal } = useContext(HeaderContext)
   const { closeHamburgerMenu } = useContext(HamburgerContext)
   const footerTheme = theme === THEME.transparent ? THEME.normal : theme
-  const {
-    color,
-    hoverColor,
-    hoverBgColor,
-    activeColor,
-    activeBgColor,
-  } = selectHamburgerFooterTheme(footerTheme)
+  const { color, hoverColor, hoverBgColor, activeColor, activeBgColor } =
+    selectHamburgerFooterTheme(footerTheme)
   const memberLinks = getMemberLinks(isLinkExternal, releaseBranch)
   const memberJSX = memberLinks ? (
     <LinkSection>
-      {_.map(MEMBER_ORDER, key => {
+      {_.map(MEMBER_ORDER, (key) => {
         const link = memberLinks[key]
         const label = FOOTER_LABEL[key]
         if (!link || !label) {
@@ -113,11 +108,11 @@ const Footer = ({ ...props }) => {
         return (
           <Link {...link} key={key} onClick={closeHamburgerMenu}>
             <LinkItem
-              color={color}
-              hoverColor={hoverColor}
-              hoverBgColor={hoverBgColor}
-              activeColor={activeColor}
-              activeBgColor={activeBgColor}
+              $color={color}
+              $hoverColor={hoverColor}
+              $hoverBgColor={hoverBgColor}
+              $activeColor={activeColor}
+              $activeBgColor={activeBgColor}
             >
               <Icon filename={FOOTER_ICON[key]} releaseBranch={releaseBranch} />
               <P2 text={label} />
@@ -131,7 +126,7 @@ const Footer = ({ ...props }) => {
   const footerLinks = getFooterLinks(isLinkExternal, releaseBranch)
   const linkJSX = footerLinks ? (
     <LinkSection>
-      {_.map(FOOTER_ORDER, key => {
+      {_.map(FOOTER_ORDER, (key) => {
         const link = footerLinks[key]
         const label = FOOTER_LABEL[key]
         if (!link || !label) {
@@ -140,11 +135,11 @@ const Footer = ({ ...props }) => {
         return (
           <Link {...link} key={key} onClick={closeHamburgerMenu}>
             <LinkItem
-              color={color}
-              hoverColor={hoverColor}
-              hoverBgColor={hoverBgColor}
-              activeColor={activeColor}
-              activeBgColor={activeBgColor}
+              $color={color}
+              $hoverColor={hoverColor}
+              $hoverBgColor={hoverBgColor}
+              $activeColor={activeColor}
+              $activeBgColor={activeBgColor}
             >
               <P2 text={label} />
             </LinkItem>
@@ -157,7 +152,7 @@ const Footer = ({ ...props }) => {
   const socialMediaLinks = getSocialMediaLinks()
   const socialMediaJSX = socialMediaLinks ? (
     <SocialMediaSection>
-      {_.map(SOCIAL_MEDIA_ORDER, key => {
+      {_.map(SOCIAL_MEDIA_ORDER, (key) => {
         const link = socialMediaLinks[key]
         if (!link) {
           return

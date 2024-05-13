@@ -71,19 +71,19 @@ const TopicBox = styled.div`
 `
 
 const ItemContainer = styled.div`
-  margin-bottom: ${props =>
-    !props.isTop
+  margin-bottom: ${(props) =>
+    !props.$isTop
       ? `${styles.topicBox.mobile.marginBottom}px`
       : `${styles.topicBox.mobile.marginBottom - 10}px`};
   ${mq.tabletOnly`
-    margin-bottom: ${props =>
-      !props.isTop
+    margin-bottom: ${(props) =>
+      !props.$isTop
         ? `${styles.topicBox.tablet.marginBottom}px`
         : `${styles.topicBox.tablet.marginBottom - 10}px`};
   `}
   ${mq.desktopAndAbove`
-    margin-bottom: ${props =>
-      !props.isTop
+    margin-bottom: ${(props) =>
+      !props.$isTop
         ? `${styles.topicBox.desktop.marginBottom}px`
         : `${styles.topicBox.desktop.marginBottom - 10}px`};
   `}
@@ -131,7 +131,7 @@ const TopicTitle = styled.h2`
   font-size: ${styles.fontSize.title.mobile}px;
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   line-height: 1.43;
   ${mq.tabletOnly`
     font-size: ${styles.fontSize.title.tablet}px;
@@ -175,18 +175,11 @@ const MobileDescription = styled(TopicDescription)`
 
 class TopicItem extends PureComponent {
   render() {
-    const {
-      title,
-      updatedAt,
-      description,
-      imgUrl,
-      imgAlt,
-      linkTo,
-      isTop,
-    } = this.props
+    const { title, updatedAt, description, imgUrl, imgAlt, linkTo, isTop } =
+      this.props
     return (
       <StyledLink to={linkTo}>
-        <ItemContainer isTop={isTop}>
+        <ItemContainer $isTop={isTop}>
           <TopicBox>
             <ImageBlock>
               <div>

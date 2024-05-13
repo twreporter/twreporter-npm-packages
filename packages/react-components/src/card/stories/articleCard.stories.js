@@ -18,12 +18,12 @@ export default {
 }
 
 const Container = styled.div`
-  width: ${props => (props.size === ArticleCard.Size.S ? '343' : '878')}px;
+  width: ${(props) => (props.$size === ArticleCard.Size.S ? '343' : '878')}px;
 `
 
 export const article = {
-  render: args => (
-    <Container size={args.size}>
+  render: (args) => (
+    <Container $size={args.size}>
       <ArticleCard {...args} />
     </Container>
   ),
@@ -36,8 +36,7 @@ export const article = {
     category: '主分類',
     date: '2022/01/01',
     image: {
-      src:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/220px-Google_Images_2015_logo.svg.png',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/220px-Google_Images_2015_logo.svg.png',
       alt: 'test',
     },
     releaseBranch: BRANCH.master,

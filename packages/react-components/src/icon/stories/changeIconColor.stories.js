@@ -5,12 +5,12 @@ import { Article } from '../index'
 
 const IconContainer = styled.div`
   svg {
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.$color};
   }
 `
 
 const ChangeIconColor = ({ color }) => (
-  <IconContainer color={color}>
+  <IconContainer $color={color}>
     <Article />
   </IconContainer>
 )

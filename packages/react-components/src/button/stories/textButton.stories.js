@@ -37,18 +37,20 @@ export const textButton = {
     active: false,
     disabled: false,
     loading: false,
-    leftIconComponent: <Arrow direction="left" />,
-    rightIconComponent: <Arrow direction="right" />,
+    leftIconComponent: <Arrow direction={Arrow.Direction.LEFT} />,
+    rightIconComponent: <Arrow direction={Arrow.Direction.RIGHT} />,
   },
 
   parameters: { controls: { exclude: ['showLeft', 'showRight'] } },
 }
 
 export const toggleIconDisplay = {
-  render: args => {
-    args.leftIconComponent = args.showLeft ? <Arrow direction="left" /> : null
+  render: (args) => {
+    args.leftIconComponent = args.showLeft ? (
+      <Arrow direction={Arrow.Direction.LEFT} />
+    ) : null
     args.rightIconComponent = args.showRight ? (
-      <Arrow direction="right" />
+      <Arrow direction={Arrow.Direction.RIGHT} />
     ) : null
 
     return <TextButton {...args} />

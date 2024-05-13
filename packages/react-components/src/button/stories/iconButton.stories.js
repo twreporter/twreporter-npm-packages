@@ -16,7 +16,7 @@ export default {
 
 export const iconButton = {
   args: {
-    iconComponent: <Arrow direction="down" />,
+    iconComponent: <Arrow direction={Arrow.Direction.DOWN} />,
     theme: IconButton.THEME.normal,
     type: IconButton.Type.PRIMARY,
     disabled: false,

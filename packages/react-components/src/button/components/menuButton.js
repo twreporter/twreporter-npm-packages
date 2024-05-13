@@ -13,26 +13,26 @@ const ItemContainer = styled.div`
   ${StyledP1} {
     padding-top: 8px;
     padding-bottom: 8px;
-    padding-left: ${props => props.paddingLeft}px;
-    padding-right: ${props => props.paddingRight}px;
+    padding-left: ${(props) => props.$paddingLeft}px;
+    padding-right: ${(props) => props.$paddingRight}px;
   }
   cursor: pointer;
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   a,
   a:visited,
   a:link {
     text-decoration: none;
-    color: ${props => props.color};
+    color: ${(props) => props.$color};
   }
 
   ${mq.desktopAndAbove`
     &:hover {
-      background-color: ${props => props.hoverBgColor};
+      background-color: ${(props) => props.$hoverBgColor};
     }
   `}
 
   &:active {
-    background-color: ${props => props.activeBgColor};
+    background-color: ${(props) => props.$activeBgColor};
   }
 `
 
@@ -49,11 +49,11 @@ const MenuButton = ({
 }) => {
   return (
     <ItemContainer
-      color={color}
-      hoverBgColor={hoverBgColor}
-      activeBgColor={activeBgColor}
-      paddingLeft={paddingLeft}
-      paddingRight={paddingRight}
+      $color={color}
+      $hoverBgColor={hoverBgColor}
+      $activeBgColor={activeBgColor}
+      $paddingLeft={paddingLeft}
+      $paddingRight={paddingRight}
       {...props}
     >
       <Link {...link}>

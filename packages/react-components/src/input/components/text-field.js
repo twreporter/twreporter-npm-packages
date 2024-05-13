@@ -29,8 +29,8 @@ const Input = styled.input`
   background-color: inherit;
   padding: 0;
   border-radius: 0;
-  color: ${props => textColor[props.state]};
-  border-color: ${props => borderColor[props.state]};
+  color: ${(props) => textColor[props.$state]};
+  border-color: ${(props) => borderColor[props.$state]};
   border-style: solid;
   &:focus,
   &:focus-visible {
@@ -42,14 +42,14 @@ const Input = styled.input`
   }
 `
 const Message = styled(P3)`
-  color: ${props => messageColor[props.state]};
+  color: ${(props) => messageColor[props.$state]};
   margin-top: 8px;
 `
 const Container = styled.form`
   ${Input}, ${Message} {
     width: 100%;
-    text-align: ${props => props.align};
-    justify-content: ${props => props.align};
+    text-align: ${(props) => props.$align};
+    justify-content: ${(props) => props.$align};
   }
 `
 
@@ -64,25 +64,25 @@ const TextField = ({
   className = '' /* for styled component */,
   ...props
 }) => {
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     e.stopPropagation()
     onSubmit(e.target.input.value)
   }
-  const handleChange = e => {
+  const handleChange = (e) => {
     onChange(e.target.value, e.target.checkValidity())
   }
   return (
-    <Container onSubmit={handleSubmit} align={align} className={className}>
+    <Container onSubmit={handleSubmit} $align={align} className={className}>
       <Input
         name="input"
         placeholder={placeholder}
-        state={state}
+        $state={state}
         disabled={state === TextState.DISABLED}
         onChange={handleChange}
         {...props}
       ></Input>
-      {message && <Message text={message} state={state} />}
+      {message && <Message text={message} $state={state} />}
     </Container>
   )
 }

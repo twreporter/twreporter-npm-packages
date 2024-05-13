@@ -27,35 +27,35 @@ const InputContainer = styled.div`
   padding: 8px 16px;
   border: none;
   border-radius: 40px;
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
 `
 const Container = styled.form`
   display: flex;
   align-items: center;
-  ${props => (props.widthType === 'stretch' ? 'width: 100%;' : '')}
+  ${(props) => (props.$widthType === 'stretch' ? 'width: 100%;' : '')}
   ${InputContainer} {
-    ${props =>
-      props.focus
+    ${(props) =>
+      props.$focus
         ? `
-      background-color: ${props.focusBgColor};
-      border: 1px solid ${props.borderColor};
+      background-color: ${props.$focusBgColor};
+      border: 1px solid ${props.$borderColor};
     `
         : 'border: 1px solid transparent;'}
     &, & > input {
-      ${props => (props.widthType === 'stretch' ? 'width: 100%;' : '')}
+      ${(props) => (props.$widthType === 'stretch' ? 'width: 100%;' : '')}
     }
     ${mq.desktopAndAbove`
-      ${props =>
-        props.focus
+      ${(props) =>
+        props.$focus
           ? `
-        background-color: ${props.desktopBgColor};
+        background-color: ${props.$desktopBgColor};
       `
           : ''}
     `}
   }
 `
 const Input = styled.input`
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   margin-right: 8px;
   height: 24px;
   font-size: 14px;
@@ -69,11 +69,11 @@ const Input = styled.input`
   &:focus,
   &:focus-visible {
     &::placeholder {
-      color: ${props => props.focusColor};
+      color: ${(props) => props.$focusColor};
     }
   }
   &::placeholder {
-    color: ${props => props.placeholderColor};
+    color: ${(props) => props.$placeholderColor};
   }
   &::-webkit-search-cancel-button {
     display: none;
@@ -118,16 +118,16 @@ const SearchBar = ({
     setFocus(false)
     handleBlur()
   }
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault()
     onSearch(keywords)
   }
-  const onChange = e => {
+  const onChange = (e) => {
     e.preventDefault()
     const input = _.get(e, 'target.value', '')
     setKeywords(input)
   }
-  const onReset = e => {
+  const onReset = (e) => {
     e.preventDefault()
     setKeywords('')
   }
@@ -137,20 +137,20 @@ const SearchBar = ({
       onSubmit={onSubmit}
       onReset={onReset}
       onFocus={onFocus}
-      focus={focus}
-      focusBgColor={focusBgColor}
-      desktopBgColor={desktopBgColor}
-      borderColor={borderColor}
-      widthType={widthType}
+      $focus={focus}
+      $focusBgColor={focusBgColor}
+      $desktopBgColor={desktopBgColor}
+      $borderColor={borderColor}
+      $widthType={widthType}
       {...props}
     >
-      <InputContainer bgColor={bgColor}>
+      <InputContainer $bgColor={bgColor}>
         <Input
           type="search"
           placeholder={placeholder}
-          color={color}
-          focusColor={focusColor}
-          placeholderColor={placeholderColor}
+          $color={color}
+          $focusColor={focusColor}
+          $placeholderColor={placeholderColor}
           value={keywords}
           onChange={onChange}
           onBlur={onBlur}
