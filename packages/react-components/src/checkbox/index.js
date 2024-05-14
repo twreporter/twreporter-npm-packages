@@ -28,19 +28,19 @@ const Label = styled.label`
 const Indicator = styled.div`
   width: 16px;
   height: 16px;
-  background: ${props =>
+  background: ${(props) =>
     props.value
-      ? props.disabled
+      ? props.$disabled
         ? disableColor
         : activeColor
       : 'rgba(0, 0, 0, 0)'};
   position: absolute;
   top: 0px;
   left: 0px;
-  border-color: ${props => (props.disabled ? disableColor : activeColor)};
+  border-color: ${(props) => (props.$disabled ? disableColor : activeColor)};
   border-radius: 2px;
   box-shadow: 0 0 0 1px
-    ${props => (props.disabled ? disableColor : activeColor)};
+    ${(props) => (props.$disabled ? disableColor : activeColor)};
   margin: 3px 8px 0px 0px;
 
   &::after {
@@ -64,7 +64,7 @@ const Indicator = styled.div`
 `
 
 const ColorP1 = styled(P1)`
-  color: ${props => (props.disabled ? disableColor : activeColor)};
+  color: ${(props) => (props.$disabled ? disableColor : activeColor)};
 `
 
 export const Checkbox = ({
@@ -74,20 +74,20 @@ export const Checkbox = ({
   onChange = () => {},
   ...props
 }) => {
-  const handleChange = e => {
+  const handleChange = (e) => {
     onChange && onChange(e)
   }
   return (
     <Container {...props}>
       <Label>
-        {label && <ColorP1 text={label} disabled={disabled} />}
+        {label && <ColorP1 text={label} $disabled={disabled} />}
         <Input
           type="checkbox"
           checked={value}
           disabled={disabled}
           onChange={handleChange}
         />
-        <Indicator value={value} disabled={disabled} />
+        <Indicator value={value} $disabled={disabled} />
       </Label>
     </Container>
   )

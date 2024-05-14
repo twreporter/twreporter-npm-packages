@@ -8,11 +8,11 @@ const spinnerLogoUrl = `${storage.google.schema}://${storage.google.hostname}/${
 
 const FetchingBlock = styled.div`
   position: relative;
-  display: ${props => (props.isFetching ? 'block' : 'none')};
+  display: ${(props) => (props.$isFetching ? 'block' : 'none')};
   min-height: 100vh;
   width: 100%;
-  ${props => {
-    return props.showSpinner
+  ${(props) => {
+    return props.$showSpinner
       ? `
       background-image: url(${replaceGCSUrlOrigin(spinnerLogoUrl)});
       background-position: center;
@@ -24,12 +24,12 @@ const FetchingBlock = styled.div`
 
 const TransitionBlock = styled.div`
   transition: opacity 1s ease-in-out;
-  opacity: ${props => {
-    return props.isFetching ? 0 : 1
+  opacity: ${(props) => {
+    return props.$isFetching ? 0 : 1
   }};
 `
 
-const FetchingWrapper = WrappedComponent => {
+const FetchingWrapper = (WrappedComponent) => {
   class Wrapper extends React.PureComponent {
     render() {
       // TODO make client customize FetchingBlock
@@ -37,8 +37,11 @@ const FetchingWrapper = WrappedComponent => {
       if (React.isValidElement(WrappedComponent)) {
         return (
           <div>
-            <FetchingBlock isFetching={isFetching} showSpinner={showSpinner} />
-            <TransitionBlock isFetching={isFetching}>
+            <FetchingBlock
+              $isFetching={isFetching}
+              $showSpinner={showSpinner}
+            />
+            <TransitionBlock $isFetching={isFetching}>
               {WrappedComponent}
             </TransitionBlock>
           </div>
@@ -46,8 +49,8 @@ const FetchingWrapper = WrappedComponent => {
       }
       return (
         <div>
-          <FetchingBlock isFetching={isFetching} showSpinner={showSpinner} />
-          <TransitionBlock isFetching={isFetching}>
+          <FetchingBlock $isFetching={isFetching} $showSpinner={showSpinner} />
+          <TransitionBlock $isFetching={isFetching}>
             <WrappedComponent {...rest} />
           </TransitionBlock>
         </div>

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const StyledSymbol = styled.span`
-  font-variation-settings: ${props => `
-    'FILL': ${props.fill},
-    'wght': ${props.weight},
-    'GRAD': ${props.grade},
-    'opsz': ${props.size}
+  font-variation-settings: ${(props) => `
+    'FILL': ${props.$fill},
+    'wght': ${props.$weight},
+    'GRAD': ${props.$grade},
+    'opsz': ${props.$size}
   `};
-  font-size: ${props => props.size}px;
-  font-weight: ${props => props.weight};
+  font-size: ${(props) => props.$size}px;
+  font-weight: ${(props) => props.$weight};
 `
 
 const MeterialSymbol = ({
@@ -24,10 +24,10 @@ const MeterialSymbol = ({
   return (
     <StyledSymbol
       className={className}
-      fill={fill ? '0' : '1'}
-      weight={weight}
-      grade={grade}
-      size={size}
+      $fill={fill ? '0' : '1'}
+      $weight={weight}
+      $grade={grade}
+      $size={size}
     >
       {icon}
     </StyledSymbol>

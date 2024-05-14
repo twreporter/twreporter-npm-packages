@@ -40,7 +40,7 @@ const Container = styled.div`
 const SnackBarContainer = styled.div`
   margin-bottom: 4px;
   transition: opacity 1s;
-  opacity: ${props => (props.showSnackBar ? 1 : 0)};
+  opacity: ${(props) => (props.$showSnackBar ? 1 : 0)};
 `
 
 const ClickToShowSnackBar = ({ timeout }) => {
@@ -53,7 +53,7 @@ const ClickToShowSnackBar = ({ timeout }) => {
 
   return (
     <Container>
-      <SnackBarContainer showSnackBar={showSnackBar}>
+      <SnackBarContainer $showSnackBar={showSnackBar}>
         <SnackBar text={snackBarText} />
       </SnackBarContainer>
       <PillButton text="click me" onClick={handleClick} />
@@ -65,7 +65,7 @@ ClickToShowSnackBar.propTypes = {
 }
 
 export const clickToShow = {
-  render: props => <ClickToShowSnackBar {...props} />,
+  render: (props) => <ClickToShowSnackBar {...props} />,
   parameters: { controls: { exclude: ['text', 'theme'] } },
 
   args: {

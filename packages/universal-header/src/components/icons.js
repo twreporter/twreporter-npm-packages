@@ -35,7 +35,7 @@ const IconContainer = styled.div`
 `
 
 const Container = styled.div`
-  opacity: ${props => (props.isSearchOpened ? '0' : '1')};
+  opacity: ${(props) => (props.$isSearchOpened ? '0' : '1')};
   transition: opacity 300ms ease;
 `
 
@@ -45,12 +45,12 @@ const LogContainer = styled.div`
 `
 
 const SearchContainer = styled.div`
-  opacity: ${props => (props.isSearchOpened ? '1' : '0')};
+  opacity: ${(props) => (props.$isSearchOpened ? '1' : '0')};
   transition: opacity 300ms ease;
   position: absolute;
   right: 0;
   top: -8px;
-  z-index: ${props => (props.isSearchOpened ? 999 : -1)};
+  z-index: ${(props) => (props.$isSearchOpened ? 999 : -1)};
 `
 
 const MemberButtonType = {
@@ -61,10 +61,9 @@ const MemberIcon = ({
   memberButtonType = MemberButtonType.ICON,
   isForHambuger = false,
 }) => {
-  const { releaseBranch, theme, isAuthed, isLinkExternal } = useContext(
-    HeaderContext
-  )
-  const onClickIcon = e => {
+  const { releaseBranch, theme, isAuthed, isLinkExternal } =
+    useContext(HeaderContext)
+  const onClickIcon = (e) => {
     e.preventDefault()
 
     if (isAuthed) {
@@ -116,7 +115,7 @@ const SearchIcon = () => {
   const closeSearchBox = () => {
     setSearchOpened(false)
   }
-  const handleClickSearch = e => {
+  const handleClickSearch = (e) => {
     e.preventDefault()
     setSearchOpened(true)
     if (!ref.current) {
@@ -127,7 +126,7 @@ const SearchIcon = () => {
       input.focus()
     }
   }
-  const onSearch = keywords => {
+  const onSearch = (keywords) => {
     setSearchOpened(false)
     if (!window) {
       return
@@ -141,10 +140,10 @@ const SearchIcon = () => {
   const ref = useOutsideClick(closeSearchBox)
   return (
     <IconContainer ref={ref} key="search">
-      <Container onClick={handleClickSearch} isSearchOpened={isSearchOpened}>
+      <Container onClick={handleClickSearch} $isSearchOpened={isSearchOpened}>
         <IconButton iconComponent={Icon} theme={theme} />
       </Container>
-      <SearchContainer isSearchOpened={isSearchOpened}>
+      <SearchContainer $isSearchOpened={isSearchOpened}>
         <SearchBar
           placeholder="關鍵字搜尋"
           theme={theme}

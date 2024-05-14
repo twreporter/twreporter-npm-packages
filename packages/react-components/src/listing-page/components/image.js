@@ -23,7 +23,7 @@ const ImgContainer = styled.div`
 `
 
 const ImgObjectFit = styled(ImgContainer)`
-  opacity: ${props => props.opacity};
+  opacity: ${(props) => props.$opacity};
   transition: opacity 1s ease;
   > img {
     width: 100%;
@@ -34,7 +34,7 @@ const ImgObjectFit = styled(ImgContainer)`
 
 const ImgFallback = styled(ImgContainer)`
   background-size: cover;
-  background-image: ${props => {
+  background-image: ${(props) => {
     return `url(${replaceGCSUrlOrigin(_.get(props, 'url'))})`
   }};
   background-position: center center;
@@ -46,7 +46,7 @@ const LogoCenteringBlock = styled(ImgContainer)`
   justify-content: center;
   align-items: center;
   background-color: ${colorGrayscale.white};
-  display: ${props => props.display};
+  display: ${(props) => props.$display};
 `
 
 class Image extends React.PureComponent {
@@ -96,9 +96,9 @@ class Image extends React.PureComponent {
     }
 
     const ImgJSX = isObjectFit ? (
-      <ImgObjectFit opacity={isImgOnLoad ? 1 : 0}>
+      <ImgObjectFit $opacity={isImgOnLoad ? 1 : 0}>
         <img
-          ref={node => {
+          ref={(node) => {
             this.imgNode = node
           }}
           alt={alt}
@@ -113,7 +113,7 @@ class Image extends React.PureComponent {
 
     return (
       <ImgContainer>
-        <LogoCenteringBlock display={logoDisplay}>
+        <LogoCenteringBlock $display={logoDisplay}>
           <LogoIcon />
         </LogoCenteringBlock>
         {ImgJSX}

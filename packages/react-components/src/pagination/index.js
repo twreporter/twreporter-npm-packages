@@ -75,11 +75,11 @@ const PageNumberBox = styled(Box)`
   border: solid 1px ${colorSupportive.heavy};
   border-radius: 50%;
   line-height: ${styles.btnBoxSize.desktop}px;
-  background-color: ${props =>
-    props.isCurrent ? colorSupportive.heavy : 'transparent'};
+  background-color: ${(props) =>
+    props.$isCurrent ? colorSupportive.heavy : 'transparent'};
   > span {
-    color: ${props =>
-      props.isCurrent ? colorGrayscale.white : colorSupportive.heavy};
+    color: ${(props) =>
+      props.$isCurrent ? colorGrayscale.white : colorSupportive.heavy};
   }
 `
 
@@ -92,7 +92,7 @@ const EllipsisBox = styled(Box)`
 `
 
 const PrevNextBtn = styled(Box)`
-  visibility: ${props => (props.isHidden ? 'hidden' : 'visible')};
+  visibility: ${(props) => (props.$isHidden ? 'hidden' : 'visible')};
   padding: ${arrayToCssShorthand(styles.prevNextBtnPadding)};
   cursor: pointer;
   path {
@@ -136,7 +136,7 @@ class Pagination extends React.PureComponent {
     return (
       <PageNumberBox
         key={`page-num-box-${index}`}
-        isCurrent={index === currentPage}
+        $isCurrent={index === currentPage}
         onClick={this.props.handleClickPage}
       >
         <span>{index}</span>
@@ -266,7 +266,7 @@ class Pagination extends React.PureComponent {
           <PrevNextBtn
             key="prev-btn"
             onClick={handleClickPrev}
-            isHidden={belowFirstPage}
+            $isHidden={belowFirstPage}
           >
             <PageUpIcon />
           </PrevNextBtn>
@@ -275,7 +275,7 @@ class Pagination extends React.PureComponent {
           <PrevNextBtn
             key="next-btn"
             onClick={handleClickNext}
-            isHidden={aboveFinalPage}
+            $isHidden={aboveFinalPage}
           >
             <PageDownIcon />
           </PrevNextBtn>

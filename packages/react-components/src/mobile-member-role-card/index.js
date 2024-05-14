@@ -57,7 +57,7 @@ const CardContainer = styled.div`
     inset 2px 2px 4px rgba(255, 255, 255, 0.5),
     inset -2px -2px 2px rgba(0, 0, 0, 0.15);
   aspect-ratio: 1/1.6;
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   padding: 24px;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
@@ -99,8 +99,8 @@ const MarkContainer = styled.div`
 `
 
 const MarkImgs = styled.img`
-  width: ${props => CardMarkStyle[props.role].width};
-  height: ${props => CardMarkStyle[props.role].height};
+  width: ${(props) => CardMarkStyle[props.$role].width};
+  height: ${(props) => CardMarkStyle[props.$role].height};
 `
 
 const InfoContainer = styled.div`
@@ -142,17 +142,17 @@ const Gray500BottomLine = styled.div`
 `
 
 const P2TextContainer = styled.div`
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   overflow-wrap: anywhere;
 
   // inject email value with css to prevent format detection in ios chrome
   #user-email::after {
-    content: '${props => props.email}';
+    content: '${(props) => props.$email}';
   }
 `
 
 const StyledP1 = styled(P1)`
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   line-height: 125%;
   letter-spacing: 1.6px;
 `
@@ -173,12 +173,12 @@ const MobileMemberRoleCard = ({
   const markUrl = `https://www.twreporter.org/assets/user-role-card/${releaseBranch}/${role}_mark.png`
 
   return (
-    <CardContainer bgColor={CardBgColor[role]}>
+    <CardContainer $bgColor={CardBgColor[role]}>
       <MarkContainer>
-        <MarkImgs role={role} src={markUrl} />
+        <MarkImgs $role={role} src={markUrl} />
       </MarkContainer>
       <LeftColumn>
-        <P2TextContainer color={CardP2TextColor[role]} email={email}>
+        <P2TextContainer $color={CardP2TextColor[role]} $email={email}>
           {role !== MEMBER_ROLE.explorer && <P2 text={name} />}
           <P2 id="user-email" />
         </P2TextContainer>
@@ -189,7 +189,7 @@ const MobileMemberRoleCard = ({
                 <StyledP3 text={'閱讀篇數'} />
                 <Gray500BottomLine />
                 <StyledP1
-                  color={CardP1TextColor[role]}
+                  $color={CardP1TextColor[role]}
                   weight={P1.Weight.BOLD}
                   text={articleReadCount.toLocaleString('en-US')}
                 />
@@ -200,7 +200,7 @@ const MobileMemberRoleCard = ({
                 />
                 <Gray500BottomLine />
                 <StyledP1
-                  color={CardP1TextColor[role]}
+                  $color={CardP1TextColor[role]}
                   weight={P1.Weight.BOLD}
                   text={
                     articleReadingTime > 99999
@@ -215,7 +215,7 @@ const MobileMemberRoleCard = ({
             <StyledP3 text={'加入日期'} />
             <Gray500BottomLine />
             <StyledP1
-              color={CardP1TextColor[role]}
+              $color={CardP1TextColor[role]}
               weight={P1.Weight.BOLD}
               text={joinDate}
             />

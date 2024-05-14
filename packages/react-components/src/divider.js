@@ -26,15 +26,16 @@ const width = {
 }
 
 const DividerBox = styled.div`
-  border-width: ${props => arrayToCssShorthand(borderWidth[props.direction])};
+  border-width: ${(props) =>
+    arrayToCssShorthand(borderWidth[props.$direction])};
   border-style: solid;
   border-color: ${colorGrayscale.gray300};
-  height: ${props => height[props.direction]};
-  width: ${props => width[props.direction]};
+  height: ${(props) => height[props.$direction]};
+  width: ${(props) => width[props.$direction]};
 `
 
 const Divider = ({ direction = Direction.HORIZONTAL, ...props }) => {
-  return <DividerBox direction={direction} {...props} />
+  return <DividerBox $direction={direction} {...props} />
 }
 Divider.propTypes = {
   direction: PropTypes.oneOf(Object.values(Direction)),

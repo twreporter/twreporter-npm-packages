@@ -5,7 +5,7 @@ import { Weight } from './enums'
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 
 const defaultContainer = styled.p`
-  font-weight: ${props => fontWeight[props.weight]};
+  font-weight: ${(props) => fontWeight[props.$weight]};
   font-family: ${fontFamily.default};
   line-height: 150%;
   display: flex;
@@ -30,7 +30,7 @@ const P4Container = styled(defaultContainer)`
   font-size: 10px;
 `
 
-const withContainer = ParagraphContainer => {
+const withContainer = (ParagraphContainer) => {
   const paragraph = ({
     text = '',
     weight = Weight.NORMAL,
@@ -38,7 +38,7 @@ const withContainer = ParagraphContainer => {
     children,
     ...props
   }) => (
-    <ParagraphContainer weight={weight} className={className} {...props}>
+    <ParagraphContainer $weight={weight} className={className} {...props}>
       {text}
       {children}
     </ParagraphContainer>

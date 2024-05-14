@@ -21,10 +21,10 @@ export default {
 
 const StyledFooter = styled(Footer)`
   width: 375px;
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   padding: 16px 0;
 `
-const getBgColor = theme => {
+const getBgColor = (theme) => {
   if (theme === THEME.photography) {
     return {
       bgColor:
@@ -37,7 +37,7 @@ const getBgColor = theme => {
 }
 
 export const footer = {
-  render: props => {
+  render: (props) => {
     const { theme, releaseBranch } = props
     const context = {
       theme,
@@ -47,7 +47,7 @@ export const footer = {
     const { bgColor } = getBgColor(theme)
     return (
       <HeaderContext.Provider value={context}>
-        <StyledFooter bgColor={bgColor} />
+        <StyledFooter $bgColor={bgColor} />
       </HeaderContext.Provider>
     )
   },

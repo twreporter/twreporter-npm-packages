@@ -60,22 +60,22 @@ const Meta = styled(FlexGroup)`
   color: ${colorGrayscale.gray600};
   flex-direction: row;
   align-items: center;
-  margin-bottom: ${props => metaStyle.marginBottom[props.size]};
+  margin-bottom: ${(props) => metaStyle.marginBottom[props.$size]};
   & > p {
     margin-right: 8px;
   }
   &:last-child {
     margin-right: 0;
   }
-  ${props => (props.hide ? `display: none;` : '')}
+  ${(props) => (props.$hide ? `display: none;` : '')}
 `
 
 const ImageContainer = styled(FlexGroup)`
   flex: 0 0 auto;
   align-self: center;
-  width: ${props => imageStyle.width[props.size]};
-  height: ${props => imageStyle.height[props.size]};
-  margin-left: ${props => imageStyle.marginLeft[props.size]};
+  width: ${(props) => imageStyle.width[props.$size]};
+  height: ${(props) => imageStyle.height[props.$size]};
+  margin-left: ${(props) => imageStyle.marginLeft[props.$size]};
 `
 const LeftColumn = styled(FlexGroupColumn)`
   flex: 1;
@@ -109,13 +109,13 @@ const ShortStory = ({
   }
 
   const metaJSX = (
-    <Meta hide={hideMeta} size={size}>
+    <Meta $hide={hideMeta} $size={size}>
       {categoryJSX}
       {dateJSX}
     </Meta>
   )
   const imageJSX = (
-    <ImageContainer size={size}>
+    <ImageContainer $size={size}>
       <Image src={image.src} alt={image.alt} releaseBranch={releaseBranch} />
     </ImageContainer>
   )

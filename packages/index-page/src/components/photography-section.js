@@ -45,11 +45,11 @@ const oneColumnWidthInt = 768
 
 const Section = styled.div`
   position: relative;
-  background-color: ${props => {
-    return props.isAutoHover ? colorGrayscale.white : colorPhoto.dark
+  background-color: ${(props) => {
+    return props.$isAutoHover ? colorGrayscale.white : colorPhoto.dark
   }};
-  padding-bottom: ${props => {
-    return props.isAutoHover ? '40px' : '80px'
+  padding-bottom: ${(props) => {
+    return props.$isAutoHover ? '40px' : '80px'
   }};
   padding-top: 100px;
 
@@ -144,8 +144,8 @@ const Overlay = styled.div`
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: ${props => {
-    return props.isHover ? 1 : 0
+  opacity: ${(props) => {
+    return props.$isHover ? 1 : 0
   }};
   transition: 0.5s ease;
   background-color: ${colorPhoto.heavy}b3; // add 70% opacity
@@ -179,7 +179,7 @@ class Photography extends React.PureComponent {
                 `${mockup.img.sizes.mobile}`
               }
             >
-              <Overlay isHover={isHover}>
+              <Overlay $isHover={isHover}>
                 <Title>
                   <CategoryName>{categoryStrings.photography}</CategoryName>
                   {title}
@@ -312,7 +312,7 @@ class PhotographySection extends React.PureComponent {
     return (
       <Waypoint key={'section_check_point'} onLeave={this.onLeave}>
         <div>
-          <Section isAutoHover={isAutoHover}>
+          <Section $isAutoHover={isAutoHover}>
             <SectionName>
               <span>{sectionStrings.photography}</span>
             </SectionName>

@@ -53,7 +53,7 @@ const transitionDuration = {
 }
 
 const MoreContainer = styled.div`
-  display: ${props => (props.hasMore ? 'inline' : 'none')};
+  display: ${(props) => (props.$hasMore ? 'inline' : 'none')};
 `
 
 const reactTransitionCSS = css`
@@ -152,7 +152,7 @@ const BookmarkList = ({
     setShowConfirmation(true)
   }
 
-  const handleDeleteButtonClicked = bookmarkID => {
+  const handleDeleteButtonClicked = (bookmarkID) => {
     setIdToBeDeleted(bookmarkID)
     showComfirmation()
   }
@@ -181,7 +181,7 @@ const BookmarkList = ({
         total={total}
         releaseBranch={releaseBranch}
       />
-      <MoreContainer hasMore={numberToShow < total}>
+      <MoreContainer $hasMore={numberToShow < total}>
         <More loadMore={loadMoreBookmarks}>
           <span>{text.loadMore}</span>
         </More>
@@ -224,7 +224,7 @@ BookmarkList.defaultProps = {
   releaseBranch: releaseBranchConsts.master,
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const bookmarkIDList = _.get(
     state,
     [reduxStatePropKeys.bookmarks, 'bookmarkIDList'],
@@ -235,7 +235,7 @@ const mapStateToProps = state => {
     [reduxStatePropKeys.bookmarks, 'entities'],
     {}
   )
-  const bookmarks = _.map(bookmarkIDList, id => _.get(bookmarkEntities, id))
+  const bookmarks = _.map(bookmarkIDList, (id) => _.get(bookmarkEntities, id))
   const total = _.get(state, [reduxStatePropKeys.bookmarks, 'total'], 0)
   const jwt = _.get(state, [reduxStatePropKeys.auth, 'accessToken'])
   const userID = _.get(state, [reduxStatePropKeys.auth, 'userInfo', 'user_id'])
@@ -249,7 +249,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  { getMultipleBookmarks, deleteSingleBookmark }
-)(BookmarkList)
+export default connect(mapStateToProps, {
+  getMultipleBookmarks,
+  deleteSingleBookmark,
+})(BookmarkList)

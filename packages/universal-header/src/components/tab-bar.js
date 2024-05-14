@@ -17,7 +17,7 @@ const TabBarContainer = styled.div`
   justify-content: space-between;
   padding: 8px 16px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   padding-bottom: calc(8px + env(safe-area-inset-bottom, 0));
   a {
     text-decoration: none;
@@ -46,14 +46,10 @@ const ButtonContainer = styled.div`
 `
 
 const TabBar = () => {
-  const { theme, releaseBranch, isLinkExternal, pathname } = useContext(
-    HeaderContext
-  )
-  const {
-    closeHamburgerMenu,
-    toggleHamburger,
-    isHamburgerMenuOpen,
-  } = useContext(HamburgerContext)
+  const { theme, releaseBranch, isLinkExternal, pathname } =
+    useContext(HeaderContext)
+  const { closeHamburgerMenu, toggleHamburger, isHamburgerMenuOpen } =
+    useContext(HamburgerContext)
   const iconTheme = theme === themeConst.photography ? theme : themeConst.normal
   const { home, latest, topic, myreading } = getTabBarLinks(
     isLinkExternal,
@@ -83,7 +79,7 @@ const TabBar = () => {
   const hamburgerIconText = isHamburgerMenuOpen ? '關閉選單' : '選單'
 
   return (
-    <TabBarContainer bgColor={bgColor} borderColor={borderColor}>
+    <TabBarContainer $bgColor={bgColor} $borderColor={borderColor}>
       <ButtonLinkContainer {...home} onClick={closeHamburgerMenu}>
         <IconWithTextButton
           text="首頁"

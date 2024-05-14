@@ -15,7 +15,7 @@ const IconContainer = styled.svg`
   height: 24px;
   width: 24px;
   background-color: black;
-  mask-image: url(${props => props.src});
+  mask-image: url(${(props) => props.$src});
   mask-size: cover;
 `
 const RawIconContainer = styled.img`
@@ -30,7 +30,7 @@ export const Icon = ({
 }) => {
   const src = `${baseGCSDir}${releaseBranch}/${filename}.svg`
   const IconComponent = type === IconType.RAW ? RawIconContainer : IconContainer
-  return <IconComponent alt={filename} src={src} {...restProps} />
+  return <IconComponent alt={filename} $src={src} {...restProps} />
 }
 Icon.propTypes = {
   type: PropTypes.oneOf(Object.values(IconType)),
@@ -40,7 +40,7 @@ Icon.propTypes = {
 Icon.type = IconType
 Icon.releaseBranch = BRANCH
 
-const getIcon = gcsFileName => {
+const getIcon = (gcsFileName) => {
   const gcsIcon = ({ releaseBranch = BRANCH.master, ...props }) => (
     <Icon filename={gcsFileName} releaseBranch={releaseBranch} {...props} />
   )

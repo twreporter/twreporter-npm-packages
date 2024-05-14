@@ -4,14 +4,14 @@ import styled from 'styled-components'
 import { P2 } from '../text/paragraph'
 
 const Container = styled.div`
-  background: ${props => props.backgroundColor};
+  background: ${(props) => props.$backgroundColor};
   padding: 2px 4px;
   width: fit-content;
   border-radius: 2px;
 `
 
 const ColorP2 = styled(P2)`
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
 `
 
 export const Badge = ({
@@ -21,8 +21,8 @@ export const Badge = ({
   ...props
 }) => {
   return (
-    <Container backgroundColor={backgroundColor} {...props}>
-      <ColorP2 text={text} color={textColor} />
+    <Container $backgroundColor={backgroundColor} {...props}>
+      <ColorP2 text={text} $color={textColor} />
     </Container>
   )
 }

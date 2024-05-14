@@ -14,7 +14,7 @@ export default {
 export const iconWithTextButton = {
   args: {
     text: '文字',
-    iconComponent: <Arrow direction="down" />,
+    iconComponent: <Arrow direction={Arrow.Direction.DOWN} />,
     theme: IconWithTextButton.THEME.normal,
     disabled: false,
     active: false,

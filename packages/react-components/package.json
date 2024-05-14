@@ -27,7 +27,8 @@
     "react-router-dom": "^5.1.2",
     "react-transition-group": "^4.4.5",
     "react-waypoint": "^9.0.2",
-    "styled-components": "^4.0.0"
+    "styled-components": "^6.0.0",
+    "stylis": "^4.0.0"
   },
   "files": [
     "lib"

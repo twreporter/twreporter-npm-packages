@@ -43,8 +43,8 @@ const StyledDivider = styled(Divider)`
   margin-top: 24px;
 `
 const FlexItem = styled.div`
-  width: ${props =>
-    props.width !== 0 ? `${props.width}%` : mockup.hd.maxWidth}px;
+  width: ${(props) =>
+    props.$width !== 0 ? `${props.$width}%` : mockup.hd.maxWidth}px;
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
@@ -52,13 +52,13 @@ const FlexItem = styled.div`
   flex-wrap: wrap;
 
   ${mq.desktopOnly`
-    width: ${props =>
-      props.width !== 0 ? `${props.width}%` : mockup.desktop.maxWidth}px;
+    width: ${(props) =>
+      props.$width !== 0 ? `${props.$width}%` : mockup.desktop.maxWidth}px;
   `}
 
   ${mq.tabletOnly`
-    width: ${props =>
-      props.width !== 0 ? `${props.width}%` : mockup.tablet.maxWidth}px;
+    width: ${(props) =>
+      props.$width !== 0 ? `${props.$width}%` : mockup.tablet.maxWidth}px;
   `}
 
   ${mq.mobileOnly`
@@ -80,7 +80,7 @@ const CardList = ({
     return null
   }
 
-  const getFirstCategory = categorySets => {
+  const getFirstCategory = (categorySets) => {
     let res = ''
     _.forEach(categorySets, ({ category, subcategory }) => {
       if (category && category.name) {
@@ -92,7 +92,7 @@ const CardList = ({
     return res
   }
 
-  const listJSX = _.map(data, item => {
+  const listJSX = _.map(data, (item) => {
     const { id, title, slug, style } = item
     const articleCardProps = {
       title,
@@ -135,7 +135,7 @@ const CardList = ({
 
   return (
     <Container>
-      <Content isFetching={isFetching} showSpinner={showSpinner} width={width}>
+      <Content isFetching={isFetching} showSpinner={showSpinner} $width={width}>
         {listJSX}
       </Content>
     </Container>

@@ -49,8 +49,8 @@ const MobileTabContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  -webkit-mask-image: ${props =>
-    props.showGradientMask ? gradientMask : 'none'};
+  -webkit-mask-image: ${(props) =>
+    props.$showGradientMask ? gradientMask : 'none'};
 `
 
 const TabItem = ({ tab = {}, ...restProps }) => {
@@ -71,7 +71,7 @@ TabItem.propTypes = {
   tab: tabPropType,
 }
 
-const useScrollStatus = setShowNext => {
+const useScrollStatus = (setShowNext) => {
   const ref = useRef()
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const useScrollStatus = setShowNext => {
 
   useEffect(() => {
     const refEle = ref.current
-    const handleScroll = event => {
+    const handleScroll = (event) => {
       if (refEle.offsetWidth + refEle.scrollLeft >= refEle.scrollWidth) {
         // scroll to end
         setShowNext(false)
@@ -118,7 +118,7 @@ const MobileTab = ({ tabs = [], activeTabIndex = 0 }) => {
   }, [activeTabIndex])
 
   return (
-    <MobileTabContainer ref={ref} showGradientMask={showGradientMask}>
+    <MobileTabContainer ref={ref} $showGradientMask={showGradientMask}>
       {tabJSX}
     </MobileTabContainer>
   )
