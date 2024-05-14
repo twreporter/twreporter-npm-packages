@@ -54,7 +54,7 @@ const LeadingBlock = styled.div`
 const SeprationLine = styled.div`
   ${mq.desktopAndAbove`
     ${props =>
-      props.visible
+      props.$visible
         ? css`
             width: 100%;
             border-bottom: solid 1px ${colorGrayscale.gray200};
@@ -469,7 +469,7 @@ export default class Article extends PureComponent {
             <LeadingBlock>
               <LeadingComponent {...leadingProps} />
               <SeprationLine
-                visible={uiManager.toRenderSeparationLineBetweenLeadingAndBody()}
+                $visible={uiManager.toRenderSeparationLineBetweenLeadingAndBody()}
               />
             </LeadingBlock>
             <BodyBackground>

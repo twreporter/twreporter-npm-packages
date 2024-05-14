@@ -276,33 +276,33 @@ const SlidesFlexBox = styled.div`
   width: 100%;
   height: 100%;
   ${props => {
-    if (props.isSliding) {
-      return `transition: transform ${props.duration}ms ease-in-out;`
+    if (props.$isSliding) {
+      return `transition: transform ${props.$duration}ms ease-in-out;`
     }
   }}
 
   ${mq.mobileOnly`
     transform: translateX(${props =>
-      (getTranslateX(mockup.mobile, props.translateXUint) /
+      (getTranslateX(mockup.mobile, props.$translateXUint) /
         getContainerWidth(mockup.mobile)) *
       100}%);
   `}
 
   ${mq.tabletOnly`
     transform: translateX(${props =>
-      (getTranslateX(mockup.tablet, props.translateXUint) /
+      (getTranslateX(mockup.tablet, props.$translateXUint) /
         getContainerWidth(mockup.tablet)) *
       100}%);
   `}
 
   ${mq.desktopOnly`
     transform: translateX(${props =>
-      getTranslateX(mockup.desktop, props.translateXUint)}px);
+      getTranslateX(mockup.desktop, props.$translateXUint)}px);
   `}
 
   ${mq.hdOnly`
     transform: translateX(${props =>
-      getTranslateX(mockup.hd, props.translateXUint)}px);
+      getTranslateX(mockup.hd, props.$translateXUint)}px);
   `}
 `
 
@@ -605,9 +605,9 @@ export default class Slideshow extends PureComponent {
       <SlideshowFlexBox className={appendedClassName}>
         <SlidesSection>
           <SlidesFlexBox
-            translateXUint={translateXUint}
-            duration={duration}
-            isSliding={isSliding}
+            $translateXUint={translateXUint}
+            $duration={duration}
+            $isSliding={isSliding}
           >
             {slides}
           </SlidesFlexBox>

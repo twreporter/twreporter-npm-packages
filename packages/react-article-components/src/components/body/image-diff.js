@@ -68,7 +68,7 @@ const ImageContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
-  padding-bottom: ${props => `${100 * props.heightWidthRatio}%`};
+  padding-bottom: ${props => `${100 * props.$heightWidthRatio}%`};
   >div {
     position: absolute;
     top: 0;
@@ -155,7 +155,7 @@ export default class ImageDiff extends PureComponent {
       <Container>
         <ImageContainer
           className="avoid-break"
-          heightWidthRatio={renderedHeightWidthRation}
+          $heightWidthRatio={renderedHeightWidthRation}
           leftImageSet={leftImageSet}
           rightImageSet={rightImageSet}
         >

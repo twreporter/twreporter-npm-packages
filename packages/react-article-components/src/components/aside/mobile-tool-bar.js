@@ -64,7 +64,7 @@ const ShareContainer = styled.div`
 
 const OptionContainer = styled.div`
   z-index: 6;
-  opacity: ${props => (props.isShow ? '1' : '0')};
+  opacity: ${props => (props.$isShow ? '1' : '0')};
   transition: opacity 100ms;
   position: absolute;
   top: -55px;
@@ -79,7 +79,7 @@ const SnackBarContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 100ms;
-  opacity: ${props => (props.showSnackBar ? 1 : 0)};
+  opacity: ${props => (props.$showSnackBar ? 1 : 0)};
 `
 
 const ToolBarWrapper = styled.div`
@@ -90,20 +90,20 @@ const ToolBarWrapper = styled.div`
   position: fixed;
   left: 0px;
   bottom: env(safe-area-inset-bottom, 0);
-  height: ${props => (props.hideText ? '40px' : '55px')};
+  height: ${props => (props.$hideText ? '40px' : '55px')};
   transform: ${props =>
-    props.isHidden ? 'translateY(200%)' : 'tanslateY(0%)'};
+    props.$isHidden ? 'translateY(200%)' : 'tanslateY(0%)'};
   transition: height 200ms, transform 200ms ease-in-out;
-  background-color: ${props => props.bgColor};
-  border-top: 1px solid ${props => props.borderColor};
+  background-color: ${props => props.$bgColor};
+  border-top: 1px solid ${props => props.$borderColor};
   z-index: ${zIndexConst.mobileToolBar};
   ${ShareContainer} {
-    background-color: ${props => props.shareByBgColor};
-    box-shadow: ${props => props.shadow};
+    background-color: ${props => props.$shareByBgColor};
+    box-shadow: ${props => props.$shadow};
   }
   ${SnackBarContainer} {
     bottom: ${props =>
-      props.hideText ? '48px' : '62px'}; //toolbar height + padding 8px
+      props.$hideText ? '48px' : '62px'}; //toolbar height + padding 8px
   }
 `
 
@@ -248,7 +248,7 @@ const ShareBy = ({ fbAppID }) => {
         theme={theme}
         hideText={hideText}
       />
-      <OptionContainer isShow={showOption}>
+      <OptionContainer $isShow={showOption}>
         <FbShare appID={fbAppID} />
         <LineShare />
         <TwitterShare />
@@ -409,12 +409,12 @@ const ToolBar = ({
   return (
     <ToolBarContext.Provider value={contextValue}>
       <ToolBarWrapper
-        bgColor={bgColor}
-        shareByBgColor={shareByBgColor}
-        borderColor={borderColor}
-        hideText={hideText}
+        $bgColor={bgColor}
+        $shareByBgColor={shareByBgColor}
+        $borderColor={borderColor}
+        $hideText={hideText}
         className={className}
-        isHidden={hideToolBar}
+        $isHidden={hideToolBar}
         id="mobile-tool-bar"
       >
         <ToolBarContainer>
@@ -424,7 +424,7 @@ const ToolBar = ({
           <RelatedPost />
           {backToTopicJSX}
         </ToolBarContainer>
-        <SnackBarContainer showSnackBar={showSnackBar}>
+        <SnackBarContainer $showSnackBar={showSnackBar}>
           <SnackBar text={snackBarText} theme={theme} />
         </SnackBarContainer>
       </ToolBarWrapper>

@@ -68,9 +68,9 @@ const IconWrapper = styled.button`
     transform: translate(-50%, -50%);
     path {
       stroke: ${props =>
-        props.isPlaying ? getIconColor(props.theme.name) : 'none'};
+        props.$isPlaying ? getIconColor(props.theme.name) : 'none'};
       fill: ${props =>
-        props.isPlaying ? 'none' : getIconColor(props.theme.name)};
+        props.$isPlaying ? 'none' : getIconColor(props.theme.name)};
     }
   }
 `
@@ -82,7 +82,7 @@ export default function ControlButton() {
         <StatusContext.Consumer>
           {({ isPlaying }) => (
             <IconWrapper
-              isPlaying={isPlaying}
+              $isPlaying={isPlaying}
               onClick={isPlaying ? pause : play}
             >
               {isPlaying ? <PauseIcon /> : <PlayIcon />}

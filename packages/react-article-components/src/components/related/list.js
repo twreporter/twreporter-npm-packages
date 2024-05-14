@@ -88,7 +88,7 @@ const LoadMoreButton = styled.div`
 const ListBlock = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: ${props => props.alignItems};
+  align-items: ${props => props.$alignItems};
 `
 
 const Item = styled.div`
@@ -198,7 +198,7 @@ export default class List extends React.PureComponent {
     // show description with different height while hovering.
     return (
       <div>
-        <ListBlock alignItems={alignItems}>{cards}</ListBlock>
+        <ListBlock $alignItems={alignItems}>{cards}</ListBlock>
         {hasMore ? (
           <LoadMoreButton total={data.length} onClick={this.loadMore}>
             載入更多文章
