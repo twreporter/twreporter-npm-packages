@@ -153,19 +153,19 @@ const Block = styled.div`
   `}
 
   ${mq.desktopOnly`
-    float: ${props => (props.small ? 'right' : 'none')};
-    margin: ${props => (props.small ? '0 0 20px 25px' : '0')};
+    float: ${props => (props.$small ? 'right' : 'none')};
+    margin: ${props => (props.$small ? '0 0 20px 25px' : '0')};
     width: ${props =>
-      props.small
+      props.$small
         ? `${mockup.desktop.figure.width.small}px`
         : `${mockup.desktop.figure.width.normal}%`};
   `}
 
   ${mq.hdOnly`
-    float: ${props => (props.small ? 'right' : 'none')};
-    margin: ${props => (props.small ? '0 0 20px 25px' : 0)};
+    float: ${props => (props.$small ? 'right' : 'none')};
+    margin: ${props => (props.$small ? '0 0 20px 25px' : 0)};
     width: ${props =>
-      props.small
+      props.$small
         ? `${mockup.hd.figure.width.small}px`
         : `${mockup.hd.figure.width.normal}%`};
   `}
@@ -173,7 +173,7 @@ const Block = styled.div`
   ${Caption} {
     ${mq.desktopAndAbove`
       ${props =>
-        props.small
+        props.$small
           ? `
         /* overwrite Caption styles */
         float: none;

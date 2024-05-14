@@ -28,7 +28,7 @@ const ToolsFixedArea = styled.div`
 const ToolsPositioningBlock = styled.div`
   display: inline-block;
   position: ${props =>
-    props.toolPosition === _toolPosition.fixed ? 'fixed' : 'absolute'};
+    props.$toolPosition === _toolPosition.fixed ? 'fixed' : 'absolute'};
   top: ${props => {
     switch (props.toolPosition) {
       case _toolPosition.fixed:
@@ -41,7 +41,7 @@ const ToolsPositioningBlock = styled.div`
     }
   }};
   bottom: ${props => {
-    switch (props.toolPosition) {
+    switch (props.$toolPosition) {
       case _toolPosition.bottom:
         return '0'
       case _toolPosition.fixed:
@@ -51,12 +51,12 @@ const ToolsPositioningBlock = styled.div`
     }
   }};
   transform: ${props =>
-    props.toolPosition === _toolPosition.fixed ? 'translateY(-50%)' : 'none'};
+    props.$toolPosition === _toolPosition.fixed ? 'translateY(-50%)' : 'none'};
 `
 
 const TriggerFixBlock = styled.div`
   position: absolute;
-  height: ${props => props.height}px;
+  height: ${props => props.$height}px;
 `
 
 const TriggerFixTopBlock = styled(TriggerFixBlock)`
@@ -147,9 +147,9 @@ export default class Aside extends React.PureComponent {
             onLeave={this.setToolsFixed}
             topOffset="50%"
           >
-            <TriggerFixTopBlock height={toolsHeight / 2} />
+            <TriggerFixTopBlock $height={toolsHeight / 2} />
           </Waypoint>
-          <ToolsPositioningBlock toolPosition={this.state.toolPosition}>
+          <ToolsPositioningBlock $toolPosition={this.state.toolPosition}>
             <Tools
               backToTopic={backToTopic}
               height={`${toolsHeight}px`}

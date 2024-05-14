@@ -37,7 +37,7 @@ const BackgroundBlock = styled.div`
   ${mq.desktopAndAbove`
     padding: 0 10px 18px 10px;
 
-    height: ${props => `calc(100vh - ${props.paddingTop || '108px'})`};
+    height: ${props => `calc(100vh - ${props.$paddingTop || '108px'})`};
   `}
 `
 
@@ -197,7 +197,7 @@ export default class LeadingBlock extends PureComponent {
     } = this.props
 
     return (
-      <BackgroundBlock paddingTop={paddingTop}>
+      <BackgroundBlock $paddingTop={paddingTop}>
         <ContentBlock>
           <TextBlock>
             {isTopicPublished && shortTitle ? (

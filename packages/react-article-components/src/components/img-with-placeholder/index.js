@@ -23,13 +23,13 @@ const ImgContainer = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  ${props => props.heightString}
+  ${props => props.$heightString}
 `
 
 const ImgPlaceholder = styled.div`
-  display: ${props => (props.toShow ? 'block' : 'none')};
-  ${props => (props.noBlur ? '' : 'filter: blur(5px)')};
-  background-image: url(${props => props.src});
+  display: ${props => (props.$toShow ? 'block' : 'none')};
+  ${props => (props.$noBlur ? '' : 'filter: blur(5px)')};
+  background-image: url(${props => props.$src});
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -46,7 +46,7 @@ const Placeholder = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: ${props => (props.toShow ? 'block' : 'none')};
+  display: ${props => (props.$toShow ? 'block' : 'none')};
   svg {
     position: absolute;
     top: 50%;
@@ -58,8 +58,8 @@ const Placeholder = styled.div`
 const ImgWithObjectFit = styled.img`
   display: block;
   height: 100%;
-  object-fit: ${props => props.objectFit || 'none'};
-  object-position: ${props => props.objectPosition || '50% 50%'};
+  object-fit: ${props => props.$objectFit || 'none'};
+  object-position: ${props => props.$objectPosition || '50% 50%'};
   opacity: ${props => (props.toShowFallback ? '0' : '1')};
 `
 
@@ -69,10 +69,10 @@ const FallbackObjectFitImg = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: ${props => props.objectFit};
+  background-size: ${props => props.$objectFit};
   background-repeat: no-repeat;
-  background-position: ${props => props.objectPosition || '50% 50%'};
-  background-image: url(${props => props.url});
+  background-position: ${props => props.$objectPosition || '50% 50%'};
+  background-image: url(${props => props.$url});
 `
 
 const ImgBox = styled.div`
@@ -81,7 +81,7 @@ const ImgBox = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: ${props => (props.toShow ? '1' : '0')};
+  opacity: ${props => (props.$toShow ? '1' : '0')};
   transition: opacity 0.5s;
   & > img {
     width: 100%;
@@ -197,15 +197,15 @@ export default class Img extends React.PureComponent {
     if (imgPlaceholderSrc) {
       return (
         <ImgPlaceholder
-          src={replaceGCSUrlOrigin(imgPlaceholderSrc)}
-          toShow={toShowPlaceholder}
-          noBlur={placeholderNoBlur}
+          $src={replaceGCSUrlOrigin(imgPlaceholderSrc)}
+          $toShow={toShowPlaceholder}
+          $noBlur={placeholderNoBlur}
         />
       )
     }
     // render default placeholder
     return (
-      <Placeholder toShow={toShowPlaceholder}>
+      <Placeholder $toShow={toShowPlaceholder}>
         <PlaceholderIcon />
       </Placeholder>
     )
@@ -231,7 +231,7 @@ export default class Img extends React.PureComponent {
       return (
         <ImgContainer
           className={appendedClassName}
-          heightString="height: 100%;"
+          $heightString="height: 100%;"
         >
           {this._renderImagePlaceholder()}
         </ImgContainer>
@@ -255,20 +255,20 @@ export default class Img extends React.PureComponent {
     return (
       <ImgContainer
         className={appendedClassName}
-        heightString={
+        $heightString={
           isObjectFit
             ? `height: 100%;`
             : `padding-top: ${heightWidthRatio * 100}%;`
         }
       >
         {this._renderImagePlaceholder()}
-        <ImgBox toShow={isLoaded}>
+        <ImgBox $toShow={isLoaded}>
           {isObjectFit ? (
             <React.Fragment>
               <ImgWithObjectFit
                 alt={alt}
-                objectFit={objectFit}
-                objectPosition={objectPosition}
+                $objectFit={objectFit}
+                $objectPosition={objectPosition}
                 onLoad={this.handleImageLoaded}
                 ref={this._img}
                 sizes={this._supportObjectFit ? sizes : ''}
@@ -279,9 +279,9 @@ export default class Img extends React.PureComponent {
               />
               {this._supportObjectFit ? null : (
                 <FallbackObjectFitImg
-                  url={_.get(defaultImage, 'url')}
-                  objectFit={objectFit}
-                  objectPosition={objectPosition}
+                  $url={_.get(defaultImage, 'url')}
+                  $objectFit={objectFit}
+                  $objectPosition={objectPosition}
                 />
               )}
             </React.Fragment>

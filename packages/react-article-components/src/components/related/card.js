@@ -24,9 +24,9 @@ const DescBlock = styled.div`
 `
 
 const Desc = styled.p`
-  opacity: ${props => (props.isHovered ? '1' : '0')};
-  visibility: ${props => (props.isHovered ? 'visible' : 'hidden')};
-  position: ${props => (props.isHovered ? 'static' : 'absolute')};
+  opacity: ${props => (props.$isHovered ? '1' : '0')};
+  visibility: ${props => (props.$isHovered ? 'visible' : 'hidden')};
+  position: ${props => (props.$isHovered ? 'static' : 'absolute')};
 
   /* clear default margin */
   margin: 0px;
@@ -135,7 +135,7 @@ const Block = styled.div`
   ${props => getBlockStyles(props.theme.name)}
 
   position: relative;
-  height: ${props => props._height};
+  height: ${props => props.$height};
 
   transition: height 0.2s ease-in-out;
 
@@ -281,7 +281,7 @@ class Card extends React.PureComponent {
     return (
       <Block
         ref={this._blockRef}
-        _height={isHovered ? heightAfterHovering : heightBeforeHovering}
+        $height={isHovered ? heightAfterHovering : heightBeforeHovering}
       >
         <Thumbnail>
           <StyledImg
@@ -298,7 +298,7 @@ class Card extends React.PureComponent {
           {categoryJSX}
           {titleJSX}
           <DescBlock>
-            <Desc ref={this._descRef} isHovered={isHovered}>
+            <Desc ref={this._descRef} $isHovered={isHovered}>
               {desc}
             </Desc>
           </DescBlock>

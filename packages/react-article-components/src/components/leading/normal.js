@@ -81,7 +81,7 @@ const Topic = styled.div`
 const Figure = styled.figure`
   /* clear default figure margin */
   margin: 0;
-  ${props => props.css}
+  ${props => props.$css}
 `
 
 const FigCaption = styled.figcaption`
@@ -227,7 +227,7 @@ export default class NormalLeading extends React.PureComponent {
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
             <Title type={H1.Type.ARTICLE} text={title} />
           </TextBlock>
-          <Figure css={this.getFigureCSS()}>
+          <Figure $css={this.getFigureCSS()}>
             <Img
               imgPlaceholderSrc={_.get(poster, 'tiny.url', '')}
               imageSet={[poster.mobile, poster.tablet, poster.desktop]}

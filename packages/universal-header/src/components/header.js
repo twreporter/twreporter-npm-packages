@@ -211,7 +211,7 @@ const HamburgerContainer = styled.div`
   ${mq.tabletOnly`
     left: -${MENU_WIDTH.tablet};
     transform: translateX(${(props) =>
-      props.showHamburger ? MENU_WIDTH.tablet : 0});
+      props.$showHamburger ? MENU_WIDTH.tablet : 0});
   `}
   ${mq.mobileOnly`
     left: 0;
@@ -356,7 +356,7 @@ const Header = ({ hamburgerContext = {} }) => {
   )
   const MobileHeaderJSX = (
     <HeaderSection>
-      <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+      <TopRow $toUseNarrow={toUseNarrow} $topRowBgColor={topRowBgColor}>
         <FlexGroup>
           <PrevButton $isShow={showPrevIcon} onClick={gotoPrev}>
             <IconButton iconComponent={BackToPrevIcon} theme={theme} />

@@ -30,7 +30,7 @@ const embedNamespace = {
 export const Block = styled.div`
   position: relative;
   z-index: ${props =>
-    props.shouldEscalateZIndex ? zIndexConst.embedUp : zIndexConst.embedDown};
+    props.$shouldEscalateZIndex ? zIndexConst.embedUp : zIndexConst.embedDown};
 
   /* styles for image link */
   img.img-responsive {
@@ -172,7 +172,7 @@ class EmbeddedCode extends React.PureComponent {
       <div className={className}>
         <Block
           ref={this._embedded}
-          shouldEscalateZIndex={shouldEscalateZIndex}
+          $shouldEscalateZIndex={shouldEscalateZIndex}
           dangerouslySetInnerHTML={{ __html: this._embeddedCodeWithoutScript }}
         />
         {this._caption ? <Caption>{this._caption}</Caption> : null}

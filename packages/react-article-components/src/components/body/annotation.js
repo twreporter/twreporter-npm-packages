@@ -59,7 +59,7 @@ const Indicator = styled.span`
     height: 6.5px;
     top: 5px;
     left: 5px;
-    transform: rotate(${props => (props.isExpanded ? '45deg' : '-45deg')});
+    transform: rotate(${props => (props.$isExpanded ? '45deg' : '-45deg')});
     display: block;
     position: absolute;
     transition: transform 200ms ease;
@@ -70,7 +70,7 @@ const Indicator = styled.span`
     height: 6.5px;
     top: 5px;
     right: 5px;
-    transform: rotate(${props => (props.isExpanded ? '-45deg' : '45deg')});
+    transform: rotate(${props => (props.$isExpanded ? '-45deg' : '45deg')});
     display: block;
     position: absolute;
     transition: transform 200ms ease;
@@ -78,7 +78,7 @@ const Indicator = styled.span`
 `
 
 const AnnotationContent = styled.div`
-  display: ${props => (props.isExpanded ? 'block' : 'none')};
+  display: ${props => (props.$isExpanded ? 'block' : 'none')};
   background: ${colorGrayscale.white};
   font-size: ${props => props.theme.fontSizeOffset + 16}px;
   line-height: 2.11;
@@ -193,11 +193,11 @@ class Annotation extends PureComponent {
       <AnnotationContainer title={pureAnnotationText}>
         <AnnotatedText onClick={this.toggleExpend}>
           {text}
-          <Indicator isExpanded={isExpanded} />
+          <Indicator $isExpanded={isExpanded} />
         </AnnotatedText>
         <AnnotationContent
           dangerouslySetInnerHTML={{ __html: annotation }}
-          isExpanded={isExpanded}
+          $isExpanded={isExpanded}
         />
       </AnnotationContainer>
     )

@@ -61,13 +61,13 @@ const LinkContainer = styled.div`
 `
 
 const CategorySetFlex = styled.div`
-  ${props => props.isTop && createLine('top', props.theme.name)}
+  ${props => props.$isTop && createLine('top', props.theme.name)}
   ${mq.tabletAndBelow`
     padding-right: 10px;
     padding-left: 10px;
   `}
   ${props =>
-    props.isCategory
+    props.$isCategory
       ? css`
           min-width: 100px;
           flex-basis: 100px;
@@ -300,7 +300,7 @@ const CategorySet = ({ categorySet = [] }) => {
         ? LinkButton.Weight.BOLD
         : LinkButton.Weight.NORMAL
       return (
-        <CategorySetFlex isCategory={isCategory} isTop={index === 0}>
+        <CategorySetFlex $isCategory={isCategory} $isTop={index === 0}>
           <TextLink link={link} text={name} weight={weight} />
         </CategorySetFlex>
       )
