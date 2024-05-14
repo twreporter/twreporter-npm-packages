@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.2...@twreporter/react-components@9.0.0-rc.3) (2024-05-14)
+
+
+### Bug Fixes
+
+* icon raw image broken ([1013337](https://github.com/twreporter/twreporter-npm-packages/commit/10133377ae57491c7b8215b0cf663e9a3cf9d87d))
+* upgrade `react-waypoint` version ([c30a267](https://github.com/twreporter/twreporter-npm-packages/commit/c30a2671c563f466f2cd67ca7710797cc37aa9cc))
+
+
+
+
+
 # [9.0.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.1...@twreporter/react-components@9.0.0-rc.2) (2024-05-14)
 
 
