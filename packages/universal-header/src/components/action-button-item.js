@@ -39,15 +39,15 @@ const styles = {
 
 const StyledPillButton = styled(PillButton)`
   justify-content: center;
-  ${(props) => (props.$buttonWidth === 'stretch' ? 'width: auto;' : '')}
+  ${props =>
+    props.$buttonWidth === 'stretch' ? 'width: auto !important;' : ''}
 `
 
 const ActionItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: ${(props) =>
-    arrayToCssShorthand(styles.itemMargin[props.$direction])};
+  margin: ${props => arrayToCssShorthand(styles.itemMargin[props.$direction])};
   &:first-child {
     margin-top: 0;
     margin-left: 0;
@@ -60,10 +60,10 @@ const ActionItem = styled.div`
 const ActionsContainer = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: ${(props) => props.$direction};
+  flex-direction: ${props => props.$direction};
   &,
   ${ActionItem}, a {
-    ${(props) => (props.$buttonWidth === 'stretch' ? 'width: 100%;' : '')}
+    ${props => (props.$buttonWidth === 'stretch' ? 'width: 100%;' : '')}
   }
 `
 
@@ -131,7 +131,7 @@ const ActionButton = ({
   ...rest
 }) => (
   <ActionsContainer $direction={direction} $buttonWidth={buttonWidth} {...rest}>
-    {_.map(actions, (action) => {
+    {_.map(actions, action => {
       return (
         <ActionButtonItem
           action={action}
