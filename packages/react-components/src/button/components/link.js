@@ -25,8 +25,8 @@ const style = {
 
 const BaseContainer = styled(Link)`
   text-underline-offset: 4px;
-  text-decoration-line: ${props => style.decoration[props.type]}!important;
-  color: ${props => style.color[props.type]};
+  text-decoration-line: ${props => style.decoration[props.$type]}!important;
+  color: ${props => style.color[props.$type]};
 
   &:hover {
     text-decoration-line: underline;
@@ -38,7 +38,7 @@ const LinkContainer = styled(BaseContainer)`
   align-items: center;
 
   ${props =>
-    props.disabled
+    props.$disabled
       ? `
     opacity: 0.5;
     cursor: auto;
@@ -66,7 +66,7 @@ const LinkButton = ({
   )
 
   return (
-    <LinkContainer type={type} disabled={disabled} {...link} {...props}>
+    <LinkContainer $type={type} $disabled={disabled} {...link} {...props}>
       {textJSX}
     </LinkContainer>
   )
@@ -88,7 +88,7 @@ export const InheritLinkButton = ({
   text = '',
   ...props
 }) => (
-  <InheritLinkContainer type={type} {...link} {...props}>
+  <InheritLinkContainer $type={type} {...link} {...props}>
     {text}
   </InheritLinkContainer>
 )

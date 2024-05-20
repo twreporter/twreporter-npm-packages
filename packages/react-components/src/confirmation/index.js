@@ -22,7 +22,7 @@ const Container = styled.div`
 `
 
 const Dialog = styled.div`
-  width: ${props => props.width};
+  width: ${(props) => props.$width};
   position: absolute;
   top: 50%;
   left: 50%;
@@ -84,7 +84,7 @@ const TextContainer = styled.span`
   letter-spacing: 2.6px;
 `
 
-const Confirmation = props => {
+const Confirmation = (props) => {
   const {
     width,
     content,
@@ -101,7 +101,7 @@ const Confirmation = props => {
   ) : null
   return (
     <Container>
-      <Dialog width={width}>
+      <Dialog $width={width}>
         <Content>
           {iconJSX}
           <TextContainer>{content}</TextContainer>

@@ -13,7 +13,7 @@ const DefaultContainer = styled.div`
 const H1Container = styled(DefaultContainer)`
   line-height: 125%;
   font-size: 36px;
-  font-family: ${props => props.fontFamily};
+  font-family: ${(props) => props.$fontFamily};
   ${mq.tabletAndBelow`
     font-size: 28px;
   `}
@@ -22,7 +22,7 @@ const H1Container = styled(DefaultContainer)`
 const H2Container = styled(DefaultContainer)`
   line-height: 125%;
   font-size: 32px;
-  font-family: ${props => props.fontFamily};
+  font-family: ${(props) => props.$fontFamily};
   ${mq.tabletAndBelow`
     font-size: 24px;
   `}
@@ -31,7 +31,7 @@ const H2Container = styled(DefaultContainer)`
 const H3Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 28px;
-  font-family: ${props => props.fontFamily};
+  font-family: ${(props) => props.$fontFamily};
   ${mq.tabletAndBelow`
     font-size: 22px;
   `}
@@ -40,7 +40,7 @@ const H3Container = styled(DefaultContainer)`
 const H4Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 22px;
-  font-family: ${props => props.fontFamily};
+  font-family: ${(props) => props.$fontFamily};
   ${mq.tabletAndBelow`
     font-size: 18px;
   `}
@@ -49,7 +49,7 @@ const H4Container = styled(DefaultContainer)`
 const H5Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 18px;
-  font-family: ${props => props.fontFamily};
+  font-family: ${(props) => props.$fontFamily};
   ${mq.tabletAndBelow`
     font-size: 17px;
   `}
@@ -58,13 +58,13 @@ const H5Container = styled(DefaultContainer)`
 const H6Container = styled(DefaultContainer)`
   line-height: 150%;
   font-size: 16px;
-  font-family: ${props => props.fontFamily};
+  font-family: ${(props) => props.$fontFamily};
   ${mq.tabletAndBelow`
     font-size: 16px;
   `}
 `
 
-const withContainer = HeadlineContainer => {
+const withContainer = (HeadlineContainer) => {
   const headline = ({
     text = '',
     type = Type.DEFAULT,
@@ -74,7 +74,7 @@ const withContainer = HeadlineContainer => {
     const fontFamily = TYPE_FONT_FAMILY[type]
     return (
       <HeadlineContainer
-        fontFamily={fontFamily}
+        $fontFamily={fontFamily}
         className={className}
         {...props}
       >

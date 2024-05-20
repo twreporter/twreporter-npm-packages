@@ -106,7 +106,7 @@ const PrintIconBlock = styled.div`
 const BookmarkIconBlock = styled.div`
   ${iconBlockCSS}
   &::after {
-    content: '${props => (props.isBookmarked ? '取消收藏' : '收藏')}';
+    content: '${props => (props.$isBookmarked ? '取消收藏' : '收藏')}';
   }
 `
 
@@ -148,7 +148,7 @@ const ToolsBlock = styled.div`
 
   ${mq.desktopAndAbove`
     width: 36px;
-    height: ${props => props.height || 'auto'};
+    height: ${props => props.$height || 'auto'};
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -259,7 +259,7 @@ const BookmarkBlock = ({ articleMeta }) => {
     return (
       <BookmarkIconBlock
         onClick={isBookmarked ? removeAction : addAction}
-        isBookmarked={isBookmarked}
+        $isBookmarked={isBookmarked}
         id={id}
       >
         <Bookmark type={iconType} releaseBranch={releaseBranch} />
@@ -316,7 +316,7 @@ const Tools = ({
   const onPrinterClick = () => window.print()
 
   return (
-    <ToolsBlock height={height}>
+    <ToolsBlock $height={height}>
       {backToTopicJSX}
       <BookmarkBlock articleMeta={articleMetaForBookmark} />
       <TextIconBlock>

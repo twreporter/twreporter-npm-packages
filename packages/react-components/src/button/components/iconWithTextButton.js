@@ -10,22 +10,22 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import { THEME } from '@twreporter/core/lib/constants/theme'
 
 const ButtonContainer = styled.div`
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+  cursor: ${(props) => (props.$disabled ? 'default' : 'pointer')};
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   svg {
     width: 24px;
     height: 24px;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.$color};
   }
 
   ${mq.desktopAndAbove`
     &:hover {
-      color: ${props => props.hoverColor};
+      color: ${(props) => props.$hoverColor};
       svg {
-        background-color: ${props => props.hoverColor};
+        background-color: ${(props) => props.$hoverColor};
       }
     }
   `}
@@ -33,8 +33,8 @@ const ButtonContainer = styled.div`
 
 const StyledP4 = styled(P4)`
   margin-top: 2px;
-  max-height: ${props => (props.hideText ? '0px' : 'none')};
-  opacity: ${props => (props.hideText ? '0' : '1')};
+  max-height: ${(props) => (props.$hideText ? '0px' : 'none')};
+  opacity: ${(props) => (props.$hideText ? '0' : '1')};
   transition: opacity 100ms;
 `
 
@@ -53,9 +53,13 @@ const IconWithTextButton = ({
   )
 
   return (
-    <ButtonContainer color={color} hoverColor={hoverColor} disabled={disabled}>
+    <ButtonContainer
+      $color={color}
+      $hoverColor={hoverColor}
+      $disabled={disabled}
+    >
       {iconComponent}
-      <StyledP4 text={text} weight={P4.Weight.NORMAL} hideText={hideText} />
+      <StyledP4 text={text} weight={P4.Weight.NORMAL} $hideText={hideText} />
     </ButtonContainer>
   )
 }

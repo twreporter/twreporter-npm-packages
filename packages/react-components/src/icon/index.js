@@ -15,7 +15,7 @@ const IconContainer = styled.svg`
   height: 24px;
   width: 24px;
   background-color: black;
-  mask-image: url(${props => props.src});
+  mask-image: url(${(props) => props.src});
   mask-size: cover;
 `
 const RawIconContainer = styled.img`
@@ -40,7 +40,7 @@ Icon.propTypes = {
 Icon.type = IconType
 Icon.releaseBranch = BRANCH
 
-const getIcon = gcsFileName => {
+const getIcon = (gcsFileName) => {
   const gcsIcon = ({ releaseBranch = BRANCH.master, ...props }) => (
     <Icon filename={gcsFileName} releaseBranch={releaseBranch} {...props} />
   )
@@ -77,6 +77,7 @@ export const Line = getIcon('line')
 export const Google = getIcon('google')
 export const History = getIcon('history')
 export const KidStar = getIcon('kid_star')
+export const Plurk = getIcon('plurk')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
@@ -140,4 +141,5 @@ export default {
   SocialMedia,
   History,
   KidStar,
+  Plurk,
 }

@@ -24,12 +24,12 @@ export default {
 }
 
 const Container = styled.div`
-  width: ${props => (props.size === ShortStory.Size.S ? '343' : '516')}px;
+  width: ${(props) => (props.$size === ShortStory.Size.S ? '343' : '516')}px;
 `
 
 export const shortStory = {
-  render: args => (
-    <Container size={args.size}>
+  render: (args) => (
+    <Container $size={args.size}>
       <ShortStory {...args} />
     </Container>
   ),
@@ -40,8 +40,7 @@ export const shortStory = {
     category: '主分類',
     date: '2022/01/01',
     image: {
-      src:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/220px-Google_Images_2015_logo.svg.png',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/220px-Google_Images_2015_logo.svg.png',
       alt: 'test',
     },
     releaseBranch: BRANCH.master,

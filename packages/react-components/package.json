@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/react-components",
-  "version": "8.27.1",
+  "version": "9.0.0-rc.5",
   "main": "lib/index.js",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
@@ -15,19 +15,20 @@
     "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@twreporter/core": "^1.20.0",
-    "@twreporter/redux": "^7.12.0",
+    "@twreporter/core": "^1.21.0-rc.3",
+    "@twreporter/redux": "^8.0.0-rc.1",
     "fontfaceobserver-es": "^3.3.3",
     "hoist-non-react-statics": "^2.3.1",
     "lodash": "^4.0.0",
     "memoize-one": "^5.0.5",
     "prop-types": "^15.0.0",
-    "react": "^16.3.0",
+    "react": "^18.2.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^5.1.2",
-    "react-transition-group": "^2.0.0",
-    "react-waypoint": "^9.0.2",
-    "styled-components": "^4.0.0"
+    "react-transition-group": "^4.4.5",
+    "react-waypoint": "^10.3.0",
+    "styled-components": "^6.0.0",
+    "stylis": "^4.0.0"
   },
   "files": [
     "lib"
@@ -48,7 +49,7 @@
     "@storybook/testing-library": "^0.2.2",
     "babel-loader": "^8.2.4",
     "chromatic": "^6.5.4",
-    "react-dom": "^16.0.0",
+    "react-dom": "^18.2.0",
     "storybook": "^7.5.2"
   }
 }

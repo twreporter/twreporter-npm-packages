@@ -20,7 +20,7 @@ export const TOCText = styled.div`
   line-height: 1.29;
   letter-spacing: 0.1px;
   color: ${props =>
-    props.toHighlight
+    props.$toHighlight
       ? props.theme.colors.toc.accent
       : props.theme.colors.toc.text};
   &:hover {
@@ -33,15 +33,15 @@ export const TOCText = styled.div`
 
 export const TOCIndicator = styled.div`
   width: ${props => {
-    if (props.toHighlight && !props.isExpanded) {
+    if (props.$toHighlight && !props.$isExpanded) {
       return '30px'
-    } else if (props.toHighlight && props.isExpanded) {
+    } else if (props.$toHighlight && props.$isExpanded) {
       return '20px'
     }
     return '10px'
   }};
   border-top: ${props =>
-    props.toHighlight
+    props.$toHighlight
       ? `solid 2px ${props.theme.colors.toc.accent}`
       : `solid 2px ${props.theme.colors.toc.text}`};
   transition: width 0.3s ease-in-out, border-top 0.3s ease-in-out,
@@ -52,12 +52,12 @@ export const TOCIndicator = styled.div`
 
   ${mq.tabletAndBelow`
     transform: ${props =>
-      props.isExpanded ? 'translateX(0px)' : `translateX(${tocWidth - 30}px)`};
+      props.$isExpanded ? 'translateX(0px)' : `translateX(${tocWidth - 30}px)`};
   `}
 
   ${mq.desktopAndAbove`
     transform: ${props =>
-      props.isExpanded ? 'translateX(0px)' : `translateX(${tocWidth - 10}px)`};
+      props.$isExpanded ? 'translateX(0px)' : `translateX(${tocWidth - 10}px)`};
   `}
 `
 
@@ -76,7 +76,7 @@ export const TOCTabWrapper = styled.div`
     left: 0;
     transition: transform 200ms;
     transform: ${props =>
-      props.isHidden || false ? 'translateX(-100%)' : 'translateX(0%)'};
+      props.$isHidden || false ? 'translateX(-100%)' : 'translateX(0%)'};
   `}
 
   ${mq.desktopAndAbove`
@@ -87,7 +87,7 @@ export const TOCTabWrapper = styled.div`
 export const TOCTab = styled.div`
   transition: transform 0.1s ease-in-out 0.1s;
   transform: ${props =>
-    props.isExpanded ? `translateX(${tocWidth}px)` : 'translateX(0px)'};
+    props.$isExpanded ? `translateX(${tocWidth}px)` : 'translateX(0px)'};
 
   > div {
     opacity: 0.6;
@@ -113,11 +113,11 @@ export const TOCBackground = styled.div`
 
   ${mq.tabletAndBelow`
     transform: ${props =>
-      props.isExpanded ? 'translateX(0px)' : `translateX(-${tocWidth}px)`};
+      props.$isExpanded ? 'translateX(0px)' : `translateX(-${tocWidth}px)`};
   `}
 
   ${mq.desktopAndAbove`
     transform: ${props =>
-      props.isExpanded ? 'translateX(0px)' : `translateX(-${tocWidth - 10}px)`};
+      props.$isExpanded ? 'translateX(0px)' : `translateX(-${tocWidth - 10}px)`};
   `}
 `

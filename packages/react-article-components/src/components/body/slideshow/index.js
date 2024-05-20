@@ -101,25 +101,11 @@ const SlidesSection = styled.div`
   flex-basis: 100%;
   overflow: hidden;
   position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
 
   ${mq.tabletAndBelow`
     order: 2;
-  `}
-
-  ${mq.mobileOnly`
-    padding-bottom: calc(${mockup.mobile.slide.height}/${mockup.mobile.container.width}*100%);
-  `}
-
-  ${mq.tabletOnly`
-    padding-bottom: calc(${mockup.tablet.slide.height}/${mockup.tablet.container.width}*100%);
-  `}
-
-  ${mq.desktopOnly`
-    padding-bottom: calc(${mockup.desktop.slide.height}/${mockup.desktop.container.width}*100%);
-  `}
-
-  ${mq.hdOnly`
-    padding-bottom: calc(${mockup.hd.slide.height}/${mockup.hd.container.width}*100%);
   `}
 `
 
@@ -290,33 +276,33 @@ const SlidesFlexBox = styled.div`
   width: 100%;
   height: 100%;
   ${props => {
-    if (props.isSliding) {
-      return `transition: transform ${props.duration}ms ease-in-out;`
+    if (props.$isSliding) {
+      return `transition: transform ${props.$duration}ms ease-in-out;`
     }
   }}
 
   ${mq.mobileOnly`
     transform: translateX(${props =>
-      (getTranslateX(mockup.mobile, props.translateXUint) /
+      (getTranslateX(mockup.mobile, props.$translateXUint) /
         getContainerWidth(mockup.mobile)) *
       100}%);
   `}
 
   ${mq.tabletOnly`
     transform: translateX(${props =>
-      (getTranslateX(mockup.tablet, props.translateXUint) /
+      (getTranslateX(mockup.tablet, props.$translateXUint) /
         getContainerWidth(mockup.tablet)) *
       100}%);
   `}
 
   ${mq.desktopOnly`
     transform: translateX(${props =>
-      getTranslateX(mockup.desktop, props.translateXUint)}px);
+      getTranslateX(mockup.desktop, props.$translateXUint)}px);
   `}
 
   ${mq.hdOnly`
     transform: translateX(${props =>
-      getTranslateX(mockup.hd, props.translateXUint)}px);
+      getTranslateX(mockup.hd, props.$translateXUint)}px);
   `}
 `
 
@@ -351,61 +337,6 @@ const SlideFlexItem = styled.div`
   ${mq.hdOnly`
     flex-basis: ${getSlideWidth(mockup.hd)}px;
     padding-right: ${mockup.hd.slide.paddingRight}px;
-  `}
-`
-
-const SlideMask = styled.div`
-  position: absolute;
-  top: 0;
-  height: 100%;
-  opacity: 0.55;
-`
-
-const LeftSlideMask = styled(SlideMask)`
-  left: 0;
-
-  ${mq.mobileOnly`
-    width: ${(getLeftMaskWidth(mockup.mobile) /
-      getContainerWidth(mockup.mobile)) *
-      100}%;
-  `}
-
-  ${mq.tabletOnly`
-    width: ${(getLeftMaskWidth(mockup.tablet) /
-      getContainerWidth(mockup.tablet)) *
-      100}%;
-  `}
-
-  ${mq.desktopOnly`
-    width: ${getLeftMaskWidth(mockup.desktop)}px;
-  `}
-
-  ${mq.hdOnly`
-    width: ${getLeftMaskWidth(mockup.hd)}px;
-  `}
-`
-
-const RightSlideMask = styled(SlideMask)`
-  right: 0;
-
-  ${mq.mobileOnly`
-    width: ${(getRightMaskWidth(mockup.mobile) /
-      getContainerWidth(mockup.mobile)) *
-      100}%;
-  `}
-
-  ${mq.tabletOnly`
-    width: ${(getRightMaskWidth(mockup.tablet) /
-      getContainerWidth(mockup.tablet)) *
-      100}%;
-  `}
-
-  ${mq.desktopOnly`
-    width: ${getRightMaskWidth(mockup.desktop)}px;
-  `}
-
-  ${mq.hdOnly`
-    width: ${getRightMaskWidth(mockup.hd)}px;
   `}
 `
 
@@ -446,9 +377,6 @@ function getSlideshowFlexBoxStyles(themeName) {
         ${ImageNumber} {
           color: ${COLOR_PINK_ARTICLE.darkBlue};
         }
-        ${SlideMask} {
-          background-color: ${colorSupportive.main};
-        }
       `
     case themeConst.article.v2.pink:
       return css`
@@ -463,9 +391,6 @@ function getSlideshowFlexBoxStyles(themeName) {
         }
         ${ImageNumber} {
           color: ${colorGrayscale.white};
-        }
-        ${SlideMask} {
-          background-color: ${COLOR_PINK_ARTICLE.lightBlue};
         }
       `
     case themeConst.article.v2.default:
@@ -482,9 +407,6 @@ function getSlideshowFlexBoxStyles(themeName) {
         }
         ${ImageNumber} {
           color: ${colorGrayscale.white};
-        }
-        ${SlideMask} {
-          background-color: ${colorSupportive.main};
         }
       `
   }
@@ -544,26 +466,6 @@ function getContainerWidth(deviceMockup) {
  */
 function getSlideWidth(deviceMockup) {
   return deviceMockup.slide.width + deviceMockup.slide.paddingRight
-}
-
-/**
- * @param {DeviceMockup} deviceMockup
- * @return {number}
- */
-function getLeftMaskWidth(deviceMockup) {
-  return deviceMockup.offset.left - deviceMockup.slide.paddingRight // px
-}
-
-/**
- * @param {DeviceMockup} deviceMockup
- * @return {number}
- */
-function getRightMaskWidth(deviceMockup) {
-  return (
-    deviceMockup.container.width -
-    deviceMockup.offset.left -
-    getSlideWidth(deviceMockup)
-  ) // px
 }
 
 const imageProp = PropTypes.shape({
@@ -674,10 +576,6 @@ export default class Slideshow extends PureComponent {
     )
 
     return _.map(_images, (img, index) => {
-      const objectFit =
-        _.get(img, 'mobile.width', 0) > _.get(img, 'mobile.height', 0)
-          ? 'cover'
-          : 'contain'
       return (
         // since the items of _images would have the same id,
         // hence, we append `index` on the key
@@ -685,7 +583,7 @@ export default class Slideshow extends PureComponent {
           <Img
             imageSet={[img.mobile, img.tablet, img.desktop]}
             defaultImage={img.mobile}
-            objectFit={objectFit}
+            objectFit={'contain'}
             sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
           />
         </SlideFlexItem>
@@ -707,14 +605,12 @@ export default class Slideshow extends PureComponent {
       <SlideshowFlexBox className={appendedClassName}>
         <SlidesSection>
           <SlidesFlexBox
-            translateXUint={translateXUint}
-            duration={duration}
-            isSliding={isSliding}
+            $translateXUint={translateXUint}
+            $duration={duration}
+            $isSliding={isSliding}
           >
             {slides}
           </SlidesFlexBox>
-          <LeftSlideMask />
-          <RightSlideMask />
         </SlidesSection>
         <PrevNextSection>
           <PrevButton onClick={isSliding ? undefined : this.slideToPrev}>

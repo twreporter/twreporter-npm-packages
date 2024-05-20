@@ -103,7 +103,7 @@ const Column = styled.div`
     margin-right: 30px;
   }
 
-  opacity: ${props => (props.ifHover ? 0.7 : 1)};
+  opacity: ${(props) => (props.$ifHover ? 0.7 : 1)};
   transition: 0.2s opacity linear;
 
   ${mq.desktopOnly`
@@ -284,7 +284,7 @@ class TopicsInARow extends React.PureComponent {
       titleColumns.push(
         <TitleColumn
           key={id}
-          ifHover={indexHovered === index}
+          $ifHover={indexHovered === index}
           onMouseOver={() => {
             this.handleHover(index)
           }}
@@ -301,7 +301,7 @@ class TopicsInARow extends React.PureComponent {
       imgColumns.push(
         <ImgColumn
           key={id}
-          ifHover={indexHovered === index}
+          $ifHover={indexHovered === index}
           onMouseOver={() => {
             this.handleHover(index)
           }}
@@ -327,7 +327,7 @@ class TopicsInARow extends React.PureComponent {
       descColumns.push(
         <DescColumn
           key={id}
-          ifHover={indexHovered === index}
+          $ifHover={indexHovered === index}
           onMouseOver={() => {
             this.handleHover(index)
           }}
@@ -371,7 +371,7 @@ class TopicsSection extends React.PureComponent {
       return null
     }
 
-    const mobileTopicComps = data.map(item => {
+    const mobileTopicComps = data.map((item) => {
       const desc = _.get(item, 'og_description')
       const imgObj = _.get(item, 'leading_image') || _.get(item, 'og_image')
       return (

@@ -8,7 +8,11 @@ function selectLogoPath(logoType, branch, type) {
       return type === 'white' ? whitePath : defaultPath
     }
     case 'footer': {
-      return `${baseGCSDir}logo-footer.${branch}.svg`
+      const path = {
+        default: `${baseGCSDir}logo-footer.${branch}.svg`,
+        white: `${baseGCSDir}logo-footer-white.${branch}.svg`,
+      }
+      return path[type]
     }
     case 'symbol': {
       const path = {

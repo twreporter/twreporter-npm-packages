@@ -19,25 +19,25 @@ const ItemContainer = styled.div`
     padding: 8px 32px;
   }
   cursor: pointer;
-  color: ${props => props.color};
+  color: ${(props) => props.$color};
   a,
   a:visited,
   a:link {
     text-decoration: none;
-    color: ${props => props.color};
+    color: ${(props) => props.$color};
   }
   svg {
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.$color};
   }
 
   ${mq.desktopAndAbove`
     &:hover {
-      background-color: ${props => props.hoverBgColor};
+      background-color: ${(props) => props.$hoverBgColor};
     }
   `}
 
   &:active {
-    background-color: ${props => props.activeBgColor};
+    background-color: ${(props) => props.$activeBgColor};
   }
 `
 const SubItemContainer = styled(ItemContainer)`
@@ -51,7 +51,7 @@ const DropdownItemContainer = styled(ItemContainer)`
   align-items: center;
   justify-content: space-between;
   svg {
-    transform: rotate(${props => props.rotate});
+    transform: rotate(${(props) => props.$rotate});
     transition: all 300ms;
   }
 `
@@ -83,9 +83,9 @@ export const MenuSubItem = ({ text = '', link = {}, ...props }) => {
 
   return (
     <SubItemContainer
-      color={color}
-      hoverBgColor={hoverBgColor}
-      activeBgColor={activeBgColor}
+      $color={color}
+      $hoverBgColor={hoverBgColor}
+      $activeBgColor={activeBgColor}
       {...props}
     >
       <Link {...link}>
@@ -109,10 +109,10 @@ export const MenuDropdownItem = ({ text = '', isActive = false, ...props }) => {
 
   return (
     <DropdownItemContainer
-      color={color}
-      hoverBgColor={hoverBgColor}
-      activeBgColor={activeBgColor}
-      rotate={iconRotateDeg}
+      $color={color}
+      $hoverBgColor={hoverBgColor}
+      $activeBgColor={activeBgColor}
+      $rotate={iconRotateDeg}
       {...props}
     >
       <P1 text={text} weight="bold" />

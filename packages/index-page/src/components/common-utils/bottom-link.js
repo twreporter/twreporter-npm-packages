@@ -12,8 +12,8 @@ const StyledA = styled.a`
 `
 const Wrapper = styled.div`
   font-size: 14px;
-  color: ${props =>
-    props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
+  color: ${(props) =>
+    props.$isDarkBg ? colorSupportive.main : colorSupportive.heavy};
   cursor: pointer;
   display: inline-block;
   > span {
@@ -31,21 +31,21 @@ const Wrapper = styled.div`
     }
   }
   ${TextSpan} {
-    color: ${props =>
-      props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
+    color: ${(props) =>
+      props.$isDarkBg ? colorSupportive.main : colorSupportive.heavy};
   }
   ${StyledA} {
     &:visited {
-      color: ${props =>
-        props.isDarkBg ? colorSupportive.main : colorSupportive.heavy};
+      color: ${(props) =>
+        props.$isDarkBg ? colorSupportive.main : colorSupportive.heavy};
     }
   }
 `
 
-const BottomLink = props => {
+const BottomLink = (props) => {
   const { path, isDarkBg, text, target, redirect } = props
   return (
-    <Wrapper isDarkBg={isDarkBg}>
+    <Wrapper $isDarkBg={isDarkBg}>
       {redirect ? (
         <StyledA href={path} target={target} rel="noreferrer noopener">
           <TextSpan>{text}</TextSpan>

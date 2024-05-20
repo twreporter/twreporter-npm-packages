@@ -118,13 +118,13 @@ const PubDate = styled.div`
 `
 
 const Tag = styled(P3)`
-  background-color: ${props => {
-    return props.selected ? colorBrand.heavy : colorGrayscale.gray100
+  background-color: ${(props) => {
+    return props.$selected ? colorBrand.heavy : colorGrayscale.gray100
   }};
   border: 1px solid ${colorBrand.heavy};
   border-radius: 68px;
-  color: ${props => {
-    return props.selected ? colorGrayscale.white : colorBrand.heavy
+  color: ${(props) => {
+    return props.$selected ? colorGrayscale.white : colorBrand.heavy
   }};
   display: inline-block;
   text-decoration: none;
@@ -140,13 +140,13 @@ class ListItem extends PureComponent {
   render() {
     const { title, desc, img, link, category, tags, pubDate } = this.props
     const tagsJSX = []
-    _.forEach(tags, tag => {
+    _.forEach(tags, (tag) => {
       const id = _.get(tag, 'id')
       const name = _.get(tag, 'name')
       if (id && name) {
         tagsJSX.push(
           <Link key={id} to={entityPaths.tag + id}>
-            <Tag selected={_.get(tag, 'selected')}>{name}</Tag>
+            <Tag $selected={_.get(tag, 'selected')}>{name}</Tag>
           </Link>
         )
       }

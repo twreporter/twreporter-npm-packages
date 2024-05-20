@@ -3,6 +3,142 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.4...@twreporter/react-components@9.0.0-rc.5) (2024-05-20)
+
+
+### Bug Fixes
+
+* footer info link style ([432e96b](https://github.com/twreporter/twreporter-npm-packages/commit/432e96bc2294de4808d35b2f225efef0670ab1db))
+
+
+
+
+
+# [9.0.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.3...@twreporter/react-components@9.0.0-rc.4) (2024-05-17)
+
+
+### Bug Fixes
+
+* missing style ([cabc77e](https://github.com/twreporter/twreporter-npm-packages/commit/cabc77e9c8cb7b2bec6743a7000e327b67274c16))
+
+
+
+
+
+# [9.0.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.2...@twreporter/react-components@9.0.0-rc.3) (2024-05-14)
+
+
+### Bug Fixes
+
+* icon raw image broken ([1013337](https://github.com/twreporter/twreporter-npm-packages/commit/10133377ae57491c7b8215b0cf663e9a3cf9d87d))
+* upgrade `react-waypoint` version ([c30a267](https://github.com/twreporter/twreporter-npm-packages/commit/c30a2671c563f466f2cd67ca7710797cc37aa9cc))
+
+
+
+
+
+# [9.0.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.1...@twreporter/react-components@9.0.0-rc.2) (2024-05-14)
+
+
+### Bug Fixes
+
+* upgrade `styled-component` version to v6 ([df93639](https://github.com/twreporter/twreporter-npm-packages/commit/df93639b1b1591d1506cf4cab13f6cda8d6c8aba))
+
+
+
+
+
+# [9.0.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.0-rc.0...@twreporter/react-components@9.0.0-rc.1) (2024-05-10)
+
+
+### Bug Fixes
+
+* fix defects and add comments ([fda83e3](https://github.com/twreporter/twreporter-npm-packages/commit/fda83e3daafab2b61a9323074abc21f5d5be4b11))
+
+
+
+
+
+# [9.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.28.0-rc.1...@twreporter/react-components@9.0.0-rc.0) (2024-05-08)
+
+
+### Bug Fixes
+
+* align `react-transition-group` version ([562dc11](https://github.com/twreporter/twreporter-npm-packages/commit/562dc11ec8db0ff5cfefca56d6d77a90030f6f66))
+* remove `defaultProps` for functional components to address warnings ([67f7fac](https://github.com/twreporter/twreporter-npm-packages/commit/67f7fac950cfc613adbc233cbe17d9571123cb61))
+
+
+### Features
+
+* upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
+
+
+### BREAKING CHANGES
+
+* react & react-dom version upgrade to ^18.2 in all monorepos
+
+
+
+
+
+# [8.28.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.28.0-rc.0...@twreporter/react-components@8.28.0-rc.1) (2024-05-08)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+# [8.28.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.2-rc.2...@twreporter/react-components@8.28.0-rc.0) (2024-05-08)
+
+
+### Bug Fixes
+
+* add link for button ([58ecbb8](https://github.com/twreporter/twreporter-npm-packages/commit/58ecbb8f1008c6ad8d71b2ef35d690ebd6370a70))
+* remove unused hover ([fe9f420](https://github.com/twreporter/twreporter-npm-packages/commit/fe9f4204baa5d905e75dd52d4e67e2f88ee5a308))
+* use js default value and fix comments ([313a7d9](https://github.com/twreporter/twreporter-npm-packages/commit/313a7d93a9767edd13e3a45002eb42ee8e872e60))
+
+
+### Features
+
+* add footer links contants and components ([2a5d284](https://github.com/twreporter/twreporter-npm-packages/commit/2a5d284493488b7fff8d7ec940e0a7772f15c3d8))
+* add footer storybooks ([b74d8e0](https://github.com/twreporter/twreporter-npm-packages/commit/b74d8e0524196ccabc1f528bc0dbe58a2cc918b7))
+* logo component for footer ([2684955](https://github.com/twreporter/twreporter-npm-packages/commit/2684955bbf04e2c22338f3a51de2390383bf3f65))
+* logo footer ([5887d57](https://github.com/twreporter/twreporter-npm-packages/commit/5887d577a2509214f3e00dd22d404c506e517ab6))
+* new footer component ([fff4e74](https://github.com/twreporter/twreporter-npm-packages/commit/fff4e74c8e485eba0ccb8b96bb50014a446a7eaf))
+* plurk icon ([9876c40](https://github.com/twreporter/twreporter-npm-packages/commit/9876c409e1c3e2e84ab8e100837f72d997d61d2f))
+
+
+
+
+
+## [8.27.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.2-rc.1...@twreporter/react-components@8.27.2-rc.2) (2024-05-07)
+
+
+### Bug Fixes
+
+* prevent ios chrome email format detection ([fd19ce7](https://github.com/twreporter/twreporter-npm-packages/commit/fd19ce7816bf2121a52dc66d572e1b9f6a020c78))
+
+
+
+
+
+## [8.27.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.2-rc.0...@twreporter/react-components@8.27.2-rc.1) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
+## [8.27.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.1...@twreporter/react-components@8.27.2-rc.0) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+
+
+
+
 ## [8.27.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@8.27.1-rc.6...@twreporter/react-components@8.27.1) (2024-04-23)
 
 **Note:** Version bump only for package @twreporter/react-components

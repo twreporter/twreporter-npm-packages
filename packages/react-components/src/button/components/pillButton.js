@@ -20,26 +20,26 @@ const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   border-radius: 40px;
-  background-color: ${props =>
-    props.type === Type.PRIMARY ? props.bgColor : 'transparent'};
-  border-color: ${props => props.bgColor};
+  background-color: ${(props) =>
+    props.$type === Type.PRIMARY ? props.$bgColor : 'transparent'};
+  border-color: ${(props) => props.$bgColor};
   border-style: solid;
   border-width: 1.5px;
-  color: ${props => props.color};
-  padding: ${props => props.padding};
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+  color: ${(props) => props.$color};
+  padding: ${(props) => props.$padding};
+  cursor: ${(props) => (props.$disabled ? 'default' : 'pointer')};
   svg {
-    height: ${props => props.iconSize};
-    width: ${props => props.iconSize};
-    background-color: ${props => props.color};
+    height: ${(props) => props.$iconSize};
+    width: ${(props) => props.$iconSize};
+    background-color: ${(props) => props.$color};
   }
   &:hover {
-    color: ${props => props.hoverColor};
-    background-color: ${props =>
-      props.type === Type.PRIMARY ? props.hoverBgColor : 'transparent'};
-    border-color: ${props => props.hoverBgColor};
+    color: ${(props) => props.$hoverColor};
+    background-color: ${(props) =>
+      props.$type === Type.PRIMARY ? props.$hoverBgColor : 'transparent'};
+    border-color: ${(props) => props.$hoverBgColor};
     svg {
-      background-color: ${props => props.hoverColor};
+      background-color: ${(props) => props.$hoverColor};
     }
   }
 `
@@ -54,7 +54,7 @@ const IconContainer = styled.div`
   }
 `
 const HideOnLoading = styled.div`
-  opacity: ${props => (props.show ? 1 : 0)};
+  opacity: ${(props) => (props.$show ? 1 : 0)};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,9 +75,9 @@ const spin = keyframes`
 `
 const Loader = styled.span`
   position: absolute;
-  opacity: ${props => (props.show ? 1 : 0)};
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
+  opacity: ${(props) => (props.$show ? 1 : 0)};
+  width: ${(props) => props.$size}px;
+  height: ${(props) => props.$size}px;
   border: 2px solid ${colorGrayscale.gray400};
   border-top-color: ${colorGrayscale.gray600};
   border-radius: 50%;
@@ -121,23 +121,23 @@ const PillButton = ({
 
   return (
     <ButtonContainer
-      type={type}
-      padding={padding}
-      color={color}
-      bgColor={bgColor}
-      iconSize={iconSize}
-      hoverColor={hoverColor}
-      hoverBgColor={hoverBgColor}
-      disabled={disabled}
+      $type={type}
+      $padding={padding}
+      $color={color}
+      $bgColor={bgColor}
+      $iconSize={iconSize}
+      $hoverColor={hoverColor}
+      $hoverBgColor={hoverBgColor}
+      $disabled={disabled}
       {...props}
     >
       <RelativeParent>
-        <HideOnLoading show={!loading}>
+        <HideOnLoading $show={!loading}>
           {leftIconJSX}
           {textJSX}
           {rightIconJSX}
         </HideOnLoading>
-        <Loader show={loading} size={size === Size.S ? 18 : 24} />
+        <Loader $show={loading} $size={size === Size.S ? 18 : 24} />
       </RelativeParent>
     </ButtonContainer>
   )

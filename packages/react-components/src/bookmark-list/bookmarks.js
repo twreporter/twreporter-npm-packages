@@ -81,8 +81,13 @@ const BookmarksContainer = styled.ul`
   padding: 0;
 `
 
-function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
-  const buildBookmark = bookmark => (
+function Bookmarks({
+  total = 0,
+  bookmarks = [],
+  handleDelete,
+  releaseBranch = releaseBranchConsts.master,
+}) {
+  const buildBookmark = (bookmark) => (
     <Bookmark
       key={`bookmark_${_.get(bookmark, 'id')}`}
       bookmark={bookmark}
@@ -136,12 +141,6 @@ function Bookmarks({ total, bookmarks, handleDelete, releaseBranch }) {
       </Column>
     </PageContainer>
   )
-}
-
-Bookmarks.defaultProps = {
-  bookmarks: [],
-  total: 0,
-  releaseBranch: releaseBranchConsts.master,
 }
 
 Bookmarks.propTypes = {

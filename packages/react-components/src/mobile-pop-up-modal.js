@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import zIndexConst from '@twreporter/core/lib/constants/z-index'
 
 const Modal = styled.div`
-  height: ${props => props.height};
-  width: ${props => props.width};
+  height: ${(props) => props.$height};
+  width: ${(props) => props.$width};
   position: fixed;
   top: 0;
   z-index: ${zIndexConst.popup};
@@ -37,13 +37,11 @@ class MobileModal extends React.PureComponent {
     }
     this.startY = 0
     this.panel = React.createRef()
-    this.handleTouchstartWhenPanning = this._handleTouchstartWhenPanning.bind(
-      this
-    )
+    this.handleTouchstartWhenPanning =
+      this._handleTouchstartWhenPanning.bind(this)
     this.handleTouchendWhenPanning = this._handleTouchendWhenPanning.bind(this)
-    this.handleTouchmoveWhenPanning = this._handleTouchmoveWhenPanning.bind(
-      this
-    )
+    this.handleTouchmoveWhenPanning =
+      this._handleTouchmoveWhenPanning.bind(this)
   }
 
   componentDidMount() {
@@ -122,8 +120,8 @@ class MobileModal extends React.PureComponent {
 
     return (
       <Modal
-        height={modalHeight}
-        width={modalWidth}
+        $height={modalHeight}
+        $width={modalWidth}
         ref={this.panel}
         {...rest}
       />

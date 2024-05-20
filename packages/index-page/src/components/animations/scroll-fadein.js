@@ -1,67 +1,62 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { Waypoint } from 'react-waypoint'
-import VelocityComponent from 'velocity-react/velocity-component'
+import { Transition } from 'react-transition-group'
 
-class ScrollFadein extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      startAnimation: false,
-    }
-    this.startAnimation = this._startAnimation.bind(this)
-    this.onAnimationFinish = this._onAnimationFinish.bind(this)
-    this.ifInitialization = true
-  }
+const ScrollFadein = ({ children }) => {
+  const [transitionIn, setTransitionIn] = useState(false)
+  const [isInit, setIsInit] = useState(true)
+  const nodeRef = useRef(null)
 
-  _startAnimation() {
-    this.setState({
-      startAnimation: true,
-    })
-  }
-
-  _onAnimationFinish() {
-    if (
-      !this.ifInitialization &&
-      typeof this.module.srcToSrcset === 'function'
-    ) {
+  const startAnimation = () => setTransitionIn(true)
+  const onAnimationFinish = () => {
+    if (!isInit && typeof this.module.srcToSrcset === 'function') {
       this.module.srcToSrcset()
       return
     }
-    this.ifInitialization = false
+    setIsInit(false)
   }
 
-  render() {
-    return (
-      <Waypoint
-        onEnter={this.startAnimation}
-        fireOnRapidScroll
-        topOffset="80%"
-        bottomOffset="19%"
-      >
-        <div>
-          <VelocityComponent
-            animation={
-              this.state.startAnimation
-                ? { opacity: 1, paddingTop: 0 }
-                : { opacity: 0.5, paddingTop: '50px' }
-            }
-            duration={680}
-            complete={this.onAnimationFinish}
-            runOnMount={false}
-          >
-            <div>
-              {React.cloneElement(this.props.children, {
-                ref: node => {
-                  this.module = node
-                },
-              })}
-            </div>
-          </VelocityComponent>
-        </div>
-      </Waypoint>
-    )
+  const timeout = 680
+  const defaultStyle = {
+    transition: `padding ${timeout}ms ease-in-out`,
   }
+  const transitionStyles = {
+    entering: { opacity: 1, paddingTop: '0' },
+    entered: { opacity: 1, paddingTop: '0' },
+    exiting: { opacity: 0.5, paddingTop: '50px' },
+    exited: { opacity: 0.5, paddingTop: '50px' },
+  }
+
+  return (
+    <Waypoint
+      onEnter={startAnimation}
+      fireOnRapidScroll
+      topOffset="80%"
+      bottomOffset="19%"
+    >
+      <div>
+        <Transition
+          nodeRef={nodeRef}
+          in={transitionIn}
+          timeout={timeout}
+          onExited={onAnimationFinish}
+        >
+          {state => (
+            <div
+              ref={nodeRef}
+              style={{
+                ...defaultStyle,
+                ...transitionStyles[state],
+              }}
+            >
+              {children}
+            </div>
+          )}
+        </Transition>
+      </div>
+    </Waypoint>
+  )
 }
 
 ScrollFadein.propTypes = {

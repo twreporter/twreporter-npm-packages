@@ -24,15 +24,15 @@ const Label = styled.label`
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+  cursor: ${(props) => (props.$disabled ? 'default' : 'pointer')};
 `
 
 const Switch = styled.div`
   position: relative;
   width: 40px;
   height: 20px;
-  background: ${props =>
-    props.disabled ? colorGrayscale.gray400 : colorGrayscale.gray600};
+  background: ${(props) =>
+    props.$disabled ? colorGrayscale.gray400 : colorGrayscale.gray600};
   border-radius: 20px;
   padding: 0px;
   transition: 100ms ease-in-out;
@@ -56,7 +56,7 @@ const Input = styled.input`
   position: absolute;
 
   &:checked + ${Switch} {
-    background: ${props =>
+    background: ${(props) =>
       props.disabled ? colorGrayscale.gray400 : colorBrand.heavy};
     &:before {
       transform: translate(20px, -50%);
@@ -72,21 +72,21 @@ const ToggleButton = ({
   onChange = () => {},
   ...props
 }) => {
-  const handleChange = e => {
+  const handleChange = (e) => {
     onChange && onChange()
   }
 
   return (
     <Container>
       <ColorP2 text={value ? labelOn : labelOff} />
-      <Label disabled={disabled} {...props}>
+      <Label $disabled={disabled} {...props}>
         <Input
           type="checkbox"
           disabled={disabled}
           checked={value}
           onChange={handleChange}
         />
-        <Switch disabled={disabled} />
+        <Switch $disabled={disabled} />
       </Label>
     </Container>
   )

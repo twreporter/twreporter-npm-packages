@@ -72,14 +72,14 @@ const FlexItem = styled.div`
   margin-right: 20%;
   position: relative;
   transform: ${props =>
-    props.selected !== 0
-      ? `translateX(-${(props.selected - 1) * 200}%)`
+    props.$selected !== 0
+      ? `translateX(-${(props.$selected - 1) * 200}%)`
       : 'translateX(200%)'};
   transition: 500ms transform ease-in, 500ms margin-top ease-in;
   cursor: pointer;
-  margin-top: ${props => (props.middle ? '-770px' : '16px')};
+  margin-top: ${props => (props.$middle ? '-770px' : '16px')};
   ${mq.desktopAndBelow`
-    margin-top: ${props => (props.middle ? '-540px' : '16px')};
+    margin-top: ${props => (props.$middle ? '-540px' : '16px')};
   `}
   z-index: 2;
 `
@@ -111,7 +111,7 @@ const Arrow = styled.div`
 // top: sideCategory + 27px
 const LeftArrow = styled(Arrow)`
   left: 17%;
-  display: ${props => (props.selected === 0 ? 'none' : 'inline')};
+  display: ${props => (props.$selected === 0 ? 'none' : 'inline')};
   ${mq.desktopAndBelow`
     top: 365px;
   `}
@@ -120,7 +120,7 @@ const LeftArrow = styled(Arrow)`
 const RightArrow = styled(Arrow)`
   right: 17%;
   display: ${props =>
-    props.selected === props.dataLength - 1 ? 'none' : 'inline'};
+    props.$selected === props.$dataLength - 1 ? 'none' : 'inline'};
   ${mq.desktopAndBelow`
     top: 365px;
   `}
@@ -138,7 +138,7 @@ const SideCategory = styled(CategoryName)`
   width: 161px;
   height: 16px;
   top: 453px;
-  left: ${props => (props.left ? props.left : '0')};
+  left: ${props => (props.$left ? props.$left : '0')};
   ${mq.desktopAndBelow`
     top: 338px;
   `}
@@ -149,8 +149,8 @@ const MiddleCategory = styled(CategoryName)`
   height: 16px;
   line-height: 1.33;
   position: absolute;
-  top: ${props => (props.top ? props.top : '0')};
-  left: ${props => (props.left ? props.left : '0')};
+  top: ${props => (props.$top ? props.$top : '0')};
+  left: ${props => (props.$left ? props.$left : '0')};
   width: auto;
   transform: translateX(-50%);
   text-align: center;
@@ -159,38 +159,38 @@ const MiddleCategory = styled(CategoryName)`
 `
 
 const Title = styled.div`
-  font-size: ${props => (props.middle ? `32px` : `16px`)};
+  font-size: ${props => (props.$middle ? `32px` : `16px`)};
   font-weight: ${fontWeight.bold};
   font-family: ${fontFamily.title};
   color: ${colorGrayscale.gray800};
-  width: ${props => (props.middle ? '450px' : '150px')};
+  width: ${props => (props.$middle ? '450px' : '150px')};
   position: absolute;
   text-align: center;
-  line-height: ${props => (props.middle ? '1.25' : '1.25')};
-  max-height: ${props => (props.middle ? '2.5' : '7.5')};
+  line-height: ${props => (props.$middle ? '1.25' : '1.25')};
+  max-height: ${props => (props.$middle ? '2.5' : '7.5')};
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   overflow: hidden;
   line-break: anywhere;
   ${mq.desktopOnly`
-    width: ${props => (props.middle ? '450px' : '120px')};
+    width: ${props => (props.$middle ? '450px' : '120px')};
   `}
   ${mq.tabletAndBelow`
-    width: ${props => (props.middle ? '450px' : '90px')};
+    width: ${props => (props.$middle ? '450px' : '90px')};
   `}
 `
 const Description = styled.div`
   position: absolute;
   font-size: 16px;
   width: 450px;
-  top: ${props => (props.top ? props.top : '0')};
-  left: ${props => (props.left ? props.left : '0')};
+  top: ${props => (props.$top ? props.$top : '0')};
+  left: ${props => (props.$left ? props.$left : '0')};
   color: ${colorGrayscale.gray800};
   transform: translateX(-50%);
   ${truncate('absolute', 1.43, 2, 'white')};
   ${mq.tabletAndAbove`
-    ${props => (props.ifHover ? 'opacity: 0.7;' : '')}
+    ${props => (props.$ifHover ? 'opacity: 0.7;' : '')}
     transition: .2s opacity linear;
   `}
   z-index: 2;
@@ -201,13 +201,13 @@ const HoverEffect = styled.div`
   text-decoration: none;
   color: ${colorGrayscale.gray800};
   ${mq.tabletAndAbove`
-    ${props => (props.ifHover ? 'opacity: 0.7;' : 'opacity: 1;')}
+    ${props => (props.$ifHover ? 'opacity: 0.7;' : 'opacity: 1;')}
     transition: .2s opacity linear;
   `}
 `
 const FadeInFadeOut = styled.div`
-  opacity: ${props => (props.isSelected ? '1' : '0')};
-  z-index: ${props => (props.isSelected ? '1' : '0')};
+  opacity: ${props => (props.$isSelected ? '1' : '0')};
+  z-index: ${props => (props.$isSelected ? '1' : '0')};
   transition: 150ms opacity ease-in-out;
 `
 
@@ -281,17 +281,17 @@ class EditorPicks extends React.Component {
         return (
           <FlexItem
             key={`key_${obj.title}`}
-            middle={propsMap.middle}
-            selected={this.state.selected}
+            $middle={propsMap.middle}
+            $selected={this.state.selected}
             onClick={() => {
               propsMap.onClick(`a/${_.get(obj, 'slug', 'error')}`)
             }}
           >
             {i === this.state.selected ? (
               <TRLink href={href} redirect={isExternal} plain>
-                <HoverEffect ifHover={this.state.ifHover}>
+                <HoverEffect $ifHover={this.state.ifHover}>
                   <Title
-                    middle={propsMap.middle}
+                    $middle={propsMap.middle}
                     onMouseOver={this.handleOnMouseEnter}
                     onMouseLeave={this.handleOnMouseLeave}
                   >
@@ -302,7 +302,7 @@ class EditorPicks extends React.Component {
                 </HoverEffect>
               </TRLink>
             ) : (
-              <Title middle={propsMap.middle}>
+              <Title $middle={propsMap.middle}>
                 <div>
                   {propsMap.middle ? getTruncate(obj.title) : obj.title}
                 </div>
@@ -361,14 +361,14 @@ class EditorPicks extends React.Component {
           return (
             <FadeInFadeOut
               key={_.get(post, 'id')}
-              isSelected={index === selectDataToShow[theProp.position]}
+              $isSelected={index === selectDataToShow[theProp.position]}
             >
               {theProp.dataPath === 'og_description' ? (
                 <TRLink href={href} redirect={isExternal} plain>
                   <theProp.component
-                    ifHover={this.state.ifHover}
-                    top={theProp.propsForComponent.top}
-                    left={theProp.propsForComponent.left}
+                    $ifHover={this.state.ifHover}
+                    $top={theProp.propsForComponent.top}
+                    $left={theProp.propsForComponent.left}
                     onMouseEnter={this.handleOnMouseEnter}
                     onMouseLeave={this.handleOnMouseLeave}
                     // Adds fade-in fade-out inline style for IE and Edge
@@ -379,8 +379,8 @@ class EditorPicks extends React.Component {
                 </TRLink>
               ) : (
                 <theProp.component
-                  top={theProp.propsForComponent.top}
-                  left={theProp.propsForComponent.left}
+                  $top={theProp.propsForComponent.top}
+                  $left={theProp.propsForComponent.left}
                   // Adds fade-in fade-out inline style for IE and Edge
                   style={fadingStyle}
                 >
@@ -405,10 +405,10 @@ class EditorPicks extends React.Component {
       return (
         <FadeInFadeOut
           key={_.get(imgObj, 'id')}
-          isSelected={index === this.state.selected}
+          $isSelected={index === this.state.selected}
         >
           <TRLink href={href} redirect={isExternal} plain>
-            <HoverEffect ifHover={this.state.ifHover}>
+            <HoverEffect $ifHover={this.state.ifHover}>
               <ImgFrame
                 onMouseEnter={this.handleOnMouseEnter}
                 onMouseLeave={this.handleOnMouseLeave}
@@ -437,14 +437,14 @@ class EditorPicks extends React.Component {
         <div>
           <LeftArrow
             onClick={this.onShiftToRight}
-            selected={this.state.selected}
+            $selected={this.state.selected}
           >
             <LeftArrowIcon />
           </LeftArrow>
           <RightArrow
             onClick={this.onShiftToLeft}
-            selected={this.state.selected}
-            dataLength={this.props.data.length}
+            $selected={this.state.selected}
+            $dataLength={this.props.data.length}
           >
             <RightArrowIcon />
           </RightArrow>

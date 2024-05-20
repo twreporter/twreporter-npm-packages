@@ -24,7 +24,7 @@ const Container = styled.div`
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: ${props => props.background};
+  background-color: ${(props) => props.$background};
 `
 
 const Box = styled.div`
@@ -35,9 +35,9 @@ const Box = styled.div`
 `
 
 const Color = styled.div`
-  height: ${props => props.height};
-  width: ${props => props.width};
-  background-color: ${props => props.color};
+  height: ${(props) => props.$height};
+  width: ${(props) => props.$width};
+  background-color: ${(props) => props.$color};
 `
 
 const P2Gray600 = styled(P2)`
@@ -45,7 +45,7 @@ const P2Gray600 = styled(P2)`
 `
 
 const ColorText = styled(P2)`
-  ${props => (props.show ? '' : 'display: none;')}
+  ${(props) => (props.$show ? '' : 'display: none;')}
   color: ${colorGrayscale.gray500};
 `
 
@@ -60,7 +60,7 @@ const ColorSetEnum = {
   PINK_ARTICLE: 'pink_article',
 }
 
-const getColorSet = type => {
+const getColorSet = (type) => {
   switch (type) {
     case ColorSetEnum.BRAND:
       return colorBrand
@@ -87,12 +87,12 @@ const ColorSet = ({ height, width, type, showColorText, background }) => {
     return (
       <Box key={`${type}-${key}`}>
         <P2Gray600 text={key} />
-        <Color height={height} width={width} color={color} />
-        <ColorText text={color} show={showColorText} />
+        <Color $height={height} $width={width} $color={color} />
+        <ColorText text={color} $show={showColorText} />
       </Box>
     )
   })
-  return <Container background={background}>{colorBoxes}</Container>
+  return <Container $background={background}>{colorBoxes}</Container>
 }
 ColorSet.propTypes = {
   background: PropTypes.string,

@@ -8,10 +8,5 @@ export default {
 }
 
 export const emptyList = {
-  render: () => <Bookmarks />,
-
-  args: {
-    bookmarks: [],
-    total: 0,
-  },
+  render: () => <Bookmarks bookmarks={[]} handleDelete={() => {}} />,
 }

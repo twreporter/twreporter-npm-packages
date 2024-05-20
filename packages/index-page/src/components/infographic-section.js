@@ -153,22 +153,22 @@ const Title = styled.h3`
 const ImgFrame = styled.div`
   position: relative;
   width: 430px;
-  height: ${props => {
-    return props.isPortrait ? '596px' : '282px'
+  height: ${(props) => {
+    return props.$isPortrait ? '596px' : '282px'
   }};
 
   ${mq.desktopOnly`
     max-width: 290px;
-    height: ${props => {
-      return props.isPortrait ? '390px' : '190px'
+    height: ${(props) => {
+      return props.$isPortrait ? '390px' : '190px'
     }};
   `}
 
   ${mq.tabletOnly`
     margin: 0 auto;
     width: 220px;
-    height: ${props => {
-      return props.isPortrait ? '290px' : '145px'
+    height: ${(props) => {
+      return props.$isPortrait ? '290px' : '145px'
     }};
   `}
 
@@ -188,7 +188,7 @@ class Infographic extends React.PureComponent {
     return (
       <Item>
         <TRLink href={href} redirect={isExternal}>
-          <ImgFrame isPortrait={isPortrait}>
+          <ImgFrame $isPortrait={isPortrait}>
             <ImgWrapper
               alt={imgObj.alt}
               src={imgObj.src}

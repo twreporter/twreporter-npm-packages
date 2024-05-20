@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.0-rc.0...@twreporter/redux@8.0.0-rc.1) (2024-05-14)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+# [8.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.13.0-rc.0...@twreporter/redux@8.0.0-rc.0) (2024-05-08)
+
+
+### Features
+
+* upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
+
+
+### BREAKING CHANGES
+
+* react & react-dom version upgrade to ^18.2 in all monorepos
+
+
+
+
+
+# [7.13.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.1-rc.1...@twreporter/redux@7.13.0-rc.0) (2024-05-08)
+
+
+### Bug Fixes
+
+* remove unused code ([72da3b3](https://github.com/twreporter/twreporter-npm-packages/commit/72da3b3d1aa8990d5ebe695ac8ac9dd5585b6620))
+* typo ([d095bcb](https://github.com/twreporter/twreporter-npm-packages/commit/d095bcb08a549998b37d0f928ef771aa3f31b3d9))
+
+
+### Features
+
+* add postReviews actions ([8b4fb61](https://github.com/twreporter/twreporter-npm-packages/commit/8b4fb61379895ec2d10dc5b2308811645905c7bb))
+* add postReviews reducers ([6de8eac](https://github.com/twreporter/twreporter-npm-packages/commit/6de8eac2794c652ad9067229e18852bd33bceacc))
+
+
+
+
+
+## [7.12.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.1-rc.0...@twreporter/redux@7.12.1-rc.1) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
+## [7.12.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.0...@twreporter/redux@7.12.1-rc.0) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/redux
+
+
+
+
+
 # [7.12.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.0-rc.2...@twreporter/redux@7.12.0) (2024-04-23)
 
 **Note:** Version bump only for package @twreporter/redux

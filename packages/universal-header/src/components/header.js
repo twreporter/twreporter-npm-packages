@@ -90,18 +90,18 @@ const ChannelEffect = css`
   }
 `
 const HeaderContainer = styled.div`
-  position: ${props =>
-    props.theme === themeConst.transparent ? 'fixed' : 'sticky'};
+  position: ${(props) =>
+    props.$theme === themeConst.transparent ? 'fixed' : 'sticky'};
   top: 0;
   width: 100%;
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   transform: translateY(
-    ${props => (props.hideHeader ? `${-narrowHeaderHeight}px` : '0')}
+    ${(props) => (props.$hideHeader ? `${-narrowHeaderHeight}px` : '0')}
   );
   transition: transform 300ms
-    ${props => (props.hideHeader ? 'ease-in' : 'ease-out')};
+    ${(props) => (props.$hideHeader ? 'ease-in' : 'ease-out')};
   ${mq.mobileOnly`
-    ${props => (props.forceShowOnMobile ? 'transform: translateY(0);' : '')}
+    ${(props) => (props.$forceShowOnMobile ? 'transform: translateY(0);' : '')}
   `}
 `
 const HeaderSection = styled.div`
@@ -147,32 +147,32 @@ const TopRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${props => (props.toUseNarrow ? '16px' : '24px')} 16px;
+  padding: ${(props) => (props.$toUseNarrow ? '16px' : '24px')} 16px;
   z-index: ${zIndex.topRow};
-  background-color: ${props => props.topRowBgColor};
+  background-color: ${(props) => props.$topRowBgColor};
   ${ShowWhenNarrow} {
-    opacity: ${props => (props.toUseNarrow ? '1' : '0')};
+    opacity: ${(props) => (props.$toUseNarrow ? '1' : '0')};
     transition: opacity ${animation.step3Duration};
-    transition-delay: ${props => (props.toUseNarrow ? '350ms' : 0)};
+    transition-delay: ${(props) => (props.$toUseNarrow ? '350ms' : 0)};
   }
   ${HideWhenNarrow} {
-    opacity: ${props => (props.toUseNarrow ? '0' : '1')};
+    opacity: ${(props) => (props.$toUseNarrow ? '0' : '1')};
     transition: opacity ${animation.step3Duration};
-    transition-delay: ${props =>
-      props.toUseNarrow ? animation.step3Delay : 0};
+    transition-delay: ${(props) =>
+      props.$toUseNarrow ? animation.step3Delay : 0};
   }
   ${LogoContainer} {
-    margin-left: ${props => (props.toUseNarrow ? '24px' : '0')};
-    transform: translateX(${props => (props.toUseNarrow ? '0' : '-24px')});
+    margin-left: ${(props) => (props.$toUseNarrow ? '24px' : '0')};
+    transform: translateX(${(props) => (props.$toUseNarrow ? '0' : '-24px')});
     transition: all ${animation.step3Duration};
-    transition-delay: ${props =>
-      props.toUseNarrow ? animation.step3Delay : 0};
+    transition-delay: ${(props) =>
+      props.$toUseNarrow ? animation.step3Delay : 0};
     img,
     a {
-      height: ${props => (props.toUseNarrow ? '24px' : '32px')};
+      height: ${(props) => (props.$toUseNarrow ? '24px' : '32px')};
       transition: height ${animation.step3Duration};
-      transition-delay: ${props =>
-        props.toUseNarrow ? animation.step3Delay : 0};
+      transition-delay: ${(props) =>
+        props.$toUseNarrow ? animation.step3Delay : 0};
     }
   }
   ${mq.tabletAndBelow`
@@ -180,9 +180,10 @@ const TopRow = styled.div`
   `}
 `
 const StyledDivider = styled(Divider)`
-  opacity: ${props => (props.toUseNarrow ? '0' : '1')};
+  opacity: ${(props) => (props.$toUseNarrow ? '0' : '1')};
   transition: opacity ${animation.step2Duration};
-  transition-delay: ${props => (props.toUseNarrow ? animation.step2Delay : 0)};
+  transition-delay: ${(props) =>
+    props.$toUseNarrow ? animation.step2Delay : 0};
 `
 const IconContainer = styled.div`
   margin-left: 24px;
@@ -205,17 +206,17 @@ const HamburgerContainer = styled.div`
   left: -${MENU_WIDTH.desktop};
   transition: transform 300ms ease-in-out;
   transform: translateX(
-    ${props => (props.showHamburger ? MENU_WIDTH.desktop : 0)}
+    ${(props) => (props.$showHamburger ? MENU_WIDTH.desktop : 0)}
   );
   ${mq.tabletOnly`
     left: -${MENU_WIDTH.tablet};
-    transform: translateX(${props =>
-      props.showHamburger ? MENU_WIDTH.tablet : 0});
+    transform: translateX(${(props) =>
+      props.$showHamburger ? MENU_WIDTH.tablet : 0});
   `}
   ${mq.mobileOnly`
     left: 0;
     transform: none;
-    opacity: ${props => (props.showHamburger ? 1 : 0)};
+    opacity: ${(props) => (props.$showHamburger ? 1 : 0)};
   `}
 `
 const TabBarContainer = styled.div`
@@ -231,10 +232,10 @@ const TabBarContainer = styled.div`
   `}
 `
 const HideOnArticle = styled.div`
-  ${props => (props.isOnArticlePage ? 'display: none;' : '')}
+  ${(props) => (props.$isOnArticlePage ? 'display: none;' : '')}
 `
 const PrevButton = styled.div`
-  ${props => (props.isShow ? '' : 'display: none;')}
+  ${(props) => (props.$isShow ? '' : 'display: none;')}
   margin-right: 8px;
   padding: 4px;
   transform: translateX(-8px);
@@ -259,7 +260,7 @@ const Header = ({ hamburgerContext = {} }) => {
   const logoType = selectLogoType(theme)
   const HamburgerIcon = <Hamburger releaseBranch={releaseBranch} />
   const { bgColor, topRowBgColor } = selectHeaderTheme(theme)
-  const toggleHamburger = e => {
+  const toggleHamburger = (e) => {
     e.stopPropagation()
     setShowHamburger(!showHamburger)
   }
@@ -281,7 +282,7 @@ const Header = ({ hamburgerContext = {} }) => {
     `${EntityPath.myReading}/saved`,
     `${EntityPath.myReading}/history`,
   ]
-  const isOnNeedPrevIconPage = _.some(needPrevIconRoute, el =>
+  const isOnNeedPrevIconPage = _.some(needPrevIconRoute, (el) =>
     _.includes(pathname, el)
   )
   const [currentClientWidth, setCurrentClientWidth] = useState(0)
@@ -313,7 +314,7 @@ const Header = ({ hamburgerContext = {} }) => {
   }
   const DesktopHeaderJSX = (
     <HeaderSection>
-      <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+      <TopRow $toUseNarrow={toUseNarrow} $topRowBgColor={topRowBgColor}>
         <FlexGroup>
           <ShowWhenNarrow>
             <IconButton
@@ -340,7 +341,7 @@ const Header = ({ hamburgerContext = {} }) => {
           </IconContainer>
         </FlexGroup>
       </TopRow>
-      <StyledDivider toUseNarrow={toUseNarrow} />
+      <StyledDivider $toUseNarrow={toUseNarrow} />
       <ChannelContainer>
         <CSSTransition
           in={!toUseNarrow}
@@ -355,9 +356,9 @@ const Header = ({ hamburgerContext = {} }) => {
   )
   const MobileHeaderJSX = (
     <HeaderSection>
-      <TopRow toUseNarrow={toUseNarrow} topRowBgColor={topRowBgColor}>
+      <TopRow $toUseNarrow={toUseNarrow} $topRowBgColor={topRowBgColor}>
         <FlexGroup>
-          <PrevButton isShow={showPrevIcon} onClick={gotoPrev}>
+          <PrevButton $isShow={showPrevIcon} onClick={gotoPrev}>
             <IconButton iconComponent={BackToPrevIcon} theme={theme} />
           </PrevButton>
           <MobileLogoContainer>
@@ -379,15 +380,15 @@ const Header = ({ hamburgerContext = {} }) => {
   return (
     <HamburgerContext.Provider value={contextValue}>
       <HeaderContainer
-        bgColor={bgColor}
-        hideHeader={hideHeader}
-        forceShowOnMobile={showHamburger}
-        theme={theme}
+        $bgColor={bgColor}
+        $hideHeader={hideHeader}
+        $forceShowOnMobile={showHamburger}
+        $theme={theme}
       >
         <DesktopAndAbove>{DesktopHeaderJSX}</DesktopAndAbove>
         <TabletAndBelow>{MobileHeaderJSX}</TabletAndBelow>
       </HeaderContainer>
-      <HamburgerContainer ref={ref} showHamburger={showHamburger}>
+      <HamburgerContainer ref={ref} $showHamburger={showHamburger}>
         <CSSTransition
           in={showHamburger}
           classNames="hamburger-effect"
@@ -398,7 +399,7 @@ const Header = ({ hamburgerContext = {} }) => {
         </CSSTransition>
       </HamburgerContainer>
       <TabletAndBelow>
-        <HideOnArticle isOnArticlePage={isOnArticlePage}>
+        <HideOnArticle $isOnArticlePage={isOnArticlePage}>
           <TabBarContainer>
             <TabBar toggleHamburger={toggleHamburger} />
           </TabBarContainer>

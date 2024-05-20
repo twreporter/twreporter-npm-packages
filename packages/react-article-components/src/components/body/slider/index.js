@@ -8,7 +8,7 @@ export const Rail = styled.div`
   height: 100%;
   background: ${colorGrayscale.gray400};
   position: relative;
-  cursor: ${props => (props.isHeld ? 'grabbing' : 'pointer')};
+  cursor: ${props => (props.$isHeld ? 'grabbing' : 'pointer')};
 `
 
 export const Progress = styled.div.attrs(({ w }) => ({
@@ -33,7 +33,7 @@ export const Indicator = styled.div.attrs(({ x }) => ({
   background: ${colorGrayscale.black};
   position: absolute;
   top: 0;
-  cursor: ${props => (props.isHeld ? 'grabbing' : 'grab')};
+  cursor: ${props => (props.$isHeld ? 'grabbing' : 'grab')};
 `
 
 function funcWarn(funcName, err) {
@@ -400,7 +400,7 @@ export default class Slider extends React.Component {
         ref={this._rail}
         onMouseDown={this.handleMouseDown}
         onTouchStart={this.handleTouchStart}
-        isHeld={this.state.isIndicatorHeld}
+        $isHeld={this.state.isIndicatorHeld}
         onDragStart={this.preventNativeDragging}
       >
         <Progress
@@ -414,7 +414,7 @@ export default class Slider extends React.Component {
         <Indicator
           ref={this._indicator}
           x={indicatorX}
-          isHeld={this.state.isIndicatorHeld}
+          $isHeld={this.state.isIndicatorHeld}
         />
       </Rail>
     )

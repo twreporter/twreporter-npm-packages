@@ -242,8 +242,8 @@ const NumberImageWrapper = styled.div`
   }
 `
 
-class ErrorMessage extends React.PureComponent {
-  _buildChineseMessageJSX(errorType) {
+const ErrorMessage = ({ errorType = '500' }) => {
+  const buildChineseMessageJSX = errorType => {
     switch (errorType) {
       case '404':
         return <ChineseText>找不到網頁</ChineseText>
@@ -252,7 +252,7 @@ class ErrorMessage extends React.PureComponent {
         return <ChineseText>網頁錯誤</ChineseText>
     }
   }
-  _buildEnglishMessageJSX(errorType) {
+  const buildEnglishMessageJSX = errorType => {
     switch (errorType) {
       case '404':
         return (
@@ -271,7 +271,7 @@ class ErrorMessage extends React.PureComponent {
         )
     }
   }
-  _buildErrorNumberJSX(errorType) {
+  const buildErrorNumberJSX = errorType => {
     switch (errorType) {
       case '404':
         return (
@@ -288,29 +288,23 @@ class ErrorMessage extends React.PureComponent {
         )
     }
   }
-  render() {
-    const { errorType } = this.props
-    return (
-      <Container>
-        <ErrorMessageBlock>
-          <BuildingStyled />
-          <DotStyled />
-          {this._buildChineseMessageJSX(errorType)}
-          {this._buildEnglishMessageJSX(errorType)}
-          {this._buildErrorNumberJSX(errorType)}
-        </ErrorMessageBlock>
-        <BackToHomeBtn href="/">返回首頁</BackToHomeBtn>
-      </Container>
-    )
-  }
+
+  return (
+    <Container>
+      <ErrorMessageBlock>
+        <BuildingStyled />
+        <DotStyled />
+        {buildChineseMessageJSX(errorType)}
+        {buildEnglishMessageJSX(errorType)}
+        {buildErrorNumberJSX(errorType)}
+      </ErrorMessageBlock>
+      <BackToHomeBtn href="/">返回首頁</BackToHomeBtn>
+    </Container>
+  )
 }
 
 ErrorMessage.propTypes = {
   errorType: PropTypes.oneOf(['404', '500']),
-}
-
-ErrorMessage.defaultProps = {
-  errorType: '500',
 }
 
 export default ErrorMessage

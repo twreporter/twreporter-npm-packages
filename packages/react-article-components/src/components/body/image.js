@@ -35,7 +35,7 @@ export default class Image extends PureComponent {
     const alt = _.get(image, 'keywords', caption)
     const appendedClassName = className + ' avoid-break'
     return (
-      <Container className={appendedClassName} small={small}>
+      <Container className={appendedClassName} $small={small}>
         <figure itemScope itemType="http://schema.org/ImageObject">
           <Img
             alt={alt}

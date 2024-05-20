@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.21.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.21.0-rc.2...@twreporter/core@1.21.0-rc.3) (2024-05-14)
+
+
+### Bug Fixes
+
+* upgrade `styled-component` version to v6 ([df93639](https://github.com/twreporter/twreporter-npm-packages/commit/df93639b1b1591d1506cf4cab13f6cda8d6c8aba))
+
+
+
+
+
+# [1.21.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.21.0-rc.1...@twreporter/core@1.21.0-rc.2) (2024-05-08)
+
+**Note:** Version bump only for package @twreporter/core
+
+
+
+
+
+# [1.21.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.21.0-rc.0...@twreporter/core@1.21.0-rc.1) (2024-05-07)
+
+
+### Bug Fixes
+
+* update zIndex constant file ([3ab9c45](https://github.com/twreporter/twreporter-npm-packages/commit/3ab9c45e503831460108e4320ced1de6ebd3fe74))
+
+
+
+
+
+# [1.21.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.20.0...@twreporter/core@1.21.0-rc.0) (2024-05-07)
+
+
+### Features
+
+* remove donation phase 2 feature toggle ([c067b05](https://github.com/twreporter/twreporter-npm-packages/commit/c067b0544f4252a5b0b4fb8563ec5ff57972c95d))
+
+
+
+
+
 # [1.20.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.20.0-rc.2...@twreporter/core@1.20.0) (2024-04-23)
 
 **Note:** Version bump only for package @twreporter/core

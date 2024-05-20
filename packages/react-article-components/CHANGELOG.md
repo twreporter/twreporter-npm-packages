@@ -3,6 +3,119 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.4...@twreporter/react-article-components@2.0.0-rc.5) (2024-05-20)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [2.0.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.3...@twreporter/react-article-components@2.0.0-rc.4) (2024-05-17)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [2.0.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.2...@twreporter/react-article-components@2.0.0-rc.3) (2024-05-14)
+
+
+### Bug Fixes
+
+* upgrade `react-waypoint` version ([c30a267](https://github.com/twreporter/twreporter-npm-packages/commit/c30a2671c563f466f2cd67ca7710797cc37aa9cc))
+
+
+
+
+
+# [2.0.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.1...@twreporter/react-article-components@2.0.0-rc.2) (2024-05-14)
+
+
+### Bug Fixes
+
+* upgrade `styled-component` version to v6 ([df93639](https://github.com/twreporter/twreporter-npm-packages/commit/df93639b1b1591d1506cf4cab13f6cda8d6c8aba))
+
+
+
+
+
+# [2.0.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.0...@twreporter/react-article-components@2.0.0-rc.1) (2024-05-10)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [2.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.4...@twreporter/react-article-components@2.0.0-rc.0) (2024-05-08)
+
+
+### Features
+
+* upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
+
+
+### BREAKING CHANGES
+
+* react & react-dom version upgrade to ^18.2 in all monorepos
+
+
+
+
+
+# [1.14.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.3...@twreporter/react-article-components@1.14.0-rc.4) (2024-05-08)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.14.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.2...@twreporter/react-article-components@1.14.0-rc.3) (2024-05-08)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.14.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.1...@twreporter/react-article-components@1.14.0-rc.2) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.14.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.0...@twreporter/react-article-components@1.14.0-rc.1) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+# [1.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.3-rc.0...@twreporter/react-article-components@1.14.0-rc.0) (2024-05-07)
+
+
+### Features
+
+* set aspect-ratio for slideshow ([10bc3a9](https://github.com/twreporter/twreporter-npm-packages/commit/10bc3a955873b0d0bf7589e38670d387b70a2b97))
+
+
+
+
+
+## [1.13.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2...@twreporter/react-article-components@1.13.3-rc.0) (2024-05-07)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [1.13.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.6...@twreporter/react-article-components@1.13.2) (2024-04-23)
 
 **Note:** Version bump only for package @twreporter/react-article-components

@@ -87,10 +87,10 @@ const TableOfContents = ({
                 }}
               >
                 <Styled.TOCIndicator
-                  toHighlight={toHighlight}
-                  isExpanded={isExpanded}
+                  $toHighlight={toHighlight}
+                  $isExpanded={isExpanded}
                 />
-                <Styled.TOCText toHighlight={toHighlight}>
+                <Styled.TOCText $toHighlight={toHighlight}>
                   {anchor.anchorLable}
                 </Styled.TOCText>
               </Styled.TOCRow>
@@ -99,8 +99,8 @@ const TableOfContents = ({
 
           return (
             <React.Fragment>
-              <Styled.TOCTabWrapper isHidden={hideTOC}>
-                <Styled.TOCTab onClick={handleTabClick} isExpanded={isExpanded}>
+              <Styled.TOCTabWrapper $isHidden={hideTOC}>
+                <Styled.TOCTab onClick={handleTabClick} $isExpanded={isExpanded}>
                   <div>索引</div>
                   <Tab />
                 </Styled.TOCTab>
@@ -108,7 +108,7 @@ const TableOfContents = ({
               <Styled.TOCBackground
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                isExpanded={isExpanded}
+                $isExpanded={isExpanded}
               >
                 <Styled.TOCBlock>{anchorsJSX}</Styled.TOCBlock>
               </Styled.TOCBackground>

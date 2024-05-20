@@ -69,14 +69,14 @@ const Meta = styled(FlexGroup)`
   color: ${colorGrayscale.gray600};
   flex-direction: row;
   align-items: center;
-  margin-bottom: ${props => metaStyle.marginBottom[props.size]};
+  margin-bottom: ${(props) => metaStyle.marginBottom[props.$size]};
   & > p {
     margin-right: 8px;
   }
   &:last-child {
     margin-right: 0;
   }
-  ${props => (props.hide ? `display: none;` : '')}
+  ${(props) => (props.$hide ? `display: none;` : '')}
 `
 const DescContainer = styled.div`
   color: ${colorGrayscale.gray800};
@@ -92,14 +92,14 @@ const DescContainer = styled.div`
 `
 const BookmarkContainer = styled(FlexGroup)`
   align-self: flex-end;
-  margin-top: ${props => bookmarkStyle.marginTop[props.size]};
+  margin-top: ${(props) => bookmarkStyle.marginTop[props.$size]};
 `
 const ImageContainer = styled(FlexGroup)`
   flex: 0 0 auto;
   align-self: center;
-  width: ${props => imageStyle.width[props.size]};
-  height: ${props => imageStyle.height[props.size]};
-  margin-left: ${props => imageStyle.marginLeft[props.size]};
+  width: ${(props) => imageStyle.width[props.$size]};
+  height: ${(props) => imageStyle.height[props.$size]};
+  margin-left: ${(props) => imageStyle.marginLeft[props.$size]};
 `
 const LeftColumn = styled(FlexGroupColumn)`
   flex: 1;
@@ -146,7 +146,7 @@ const ArticleCard = ({
     target: isInteractiveArticle ? '_blank' : '',
   }
 
-  const onBookmarkClick = event => {
+  const onBookmarkClick = (event) => {
     event.preventDefault()
     toggleBookmark()
   }
@@ -166,19 +166,19 @@ const ArticleCard = ({
     />
   )
   const bookmarkJSX = showIsBookmarked ? (
-    <BookmarkContainer onClick={onBookmarkClick} size={size}>
+    <BookmarkContainer onClick={onBookmarkClick} $size={size}>
       {bookmarkButton}
     </BookmarkContainer>
   ) : null
 
   const metaJSX = (
-    <Meta hide={hideMeta} size={size} className="hover">
+    <Meta $hide={hideMeta} $size={size} className="hover">
       {categoryJSX}
       {dateJSX}
     </Meta>
   )
   const imageJSX = (
-    <ImageContainer size={size} className="hover">
+    <ImageContainer $size={size} className="hover">
       <Image src={image.src} alt={image.alt} releaseBranch={releaseBranch} />
     </ImageContainer>
   )
@@ -226,7 +226,7 @@ ArticleCard.propTypes = {
   date: PropTypes.string,
   image: PropTypes.shape({
     alt: PropTypes.string,
-    src: PropTypes.string.isRequired,
+    src: PropTypes.string,
     srcSet: PropTypes.string,
   }),
   category: PropTypes.string,

@@ -69,15 +69,15 @@ const MenuContainer = styled.div`
   max-height: 100vh;
   overflow-y: scroll;
   overscroll-behavior: contain;
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   -webkit-overflow-scrolling: touch;
   ${mq.tabletOnly`
     width: ${MENU_WIDTH.tablet};
   `}
   ${mq.mobileOnly`
     width: ${MENU_WIDTH.mobile};
-    height: ${props => props.mobileHeight};
-    max-height: ${props => props.mobileHeight};
+    height: ${(props) => props.$mobileHeight};
+    max-height: ${(props) => props.$mobileHeight};
     padding-bottom: ${reserveHeightForIos15 + 48}px;
   `}
 
@@ -86,7 +86,7 @@ const MenuContainer = styled.div`
     width: 4px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${props => props.scrollBarColor};
+    background-color: ${(props) => props.$scrollBarColor};
     border-radius: 2px;
   }
 `
@@ -145,7 +145,7 @@ const FlexGroup = styled.div`
 `
 const DropdownItemContainer = styled.div``
 const SubContainer = styled.div`
-  max-height: ${props => (props.isActive ? '300px' : '0')};
+  max-height: ${(props) => (props.$isActive ? '300px' : '0')};
   overflow: hidden;
   transition: max-height 300ms ease-in-out;
 `
@@ -169,7 +169,7 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
   let subItemJSX
   if (itemKey === CHANNEL_KEY.category) {
     // category
-    subItemJSX = _.map(CATEGORY_ORDER, catKey => {
+    subItemJSX = _.map(CATEGORY_ORDER, (catKey) => {
       const label = CATEGORY_LABEL[catKey]
       const path = `/categories/${catKey}`
       const link = getLink(isLinkExternal, releaseBranch, path)
@@ -215,7 +215,7 @@ const DropdownContent = ({ itemKey, isActive, toggleFunc }) => {
         onClick={handleClick}
         key={dropdownKey}
       />
-      <SubContainer isActive={isActive} onClick={closeHamburgerMenu}>
+      <SubContainer $isActive={isActive} onClick={closeHamburgerMenu}>
         {subItemJSX}
       </SubContainer>
     </DropdownItemContainer>
@@ -262,7 +262,7 @@ const Content = () => {
 
     // dropdown type
     const isActive = activeKey === itemKey
-    const toggleFunc = key => {
+    const toggleFunc = (key) => {
       const nextActiveKey = activeKey === key ? '' : key
       setActiveKey(nextActiveKey)
     }
@@ -287,7 +287,7 @@ const HamburgerMenu = ({ ...props }) => {
   const logoType = selectLogoType(menuTheme)
   const CloseIcon = <Cross releaseBranch={releaseBranch} />
   const logoLink = getLogoLink(isLinkExternal, releaseBranch)
-  const onSearch = keywords => {
+  const onSearch = (keywords) => {
     if (!window) {
       return
     }
@@ -302,9 +302,9 @@ const HamburgerMenu = ({ ...props }) => {
 
   return (
     <MenuContainer
-      bgColor={bgColor}
-      scrollBarColor={scrollBarColor}
-      mobileHeight={mobileHeight}
+      $bgColor={bgColor}
+      $scrollBarColor={scrollBarColor}
+      $mobileHeight={mobileHeight}
       {...props}
     >
       <TabletAndAbove>

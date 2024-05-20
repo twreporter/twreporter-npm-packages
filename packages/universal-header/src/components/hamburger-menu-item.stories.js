@@ -27,11 +27,11 @@ export default {
 
 const Container = styled.div`
   width: 375px;
-  background-color: ${props => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   padding: 16px 0;
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
 `
-const getBgColor = theme => {
+const getBgColor = (theme) => {
   if (theme === THEME.photography) {
     return {
       bgColor:
@@ -44,7 +44,7 @@ const getBgColor = theme => {
 }
 
 export const menuLinkItem = {
-  render: props => {
+  render: (props) => {
     const { theme, releaseBranch } = props
     const context = {
       theme,
@@ -55,7 +55,7 @@ export const menuLinkItem = {
 
     return (
       <HeaderContext.Provider value={context}>
-        <Container bgColor={bgColor}>
+        <Container $bgColor={bgColor}>
           <MenuLinkItem {...props} />
         </Container>
       </HeaderContext.Provider>
@@ -68,7 +68,7 @@ export const menuLinkItem = {
 }
 
 export const MenuDropdownItemExample = {
-  render: props => {
+  render: (props) => {
     const [{ isActive }, updateArgs] = useArgs()
     const { theme, releaseBranch, text } = props
     const context = {
@@ -99,7 +99,7 @@ export const MenuDropdownItemExample = {
 }
 
 export const menuSubItem = {
-  render: props => {
+  render: (props) => {
     const { theme } = props
     const context = {
       theme,

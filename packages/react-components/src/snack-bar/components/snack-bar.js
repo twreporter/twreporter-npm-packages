@@ -16,14 +16,14 @@ const SnackBarContainer = styled.div`
   border-radius: 4px;
   display: flex;
   align-items: center;
-  color: ${props => props.color};
-  background-color: ${props => props.bgColor};
+  color: ${(props) => props.$color};
+  background-color: ${(props) => props.$bgColor};
 `
 
 const SnackBar = ({ text = '', theme = THEME.normal }) => {
   const { color, bgColor } = getSnackBarTheme(theme)
   return (
-    <SnackBarContainer color={color} bgColor={bgColor}>
+    <SnackBarContainer $color={color} $bgColor={bgColor}>
       <MobileOnly>
         <P3 text={text} />
       </MobileOnly>
