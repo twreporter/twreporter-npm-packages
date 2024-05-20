@@ -121,6 +121,13 @@ const DescWithLink = styled(P3)`
   color: ${colorGrayscale.gray600};
 `
 
+const InfoLinkItem = styled(InheritLinkButton)`
+  &,
+  &:visited {
+    color: inherit !important;
+  }
+`
+
 const IconList = styled.div`
   display: flex;
   gap: 16px;
@@ -145,7 +152,7 @@ const InfoLink = ({ releaseBranch = releaseBranchConsts.release }) => {
   const mainOrigin = origins.forClientSideRendering[releaseBranch].main
   return (
     <DescWithLink>
-      <InheritLinkButton
+      <InfoLinkItem
         text="許可協議"
         link={{
           isExternal: true,
@@ -155,7 +162,7 @@ const InfoLink = ({ releaseBranch = releaseBranchConsts.release }) => {
         type={InheritLinkButton.Type.UNDERLINE}
       />
       ｜
-      <InheritLinkButton
+      <InfoLinkItem
         text="隱私政策"
         link={{
           isExternal: true,
@@ -165,7 +172,7 @@ const InfoLink = ({ releaseBranch = releaseBranchConsts.release }) => {
         type={InheritLinkButton.Type.UNDERLINE}
       />
       ｜
-      <InheritLinkButton
+      <InfoLinkItem
         text="品牌規範"
         link={{
           isExternal: true,
