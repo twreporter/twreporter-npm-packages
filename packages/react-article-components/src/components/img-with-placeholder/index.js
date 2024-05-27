@@ -276,9 +276,11 @@ export default class Img extends React.PureComponent {
 
     const openFullScreen = () => {
       this.setState({ showFullScreenImg: true })
+      document.body.classList.add('disable-scroll')
     }
     const closeFullScreen = () => {
       this.setState({ showFullScreenImg: false })
+      document.body.classList.remove('disable-scroll')
     }
 
     const appendedClassName = className + ' avoid-break'
