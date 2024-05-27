@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.21.0...@twreporter/core@1.22.0-rc.0) (2024-05-27)
+
+
+### Features
+
+* article page show full screen image after click ([af25372](https://github.com/twreporter/twreporter-npm-packages/commit/af2537208ae236e2b8ea861ce32682295a52fd98))
+
+
+
+
+
 # [1.21.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.21.0-rc.3...@twreporter/core@1.21.0) (2024-05-20)
 
 **Note:** Version bump only for package @twreporter/core
