@@ -1,10 +1,20 @@
-import { getSrcsetString } from '../../utils/image'
-import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
-import PlaceholderIcon from '../../assets/img-with-placeholder/img-loading-placeholder.svg'
-import PropTypes from 'prop-types'
-import predefinedPropTypes from '../../constants/prop-types/img-with-placeholder'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
+import PropTypes from 'prop-types'
+// @twreporter
+import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
+import {
+  colorGrayscale,
+  colorOpacity,
+} from '@twreporter/core/lib/constants/color'
+import { DesktopAndAbove } from '@twreporter/react-components/lib/rwd'
+import { Cross } from '@twreporter/react-components/lib/icon'
+import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import zIndex from '@twreporter/core/src/constants/z-index'
+
+import { getSrcsetString } from '../../utils/image'
+import PlaceholderIcon from '../../assets/img-with-placeholder/img-loading-placeholder.svg'
+import predefinedPropTypes from '../../constants/prop-types/img-with-placeholder'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -88,6 +98,40 @@ const ImgBox = styled.div`
   }
 `
 
+const FullScreenImageMask = styled.div`
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${colorOpacity['black_0.5']};
+  z-index: ${zIndex.articleImgFullScreenMask};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const FullScreenImage = styled.div`
+  position: relative;
+  img {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+`
+
+const CrossIcon = styled.div`
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  /* padding 16px + width: 24px => 40px */
+  right: -40px;
+  height: 24px;
+  width: 24px;
+  svg {
+    background-color: ${colorGrayscale.white};
+  }
+`
+
 /**
  * An image element with placeholder.
  * The width and height of the image are required to preserve the space on the page for image.
@@ -96,6 +140,8 @@ const ImgBox = styled.div`
  * @extends {React.PureComponent}
  */
 export default class Img extends React.PureComponent {
+  static contextType = ThemeContext
+
   static propTypes = {
     alt: PropTypes.string,
     className: PropTypes.string,
@@ -135,6 +181,7 @@ export default class Img extends React.PureComponent {
     this.state = {
       isLoaded: false,
       toShowPlaceholder: true,
+      showFullScreenImg: false,
     }
     this._img = React.createRef()
     this.handleImageLoaded = this.handleImageLoaded.bind(this)
@@ -212,7 +259,7 @@ export default class Img extends React.PureComponent {
   }
 
   render() {
-    const { isLoaded } = this.state
+    const { isLoaded, showFullScreenImg } = this.state
     const {
       alt,
       className,
@@ -223,6 +270,18 @@ export default class Img extends React.PureComponent {
       objectPosition,
       sizes,
     } = this.props
+
+    const releaseBranch =
+      this?.context?.releaseBranch || releaseBranchConsts.release
+
+    const openFullScreen = () => {
+      this.setState({ showFullScreenImg: true })
+      document.body.classList.add('disable-scroll')
+    }
+    const closeFullScreen = () => {
+      this.setState({ showFullScreenImg: false })
+      document.body.classList.remove('disable-scroll')
+    }
 
     const appendedClassName = className + ' avoid-break'
     const defaultImageOriginalUrl = _.get(defaultImage, 'url')
@@ -253,51 +312,72 @@ export default class Img extends React.PureComponent {
     const defaultImageSrc = replaceGCSUrlOrigin(_.get(defaultImage, 'url'))
 
     return (
-      <ImgContainer
-        className={appendedClassName}
-        $heightString={
-          isObjectFit
-            ? `height: 100%;`
-            : `padding-top: ${heightWidthRatio * 100}%;`
-        }
-      >
-        {this._renderImagePlaceholder()}
-        <ImgBox $toShow={isLoaded}>
-          {isObjectFit ? (
-            <React.Fragment>
-              <ImgWithObjectFit
-                alt={alt}
-                $objectFit={objectFit}
-                $objectPosition={objectPosition}
-                onLoad={this.handleImageLoaded}
-                ref={this._img}
-                sizes={this._supportObjectFit ? sizes : ''}
-                src={defaultImageSrc}
-                srcSet={this._supportObjectFit ? srcset : ''}
-                hide={!this._supportObjectFit}
-                {...imgProps}
-              />
-              {this._supportObjectFit ? null : (
-                <FallbackObjectFitImg
-                  $url={_.get(defaultImage, 'url')}
+      <>
+        <ImgContainer
+          className={appendedClassName}
+          $heightString={
+            isObjectFit
+              ? `height: 100%;`
+              : `padding-top: ${heightWidthRatio * 100}%;`
+          }
+          onClick={openFullScreen}
+        >
+          {this._renderImagePlaceholder()}
+          <ImgBox $toShow={isLoaded}>
+            {isObjectFit ? (
+              <React.Fragment>
+                <ImgWithObjectFit
+                  alt={alt}
                   $objectFit={objectFit}
                   $objectPosition={objectPosition}
+                  onLoad={this.handleImageLoaded}
+                  ref={this._img}
+                  sizes={this._supportObjectFit ? sizes : ''}
+                  src={defaultImageSrc}
+                  srcSet={this._supportObjectFit ? srcset : ''}
+                  hide={!this._supportObjectFit}
+                  {...imgProps}
                 />
-              )}
-            </React.Fragment>
-          ) : (
-            <img
-              alt={alt}
-              onLoad={this.handleImageLoaded}
-              ref={this._img}
-              sizes={sizes}
-              src={defaultImageSrc}
-              srcSet={srcset}
-              {...imgProps}
-            />
-          )}
-        </ImgBox>
-      </ImgContainer>
+                {this._supportObjectFit ? null : (
+                  <FallbackObjectFitImg
+                    $url={_.get(defaultImage, 'url')}
+                    $objectFit={objectFit}
+                    $objectPosition={objectPosition}
+                  />
+                )}
+              </React.Fragment>
+            ) : (
+              <img
+                alt={alt}
+                onLoad={this.handleImageLoaded}
+                ref={this._img}
+                sizes={sizes}
+                src={defaultImageSrc}
+                srcSet={srcset}
+                {...imgProps}
+              />
+            )}
+          </ImgBox>
+        </ImgContainer>
+        {showFullScreenImg && (
+          <DesktopAndAbove>
+            <FullScreenImageMask onClick={closeFullScreen}>
+              <FullScreenImage>
+                <img
+                  alt={alt}
+                  ref={this._img}
+                  sizes={sizes}
+                  src={defaultImageSrc}
+                  srcSet={srcset}
+                />
+                <CrossIcon>
+                  <Cross releaseBranch={releaseBranch} />
+                </CrossIcon>
+              </FullScreenImage>
+            </FullScreenImageMask>
+          </DesktopAndAbove>
+        )}
+      </>
     )
   }
 }

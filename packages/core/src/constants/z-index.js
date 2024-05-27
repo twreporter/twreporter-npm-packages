@@ -1,5 +1,6 @@
 export default {
   topBanner: 9999, // use in GTM
+  articleImgFullScreenMask: 7000,
   loadingCover: 6000,
   popup: 5000,
   hamburgerMenu: 4000,
