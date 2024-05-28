@@ -229,6 +229,7 @@ export default class LeadingBlock extends PureComponent {
               objectFit="cover"
               objectPostion="center center"
               sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
+              clickable={true}
             />
           </FigureBlock>
         </ContentBlock>
