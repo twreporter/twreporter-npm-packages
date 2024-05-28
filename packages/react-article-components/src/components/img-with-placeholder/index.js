@@ -162,6 +162,7 @@ export default class Img extends React.PureComponent {
     ]),
     objectPosition: PropTypes.string,
     sizes: PropTypes.string.isRequired,
+    clickable: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -174,6 +175,7 @@ export default class Img extends React.PureComponent {
     placeholderNoBlur: false,
     noImgPlaceholder: false,
     sizes: '',
+    clickable: false,
   }
 
   constructor(props) {
@@ -269,12 +271,14 @@ export default class Img extends React.PureComponent {
       objectFit,
       objectPosition,
       sizes,
+      clickable,
     } = this.props
 
     const releaseBranch =
       this?.context?.releaseBranch || releaseBranchConsts.release
 
     const openFullScreen = () => {
+      if (!clickable) return
       this.setState({ showFullScreenImg: true })
       document.body.classList.add('disable-scroll')
     }

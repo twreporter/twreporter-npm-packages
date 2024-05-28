@@ -233,6 +233,7 @@ export default class NormalLeading extends React.PureComponent {
               imageSet={[poster.mobile, poster.tablet, poster.desktop]}
               defaultImage={poster.mobile}
               sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
+              clickable={true}
             />
             {figureCaption ? <FigCaption>{figureCaption}</FigCaption> : null}
           </Figure>

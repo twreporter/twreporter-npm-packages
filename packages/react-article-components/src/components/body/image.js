@@ -42,6 +42,7 @@ export default class Image extends PureComponent {
             imgProps={imgProps}
             imageSet={[image.mobile, image.tablet, image.desktop, image.tiny]}
             defaultImage={image.mobile}
+            clickable={true}
             /* TODO: add sizes */
           />
           {caption ? <Caption itemprop="description">{caption}</Caption> : null}
