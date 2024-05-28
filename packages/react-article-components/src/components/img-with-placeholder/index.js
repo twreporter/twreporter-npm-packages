@@ -10,7 +10,7 @@ import {
 import { DesktopAndAbove } from '@twreporter/react-components/lib/rwd'
 import { Cross } from '@twreporter/react-components/lib/icon'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
-import zIndex from '@twreporter/core/src/constants/z-index'
+import zIndex from '@twreporter/core/lib/constants/z-index'
 
 import { getSrcsetString } from '../../utils/image'
 import PlaceholderIcon from '../../assets/img-with-placeholder/img-loading-placeholder.svg'
