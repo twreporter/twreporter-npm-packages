@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.0-rc.1...@twreporter/react-article-components@2.1.0-rc.2) (2024-05-28)
+
+
+### Bug Fixes
+
+* add clickable prop for image ([fcf3d6c](https://github.com/twreporter/twreporter-npm-packages/commit/fcf3d6c5ba152936f24ee8eb33745f856b22bf0f))
+
+
+
+
+
+# [2.1.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.0-rc.0...@twreporter/react-article-components@2.1.0-rc.1) (2024-05-28)
+
+
+### Bug Fixes
+
+* src => lib ([16f42fd](https://github.com/twreporter/twreporter-npm-packages/commit/16f42fd5ce8c0db9014df27bd18d2009714a6e68))
+
+
+
+
+
+# [2.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0...@twreporter/react-article-components@2.1.0-rc.0) (2024-05-27)
+
+
+### Features
+
+* article page show full screen image after click ([af25372](https://github.com/twreporter/twreporter-npm-packages/commit/af2537208ae236e2b8ea861ce32682295a52fd98))
+* disable body scroll while image open ([46f35df](https://github.com/twreporter/twreporter-npm-packages/commit/46f35dffea145fa54a6ab981864207d5650aac1a))
+
+
+
+
+
 # [2.0.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.5...@twreporter/react-article-components@2.0.0) (2024-05-20)
 
 **Note:** Version bump only for package @twreporter/react-article-components
