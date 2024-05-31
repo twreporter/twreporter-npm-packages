@@ -25,6 +25,7 @@ const _ = {
 const embedNamespace = {
   infogram: 'infogram',
   twreporter: '__twreporterEmbeddedData',
+  storyTellingReporter: '@story-telling-reporter',
 }
 
 export const Block = styled.div`
@@ -98,12 +99,24 @@ class EmbeddedCode extends React.PureComponent {
   }
 
   componentDidMount() {
-    // Delay loading infogram in loadEmbed()
-    if (!this._embeddedCodeWithoutScript?.includes(embedNamespace.infogram)) {
-      this.setState({ isLoaded: true }, this.executeScript)
-    }
+    //  !! WORKAROUND !!
+    //  After upgrading to react v18,
+    //  `EmbeddedCode` component becomes abnormal.
+    //  One case is that `EmbeddedCode` will `executeScript()` twice.
+    //  Therefore, the embedded code will generate duplicate contents.
+    //
+    //  To avoid `executeScript()` twice,
+    //  temporarily comment out the following condition.
+    //
+    //  Delay loading infogram in loadEmbed()
+    // if (!this._embeddedCodeWithoutScript?.includes(embedNamespace.infogram)) {
+    //   this.setState({ isLoaded: true }, this.executeScript)
+    // }
     // Deliberately set z-index for embeded from @twreporter
-    if (this._embeddedCode?.includes(embedNamespace.twreporter)) {
+    if (
+      this._embeddedCode?.includes(embedNamespace.twreporter) ||
+      this._embeddedCode?.includes(embedNamespace.storyTellingReporter)
+    ) {
       this.setState({ shouldEscalateZIndex: true })
     }
   }
@@ -221,7 +234,7 @@ const WayPointWrapper = props => {
       onEnter={onEnter}
       onLeave={onLeave}
       fireOnRapidScroll={false}
-      topOffset={5}
+      topOffset="-150%"
     >
       <div>
         <EmbeddedCode {...props} ref={embedRef} />
