@@ -234,7 +234,8 @@ const WayPointWrapper = props => {
       onEnter={onEnter}
       onLeave={onLeave}
       fireOnRapidScroll={false}
-      topOffset="-150%"
+      topOffset={5}
+      bottomOffset="-100%"
     >
       <div>
         <EmbeddedCode {...props} ref={embedRef} />
