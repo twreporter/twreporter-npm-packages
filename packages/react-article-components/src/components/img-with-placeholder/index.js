@@ -11,6 +11,7 @@ import { DesktopAndAbove } from '@twreporter/react-components/lib/rwd'
 import { Cross } from '@twreporter/react-components/lib/icon'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import zIndex from '@twreporter/core/lib/constants/z-index'
+import { DEFAULT_SCREEN } from '@twreporter/core/lib/utils/media-query'
 
 import { getSrcsetString } from '../../utils/image'
 import PlaceholderIcon from '../../assets/img-with-placeholder/img-loading-placeholder.svg'
@@ -18,10 +19,12 @@ import predefinedPropTypes from '../../constants/prop-types/img-with-placeholder
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
+import debounce from 'lodash/debounce'
 
 const _ = {
   get,
   map,
+  debounce,
 }
 
 const objectFitConsts = {
@@ -184,9 +187,13 @@ export default class Img extends React.PureComponent {
       isLoaded: false,
       toShowPlaceholder: true,
       showFullScreenImg: false,
+      isMobile: false,
     }
     this._img = React.createRef()
     this.handleImageLoaded = this.handleImageLoaded.bind(this)
+    this.handleWindowResize = _.debounce(this._handleWindowResize, 500).bind(
+      this
+    )
     this._isMounted = false
     this._supportObjectFit = true
   }
@@ -202,10 +209,21 @@ export default class Img extends React.PureComponent {
     if (_.get(this._img.current, 'complete')) {
       this.handleImageLoaded()
     }
+    window.addEventListener('resize', this.handleWindowResize)
+    this.handleWindowResize()
   }
 
   componentWillUnmount() {
     this._isMounted = false
+    window.removeEventListener('resize', this.handleWindowResize)
+  }
+
+  _handleWindowResize = () => {
+    const windowWidth = window.innerWidth
+
+    this.setState({
+      isMobile: windowWidth < DEFAULT_SCREEN.tablet.minWidth,
+    })
   }
 
   handleImageLoaded() {
@@ -261,7 +279,7 @@ export default class Img extends React.PureComponent {
   }
 
   render() {
-    const { isLoaded, showFullScreenImg } = this.state
+    const { isLoaded, showFullScreenImg, isMobile } = this.state
     const {
       alt,
       className,
@@ -278,7 +296,7 @@ export default class Img extends React.PureComponent {
       this?.context?.releaseBranch || releaseBranchConsts.release
 
     const openFullScreen = () => {
-      if (!clickable) return
+      if (isMobile) return
       this.setState({ showFullScreenImg: true })
       document.body.classList.add('disable-scroll')
     }
@@ -324,7 +342,7 @@ export default class Img extends React.PureComponent {
               ? `height: 100%;`
               : `padding-top: ${heightWidthRatio * 100}%;`
           }
-          onClick={openFullScreen}
+          onClick={clickable ? openFullScreen : undefined}
         >
           {this._renderImagePlaceholder()}
           <ImgBox $toShow={isLoaded}>
