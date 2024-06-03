@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-export const defaultScreen = {
+export const DEFAULT_SCREEN = Object.freeze({
   tablet: {
     minWidth: 768,
   },
@@ -10,9 +10,9 @@ export const defaultScreen = {
   hd: {
     minWidth: 1440,
   },
-}
+})
 
-export function getMediaQueryUtil(screen = defaultScreen) {
+export function getMediaQueryUtil(screen = DEFAULT_SCREEN) {
   return {
     mobileOnly: (...args) => css`
       @media (max-width: ${screen.tablet.minWidth - 1}px) {
@@ -59,6 +59,6 @@ export function getMediaQueryUtil(screen = defaultScreen) {
   }
 }
 
-const defaultMq = getMediaQueryUtil(defaultScreen)
+const defaultMq = getMediaQueryUtil(DEFAULT_SCREEN)
 
 export default defaultMq
