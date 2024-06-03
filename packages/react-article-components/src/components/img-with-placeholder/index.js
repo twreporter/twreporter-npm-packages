@@ -222,7 +222,7 @@ export default class Img extends React.PureComponent {
     const windowWidth = window.innerWidth
 
     this.setState({
-      isMobile: windowWidth < DEFAULT_SCREEN.tablet,
+      isMobile: windowWidth < DEFAULT_SCREEN.tablet.minWidth,
     })
   }
 
