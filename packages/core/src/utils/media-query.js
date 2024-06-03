@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-const defaultScreen = {
+export const defaultScreen = {
   tablet: {
     minWidth: 768,
   },

@@ -11,6 +11,7 @@ import { DesktopAndAbove } from '@twreporter/react-components/lib/rwd'
 import { Cross } from '@twreporter/react-components/lib/icon'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
 import zIndex from '@twreporter/core/lib/constants/z-index'
+import { defaultScreen } from '@twreporter/core/lib/utils/media-query'
 
 import { getSrcsetString } from '../../utils/image'
 import PlaceholderIcon from '../../assets/img-with-placeholder/img-loading-placeholder.svg'
@@ -221,7 +222,7 @@ export default class Img extends React.PureComponent {
     const windowWidth = window.innerWidth
 
     this.setState({
-      isMobile: windowWidth <= 767,
+      isMobile: windowWidth < defaultScreen.tablet,
     })
   }
 
