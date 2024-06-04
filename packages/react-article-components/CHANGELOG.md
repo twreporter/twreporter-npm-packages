@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.1-rc.0...@twreporter/react-article-components@2.1.1-rc.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* **rac:** update embedded-code.js. Avoid `executeScript()` twice ([2a44dfb](https://github.com/twreporter/twreporter-npm-packages/commit/2a44dfb0a7c95a8bff2cc07a0c494d83e08879be))
+
+
+
+
+
 ## [2.1.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.0...@twreporter/react-article-components@2.1.1-rc.0) (2024-06-03)
 
 
