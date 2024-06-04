@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.22.0...@twreporter/core@1.22.1-rc.0) (2024-06-03)
+
+
+### Bug Fixes
+
+* follow style guide ([c71f9a0](https://github.com/twreporter/twreporter-npm-packages/commit/c71f9a02d29c1c255dd62ce1cd442d812b12f06b))
+* use core screen tablet value ([25c0b9a](https://github.com/twreporter/twreporter-npm-packages/commit/25c0b9a2c7c558f18ad3e2b35da1068da503155b))
+
+
+
+
+
 # [1.22.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.22.0-rc.0...@twreporter/core@1.22.0) (2024-05-30)
 
 **Note:** Version bump only for package @twreporter/core
