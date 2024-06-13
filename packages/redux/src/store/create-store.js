@@ -1,8 +1,7 @@
-import { createStore as _createStore, applyMiddleware, compose } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import axios from 'axios'
-import bindActionsToStore from './bind-actions-to-store'
 import rootReducer from '../reducers'
-import thunkMiddleware from 'redux-thunk'
+import { bindActionsToStore } from './bind-actions-to-store'
 
 /**
  * Create a redux store with custom setting
@@ -26,19 +25,22 @@ export default function createStore(
       axios.create({
         withCredentials: true,
       })
-  const composeEnhancers =
-    (typeof window !== 'undefined' &&
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-    compose
-  const storeEnhancer = composeEnhancers(
-    // NOTICE:
-    // `bindActionsToStore` should be former than
-    // `applyMiddleware(thunkMiddleware.withExtraArgument({ httpClientWithToken }))`.
-    // Otherwise, store.actions dispatch won't be enhanced by redux-thunk middleware.
-    bindActionsToStore,
-    applyMiddleware(thunkMiddleware.withExtraArgument({ httpClientWithToken }))
-  )
-  const store = _createStore(rootReducer, initialState, storeEnhancer)
+
+  const store = configureStore({
+    reducer: rootReducer,
+    preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: { httpClientWithToken },
+        },
+      }),
+    devTools: isDev,
+  })
+
+  // Bind actions to the store after creation
+  bindActionsToStore(store)
+
   if (isDev && module.hot) {
     // Enable Webpack hot module replacement for reducers
     // Or it will cause multiple store instances to show in Redux Dev Tools.
@@ -46,5 +48,6 @@ export default function createStore(
       store.replaceReducer(require('../reducers').default)
     })
   }
+
   return store
 }
