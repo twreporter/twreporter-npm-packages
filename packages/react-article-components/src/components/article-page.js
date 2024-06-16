@@ -29,6 +29,7 @@ import ToolBar from './aside/mobile-tool-bar'
 // lodash
 import get from 'lodash/get'
 import throttle from 'lodash/throttle'
+import { Provider } from 'react-redux'
 const _ = {
   get,
   throttle,
@@ -306,6 +307,7 @@ export default class Article extends PureComponent {
     loadMoreRelateds: PropTypes.func,
     releaseBranch: predefinedPropTypes.releaseBranch,
     onToggleTabExpanded: PropTypes.func,
+    store: PropTypes.object,
   }
 
   static defaultProps = {
@@ -409,6 +411,7 @@ export default class Article extends PureComponent {
       loadMoreRelateds,
       releaseBranch,
       onToggleTabExpanded,
+      store,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -456,77 +459,79 @@ export default class Article extends PureComponent {
     )
 
     return (
-      <ThemeProvider
-        theme={{
-          name: _.get(post, 'style', themeConst.article.v2.default),
-          colors: uiManager.getThemeColors(),
-          fontSizeOffset: this.getFontSizeOffset(fontLevel),
-          releaseBranch,
-        }}
-      >
-        <DynamicComponentsContext.Provider value={{ Link: LinkComponent }}>
-          <BackgroundBlock>
-            <LeadingBlock>
-              <LeadingComponent {...leadingProps} />
-              <SeprationLine
-                $visible={uiManager.toRenderSeparationLineBetweenLeadingAndBody()}
-              />
-            </LeadingBlock>
-            <BodyBackground>
-              <BodyBlock>
-                <MobileToolBar
-                  className={'hidden-print'}
-                  backToTopic={backToTopic}
-                  articleMetaForBookmark={articleMetaForBookmark}
-                  onFontLevelChange={this.changeFontLevel}
-                  scrollStage={this.state.scrollStage}
+      <Provider store={store}>
+        <ThemeProvider
+          theme={{
+            name: _.get(post, 'style', themeConst.article.v2.default),
+            colors: uiManager.getThemeColors(),
+            fontSizeOffset: this.getFontSizeOffset(fontLevel),
+            releaseBranch,
+          }}
+        >
+          <DynamicComponentsContext.Provider value={{ Link: LinkComponent }}>
+            <BackgroundBlock>
+              <LeadingBlock>
+                <LeadingComponent {...leadingProps} />
+                <SeprationLine
+                  $visible={uiManager.toRenderSeparationLineBetweenLeadingAndBody()}
                 />
-                <DesktopAsideBlock>
-                  <DesktopAside
+              </LeadingBlock>
+              <BodyBackground>
+                <BodyBlock>
+                  <MobileToolBar
+                    className={'hidden-print'}
                     backToTopic={backToTopic}
-                    categorySet={post.category_set}
-                    date={post.published_date}
-                    designers={post.designers}
-                    photographers={post.photographers}
-                    tags={post.tags}
-                    writers={post.writers}
-                    engineers={post.engineers}
-                    rawAutherText={post.extend_byline}
-                    onFontLevelChange={this.changeFontLevel}
                     articleMetaForBookmark={articleMetaForBookmark}
-                  />
-                </DesktopAsideBlock>
-                {metadataAndToolsJSX}
-                <ContentBlock>
-                  <Body
-                    key={_.get(post, 'slug', 'article-page-body-key')}
-                    brief={_.get(post, 'brief.api_data')}
-                    content={_.get(post, 'content.api_data')}
-                    onToggleTabExpanded={onToggleTabExpanded}
+                    onFontLevelChange={this.changeFontLevel}
                     scrollStage={this.state.scrollStage}
                   />
-                </ContentBlock>
-                {metadataAndToolsJSX}
-              </BodyBlock>
-              <DonationBox />
-              <License
-                license={post.copyright}
-                publishedDate={post.published_date}
-                id={RELATED_POST_ANCHOR_ID} // current scroll to releated post anchor
-              />
-              <StyledSeparationCurve />
-              <RelatedBlock>
-                <Related
-                  id={post.id}
-                  data={relatedPosts}
-                  hasMore={hasMoreRelateds}
-                  loadMore={loadMoreRelateds}
+                  <DesktopAsideBlock>
+                    <DesktopAside
+                      backToTopic={backToTopic}
+                      categorySet={post.category_set}
+                      date={post.published_date}
+                      designers={post.designers}
+                      photographers={post.photographers}
+                      tags={post.tags}
+                      writers={post.writers}
+                      engineers={post.engineers}
+                      rawAutherText={post.extend_byline}
+                      onFontLevelChange={this.changeFontLevel}
+                      articleMetaForBookmark={articleMetaForBookmark}
+                    />
+                  </DesktopAsideBlock>
+                  {metadataAndToolsJSX}
+                  <ContentBlock>
+                    <Body
+                      key={_.get(post, 'slug', 'article-page-body-key')}
+                      brief={_.get(post, 'brief.api_data')}
+                      content={_.get(post, 'content.api_data')}
+                      onToggleTabExpanded={onToggleTabExpanded}
+                      scrollStage={this.state.scrollStage}
+                    />
+                  </ContentBlock>
+                  {metadataAndToolsJSX}
+                </BodyBlock>
+                <DonationBox />
+                <License
+                  license={post.copyright}
+                  publishedDate={post.published_date}
+                  id={RELATED_POST_ANCHOR_ID} // current scroll to releated post anchor
                 />
-              </RelatedBlock>
-            </BodyBackground>
-          </BackgroundBlock>
-        </DynamicComponentsContext.Provider>
-      </ThemeProvider>
+                <StyledSeparationCurve />
+                <RelatedBlock>
+                  <Related
+                    id={post.id}
+                    data={relatedPosts}
+                    hasMore={hasMoreRelateds}
+                    loadMore={loadMoreRelateds}
+                  />
+                </RelatedBlock>
+              </BodyBackground>
+            </BackgroundBlock>
+          </DynamicComponentsContext.Provider>
+        </ThemeProvider>
+      </Provider>
     )
   }
 }
