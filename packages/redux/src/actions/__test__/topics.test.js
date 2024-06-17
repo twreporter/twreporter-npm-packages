@@ -13,7 +13,7 @@ import fieldNames from '../../constants/redux-state-field-names'
 import httpProtocolConsts from '../../constants/http-protocol'
 import nock from 'nock'
 import pagination from '../../utils/pagination'
-import thunk from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 import types from '../../constants/action-types'
 import { expectActionErrorObj } from './expect-utils'
 

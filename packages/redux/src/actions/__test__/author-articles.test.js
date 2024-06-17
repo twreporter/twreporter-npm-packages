@@ -6,7 +6,7 @@ import actionTypes from '../../constants/action-types'
 import configureMockStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
 import nock from 'nock'
-import thunk from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 
 // all constants
 const middlewares = [thunk]

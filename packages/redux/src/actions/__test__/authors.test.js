@@ -3,7 +3,7 @@ import * as actions from '../../../src/actions/authors'
 import configureMockStore from 'redux-mock-store'
 import nock from 'nock'
 import stateFieldNames from '../../constants/redux-state-field-names'
-import thunk from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 import types from '../../constants/action-types'
 import { expectActionErrorObj } from './expect-utils'
 import {

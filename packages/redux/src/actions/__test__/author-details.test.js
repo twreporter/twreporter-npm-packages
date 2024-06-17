@@ -8,7 +8,7 @@ import actionTypes from '../../constants/action-types'
 import configureStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
 import nock from 'nock'
-import thunk from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 
 const mockStore = configureStore([thunk])
 

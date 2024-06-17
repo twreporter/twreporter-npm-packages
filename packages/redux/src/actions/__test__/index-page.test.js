@@ -9,7 +9,7 @@ import * as actions from '../index-page'
 import configureMockStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
 import nock from 'nock'
-import thunk from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 import types from '../../constants/action-types'
 import { expectActionErrorObj } from './expect-utils'
 

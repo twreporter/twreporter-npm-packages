@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store'
 import fieldNames from '../../constants/redux-state-field-names'
 import apiEndpoints from '../../constants/api-endpoints'
 import nock from 'nock'
-import thunk from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 
 import {
   mockUserId,
