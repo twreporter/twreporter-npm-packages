@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.3-rc.0...@twreporter/react-components@9.1.0-rc.0) (2024-06-18)
+
+
+### Features
+
+* **react-components:** use react-redux hook ([37ad2c9](https://github.com/twreporter/twreporter-npm-packages/commit/37ad2c91dac5a40a6d617491402e21da74534855))
+
+
+
+
+
 ## [9.0.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.2...@twreporter/react-components@9.0.3-rc.0) (2024-06-18)
 
 
