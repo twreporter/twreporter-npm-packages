@@ -1,5 +1,5 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { useSelector } from 'react-redux'
 import HeaderContext from '../contexts/header-context'
 // constant
 import { CONTEXT_PROP } from '../constants/prop-types'
@@ -15,148 +15,120 @@ const HIDE_HEADER_THRESHOLD = 8
 const TRANSFORM_HEADER_THRESHOLD = 40
 const TRANSFORM_TIMEOUT = 800
 
-class Container extends React.PureComponent {
-  static defaultProps = {
-    ...CONTEXT_PROP.defaultProps,
-  }
-  static propTypes = {
-    ...CONTEXT_PROP.propTypes,
-  }
+const Container = ({
+  releaseBranch,
+  isLinkExternal,
+  theme,
+  pathname,
+  referrerPath,
+  hamburgerContext,
+}) => {
+  const [toUseNarrow, setToUseNarrow] = useState(false)
+  const [hideHeader, setHideHeader] = useState(false)
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      toUseNarrow: false,
-      hideHeader: false,
-    }
-    this.lastKnownPageYOffset = 0
-    this.ticking = false
-    this.handleScroll = this.__handleScroll.bind(this)
+  const isAuthed = useSelector(state => _.get(state, 'auth.isAuthed', false))
 
-    // Below parameters are used to calculate scroll transform status.
-    this.currentY = 0
-    this.readyY = 0
-    this.isTransforming = false
-    this.transformTimer = null
-  }
+  const lastKnownPageYOffset = useRef(0)
+  const ticking = useRef(false)
+  const currentY = useRef(0)
+  const readyY = useRef(0)
+  const isTransforming = useRef(false)
+  const transformTimer = useRef(null)
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll, { passive: true })
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
-    this.lastKnownPageYOffset = null
-    this.ticking = null
-    this.handleScroll = null
-    this.currentY = null
-    this.readyY = null
-    this.isTransforming = null
-    this.transformTimer = null
-  }
-
-  /**
-   * Wrap __handleScroll() with requestAnimationFrame() to avoid triggering browser reflow due to reading window.pageYOffset.
-   * ref: https://developer.mozilla.org/en-US/docs/web/api/document/scroll_event#Example
-   */
-  __handleScroll() {
-    this.lastKnownPageYOffset = window.pageYOffset
-    if (!this.ticking) {
+  const handleScroll = useCallback(() => {
+    lastKnownPageYOffset.current = window.pageYOffset
+    if (!ticking.current) {
       window.requestAnimationFrame(() => {
-        this.__updateScrollState(this.lastKnownPageYOffset)
-        this.ticking = false
+        updateScrollState(lastKnownPageYOffset.current)
+        ticking.current = false
       })
-      this.ticking = true
+      ticking.current = true
     }
-  }
+  }, [])
 
-  __updateScrollState(currentScrollTop) {
-    const scrollDirection = currentScrollTop > this.currentY ? 'down' : 'up'
-    this.currentY = currentScrollTop
-    const updateState = this.__getScrollState(currentScrollTop, scrollDirection)
-    this.setState(updateState)
-  }
+  const updateScrollState = useCallback(currentScrollTop => {
+    const scrollDirection = currentScrollTop > currentY.current ? 'down' : 'up'
+    currentY.current = currentScrollTop
+    const updateState = getScrollState(currentScrollTop, scrollDirection)
+    setToUseNarrow(updateState.toUseNarrow)
+    setHideHeader(updateState.hideHeader)
+  }, [])
 
-  __getScrollState(scrollTop, scrollDirection) {
-    const isCurrentNarrow = this.state.toUseNarrow
-    const nextToUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD
-    let scrollState = {}
+  const getScrollState = useCallback(
+    (scrollTop, scrollDirection) => {
+      const isCurrentNarrow = toUseNarrow
+      const nextToUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD
+      let scrollState = {}
 
-    if (this.isTransforming) {
+      if (isTransforming.current) {
+        return scrollState
+      }
+
+      if (scrollDirection === 'up') {
+        readyY.current = scrollTop
+        scrollState.hideHeader = false
+      }
+
+      if (scrollDirection === 'down') {
+        if (
+          isCurrentNarrow &&
+          scrollTop - readyY.current > HIDE_HEADER_THRESHOLD
+        ) {
+          scrollState.hideHeader = true
+        }
+      }
+
+      if (isCurrentNarrow) {
+        scrollState.toUseNarrow =
+          scrollDirection === 'down' ? true : nextToUseNarrow
+      } else {
+        scrollState.toUseNarrow =
+          scrollDirection === 'up' ? false : nextToUseNarrow
+      }
+
+      if (isCurrentNarrow !== scrollState.toUseNarrow) {
+        if (!transformTimer.current) {
+          isTransforming.current = true
+          transformTimer.current = setTimeout(() => {
+            isTransforming.current = false
+            readyY.current = currentY.current
+            transformTimer.current = null
+          }, TRANSFORM_TIMEOUT)
+        }
+      }
+
       return scrollState
-    }
+    },
+    [toUseNarrow]
+  )
 
-    if (scrollDirection === 'up') {
-      this.readyY = scrollTop
-      scrollState.hideHeader = false
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
     }
+  }, [handleScroll])
 
-    if (scrollDirection === 'down') {
-      // after transforming to narrow header, header should hide when scroll down
-      if (isCurrentNarrow && scrollTop - this.readyY > HIDE_HEADER_THRESHOLD) {
-        scrollState.hideHeader = true
-      }
-    }
-
-    if (isCurrentNarrow) {
-      // after transforming to narrow header, always remain narrow when scroll down
-      scrollState.toUseNarrow =
-        scrollDirection === 'down' ? true : nextToUseNarrow
-    } else {
-      // after transfroming to wide header, always remain wide when scroll up
-      scrollState.toUseNarrow =
-        scrollDirection === 'up' ? false : nextToUseNarrow
-    }
-
-    // register transform timer to mark header transform status
-    if (isCurrentNarrow !== scrollState.toUseNarrow) {
-      if (!this.transformTimer) {
-        this.isTransforming = true
-        this.transformTimer = setTimeout(() => {
-          this.isTransforming = false
-          this.readyY = this.currentY
-          this.transformTimer = null
-        }, TRANSFORM_TIMEOUT)
-      }
-    }
-
-    return scrollState
+  const contextValue = {
+    releaseBranch,
+    isAuthed,
+    isLinkExternal,
+    theme,
+    pathname,
+    referrerPath,
+    toUseNarrow,
+    hideHeader,
   }
 
-  render() {
-    const {
-      releaseBranch,
-      isAuthed,
-      isLinkExternal,
-      theme,
-      pathname,
-      referrerPath,
-      hamburgerContext,
-    } = this.props
-    const { toUseNarrow, hideHeader } = this.state
-    const contextValue = {
-      releaseBranch,
-      isAuthed,
-      isLinkExternal,
-      theme,
-      pathname,
-      referrerPath,
-      toUseNarrow,
-      hideHeader,
-    }
-
-    return (
-      <HeaderContext.Provider value={contextValue}>
-        <Header hamburgerContext={hamburgerContext} />
-      </HeaderContext.Provider>
-    )
-  }
+  return (
+    <HeaderContext.Provider value={contextValue}>
+      <Header hamburgerContext={hamburgerContext} />
+    </HeaderContext.Provider>
+  )
 }
 
-function mapStateToProps(state) {
-  return {
-    isAuthed: _.get(state, 'auth.isAuthed', false),
-  }
+Container.propTypes = {
+  ...CONTEXT_PROP.propTypes,
 }
 
-export default connect(mapStateToProps)(Container)
+export default Container
