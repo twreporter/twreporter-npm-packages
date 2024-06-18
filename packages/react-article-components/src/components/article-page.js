@@ -306,6 +306,7 @@ export default class Article extends PureComponent {
     loadMoreRelateds: PropTypes.func,
     releaseBranch: predefinedPropTypes.releaseBranch,
     onToggleTabExpanded: PropTypes.func,
+    trackingSection: PropTypes.array,
   }
 
   static defaultProps = {
@@ -317,6 +318,7 @@ export default class Article extends PureComponent {
     loadMoreRelateds: noop,
     releaseBranch: releaseBranchConsts.master,
     onToggleTabExpanded: () => {},
+    trackingSection: [],
   }
 
   changeFontLevel = () => {
@@ -409,6 +411,7 @@ export default class Article extends PureComponent {
       loadMoreRelateds,
       releaseBranch,
       onToggleTabExpanded,
+      trackingSection,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -504,6 +507,7 @@ export default class Article extends PureComponent {
                     content={_.get(post, 'content.api_data')}
                     onToggleTabExpanded={onToggleTabExpanded}
                     scrollStage={this.state.scrollStage}
+                    trackingSection={trackingSection}
                   />
                 </ContentBlock>
                 {metadataAndToolsJSX}

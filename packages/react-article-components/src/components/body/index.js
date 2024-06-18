@@ -22,6 +22,8 @@ import Slideshow from './slideshow'
 import styled, { css } from 'styled-components'
 import TOC from '../table-of-contents'
 import Youtube from './youtube'
+import TrackingSection from './tracking-section'
+
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
@@ -279,6 +281,11 @@ const ClearFloat = styled.div`
   ${clearFloatCSS}
 `
 
+const StyledTrackingSection = styled.div`
+  ${normalWidthCSS};
+  margin: 40px auto 48px;
+`
+
 /**
  *  Element Data
  *  See `elementData` in `src/constants/prop-types/body.js`
@@ -418,6 +425,12 @@ export function renderElement(data = {}, isScrollingToAnchor) {
       return <StyledSlideshow key={data.id} data={data} />
     case 'youtube':
       return <StyledYoutube key={data.id} data={data} />
+    case 'tracking-section':
+      return (
+        <StyledTrackingSection key={data.id}>
+          <TrackingSection data={data} />
+        </StyledTrackingSection>
+      )
     default:
       return <StyledParagraph key={data.id} data={data} />
   }
@@ -429,6 +442,8 @@ export default class Body extends Component {
     content: PropTypes.arrayOf(predefinedPropTypes.elementData),
     onToggleTabExpanded: PropTypes.func,
     scrollStage: PropTypes.number,
+    // for tracking section feature toggle
+    trackingSection: PropTypes.array,
   }
 
   static defaultProps = {
@@ -436,6 +451,7 @@ export default class Body extends Component {
     content: [],
     onToggleTabExpanded: () => {},
     scollStage: 1,
+    trackingSection: [],
   }
 
   constructor(props) {
@@ -495,11 +511,33 @@ export default class Body extends Component {
   }
 
   render() {
-    const { brief, content, onToggleTabExpanded, scrollStage } = this.props
+    const {
+      brief,
+      content,
+      onToggleTabExpanded,
+      scrollStage,
+      trackingSection,
+    } = this.props
+    const trackingSectionHeaderOne = {
+      type: 'header-one',
+      content: ['後續與迴響'],
+    }
     let enableTOC = false
+    let renderContent = null
+    if (Array.isArray(content)) {
+      if (Array.isArray(trackingSection) && trackingSection.length > 0) {
+        renderContent = [
+          ...content,
+          trackingSectionHeaderOne,
+          ...trackingSection,
+        ]
+      } else {
+        renderContent = [...content]
+      }
+    }
 
-    const contentJsx = Array.isArray(content)
-      ? _.map(content, (data, index) => {
+    const contentJsx = Array.isArray(renderContent)
+      ? _.map(renderContent, (data, index) => {
           const elementJSX = this._buildContentElement(data, index)
           if (data.type === 'header-one') {
             enableTOC = true
