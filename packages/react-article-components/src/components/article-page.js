@@ -308,6 +308,7 @@ export default class Article extends PureComponent {
     releaseBranch: predefinedPropTypes.releaseBranch,
     onToggleTabExpanded: PropTypes.func,
     store: PropTypes.object,
+    trackingSection: PropTypes.array,
   }
 
   static defaultProps = {
@@ -319,6 +320,7 @@ export default class Article extends PureComponent {
     loadMoreRelateds: noop,
     releaseBranch: releaseBranchConsts.master,
     onToggleTabExpanded: () => {},
+    trackingSection: [],
   }
 
   changeFontLevel = () => {
@@ -412,6 +414,7 @@ export default class Article extends PureComponent {
       releaseBranch,
       onToggleTabExpanded,
       store,
+      trackingSection,
     } = this.props
 
     const articleMetaForBookmark = {
@@ -484,6 +487,7 @@ export default class Article extends PureComponent {
                     articleMetaForBookmark={articleMetaForBookmark}
                     onFontLevelChange={this.changeFontLevel}
                     scrollStage={this.state.scrollStage}
+                    trackingSection={trackingSection}
                   />
                   <DesktopAsideBlock>
                     <DesktopAside

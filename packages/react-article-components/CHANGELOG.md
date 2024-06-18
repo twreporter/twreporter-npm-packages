@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.2-rc.1...@twreporter/react-article-components@2.2.0-rc.0) (2024-06-18)
+
+
+### Bug Fixes
+
+* **react-article-component:** fix tracking section propTypes ([9bf13d3](https://github.com/twreporter/twreporter-npm-packages/commit/9bf13d32a23d1907283e05ec904ccee1c55b2aa0))
+
+
+### Features
+
+* add tracking section for article components ([669d39d](https://github.com/twreporter/twreporter-npm-packages/commit/669d39d4046456299feb3bbf254eda134987d063))
+
+
+
+
+
+## [2.1.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.2-rc.0...@twreporter/react-article-components@2.1.2-rc.1) (2024-06-18)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
+## [2.1.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.1...@twreporter/react-article-components@2.1.2-rc.0) (2024-06-18)
+
+
+### Bug Fixes
+
+* hide share option when hide toolbar ([5a19130](https://github.com/twreporter/twreporter-npm-packages/commit/5a191309e8f014fb97c8c36d304920c1cb10bf75))
+
+
+
+
+
 ## [2.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.1-rc.1...@twreporter/react-article-components@2.1.1) (2024-06-04)
 
 **Note:** Version bump only for package @twreporter/react-article-components

@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react'
+import React, { useState, useContext, createContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeContext } from 'styled-components'
 // context
@@ -225,7 +225,7 @@ CopyUrl.propTypes = {
 
 const ShareBy = ({ fbAppID }) => {
   const [showOption, setShowState] = useState(false)
-  const { hideText, toastr } = useContext(ToolBarContext)
+  const { hideText, toastr, hideToolBar } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
@@ -239,6 +239,11 @@ const ShareBy = ({ fbAppID }) => {
   const onButtonClick = () => setShowState(prevValue => !prevValue)
   const onClickOutside = () => setShowState(false)
   const ref = useOutsideClick(onClickOutside)
+  useEffect(() => {
+    if (hideToolBar) {
+      setShowState(false)
+    }
+  }, [hideToolBar])
 
   return (
     <ButtonContainer ref={ref} onClick={onButtonClick}>
@@ -404,7 +409,7 @@ const ToolBar = ({
   ) : null
   const hideText = scrollStage >= 2
   const hideToolBar = scrollStage >= 3
-  const contextValue = { hideText, toastr }
+  const contextValue = { hideText, toastr, hideToolBar }
 
   return (
     <ToolBarContext.Provider value={contextValue}>

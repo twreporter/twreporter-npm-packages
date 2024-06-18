@@ -22,7 +22,7 @@ const _ = {
   get,
 }
 
-const widthCSS = css`
+const articleBodyWidthCSS = css`
   ${mq.mobileOnly`
     width: calc(248/300*100%);
   `}
@@ -40,8 +40,23 @@ const widthCSS = css`
   `}
 `
 
+const trackingSectionWidthCSS = css`
+  ${mq.mobileOnly`
+    width: 256px;
+  `}
+
+  ${mq.tabletOnly`
+    width: 386px;
+  `}
+
+  ${mq.desktopAndAbove`
+    width: 476px;
+  `}
+`
+
 const Title = styled.div`
-  ${widthCSS}
+  ${props =>
+    props.$forTrackingSection ? trackingSectionWidthCSS : articleBodyWidthCSS}
   color: ${colorGrayscale.gray700};
   line-height: 1.9;
   letter-spacing: 0.7px;
@@ -51,7 +66,8 @@ const Title = styled.div`
 `
 
 const Content = styled.div`
-  ${widthCSS}
+  ${props =>
+    props.$forTrackingSection ? trackingSectionWidthCSS : articleBodyWidthCSS}
 
   color: ${colorGrayscale.gray700};
   line-height: 1.75;
@@ -140,14 +156,16 @@ export default class Infobox extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData.isRequired,
+    forTrackingSection: PropTypes.bool,
   }
 
   static defaultProps = {
     className: '',
+    forTrackingSection: false,
   }
 
   render() {
-    const { className, data } = this.props
+    const { className, data, forTrackingSection } = this.props
     const contentHtmlString = _.get(data, ['content', 0, 'body'], '')
     const title = _.get(data, ['content', 0, 'title'], '')
 
@@ -165,9 +183,12 @@ export default class Infobox extends PureComponent {
     )
 
     return mutatedContentHtmlString ? (
-      <Container className={className}>
-        {title ? <Title>{title}</Title> : null}
+      <Container className={className} $forTrackingSection={forTrackingSection}>
+        {title ? (
+          <Title $forTrackingSection={forTrackingSection}>{title}</Title>
+        ) : null}
         <Content
+          $forTrackingSection={forTrackingSection}
           dangerouslySetInnerHTML={{ __html: mutatedContentHtmlString }}
         />
       </Container>
