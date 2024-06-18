@@ -142,11 +142,11 @@ const TrackingSection = ({ data }) => {
 }
 
 TrackingSection.propTypes = {
-  data: PropTypes.objectOf({
+  data: PropTypes.shape({
     title: PropTypes.string,
     publishDate: PropTypes.string,
     content: PropTypes.arrayOf(predefinedPropTypes.elementData),
-  }),
+  }).isRequired,
 }
 
 export default TrackingSection
