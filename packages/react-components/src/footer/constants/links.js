@@ -77,7 +77,7 @@ export const getLinksGroups = mainOrigin => {
       {
         slug: 'subcribe-email',
         text: '訂閱電子報',
-        to: 'http://eepurl.com/djVwF9',
+        to: `${mainOrigin}${entityPaths.account}email-subscription`,
         target: '_blank',
         id: gtmId.newsletter,
       },
