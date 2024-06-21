@@ -35,30 +35,11 @@ const Container = ({
   const isTransforming = useRef(false)
   const transformTimer = useRef(null)
 
-  const handleScroll = useCallback(() => {
-    lastKnownPageYOffset.current = window.pageYOffset
-    if (!ticking.current) {
-      window.requestAnimationFrame(() => {
-        updateScrollState(lastKnownPageYOffset.current)
-        ticking.current = false
-      })
-      ticking.current = true
-    }
-  }, [])
-
-  const updateScrollState = useCallback(currentScrollTop => {
-    const scrollDirection = currentScrollTop > currentY.current ? 'down' : 'up'
-    currentY.current = currentScrollTop
-    const updateState = getScrollState(currentScrollTop, scrollDirection)
-    setToUseNarrow(updateState.toUseNarrow)
-    setHideHeader(updateState.hideHeader)
-  }, [])
-
   const getScrollState = useCallback(
     (scrollTop, scrollDirection) => {
       const isCurrentNarrow = toUseNarrow
       const nextToUseNarrow = scrollTop > TRANSFORM_HEADER_THRESHOLD
-      let scrollState = {}
+      let scrollState = { toUseNarrow, hideHeader }
 
       if (isTransforming.current) {
         return scrollState
@@ -99,8 +80,31 @@ const Container = ({
 
       return scrollState
     },
-    [toUseNarrow]
+    [toUseNarrow, hideHeader]
   )
+
+  const updateScrollState = useCallback(
+    currentScrollTop => {
+      const scrollDirection =
+        currentScrollTop > currentY.current ? 'down' : 'up'
+      currentY.current = currentScrollTop
+      const updateState = getScrollState(currentScrollTop, scrollDirection)
+      setToUseNarrow(() => updateState.toUseNarrow)
+      setHideHeader(() => updateState.hideHeader)
+    },
+    [getScrollState]
+  )
+
+  const handleScroll = useCallback(() => {
+    lastKnownPageYOffset.current = window.pageYOffset
+    if (!ticking.current) {
+      window.requestAnimationFrame(() => {
+        updateScrollState(lastKnownPageYOffset.current)
+        ticking.current = false
+      })
+      ticking.current = true
+    }
+  }, [updateScrollState])
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
