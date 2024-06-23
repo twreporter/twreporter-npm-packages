@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.3-rc.2...@twreporter/universal-header@3.0.3-rc.3) (2024-06-23)
+
+
+### Bug Fixes
+
+* **universal-header:** fix scroll hide issue ([7e86579](https://github.com/twreporter/twreporter-npm-packages/commit/7e86579d01ee4452cc902ef105a945be41c158c0))
+
+
+
+
+
 ## [3.0.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.3-rc.1...@twreporter/universal-header@3.0.3-rc.2) (2024-06-19)
 
 **Note:** Version bump only for package @twreporter/universal-header
