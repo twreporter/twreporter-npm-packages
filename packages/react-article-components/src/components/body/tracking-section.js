@@ -99,11 +99,11 @@ const TrackingSection = ({ data }) => {
       case 'blockquote':
         return <Blockquote key={data.id} data={data} />
       case 'unstyled':
-        return <Paragraph key={data.id} data={data} />
+        return <Paragraph key={data.id} data={data} forTrackingSection={true} />
       case 'small-image':
       case 'image':
       case 'image-link':
-        return <Image key={data.id} data={data} />
+        return <Image key={data.id} data={data} forTrackingSection={true} />
       case 'infobox':
         return (
           <InfoBoxContainer key={data.id}>

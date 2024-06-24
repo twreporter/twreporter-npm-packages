@@ -1,10 +1,12 @@
-import PropTypes from 'prop-types'
-import predefinedPropTypes from '../../constants/prop-types/body'
 import React from 'react'
 import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
+// @twreporter
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+// constants
+import predefinedPropTypes from '../../constants/prop-types/body'
 import styles from '../../constants/css'
 import themeConst from '../../constants/theme'
-import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
 
@@ -16,6 +18,10 @@ const P = styled.p`
   ${styles.paragraphText}
   ${styles.linkChildren}
 
+  ${props =>
+    props.$forTrackingSection
+      ? `font-size: ${props.theme.fontSizeOffset + 16}px`
+      : ''};
   ${props => {
     switch (props.theme.name) {
       case themeConst.article.v2.photo:
@@ -30,12 +36,17 @@ const P = styled.p`
   }}
 `
 
-export default function Paragraph({ className, data }) {
+export default function Paragraph({
+  className = '',
+  data,
+  forTrackingSection = false,
+}) {
   const innerHtmlString = _.get(data, ['content', 0])
   return innerHtmlString ? (
     <P
       className={className}
       dangerouslySetInnerHTML={{ __html: innerHtmlString }}
+      $forTrackingSection={forTrackingSection}
     />
   ) : null
 }
@@ -43,8 +54,5 @@ export default function Paragraph({ className, data }) {
 Paragraph.propTypes = {
   className: PropTypes.string,
   data: predefinedPropTypes.elementData,
-}
-
-Paragraph.defaultProps = {
-  className: '',
+  forTrackingSection: PropTypes.bool,
 }
