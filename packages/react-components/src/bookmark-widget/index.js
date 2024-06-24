@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 // @twreporter
@@ -68,6 +68,23 @@ const BookmarkWidget = ({ articleMeta, renderIcon, toAutoCheck = true }) => {
       : null
   })
 
+  const checkIfThisArticleBookmarked = useCallback(() => {
+    if (bookmark) {
+      const hostFromWindow = getHostFromWindowLocation()
+      if (_.get(bookmark, 'host') !== hostFromWindow) {
+        console.warn(
+          'Warning on checking bookmark status in `BookmarkWidget`:',
+          'The `host` in the bookmark data is different from the `host` in current `window`.',
+          'host in bookmark:',
+          bookmark.host,
+          'host in `window.location`:',
+          hostFromWindow
+        )
+      }
+    }
+    return Boolean(bookmark)
+  }, [bookmark])
+
   useEffect(() => {
     /* TODO: Implement `status` for bookmark widget in redux reducer and action:
       There should be different states below for the bookmark widget status of an article:
@@ -98,7 +115,15 @@ const BookmarkWidget = ({ articleMeta, renderIcon, toAutoCheck = true }) => {
         articleSlug
       )
     }
-  }, [articleMeta, isAuthed, toAutoCheck, jwt, userID, dispatch])
+  }, [
+    articleMeta,
+    isAuthed,
+    toAutoCheck,
+    jwt,
+    userID,
+    dispatch,
+    checkIfThisArticleBookmarked,
+  ])
 
   const redirectToLoginPageIfNotAuthorized = () => {
     if (!isAuthed || !jwt) {
@@ -127,23 +152,6 @@ const BookmarkWidget = ({ articleMeta, renderIcon, toAutoCheck = true }) => {
         'Error on deleting bookmark with `BookmarkWidget`: No valid bookmark id.'
       )
     }
-  }
-
-  const checkIfThisArticleBookmarked = () => {
-    if (bookmark) {
-      const hostFromWindow = getHostFromWindowLocation()
-      if (_.get(bookmark, 'host') !== hostFromWindow) {
-        console.warn(
-          'Warning on checking bookmark status in `BookmarkWidget`:',
-          'The `host` in the bookmark data is different from the `host` in current `window`.',
-          'host in bookmark:',
-          bookmark.host,
-          'host in `window.location`:',
-          hostFromWindow
-        )
-      }
-    }
-    return Boolean(bookmark)
   }
 
   if (!articleMeta.slug) {
