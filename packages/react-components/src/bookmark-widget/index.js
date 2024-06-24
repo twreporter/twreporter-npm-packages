@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 // @twreporter
@@ -68,7 +68,7 @@ const BookmarkWidget = ({ articleMeta, renderIcon, toAutoCheck = true }) => {
       : null
   })
 
-  const checkIfThisArticleBookmarked = useCallback(() => {
+  const checkIfThisArticleBookmarked = () => {
     if (bookmark) {
       const hostFromWindow = getHostFromWindowLocation()
       if (_.get(bookmark, 'host') !== hostFromWindow) {
@@ -83,7 +83,7 @@ const BookmarkWidget = ({ articleMeta, renderIcon, toAutoCheck = true }) => {
       }
     }
     return Boolean(bookmark)
-  }, [bookmark])
+  }
 
   useEffect(() => {
     /* TODO: Implement `status` for bookmark widget in redux reducer and action:
@@ -115,15 +115,7 @@ const BookmarkWidget = ({ articleMeta, renderIcon, toAutoCheck = true }) => {
         articleSlug
       )
     }
-  }, [
-    articleMeta,
-    isAuthed,
-    toAutoCheck,
-    jwt,
-    userID,
-    dispatch,
-    checkIfThisArticleBookmarked,
-  ])
+  }, [])
 
   const redirectToLoginPageIfNotAuthorized = () => {
     if (!isAuthed || !jwt) {
