@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.1.0...@twreporter/react-components@9.1.1-rc.0) (2024-06-24)
+
+
+### Bug Fixes
+
+* **react-components:** bookmark-widget render issue ([e5f2458](https://github.com/twreporter/twreporter-npm-packages/commit/e5f2458851802f1ca1e01376ad42b82f7306fe9c))
+* **react-components:** mounted issue ([f0d5d74](https://github.com/twreporter/twreporter-npm-packages/commit/f0d5d742aa55c994ad47f64286e5a6a50c37140a))
+
+
+
+
+
 # [9.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.1.0-rc.1...@twreporter/react-components@9.1.0) (2024-06-24)
 
 **Note:** Version bump only for package @twreporter/react-components

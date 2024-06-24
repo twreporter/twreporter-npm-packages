@@ -487,7 +487,6 @@ export default class Article extends PureComponent {
                     articleMetaForBookmark={articleMetaForBookmark}
                     onFontLevelChange={this.changeFontLevel}
                     scrollStage={this.state.scrollStage}
-                    trackingSection={trackingSection}
                   />
                   <DesktopAsideBlock>
                     <DesktopAside
@@ -512,6 +511,7 @@ export default class Article extends PureComponent {
                       content={_.get(post, 'content.api_data')}
                       onToggleTabExpanded={onToggleTabExpanded}
                       scrollStage={this.state.scrollStage}
+                      trackingSection={trackingSection}
                     />
                   </ContentBlock>
                   {metadataAndToolsJSX}
