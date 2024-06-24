@@ -1,3 +1,4 @@
+import { useSelector, useDispatch } from 'react-redux'
 // @twreporters
 import twreporterRedux from '@twreporter/redux'
 // lodash
@@ -35,7 +36,6 @@ function getHostFromWindowLocation() {
 const { createSingleBookmark, deleteSingleBookmark } = twreporterRedux.actions
 /**
  * hook for create or delete bookmark
- * @param {Array.<{state: object, dispatch: Function}>} store
  * @param {object} bookmark
  * @param {string} bookmark.slug
  * @param {boolean} bookmark.is_external
@@ -44,10 +44,10 @@ const { createSingleBookmark, deleteSingleBookmark } = twreporterRedux.actions
  * @param {string} bookmark.thumbnail
  * @param {string} bookmark.published_date
  */
-const useBookmark = store => {
-  const [state, dispatch] = store
-  const jwt = _.get(state, 'auth.accessToken')
-  const userID = _.get(state, 'auth.userInfo.user_id')
+const useBookmark = () => {
+  const dispatch = useDispatch()
+  const jwt = useSelector(state => _.get(state, 'auth.accessToken'))
+  const userID = useSelector(state => _.get(state, 'auth.userInfo.user_id'))
 
   const addCurrentPageToBookmarks = bookmark => {
     const bookmarkToBeCreated = {

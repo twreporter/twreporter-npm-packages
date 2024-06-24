@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.1.0-rc.0...@twreporter/react-components@9.1.0-rc.1) (2024-06-19)
+
+
+### Bug Fixes
+
+* add missing `/` in url ([923d448](https://github.com/twreporter/twreporter-npm-packages/commit/923d448137278f2ac7eacde5d34a4cb3c4b80dee))
+
+
+
+
+
+# [9.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.3-rc.0...@twreporter/react-components@9.1.0-rc.0) (2024-06-18)
+
+
+### Features
+
+* **react-components:** use react-redux hook ([37ad2c9](https://github.com/twreporter/twreporter-npm-packages/commit/37ad2c91dac5a40a6d617491402e21da74534855))
+
+
+
+
+
+## [9.0.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.2...@twreporter/react-components@9.0.3-rc.0) (2024-06-18)
+
+
+### Bug Fixes
+
+* update footer email subscription link ([22d91d3](https://github.com/twreporter/twreporter-npm-packages/commit/22d91d37ff4b81b9ca838e0790107ed5a95b9e04))
+
+
+
+
+
 ## [9.0.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.0.2-rc.0...@twreporter/react-components@9.0.2) (2024-06-04)
 
 **Note:** Version bump only for package @twreporter/react-components
