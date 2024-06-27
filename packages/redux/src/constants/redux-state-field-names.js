@@ -21,6 +21,7 @@ const analytics = 'analytics'
 const footprints = 'footprints'
 const donationHistory = 'donationHistory'
 const postReviews = 'postReviews'
+const postFollowups = 'postFollowups'
 
 // sections in index_page
 const editorPicksSection = 'editor_picks_section'
@@ -96,4 +97,5 @@ export default {
   footprints,
   donationHistory,
   postReviews,
+  postFollowups,
 }
