@@ -5416,7 +5416,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/preview-api@npm:8.1.11":
+"@storybook/preview-api@npm:8.1.11, @storybook/preview-api@npm:^8.1.11":
   version: 8.1.11
   resolution: "@storybook/preview-api@npm:8.1.11"
   dependencies:
@@ -5807,6 +5807,7 @@ __metadata:
     "@storybook/addon-links": "npm:^8.1.11"
     "@storybook/addon-webpack5-compiler-babel": "npm:^3.0.3"
     "@storybook/manager-api": "npm:^8.1.11"
+    "@storybook/preview-api": "npm:^8.1.11"
     "@storybook/react": "npm:^8.1.11"
     "@storybook/react-webpack5": "npm:^8.1.11"
     "@storybook/test": "npm:^8.1.11"
