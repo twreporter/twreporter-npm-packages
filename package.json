@@ -60,5 +60,6 @@
     "prettier": "1.18.2",
     "rimraf": "^2.6.3",
     "semver-intersect": "^1.4.0"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }

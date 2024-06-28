@@ -1,5 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
-import { addons } from '@storybook/addons'
+import { addons } from '@storybook/manager-api'
 import {
   UPDATE_GLOBALS,
   STORY_ARGS_UPDATED,
@@ -22,7 +22,6 @@ const themeColor = {
 }
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -43,7 +42,7 @@ export const parameters = {
 }
 
 let channel = addons.getChannel()
-const storyListener = args => {
+const storyListener = (args) => {
   const { theme } = args.args
   if (!theme) {
     return
@@ -64,7 +63,7 @@ const storyListener = args => {
   })
 }
 
-const removeBackgrounds = args => {
+const removeBackgrounds = (args) => {
   channel.emit(UPDATE_GLOBALS, {
     globals: {
       backgrounds: {},
