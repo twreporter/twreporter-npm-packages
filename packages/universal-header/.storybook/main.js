@@ -2,10 +2,7 @@ import { dirname, join } from 'path'
 const path = require('path')
 
 module.exports = {
-  stories: [
-    '../src/**/**/*.stories.mdx',
-    '../src/**/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+  stories: ['../src/**/**/*.stories.@(js|jsx|ts|tsx)'],
 
   addons: [
     getAbsolutePath('@storybook/addon-links'),
@@ -13,7 +10,8 @@ module.exports = {
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('@storybook/addon-viewport'),
     getAbsolutePath('@storybook/addon-backgrounds'),
-    getAbsolutePath('@storybook/addon-mdx-gfm'),
+    '@storybook/addon-webpack5-compiler-babel',
+    '@chromatic-com/storybook',
   ],
 
   framework: {
@@ -37,15 +35,17 @@ module.exports = {
     return config
   },
 
-  babel: config => {
+  babel: (config) => {
     return {
       ...config,
       configFile: path.resolve(__dirname, './.babelrc.json'),
     }
   },
 
-  docs: {
-    autodocs: false,
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
 }
 
