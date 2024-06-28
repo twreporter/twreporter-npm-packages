@@ -20,5 +20,6 @@ export const emptyState = {
     showButton: true,
     buttonText: '按鈕',
     buttonUrl: '/',
+    maxWidth: '80vw',
   },
 }
