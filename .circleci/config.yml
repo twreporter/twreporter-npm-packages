@@ -89,8 +89,8 @@ commands:
     description: "Install build dependencies"
     steps:
       - run:
-        name: install yarn@4.3.1
-        command: npm i -g yarn@4.3.1
+          name: install yarn@4.3.1
+          command: npm i -g yarn@4.3.1
       - run:
           name: Enable Corepack
           # enable corepack to use other version of yarn
