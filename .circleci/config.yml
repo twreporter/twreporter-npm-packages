@@ -89,12 +89,12 @@ commands:
     description: "Install build dependencies"
     steps:
       - run:
-          name: install yarn@4.3.1
-          command: npm i -g yarn@4.3.1
-      - run:
           name: Enable Corepack
           # enable corepack to use other version of yarn
           command: corepack enable yarn@4.3.1
+      - run:
+          name: Check yarn version
+          command: yarn --version
       - run:
           name: 'Generate checksum list of packages/*/package.json'
           # Ref: https://github.com/chrisbanes/tivi/blob/c1219aeee9f62600fcd43d7caf1ea21e6e92930f/checksum.sh
