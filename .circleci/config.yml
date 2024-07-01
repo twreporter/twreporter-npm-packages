@@ -89,12 +89,12 @@ commands:
     description: "Install build dependencies"
     steps:
       - run:
-          name: Set yarn version
-          command: yarn set version 4.3.1
-      - run:
           name: Enable Corepack
           # enable corepack to use other version of yarn
-          command: corepack enable
+          command: sudo corepack enable
+      - run:
+          name: Set yarn version
+          command: yarn set version 4.3.1
       - run:
           name: Check yarn version
           command: yarn --version
