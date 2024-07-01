@@ -2,17 +2,15 @@ import { dirname, join } from 'path'
 const path = require('path')
 
 const config = {
-  stories: [
-    '../src/**/**/*.stories.mdx',
-    '../src/**/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+  stories: ['../src/**/**/*.stories.@(js|jsx|ts|tsx)'],
 
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('@storybook/addon-viewport'),
-    getAbsolutePath('@storybook/addon-mdx-gfm'),
+    '@storybook/addon-webpack5-compiler-babel',
+    '@chromatic-com/storybook',
   ],
 
   framework: {
@@ -32,15 +30,17 @@ const config = {
     return config
   },
 
-  babel: config => {
+  babel: (config) => {
     return {
       ...config,
       configFile: path.resolve(__dirname, './.babelrc.json'),
     }
   },
 
-  docs: {
-    autodocs: false,
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
 }
 

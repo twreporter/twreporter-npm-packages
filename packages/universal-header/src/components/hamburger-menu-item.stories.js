@@ -3,7 +3,7 @@
 /* eslint react-hooks/rules-of-hooks:0 */
 import React from 'react'
 import styled from 'styled-components'
-import { useArgs } from '@storybook/client-api'
+import { useArgs } from '@storybook/preview-api'
 import {
   MenuLinkItem,
   MenuSubItem,
