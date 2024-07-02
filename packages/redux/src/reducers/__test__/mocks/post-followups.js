@@ -13,25 +13,27 @@ export const mockActions = {
   [postFollowups.read.success]: {
     type: postFollowups.read.success,
     payload: {
-      data: [
-        {
-          post_id: '664482780e762c0700163174',
-          post_slug: 'test-use-all-items-20240205',
-          date: '2024-05-28T16:00:00Z',
-          title: '測試用追蹤標題1',
-          summary:
-            '測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字',
-          content: {
-            api_data: null,
+      data: {
+        data: [
+          {
+            post_id: '664482780e762c0700163174',
+            post_slug: 'test-use-all-items-20240205',
+            date: '2024-05-28T16:00:00Z',
+            title: '測試用追蹤標題1',
+            summary:
+              '測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字',
+            content: {
+              api_data: null,
+            },
           },
+        ],
+        meta: {
+          total: 1,
+          offset: 0,
+          limit: 10,
         },
-      ],
-      meta: {
-        total: 1,
-        offset: 0,
-        limit: 10,
+        status: 'success',
       },
-      status: 'success',
     },
   },
   [postFollowups.read.failure]: {

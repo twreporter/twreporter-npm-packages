@@ -1,9 +1,11 @@
 import types from '../constants/action-types'
 // lodash
 import get from 'lodash/get'
+import map from 'lodash/map'
 
 const _ = {
   get,
+  map,
 }
 
 const defaultLimit = 10
@@ -27,8 +29,17 @@ export default function postFollowups(state = initState, action) {
       }
     }
     case types.postFollowups.read.success: {
-      const postFollowups = _.get(action, 'payload.data', [])
-      const meta = _.get(action, 'payload.meta')
+      const postFollowupsFromApi = _.get(action, 'payload.data.data', [])
+      const postFollowups = _.map(postFollowupsFromApi, followup => {
+        return {
+          publishDate: followup.date,
+          trackingTitle: followup.title,
+          trackingContent: followup.summary,
+          trackingArticleTitle: followup.post_title,
+          trackingArticleSlug: followup.post_slug,
+        }
+      })
+      const meta = _.get(action, 'payload.data.meta')
       const { offset, total, limit } = meta
       return {
         ...state,
