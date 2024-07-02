@@ -13,7 +13,7 @@ import { TEXT } from '../../constants/topics'
 // @twreporter
 import { fontWeight } from '@twreporter/core/lib/constants/font'
 import { Title2 } from '@twreporter/react-components/lib/title-bar'
-import { H2 } from '@twreporter/react-components/lib/text/headline'
+import { H1 } from '@twreporter/react-components/lib/text/headline'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
@@ -34,7 +34,7 @@ const NoData = styled.div`
 const Title2Wrapper = styled.div`
   padding-top: 24px;
 `
-const Gray800H2 = styled(H2)`
+const Gray800H1 = styled(H1)`
   color: ${colorGrayscale.gray800};
 `
 
@@ -105,7 +105,7 @@ class Topics extends Component {
       topTopicName = _.get(topics, [0, 'topic_name'], '')
       topicUrl = _.get(topics, [0, 'linkTo'], '')
       topSectionJSX = [
-        <Gray800H2 text={'深度專題'} key="top-title" />,
+        <Gray800H1 text={'深度專題'} key="top-title" />,
         <Title2Wrapper key="section-title">
           <Title2 title={TEXT.SECTION_TITLE_FEATURED} />
         </Title2Wrapper>,
