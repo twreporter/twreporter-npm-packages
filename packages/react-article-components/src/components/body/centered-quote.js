@@ -10,6 +10,7 @@ import {
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import mq from '@twreporter/core/lib/utils/media-query'
 // lodash
 import get from 'lodash/get'
 
@@ -29,6 +30,9 @@ const QuoteContent = styled.blockquote`
   line-height: 1.56;
   letter-spacing: 1.1px;
   text-align: center;
+  ${mq.tabletAndBelow`
+    font-size: ${props => props.theme.fontSizeOffset + 24}px;
+  `}
 `
 
 const QuoteBy = styled.cite`
