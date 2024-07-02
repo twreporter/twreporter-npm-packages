@@ -20,6 +20,7 @@ import analytics from './analytics'
 import footprints from './footprints'
 import donationHistory from './donation-history'
 import postReviews from './post-reviews'
+import postFollowups from './post-followups'
 
 const rootReducer = combineReducers({
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
@@ -45,6 +46,7 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.footprints]: footprints,
   [reduxStatePropKey.donationHistory]: donationHistory,
   [reduxStatePropKey.postReviews]: postReviews,
+  [reduxStatePropKey.postFollowups]: postFollowups,
 })
 
 export default rootReducer

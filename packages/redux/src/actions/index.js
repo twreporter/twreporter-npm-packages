@@ -27,6 +27,7 @@ import {
   getUserPeriodicDonationHistory,
 } from './donation-history'
 import { getPostReviews } from './post-reviews'
+import { getPostFollowups } from './post-followups'
 
 export default {
   createSingleBookmark,
@@ -57,4 +58,5 @@ export default {
   getUserDonationHistory,
   getUserPeriodicDonationHistory,
   getPostReviews,
+  getPostFollowups,
 }

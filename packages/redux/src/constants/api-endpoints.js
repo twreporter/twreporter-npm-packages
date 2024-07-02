@@ -9,4 +9,5 @@ export default {
   onboarding: 'onboarding',
   periodicDonations: 'periodic-donations',
   postReviews: 'post_reviews',
+  postFollowups: 'post_followups',
 }
