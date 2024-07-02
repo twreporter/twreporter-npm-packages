@@ -16,15 +16,12 @@ export const mockActions = {
       data: {
         data: [
           {
-            post_id: '664482780e762c0700163174',
+            post_title: '【測試用】文章頁內包含所有物件',
             post_slug: 'test-use-all-items-20240205',
             date: '2024-05-28T16:00:00Z',
             title: '測試用追蹤標題1',
             summary:
               '測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字',
-            content: {
-              api_data: null,
-            },
           },
         ],
         meta: {
@@ -67,15 +64,12 @@ export const mockStates = {
     isFetching: false,
     postFollowups: [
       {
-        post_id: '664482780e762c0700163174',
-        post_slug: 'test-use-all-items-20240205',
-        date: '2024-05-28T16:00:00Z',
-        title: '測試用追蹤標題1',
-        summary:
+        publishDate: '2024-05-28T16:00:00Z',
+        trackingArticleSlug: 'test-use-all-items-20240205',
+        trackingArticleTitle: '【測試用】文章頁內包含所有物件',
+        trackingContent:
           '測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字測試摘要文字',
-        content: {
-          api_data: null,
-        },
+        trackingTitle: '測試用追蹤標題1',
       },
     ],
     offset: 0,
