@@ -38,17 +38,20 @@ const CrossIconPos = Object.freeze({
   RIGHT_TOP: 'right-top',
 })
 
+// padding: 16px + width: 24px => 40px
+const IconPadding = 40
+
 const CrossIconPosCss = position => {
   switch (position) {
     case CrossIconPos.TOP_RIGHT:
       return css`
-        top: -40px; // padding: 16px + width: 24px => 40px
+        top: -${IconPadding}px;
         right: 0px;
       `
     case CrossIconPos.RIGHT_TOP:
       return css`
         top: 0px;
-        right: -40px; // padding: 16px + width: 24px => 40px
+        right: -${IconPadding}px;
       `
     case CrossIconPos.INSIDE:
     default:
@@ -64,7 +67,7 @@ const ImgContainer = styled.div`
   overflow: hidden;
   width: 100%;
   ${props => props.$heightString}
-  ${props => (props.$clickable ? 'cursor: zoom-in' : '')};
+  ${props => (props.$clickable ? 'cursor: zoom-in;' : '')}
 `
 
 const ImgPlaceholder = styled.div`
@@ -225,14 +228,13 @@ const Img = ({
       const vh = window.innerHeight
 
       if (imgWidth === vw) {
-        if (vh - imgHeight < 40 * 2) {
-          // padding: 16px + width: 24px => 40px
+        if (vh - imgHeight < IconPadding * 2) {
           setCrossIconPos(CrossIconPos.INSIDE)
         } else {
           setCrossIconPos(CrossIconPos.TOP_RIGHT)
         }
       } else if (imgHeight === vh) {
-        if (vw - imgWidth < 40 * 2) {
+        if (vw - imgWidth < IconPadding * 2) {
           setCrossIconPos(CrossIconPos.INSIDE)
         } else {
           setCrossIconPos(CrossIconPos.RIGHT_TOP)
