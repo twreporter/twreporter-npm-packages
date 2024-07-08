@@ -121,7 +121,7 @@ describe('Testing fetchAFullPost:', () => {
       }
 
       nock(mockApiHost)
-        .get(`/v2/posts/${metaOfPost.slug}?full=true`)
+        .get(`/v2/posts/${metaOfPost.slug}?full=true&toggleBookmark=true`)
         .reply(200, mockApiResponse)
 
       expect.assertions(3)
@@ -165,7 +165,7 @@ describe('Testing fetchAFullPost:', () => {
         },
       }
       nock(mockApiHost)
-        .get(`/v2/posts/${mockSlug}?full=true`)
+        .get(`/v2/posts/${mockSlug}?full=true&toggleBookmark=true`)
         .reply(mockStatusCode, mockApiRes)
 
       expect.assertions(11)
