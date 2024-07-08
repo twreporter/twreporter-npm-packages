@@ -1,7 +1,8 @@
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 import PropTypes from 'prop-types'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled, { css, ThemeContext } from 'styled-components'
+import { useSelector } from 'react-redux'
 // constants
 import themeConst from '../../constants/theme'
 import predefinedProps from '../../constants/prop-types/aside'
@@ -16,13 +17,14 @@ import {
   Line,
 } from '@twreporter/react-components/lib/icon'
 // @twreporter
-import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
 import mq from '@twreporter/core/lib/utils/media-query'
 import {
   colorGrayscale,
   colorPhoto,
   colorSupportive,
 } from '@twreporter/core/lib/constants/color'
+import { useBookmark } from '@twreporter/react-components/lib/hook'
+import { BookmarkType } from '@twreporter/react-components/lib/icon/enum'
 
 function changeFontSizeOffsetToPct(fontSizeOffset) {
   switch (fontSizeOffset) {
@@ -250,33 +252,53 @@ function LineShareBT(props) {
   )
 }
 
-const BookmarkBlock = ({ articleMeta }) => {
+const BookmarkBlock = ({ articleMeta, bookmarkId }) => {
   const themeContext = useContext(ThemeContext)
   const { releaseBranch } = themeContext
-  const renderIcon = (isBookmarked, addAction, removeAction) => {
-    const iconType = isBookmarked ? 'saved' : 'add'
-    const id = isBookmarked ? 'remove-bookmark' : 'add-bookmark'
-    return (
-      <BookmarkIconBlock
-        onClick={isBookmarked ? removeAction : addAction}
-        $isBookmarked={isBookmarked}
-        id={id}
-      >
-        <Bookmark type={iconType} releaseBranch={releaseBranch} />
-      </BookmarkIconBlock>
-    )
+  const { addAction, removeAction } = useBookmark()
+  const bookmarkIdFromState = useSelector(
+    state => state.bookmarkWidget?.bookmark?.id
+  )
+  const [isBookmarked, setIsBookmarked] = useState(false)
+  const [iconType, setIconType] = useState(BookmarkType.ADD)
+  const [elementId, setElementId] = useState('add-bookmark')
+
+  const handleAddBookmark = () => {
+    addAction(articleMeta)
   }
 
+  const handleRemoveBookmark = () => {
+    const targetBookmarkId = bookmarkId || bookmarkIdFromState
+    removeAction(targetBookmarkId)
+    setIsBookmarked(() => false)
+  }
+
+  useEffect(() => {
+    if (bookmarkId || bookmarkIdFromState) {
+      setIsBookmarked(true)
+    } else {
+      setIsBookmarked(false)
+    }
+  }, [bookmarkId, bookmarkIdFromState])
+
+  useEffect(() => {
+    setIconType(isBookmarked ? BookmarkType.SAVED : BookmarkType.ADD)
+    setElementId(isBookmarked ? 'remove-bookmark' : 'add-bookmark')
+  }, [isBookmarked])
+
   return (
-    <BookmarkWidget
-      toAutoCheck={true}
-      articleMeta={articleMeta}
-      renderIcon={renderIcon}
-    />
+    <BookmarkIconBlock
+      onClick={isBookmarked ? handleRemoveBookmark : handleAddBookmark}
+      $isBookmarked={isBookmarked}
+      id={elementId}
+    >
+      <Bookmark type={iconType} releaseBranch={releaseBranch} />
+    </BookmarkIconBlock>
   )
 }
 BookmarkBlock.propTypes = {
   articleMeta: predefinedProps.tools.articleMetaForBookmark,
+  bookmarkId: PropTypes.number,
 }
 
 const BackToTopic = ({ backToTopic }) => {
@@ -307,6 +329,7 @@ const Tools = ({
   height,
   onFontLevelChange,
   articleMetaForBookmark,
+  bookmarkId,
 }) => {
   const themeContext = useContext(ThemeContext)
   const { releaseBranch } = themeContext
@@ -318,7 +341,10 @@ const Tools = ({
   return (
     <ToolsBlock $height={height}>
       {backToTopicJSX}
-      <BookmarkBlock articleMeta={articleMetaForBookmark} />
+      <BookmarkBlock
+        articleMeta={articleMetaForBookmark}
+        bookmarkId={bookmarkId}
+      />
       <TextIconBlock>
         <Text onClick={onFontLevelChange} releaseBranch={releaseBranch} />
       </TextIconBlock>
@@ -331,6 +357,9 @@ const Tools = ({
     </ToolsBlock>
   )
 }
-Tools.propTypes = predefinedProps.tools
+Tools.propTypes = {
+  ...predefinedProps.tools,
+  bookmarkId: PropTypes.number,
+}
 
 export default Tools
