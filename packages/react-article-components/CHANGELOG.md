@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.0...@twreporter/react-article-components@2.3.0-rc.1) (2024-07-08)
+
+
+### Bug Fixes
+
+* fix comments ([6084a28](https://github.com/twreporter/twreporter-npm-packages/commit/6084a289944823cf43e8c063f5c797920d454ee9))
+* naming ([87d00f4](https://github.com/twreporter/twreporter-npm-packages/commit/87d00f456312ef1e7a522301e3e2d5c23c244d30))
+
+
+### Features
+
+* **react-article-components:** full screen image version2 ([49b1495](https://github.com/twreporter/twreporter-npm-packages/commit/49b1495a03f4b1c181e0b9fafc378f094fe651b7))
+
+
+
+
+
+# [2.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.2-rc.0...@twreporter/react-article-components@2.3.0-rc.0) (2024-07-08)
+
+
+### Features
+
+* **react-article-components:** centered-quote font size ([e20ef32](https://github.com/twreporter/twreporter-npm-packages/commit/e20ef32591d29f8ca4e189d32dfce80781dc7e0e))
+
+
+
+
+
+## [2.2.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.1...@twreporter/react-article-components@2.2.2-rc.0) (2024-07-08)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+
+
+
+
 ## [2.2.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.1-rc.0...@twreporter/react-article-components@2.2.1) (2024-06-24)
 
 **Note:** Version bump only for package @twreporter/react-article-components
