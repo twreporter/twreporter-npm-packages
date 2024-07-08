@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.1.1...@twreporter/react-components@9.2.0-rc.0) (2024-07-08)
+
+
+### Features
+
+* **react-components:** change topic listing page title to H1 ([3a221dd](https://github.com/twreporter/twreporter-npm-packages/commit/3a221dd4113d3f7a9dc47607fbb7ef821f735cfe))
+
+
+
+
+
 ## [9.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.1.1-rc.0...@twreporter/react-components@9.1.1) (2024-06-24)
 
 **Note:** Version bump only for package @twreporter/react-components
