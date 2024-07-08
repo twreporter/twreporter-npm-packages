@@ -39,19 +39,19 @@ const CrossIconPos = Object.freeze({
 })
 
 // padding: 16px + width: 24px => 40px
-const IconPadding = 40
+const iconPadding = 40
 
 const CrossIconPosCss = position => {
   switch (position) {
     case CrossIconPos.TOP_RIGHT:
       return css`
-        top: -${IconPadding}px;
+        top: -${iconPadding}px;
         right: 0px;
       `
     case CrossIconPos.RIGHT_TOP:
       return css`
         top: 0px;
-        right: -${IconPadding}px;
+        right: -${iconPadding}px;
       `
     case CrossIconPos.INSIDE:
     default:
@@ -228,13 +228,13 @@ const Img = ({
       const vh = window.innerHeight
 
       if (imgWidth === vw) {
-        if (vh - imgHeight < IconPadding * 2) {
+        if (vh - imgHeight < iconPadding * 2) {
           setCrossIconPos(CrossIconPos.INSIDE)
         } else {
           setCrossIconPos(CrossIconPos.TOP_RIGHT)
         }
       } else if (imgHeight === vh) {
-        if (vw - imgWidth < IconPadding * 2) {
+        if (vw - imgWidth < iconPadding * 2) {
           setCrossIconPos(CrossIconPos.INSIDE)
         } else {
           setCrossIconPos(CrossIconPos.RIGHT_TOP)
