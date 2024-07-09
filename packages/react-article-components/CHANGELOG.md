@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.1...@twreporter/react-article-components@2.3.0-rc.2) (2024-07-09)
+
+
+### Features
+
+* **react-article-components:** add id for tracking section ([974cf7f](https://github.com/twreporter/twreporter-npm-packages/commit/974cf7f061e0d81d5572e2e4f7f7cc1facb9d094))
+
+
+
+
+
 # [2.3.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.0...@twreporter/react-article-components@2.3.0-rc.1) (2024-07-08)
 
 
