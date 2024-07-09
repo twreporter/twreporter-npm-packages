@@ -4,6 +4,7 @@ import Tools from './desktop-tools'
 import predefinedProps from '../../constants/prop-types/aside'
 import styled from 'styled-components'
 import { Waypoint } from 'react-waypoint'
+import PropTypes from 'prop-types'
 
 const _toolPosition = {
   top: 'top',
@@ -71,6 +72,7 @@ export default class Aside extends React.PureComponent {
   static propTypes = {
     ...predefinedProps.metadata,
     ...predefinedProps.tools,
+    bookmarkId: PropTypes.number,
   }
 
   constructor(props) {
@@ -122,6 +124,7 @@ export default class Aside extends React.PureComponent {
       tags,
       title,
       writers,
+      bookmarkId,
     } = this.props
 
     const metadataJSX = (
@@ -156,6 +159,7 @@ export default class Aside extends React.PureComponent {
               title={title}
               onFontLevelChange={onFontLevelChange}
               articleMetaForBookmark={articleMetaForBookmark}
+              bookmarkId={bookmarkId}
             />
           </ToolsPositioningBlock>
           <Waypoint

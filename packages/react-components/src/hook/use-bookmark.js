@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux'
 // @twreporters
 import twreporterRedux from '@twreporter/redux'
+import { getSignInHref } from '@twreporter/core/lib/utils/sign-in-href'
 // lodash
 import get from 'lodash/get'
 
 const _ = {
   get,
 }
+
+const reduxStatePropKeys = twreporterRedux.reduxStateFields
 
 function getHostFromWindowLocation() {
   const defaultHost = 'https://www.twreporter.org'
@@ -46,10 +49,26 @@ const { createSingleBookmark, deleteSingleBookmark } = twreporterRedux.actions
  */
 const useBookmark = () => {
   const dispatch = useDispatch()
-  const jwt = useSelector(state => _.get(state, 'auth.accessToken'))
-  const userID = useSelector(state => _.get(state, 'auth.userInfo.user_id'))
+  const jwt = useSelector(state =>
+    _.get(state, [reduxStatePropKeys.auth, 'accessToken'])
+  )
+  const userID = useSelector(state =>
+    _.get(state, [reduxStatePropKeys.auth, 'userInfo', 'user_id'])
+  )
+  const isAuthed = useSelector(state =>
+    _.get(state, [reduxStatePropKeys.auth, 'isAuthed'])
+  )
+
+  const redirectToLoginPageIfNotAuthorized = () => {
+    if (!isAuthed || !jwt) {
+      const currentHref =
+        typeof window === 'undefined' ? '' : window.location.href
+      window.location.href = getSignInHref(currentHref)
+    }
+  }
 
   const addCurrentPageToBookmarks = bookmark => {
+    redirectToLoginPageIfNotAuthorized()
     const bookmarkToBeCreated = {
       ...bookmark,
       host: getHostFromWindowLocation(),

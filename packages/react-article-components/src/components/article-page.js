@@ -456,6 +456,7 @@ export default class Article extends PureComponent {
             articleMetaForBookmark={articleMetaForBookmark}
             backToTopic={backToTopic}
             onFontLevelChange={this.changeFontLevel}
+            bookmarkId={Number(post.bookmarkId)}
           />
         </DesktopToolsBlock>
       </MetadataAndToolsBlock>
@@ -487,6 +488,7 @@ export default class Article extends PureComponent {
                     articleMetaForBookmark={articleMetaForBookmark}
                     onFontLevelChange={this.changeFontLevel}
                     scrollStage={this.state.scrollStage}
+                    bookmarkId={Number(post.bookmarkId)}
                   />
                   <DesktopAsideBlock>
                     <DesktopAside
@@ -501,6 +503,7 @@ export default class Article extends PureComponent {
                       rawAutherText={post.extend_byline}
                       onFontLevelChange={this.changeFontLevel}
                       articleMetaForBookmark={articleMetaForBookmark}
+                      bookmarkId={Number(post.bookmarkId)}
                     />
                   </DesktopAsideBlock>
                   {metadataAndToolsJSX}

@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { ThemeContext } from 'styled-components'
+import { useSelector } from 'react-redux'
 // context
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 // constant
@@ -13,8 +14,10 @@ import {
 // util
 import { getToolBarTheme } from './utils/theme'
 // @twreporter
-import { useOutsideClick } from '@twreporter/react-components/lib/hook'
-import BookmarkWidget from '@twreporter/react-components/lib/bookmark-widget'
+import {
+  useOutsideClick,
+  useBookmark,
+} from '@twreporter/react-components/lib/hook'
 import {
   Topic,
   Bookmark,
@@ -35,6 +38,7 @@ import {
   useSnackBar,
 } from '@twreporter/react-components/lib/snack-bar'
 import zIndexConst from '@twreporter/core/lib/constants/z-index'
+import { BookmarkType } from '@twreporter/react-components/lib/icon/enum'
 // global var
 const ToolBarContext = createContext()
 const defaultFbAppID = '962589903815787'
@@ -288,38 +292,55 @@ FontLevel.propTypes = {
   changeFontLevel: predefinedProps.tools.onFontLevelChange,
 }
 
-const BookmarkBlock = ({ articleMeta }) => {
+const BookmarkBlock = ({ articleMeta, bookmarkId }) => {
   const { hideText, toastr } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
     themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
-  const renderIcon = (isBookmarked, addAction, removeAction) => {
-    const iconType = isBookmarked ? 'saved' : 'add'
-    const text = isBookmarked ? '已收藏' : '收藏'
-    const id = isBookmarked ? 'remove-bookmark' : 'add-bookmark'
-    const handleClick = async () => {
-      const action = isBookmarked ? removeAction : addAction
-      try {
-        await action()
-      } catch (err) {
-        console.error('add bookmark fail', err)
-      }
-      onClickButton(isBookmarked)
-    }
-    return (
-      <ButtonContainer onClick={handleClick} id={id}>
-        <IconWithTextButton
-          text={text}
-          iconComponent={
-            <Bookmark type={iconType} releaseBranch={releaseBranch} />
-          }
-          theme={theme}
-          hideText={hideText}
-        />
-      </ButtonContainer>
-    )
+  const { addAction, removeAction } = useBookmark()
+  const bookmarkIdFromState = useSelector(
+    state => state.bookmarkWidget?.bookmark?.id
+  )
+  const [isBookmarked, setIsBookmarked] = useState(false)
+  const [iconType, setIconType] = useState(BookmarkType.ADD)
+  const [elementId, setElementId] = useState('add-bookmark')
+  const [buttonText, setButtonText] = useState('收藏')
+
+  const handleAddBookmark = () => {
+    addAction(articleMeta)
   }
+
+  const handleRemoveBookmark = () => {
+    const targetBookmarkId = bookmarkId || bookmarkIdFromState
+    removeAction(targetBookmarkId)
+    setIsBookmarked(() => false)
+  }
+
+  useEffect(() => {
+    if (bookmarkId || bookmarkIdFromState) {
+      setIsBookmarked(true)
+    } else {
+      setIsBookmarked(false)
+    }
+  }, [bookmarkId, bookmarkIdFromState])
+
+  useEffect(() => {
+    setIconType(isBookmarked ? BookmarkType.SAVED : BookmarkType.ADD)
+    setElementId(isBookmarked ? 'remove-bookmark' : 'add-bookmark')
+    setButtonText(isBookmarked ? '已收藏' : '收藏')
+  }, [isBookmarked])
+
+  const handleClick = async () => {
+    const action = isBookmarked ? handleRemoveBookmark : handleAddBookmark
+    try {
+      await action()
+    } catch (err) {
+      console.error('add bookmark fail', err)
+    }
+    onClickButton(isBookmarked)
+  }
+
   const onClickButton = isBookmarked => {
     const text = isBookmarked ? '已取消收藏' : '已收藏'
     toastr({ text, timeout: 3000 })
@@ -327,16 +348,22 @@ const BookmarkBlock = ({ articleMeta }) => {
 
   return (
     <React.Fragment>
-      <BookmarkWidget
-        toAutoCheck={true}
-        articleMeta={articleMeta}
-        renderIcon={renderIcon}
-      />
+      <ButtonContainer onClick={handleClick} id={elementId}>
+        <IconWithTextButton
+          text={buttonText}
+          iconComponent={
+            <Bookmark type={iconType} releaseBranch={releaseBranch} />
+          }
+          theme={theme}
+          hideText={hideText}
+        />
+      </ButtonContainer>
     </React.Fragment>
   )
 }
 BookmarkBlock.propTypes = {
   articleMeta: predefinedProps.tools.articleMetaForBookmark,
+  bookmarkId: PropTypes.number,
 }
 
 const BackToTopic = ({ backToTopic }) => {
@@ -396,6 +423,7 @@ const ToolBar = ({
   onFontLevelChange,
   className,
   scrollStage,
+  bookmarkId,
 }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
@@ -425,7 +453,10 @@ const ToolBar = ({
         <ToolBarContainer>
           <FontLevel changeFontLevel={onFontLevelChange} />
           <ShareBy fbAppID={fbAppID} />
-          <BookmarkBlock articleMeta={articleMetaForBookmark} />
+          <BookmarkBlock
+            articleMeta={articleMetaForBookmark}
+            bookmarkId={bookmarkId}
+          />
           <RelatedPost />
           {backToTopicJSX}
         </ToolBarContainer>
@@ -439,6 +470,7 @@ const ToolBar = ({
 ToolBar.propTypes = {
   ...predefinedProps.tools,
   scrollStage: PropTypes.number,
+  bookmarkId: PropTypes.number,
 }
 
 export default ToolBar
