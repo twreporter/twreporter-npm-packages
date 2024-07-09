@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.1.0-rc.0...@twreporter/redux@8.1.0-rc.1) (2024-07-09)
+
+
+### Features
+
+* add jwt for getting full post ([d5d0f16](https://github.com/twreporter/twreporter-npm-packages/commit/d5d0f16ae807882254c318488f97904aef50e18e))
+
+
+
+
+
 # [8.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.3...@twreporter/redux@8.1.0-rc.0) (2024-07-09)
 
 

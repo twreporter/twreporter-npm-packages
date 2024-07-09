@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.2...@twreporter/react-article-components@2.3.0-rc.3) (2024-07-09)
+
+
+### Features
+
+* replace bookmarkWidget by useBookmark ([1c2c3d5](https://github.com/twreporter/twreporter-npm-packages/commit/1c2c3d559b2f4f536b02e52c5c51a11c58817f23))
+
+
+
+
+
 # [2.3.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.1...@twreporter/react-article-components@2.3.0-rc.2) (2024-07-09)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.2.0-rc.1...@twreporter/react-components@9.2.0-rc.2) (2024-07-09)
+
+
+### Features
+
+* replace bookmarkWidget by useBookmark ([1c2c3d5](https://github.com/twreporter/twreporter-npm-packages/commit/1c2c3d559b2f4f536b02e52c5c51a11c58817f23))
+
+
+
+
+
 # [9.2.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.2.0-rc.0...@twreporter/react-components@9.2.0-rc.1) (2024-07-09)
 
 **Note:** Version bump only for package @twreporter/react-components
