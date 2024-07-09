@@ -126,7 +126,7 @@ const TrackingSection = ({ data }) => {
       })
     : null
   return (
-    <TrackingSectionContainer>
+    <TrackingSectionContainer id={title}>
       <DateRow>
         <Dot />
         <P2Gray600 text={date2yyyymmdd(publishDate, '/')} />
