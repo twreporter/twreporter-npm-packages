@@ -25,7 +25,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 280px;
+  max-width: ${(props) => props.$maxWidth};
 `
 
 const TextContainer = styled.div`
@@ -66,6 +66,7 @@ const EmptyState = ({
   buttonText = '',
   buttonUrl = '/',
   buttonOnclick = defaultFunc,
+  maxWidth = '280px',
 }) => {
   let imageUrl = ''
   let imageWidth = ''
@@ -87,7 +88,7 @@ const EmptyState = ({
   }
   return (
     <OuterContainer>
-      <Container>
+      <Container $maxWidth={maxWidth}>
         <img src={imageUrl} width={imageWidth} />
         <TextContainer>
           <P1 text={title} weight={P1.Weight.BOLD} />
@@ -116,6 +117,7 @@ EmptyState.propTypes = {
   buttonText: PropTypes.string,
   buttonUrl: PropTypes.string,
   buttonOnclick: PropTypes.func,
+  maxWidth: PropTypes.string,
 }
 
 EmptyState.Style = Style

@@ -89,6 +89,13 @@ commands:
     description: "Install build dependencies"
     steps:
       - run:
+          name: Enable Corepack
+          # enable corepack to use other version of yarn
+          command: sudo corepack enable
+      - run:
+          name: Set yarn version
+          command: yarn set version 4.3.1
+      - run:
           name: 'Generate checksum list of packages/*/package.json'
           # Ref: https://github.com/chrisbanes/tivi/blob/c1219aeee9f62600fcd43d7caf1ea21e6e92930f/checksum.sh
           command: |
@@ -114,7 +121,7 @@ commands:
           key: v4-dependencies-build-{{ checksum "yarn.lock" }}
       - restore_cache:
           key: v2-dependencies-link-{{ checksum "packages-checksums" }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable --check-cache
       - save_cache:
           key: v4-dependencies-build-{{ checksum "yarn.lock" }}
           paths:
