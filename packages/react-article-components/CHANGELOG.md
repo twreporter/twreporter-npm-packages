@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.3...@twreporter/react-article-components@2.3.0-rc.4) (2024-07-10)
+
+
+### Bug Fixes
+
+* add dependency ([ca886a7](https://github.com/twreporter/twreporter-npm-packages/commit/ca886a7b44f0872eb05dafdc47682fea1b089141))
+
+
+
+
+
 # [2.3.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.2...@twreporter/react-article-components@2.3.0-rc.3) (2024-07-09)
 
 
