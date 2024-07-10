@@ -283,7 +283,7 @@ const Img = ({
       window.removeEventListener('resize', handleWindowResize)
       window.removeEventListener('keydown', handleESCClick)
     }
-  }, [])
+  }, [handleWindowResize, handleESCClick])
 
   useEffect(() => {
     checkFullScreenImageSize()
