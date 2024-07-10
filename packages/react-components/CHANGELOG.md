@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.2.0-rc.2...@twreporter/react-components@9.2.0-rc.3) (2024-07-10)
+
+
+### Features
+
+* add `maxWidth` props for empty state ([d05ad19](https://github.com/twreporter/twreporter-npm-packages/commit/d05ad1911d336ae43b1c2071d286b1f7e5d1d308))
+
+
+
+
+
 # [9.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.2.0-rc.1...@twreporter/react-components@9.2.0-rc.2) (2024-07-09)
 
 
