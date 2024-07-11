@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.5...@twreporter/react-article-components@2.3.0-rc.6) (2024-07-11)
+
+
+### Bug Fixes
+
+* add embedded block to tracking section ([4f07f2d](https://github.com/twreporter/twreporter-npm-packages/commit/4f07f2dc02f9b23f22b48fea2d9fedbd5583f2fb))
+
+
+
+
+
 # [2.3.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.4...@twreporter/react-article-components@2.3.0-rc.5) (2024-07-10)
 
 **Note:** Version bump only for package @twreporter/react-article-components
