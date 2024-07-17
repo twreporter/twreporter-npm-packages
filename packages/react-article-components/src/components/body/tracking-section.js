@@ -20,6 +20,7 @@ import Infobox from './infobox'
 import list from './list'
 import CenteredQuote from './centered-quote'
 import Blockquote from './blockquote'
+import Embedded, { Caption as EmbeddedCaption } from './embedded-code'
 // lodash
 import map from 'lodash/map'
 
@@ -83,6 +84,13 @@ const InfoBoxContainer = styled.div`
   `}
 `
 
+const StyledEmbedded = styled(Embedded)`
+  ${EmbeddedCaption} {
+    margin-top: 8px;
+    padding: 0px;
+  }
+`
+
 const TrackingSection = ({ data }) => {
   const { title, publishDate, content } = data
 
@@ -114,6 +122,10 @@ const TrackingSection = ({ data }) => {
         return <list.OrderedList key={data.id} data={data} />
       case 'unordered-list-item':
         return <list.UnorderedList key={data.id} data={data} />
+      case 'embedded-code':
+      case 'embeddedCode':
+      case 'embeddedcode':
+        return <StyledEmbedded key={data.id} data={data} />
       default:
         return null
     }
@@ -126,7 +138,7 @@ const TrackingSection = ({ data }) => {
       })
     : null
   return (
-    <TrackingSectionContainer>
+    <TrackingSectionContainer id={title}>
       <DateRow>
         <Dot />
         <P2Gray600 text={date2yyyymmdd(publishDate, '/')} />

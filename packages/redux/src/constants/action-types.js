@@ -202,4 +202,11 @@ export default {
       failure: 'fail to fetch post reviews',
     },
   },
+  postFollowups: {
+    read: {
+      request: 'request to fetch post followups',
+      success: 'success to fetch post followups',
+      failure: 'fail to fetch post followups',
+    },
+  },
 }

@@ -25,10 +25,11 @@ const { entities, postsInEntities } = stateFieldNames
 /**
  * Fetch a full post, whose assets like relateds, leading_video ...etc are all complete,
  * @param {string} slug - slug of post
+ * @param {string} jwt - access_token granted for the user
  * @param {number} [timeout=apiConfig.timeout] - request api timeout
  * @return {import('../typedef').Thunk} async action creator
  */
-export function fetchAFullPost(slug, timeout = apiConfig.timeout) {
+export function fetchAFullPost(slug, jwt = '', timeout = apiConfig.timeout) {
   return (dispatch, getState) => {
     const state = getState()
     const postId = _.get(
@@ -68,7 +69,10 @@ export function fetchAFullPost(slug, timeout = apiConfig.timeout) {
     }
     const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
     const path = `/v2/${apiEndpoints.posts}/${slug}`
-    const url = formURL(apiOrigin, path, { full: 'true' })
+    const url = formURL(apiOrigin, path, {
+      full: 'true',
+      toggleBookmark: 'true',
+    })
     // Start to get topics
     dispatch({
       type: types.selectedPost.read.request,
@@ -77,10 +81,14 @@ export function fetchAFullPost(slug, timeout = apiConfig.timeout) {
       },
     })
 
+    const config = { timeout }
+    if (jwt) {
+      config.headers = { Authorization: `Bearer ${jwt}` }
+      config.withCredentials = true
+    }
+
     return axios
-      .get(url, {
-        timeout,
-      })
+      .get(url, config)
       .then(response => {
         const successAction = {
           type: types.selectedPost.read.success,

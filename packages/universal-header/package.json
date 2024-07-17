@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/universal-header",
-  "version": "3.0.4",
+  "version": "3.0.5-rc.3",
   "description": "Universal header of TWReporter sites",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "@twreporter/core": "^1.22.1",
-    "@twreporter/react-components": "^9.1.1",
+    "@twreporter/react-components": "^9.2.0-rc.3",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "querystring": "^0.2.0",
@@ -42,15 +42,19 @@
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.22.15",
-    "@storybook/addon-actions": "7.0.0",
-    "@storybook/addon-essentials": "7.0.0",
-    "@storybook/addon-interactions": "7.0.0",
-    "@storybook/addon-links": "7.0.0",
-    "@storybook/addon-mdx-gfm": "7.0.0",
-    "@storybook/react": "7.0.0",
-    "@storybook/react-webpack5": "7.0.0",
-    "@storybook/testing-library": "^0.2.2",
+    "@chromatic-com/storybook": "^1",
+    "@storybook/addon-actions": "^8.1.11",
+    "@storybook/addon-essentials": "^8.1.11",
+    "@storybook/addon-interactions": "^8.1.11",
+    "@storybook/addon-links": "^8.1.11",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
+    "@storybook/manager-api": "^8.1.11",
+    "@storybook/preview-api": "^8.1.11",
+    "@storybook/react": "^8.1.11",
+    "@storybook/react-webpack5": "^8.1.11",
+    "@storybook/test": "^8.1.11",
     "babel-loader": "^8.2.5",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "storybook": "^8.1.11"
   }
 }

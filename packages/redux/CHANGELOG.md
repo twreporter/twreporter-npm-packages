@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.1.0-rc.0...@twreporter/redux@8.1.0-rc.1) (2024-07-09)
+
+
+### Features
+
+* add jwt for getting full post ([d5d0f16](https://github.com/twreporter/twreporter-npm-packages/commit/d5d0f16ae807882254c318488f97904aef50e18e))
+
+
+
+
+
+# [8.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.3...@twreporter/redux@8.1.0-rc.0) (2024-07-09)
+
+
+### Bug Fixes
+
+* **redux:** post-followups action  mock data ([6959c6b](https://github.com/twreporter/twreporter-npm-packages/commit/6959c6ba18857f434e437e43c82898a4c9a1c578))
+* **redux:** post-followups mock data ([eef003e](https://github.com/twreporter/twreporter-npm-packages/commit/eef003ebf15a16b269e6322c02ed47fc9df1110a))
+
+
+### Features
+
+* **redux:** add postFollowups action & test ([048bc88](https://github.com/twreporter/twreporter-npm-packages/commit/048bc88f037c1bae8c17d9a05927f6451deef8c3))
+* **redux:** add postFollowups reducer & test ([dbf9923](https://github.com/twreporter/twreporter-npm-packages/commit/dbf992357f7f72e94ebb1b3c6360fe81e6583da4))
+* **redux:** payload data ([954c761](https://github.com/twreporter/twreporter-npm-packages/commit/954c76126508c8b7b4a5c62da659590281327dc8))
+
+
+
+
+
 ## [8.0.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.3-rc.0...@twreporter/redux@8.0.3) (2024-06-24)
 
 **Note:** Version bump only for package @twreporter/redux

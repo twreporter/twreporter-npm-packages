@@ -1,5 +1,5 @@
-import React from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import React, { useState, useEffect, useRef, useContext } from 'react'
+import styled, { ThemeContext, css } from 'styled-components'
 import PropTypes from 'prop-types'
 // @twreporter
 import { replaceGCSUrlOrigin } from '@twreporter/core/lib/utils/storage-url-processor'
@@ -32,11 +32,42 @@ const objectFitConsts = {
   cover: 'cover',
 }
 
+const CrossIconPos = Object.freeze({
+  INSIDE: 'inside',
+  TOP_RIGHT: 'top-right',
+  RIGHT_TOP: 'right-top',
+})
+
+// padding: 16px + width: 24px => 40px
+const iconPadding = 40
+
+const CrossIconPosCss = position => {
+  switch (position) {
+    case CrossIconPos.TOP_RIGHT:
+      return css`
+        top: -${iconPadding}px;
+        right: 0px;
+      `
+    case CrossIconPos.RIGHT_TOP:
+      return css`
+        top: 0px;
+        right: -${iconPadding}px;
+      `
+    case CrossIconPos.INSIDE:
+    default:
+      return css`
+        top: 0px;
+        right: 0px;
+      `
+  }
+}
+
 const ImgContainer = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
   ${props => props.$heightString}
+  ${props => (props.$clickable ? 'cursor: zoom-in;' : '')}
 `
 
 const ImgPlaceholder = styled.div`
@@ -117,17 +148,15 @@ const FullScreenImageMask = styled.div`
 const FullScreenImage = styled.div`
   position: relative;
   img {
-    max-width: 90vw;
-    max-height: 90vh;
+    max-width: 100vw;
+    max-height: 100vh;
   }
 `
 
 const CrossIcon = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 0px;
-  /* padding 16px + width: 24px => 40px */
-  right: -40px;
+  ${props => CrossIconPosCss(props.$crossIconPos)}
   height: 24px;
   width: 24px;
   svg {
@@ -138,95 +167,39 @@ const CrossIcon = styled.div`
 /**
  * An image element with placeholder.
  * The width and height of the image are required to preserve the space on the page for image.
- *
- * @class Image
- * @extends {React.PureComponent}
  */
-export default class Img extends React.PureComponent {
-  static contextType = ThemeContext
+const Img = ({
+  alt = '',
+  className = '',
+  // If the default image is not provided, this component will take the first item in `imageSet` as the default image.
+  // The usage of default image:
+  //   1. `img.src = defaultImage.url` for the browser not supporting `srcset`.
+  //   2. The height/width ratio of the default image is used for this component. (no matter which candidate is acturally rendered)
+  defaultImage = {},
+  imgPlaceholderSrc = '',
+  placeholderNoBlur = false,
+  noImgPlaceholder = false,
+  // The properties of `imgProps` will all be passed to `<img />` element.
+  imgProps = {},
+  imageSet = [],
+  objectFit,
+  objectPosition,
+  sizes = '',
+  clickable = false,
+}) => {
+  const themeContext = useContext(ThemeContext)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [toShowPlaceholder, setToShowPlaceholder] = useState(true)
+  const [showFullScreenImg, setShowFullScreenImg] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const imgRef = useRef(null)
+  const _isMounted = useRef(true)
+  const [supportObjectFit, setSupportObjectFit] = useState(true)
 
-  static propTypes = {
-    alt: PropTypes.string,
-    className: PropTypes.string,
-    defaultImage: predefinedPropTypes.imagePropType,
-    // If the default image is not provided, this component will take the first item in `imageSet` as the default image.
-    // The usage of default image:
-    //   1. `img.src = defaultImage.url` for the browser not supporting `srcset`.
-    //   2. The height/width ratio of the default image is used for this component. (no matter which candidate is acturally rendered)
-    imgPlaceholderSrc: PropTypes.string,
-    placeholderNoBlur: PropTypes.bool,
-    noImgPlaceholder: PropTypes.bool,
-    imgProps: PropTypes.object,
-    // The properties of `imgProps` will all be passed to `<img />` element.
-    imageSet: PropTypes.arrayOf(predefinedPropTypes.imagePropType),
-    objectFit: PropTypes.oneOf([
-      objectFitConsts.cover,
-      objectFitConsts.contain,
-    ]),
-    objectPosition: PropTypes.string,
-    sizes: PropTypes.string.isRequired,
-    clickable: PropTypes.bool,
-  }
+  const fullScreenImageRef = useRef(null)
+  const [crossIconPos, setCrossIconPos] = useState(CrossIconPos.INSIDE)
 
-  static defaultProps = {
-    alt: '',
-    className: '',
-    defaultImage: {},
-    imageSet: [],
-    imgPlaceholderSrc: '',
-    imgProps: {},
-    placeholderNoBlur: false,
-    noImgPlaceholder: false,
-    sizes: '',
-    clickable: false,
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      isLoaded: false,
-      toShowPlaceholder: true,
-      showFullScreenImg: false,
-      isMobile: false,
-    }
-    this._img = React.createRef()
-    this.handleImageLoaded = this.handleImageLoaded.bind(this)
-    this.handleWindowResize = _.debounce(this._handleWindowResize, 500).bind(
-      this
-    )
-    this._isMounted = false
-    this._supportObjectFit = true
-  }
-
-  componentDidMount() {
-    // Check if browser support css object-fit.
-    // Ref: https://github.com/anselmh/object-fit/blob/c6e275b099caf59ca44bfc5cbbaf4c388ace9980/src/polyfill.object-fit.core.js#L396
-    this._supportObjectFit =
-      'objectFit' in document.documentElement.style === true
-    this._isMounted = true
-    // If the browser has cached the image already, the `load` event of `<img>` will never be triggered.
-    // Hence, we need to trigger `handleImageLoaded` manually.
-    if (_.get(this._img.current, 'complete')) {
-      this.handleImageLoaded()
-    }
-    window.addEventListener('resize', this.handleWindowResize)
-    this.handleWindowResize()
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false
-    window.removeEventListener('resize', this.handleWindowResize)
-  }
-
-  _handleWindowResize = () => {
-    const windowWidth = window.innerWidth
-
-    this.setState({
-      isMobile: windowWidth < DEFAULT_SCREEN.tablet.minWidth,
-    })
-  }
-
-  handleImageLoaded() {
+  const handleImageLoaded = () => {
     // Progressive image
     // Let user see the blur image,
     // and slowly make the blur image clearer
@@ -234,33 +207,101 @@ export default class Img extends React.PureComponent {
     // in order to make sure users see the blur image,
     // delay the clear image rendering
     setTimeout(() => {
-      if (this._isMounted) {
-        this.setState({
-          isLoaded: true,
-        })
+      if (_isMounted.current) {
+        setIsLoaded(true)
       }
     }, 500)
-
     // after clear image rendered, not display placeholder anymore
     setTimeout(() => {
-      if (this._isMounted) {
-        this.setState({
-          toShowPlaceholder: false,
-        })
+      if (_isMounted.current) {
+        setToShowPlaceholder(false)
       }
     }, 1500)
   }
 
-  _renderImagePlaceholder() {
-    const { toShowPlaceholder } = this.state
-    const {
-      imgPlaceholderSrc,
-      placeholderNoBlur,
-      noImgPlaceholder,
-    } = this.props
-    if (noImgPlaceholder) {
-      return null
+  const checkFullScreenImageSize = () => {
+    if (fullScreenImageRef.current) {
+      const img = fullScreenImageRef.current
+      const imgWidth = img.offsetWidth
+      const imgHeight = img.offsetHeight
+      const vw = window.innerWidth
+      const vh = window.innerHeight
+
+      if (imgWidth === vw) {
+        if (vh - imgHeight < iconPadding * 2) {
+          setCrossIconPos(CrossIconPos.INSIDE)
+        } else {
+          setCrossIconPos(CrossIconPos.TOP_RIGHT)
+        }
+      } else if (imgHeight === vh) {
+        if (vw - imgWidth < iconPadding * 2) {
+          setCrossIconPos(CrossIconPos.INSIDE)
+        } else {
+          setCrossIconPos(CrossIconPos.RIGHT_TOP)
+        }
+      } else {
+        // default
+        setCrossIconPos(CrossIconPos.INSIDE)
+      }
     }
+  }
+
+  const handleESCClick = _.debounce(e => {
+    if (showFullScreenImg) {
+      if (e.key === 'Escape') {
+        closeFullScreen()
+      }
+    }
+  }, 500)
+
+  const handleWindowResize = _.debounce(() => {
+    const windowWidth = window.innerWidth
+    if (windowWidth <= DEFAULT_SCREEN.tablet.minWidth) {
+      setIsMobile(true)
+      closeFullScreen()
+    } else {
+      setIsMobile(false)
+    }
+    checkFullScreenImageSize()
+  }, 100)
+
+  useEffect(() => {
+    // Check if browser support css object-fit.
+    // Ref: https://github.com/anselmh/object-fit/blob/c6e275b099caf59ca44bfc5cbbaf4c388ace9980/src/polyfill.object-fit.core.js#L396
+    setSupportObjectFit('objectFit' in document.documentElement.style)
+    _isMounted.current = true
+    // If the browser has cached the image already, the `load` event of `<img>` will never be triggered.
+    // Hence, we need to trigger `handleImageLoaded` manually.
+    if (_.get(imgRef.current, 'complete')) {
+      handleImageLoaded()
+    }
+    window.addEventListener('resize', handleWindowResize)
+    handleWindowResize()
+    window.addEventListener('keydown', handleESCClick)
+    return () => {
+      _isMounted.current = false
+      window.removeEventListener('resize', handleWindowResize)
+      window.removeEventListener('keydown', handleESCClick)
+    }
+  }, [handleWindowResize, handleESCClick])
+
+  useEffect(() => {
+    checkFullScreenImageSize()
+  }, [showFullScreenImg])
+
+  const openFullScreen = () => {
+    if (isMobile) return
+    setShowFullScreenImg(true)
+    document.body.classList.add('disable-scroll')
+  }
+
+  const closeFullScreen = () => {
+    setShowFullScreenImg(false)
+    document.body.classList.remove('disable-scroll')
+  }
+
+  const renderImagePlaceholder = () => {
+    if (noImgPlaceholder) return null
     if (imgPlaceholderSrc) {
       return (
         <ImgPlaceholder
@@ -278,128 +319,117 @@ export default class Img extends React.PureComponent {
     )
   }
 
-  render() {
-    const { isLoaded, showFullScreenImg, isMobile } = this.state
-    const {
-      alt,
-      className,
-      imgProps,
-      imageSet,
-      defaultImage,
-      objectFit,
-      objectPosition,
-      sizes,
-      clickable,
-    } = this.props
+  const releaseBranch =
+    themeContext?.releaseBranch || releaseBranchConsts.release
+  const appendedClassName = className + ' avoid-break'
+  const defaultImageOriginalUrl = _.get(defaultImage, 'url')
 
-    const releaseBranch =
-      this?.context?.releaseBranch || releaseBranchConsts.release
-
-    const openFullScreen = () => {
-      if (isMobile) return
-      this.setState({ showFullScreenImg: true })
-      document.body.classList.add('disable-scroll')
-    }
-    const closeFullScreen = () => {
-      this.setState({ showFullScreenImg: false })
-      document.body.classList.remove('disable-scroll')
-    }
-
-    const appendedClassName = className + ' avoid-break'
-    const defaultImageOriginalUrl = _.get(defaultImage, 'url')
-    /* Render placeholder only if no valid image is given */
-    if (!defaultImageOriginalUrl && (!imageSet || imageSet.length === 0)) {
-      return (
-        <ImgContainer
-          className={appendedClassName}
-          $heightString="height: 100%;"
-        >
-          {this._renderImagePlaceholder()}
-        </ImgContainer>
-      )
-    }
-
-    const srcset = getSrcsetString(imageSet)
-    const isObjectFit = Boolean(objectFit)
-    const heightWidthRatio =
-      _.get(defaultImage, 'height') / _.get(defaultImage, 'width')
-    if (isObjectFit && !heightWidthRatio) {
-      console.warn(
-        'Warning on Img component:',
-        'The `objecFit` is set, but no valid height/width ratio of `props.defaultImage` is given.',
-        '`props.defaultImage`:',
-        defaultImage
-      )
-    }
-    const defaultImageSrc = replaceGCSUrlOrigin(_.get(defaultImage, 'url'))
-
+  if (!defaultImageOriginalUrl && (!imageSet || imageSet.length === 0)) {
     return (
-      <>
-        <ImgContainer
-          className={appendedClassName}
-          $heightString={
-            isObjectFit
-              ? `height: 100%;`
-              : `padding-top: ${heightWidthRatio * 100}%;`
-          }
-          onClick={clickable ? openFullScreen : undefined}
-        >
-          {this._renderImagePlaceholder()}
-          <ImgBox $toShow={isLoaded}>
-            {isObjectFit ? (
-              <React.Fragment>
-                <ImgWithObjectFit
-                  alt={alt}
+      <ImgContainer className={appendedClassName} $heightString="height: 100%;">
+        {renderImagePlaceholder()}
+      </ImgContainer>
+    )
+  }
+
+  const srcset = getSrcsetString(imageSet)
+  const isObjectFit = Boolean(objectFit)
+  const heightWidthRatio =
+    _.get(defaultImage, 'height') / _.get(defaultImage, 'width')
+  if (isObjectFit && !heightWidthRatio) {
+    console.warn(
+      'Warning on Img component:',
+      'The `objecFit` is set, but no valid height/width ratio of `props.defaultImage` is given.',
+      '`props.defaultImage`:',
+      defaultImage
+    )
+  }
+  const defaultImageSrc = replaceGCSUrlOrigin(_.get(defaultImage, 'url'))
+
+  return (
+    <>
+      <ImgContainer
+        className={appendedClassName}
+        $heightString={
+          isObjectFit
+            ? `height: 100%;`
+            : `padding-top: ${heightWidthRatio * 100}%;`
+        }
+        onClick={clickable ? openFullScreen : undefined}
+        $clickable={clickable}
+      >
+        {renderImagePlaceholder()}
+        <ImgBox $toShow={isLoaded}>
+          {isObjectFit ? (
+            <>
+              <ImgWithObjectFit
+                alt={alt}
+                $objectFit={objectFit}
+                $objectPosition={objectPosition}
+                onLoad={handleImageLoaded}
+                ref={imgRef}
+                sizes={supportObjectFit ? sizes : ''}
+                src={defaultImageSrc}
+                srcSet={supportObjectFit ? srcset : ''}
+                hide={!supportObjectFit}
+                {...imgProps}
+              />
+              {supportObjectFit ? null : (
+                <FallbackObjectFitImg
+                  $url={_.get(defaultImage, 'url')}
                   $objectFit={objectFit}
                   $objectPosition={objectPosition}
-                  onLoad={this.handleImageLoaded}
-                  ref={this._img}
-                  sizes={this._supportObjectFit ? sizes : ''}
-                  src={defaultImageSrc}
-                  srcSet={this._supportObjectFit ? srcset : ''}
-                  hide={!this._supportObjectFit}
-                  {...imgProps}
                 />
-                {this._supportObjectFit ? null : (
-                  <FallbackObjectFitImg
-                    $url={_.get(defaultImage, 'url')}
-                    $objectFit={objectFit}
-                    $objectPosition={objectPosition}
-                  />
-                )}
-              </React.Fragment>
-            ) : (
+              )}
+            </>
+          ) : (
+            <img
+              alt={alt}
+              onLoad={handleImageLoaded}
+              ref={imgRef}
+              sizes={sizes}
+              src={defaultImageSrc}
+              srcSet={srcset}
+              {...imgProps}
+            />
+          )}
+        </ImgBox>
+      </ImgContainer>
+      {showFullScreenImg && (
+        <DesktopAndAbove>
+          <FullScreenImageMask onClick={closeFullScreen}>
+            <FullScreenImage>
               <img
                 alt={alt}
-                onLoad={this.handleImageLoaded}
-                ref={this._img}
+                ref={fullScreenImageRef}
                 sizes={sizes}
                 src={defaultImageSrc}
                 srcSet={srcset}
-                {...imgProps}
               />
-            )}
-          </ImgBox>
-        </ImgContainer>
-        {showFullScreenImg && (
-          <DesktopAndAbove>
-            <FullScreenImageMask onClick={closeFullScreen}>
-              <FullScreenImage>
-                <img
-                  alt={alt}
-                  ref={this._img}
-                  sizes={sizes}
-                  src={defaultImageSrc}
-                  srcSet={srcset}
-                />
-                <CrossIcon>
-                  <Cross releaseBranch={releaseBranch} />
-                </CrossIcon>
-              </FullScreenImage>
-            </FullScreenImageMask>
-          </DesktopAndAbove>
-        )}
-      </>
-    )
-  }
+              <CrossIcon $crossIconPos={crossIconPos}>
+                <Cross releaseBranch={releaseBranch} />
+              </CrossIcon>
+            </FullScreenImage>
+          </FullScreenImageMask>
+        </DesktopAndAbove>
+      )}
+    </>
+  )
 }
+
+Img.propTypes = {
+  alt: PropTypes.string,
+  className: PropTypes.string,
+  defaultImage: predefinedPropTypes.imagePropType,
+  imgPlaceholderSrc: PropTypes.string,
+  placeholderNoBlur: PropTypes.bool,
+  noImgPlaceholder: PropTypes.bool,
+  imgProps: PropTypes.object,
+  imageSet: PropTypes.arrayOf(predefinedPropTypes.imagePropType),
+  objectFit: PropTypes.oneOf([objectFitConsts.cover, objectFitConsts.contain]),
+  objectPosition: PropTypes.string,
+  sizes: PropTypes.string.isRequired,
+  clickable: PropTypes.bool,
+}
+
+export default Img
