@@ -3,442 +3,244 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0...@twreporter/react-article-components@2.3.1-rc.0) (2024-07-18)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
 # [2.3.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.6...@twreporter/react-article-components@2.3.0) (2024-07-17)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.3.0-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.5...@twreporter/react-article-components@2.3.0-rc.6) (2024-07-11)
-
 
 ### Bug Fixes
 
-* add embedded block to tracking section ([4f07f2d](https://github.com/twreporter/twreporter-npm-packages/commit/4f07f2dc02f9b23f22b48fea2d9fedbd5583f2fb))
-
-
-
-
+- add embedded block to tracking section ([4f07f2d](https://github.com/twreporter/twreporter-npm-packages/commit/4f07f2dc02f9b23f22b48fea2d9fedbd5583f2fb))
 
 # [2.3.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.4...@twreporter/react-article-components@2.3.0-rc.5) (2024-07-10)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.3.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.3...@twreporter/react-article-components@2.3.0-rc.4) (2024-07-10)
-
 
 ### Bug Fixes
 
-* add dependency ([ca886a7](https://github.com/twreporter/twreporter-npm-packages/commit/ca886a7b44f0872eb05dafdc47682fea1b089141))
-
-
-
-
+- add dependency ([ca886a7](https://github.com/twreporter/twreporter-npm-packages/commit/ca886a7b44f0872eb05dafdc47682fea1b089141))
 
 # [2.3.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.2...@twreporter/react-article-components@2.3.0-rc.3) (2024-07-09)
 
-
 ### Features
 
-* replace bookmarkWidget by useBookmark ([1c2c3d5](https://github.com/twreporter/twreporter-npm-packages/commit/1c2c3d559b2f4f536b02e52c5c51a11c58817f23))
-
-
-
-
+- replace bookmarkWidget by useBookmark ([1c2c3d5](https://github.com/twreporter/twreporter-npm-packages/commit/1c2c3d559b2f4f536b02e52c5c51a11c58817f23))
 
 # [2.3.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.1...@twreporter/react-article-components@2.3.0-rc.2) (2024-07-09)
 
-
 ### Features
 
-* **react-article-components:** add id for tracking section ([974cf7f](https://github.com/twreporter/twreporter-npm-packages/commit/974cf7f061e0d81d5572e2e4f7f7cc1facb9d094))
-
-
-
-
+- **react-article-components:** add id for tracking section ([974cf7f](https://github.com/twreporter/twreporter-npm-packages/commit/974cf7f061e0d81d5572e2e4f7f7cc1facb9d094))
 
 # [2.3.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.0-rc.0...@twreporter/react-article-components@2.3.0-rc.1) (2024-07-08)
 
-
 ### Bug Fixes
 
-* fix comments ([6084a28](https://github.com/twreporter/twreporter-npm-packages/commit/6084a289944823cf43e8c063f5c797920d454ee9))
-* naming ([87d00f4](https://github.com/twreporter/twreporter-npm-packages/commit/87d00f456312ef1e7a522301e3e2d5c23c244d30))
-
+- fix comments ([6084a28](https://github.com/twreporter/twreporter-npm-packages/commit/6084a289944823cf43e8c063f5c797920d454ee9))
+- naming ([87d00f4](https://github.com/twreporter/twreporter-npm-packages/commit/87d00f456312ef1e7a522301e3e2d5c23c244d30))
 
 ### Features
 
-* **react-article-components:** full screen image version2 ([49b1495](https://github.com/twreporter/twreporter-npm-packages/commit/49b1495a03f4b1c181e0b9fafc378f094fe651b7))
-
-
-
-
+- **react-article-components:** full screen image version2 ([49b1495](https://github.com/twreporter/twreporter-npm-packages/commit/49b1495a03f4b1c181e0b9fafc378f094fe651b7))
 
 # [2.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.2-rc.0...@twreporter/react-article-components@2.3.0-rc.0) (2024-07-08)
 
-
 ### Features
 
-* **react-article-components:** centered-quote font size ([e20ef32](https://github.com/twreporter/twreporter-npm-packages/commit/e20ef32591d29f8ca4e189d32dfce80781dc7e0e))
-
-
-
-
+- **react-article-components:** centered-quote font size ([e20ef32](https://github.com/twreporter/twreporter-npm-packages/commit/e20ef32591d29f8ca4e189d32dfce80781dc7e0e))
 
 ## [2.2.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.1...@twreporter/react-article-components@2.2.2-rc.0) (2024-07-08)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [2.2.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.1-rc.0...@twreporter/react-article-components@2.2.1) (2024-06-24)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [2.2.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.0...@twreporter/react-article-components@2.2.1-rc.0) (2024-06-24)
-
 
 ### Bug Fixes
 
-* **react-article-component:** tracking section prop for body ([a9e7c49](https://github.com/twreporter/twreporter-npm-packages/commit/a9e7c49759fdf340ec9979d59134614768412758))
-
-
-
-
+- **react-article-component:** tracking section prop for body ([a9e7c49](https://github.com/twreporter/twreporter-npm-packages/commit/a9e7c49759fdf340ec9979d59134614768412758))
 
 # [2.2.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.0-rc.4...@twreporter/react-article-components@2.2.0) (2024-06-24)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.2.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.0-rc.3...@twreporter/react-article-components@2.2.0-rc.4) (2024-06-24)
-
 
 ### Features
 
-* prop for tracking section ([9c8d5a4](https://github.com/twreporter/twreporter-npm-packages/commit/9c8d5a4f6948ec948232fe402b70fde05ebbde42))
-
-
-
-
+- prop for tracking section ([9c8d5a4](https://github.com/twreporter/twreporter-npm-packages/commit/9c8d5a4f6948ec948232fe402b70fde05ebbde42))
 
 # [2.2.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.0-rc.2...@twreporter/react-article-components@2.2.0-rc.3) (2024-06-23)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.0-rc.1...@twreporter/react-article-components@2.2.0-rc.2) (2024-06-19)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 # [2.2.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.2.0-rc.0...@twreporter/react-article-components@2.2.0-rc.1) (2024-06-18)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.2-rc.1...@twreporter/react-article-components@2.2.0-rc.0) (2024-06-18)
-
 
 ### Bug Fixes
 
-* **react-article-component:** fix tracking section propTypes ([9bf13d3](https://github.com/twreporter/twreporter-npm-packages/commit/9bf13d32a23d1907283e05ec904ccee1c55b2aa0))
-
+- **react-article-component:** fix tracking section propTypes ([9bf13d3](https://github.com/twreporter/twreporter-npm-packages/commit/9bf13d32a23d1907283e05ec904ccee1c55b2aa0))
 
 ### Features
 
-* add tracking section for article components ([669d39d](https://github.com/twreporter/twreporter-npm-packages/commit/669d39d4046456299feb3bbf254eda134987d063))
-
-
-
-
+- add tracking section for article components ([669d39d](https://github.com/twreporter/twreporter-npm-packages/commit/669d39d4046456299feb3bbf254eda134987d063))
 
 ## [2.1.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.2-rc.0...@twreporter/react-article-components@2.1.2-rc.1) (2024-06-18)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [2.1.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.1...@twreporter/react-article-components@2.1.2-rc.0) (2024-06-18)
-
 
 ### Bug Fixes
 
-* hide share option when hide toolbar ([5a19130](https://github.com/twreporter/twreporter-npm-packages/commit/5a191309e8f014fb97c8c36d304920c1cb10bf75))
-
-
-
-
+- hide share option when hide toolbar ([5a19130](https://github.com/twreporter/twreporter-npm-packages/commit/5a191309e8f014fb97c8c36d304920c1cb10bf75))
 
 ## [2.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.1-rc.1...@twreporter/react-article-components@2.1.1) (2024-06-04)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [2.1.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.1-rc.0...@twreporter/react-article-components@2.1.1-rc.1) (2024-06-04)
-
 
 ### Bug Fixes
 
-* **rac:** update embedded-code.js. Avoid `executeScript()` twice ([2a44dfb](https://github.com/twreporter/twreporter-npm-packages/commit/2a44dfb0a7c95a8bff2cc07a0c494d83e08879be))
-
-
-
-
+- **rac:** update embedded-code.js. Avoid `executeScript()` twice ([2a44dfb](https://github.com/twreporter/twreporter-npm-packages/commit/2a44dfb0a7c95a8bff2cc07a0c494d83e08879be))
 
 ## [2.1.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.0...@twreporter/react-article-components@2.1.1-rc.0) (2024-06-03)
 
-
 ### Bug Fixes
 
-* add isMobile condition ([7145260](https://github.com/twreporter/twreporter-npm-packages/commit/71452608c2638bf107da28889c20dd7df8fc7d93))
-* follow style guide ([c71f9a0](https://github.com/twreporter/twreporter-npm-packages/commit/c71f9a02d29c1c255dd62ce1cd442d812b12f06b))
-* get minWidth ([96a6bc8](https://github.com/twreporter/twreporter-npm-packages/commit/96a6bc8e2c401e0d59a92a1ac36bef4ade4a3714))
-* use core screen tablet value ([25c0b9a](https://github.com/twreporter/twreporter-npm-packages/commit/25c0b9a2c7c558f18ad3e2b35da1068da503155b))
-
-
-
-
+- add isMobile condition ([7145260](https://github.com/twreporter/twreporter-npm-packages/commit/71452608c2638bf107da28889c20dd7df8fc7d93))
+- follow style guide ([c71f9a0](https://github.com/twreporter/twreporter-npm-packages/commit/c71f9a02d29c1c255dd62ce1cd442d812b12f06b))
+- get minWidth ([96a6bc8](https://github.com/twreporter/twreporter-npm-packages/commit/96a6bc8e2c401e0d59a92a1ac36bef4ade4a3714))
+- use core screen tablet value ([25c0b9a](https://github.com/twreporter/twreporter-npm-packages/commit/25c0b9a2c7c558f18ad3e2b35da1068da503155b))
 
 # [2.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.0-rc.2...@twreporter/react-article-components@2.1.0) (2024-05-30)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.1.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.0-rc.1...@twreporter/react-article-components@2.1.0-rc.2) (2024-05-28)
-
 
 ### Bug Fixes
 
-* add clickable prop for image ([fcf3d6c](https://github.com/twreporter/twreporter-npm-packages/commit/fcf3d6c5ba152936f24ee8eb33745f856b22bf0f))
-
-
-
-
+- add clickable prop for image ([fcf3d6c](https://github.com/twreporter/twreporter-npm-packages/commit/fcf3d6c5ba152936f24ee8eb33745f856b22bf0f))
 
 # [2.1.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.1.0-rc.0...@twreporter/react-article-components@2.1.0-rc.1) (2024-05-28)
 
-
 ### Bug Fixes
 
-* src => lib ([16f42fd](https://github.com/twreporter/twreporter-npm-packages/commit/16f42fd5ce8c0db9014df27bd18d2009714a6e68))
-
-
-
-
+- src => lib ([16f42fd](https://github.com/twreporter/twreporter-npm-packages/commit/16f42fd5ce8c0db9014df27bd18d2009714a6e68))
 
 # [2.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0...@twreporter/react-article-components@2.1.0-rc.0) (2024-05-27)
 
-
 ### Features
 
-* article page show full screen image after click ([af25372](https://github.com/twreporter/twreporter-npm-packages/commit/af2537208ae236e2b8ea861ce32682295a52fd98))
-* disable body scroll while image open ([46f35df](https://github.com/twreporter/twreporter-npm-packages/commit/46f35dffea145fa54a6ab981864207d5650aac1a))
-
-
-
-
+- article page show full screen image after click ([af25372](https://github.com/twreporter/twreporter-npm-packages/commit/af2537208ae236e2b8ea861ce32682295a52fd98))
+- disable body scroll while image open ([46f35df](https://github.com/twreporter/twreporter-npm-packages/commit/46f35dffea145fa54a6ab981864207d5650aac1a))
 
 # [2.0.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.5...@twreporter/react-article-components@2.0.0) (2024-05-20)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.0.0-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.4...@twreporter/react-article-components@2.0.0-rc.5) (2024-05-20)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 # [2.0.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.3...@twreporter/react-article-components@2.0.0-rc.4) (2024-05-17)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.0.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.2...@twreporter/react-article-components@2.0.0-rc.3) (2024-05-14)
-
 
 ### Bug Fixes
 
-* upgrade `react-waypoint` version ([c30a267](https://github.com/twreporter/twreporter-npm-packages/commit/c30a2671c563f466f2cd67ca7710797cc37aa9cc))
-
-
-
-
+- upgrade `react-waypoint` version ([c30a267](https://github.com/twreporter/twreporter-npm-packages/commit/c30a2671c563f466f2cd67ca7710797cc37aa9cc))
 
 # [2.0.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.1...@twreporter/react-article-components@2.0.0-rc.2) (2024-05-14)
 
-
 ### Bug Fixes
 
-* upgrade `styled-component` version to v6 ([df93639](https://github.com/twreporter/twreporter-npm-packages/commit/df93639b1b1591d1506cf4cab13f6cda8d6c8aba))
-
-
-
-
+- upgrade `styled-component` version to v6 ([df93639](https://github.com/twreporter/twreporter-npm-packages/commit/df93639b1b1591d1506cf4cab13f6cda8d6c8aba))
 
 # [2.0.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.0.0-rc.0...@twreporter/react-article-components@2.0.0-rc.1) (2024-05-10)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [2.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.4...@twreporter/react-article-components@2.0.0-rc.0) (2024-05-08)
-
 
 ### Features
 
-* upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
-
+- upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
 
 ### BREAKING CHANGES
 
-* react & react-dom version upgrade to ^18.2 in all monorepos
-
-
-
-
+- react & react-dom version upgrade to ^18.2 in all monorepos
 
 # [1.14.0-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.3...@twreporter/react-article-components@1.14.0-rc.4) (2024-05-08)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [1.14.0-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.2...@twreporter/react-article-components@1.14.0-rc.3) (2024-05-08)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 # [1.14.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.1...@twreporter/react-article-components@1.14.0-rc.2) (2024-05-07)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [1.14.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.14.0-rc.0...@twreporter/react-article-components@1.14.0-rc.1) (2024-05-07)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 # [1.14.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.3-rc.0...@twreporter/react-article-components@1.14.0-rc.0) (2024-05-07)
-
 
 ### Features
 
-* set aspect-ratio for slideshow ([10bc3a9](https://github.com/twreporter/twreporter-npm-packages/commit/10bc3a955873b0d0bf7589e38670d387b70a2b97))
-
-
-
-
+- set aspect-ratio for slideshow ([10bc3a9](https://github.com/twreporter/twreporter-npm-packages/commit/10bc3a955873b0d0bf7589e38670d387b70a2b97))
 
 ## [1.13.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2...@twreporter/react-article-components@1.13.3-rc.0) (2024-05-07)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [1.13.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.6...@twreporter/react-article-components@1.13.2) (2024-04-23)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 ## [1.13.2-rc.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.5...@twreporter/react-article-components@1.13.2-rc.6) (2024-04-22)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [1.13.2-rc.5](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.4...@twreporter/react-article-components@1.13.2-rc.5) (2024-04-19)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 ## [1.13.2-rc.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.3...@twreporter/react-article-components@1.13.2-rc.4) (2024-04-19)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [1.13.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.2...@twreporter/react-article-components@1.13.2-rc.3) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/react-article-components
 
-
-
-
-
 ## [1.13.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.1...@twreporter/react-article-components@1.13.2-rc.2) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/react-article-components
-
-
-
-
 
 ## [1.13.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@1.13.2-rc.0...@twreporter/react-article-components@1.13.2-rc.1) (2024-04-17)
 

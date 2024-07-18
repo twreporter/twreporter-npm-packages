@@ -3,206 +3,124 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.1.0...@twreporter/redux@8.1.1-rc.0) (2024-07-18)
+
+### Bug Fixes
+
+- mutate state warning fix for periodicDonationHistory read request ([074d994](https://github.com/twreporter/twreporter-npm-packages/commit/074d9944d6a91b5ec23da92b387d2cd881bca42c))
+
 # [8.1.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.1.0-rc.1...@twreporter/redux@8.1.0) (2024-07-17)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 # [8.1.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.1.0-rc.0...@twreporter/redux@8.1.0-rc.1) (2024-07-09)
-
 
 ### Features
 
-* add jwt for getting full post ([d5d0f16](https://github.com/twreporter/twreporter-npm-packages/commit/d5d0f16ae807882254c318488f97904aef50e18e))
-
-
-
-
+- add jwt for getting full post ([d5d0f16](https://github.com/twreporter/twreporter-npm-packages/commit/d5d0f16ae807882254c318488f97904aef50e18e))
 
 # [8.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.3...@twreporter/redux@8.1.0-rc.0) (2024-07-09)
 
-
 ### Bug Fixes
 
-* **redux:** post-followups action  mock data ([6959c6b](https://github.com/twreporter/twreporter-npm-packages/commit/6959c6ba18857f434e437e43c82898a4c9a1c578))
-* **redux:** post-followups mock data ([eef003e](https://github.com/twreporter/twreporter-npm-packages/commit/eef003ebf15a16b269e6322c02ed47fc9df1110a))
-
+- **redux:** post-followups action mock data ([6959c6b](https://github.com/twreporter/twreporter-npm-packages/commit/6959c6ba18857f434e437e43c82898a4c9a1c578))
+- **redux:** post-followups mock data ([eef003e](https://github.com/twreporter/twreporter-npm-packages/commit/eef003ebf15a16b269e6322c02ed47fc9df1110a))
 
 ### Features
 
-* **redux:** add postFollowups action & test ([048bc88](https://github.com/twreporter/twreporter-npm-packages/commit/048bc88f037c1bae8c17d9a05927f6451deef8c3))
-* **redux:** add postFollowups reducer & test ([dbf9923](https://github.com/twreporter/twreporter-npm-packages/commit/dbf992357f7f72e94ebb1b3c6360fe81e6583da4))
-* **redux:** payload data ([954c761](https://github.com/twreporter/twreporter-npm-packages/commit/954c76126508c8b7b4a5c62da659590281327dc8))
-
-
-
-
+- **redux:** add postFollowups action & test ([048bc88](https://github.com/twreporter/twreporter-npm-packages/commit/048bc88f037c1bae8c17d9a05927f6451deef8c3))
+- **redux:** add postFollowups reducer & test ([dbf9923](https://github.com/twreporter/twreporter-npm-packages/commit/dbf992357f7f72e94ebb1b3c6360fe81e6583da4))
+- **redux:** payload data ([954c761](https://github.com/twreporter/twreporter-npm-packages/commit/954c76126508c8b7b4a5c62da659590281327dc8))
 
 ## [8.0.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.3-rc.0...@twreporter/redux@8.0.3) (2024-06-24)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 ## [8.0.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.2...@twreporter/redux@8.0.3-rc.0) (2024-06-18)
 
 **Note:** Version bump only for package @twreporter/redux
-
-
-
-
 
 ## [8.0.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.2-rc.0...@twreporter/redux@8.0.2) (2024-06-04)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 ## [8.0.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.1...@twreporter/redux@8.0.2-rc.0) (2024-06-03)
 
 **Note:** Version bump only for package @twreporter/redux
-
-
-
-
 
 ## [8.0.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.1-rc.0...@twreporter/redux@8.0.1) (2024-05-30)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 ## [8.0.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.0...@twreporter/redux@8.0.1-rc.0) (2024-05-27)
 
 **Note:** Version bump only for package @twreporter/redux
-
-
-
-
 
 # [8.0.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.0-rc.1...@twreporter/redux@8.0.0) (2024-05-20)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 # [8.0.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.0.0-rc.0...@twreporter/redux@8.0.0-rc.1) (2024-05-14)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 # [8.0.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.13.0-rc.0...@twreporter/redux@8.0.0-rc.0) (2024-05-08)
-
 
 ### Features
 
-* upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
-
+- upgrade react version to v18 ([5a21ea8](https://github.com/twreporter/twreporter-npm-packages/commit/5a21ea88fc706bf69e525bfe1367cf4f43c52a85))
 
 ### BREAKING CHANGES
 
-* react & react-dom version upgrade to ^18.2 in all monorepos
-
-
-
-
+- react & react-dom version upgrade to ^18.2 in all monorepos
 
 # [7.13.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.1-rc.1...@twreporter/redux@7.13.0-rc.0) (2024-05-08)
 
-
 ### Bug Fixes
 
-* remove unused code ([72da3b3](https://github.com/twreporter/twreporter-npm-packages/commit/72da3b3d1aa8990d5ebe695ac8ac9dd5585b6620))
-* typo ([d095bcb](https://github.com/twreporter/twreporter-npm-packages/commit/d095bcb08a549998b37d0f928ef771aa3f31b3d9))
-
+- remove unused code ([72da3b3](https://github.com/twreporter/twreporter-npm-packages/commit/72da3b3d1aa8990d5ebe695ac8ac9dd5585b6620))
+- typo ([d095bcb](https://github.com/twreporter/twreporter-npm-packages/commit/d095bcb08a549998b37d0f928ef771aa3f31b3d9))
 
 ### Features
 
-* add postReviews actions ([8b4fb61](https://github.com/twreporter/twreporter-npm-packages/commit/8b4fb61379895ec2d10dc5b2308811645905c7bb))
-* add postReviews reducers ([6de8eac](https://github.com/twreporter/twreporter-npm-packages/commit/6de8eac2794c652ad9067229e18852bd33bceacc))
-
-
-
-
+- add postReviews actions ([8b4fb61](https://github.com/twreporter/twreporter-npm-packages/commit/8b4fb61379895ec2d10dc5b2308811645905c7bb))
+- add postReviews reducers ([6de8eac](https://github.com/twreporter/twreporter-npm-packages/commit/6de8eac2794c652ad9067229e18852bd33bceacc))
 
 ## [7.12.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.1-rc.0...@twreporter/redux@7.12.1-rc.1) (2024-05-07)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 ## [7.12.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.0...@twreporter/redux@7.12.1-rc.0) (2024-05-07)
 
 **Note:** Version bump only for package @twreporter/redux
-
-
-
-
 
 # [7.12.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.0-rc.2...@twreporter/redux@7.12.0) (2024-04-23)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 # [7.12.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.0-rc.1...@twreporter/redux@7.12.0-rc.2) (2024-04-22)
 
 **Note:** Version bump only for package @twreporter/redux
-
-
-
-
 
 # [7.12.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.12.0-rc.0...@twreporter/redux@7.12.0-rc.1) (2024-04-19)
 
 **Note:** Version bump only for package @twreporter/redux
 
-
-
-
-
 # [7.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.3-rc.2...@twreporter/redux@7.12.0-rc.0) (2024-04-17)
-
 
 ### Features
 
-* add donation history action ([b0cd1fa](https://github.com/twreporter/twreporter-npm-packages/commit/b0cd1fae02cfa8c08ef02f4d202e6867798bbddc))
-* add donation history reducer ([8e41035](https://github.com/twreporter/twreporter-npm-packages/commit/8e41035b968325342eb37d29a819fe62fd8c0ac0))
-* add more card info ([f9aec3e](https://github.com/twreporter/twreporter-npm-packages/commit/f9aec3e3cbef9845c4e9da239ef7171e3c19ee16))
-* add periodic donation history ([8cb80df](https://github.com/twreporter/twreporter-npm-packages/commit/8cb80df60f6f4dafda2cc7670bf2e0854d2537f7))
-* api route and add to index ([95cfdd6](https://github.com/twreporter/twreporter-npm-packages/commit/95cfdd682cc36728dd567175a2ff8a4ac4e2f563))
-* periodic donation history state ([8da2291](https://github.com/twreporter/twreporter-npm-packages/commit/8da22910651025d188ec481df522bf87b4f92690))
-* seprate donation history and periodic donation history ([9fa308c](https://github.com/twreporter/twreporter-npm-packages/commit/9fa308cdc2ae84c7bee408d52f1de810ff333d90))
-
-
-
-
+- add donation history action ([b0cd1fa](https://github.com/twreporter/twreporter-npm-packages/commit/b0cd1fae02cfa8c08ef02f4d202e6867798bbddc))
+- add donation history reducer ([8e41035](https://github.com/twreporter/twreporter-npm-packages/commit/8e41035b968325342eb37d29a819fe62fd8c0ac0))
+- add more card info ([f9aec3e](https://github.com/twreporter/twreporter-npm-packages/commit/f9aec3e3cbef9845c4e9da239ef7171e3c19ee16))
+- add periodic donation history ([8cb80df](https://github.com/twreporter/twreporter-npm-packages/commit/8cb80df60f6f4dafda2cc7670bf2e0854d2537f7))
+- api route and add to index ([95cfdd6](https://github.com/twreporter/twreporter-npm-packages/commit/95cfdd682cc36728dd567175a2ff8a4ac4e2f563))
+- periodic donation history state ([8da2291](https://github.com/twreporter/twreporter-npm-packages/commit/8da22910651025d188ec481df522bf87b4f92690))
+- seprate donation history and periodic donation history ([9fa308c](https://github.com/twreporter/twreporter-npm-packages/commit/9fa308cdc2ae84c7bee408d52f1de810ff333d90))
 
 ## [7.11.3-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.3-rc.1...@twreporter/redux@7.11.3-rc.2) (2024-04-17)
 
 **Note:** Version bump only for package @twreporter/redux
-
-
-
-
 
 ## [7.11.3-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@7.11.3-rc.0...@twreporter/redux@7.11.3-rc.1) (2024-04-17)
 
