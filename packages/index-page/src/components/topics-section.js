@@ -141,10 +141,12 @@ const ImgColumn = styled(Column)`
 
   ${mq.desktopOnly`
     height: 247px;
+    flex: 0 0 ${mockup.desktop.width.default}px;
   `}
 
   ${mq.tabletOnly`
     height: 186px;
+    flex: 0 0 ${mockup.tablet.width.default}px;
   `}
 `
 
