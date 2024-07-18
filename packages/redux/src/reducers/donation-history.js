@@ -57,8 +57,13 @@ export default function donationHistory(state = initState, action) {
       }
     }
     case types.donationHistory.periodicDonationHistory.read.request: {
-      state.periodicDonationHistory.isFetching = true
-      return state
+      return {
+        ...state,
+        periodicDonationHistory: {
+          ...state.periodicDonationHistory,
+          isFetching: true,
+        },
+      }
     }
     case types.donationHistory.periodicDonationHistory.read.success: {
       const statePeriodicHistoryData = _.cloneDeep(
