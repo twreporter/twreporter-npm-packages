@@ -1,12 +1,15 @@
-import predefinedPropTypes from '../../constants/prop-types/body'
-import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import SeparationCurve from '../separation-curve'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import styles from '../../constants/css'
-import themeConst from '../../constants/theme'
-import typography from '../../constants/typography'
+// @twrepoter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
+// constants
+import predefinedPropTypes from '../../constants/prop-types/body'
+import styles from '../../constants/css'
+import typography from '../../constants/typography'
+// components
+import SeparationCurve from '../separation-curve'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -19,12 +22,12 @@ const _ = {
 const Content = styled.div`
   font-family: ${typography.font.family.title};
   p {
-    color: ${props => {
+    color: ${(props) => {
       switch (props.theme.name) {
-        case themeConst.article.v2.photo:
+        case ARTICLE_THEME.v2.photo:
           return colorGrayscale.gray300
-        case themeConst.article.v2.pink:
-        case themeConst.article.v2.default:
+        case ARTICLE_THEME.v2.pink:
+        case ARTICLE_THEME.v2.default:
         default:
           return colorGrayscale.gray600
       }
@@ -33,7 +36,7 @@ const Content = styled.div`
     line-height: 1.7;
     letter-spacing: 0.7px;
     font-weight: ${typography.font.weight.bold};
-    font-size: ${props => props.theme.fontSizeOffset + 20}px;
+    font-size: ${(props) => props.theme.fontSizeOffset + 20}px;
     margin: 0 0 1em 0;
     &:last-child {
       margin: 0;

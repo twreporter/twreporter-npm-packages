@@ -1,7 +1,7 @@
 import LayoutManager from './layout-manager'
 import ThemeManager from './theme-manager'
 import get from 'lodash/get'
-import themeConst from '../constants/theme'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const _ = {
   get,
@@ -46,7 +46,7 @@ export default class UIManager {
    *  @returns {string} - Style of post
    */
   getTheme() {
-    return _.get(this.post, 'style', themeConst.article.v2.default)
+    return _.get(this.post, 'style', ARTICLE_THEME.v2.default)
   }
 
   /**
@@ -86,7 +86,7 @@ export default class UIManager {
 
   toRenderSeparationLineBetweenLeadingAndBody() {
     if (
-      this.getTheme() === themeConst.article.v2.default &&
+      this.getTheme() === ARTICLE_THEME.v2.default &&
       this.getLeadingImageSize() !== _heroImageSize.fullscreen &&
       this.getLeadingImageSize() !== _heroImageSize.extend
     ) {

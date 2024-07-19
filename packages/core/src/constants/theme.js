@@ -21,5 +21,6 @@ export const ARTICLE_THEME = Object.freeze({
     default: 'article:v2:default',
     photo: 'article:v2:photo',
     interactive: 'interactive',
+    embedded: 'article:v2:embedded',
   },
 })

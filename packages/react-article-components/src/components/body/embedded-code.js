@@ -10,11 +10,11 @@ import merge from 'lodash/merge'
 
 // constants
 import predefinedPropTypes from '../../constants/prop-types/body'
-import themeConst from '../../constants/theme'
 
 // twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import zIndexConst from '@twreporter/core/lib/constants/z-index'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const _ = {
   forEach,
@@ -30,7 +30,7 @@ const embedNamespace = {
 
 export const Block = styled.div`
   position: relative;
-  z-index: ${props =>
+  z-index: ${(props) =>
     props.$shouldEscalateZIndex ? zIndexConst.embedUp : zIndexConst.embedDown};
 
   /* styles for image link */
@@ -46,12 +46,12 @@ export const Caption = styled.div`
   line-height: 1.43;
   letter-spacing: 0.4px;
   font-size: 14px;
-  color: ${props => {
+  color: ${(props) => {
     switch (props.theme.name) {
-      case themeConst.article.v2.photo:
+      case ARTICLE_THEME.v2.photo:
         return colorGrayscale.gray300
-      case themeConst.article.v2.pink:
-      case themeConst.article.v2.default:
+      case ARTICLE_THEME.v2.pink:
+      case ARTICLE_THEME.v2.default:
       default:
         return colorGrayscale.gray600
     }
@@ -135,7 +135,7 @@ class EmbeddedCode extends React.PureComponent {
       const scriptsCount = scripts.length
       let loadScriptsCount = 0
       const scriptsFragment = new DocumentFragment() // eslint-disable-line no-undef
-      _.forEach(scripts, script => {
+      _.forEach(scripts, (script) => {
         const scriptEle = document.createElement('script')
         const attribs = script.attribs
         _.forEach(attribs, (value, name) => {
@@ -203,7 +203,7 @@ class EmbeddedCode extends React.PureComponent {
 // Serious layout shifts show up when loading bunch of infograms due to lack of heights,
 // so here we apply waypoint wrapper to load infogram dynamically to avoid layout shifts for anchors.
 // https://twreporter-org.atlassian.net/browse/TWREPORTER-60
-const WayPointWrapper = props => {
+const WayPointWrapper = (props) => {
   const { isScrollingToAnchor } = props
   const [isInViewPort, setIsInViewPort] = useState(false)
   const embedRef = useRef(null)

@@ -1,15 +1,17 @@
-import predefinedPropTypes from '../../constants/prop-types/body'
-import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import styles from '../../constants/css'
-import themeConst from '../../constants/theme'
-import typography from '../../constants/typography'
+import PropTypes from 'prop-types'
+// @twrepoter
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+// constants
+import predefinedPropTypes from '../../constants/prop-types/body'
+import styles from '../../constants/css'
+import typography from '../../constants/typography'
 // lodash
 import get from 'lodash/get'
 
@@ -59,7 +61,7 @@ const Indicator = styled.span`
     height: 6.5px;
     top: 5px;
     left: 5px;
-    transform: rotate(${props => (props.$isExpanded ? '45deg' : '-45deg')});
+    transform: rotate(${(props) => (props.$isExpanded ? '45deg' : '-45deg')});
     display: block;
     position: absolute;
     transition: transform 200ms ease;
@@ -70,7 +72,7 @@ const Indicator = styled.span`
     height: 6.5px;
     top: 5px;
     right: 5px;
-    transform: rotate(${props => (props.$isExpanded ? '-45deg' : '45deg')});
+    transform: rotate(${(props) => (props.$isExpanded ? '-45deg' : '45deg')});
     display: block;
     position: absolute;
     transition: transform 200ms ease;
@@ -78,9 +80,9 @@ const Indicator = styled.span`
 `
 
 const AnnotationContent = styled.div`
-  display: ${props => (props.$isExpanded ? 'block' : 'none')};
+  display: ${(props) => (props.$isExpanded ? 'block' : 'none')};
   background: ${colorGrayscale.white};
-  font-size: ${props => props.theme.fontSizeOffset + 16}px;
+  font-size: ${(props) => props.theme.fontSizeOffset + 16}px;
   line-height: 2.11;
   letter-spacing: 0.5px;
   color: ${colorGrayscale.gray700};
@@ -93,7 +95,7 @@ const AnnotationContent = styled.div`
 `
 
 const Container = styled.div`
-  ${props => getContainerStyles(props.theme.name)}
+  ${(props) => getContainerStyles(props.theme.name)}
   ${styles.paragraphText}
   ${styles.linkChildren}
   &:first-child {
@@ -106,7 +108,7 @@ const Container = styled.div`
 
 function getContainerStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         ${AnnotatedText} {
           color: ${COLOR_PINK_ARTICLE.blue};
@@ -122,7 +124,7 @@ function getContainerStyles(themeName) {
           border-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         ${AnnotatedText} {
           color: ${colorSupportive.main};
@@ -138,7 +140,7 @@ function getContainerStyles(themeName) {
           border-color: ${colorSupportive.main};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         ${AnnotatedText} {

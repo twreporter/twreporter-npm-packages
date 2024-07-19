@@ -1,14 +1,16 @@
 import 'regenerator-runtime/runtime'
-import { Provider } from 'react-redux'
-import Article from '../src/components/article-page'
-import Header from '@twreporter/universal-header/lib/containers/header'
-import mockPost from './mock-post.json'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import styled from 'styled-components'
-import themeConsts from '../src/constants/theme'
-import twreporterRedux from '@twreporter/redux'
+// @twrepoter
+import Header from '@twreporter/universal-header/lib/containers/header'
 import Footer from '@twreporter/react-components/lib/footer'
+import twreporterRedux from '@twreporter/redux'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
+
+import Article from '../src/components/article-page'
+import mockPost from './mock-post.json'
 
 const HeaderContainerWithTransparentTheme = styled.div`
   position: relative;
@@ -22,7 +24,7 @@ class MockTwreporterReactArticleContainer extends React.PureComponent {
     numberOfRelatedsToShow: defaultNumberOfRelateds,
   }
 
-  handleFontLevelChange = nextFontLevel => {
+  handleFontLevelChange = (nextFontLevel) => {
     this.setState({
       fontLevel: nextFontLevel,
     })
@@ -53,10 +55,11 @@ class MockTwreporterReactArticleContainer extends React.PureComponent {
 
 function selectHeaderTheme(postStyle) {
   switch (postStyle) {
-    case themeConsts.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return 'photography'
-    case themeConsts.article.v2.default:
-    case themeConsts.article.v2.pink:
+    case ARTICLE_THEME.v2.default:
+    case ARTICLE_THEME.v2.pink:
+    case ARTICLE_THEME.v2.embedded:
       return 'transparent'
     default:
       return 'normal'

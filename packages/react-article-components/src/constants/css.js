@@ -1,20 +1,20 @@
 import { css } from 'styled-components'
-import themeConst from './theme'
 import typography from './typography'
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 function getParagraphTextStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         color: ${colorGrayscale.gray300};
       `
-    case themeConst.article.v2.pink:
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.pink:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         color: ${colorGrayscale.gray800};
@@ -23,8 +23,8 @@ function getParagraphTextStyles(themeName) {
 }
 
 const paragraphText = css`
-  ${props => getParagraphTextStyles(props.theme.name)}
-  font-size: ${props => props.theme.fontSizeOffset + 18}px;
+  ${(props) => getParagraphTextStyles(props.theme.name)}
+  font-size: ${(props) => props.theme.fontSizeOffset + 18}px;
   font-weight: ${typography.font.weight.normal};
   line-height: 2.11;
   letter-spacing: 0.6px;
@@ -35,7 +35,7 @@ const paragraphText = css`
 
 function getLinkChildrenStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         a:link,
         a:visited,
@@ -48,7 +48,7 @@ function getLinkChildrenStyles(themeName) {
           border-color: ${colorSupportive.main};
         }
       `
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         a:link,
         a:visited,
@@ -61,7 +61,7 @@ function getLinkChildrenStyles(themeName) {
           border-color: ${COLOR_PINK_ARTICLE.blue};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         a:link,
@@ -79,7 +79,7 @@ function getLinkChildrenStyles(themeName) {
 }
 
 const linkChildren = css`
-  ${props => getLinkChildrenStyles(props.theme.name)}
+  ${(props) => getLinkChildrenStyles(props.theme.name)}
 `
 
 export default {

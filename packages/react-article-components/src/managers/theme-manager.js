@@ -1,4 +1,4 @@
-import themeConst from '../constants/theme'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 import {
   colorGrayscale,
   colorSupportive,
@@ -164,13 +164,13 @@ export default class ThemeManager {
     const _theme = theme || this.theme
 
     switch (_theme) {
-      case themeConst.article.v2.pink: {
+      case ARTICLE_THEME.v2.pink: {
         return ThemeManager.colors.pink
       }
-      case themeConst.article.v2.photo: {
+      case ARTICLE_THEME.v2.photo: {
         return ThemeManager.colors.photo
       }
-      case themeConst.article.v2.default:
+      case ARTICLE_THEME.v2.default:
       default: {
         return ThemeManager.colors.default
       }

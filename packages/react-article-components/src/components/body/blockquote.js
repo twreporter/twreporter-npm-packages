@@ -1,12 +1,14 @@
-import cssConst from '../../constants/css'
-import mq from '@twreporter/core/lib/utils/media-query'
-import PropTypes from 'prop-types'
-import predefinedPropTypes from '../../constants/prop-types/body'
 import React, { PureComponent } from 'react'
 import styled, { css } from 'styled-components'
-import themeConst from '../../constants/theme'
-import typography from '../../constants/typography'
+import PropTypes from 'prop-types'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
+// constants
+import cssConst from '../../constants/css'
+import predefinedPropTypes from '../../constants/prop-types/body'
+import typography from '../../constants/typography'
 // lodash
 import get from 'lodash/get'
 
@@ -16,13 +18,13 @@ const _ = {
 
 function getQuoteStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         color: ${colorGrayscale.gray600};
         border-left: ${colorGrayscale.gray400};
       `
-    case themeConst.article.v2.pink:
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.pink:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         color: ${colorGrayscale.gray600};
@@ -32,7 +34,7 @@ function getQuoteStyles(themeName) {
 }
 
 const Quote = styled.blockquote`
-  ${props => getQuoteStyles(props.theme.name)}
+  ${(props) => getQuoteStyles(props.theme.name)}
   ${cssConst.linkChildren}
 
   /* clear default margin */
@@ -43,7 +45,7 @@ const Quote = styled.blockquote`
 
   line-height: 2.11;
   letter-spacing: 0.6px;
-  font-size: ${props => props.theme.fontSizeOffset + 18}px;
+  font-size: ${(props) => props.theme.fontSizeOffset + 18}px;
   font-weight: ${typography.font.weight.normal};
   ${mq.mobileOnly`
     padding-left: 16px;

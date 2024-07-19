@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 import DynamicComponentsContext from '../../contexts/dynamic-components-context'
 // constant
 import predefinedProps from '../../constants/prop-types/aside'
-import themeConst from '../../constants/theme'
 import {
   ARTICLE_ANCHOR_SCROLL,
   RELATED_POST_ANCHOR_ID,
@@ -39,6 +38,7 @@ import {
 } from '@twreporter/react-components/lib/snack-bar'
 import zIndexConst from '@twreporter/core/lib/constants/z-index'
 import { BookmarkType } from '@twreporter/react-components/lib/icon/enum'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // global var
 const ToolBarContext = createContext()
 const defaultFbAppID = '962589903815787'
@@ -68,7 +68,7 @@ const ShareContainer = styled.div`
 
 const OptionContainer = styled.div`
   z-index: 6;
-  opacity: ${props => (props.$isShow ? '1' : '0')};
+  opacity: ${(props) => (props.$isShow ? '1' : '0')};
   transition: opacity 100ms;
   position: absolute;
   top: -55px;
@@ -83,7 +83,7 @@ const SnackBarContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 100ms;
-  opacity: ${props => (props.$showSnackBar ? 1 : 0)};
+  opacity: ${(props) => (props.$showSnackBar ? 1 : 0)};
 `
 
 const ToolBarWrapper = styled.div`
@@ -94,19 +94,21 @@ const ToolBarWrapper = styled.div`
   position: fixed;
   left: 0px;
   bottom: env(safe-area-inset-bottom, 0);
-  height: ${props => (props.$hideText ? '40px' : '55px')};
-  transform: ${props =>
+  height: ${(props) => (props.$hideText ? '40px' : '55px')};
+  transform: ${(props) =>
     props.$isHidden ? 'translateY(200%)' : 'tanslateY(0%)'};
-  transition: height 200ms, transform 200ms ease-in-out;
-  background-color: ${props => props.$bgColor};
-  border-top: 1px solid ${props => props.$borderColor};
+  transition:
+    height 200ms,
+    transform 200ms ease-in-out;
+  background-color: ${(props) => props.$bgColor};
+  border-top: 1px solid ${(props) => props.$borderColor};
   z-index: ${zIndexConst.mobileToolBar};
   ${ShareContainer} {
-    background-color: ${props => props.$shareByBgColor};
-    box-shadow: ${props => props.$shadow};
+    background-color: ${(props) => props.$shareByBgColor};
+    box-shadow: ${(props) => props.$shadow};
   }
   ${SnackBarContainer} {
-    bottom: ${props =>
+    bottom: ${(props) =>
       props.$hideText ? '48px' : '62px'}; //toolbar height + padding 8px
   }
 `
@@ -122,7 +124,7 @@ const ToolBarContainer = styled.div`
 const FbShare = ({ appID }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const shareToFb = () => {
     const currentURL = window.location.href
@@ -152,7 +154,7 @@ FbShare.propTypes = {
 const LineShare = () => {
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const shareToLine = () => {
     const currentURL = window.location.href
@@ -176,7 +178,7 @@ const LineShare = () => {
 const TwitterShare = () => {
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const shareToTwitter = () => {
     const currentURL = window.location.href
@@ -202,7 +204,7 @@ const TwitterShare = () => {
 const CopyUrl = ({ onclick = defaultFunc }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const copyUrl = async () => {
     try {
@@ -232,15 +234,15 @@ const ShareBy = ({ fbAppID }) => {
   const { hideText, toastr, hideToolBar } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
-  const onCopyUrl = isCopied => {
+  const onCopyUrl = (isCopied) => {
     if (!isCopied) {
       return
     }
     toastr({ text: '已複製', timeout: 3000 })
   }
-  const onButtonClick = () => setShowState(prevValue => !prevValue)
+  const onButtonClick = () => setShowState((prevValue) => !prevValue)
   const onClickOutside = () => setShowState(false)
   const ref = useOutsideClick(onClickOutside)
   useEffect(() => {
@@ -274,7 +276,7 @@ const FontLevel = ({ changeFontLevel }) => {
   const { hideText } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
 
   return (
@@ -296,11 +298,11 @@ const BookmarkBlock = ({ articleMeta, bookmarkId }) => {
   const { hideText, toastr } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const { addAction, removeAction } = useBookmark()
   const bookmarkIdFromState = useSelector(
-    state => state.bookmarkWidget?.bookmark?.id
+    (state) => state.bookmarkWidget?.bookmark?.id
   )
   const [isBookmarked, setIsBookmarked] = useState(false)
   const [iconType, setIconType] = useState(BookmarkType.ADD)
@@ -341,7 +343,7 @@ const BookmarkBlock = ({ articleMeta, bookmarkId }) => {
     onClickButton(isBookmarked)
   }
 
-  const onClickButton = isBookmarked => {
+  const onClickButton = (isBookmarked) => {
     const text = isBookmarked ? '已取消收藏' : '已收藏'
     toastr({ text, timeout: 3000 })
   }
@@ -370,12 +372,12 @@ const BackToTopic = ({ backToTopic }) => {
   const { hideText } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
 
   return (
     <DynamicComponentsContext.Consumer>
-      {components => (
+      {(components) => (
         <components.Link to={backToTopic} target="_self">
           <ButtonContainer>
             <IconWithTextButton
@@ -398,7 +400,7 @@ const RelatedPost = () => {
   const { hideText } = useContext(ToolBarContext)
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { releaseBranch } = themeContext
   const anchorScrollAttr = { [ARTICLE_ANCHOR_SCROLL]: 'true' }
 
@@ -427,7 +429,7 @@ const ToolBar = ({
 }) => {
   const themeContext = useContext(ThemeContext)
   const theme =
-    themeContext.name === themeConst.article.v2.photo ? 'photography' : 'normal'
+    themeContext.name === ARTICLE_THEME.v2.photo ? 'photography' : 'normal'
   const { bgColor, borderColor, shareByBgColor } = getToolBarTheme(
     themeContext.name
   )

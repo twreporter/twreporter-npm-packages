@@ -1,6 +1,6 @@
 import Leadings from '../components/leading'
 import get from 'lodash/get'
-import themeConst from '../constants/theme'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const _ = {
   get,
@@ -37,7 +37,7 @@ export default class LayoutManager {
    *  @returns {Function} - React component
    */
   getLeadingComponent() {
-    if (this.theme === themeConst.article.v2.pink) {
+    if (this.theme === ARTICLE_THEME.v2.pink) {
       return Leadings.Pink
     }
 

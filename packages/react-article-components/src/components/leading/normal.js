@@ -5,7 +5,6 @@ import styled, { css } from 'styled-components'
 import Img from '../img-with-placeholder'
 // constants
 import predefinedPropTypes from '../../constants/prop-types/leading'
-import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -15,6 +14,7 @@ import {
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
 import { H1 } from '@twreporter/react-components/lib/text/headline'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import get from 'lodash/get'
 const _ = {
@@ -81,7 +81,7 @@ const Topic = styled.div`
 const Figure = styled.figure`
   /* clear default figure margin */
   margin: 0;
-  ${props => props.$css}
+  ${(props) => props.$css}
 `
 
 const FigCaption = styled.figcaption`
@@ -107,7 +107,7 @@ const FigCaption = styled.figcaption`
 `
 
 const BackgroundBlock = styled.div`
-  ${props => getBackgroundBlockStyles(props.theme.name)}
+  ${(props) => getBackgroundBlockStyles(props.theme.name)}
   ${mq.hdOnly`
     padding-top: 100px;
   `}
@@ -124,7 +124,7 @@ const BackgroundBlock = styled.div`
 
 function getBackgroundBlockStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         background-color: ${COLOR_PINK_ARTICLE.darkBlue};
         ${FigCaption} {
@@ -138,7 +138,7 @@ function getBackgroundBlockStyles(themeName) {
           color: ${colorGrayscale.gray300};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         background-color: ${colorGrayscale.gray100};
@@ -215,7 +215,7 @@ export default class NormalLeading extends React.PureComponent {
           <TextBlock>
             {isTopicPublished && shortTitle ? (
               <DynamicComponentsContext.Consumer>
-                {components => {
+                {(components) => {
                   return (
                     <components.Link to={topicHref}>
                       <Topic>{shortTitle}</Topic>
