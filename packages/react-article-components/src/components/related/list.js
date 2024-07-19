@@ -6,12 +6,12 @@ import mockup from './mockup'
 // components
 import Card from './card'
 // constants
-import themeConsts from '../../constants/theme'
 import predefinedProps from '../../constants/prop-types/related'
 import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import get from 'lodash/get'
 import map from 'lodash/map'
@@ -29,9 +29,9 @@ const fadeIn = keyframes`
   }
 `
 
-const selectButtonColors = theme => {
+const selectButtonColors = (theme) => {
   switch (theme) {
-    case themeConsts.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         color: ${colorGrayscale.gray300};
         background-color: ${colorGrayscale.white}1a; // add 10% opacity with hex alpha
@@ -40,8 +40,8 @@ const selectButtonColors = theme => {
           background-color: ${colorGrayscale.gray400};
         }
       `
-    case themeConsts.article.v2.pink:
-    case themeConsts.article.v2.default:
+    case ARTICLE_THEME.v2.pink:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         color: ${colorGrayscale.gray600};
@@ -63,7 +63,7 @@ const LoadMoreButton = styled.div`
   height: 72px;
   font-weight: ${typography.font.weight.bold};
   cursor: pointer;
-  ${props => selectButtonColors(props.theme.name)}
+  ${(props) => selectButtonColors(props.theme.name)}
   transition: color 100ms ease;
   ${mq.mobileOnly`
     width: ${mockup.mobile.item.width};
@@ -74,9 +74,9 @@ const LoadMoreButton = styled.div`
     margin: 40px auto;
   `}
   ${mq.desktopOnly`
-    width: ${mockup.desktop.item.width * 3 +
-      mockup.desktop.item.margin.right * 2 +
-      3}px;
+    width: ${
+      mockup.desktop.item.width * 3 + mockup.desktop.item.margin.right * 2 + 3
+    }px;
     margin: 30px 0;
   `}
   ${mq.hdOnly`
@@ -88,15 +88,15 @@ const LoadMoreButton = styled.div`
 const ListBlock = styled.div`
   display: flex;
   flex-wrap: wrap;
-  align-items: ${props => props.$alignItems};
+  align-items: ${(props) => props.$alignItems};
 `
 
 const Item = styled.div`
   border-style: solid;
   border-width: 0 0.5px 0.5px 0;
-  border-color: ${props => {
+  border-color: ${(props) => {
     switch (props.theme.name) {
-      case themeConsts.article.v2.photo:
+      case ARTICLE_THEME.v2.photo:
         return colorGrayscale.gray400
       default:
         return colorGrayscale.gray300
@@ -158,7 +158,7 @@ export default class List extends React.PureComponent {
   renderCard = (item, i) => {
     return (
       <DynamicComponentsContext.Consumer key={item.id}>
-        {components => {
+        {(components) => {
           return (
             <Item>
               <components.Link
