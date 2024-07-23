@@ -74,10 +74,12 @@ class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData,
+    showCaption: PropTypes.bool,
   }
 
   static defaultProps = {
     className: '',
+    showCaption: true,
   }
 
   state = {
@@ -179,7 +181,7 @@ class EmbeddedCode extends React.PureComponent {
   }
 
   render() {
-    const { className } = this.props
+    const { className, showCaption } = this.props
     const { shouldEscalateZIndex } = this.state
     const embed = (
       <div className={className}>
@@ -188,7 +190,9 @@ class EmbeddedCode extends React.PureComponent {
           $shouldEscalateZIndex={shouldEscalateZIndex}
           dangerouslySetInnerHTML={{ __html: this._embeddedCodeWithoutScript }}
         />
-        {this._caption ? <Caption>{this._caption}</Caption> : null}
+        {showCaption && this._caption ? (
+          <Caption>{this._caption}</Caption>
+        ) : null}
       </div>
     )
 
@@ -246,10 +250,12 @@ const WayPointWrapper = (props) => {
 
 WayPointWrapper.defaultProps = {
   isScrollingToAnchor: false,
+  showCaption: true,
 }
 
 WayPointWrapper.propTypes = {
   isScrollingToAnchor: PropTypes.bool,
+  showCaption: PropTypes.bool,
 }
 
 export default WayPointWrapper
