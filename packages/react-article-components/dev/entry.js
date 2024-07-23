@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import styled from 'styled-components'
-// @twrepoter
+// @twreporter
 import Header from '@twreporter/universal-header/lib/containers/header'
 import Footer from '@twreporter/react-components/lib/footer'
 import twreporterRedux from '@twreporter/redux'

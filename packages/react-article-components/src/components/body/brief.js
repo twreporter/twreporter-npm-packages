@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// @twrepoter
+// @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // constants
