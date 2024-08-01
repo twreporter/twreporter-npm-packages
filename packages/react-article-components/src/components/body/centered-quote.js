@@ -1,16 +1,18 @@
-import PropTypes from 'prop-types'
-import predefinedPropTypes from '../../constants/prop-types/body'
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+// constants
+import predefinedPropTypes from '../../constants/prop-types/body'
 import styles from '../../constants/css'
-import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
+// @twreporter
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
 import mq from '@twreporter/core/lib/utils/media-query'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import get from 'lodash/get'
 
@@ -26,12 +28,12 @@ const QuoteContent = styled.blockquote`
   margin: 0;
 
   font-weight: ${typography.font.weight.normal};
-  font-size: ${props => props.theme.fontSizeOffset + 32}px;
+  font-size: ${(props) => props.theme.fontSizeOffset + 32}px;
   line-height: 1.56;
   letter-spacing: 1.1px;
   text-align: center;
   ${mq.tabletAndBelow`
-    font-size: ${props => props.theme.fontSizeOffset + 24}px;
+    font-size: ${(props) => props.theme.fontSizeOffset + 24}px;
   `}
 `
 
@@ -40,7 +42,7 @@ const QuoteBy = styled.cite`
   display: block;
   font-style: normal;
   font-weight: ${typography.font.weight.normal};
-  font-size: ${props => props.theme.fontSizeOffset + 16}px;
+  font-size: ${(props) => props.theme.fontSizeOffset + 16}px;
   line-height: 1.56;
   letter-spacing: 0.5px;
   text-align: center;
@@ -54,12 +56,12 @@ const VerticalLine = styled.div`
 `
 
 const QuoteContainer = styled.div`
-  ${props => getQuoteContainerStyles(props.theme.name)}
+  ${(props) => getQuoteContainerStyles(props.theme.name)}
 `
 
 function getQuoteContainerStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         ${QuoteContent}, ${QuoteBy} {
           color: ${colorGrayscale.gray800};
@@ -69,7 +71,7 @@ function getQuoteContainerStyles(themeName) {
           background-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         ${QuoteContent}, ${QuoteBy} {
           color: ${colorGrayscale.gray300};
@@ -79,7 +81,7 @@ function getQuoteContainerStyles(themeName) {
           background-color: ${colorSupportive.heavy};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         ${QuoteContent}, ${QuoteBy} {

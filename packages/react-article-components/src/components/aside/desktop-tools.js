@@ -4,7 +4,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import styled, { css, ThemeContext } from 'styled-components'
 import { useSelector } from 'react-redux'
 // constants
-import themeConst from '../../constants/theme'
 import predefinedProps from '../../constants/prop-types/aside'
 // icons
 import {
@@ -25,6 +24,7 @@ import {
 } from '@twreporter/core/lib/constants/color'
 import { useBookmark } from '@twreporter/react-components/lib/hook'
 import { BookmarkType } from '@twreporter/react-components/lib/icon/enum'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 function changeFontSizeOffsetToPct(fontSizeOffset) {
   switch (fontSizeOffset) {
@@ -86,7 +86,7 @@ const iconBlockCSS = css`
 const TextIconBlock = styled.div`
   ${iconBlockCSS}
   &::after {
-    content: '字級大小${props =>
+    content: '字級大小${(props) =>
       changeFontSizeOffsetToPct(props.theme.fontSizeOffset)}';
   }
 `
@@ -108,7 +108,7 @@ const PrintIconBlock = styled.div`
 const BookmarkIconBlock = styled.div`
   ${iconBlockCSS}
   &::after {
-    content: '${props => (props.$isBookmarked ? '取消收藏' : '收藏')}';
+    content: '${(props) => (props.$isBookmarked ? '取消收藏' : '收藏')}';
   }
 `
 
@@ -150,15 +150,15 @@ const ToolsBlock = styled.div`
 
   ${mq.desktopAndAbove`
     width: 36px;
-    height: ${props => props.$height || 'auto'};
+    height: ${(props) => props.$height || 'auto'};
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
   `}
 
-  ${props => {
+  ${(props) => {
     switch (props.theme.name) {
-      case themeConst.article.v2.photo:
+      case ARTICLE_THEME.v2.photo:
         return css`
           ${ShareIconBlock} {
             background-color: ${colorPhoto.heavy};
@@ -175,7 +175,7 @@ const ToolsBlock = styled.div`
               color: ${colorSupportive.pastel};
             }
 
-            &:hover svg{
+            &:hover svg {
               background-color: ${colorSupportive.pastel};
             }
           }
@@ -257,7 +257,7 @@ const BookmarkBlock = ({ articleMeta, bookmarkId }) => {
   const { releaseBranch } = themeContext
   const { addAction, removeAction } = useBookmark()
   const bookmarkIdFromState = useSelector(
-    state => state.bookmarkWidget?.bookmark?.id
+    (state) => state.bookmarkWidget?.bookmark?.id
   )
   const [isBookmarked, setIsBookmarked] = useState(false)
   const [iconType, setIconType] = useState(BookmarkType.ADD)
@@ -307,7 +307,7 @@ const BackToTopic = ({ backToTopic }) => {
 
   return (
     <DynamicComponentsContext.Consumer>
-      {components => (
+      {(components) => (
         <components.Link to={backToTopic} target="_self">
           <BackToTopicBlock>
             <Topic releaseBranch={releaseBranch} />

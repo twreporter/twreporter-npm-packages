@@ -1,20 +1,19 @@
-// constants
-import themeConst from '../../../constants/theme'
 // @twreporter
 import {
   colorGrayscale,
   colorPhoto,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
-export const getToolBarTheme = theme => {
+export const getToolBarTheme = (theme) => {
   switch (theme) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return {
         bgColor: colorPhoto.dark,
         shareByBgColor: colorPhoto.dark,
         borderColor: colorPhoto.heavy,
       }
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return {
         bgColor: colorGrayscale.gray100,

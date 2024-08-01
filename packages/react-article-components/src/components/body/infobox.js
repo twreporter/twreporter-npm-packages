@@ -6,7 +6,6 @@ import get from 'lodash/get'
 // constants
 import predefinedPropTypes from '../../constants/prop-types/body'
 import cssConsts from '../../constants/css'
-import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 import { ARTICLE_ANCHOR_SCROLL } from '../../constants/anchor'
 
@@ -17,6 +16,7 @@ import {
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const _ = {
   get,
@@ -55,45 +55,45 @@ const trackingSectionWidthCSS = css`
 `
 
 const Title = styled.div`
-  ${props =>
+  ${(props) =>
     props.$forTrackingSection ? trackingSectionWidthCSS : articleBodyWidthCSS}
   color: ${colorGrayscale.gray700};
   line-height: 1.9;
   letter-spacing: 0.7px;
   font-weight: ${typography.font.weight.bold};
-  font-size: ${props => props.theme.fontSizeOffset + 20}px;
+  font-size: ${(props) => props.theme.fontSizeOffset + 20}px;
   margin: 0 auto 21px auto;
 `
 
 const Content = styled.div`
-  ${props =>
+  ${(props) =>
     props.$forTrackingSection ? trackingSectionWidthCSS : articleBodyWidthCSS}
 
   color: ${colorGrayscale.gray700};
   line-height: 1.75;
   letter-spacing: 0.5px;
   font-weight: ${typography.font.weight.normal};
-  font-size: ${props => props.theme.fontSizeOffset + 16}px;
+  font-size: ${(props) => props.theme.fontSizeOffset + 16}px;
   margin: 0 auto;
 `
 
 function getContainerStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         &::before,
         &::after {
           background: ${colorSupportive.heavy};
         }
       `
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         &::before,
         &::after {
           background: ${COLOR_PINK_ARTICLE.pink};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         &::before,
@@ -105,7 +105,7 @@ function getContainerStyles(themeName) {
 }
 
 const Container = styled.div`
-  ${props => getContainerStyles(props.theme.name)}
+  ${(props) => getContainerStyles(props.theme.name)}
 
   ${cssConsts.linkChildren}
 

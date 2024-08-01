@@ -7,9 +7,9 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import SeekBar from './seek-bar'
 import styled, { css } from 'styled-components'
-import themeConst from '../../../constants/theme'
 import typography from '../../../constants/typography'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const TimeRow = styled.div`
   width: 100%;
@@ -91,7 +91,7 @@ const Desc = styled.div`
 `
 
 const Container = styled.div`
-  ${props => getContainerStyles(props.theme.name)}
+  ${(props) => getContainerStyles(props.theme.name)}
   border-width: 0 1px 1px 1px;
   border-style: solid;
   border-radius: 0 0 4px 4px;
@@ -105,7 +105,7 @@ const Container = styled.div`
 
 function getContainerStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         border-color: ${colorGrayscale.gray400};
 
@@ -121,7 +121,7 @@ function getContainerStyles(themeName) {
           color: ${colorGrayscale.gray300};
         }
       `
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         border-color: ${colorGrayscale.gray300};
 
@@ -133,7 +133,7 @@ function getContainerStyles(themeName) {
           color: ${colorGrayscale.gray700};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         border-color: ${colorGrayscale.gray300};

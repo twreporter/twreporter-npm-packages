@@ -31,4 +31,8 @@ export default {
       mobile: predefinedPropTypes.imagePropType,
     }),
   },
+  embedded: {
+    ...leading,
+    embedded: PropTypes.object,
+  },
 }

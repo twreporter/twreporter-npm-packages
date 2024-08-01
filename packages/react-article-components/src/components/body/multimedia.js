@@ -1,12 +1,12 @@
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { css } from 'styled-components'
-import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const mockup = {
   mobile: {
@@ -51,21 +51,21 @@ const mockup = {
 
 function getCaptionStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         color: ${colorGrayscale.gray300};
         &::after {
           border-color: ${colorGrayscale.gray400};
         }
       `
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         color: ${colorGrayscale.gray700};
         &::after {
           border-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         color: ${colorGrayscale.gray700};
@@ -77,12 +77,12 @@ function getCaptionStyles(themeName) {
 }
 
 const Caption = styled.figcaption`
-  ${props => getCaptionStyles(props.theme.name)}
+  ${(props) => getCaptionStyles(props.theme.name)}
 
   line-height: 1.36;
   letter-spacing: 0.5px;
   font-weight: ${typography.font.weight.normal};
-  font-size: ${props => props.theme.fontSizeOffset + 14}px;
+  font-size: ${(props) => props.theme.fontSizeOffset + 14}px;
   margin-bottom: 30px;
 
   /* border-bottom of caption */
@@ -138,7 +138,8 @@ const Caption = styled.figcaption`
 const Block = styled.div`
   position: relative;
 
-  & > figure, & > iframe {
+  & > figure,
+  & > iframe {
     padding: 0;
     border: 0;
     margin: 0;
@@ -153,18 +154,18 @@ const Block = styled.div`
   `}
 
   ${mq.desktopOnly`
-    float: ${props => (props.$small ? 'right' : 'none')};
-    margin: ${props => (props.$small ? '0 0 20px 25px' : '0')};
-    width: ${props =>
+    float: ${(props) => (props.$small ? 'right' : 'none')};
+    margin: ${(props) => (props.$small ? '0 0 20px 25px' : '0')};
+    width: ${(props) =>
       props.$small
         ? `${mockup.desktop.figure.width.small}px`
         : `${mockup.desktop.figure.width.normal}%`};
   `}
 
   ${mq.hdOnly`
-    float: ${props => (props.$small ? 'right' : 'none')};
-    margin: ${props => (props.$small ? '0 0 20px 25px' : 0)};
-    width: ${props =>
+    float: ${(props) => (props.$small ? 'right' : 'none')};
+    margin: ${(props) => (props.$small ? '0 0 20px 25px' : 0)};
+    width: ${(props) =>
       props.$small
         ? `${mockup.hd.figure.width.small}px`
         : `${mockup.hd.figure.width.normal}%`};
@@ -172,7 +173,7 @@ const Block = styled.div`
 
   ${Caption} {
     ${mq.desktopAndAbove`
-      ${props =>
+      ${(props) =>
         props.$small
           ? `
         /* overwrite Caption styles */

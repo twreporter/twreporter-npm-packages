@@ -13,7 +13,6 @@ import Related from './related'
 import SeparationCurve from './separation-curve'
 import UIManager from '../managers/ui-manager'
 // constants
-import themeConst from '../constants/theme'
 import { RELATED_POST_ANCHOR_ID } from '../constants/anchor'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -23,6 +22,7 @@ import {
   colorGrayscale,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // aside
 import Tools from './aside/desktop-tools'
 import ToolBar from './aside/mobile-tool-bar'
@@ -54,7 +54,7 @@ const LeadingBlock = styled.div`
 
 const SeprationLine = styled.div`
   ${mq.desktopAndAbove`
-    ${props =>
+    ${(props) =>
       props.$visible
         ? css`
             width: 100%;
@@ -183,7 +183,7 @@ const RelatedBlock = styled.div`
 `
 
 const BackgroundBlock = styled(BorderBox)`
-  ${props => getBackgroundBlockStyles(props.theme.name)}
+  ${(props) => getBackgroundBlockStyles(props.theme.name)}
 
   @media print {
     // Fix background-image printing issue
@@ -205,21 +205,21 @@ const BackgroundBlock = styled(BorderBox)`
 
 function getBackgroundBlockStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         background-color: ${COLOR_PINK_ARTICLE.lightPink};
         ${BodyBackground} {
           background-color: ${colorGrayscale.gray100};
         }
       `
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         background-color: ${COLOR_PINK_ARTICLE.darkBlue};
         ${BodyBackground} {
           background-color: ${COLOR_PINK_ARTICLE.darkBlue};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         background-color: ${colorGrayscale.gray100};
@@ -382,12 +382,12 @@ export default class Article extends PureComponent {
     const scrollDirection = this.lastY > this.currentY ? 'down' : 'up'
     this.currentY = this.lastY
     if (scrollDirection === 'up') {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         scrollStage:
           prevState.scrollStage - 1 < 1 ? 1 : prevState.scrollStage - 1,
       }))
     } else {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         scrollStage:
           prevState.scrollStage + 1 > 3 ? 3 : prevState.scrollStage + 1,
       }))
@@ -466,7 +466,7 @@ export default class Article extends PureComponent {
       <Provider store={store}>
         <ThemeProvider
           theme={{
-            name: _.get(post, 'style', themeConst.article.v2.default),
+            name: _.get(post, 'style', ARTICLE_THEME.v2.default),
             colors: uiManager.getThemeColors(),
             fontSizeOffset: this.getFontSizeOffset(fontLevel),
             releaseBranch,

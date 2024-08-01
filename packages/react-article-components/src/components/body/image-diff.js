@@ -4,13 +4,13 @@ import Multimedia from './multimedia'
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import Slider, { Rail, Progress, Indicator } from './slider'
-import themeConst from '../../constants/theme'
 import styled, { css } from 'styled-components'
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import get from 'lodash/get'
 
@@ -20,23 +20,23 @@ const _ = {
 
 const Container = Multimedia.Block
 
-const unicodeToString = unicode => String.fromCharCode(parseInt(unicode, 16))
+const unicodeToString = (unicode) => String.fromCharCode(parseInt(unicode, 16))
 
-const getResponsiveBackground = imageSetPropKey => css`
+const getResponsiveBackground = (imageSetPropKey) => css`
   ${mq.desktopAndAbove`
-    background-image: url(${props =>
+    background-image: url(${(props) =>
       replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'desktop', 'url']))});
   `}
   ${mq.tabletOnly`
-    background-image: url(${props =>
+    background-image: url(${(props) =>
       replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'tablet', 'url']))});
   `}
   ${mq.mobileOnly`
-    background-image: url(${props =>
+    background-image: url(${(props) =>
       replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'mobile', 'url']))});
   `}
   @media print {
-    background-image: url(${props =>
+    background-image: url(${(props) =>
       replaceGCSUrlOrigin(_.get(props, [imageSetPropKey, 'desktop', 'url']))});
   }
 `
@@ -51,13 +51,13 @@ const sharedStyleOfIndicatorPointer = css`
   width: 24px;
   height: 24px;
   background: ${colorGrayscale.white};
-  color: ${props => {
+  color: ${(props) => {
     switch (props.theme.name) {
-      case themeConst.article.v2.photo:
+      case ARTICLE_THEME.v2.photo:
         return colorSupportive.heavy
-      case themeConst.article.v2.pink:
+      case ARTICLE_THEME.v2.pink:
         return COLOR_PINK_ARTICLE.pink
-      case themeConst.article.v2.default:
+      case ARTICLE_THEME.v2.default:
       default:
         return colorSupportive.main
     }
@@ -68,8 +68,8 @@ const ImageContainer = styled.div`
   overflow: hidden;
   position: relative;
   width: 100%;
-  padding-bottom: ${props => `${100 * props.$heightWidthRatio}%`};
-  >div {
+  padding-bottom: ${(props) => `${100 * props.$heightWidthRatio}%`};
+  > div {
     position: absolute;
     top: 0;
     left: 0;
@@ -91,9 +91,9 @@ const ImageContainer = styled.div`
     width: 3px;
     background: ${colorGrayscale.white};
     &::after {
-      content: "${unicodeToString(
+      content: '${unicodeToString(
         '25C4'
-      )}"; /* BLACK LEFT-POINTING POINTER (present in WGL4) */
+      )}'; /* BLACK LEFT-POINTING POINTER (present in WGL4) */
       ${sharedStyleOfIndicatorPointer}
       left: 0;
       transform: translateX(-100%);
@@ -102,9 +102,9 @@ const ImageContainer = styled.div`
       padding-right: 3px;
     }
     &::before {
-      content: "${unicodeToString(
+      content: '${unicodeToString(
         '25BA'
-      )}"; /* BLACK RIGHT-POINTING POINTER (present in WGL4) */
+      )}'; /* BLACK RIGHT-POINTING POINTER (present in WGL4) */
       ${sharedStyleOfIndicatorPointer}
       right: 0;
       transform: translateX(100%);

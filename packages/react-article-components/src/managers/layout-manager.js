@@ -1,6 +1,6 @@
 import Leadings from '../components/leading'
 import get from 'lodash/get'
-import themeConst from '../constants/theme'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const _ = {
   get,
@@ -37,8 +37,11 @@ export default class LayoutManager {
    *  @returns {Function} - React component
    */
   getLeadingComponent() {
-    if (this.theme === themeConst.article.v2.pink) {
+    if (this.theme === ARTICLE_THEME.v2.pink) {
       return Leadings.Pink
+    }
+    if (this.theme === ARTICLE_THEME.v2.embedded) {
+      return Leadings.Embedded
     }
 
     switch (_.get(this.post, 'hero_image_size')) {
@@ -96,6 +99,7 @@ export default class LayoutManager {
         tiny: _.get(post, 'leading_image_portrait.resized_targets.tiny'),
         mobile: _.get(post, 'leading_image_portrait.resized_targets.mobile'),
       },
+      embedded: _.get(post, 'leading_embedded.api_data', []),
     }
   }
 }
