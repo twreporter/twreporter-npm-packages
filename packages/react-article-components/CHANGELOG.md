@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.1...@twreporter/react-article-components@2.4.0-rc.0) (2024-08-01)
+
+### Bug Fixes
+
+- give embedded to component ([c972d01](https://github.com/twreporter/twreporter-npm-packages/commit/c972d01e2196663eb51f9b6f7e9b55a55d00a61d))
+- typo ([332c8fb](https://github.com/twreporter/twreporter-npm-packages/commit/332c8fbc3728e42d80e662056d63c822d7a6a8e6))
+
+### Features
+
+- add article v2 embedded ([fb2cb5c](https://github.com/twreporter/twreporter-npm-packages/commit/fb2cb5c80cb7d44191355305f6b81d3cde013cc1))
+- add article v2 embedded theme and use from core package ([10b458d](https://github.com/twreporter/twreporter-npm-packages/commit/10b458db2e541674554b747af2f7ed43bcb69b6e))
+- card & list theme constants ([2e18368](https://github.com/twreporter/twreporter-npm-packages/commit/2e18368dd230a2852ef14ffae410193487fcbc3a))
+
 ## [2.3.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.1-rc.0...@twreporter/react-article-components@2.3.1) (2024-07-18)
 
 **Note:** Version bump only for package @twreporter/react-article-components
