@@ -140,7 +140,7 @@ const Embedded = ({
 }) => {
   const navigate = useHistory()
   const [captionText, setCaptionText] = useState('')
-  const [embeddedCodeJSX, setEmbeddedCodeJSX] = useState()
+  const [embeddedCode, setEmbeddedCode] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const onTopicClick = () => {
     navigate.push(topicHref)
@@ -158,13 +158,8 @@ const Embedded = ({
               const { caption } = content[0]
               if (caption) {
                 setCaptionText(caption)
-                setEmbeddedCodeJSX(
-                  // caption will be render at this componet, not child component
-                  <EmbeddedCodeComponent data={code} showCaption={!caption} />
-                )
-              } else {
-                setEmbeddedCodeJSX(<EmbeddedCodeComponent data={code} />)
               }
+              setEmbeddedCode(code)
             }
             break
         }
@@ -190,7 +185,10 @@ const Embedded = ({
 
   return (
     <div>
-      <EmbeddedBlock>{embeddedCodeJSX}</EmbeddedBlock>
+      <EmbeddedBlock>
+        {/* caption will be render at this componet, not child component */}
+        <EmbeddedCodeComponent data={embeddedCode} showCaption={!captionText} />
+      </EmbeddedBlock>
       <ContentBlock>
         <TitleBlock>
           {isTopicPublished && shortTitle ? (
@@ -201,11 +199,11 @@ const Embedded = ({
           {subtitle && <SubTitle text={subtitle} />}
           <Title text={title} />
         </TitleBlock>
-        {captionText && (
+        {captionText ? (
           <CaptionBlock>
             <Caption text={captionText} />
           </CaptionBlock>
-        )}
+        ) : null}
       </ContentBlock>
     </div>
   )
