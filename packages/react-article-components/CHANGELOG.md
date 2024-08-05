@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.4.0-rc.0...@twreporter/react-article-components@2.4.0-rc.1) (2024-08-05)
+
+### Bug Fixes
+
+- check embeddedCode exist and loading issue ([57dd123](https://github.com/twreporter/twreporter-npm-packages/commit/57dd123a1f93431dab18bd9f1b82d5305017382c))
+- fix comments ([7e81341](https://github.com/twreporter/twreporter-npm-packages/commit/7e813415aecf602e333333f3b78f19c204ad8b08))
+
 # [2.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.3.1...@twreporter/react-article-components@2.4.0-rc.0) (2024-08-01)
 
 ### Bug Fixes
