@@ -168,10 +168,10 @@ class EmbeddedCode extends React.PureComponent {
             dispatchWindowLoadEvent()
           }
           scriptEle.removeEventListener('load', handleLoad)
+          this.props.handleIsLoaded()
         }
         scriptEle.addEventListener('load', handleLoad)
         scriptsFragment.appendChild(scriptEle)
-        this.props.handleIsLoaded()
       })
       node.appendChild(scriptsFragment)
     }
