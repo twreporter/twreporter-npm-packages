@@ -75,11 +75,13 @@ class EmbeddedCode extends React.PureComponent {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData,
     showCaption: PropTypes.bool,
+    handleIsLoaded: PropTypes.func,
   }
 
   static defaultProps = {
     className: '',
     showCaption: true,
+    handleIsLoaded: () => {},
   }
 
   state = {
@@ -166,6 +168,7 @@ class EmbeddedCode extends React.PureComponent {
             dispatchWindowLoadEvent()
           }
           scriptEle.removeEventListener('load', handleLoad)
+          this.props.handleIsLoaded()
         }
         scriptEle.addEventListener('load', handleLoad)
         scriptsFragment.appendChild(scriptEle)

@@ -146,6 +146,10 @@ const Embedded = ({
     navigate.push(topicHref)
   }
 
+  const handleIsLoaded = () => {
+    setIsLoading(false)
+  }
+
   useEffect(() => {
     if (embedded.length > 0) {
       _.map(embedded, (code) => {
@@ -165,30 +169,25 @@ const Embedded = ({
         }
       })
     }
-
-    const handleLoad = () => {
-      setIsLoading(false)
-    }
-    window.addEventListener('load', handleLoad)
-
-    return () => {
-      window.removeEventListener('load', handleLoad)
-    }
   }, [])
-
-  if (isLoading)
-    return (
-      <LoaderContainer>
-        <Loader />
-      </LoaderContainer>
-    )
 
   return (
     <div>
-      <EmbeddedBlock>
-        {/* caption will be render at this componet, not child component */}
-        <EmbeddedCodeComponent data={embeddedCode} showCaption={!captionText} />
-      </EmbeddedBlock>
+      {isLoading ? (
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
+      ) : null}
+      {embeddedCode ? (
+        <EmbeddedBlock>
+          {/* caption will be render at this componet, not child component */}
+          <EmbeddedCodeComponent
+            data={embeddedCode}
+            showCaption={!captionText}
+            handleIsLoaded={handleIsLoaded}
+          />
+        </EmbeddedBlock>
+      ) : null}
       <ContentBlock>
         <TitleBlock>
           {isTopicPublished && shortTitle ? (
