@@ -29,12 +29,11 @@ const ContentBlock = styled.div`
   width: 100%;
   display: flex;
   margin-top: 16px;
-  margin-bottom: 64px;
   justify-content: space-between;
 
   ${mq.hdOnly`
     width: 1280px;
-    margin: 16px auto 64px;
+    margin: 16px auto 0px;
   `}
   ${mq.desktopOnly`
     padding: 0 48px;
@@ -42,7 +41,7 @@ const ContentBlock = styled.div`
   ${mq.tabletAndBelow`
     flex-direction: column;
     width: 66.7%;
-    margin: 16px auto 64px;
+    margin: 16px auto 0px;
     `}
   ${mq.mobileOnly`
     width: 100%;
@@ -196,7 +195,7 @@ const Embedded = ({
             </TopicTitle>
           ) : null}
           {subtitle && <SubTitle text={subtitle} />}
-          <Title text={title} />
+          <Title text={title} type={H1.Type.ARTICLE} />
         </TitleBlock>
         {captionText ? (
           <CaptionBlock>
