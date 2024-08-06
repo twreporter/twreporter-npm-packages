@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.4.0-rc.1...@twreporter/react-article-components@2.4.0-rc.2) (2024-08-06)
+
+### Bug Fixes
+
+- embedded article heading type and style ([238714e](https://github.com/twreporter/twreporter-npm-packages/commit/238714ebb60b4e72c8c795a9c4374303f7bca78c))
+- handle load if no script ([196cbf1](https://github.com/twreporter/twreporter-npm-packages/commit/196cbf13c7be829cc427c14f7ccd64df48ef4ee9))
+
 # [2.4.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.4.0-rc.0...@twreporter/react-article-components@2.4.0-rc.1) (2024-08-05)
 
 ### Bug Fixes
