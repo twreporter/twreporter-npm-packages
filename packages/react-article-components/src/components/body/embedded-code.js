@@ -168,7 +168,6 @@ class EmbeddedCode extends React.PureComponent {
             dispatchWindowLoadEvent()
           }
           scriptEle.removeEventListener('load', handleLoad)
-          this.props.handleIsLoaded()
         }
         scriptEle.addEventListener('load', handleLoad)
         scriptsFragment.appendChild(scriptEle)
@@ -180,6 +179,7 @@ class EmbeddedCode extends React.PureComponent {
   loadEmbed = () => {
     if (!this.state.isLoaded) {
       this.setState({ isLoaded: true }, this.executeScript)
+      this.props.handleIsLoaded()
     }
   }
 
