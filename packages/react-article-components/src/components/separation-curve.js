@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import mq from '@twreporter/core/lib/utils/media-query'
 import styled from 'styled-components'
-import themeConst from '../constants/theme'
+// @twreporter
+import mq from '@twreporter/core/lib/utils/media-query'
 import {
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const Separation = styled.div`
   width: 192px;
@@ -16,13 +17,13 @@ const Separation = styled.div`
     width: 270px;
   `}
   >svg>path {
-    fill: ${props => {
+    fill: ${(props) => {
       switch (props.theme.name) {
-        case themeConst.article.v2.pink:
+        case ARTICLE_THEME.v2.pink:
           return COLOR_PINK_ARTICLE.pink
-        case themeConst.article.v2.photo:
+        case ARTICLE_THEME.v2.photo:
           return colorSupportive.heavy
-        case themeConst.article.v2.default:
+        case ARTICLE_THEME.v2.default:
         default:
           return colorSupportive.main
       }

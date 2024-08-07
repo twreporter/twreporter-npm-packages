@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 // @twreporter
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // constants
 import predefinedPropTypes from '../../constants/prop-types/body'
 import styles from '../../constants/css'
-import themeConst from '../../constants/theme'
 // lodash
 import get from 'lodash/get'
 
@@ -18,13 +18,13 @@ const P = styled.p`
   ${styles.paragraphText}
   ${styles.linkChildren}
 
-  ${props =>
+  ${(props) =>
     props.$forTrackingSection
       ? `font-size: ${props.theme.fontSizeOffset + 16}px`
       : ''};
-  ${props => {
+  ${(props) => {
     switch (props.theme.name) {
-      case themeConst.article.v2.photo:
+      case ARTICLE_THEME.v2.photo:
         return css`
           strong {
             color: ${colorGrayscale.gray300};

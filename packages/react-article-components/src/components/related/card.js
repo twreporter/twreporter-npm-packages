@@ -5,13 +5,13 @@ import mq from '@twreporter/core/lib/utils/media-query'
 import predefinedProps from '../../constants/prop-types/related'
 import React from 'react'
 import styled, { css } from 'styled-components'
-import themeConsts from '../../constants/theme'
 import typography from '../../constants/typography'
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const StyledImg = styled(Img)``
 
@@ -24,9 +24,9 @@ const DescBlock = styled.div`
 `
 
 const Desc = styled.p`
-  opacity: ${props => (props.$isHovered ? '1' : '0')};
-  visibility: ${props => (props.$isHovered ? 'visible' : 'hidden')};
-  position: ${props => (props.$isHovered ? 'static' : 'absolute')};
+  opacity: ${(props) => (props.$isHovered ? '1' : '0')};
+  visibility: ${(props) => (props.$isHovered ? 'visible' : 'hidden')};
+  position: ${(props) => (props.$isHovered ? 'static' : 'absolute')};
 
   /* clear default margin */
   margin: 0px;
@@ -132,10 +132,10 @@ const PublishedDate = styled.p`
 `
 
 const Block = styled.div`
-  ${props => getBlockStyles(props.theme.name)}
+  ${(props) => getBlockStyles(props.theme.name)}
 
   position: relative;
-  height: ${props => props.$height};
+  height: ${(props) => props.$height};
 
   transition: height 0.2s ease-in-out;
 
@@ -159,7 +159,7 @@ const Block = styled.div`
 
 function getBlockStyles(themeName) {
   switch (themeName) {
-    case themeConsts.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         ${Category} {
           color: ${colorSupportive.main};
@@ -171,7 +171,7 @@ function getBlockStyles(themeName) {
           background-color: ${colorGrayscale.gray400};
         }
       `
-    case themeConsts.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         ${Category} {
           color: ${COLOR_PINK_ARTICLE.darkPink};
@@ -183,7 +183,7 @@ function getBlockStyles(themeName) {
           background-color: ${colorGrayscale.gray200};
         }
       `
-    case themeConsts.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         ${Category} {
@@ -241,8 +241,10 @@ class Card extends React.PureComponent {
       this.setState(
         {
           heightBeforeHovering: `${this._blockRef.current.clientHeight}px`,
-          heightAfterHovering: `${this._blockRef.current.clientHeight +
-            this._descRef.current.clientHeight}px`,
+          heightAfterHovering: `${
+            this._blockRef.current.clientHeight +
+            this._descRef.current.clientHeight
+          }px`,
         },
         this.props.handleMounted()
       )

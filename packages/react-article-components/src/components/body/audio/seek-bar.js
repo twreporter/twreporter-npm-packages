@@ -2,16 +2,16 @@ import { TimeContext, ControlsContext, StatusContext } from './audio-contexts'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import Slider, { Indicator, Rail, Progress } from '../slider'
-import themeConst from '../../../constants/theme'
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 function getContainerStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         ${Indicator} {
           background-color: ${COLOR_PINK_ARTICLE.darkPink};
@@ -21,7 +21,7 @@ function getContainerStyles(themeName) {
           background-color: ${COLOR_PINK_ARTICLE.pink};
         }
       `
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         ${Indicator} {
           background-color: ${colorSupportive.heavy};
@@ -31,7 +31,7 @@ function getContainerStyles(themeName) {
           background-color: ${colorSupportive.main};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         ${Indicator} {
@@ -45,7 +45,7 @@ function getContainerStyles(themeName) {
 }
 
 const Container = styled.div`
-  ${props => getContainerStyles(props.theme.name)}
+  ${(props) => getContainerStyles(props.theme.name)}
   width: 100%;
   height: 4px;
   border-radius: 2px;

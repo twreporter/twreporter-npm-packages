@@ -3,6 +3,7 @@ import Fullscreen from './fullscreen'
 import Normal from './normal'
 import Pink from './pink'
 import Small from './small'
+import Embedded from './embedded'
 
 export default {
   Extend,
@@ -10,4 +11,5 @@ export default {
   Normal,
   Pink,
   Small,
+  Embedded,
 }

@@ -9,13 +9,13 @@ import map from 'lodash/map'
 import memoize from 'memoize-one'
 import mq from '@twreporter/core/lib/utils/media-query'
 import styled, { css } from 'styled-components'
-import themeConst from '../../../constants/theme'
 import typography from '../../../constants/typography'
 import {
   colorGrayscale,
   colorSupportive,
   COLOR_PINK_ARTICLE,
 } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 
 const _ = {
   get,
@@ -275,33 +275,33 @@ const SlidesFlexBox = styled.div`
   flex-wrap: nowrap;
   width: 100%;
   height: 100%;
-  ${props => {
+  ${(props) => {
     if (props.$isSliding) {
       return `transition: transform ${props.$duration}ms ease-in-out;`
     }
   }}
 
   ${mq.mobileOnly`
-    transform: translateX(${props =>
+    transform: translateX(${(props) =>
       (getTranslateX(mockup.mobile, props.$translateXUint) /
         getContainerWidth(mockup.mobile)) *
       100}%);
   `}
 
   ${mq.tabletOnly`
-    transform: translateX(${props =>
+    transform: translateX(${(props) =>
       (getTranslateX(mockup.tablet, props.$translateXUint) /
         getContainerWidth(mockup.tablet)) *
       100}%);
   `}
 
   ${mq.desktopOnly`
-    transform: translateX(${props =>
+    transform: translateX(${(props) =>
       getTranslateX(mockup.desktop, props.$translateXUint)}px);
   `}
 
   ${mq.hdOnly`
-    transform: translateX(${props =>
+    transform: translateX(${(props) =>
       getTranslateX(mockup.hd, props.$translateXUint)}px);
   `}
 `
@@ -312,20 +312,20 @@ const SlideFlexItem = styled.div`
 
   ${mq.mobileOnly`
     flex-basis: calc(${getSlideWidth(mockup.mobile)}/${getContainerWidth(
-    mockup.mobile
-  )}*100%);
+      mockup.mobile
+    )}*100%);
     padding-right: calc(${mockup.mobile.slide.paddingRight}/${getContainerWidth(
-    mockup.mobile
-  )}*100%);
+      mockup.mobile
+    )}*100%);
   `}
 
   ${mq.tabletOnly`
     flex-basis: calc(${getSlideWidth(mockup.tablet)}/${getContainerWidth(
-    mockup.tablet
-  )}*100%);
+      mockup.tablet
+    )}*100%);
     padding-right: calc(${mockup.tablet.slide.paddingRight}/${getContainerWidth(
-    mockup.tablet
-  )}*100%);
+      mockup.tablet
+    )}*100%);
   `}
 
 
@@ -341,7 +341,7 @@ const SlideFlexItem = styled.div`
 `
 
 const SlideshowFlexBox = styled.div`
-  ${props => getSlideshowFlexBoxStyles(props.theme.name)}
+  ${(props) => getSlideshowFlexBoxStyles(props.theme.name)}
 
   width: 100%;
   display: flex;
@@ -363,7 +363,7 @@ const SlideshowFlexBox = styled.div`
 
 function getSlideshowFlexBoxStyles(themeName) {
   switch (themeName) {
-    case themeConst.article.v2.photo:
+    case ARTICLE_THEME.v2.photo:
       return css`
         ${PrevButton} {
           border-color: ${colorGrayscale.gray400};
@@ -378,7 +378,7 @@ function getSlideshowFlexBoxStyles(themeName) {
           color: ${COLOR_PINK_ARTICLE.darkBlue};
         }
       `
-    case themeConst.article.v2.pink:
+    case ARTICLE_THEME.v2.pink:
       return css`
         ${PrevButton} {
           border-color: ${colorGrayscale.gray300};
@@ -393,7 +393,7 @@ function getSlideshowFlexBoxStyles(themeName) {
           color: ${colorGrayscale.white};
         }
       `
-    case themeConst.article.v2.default:
+    case ARTICLE_THEME.v2.default:
     default:
       return css`
         ${PrevButton} {
@@ -562,7 +562,7 @@ export default class Slideshow extends PureComponent {
     )
   }
 
-  buildSlides = memoize(images => {
+  buildSlides = memoize((images) => {
     // add last `slidesOffset` elements into top of images array.
     // add first `slidesOffset` elements into bottom of images array.
     // EX:

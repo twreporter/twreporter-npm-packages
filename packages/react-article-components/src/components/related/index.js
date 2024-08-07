@@ -4,11 +4,11 @@ import styled, { css } from 'styled-components'
 // components
 import List from './list'
 // constants
-import themeConst from '../../constants/theme'
 import typography from '../../constants/typography'
 // @twreporter
 import mq from '@twreporter/core/lib/utils/media-query'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
+import { ARTICLE_THEME } from '@twreporter/core/lib/constants/theme'
 // lodash
 import debounce from 'lodash/debounce'
 import get from 'lodash/get'
@@ -40,9 +40,9 @@ const Block = styled.section`
 `
 
 const Descriptor = styled.div`
-  ${props => {
+  ${(props) => {
     switch (props.theme.name) {
-      case themeConst.article.v2.photo:
+      case ARTICLE_THEME.v2.photo:
         return css`
           color: ${colorGrayscale.gray600};
           ${mq.desktopAndAbove`
@@ -52,8 +52,8 @@ const Descriptor = styled.div`
             }
           `}
         `
-      case themeConst.article.v2.pink:
-      case themeConst.article.v2.default:
+      case ARTICLE_THEME.v2.pink:
+      case ARTICLE_THEME.v2.default:
       default:
         return css`
           color: ${colorGrayscale.gray600};
