@@ -28,10 +28,10 @@ const ToolsFixedArea = styled.div`
 
 const ToolsPositioningBlock = styled.div`
   display: inline-block;
-  position: ${props =>
+  position: ${(props) =>
     props.$toolPosition === _toolPosition.fixed ? 'fixed' : 'absolute'};
-  top: ${props => {
-    switch (props.toolPosition) {
+  top: ${(props) => {
+    switch (props.$toolPosition) {
       case _toolPosition.fixed:
         return '50%'
       case _toolPosition.top:
@@ -41,7 +41,7 @@ const ToolsPositioningBlock = styled.div`
         return 'auto'
     }
   }};
-  bottom: ${props => {
+  bottom: ${(props) => {
     switch (props.$toolPosition) {
       case _toolPosition.bottom:
         return '0'
@@ -51,13 +51,13 @@ const ToolsPositioningBlock = styled.div`
         return 'auto'
     }
   }};
-  transform: ${props =>
+  transform: ${(props) =>
     props.$toolPosition === _toolPosition.fixed ? 'translateY(-50%)' : 'none'};
 `
 
 const TriggerFixBlock = styled.div`
   position: absolute;
-  height: ${props => props.$height}px;
+  height: ${(props) => props.$height}px;
 `
 
 const TriggerFixTopBlock = styled(TriggerFixBlock)`
@@ -88,6 +88,7 @@ export default class Aside extends React.PureComponent {
   }
 
   setToolsPosition(nextPosition, waypointObj) {
+    console.log('nextPosition: ', nextPosition)
     const toolPosition = this.state.toolPosition
     if (
       // viewport is below `ToolsFixedArea`
