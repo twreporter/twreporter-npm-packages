@@ -15,6 +15,7 @@ const fileExt = '.woff2'
 
 const gcsFontFolder = {
   [fonts.notoSansTC]: 'NotoSansTC',
+  [fonts.tauhuOo]: 'TauhuOo',
 }
 
 const fontWeightKeys = _.keys(fontWeight)
@@ -44,12 +45,16 @@ const fontFaces = {
     font: fonts.notoSansTC,
     folder: gcsFontFolder[fonts.notoSansTC],
   }),
+  [fonts.tauhuOo]: getFontFaces({
+    font: fonts.tauhuOo,
+    folder: gcsFontFolder[fonts.tauhuOo],
+  }),
 }
 
 let fontGCSFiles = []
 
-_.forEach(fontFaces, function(fontFace, font) {
-  _.forEach(fontWeightKeys, fontWeightKey => {
+_.forEach(fontFaces, function (fontFace, font) {
+  _.forEach(fontWeightKeys, (fontWeightKey) => {
     fontGCSFiles.push(
       `${baseGCSDir}${gcsFontFolder[font]}/${fontWeightKey}${fileExt}`
     )
