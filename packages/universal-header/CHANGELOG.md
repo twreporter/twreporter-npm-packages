@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.8-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.7...@twreporter/universal-header@3.0.8-rc.0) (2024-08-19)
+
+### Bug Fixes
+
+- disable click while header is narrow ([28fc6a9](https://github.com/twreporter/twreporter-npm-packages/commit/28fc6a980bb5769ff1b1db75e3eead2e70a1a9bf))
+
 ## [3.0.7](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.7-rc.0...@twreporter/universal-header@3.0.7) (2024-08-07)
 
 **Note:** Version bump only for package @twreporter/universal-header
