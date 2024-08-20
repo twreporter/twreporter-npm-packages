@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.3.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.2.2...@twreporter/react-components@9.3.0-rc.0) (2024-08-20)
+
+### Features
+
+- add new sel-host font `tauhu-oo` ([f9e1a22](https://github.com/twreporter/twreporter-npm-packages/commit/f9e1a22c01070d0da17932f0ba334f91e8e2d6b5))
+
 ## [9.2.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.2.2-rc.0...@twreporter/react-components@9.2.2) (2024-08-07)
 
 **Note:** Version bump only for package @twreporter/react-components
