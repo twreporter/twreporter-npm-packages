@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.0-rc.0...@twreporter/react-article-components@2.5.0-rc.1) (2024-08-20)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+# [2.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.4.1-rc.0...@twreporter/react-article-components@2.5.0-rc.0) (2024-08-19)
+
+### Bug Fixes
+
+- give \$ for toolPosition ([b9a899b](https://github.com/twreporter/twreporter-npm-packages/commit/b9a899b77f8ac498753ace972f946f5b5b01ac46))
+
+### Features
+
+- updat component to functional component and use position sticky ([194a7fa](https://github.com/twreporter/twreporter-npm-packages/commit/194a7fa21b9cf29b271dc1c4523e364245cec694))
+
+## [2.4.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.4.0...@twreporter/react-article-components@2.4.1-rc.0) (2024-08-19)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
 # [2.4.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.4.0-rc.2...@twreporter/react-article-components@2.4.0) (2024-08-07)
 
 **Note:** Version bump only for package @twreporter/react-article-components

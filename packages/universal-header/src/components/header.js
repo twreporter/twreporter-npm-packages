@@ -160,6 +160,7 @@ const TopRow = styled.div`
     transition: opacity ${animation.step3Duration};
     transition-delay: ${(props) =>
       props.$toUseNarrow ? animation.step3Delay : 0};
+    pointer-events: ${(props) => (props.$toUseNarrow ? 'none' : 'all')};
   }
   ${LogoContainer} {
     margin-left: ${(props) => (props.$toUseNarrow ? '24px' : '0')};

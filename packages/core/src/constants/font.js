@@ -4,6 +4,7 @@ const serif = 'serif'
 const robotoSlab = 'Roboto Slab'
 const notoSansTC = 'Noto Sans TC'
 const sansSerif = 'sans-serif'
+const tauhuOo = 'Tauhu Oo'
 
 const fonts = {
   merriweather,
@@ -12,6 +13,7 @@ const fonts = {
   robotoSlab,
   notoSansTC,
   sansSerif,
+  tauhuOo,
 }
 
 const fontWeight = {
@@ -22,7 +24,7 @@ const fontWeight = {
 
 const fontFamily = {
   title: `${merriweather}, ${sourceHanSerifTC}, ${serif}`,
-  default: `${robotoSlab}, ${notoSansTC}, ${sansSerif}`,
+  default: `${robotoSlab}, ${notoSansTC}, ${sansSerif}, ${tauhuOo}`,
   // use defaultFallback before ${notoSansTC} is fully loaded
   defaultFallback: `${robotoSlab}, ${sansSerif}`,
 }

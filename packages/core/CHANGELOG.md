@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.24.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.23.0...@twreporter/core@1.24.0-rc.0) (2024-08-20)
+
+### Features
+
+- add new sel-host font `tauhu-oo` ([f9e1a22](https://github.com/twreporter/twreporter-npm-packages/commit/f9e1a22c01070d0da17932f0ba334f91e8e2d6b5))
+
 # [1.23.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.23.0-rc.0...@twreporter/core@1.23.0) (2024-08-07)
 
 **Note:** Version bump only for package @twreporter/core
