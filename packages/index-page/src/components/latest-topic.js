@@ -182,86 +182,78 @@ const ImgFrame = styled.div`
   `}
 `
 
-class LatestTopic extends React.PureComponent {
-  render() {
-    const { data, useTinyImg } = this.props
-    const relateds = _.get(data, 'relateds', [])
-    let relatedsJsx = []
-    _.forEach(relateds, post => {
-      if (typeof post !== 'object' || post === null) {
-        return
-      }
+const LatestTopic = ({ data = {}, useTinyImg = false }) => {
+  const relateds = _.get(data, 'relateds', [])
+  let relatedsJsx = []
+  _.forEach(relateds, post => {
+    if (typeof post !== 'object' || post === null) {
+      return
+    }
 
-      const isExternal = _.get(post, 'is_external', false)
-      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
-      const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
-      relatedsJsx.push(
-        <FlexItem key={_.get(post, 'id')}>
-          <TRLink href={href} redirect={isExternal}>
-            <ImgFrame>
-              <ImgWrapper
-                alt={_.get(imgObj, 'description')}
-                src={_.get(imgObj, [
-                  'resized_targets',
-                  useTinyImg ? 'tiny' : 'mobile',
-                  'url',
-                ])}
-                srcSet={_.get(imgObj, 'resized_targets')}
-                sizes={
-                  `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                  `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                  `${mockup.img.sizes.mobile}`
-                }
-              />
-            </ImgFrame>
-            <RelatedsContentFrame>
-              <RelatedCategory>
-                {`${categoryPrefix}${_.get(data, 'short_title', '')}`}
-              </RelatedCategory>
-              <RelatedTitle>{_.get(post, 'title', '')}</RelatedTitle>
-              <RelatedDescription>
-                {_.get(post, 'og_description', '')}
-              </RelatedDescription>
-            </RelatedsContentFrame>
-          </TRLink>
-        </FlexItem>
-      )
-    })
-
-    return (
-      <Container>
-        <ContentContainer>
-          <SectionName>
-            <span>{sectionStrings.latestTopic}</span>
-          </SectionName>
-          <TopicFrame>
-            <CategoryName>{`${categoryPrefix}${_.get(
-              data,
-              'short_title',
-              ''
-            )}`}</CategoryName>
-            <Title>{_.get(data, 'title', '')}</Title>
-            <Description>{_.get(data, 'og_description', '')}</Description>
-          </TopicFrame>
-          <FlexBox>{relatedsJsx}</FlexBox>
-          <MobileList>
-            <MobileSwiperList>{relatedsJsx}</MobileSwiperList>
-          </MobileList>
-          <MoreFrame>
-            <BottomLink
-              text={`更多${_.get(data, 'short_title', '')}文章`}
-              path={`topics/${_.get(data, 'slug', '')}`}
+    const isExternal = _.get(post, 'is_external', false)
+    const href = getHref(_.get(post, 'slug', 'error'), isExternal)
+    const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
+    relatedsJsx.push(
+      <FlexItem key={_.get(post, 'id')}>
+        <TRLink href={href} redirect={isExternal}>
+          <ImgFrame>
+            <ImgWrapper
+              alt={_.get(imgObj, 'description')}
+              src={_.get(imgObj, [
+                'resized_targets',
+                useTinyImg ? 'tiny' : 'mobile',
+                'url',
+              ])}
+              srcSet={_.get(imgObj, 'resized_targets')}
+              sizes={
+                `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+                `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+                `${mockup.img.sizes.mobile}`
+              }
             />
-          </MoreFrame>
-        </ContentContainer>
-      </Container>
+          </ImgFrame>
+          <RelatedsContentFrame>
+            <RelatedCategory>
+              {`${categoryPrefix}${_.get(data, 'short_title', '')}`}
+            </RelatedCategory>
+            <RelatedTitle>{_.get(post, 'title', '')}</RelatedTitle>
+            <RelatedDescription>
+              {_.get(post, 'og_description', '')}
+            </RelatedDescription>
+          </RelatedsContentFrame>
+        </TRLink>
+      </FlexItem>
     )
-  }
-}
+  })
 
-LatestTopic.defaultProps = {
-  data: {},
-  useTinyImg: false,
+  return (
+    <Container>
+      <ContentContainer>
+        <SectionName>
+          <span>{sectionStrings.latestTopic}</span>
+        </SectionName>
+        <TopicFrame>
+          <CategoryName>{`${categoryPrefix}${_.get(
+            data,
+            'short_title',
+            ''
+          )}`}</CategoryName>
+          <Title>{_.get(data, 'title', '')}</Title>
+          <Description>{_.get(data, 'og_description', '')}</Description>
+        </TopicFrame>
+        <FlexBox>{relatedsJsx}</FlexBox>
+        <MobileList>
+          <MobileSwiperList>{relatedsJsx}</MobileSwiperList>
+        </MobileList>
+        <MoreFrame>
+          <BottomLink
+            text={`更多${_.get(data, 'short_title', '')}文章`}
+            path={`topics/${_.get(data, 'slug', '')}`}
+          />
+        </MoreFrame>
+      </ContentContainer>
+    </Container>
+  )
 }
 
 LatestTopic.propTypes = {
