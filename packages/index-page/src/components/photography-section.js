@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Waypoint } from 'react-waypoint'
 import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
@@ -25,8 +25,10 @@ import {
 } from '@twreporter/core/lib/constants/color'
 // lodash
 import get from 'lodash/get'
+import { throttle } from 'lodash'
 const _ = {
   get,
+  throttle,
 }
 
 const mockup = {
@@ -45,10 +47,10 @@ const oneColumnWidthInt = 768
 
 const Section = styled.div`
   position: relative;
-  background-color: ${(props) => {
+  background-color: ${props => {
     return props.$isAutoHover ? colorGrayscale.white : colorPhoto.dark
   }};
-  padding-bottom: ${(props) => {
+  padding-bottom: ${props => {
     return props.$isAutoHover ? '40px' : '80px'
   }};
   padding-top: 100px;
@@ -144,7 +146,7 @@ const Overlay = styled.div`
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: ${(props) => {
+  opacity: ${props => {
     return props.$isHover ? 1 : 0
   }};
   transition: 0.5s ease;
@@ -161,44 +163,39 @@ const More = styled.div`
   text-align: center;
 `
 
-class Photography extends React.PureComponent {
-  render() {
-    const { title, imgObj, isHover, slug, isExternal } = this.props
-    const href = getHref(slug, isExternal)
-    return (
-      <Item>
-        <TRLink href={href} redirect={isExternal}>
-          <Img>
-            <ImgWrapper
-              alt={imgObj.alt}
-              src={imgObj.src}
-              srcSet={imgObj.srcSet}
-              sizes={
-                `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                `${mockup.img.sizes.mobile}`
-              }
-            >
-              <Overlay $isHover={isHover}>
-                <Title>
-                  <CategoryName>{categoryStrings.photography}</CategoryName>
-                  {title}
-                </Title>
-              </Overlay>
-            </ImgWrapper>
-          </Img>
-        </TRLink>
-      </Item>
-    )
-  }
-}
-
-Photography.defaultProps = {
-  title: '',
-  imgObj: {},
-  isExternal: false,
-  isHover: false,
-  slug: '',
+const Photography = ({
+  title = '',
+  imgObj = {},
+  isExternal = false,
+  isHover = false,
+  slug = '',
+}) => {
+  const href = getHref(slug, isExternal)
+  return (
+    <Item>
+      <TRLink href={href} redirect={isExternal}>
+        <Img>
+          <ImgWrapper
+            alt={imgObj.alt}
+            src={imgObj.src}
+            srcSet={imgObj.srcSet}
+            sizes={
+              `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+              `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+              `${mockup.img.sizes.mobile}`
+            }
+          >
+            <Overlay $isHover={isHover}>
+              <Title>
+                <CategoryName>{categoryStrings.photography}</CategoryName>
+                {title}
+              </Title>
+            </Overlay>
+          </ImgWrapper>
+        </Img>
+      </TRLink>
+    </Item>
+  )
 }
 
 Photography.propTypes = {
@@ -209,128 +206,95 @@ Photography.propTypes = {
   slug: PropTypes.string,
 }
 
-class PhotographySection extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      eleTouchViewportTop: -1,
-      // when the width size is less than oneColumnWidth,
-      // we assume the device is mobile,
-      // so enable auto hovering.
-      isAutoHover: false,
-    }
-    this.itemsToShow = 4
-    this.onLeave = this._onElementTouchViewportTop.bind(this, -1)
-    this.onEnters = []
-    this.onEnter = this._onElementTouchViewportTop.bind(this)
-    this._mounted = false
-  }
+const PhotographySection = ({
+  data = [],
+  moreURI = 'photography',
+  useTinyImg = false,
+}) => {
+  const [eleTouchViewportTop, setEleTouchViewportTop] = useState(-1)
+  const [isAutoHover, setIsAutoHover] = useState(false)
+  const itemsToShow = 4
 
-  componentDidMount() {
-    this._mounted = true
-    // fetch the posts in advance
-    const _checkViewportWidth = this._checkViewportWidth.bind(this)
-    _checkViewportWidth()
-    let resizeTimeout
-    function resizeThrottler() {
-      // ignore resize events as long as an actualResizeHandler execution is in the queue
-      if (!resizeTimeout) {
-        resizeTimeout = setTimeout(() => {
-          resizeTimeout = null
-          _checkViewportWidth()
-          // The _checkViewportWidth will execute at a rate of 15fps
-        }, 500)
-      }
-    }
-
-    // add resize event listener
-    window.addEventListener('resize', resizeThrottler.bind(this), false)
-  }
-
-  componentWillUnmount() {
-    this._mounted = false
-  }
-
-  _checkViewportWidth() {
+  // Check viewport width to determine if auto hover should be enabled (for mobile)
+  const checkViewportWidth = useCallback(() => {
     const innerW = _.get(window, 'innerWidth', oneColumnWidthInt)
-    if (this._mounted) {
-      this.setState({
-        isAutoHover: innerW < oneColumnWidthInt,
-      })
-    }
-  }
+    setIsAutoHover(innerW < oneColumnWidthInt)
+  }, [])
 
-  _onElementTouchViewportTop(index) {
-    if (this.state.isAutoHover) {
-      this.setState({
-        eleTouchViewportTop: index,
-      })
-    }
-  }
-
-  render() {
-    const { data, moreURI, useTinyImg } = this.props
-    const { eleTouchViewportTop, isAutoHover } = this.state
-
-    const postComps = data.slice(0, this.itemsToShow).map((item, index) => {
-      const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
-      let isHover = false
+  // Handle element entering or leaving the viewport
+  const onElementTouchViewportTop = useCallback(
+    index => {
       if (isAutoHover) {
-        isHover = eleTouchViewportTop === index
+        setEleTouchViewportTop(index)
       }
-      return (
-        <Waypoint
-          key={_.get(item, 'id')}
-          onEnter={() => {
-            this.onEnter(index)
-          }}
-          topOffset="8%"
-          bottomOffset="90%"
-        >
-          <span>
-            <Photography
-              title={_.get(item, 'title')}
-              imgObj={{
-                alt: _.get(imgObj, 'description'),
-                src: _.get(imgObj, [
-                  'resized_targets',
-                  useTinyImg ? 'tiny' : 'tablet',
-                  'url',
-                ]),
-                srcSet: _.get(imgObj, 'resized_targets'),
-              }}
-              isHover={isHover}
-              slug={_.get(item, 'slug')}
-              isExternal={_.get(item, 'is_external', false)}
-              ifSrcset={this.state.ifSrcset}
-            />
-          </span>
-        </Waypoint>
-      )
-    }, this)
+    },
+    [isAutoHover]
+  )
+
+  useEffect(() => {
+    checkViewportWidth()
+
+    const resizeThrottler = _.throttle(() => {
+      checkViewportWidth()
+      // The _checkViewportWidth will execute at a rate of 15fps
+    }, 500)
+
+    window.addEventListener('resize', resizeThrottler)
+    return () => {
+      window.removeEventListener('resize', resizeThrottler)
+    }
+  }, [checkViewportWidth])
+
+  const postComps = data.slice(0, itemsToShow).map((item, index) => {
+    const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
+    const isHover = isAutoHover && eleTouchViewportTop === index
 
     return (
-      <Waypoint key={'section_check_point'} onLeave={this.onLeave}>
-        <div>
-          <Section $isAutoHover={isAutoHover}>
-            <SectionName>
-              <span>{sectionStrings.photography}</span>
-            </SectionName>
-            <Listing>{postComps}</Listing>
-            <More>
-              <BottomLink text="更多影像新聞" isDarkBg path={moreURI} />
-            </More>
-          </Section>
-        </div>
+      <Waypoint
+        key={_.get(item, 'id')}
+        onEnter={() => onElementTouchViewportTop(index)}
+        topOffset="8%"
+        bottomOffset="90%"
+      >
+        <span>
+          <Photography
+            title={_.get(item, 'title')}
+            imgObj={{
+              alt: _.get(imgObj, 'description'),
+              src: _.get(imgObj, [
+                'resized_targets',
+                useTinyImg ? 'tiny' : 'tablet',
+                'url',
+              ]),
+              srcSet: _.get(imgObj, 'resized_targets'),
+            }}
+            isHover={isHover}
+            slug={_.get(item, 'slug')}
+            isExternal={_.get(item, 'is_external', false)}
+          />
+        </span>
       </Waypoint>
     )
-  }
-}
+  })
 
-PhotographySection.defaultProps = {
-  data: [],
-  moreURI: 'photography',
-  useTinyImg: false,
+  return (
+    <Waypoint
+      key={'section_check_point'}
+      onLeave={() => onElementTouchViewportTop(-1)}
+    >
+      <div>
+        <Section $isAutoHover={isAutoHover}>
+          <SectionName>
+            <span>{sectionStrings.photography}</span>
+          </SectionName>
+          <Listing>{postComps}</Listing>
+          <More>
+            <BottomLink text="更多影像新聞" isDarkBg path={moreURI} />
+          </More>
+        </Section>
+      </div>
+    </Waypoint>
+  )
 }
 
 PhotographySection.propTypes = {
