@@ -25,23 +25,23 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-image: ${(props) =>
+  background-image: ${props =>
     `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_Desktop.jpg)`};
   background-size: contain;
   padding-top: 30px;
   padding-bottom: 30px;
   ${mq.mobileOnly`
-    background-image: ${(props) =>
+    background-image: ${props =>
       `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_Mobile.jpg)`};
     padding-top: 40px;
     padding-bottom: 60px;
   `}
   ${mq.tabletOnly`
-    background-image: ${(props) =>
+    background-image: ${props =>
       `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_Tablet.jpg)`};
   `}
   ${mq.hdOnly`
-    background-image: ${(props) =>
+    background-image: ${props =>
       `url(${app.assetsPath}/${props.$releaseBranch}/KidsReporter_DesktopHD.jpg)`};
   `}
 `
@@ -135,40 +135,33 @@ const Icon = styled.div`
   height: 12px;
 `
 
-class JuniorBoxSection extends React.PureComponent {
-  render() {
-    const { releaseBranch } = this.props
-    return (
-      <Container $releaseBranch={releaseBranch}>
-        <ContentContainer>
-          <TextColumn>
-            <h3>看兒少新聞，與孩子對話</h3>
-            <p>
-              向孩子解釋重要的事件、嚴肅的議題，是民主社會很重要的事，也是《報導者》身為非營利媒體的重要責任，讓我們和你一起尋找對話的契機。
-            </p>
-          </TextColumn>
-          <CTAButton>
-            <JuniorLink>
-              <span>
-                前往閱讀
-                <Icon>
-                  <ArrowIcon />
-                </Icon>
-              </span>
-            </JuniorLink>
-          </CTAButton>
-        </ContentContainer>
-      </Container>
-    )
-  }
+const JuniorBoxSection = ({ releaseBranch = BRANCH.master }) => {
+  return (
+    <Container $releaseBranch={releaseBranch}>
+      <ContentContainer>
+        <TextColumn>
+          <h3>看兒少新聞，與孩子對話</h3>
+          <p>
+            向孩子解釋重要的事件、嚴肅的議題，是民主社會很重要的事，也是《報導者》身為非營利媒體的重要責任，讓我們和你一起尋找對話的契機。
+          </p>
+        </TextColumn>
+        <CTAButton>
+          <JuniorLink>
+            <span>
+              前往閱讀
+              <Icon>
+                <ArrowIcon />
+              </Icon>
+            </span>
+          </JuniorLink>
+        </CTAButton>
+      </ContentContainer>
+    </Container>
+  )
 }
 
 JuniorBoxSection.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
-}
-
-JuniorBoxSection.defaultProps = {
-  releaseBranch: BRANCH.master,
 }
 
 export default JuniorBoxSection
