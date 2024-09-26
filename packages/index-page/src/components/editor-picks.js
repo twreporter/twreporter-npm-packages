@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import postPropType from './prop-types/post'
 import styled from 'styled-components'
@@ -212,264 +212,233 @@ const FadeInFadeOut = styled.div`
 `
 
 // this is a container
-class EditorPicks extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selected: 1,
-      ifHover: false,
-    }
-    this.onShiftToLeft = this._onShiftToLeft.bind(this)
-    this.onShiftToRight = this._onShiftToRight.bind(this)
-    this.handleOnMouseEnter = this._handleOnMouseEnter.bind(this)
-    this.handleOnMouseLeave = this._handleOnMouseLeave.bind(this)
-  }
+const EditorPicks = ({ data = [] }) => {
+  const [selected, setSelected] = useState(1)
+  const [ifHover, setIfHover] = useState(false)
 
-  _onShiftToLeft() {
-    if (this.state.selected + 1 < this.props.data.length) {
-      this.setState({
-        selected: this.state.selected + 1,
-      })
+  const onShiftToLeft = () => {
+    if (selected + 1 < data.length) {
+      setSelected(selected + 1)
     }
   }
 
-  _onShiftToRight() {
-    if (this.state.selected > 0) {
-      this.setState({
-        selected: this.state.selected - 1,
-      })
+  const onShiftToRight = () => {
+    if (selected > 0) {
+      setSelected(selected - 1)
     }
   }
 
-  _handleOnMouseEnter() {
-    this.setState({
-      ifHover: true,
-    })
+  const handleOnMouseEnter = () => {
+    setIfHover(true)
   }
 
-  _handleOnMouseLeave() {
-    this.setState({
-      ifHover: false,
-    })
+  const handleOnMouseLeave = () => {
+    setIfHover(false)
   }
 
-  render() {
-    const { data } = this.props
-    const swappedData = swapArrayElements(data, 0, 1)
-    const getTruncate = title => {
-      if (title.length > 25) {
-        return `${title.slice(0, 24)}...`
+  const swappedData = swapArrayElements(data, 0, 1)
+  const getTruncate = title => {
+    if (title.length > 25) {
+      return `${title.slice(0, 24)}...`
+    }
+    return title
+  }
+
+  const FlexItems = (() => {
+    return swappedData.map((obj, i) => {
+      const isExternal = _.get(obj, 'is_external', false)
+      const href = getHref(_.get(obj, 'slug', 'error'), isExternal)
+      const propsMap = {
+        middle: false,
+        onClick: () => {},
       }
-      return title
-    }
-    const FlexItems = (() => {
-      return swappedData.map((obj, i) => {
-        const isExternal = _.get(obj, 'is_external', false)
-        const href = getHref(_.get(obj, 'slug', 'error'), isExternal)
-        const propsMap = {
-          middle: false,
-          onClick: () => {},
+      if (i === selected - 1) {
+        propsMap.onClick = onShiftToRight
+      } else if (i === selected) {
+        propsMap.middle = true
+        propsMap.onClick = () => {}
+      } else if (i === selected + 1) {
+        propsMap.onClick = onShiftToLeft
+      }
+      return (
+        <FlexItem
+          key={`key_${obj.title}`}
+          $middle={propsMap.middle}
+          $selected={selected}
+          onClick={() => {
+            propsMap.onClick(`a/${_.get(obj, 'slug', 'error')}`)
+          }}
+        >
+          {i === selected ? (
+            <TRLink href={href} redirect={isExternal} plain>
+              <HoverEffect $ifHover={ifHover}>
+                <Title
+                  $middle={propsMap.middle}
+                  onMouseOver={handleOnMouseEnter}
+                  onMouseLeave={handleOnMouseLeave}
+                >
+                  <div>
+                    {propsMap.middle ? getTruncate(obj.title) : obj.title}
+                  </div>
+                </Title>
+              </HoverEffect>
+            </TRLink>
+          ) : (
+            <Title $middle={propsMap.middle}>
+              <div>{propsMap.middle ? getTruncate(obj.title) : obj.title}</div>
+            </Title>
+          )}
+        </FlexItem>
+      )
+    })
+  })()
+
+  const Types = (() => {
+    // type: left, middle, right. description: middle
+    const propList = [
+      {
+        position: 'left',
+        component: SideCategory,
+        propsForComponent: { top: null, left: '10%' },
+        dataPath: 'category_set[0].category.name',
+      },
+      {
+        position: 'middle',
+        component: MiddleCategory,
+        propsForComponent: { top: '60px', left: '50%' },
+        dataPath: 'category_set[0].category.name',
+      },
+      {
+        position: 'right',
+        middle: false,
+        component: SideCategory,
+        propsForComponent: { top: null, left: '90%' },
+        dataPath: 'category_set[0].category.name',
+      },
+      {
+        position: 'middle',
+        component: Description,
+        propsForComponent: { top: '171px', left: '50%' },
+        dataPath: 'og_description',
+      },
+    ]
+
+    return propList.map(theProp => {
+      return swappedData.map((post, index) => {
+        const isExternal = _.get(post, 'is_external', false)
+        const href = getHref(_.get(post, 'slug', 'error'), isExternal)
+        const currentData = _.get(post, theProp.dataPath, '')
+        const selectDataToShow = {
+          left: selected - 1,
+          middle: selected,
+          right: selected + 1,
         }
-        if (i === this.state.selected - 1) {
-          propsMap.onClick = this.onShiftToRight
-        } else if (i === this.state.selected) {
-          propsMap.middle = true
-          propsMap.onClick = () => {}
-        } else if (i === this.state.selected + 1) {
-          propsMap.onClick = this.onShiftToLeft
+        const fadingStyle = {
+          opacity: index === selectDataToShow[theProp.position] ? '1' : '0',
+          zIndex: index === selectDataToShow[theProp.position] ? '1' : '0',
+          transition: 'opacity 150ms ease-in-out',
         }
         return (
-          <FlexItem
-            key={`key_${obj.title}`}
-            $middle={propsMap.middle}
-            $selected={this.state.selected}
-            onClick={() => {
-              propsMap.onClick(`a/${_.get(obj, 'slug', 'error')}`)
-            }}
+          <FadeInFadeOut
+            key={_.get(post, 'id')}
+            $isSelected={index === selectDataToShow[theProp.position]}
           >
-            {i === this.state.selected ? (
+            {theProp.dataPath === 'og_description' ? (
               <TRLink href={href} redirect={isExternal} plain>
-                <HoverEffect $ifHover={this.state.ifHover}>
-                  <Title
-                    $middle={propsMap.middle}
-                    onMouseOver={this.handleOnMouseEnter}
-                    onMouseLeave={this.handleOnMouseLeave}
-                  >
-                    <div>
-                      {propsMap.middle ? getTruncate(obj.title) : obj.title}
-                    </div>
-                  </Title>
-                </HoverEffect>
-              </TRLink>
-            ) : (
-              <Title $middle={propsMap.middle}>
-                <div>
-                  {propsMap.middle ? getTruncate(obj.title) : obj.title}
-                </div>
-              </Title>
-            )}
-          </FlexItem>
-        )
-      })
-    })()
-
-    const Types = (() => {
-      // type: left, middle, right. description: middle
-      const propList = [
-        {
-          position: 'left',
-          component: SideCategory,
-          propsForComponent: { top: null, left: '10%' },
-          dataPath: 'category_set[0].category.name',
-        },
-        {
-          position: 'middle',
-          component: MiddleCategory,
-          propsForComponent: { top: '60px', left: '50%' },
-          dataPath: 'category_set[0].category.name',
-        },
-        {
-          position: 'right',
-          middle: false,
-          component: SideCategory,
-          propsForComponent: { top: null, left: '90%' },
-          dataPath: 'category_set[0].category.name',
-        },
-        {
-          position: 'middle',
-          component: Description,
-          propsForComponent: { top: '171px', left: '50%' },
-          dataPath: 'og_description',
-        },
-      ]
-
-      return propList.map(theProp => {
-        return swappedData.map((post, index) => {
-          const isExternal = _.get(post, 'is_external', false)
-          const href = getHref(_.get(post, 'slug', 'error'), isExternal)
-          const currentData = _.get(post, theProp.dataPath, '')
-          const selectDataToShow = {
-            left: this.state.selected - 1,
-            middle: this.state.selected,
-            right: this.state.selected + 1,
-          }
-          const fadingStyle = {
-            opacity: index === selectDataToShow[theProp.position] ? '1' : '0',
-            zIndex: index === selectDataToShow[theProp.position] ? '1' : '0',
-            transition: 'opacity 150ms ease-in-out',
-          }
-          return (
-            <FadeInFadeOut
-              key={_.get(post, 'id')}
-              $isSelected={index === selectDataToShow[theProp.position]}
-            >
-              {theProp.dataPath === 'og_description' ? (
-                <TRLink href={href} redirect={isExternal} plain>
-                  <theProp.component
-                    $ifHover={this.state.ifHover}
-                    $top={theProp.propsForComponent.top}
-                    $left={theProp.propsForComponent.left}
-                    onMouseEnter={this.handleOnMouseEnter}
-                    onMouseLeave={this.handleOnMouseLeave}
-                    // Adds fade-in fade-out inline style for IE and Edge
-                    style={fadingStyle}
-                  >
-                    {currentData}
-                  </theProp.component>
-                </TRLink>
-              ) : (
                 <theProp.component
+                  $ifHover={ifHover}
                   $top={theProp.propsForComponent.top}
                   $left={theProp.propsForComponent.left}
+                  onMouseEnter={handleOnMouseEnter}
+                  onMouseLeave={handleOnMouseLeave}
                   // Adds fade-in fade-out inline style for IE and Edge
                   style={fadingStyle}
                 >
                   {currentData}
                 </theProp.component>
-              )}
-            </FadeInFadeOut>
-          )
-        })
-      })
-    })()
-
-    const Images = swappedData.map((post, index) => {
-      const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
-      const isExternal = _.get(post, 'is_external', false)
-      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
-      const fadingStyle = {
-        opacity: this.state.selected === index ? '1' : '0',
-        zIndex: this.state.selected === index ? '1' : '0',
-        transition: 'opacity .5s linear',
-      }
-      return (
-        <FadeInFadeOut
-          key={_.get(imgObj, 'id')}
-          $isSelected={index === this.state.selected}
-        >
-          <TRLink href={href} redirect={isExternal} plain>
-            <HoverEffect $ifHover={this.state.ifHover}>
-              <ImgFrame
-                onMouseEnter={this.handleOnMouseEnter}
-                onMouseLeave={this.handleOnMouseLeave}
+              </TRLink>
+            ) : (
+              <theProp.component
+                $top={theProp.propsForComponent.top}
+                $left={theProp.propsForComponent.left}
                 // Adds fade-in fade-out inline style for IE and Edge
                 style={fadingStyle}
               >
-                <ImgWrapper
-                  alt={_.get(imgObj, 'description')}
-                  src={_.get(imgObj, 'resized_targets.tablet.url')}
-                  srcSet={_.get(imgObj, 'resized_targets')}
-                  sizes={
-                    `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                    `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                    `${mockup.img.sizes.mobile}`
-                  }
-                />
-              </ImgFrame>
-            </HoverEffect>
-          </TRLink>
-        </FadeInFadeOut>
-      )
+                {currentData}
+              </theProp.component>
+            )}
+          </FadeInFadeOut>
+        )
+      })
     })
+  })()
 
-    const Arrows = (() => {
-      return (
-        <div>
-          <LeftArrow
-            onClick={this.onShiftToRight}
-            $selected={this.state.selected}
-          >
-            <LeftArrowIcon />
-          </LeftArrow>
-          <RightArrow
-            onClick={this.onShiftToLeft}
-            $selected={this.state.selected}
-            $dataLength={this.props.data.length}
-          >
-            <RightArrowIcon />
-          </RightArrow>
-        </div>
-      )
-    })()
+  const Images = swappedData.map((post, index) => {
+    const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
+    const isExternal = _.get(post, 'is_external', false)
+    const href = getHref(_.get(post, 'slug', 'error'), isExternal)
+    const fadingStyle = {
+      opacity: selected === index ? '1' : '0',
+      zIndex: selected === index ? '1' : '0',
+      transition: 'opacity .5s linear',
+    }
+    return (
+      <FadeInFadeOut key={_.get(imgObj, 'id')} $isSelected={index === selected}>
+        <TRLink href={href} redirect={isExternal} plain>
+          <HoverEffect $ifHover={ifHover}>
+            <ImgFrame
+              onMouseEnter={handleOnMouseEnter}
+              onMouseLeave={handleOnMouseLeave}
+              // Adds fade-in fade-out inline style for IE and Edge
+              style={fadingStyle}
+            >
+              <ImgWrapper
+                alt={_.get(imgObj, 'description')}
+                src={_.get(imgObj, 'resized_targets.tablet.url')}
+                srcSet={_.get(imgObj, 'resized_targets')}
+                sizes={
+                  `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+                  `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+                  `${mockup.img.sizes.mobile}`
+                }
+              />
+            </ImgFrame>
+          </HoverEffect>
+        </TRLink>
+      </FadeInFadeOut>
+    )
+  })
 
+  const Arrows = (() => {
     return (
       <div>
-        <CarouselContainer>
-          <FlexContainer>
-            {Types}
-            {Arrows}
-            {Images}
-            {FlexItems}
-          </FlexContainer>
-        </CarouselContainer>
-        <EditorPicksMobile data={this.props.data} maxSwipableItems={5} />
+        <LeftArrow onClick={onShiftToRight} $selected={selected}>
+          <LeftArrowIcon />
+        </LeftArrow>
+        <RightArrow
+          onClick={onShiftToLeft}
+          $selected={selected}
+          $dataLength={data.length}
+        >
+          <RightArrowIcon />
+        </RightArrow>
       </div>
     )
-  }
-}
+  })()
 
-EditorPicks.defaultProps = {
-  data: [],
+  return (
+    <div>
+      <CarouselContainer>
+        <FlexContainer>
+          {Types}
+          {Arrows}
+          {Images}
+          {FlexItems}
+        </FlexContainer>
+      </CarouselContainer>
+      <EditorPicksMobile data={data} maxSwipableItems={5} />
+    </div>
+  )
 }
 
 EditorPicks.propTypes = {
