@@ -10,7 +10,7 @@ const gtmId = {
   | XXXX         | XXXX          | XXX          |
   | XXXXX        | XXXXXX        | XX           |
 */
-export const getLinksGroups = mainOrigin => {
+export const getLinksGroups = (mainOrigin) => {
   return [
     // first column
     [
@@ -71,6 +71,12 @@ export const getLinksGroups = mainOrigin => {
         to: 'https://twreporter.backme.tw/shops/3619?locale=zh-TW',
         target: '_blank',
       },
+      {
+        slug: 'charity-cooperation',
+        text: '公益合作',
+        to: 'https://www.twreporter.org/a/cooperation',
+        target: '_blank',
+      },
     ],
     // third column
     [
@@ -96,8 +102,7 @@ export const getLinksGroups = mainOrigin => {
       {
         slug: 'install-web-app',
         text: '安裝Web App',
-        to:
-          'https://www.twreporter.org/a/how-to-follow-the-reporter#方法3：安裝Web App',
+        to: 'https://www.twreporter.org/a/how-to-follow-the-reporter#方法3：安裝Web App',
         target: '_blank',
       },
       {
