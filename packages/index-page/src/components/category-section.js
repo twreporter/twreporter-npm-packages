@@ -154,64 +154,56 @@ const More = styled.div`
   `}
 `
 
-class Category extends React.PureComponent {
-  render() {
-    const { data, useTinyImg } = this.props
-    const items = data.map((item, index) => {
-      const isExternal = _.get(item, 'is_external', false)
-      const href = getHref(_.get(item, 'slug', 'error'), isExternal)
-      const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
-      const key = `${index}-${_.get(item, 'id')}`
-      return (
-        <FlexItem key={key}>
-          <CategoryName>{_.get(item, 'listName')}</CategoryName>
-          <TRLink href={href} redirect={isExternal}>
-            <ImgFrame>
-              <ImgWrapper
-                alt={_.get(imgObj, 'description')}
-                src={_.get(imgObj, [
-                  'resized_targets',
-                  useTinyImg ? 'tiny' : 'mobile',
-                  'url',
-                ])}
-                srcSet={_.get(imgObj, 'resized_targets')}
-                sizes={
-                  `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                  `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                  `${mockup.img.sizes.mobile}`
-                }
-              />
-            </ImgFrame>
-            <TextFrame>
-              <Title>{_.get(item, 'title')}</Title>
-            </TextFrame>
-          </TRLink>
-          <More>
-            <BottomLink
-              text={`更多${_.get(item, 'listName')}`}
-              path={_.get(item, 'moreURI')}
-            />
-          </More>
-        </FlexItem>
-      )
-    })
+const Category = ({ data = [], useTinyImg = false }) => {
+  const items = data.map((item, index) => {
+    const isExternal = _.get(item, 'is_external', false)
+    const href = getHref(_.get(item, 'slug', 'error'), isExternal)
+    const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
+    const key = `${index}-${_.get(item, 'id')}`
     return (
-      <Container>
-        <SectionWrapper>
-          <SectionName>
-            <span>{sectionStrings.category}</span>
-          </SectionName>
-          <FlexBox>{items}</FlexBox>
-          <MobileSwiperList>{items}</MobileSwiperList>
-        </SectionWrapper>
-      </Container>
+      <FlexItem key={key}>
+        <CategoryName>{_.get(item, 'listName')}</CategoryName>
+        <TRLink href={href} redirect={isExternal}>
+          <ImgFrame>
+            <ImgWrapper
+              alt={_.get(imgObj, 'description')}
+              src={_.get(imgObj, [
+                'resized_targets',
+                useTinyImg ? 'tiny' : 'mobile',
+                'url',
+              ])}
+              srcSet={_.get(imgObj, 'resized_targets')}
+              sizes={
+                `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+                `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+                `${mockup.img.sizes.mobile}`
+              }
+            />
+          </ImgFrame>
+          <TextFrame>
+            <Title>{_.get(item, 'title')}</Title>
+          </TextFrame>
+        </TRLink>
+        <More>
+          <BottomLink
+            text={`更多${_.get(item, 'listName')}`}
+            path={_.get(item, 'moreURI')}
+          />
+        </More>
+      </FlexItem>
     )
-  }
-}
-
-Category.defaultProps = {
-  data: [],
-  useTinyImg: false,
+  })
+  return (
+    <Container>
+      <SectionWrapper>
+        <SectionName>
+          <span>{sectionStrings.category}</span>
+        </SectionName>
+        <FlexBox>{items}</FlexBox>
+        <MobileSwiperList>{items}</MobileSwiperList>
+      </SectionWrapper>
+    </Container>
+  )
 }
 
 Category.propTypes = {
