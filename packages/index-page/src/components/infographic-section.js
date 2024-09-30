@@ -153,13 +153,13 @@ const Title = styled.h3`
 const ImgFrame = styled.div`
   position: relative;
   width: 430px;
-  height: ${(props) => {
+  height: ${props => {
     return props.$isPortrait ? '596px' : '282px'
   }};
 
   ${mq.desktopOnly`
     max-width: 290px;
-    height: ${(props) => {
+    height: ${props => {
       return props.$isPortrait ? '390px' : '190px'
     }};
   `}
@@ -167,7 +167,7 @@ const ImgFrame = styled.div`
   ${mq.tabletOnly`
     margin: 0 auto;
     width: 220px;
-    height: ${(props) => {
+    height: ${props => {
       return props.$isPortrait ? '290px' : '145px'
     }};
   `}
@@ -181,41 +181,36 @@ const More = styled.div`
   text-align: center;
 `
 
-class Infographic extends React.PureComponent {
-  render() {
-    const { title, imgObj, isPortrait, slug, isExternal } = this.props
-    const href = getHref(slug, isExternal)
-    return (
-      <Item>
-        <TRLink href={href} redirect={isExternal}>
-          <ImgFrame $isPortrait={isPortrait}>
-            <ImgWrapper
-              alt={imgObj.alt}
-              src={imgObj.src}
-              srcSet={imgObj.srcSet}
-              sizes={
-                `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                `${mockup.img.sizes.mobile}`
-              }
-            />
-          </ImgFrame>
-          <WordBlock>
-            <CategoryName>{sectionStrings.infographic}</CategoryName>
-            <Title>{title}</Title>
-          </WordBlock>
-        </TRLink>
-      </Item>
-    )
-  }
-}
-
-Infographic.defaultProps = {
-  title: '',
-  imgObj: {},
-  isExternal: false,
-  isPortrait: false,
-  slug: '',
+const Infographic = ({
+  title = '',
+  imgObj = {},
+  isExternal = false,
+  isPortrait = false,
+  slug = '',
+}) => {
+  const href = getHref(slug, isExternal)
+  return (
+    <Item>
+      <TRLink href={href} redirect={isExternal}>
+        <ImgFrame $isPortrait={isPortrait}>
+          <ImgWrapper
+            alt={imgObj.alt}
+            src={imgObj.src}
+            srcSet={imgObj.srcSet}
+            sizes={
+              `(min-width: ${breakPoints.desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+              `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+              `${mockup.img.sizes.mobile}`
+            }
+          />
+        </ImgFrame>
+        <WordBlock>
+          <CategoryName>{sectionStrings.infographic}</CategoryName>
+          <Title>{title}</Title>
+        </WordBlock>
+      </TRLink>
+    </Item>
+  )
 }
 
 Infographic.propTypes = {
@@ -226,65 +221,60 @@ Infographic.propTypes = {
   slug: PropTypes.string,
 }
 
-class InfographicSection extends React.PureComponent {
-  render() {
-    const { data, moreURI, useTinyImg } = this.props
-    const listNumber = 3
+const InfographicSection = ({
+  data = [],
+  moreURI = 'categories/infographic',
+  useTinyImg = false,
+}) => {
+  const listNumber = 3
 
-    const postComps = data.slice(0, 6).map((item, index) => {
-      const portraitImg = _.get(item, 'leading_image_portrait')
-      let imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
+  const postComps = data.slice(0, 6).map((item, index) => {
+    const portraitImg = _.get(item, 'leading_image_portrait')
+    let imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
 
-      if (index === 0 || index === 4 || index === 5) {
-        if (typeof _.get(portraitImg, 'resized_targets') === 'object') {
-          imgObj = portraitImg
-        }
+    if (index === 0 || index === 4 || index === 5) {
+      if (typeof _.get(portraitImg, 'resized_targets') === 'object') {
+        imgObj = portraitImg
       }
-      return (
-        <Infographic
-          key={_.get(item, 'id')}
-          category={_.get(item, 'categories.[0].name')}
-          imgObj={{
-            alt: _.get(imgObj, 'description'),
-            src: _.get(imgObj, [
-              'resized_targets',
-              useTinyImg ? 'tiny' : 'mobile',
-              'url',
-            ]),
-            srcSet: _.get(imgObj, 'resized_targets'),
-          }}
-          title={_.get(item, 'title')}
-          isPortrait={index === 0 || index === 4 || index === 5}
-          slug={_.get(item, 'slug')}
-          isExternal={_.get(item, 'is_external', false)}
-        />
-      )
-    })
-
+    }
     return (
-      <Container>
-        <Section>
-          <SectionName>
-            <span>{sectionStrings.infographic}</span>
-          </SectionName>
-          <UpperList>{postComps.slice(0, listNumber)}</UpperList>
-          <LowerList>{postComps.slice(listNumber, listNumber * 2)}</LowerList>
-          <MobileList>
-            <MobileSwiperList>{postComps}</MobileSwiperList>
-          </MobileList>
-          <More>
-            <BottomLink path={moreURI} text="更多多媒體新聞" isDarkBg />
-          </More>
-        </Section>
-      </Container>
+      <Infographic
+        key={_.get(item, 'id')}
+        category={_.get(item, 'categories.[0].name')}
+        imgObj={{
+          alt: _.get(imgObj, 'description'),
+          src: _.get(imgObj, [
+            'resized_targets',
+            useTinyImg ? 'tiny' : 'mobile',
+            'url',
+          ]),
+          srcSet: _.get(imgObj, 'resized_targets'),
+        }}
+        title={_.get(item, 'title')}
+        isPortrait={index === 0 || index === 4 || index === 5}
+        slug={_.get(item, 'slug')}
+        isExternal={_.get(item, 'is_external', false)}
+      />
     )
-  }
-}
+  })
 
-InfographicSection.defaultProps = {
-  data: [],
-  moreURI: 'categories/infographic',
-  useTinyImg: false,
+  return (
+    <Container>
+      <Section>
+        <SectionName>
+          <span>{sectionStrings.infographic}</span>
+        </SectionName>
+        <UpperList>{postComps.slice(0, listNumber)}</UpperList>
+        <LowerList>{postComps.slice(listNumber, listNumber * 2)}</LowerList>
+        <MobileList>
+          <MobileSwiperList>{postComps}</MobileSwiperList>
+        </MobileList>
+        <More>
+          <BottomLink path={moreURI} text="更多多媒體新聞" isDarkBg />
+        </More>
+      </Section>
+    </Container>
+  )
 }
 
 InfographicSection.propTypes = {

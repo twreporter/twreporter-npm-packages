@@ -146,60 +146,56 @@ const More = styled.div`
   margin-top: 60px;
 `
 
-class Reviews extends React.PureComponent {
-  render() {
-    const { data, moreURI, useTinyImg } = this.props
-    const ReviewsItem = data.map(post => {
-      const isExternal = _.get(post, 'is_external', false)
-      const href = getHref(_.get(post, 'slug', 'error'), isExternal)
-      const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
-      return (
-        <FlexItem key={_.get(post, 'id')}>
-          <TRLink href={href} redirect={isExternal}>
-            <ImgFrame>
-              <ImgWrapper
-                alt={_.get(imgObj, 'description')}
-                src={_.get(imgObj, [
-                  'resized_targets',
-                  useTinyImg ? 'tiny' : 'mobile',
-                  'url',
-                ])}
-                srcSet={_.get(imgObj, 'resized_targets')}
-                sizes={
-                  `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                  `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                  `${mockup.img.sizes.mobile}`
-                }
-              />
-            </ImgFrame>
-            <TextFrame>
-              <Category>{_.get(post, 'subtitle', '')}</Category>
-              <Title>{_.get(post, 'title', '')}</Title>
-              <Description>{_.get(post, 'og_description', '')}</Description>
-            </TextFrame>
-          </TRLink>
-        </FlexItem>
-      )
-    })
+const Reviews = ({
+  data = [],
+  moreURI = 'categories/reviews',
+  useTinyImg = false,
+}) => {
+  const ReviewsItem = data.map(post => {
+    const isExternal = _.get(post, 'is_external', false)
+    const href = getHref(_.get(post, 'slug', 'error'), isExternal)
+    const imgObj = _.get(post, 'hero_image') || _.get(post, 'og_image')
     return (
-      <Container>
-        <SectionName>
-          <span>{sectionStrings.review}</span>
-        </SectionName>
-        <FlexBox>{ReviewsItem}</FlexBox>
-        <MobileSwiperList>{ReviewsItem}</MobileSwiperList>
-        <More>
-          <BottomLink text={moreText} path={moreURI} />
-        </More>
-      </Container>
+      <FlexItem key={_.get(post, 'id')}>
+        <TRLink href={href} redirect={isExternal}>
+          <ImgFrame>
+            <ImgWrapper
+              alt={_.get(imgObj, 'description')}
+              src={_.get(imgObj, [
+                'resized_targets',
+                useTinyImg ? 'tiny' : 'mobile',
+                'url',
+              ])}
+              srcSet={_.get(imgObj, 'resized_targets')}
+              sizes={
+                `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+                `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+                `${mockup.img.sizes.mobile}`
+              }
+            />
+          </ImgFrame>
+          <TextFrame>
+            <Category>{_.get(post, 'subtitle', '')}</Category>
+            <Title>{_.get(post, 'title', '')}</Title>
+            <Description>{_.get(post, 'og_description', '')}</Description>
+          </TextFrame>
+        </TRLink>
+      </FlexItem>
     )
-  }
-}
+  })
 
-Reviews.defaultProps = {
-  data: [],
-  moreURI: 'categories/reviews',
-  useTinyImg: false,
+  return (
+    <Container>
+      <SectionName>
+        <span>{sectionStrings.review}</span>
+      </SectionName>
+      <FlexBox>{ReviewsItem}</FlexBox>
+      <MobileSwiperList>{ReviewsItem}</MobileSwiperList>
+      <More>
+        <BottomLink text={moreText} path={moreURI} />
+      </More>
+    </Container>
+  )
 }
 
 Reviews.propTypes = {

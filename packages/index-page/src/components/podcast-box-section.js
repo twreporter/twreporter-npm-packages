@@ -25,23 +25,23 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-image: ${(props) =>
+  background-image: ${props =>
     `url(${app.assetsPath}/${props.$releaseBranch}/PodcastBox_Desktop.jpg)`};
   background-size: contain;
   padding-top: 30px;
   padding-bottom: 30px;
   ${mq.mobileOnly`
-    background-image: ${(props) =>
+    background-image: ${props =>
       `url(${app.assetsPath}/${props.$releaseBranch}/PodcastBox_Mobile.jpg)`};
     padding-top: 40px;
     padding-bottom: 60px;
   `}
   ${mq.tabletOnly`
-    background-image: ${(props) =>
+    background-image: ${props =>
       `url(${app.assetsPath}/${props.$releaseBranch}/PodcastBox_Tablet.jpg)`};
   `}
   ${mq.hdOnly`
-    background-image: ${(props) =>
+    background-image: ${props =>
       `url(${app.assetsPath}/${props.$releaseBranch}/PodcastBox_DesktopHD.jpg)`};
   `}
 `
@@ -144,33 +144,26 @@ const listenNow = (
   </span>
 )
 
-class PodcastBoxSection extends React.PureComponent {
-  render() {
-    const { releaseBranch } = this.props
-    return (
-      <Container $releaseBranch={releaseBranch}>
-        <ContentContainer>
-          <TextColumn>
-            <h3>聽Podcast，感受真實</h3>
-            <p>
-              報導者Podcast節目，透過記者、事件當事人的第一手告白，和來自現場的收音紀錄，帶你走進新聞幕後、故事現場，感受更完整的真實。
-            </p>
-          </TextColumn>
-          <ListenButton>
-            <PodcastLandingPageLink>{listenNow}</PodcastLandingPageLink>
-          </ListenButton>
-        </ContentContainer>
-      </Container>
-    )
-  }
+const PodcastBoxSection = ({ releaseBranch = BRANCH.master }) => {
+  return (
+    <Container $releaseBranch={releaseBranch}>
+      <ContentContainer>
+        <TextColumn>
+          <h3>聽Podcast，感受真實</h3>
+          <p>
+            報導者Podcast節目，透過記者、事件當事人的第一手告白，和來自現場的收音紀錄，帶你走進新聞幕後、故事現場，感受更完整的真實。
+          </p>
+        </TextColumn>
+        <ListenButton>
+          <PodcastLandingPageLink>{listenNow}</PodcastLandingPageLink>
+        </ListenButton>
+      </ContentContainer>
+    </Container>
+  )
 }
 
 PodcastBoxSection.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
-}
-
-PodcastBoxSection.defaultProps = {
-  releaseBranch: BRANCH.master,
 }
 
 export default PodcastBoxSection

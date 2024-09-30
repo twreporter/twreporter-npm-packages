@@ -148,52 +148,45 @@ const Title = styled.div`
   color: ${colorGrayscale.gray800};
 `
 
-class LatestSection extends React.Component {
-  render() {
-    const latestItems = this.props.data.map((item) => {
-      const isExternal = _.get(item, 'is_external', false)
-      const href = getHref(_.get(item, 'slug', 'error'), isExternal)
-      const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
-      const categoryName = _.get(
-        item,
-        'category_set[0].category.name',
-        '基金會新聞'
-      )
-      return (
-        <ItemFrame key={_.get(item, 'id')}>
-          <TRLink href={href} redirect={isExternal}>
-            <ImageFrame>
-              <ImgWrapper
-                alt={_.get(imgObj, 'description')}
-                src={_.get(imgObj, 'resized_targets.mobile.url')}
-                srcSet={_.get(imgObj, 'resized_targets')}
-                sizes={
-                  `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
-                  `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
-                  `${mockup.img.sizes.mobile}`
-                }
-              />
-            </ImageFrame>
-            <ContentFrame>
-              <Category>{categoryName}</Category>
-              <Title>{_.get(item, 'title', '')}</Title>
-            </ContentFrame>
-          </TRLink>
-        </ItemFrame>
-      )
-    })
-
-    return (
-      <Container>
-        <ContentContainer>{latestItems}</ContentContainer>
-      </Container>
+const LatestSection = ({ data = [] }) => {
+  const latestItems = data.map(item => {
+    const isExternal = _.get(item, 'is_external', false)
+    const href = getHref(_.get(item, 'slug', 'error'), isExternal)
+    const imgObj = _.get(item, 'hero_image') || _.get(item, 'og_image')
+    const categoryName = _.get(
+      item,
+      'category_set[0].category.name',
+      '基金會新聞'
     )
-  }
-}
+    return (
+      <ItemFrame key={_.get(item, 'id')}>
+        <TRLink href={href} redirect={isExternal}>
+          <ImageFrame>
+            <ImgWrapper
+              alt={_.get(imgObj, 'description')}
+              src={_.get(imgObj, 'resized_targets.mobile.url')}
+              srcSet={_.get(imgObj, 'resized_targets')}
+              sizes={
+                `(min-width: ${desktopMinWidth}) ${mockup.img.sizes.desktop}, ` +
+                `(min-width: ${tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
+                `${mockup.img.sizes.mobile}`
+              }
+            />
+          </ImageFrame>
+          <ContentFrame>
+            <Category>{categoryName}</Category>
+            <Title>{_.get(item, 'title', '')}</Title>
+          </ContentFrame>
+        </TRLink>
+      </ItemFrame>
+    )
+  })
 
-LatestSection.defaultProps = {
-  data: [],
-  moduleMap: {},
+  return (
+    <Container>
+      <ContentContainer>{latestItems}</ContentContainer>
+    </Container>
+  )
 }
 
 LatestSection.propTypes = {
