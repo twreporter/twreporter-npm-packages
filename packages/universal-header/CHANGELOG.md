@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.9-rc.0...@twreporter/universal-header@3.0.9) (2024-10-08)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
 ## [3.0.9-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.8...@twreporter/universal-header@3.0.9-rc.0) (2024-09-30)
 
 **Note:** Version bump only for package @twreporter/universal-header
