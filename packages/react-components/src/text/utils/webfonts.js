@@ -18,7 +18,10 @@ const gcsFontFolder = {
   [fonts.tauhuOo]: 'TauhuOo',
 }
 
-const fontWeightKeys = _.keys(fontWeight)
+const fontWeightKeys = {
+  [fonts.notoSansTC]: _.keys(fontWeight),
+  [fonts.tauhuOo]: ['normal'],
+}
 
 // add @font-face to global style to use self-hosted font for performance reasons, to be more precise please check the issue below:
 // https://twreporter-org.atlassian.net/browse/TWREPORTER-318?atlOrigin=eyJpIjoiNjg4OTQ2MWU2MGIxNGEzMGE0NDY2ZDNmZGRhOWExZDEiLCJwIjoiaiJ9
@@ -32,7 +35,7 @@ const getFontFaces = ({ font, folder }) => {
     }
   `
   return _.reduce(
-    fontWeightKeys,
+    fontWeightKeys[font],
     (fontFaces, fontWeightKey) => {
       return fontFaces + fontFaceCSSTemplate({ fontWeightKey })
     },
@@ -54,7 +57,7 @@ const fontFaces = {
 let fontGCSFiles = []
 
 _.forEach(fontFaces, function (fontFace, font) {
-  _.forEach(fontWeightKeys, (fontWeightKey) => {
+  _.forEach(fontWeightKeys[font], (fontWeightKey) => {
     fontGCSFiles.push(
       `${baseGCSDir}${gcsFontFolder[font]}/${fontWeightKey}${fileExt}`
     )

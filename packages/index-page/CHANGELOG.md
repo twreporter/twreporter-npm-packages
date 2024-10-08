@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.1.0-rc.0...@twreporter/index-page@2.1.0-rc.1) (2024-09-30)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+# [2.1.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.0.8...@twreporter/index-page@2.1.0-rc.0) (2024-09-30)
+
+### Features
+
+- refactor category-section to functional component ([cfc0d15](https://github.com/twreporter/twreporter-npm-packages/commit/cfc0d1596a0ab986ab4b919679ade1c7ec9ab647))
+- refactor donation-box-section to functional component ([eefcc9c](https://github.com/twreporter/twreporter-npm-packages/commit/eefcc9cc692607d4313986c8c956e3d5968de146))
+- refactor editor-picks to functional component ([feb52f7](https://github.com/twreporter/twreporter-npm-packages/commit/feb52f7c487df514acd739149637db926fc95841))
+- refactor infographic-section to functional component ([7a685c8](https://github.com/twreporter/twreporter-npm-packages/commit/7a685c8c3e65256e6611d9ca301bd31cfd735166))
+- refactor junior-box-section to functional component ([7262e3c](https://github.com/twreporter/twreporter-npm-packages/commit/7262e3c35f274732c9258b823add7bef27616d47))
+- refactor latest-section to functional component ([0ab2052](https://github.com/twreporter/twreporter-npm-packages/commit/0ab2052938493d7a09c63dfbe748e69d10438646))
+- refactor latest-topic to functional component ([5669fe9](https://github.com/twreporter/twreporter-npm-packages/commit/5669fe94a90f9913d760e82cba43378b11a9cdcf))
+- refactor photography-section to functional component ([9548e8f](https://github.com/twreporter/twreporter-npm-packages/commit/9548e8f3fce527af04478f6c4d838d15ecf23d70))
+- refactor podcast-box-section to functional component ([d461fd0](https://github.com/twreporter/twreporter-npm-packages/commit/d461fd04915cf0f75039df9c6a2633a0f488a6a6))
+- refactor reviews to functional component ([ad4fbe5](https://github.com/twreporter/twreporter-npm-packages/commit/ad4fbe5e256408fae93263ee059bbf847726d94a))
+- refactor topics-section to functional component ([7a422c5](https://github.com/twreporter/twreporter-npm-packages/commit/7a422c5738fec70cfc0d3c7ec0c8899ab21a42e0))
+
 ## [2.0.8](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.0.8-rc.0...@twreporter/index-page@2.0.8) (2024-08-28)
 
 **Note:** Version bump only for package @twreporter/index-page

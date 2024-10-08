@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.3.0...@twreporter/react-components@9.4.0-rc.0) (2024-09-30)
+
+### Bug Fixes
+
+- add font weight config for each fonts ([472fa34](https://github.com/twreporter/twreporter-npm-packages/commit/472fa34165100245c5f7c5d5566ce11ef2fc1c74))
+
+### Features
+
+- add `公益合作` on footer ([43112f5](https://github.com/twreporter/twreporter-npm-packages/commit/43112f51206c565d8675a18b5a3f8ccc227228c7))
+
 # [9.3.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.3.0-rc.0...@twreporter/react-components@9.3.0) (2024-08-28)
 
 **Note:** Version bump only for package @twreporter/react-components

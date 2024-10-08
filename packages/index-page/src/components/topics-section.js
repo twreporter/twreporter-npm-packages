@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import topicPropType from './prop-types/topic'
@@ -103,7 +103,7 @@ const Column = styled.div`
     margin-right: 30px;
   }
 
-  opacity: ${(props) => (props.$ifHover ? 0.7 : 1)};
+  opacity: ${props => (props.$ifHover ? 0.7 : 1)};
   transition: 0.2s opacity linear;
 
   ${mq.desktopOnly`
@@ -205,38 +205,33 @@ const sizesForsrcSet =
   `(min-width: ${breakPoints.tabletMinWidth}) ${mockup.img.sizes.tablet}, ` +
   `${mockup.img.sizes.mobile}`
 
-class MobileTopic extends React.PureComponent {
-  render() {
-    const { title, topicName, desc, imgObj, slug } = this.props
-    const href = `topics/${slug}`
-    return (
-      <Mobile.Item>
-        <TRLink href={href} plain>
-          <Mobile.TopicName>{`${strings.topic}${strings.fullShapeDot}${topicName}`}</Mobile.TopicName>
-          <Mobile.Title>{title}</Mobile.Title>
-          <Mobile.Img>
-            <ImgWrapper
-              src={imgObj.src}
-              alt={imgObj.alt}
-              srcSet={imgObj.srcSet}
-              sizes={sizesForsrcSet}
-            />
-          </Mobile.Img>
-          <Mobile.DescFrame>
-            <Mobile.Desc>{desc}</Mobile.Desc>
-          </Mobile.DescFrame>
-        </TRLink>
-      </Mobile.Item>
-    )
-  }
-}
-
-MobileTopic.defaultProps = {
-  title: '',
-  topicName: '',
-  desc: '',
-  imgObj: {},
-  slug: '',
+const MobileTopic = ({
+  title = '',
+  topicName = '',
+  desc = '',
+  imgObj = {},
+  slug = '',
+}) => {
+  const href = `topics/${slug}`
+  return (
+    <Mobile.Item>
+      <TRLink href={href} plain>
+        <Mobile.TopicName>{`${strings.topic}${strings.fullShapeDot}${topicName}`}</Mobile.TopicName>
+        <Mobile.Title>{title}</Mobile.Title>
+        <Mobile.Img>
+          <ImgWrapper
+            src={imgObj.src}
+            alt={imgObj.alt}
+            srcSet={imgObj.srcSet}
+            sizes={sizesForsrcSet}
+          />
+        </Mobile.Img>
+        <Mobile.DescFrame>
+          <Mobile.Desc>{desc}</Mobile.Desc>
+        </Mobile.DescFrame>
+      </TRLink>
+    </Mobile.Item>
+  )
 }
 
 MobileTopic.propTypes = {
@@ -247,117 +242,100 @@ MobileTopic.propTypes = {
   slug: PropTypes.string,
 }
 
-class TopicsInARow extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      indexHovered: -1,
-    }
-    this.handleHover = this._handleHover.bind(this)
+const TopicsInARow = ({ data = [], useTinyImg = false }) => {
+  const [indexHovered, setIndexHovered] = useState(-1)
+
+  const handleHover = index => {
+    setIndexHovered(index)
   }
 
-  _handleHover(index) {
-    this.setState({
-      indexHovered: index,
-    })
-  }
+  const topicNameColumns = []
+  const titleColumns = []
+  const imgColumns = []
+  const descColumns = []
 
-  render() {
-    const { data, useTinyImg } = this.props
-    const { indexHovered } = this.state
-    const topicNameColumns = []
-    const titleColumns = []
-    const imgColumns = []
-    const descColumns = []
+  _.forEach(data, (topic, index) => {
+    const slug = _.get(topic, 'slug')
+    const href = `topics/${slug}`
+    const id = _.get(topic, 'id')
+    const topicName = _.get(topic, 'topic_name', '')
+    const title = _.get(topic, 'title', '')
+    const imgObj = _.get(topic, 'leading_image') || _.get(topic, 'og_image')
+    const desc = _.get(topic, 'og_description', '')
 
-    _.forEach(data, (topic, index) => {
-      const slug = _.get(topic, 'slug')
-      const href = `topics/${slug}`
-      const id = _.get(topic, 'id')
-      const topicName = _.get(topic, 'topic_name', '')
-      const title = _.get(topic, 'title', '')
-      const imgObj = _.get(topic, 'leading_image') || _.get(topic, 'og_image')
-      const desc = _.get(topic, 'og_description', '')
-
-      topicNameColumns.push(
-        <TopicNameColumn key={id}>{topicName}</TopicNameColumn>
-      )
-
-      titleColumns.push(
-        <TitleColumn
-          key={id}
-          $ifHover={indexHovered === index}
-          onMouseOver={() => {
-            this.handleHover(index)
-          }}
-          onMouseLeave={() => {
-            this.handleHover(-1)
-          }}
-        >
-          <TRLink href={href} plain>
-            <Title>{title}</Title>
-          </TRLink>
-        </TitleColumn>
-      )
-
-      imgColumns.push(
-        <ImgColumn
-          key={id}
-          $ifHover={indexHovered === index}
-          onMouseOver={() => {
-            this.handleHover(index)
-          }}
-          onMouseLeave={() => {
-            this.handleHover(-1)
-          }}
-        >
-          <TRLink href={href} plain>
-            <ImgWrapper
-              alt={_.get(imgObj, 'description')}
-              src={_.get(imgObj, [
-                'resized_targets',
-                useTinyImg ? 'tiny' : 'mobile',
-                'url',
-              ])}
-              srcSet={_.get(imgObj, 'resized_targets', '')}
-              sizes={sizesForsrcSet}
-            />
-          </TRLink>
-        </ImgColumn>
-      )
-
-      descColumns.push(
-        <DescColumn
-          key={id}
-          $ifHover={indexHovered === index}
-          onMouseOver={() => {
-            this.handleHover(index)
-          }}
-          onMouseLeave={() => {
-            this.handleHover(-1)
-          }}
-        >
-          <TRLink href={href} plain>
-            <Desc>{desc}</Desc>
-          </TRLink>
-        </DescColumn>
-      )
-    })
-
-    return (
-      <Rows>
-        <TopicNameRow>{topicNameColumns}</TopicNameRow>
-        <TitleRow>{titleColumns}</TitleRow>
-        <ImgRow>{imgColumns}</ImgRow>
-        <DescRow>{descColumns}</DescRow>
-      </Rows>
+    topicNameColumns.push(
+      <TopicNameColumn key={id}>{topicName}</TopicNameColumn>
     )
-  }
-}
 
-TopicsInARow.defaultProps = {
-  data: [],
-  useTinyImg: false,
+    titleColumns.push(
+      <TitleColumn
+        key={id}
+        $ifHover={indexHovered === index}
+        onMouseOver={() => {
+          handleHover(index)
+        }}
+        onMouseLeave={() => {
+          handleHover(-1)
+        }}
+      >
+        <TRLink href={href} plain>
+          <Title>{title}</Title>
+        </TRLink>
+      </TitleColumn>
+    )
+
+    imgColumns.push(
+      <ImgColumn
+        key={id}
+        $ifHover={indexHovered === index}
+        onMouseOver={() => {
+          handleHover(index)
+        }}
+        onMouseLeave={() => {
+          handleHover(-1)
+        }}
+      >
+        <TRLink href={href} plain>
+          <ImgWrapper
+            alt={_.get(imgObj, 'description')}
+            src={_.get(imgObj, [
+              'resized_targets',
+              useTinyImg ? 'tiny' : 'mobile',
+              'url',
+            ])}
+            srcSet={_.get(imgObj, 'resized_targets', '')}
+            sizes={sizesForsrcSet}
+          />
+        </TRLink>
+      </ImgColumn>
+    )
+
+    descColumns.push(
+      <DescColumn
+        key={id}
+        $ifHover={indexHovered === index}
+        onMouseOver={() => {
+          handleHover(index)
+        }}
+        onMouseLeave={() => {
+          handleHover(-1)
+        }}
+      >
+        <TRLink href={href} plain>
+          <Desc>{desc}</Desc>
+        </TRLink>
+      </DescColumn>
+    )
+  })
+
+  return (
+    <Rows>
+      <TopicNameRow>{topicNameColumns}</TopicNameRow>
+      <TitleRow>{titleColumns}</TitleRow>
+      <ImgRow>{imgColumns}</ImgRow>
+      <DescRow>{descColumns}</DescRow>
+    </Rows>
+  )
 }
 
 TopicsInARow.propTypes = {
@@ -365,62 +343,57 @@ TopicsInARow.propTypes = {
   useTinyImg: PropTypes.bool,
 }
 
-class TopicsSection extends React.PureComponent {
-  render() {
-    const totalTopics = 4
-    const { data, useTinyImg, moreURI } = this.props
-    if (!Array.isArray(data) || _.get(data, 'length', 0) === 0) {
-      return null
-    }
-
-    const mobileTopicComps = data.map((item) => {
-      const desc = _.get(item, 'og_description')
-      const imgObj = _.get(item, 'leading_image') || _.get(item, 'og_image')
-      return (
-        <MobileTopic
-          key={_.get(item, 'id')}
-          title={_.get(item, 'title')}
-          topicName={_.get(item, 'topic_name')}
-          desc={desc}
-          imgObj={{
-            alt: _.get(imgObj, 'description'),
-            src: _.get(imgObj, [
-              'resized_targets',
-              useTinyImg ? 'tiny' : 'mobile',
-              'url',
-            ]),
-            srcSet: _.get(imgObj, 'resized_targets', ''),
-          }}
-          slug={_.get(item, 'slug')}
-        />
-      )
-    })
-
-    return (
-      <Container>
-        <Section>
-          <SectionName>
-            <span>{sectionStrings.topic}</span>
-          </SectionName>
-          <TopicsInARow data={data.slice(0, 2)} useTinyImg={useTinyImg} />
-          <TopicsInARow
-            data={data.slice(2, totalTopics)}
-            useTinyImg={useTinyImg}
-          />
-          <MobileSwiperList>{mobileTopicComps}</MobileSwiperList>
-          <More>
-            <BottomTRLink text="更多報導者專題" path={moreURI} />
-          </More>
-        </Section>
-      </Container>
-    )
+const TopicsSection = ({
+  data = [],
+  moreURI = 'topics',
+  useTinyImg = false,
+}) => {
+  const totalTopics = 4
+  if (!Array.isArray(data) || _.get(data, 'length', 0) === 0) {
+    return null
   }
-}
 
-TopicsSection.defaultProps = {
-  data: [],
-  moreURI: 'topics',
-  useTinyImg: false,
+  const mobileTopicComps = data.map(item => {
+    const desc = _.get(item, 'og_description')
+    const imgObj = _.get(item, 'leading_image') || _.get(item, 'og_image')
+    return (
+      <MobileTopic
+        key={_.get(item, 'id')}
+        title={_.get(item, 'title')}
+        topicName={_.get(item, 'topic_name')}
+        desc={desc}
+        imgObj={{
+          alt: _.get(imgObj, 'description'),
+          src: _.get(imgObj, [
+            'resized_targets',
+            useTinyImg ? 'tiny' : 'mobile',
+            'url',
+          ]),
+          srcSet: _.get(imgObj, 'resized_targets', ''),
+        }}
+        slug={_.get(item, 'slug')}
+      />
+    )
+  })
+
+  return (
+    <Container>
+      <Section>
+        <SectionName>
+          <span>{sectionStrings.topic}</span>
+        </SectionName>
+        <TopicsInARow data={data.slice(0, 2)} useTinyImg={useTinyImg} />
+        <TopicsInARow
+          data={data.slice(2, totalTopics)}
+          useTinyImg={useTinyImg}
+        />
+        <MobileSwiperList>{mobileTopicComps}</MobileSwiperList>
+        <More>
+          <BottomTRLink text="更多報導者專題" path={moreURI} />
+        </More>
+      </Section>
+    </Container>
+  )
 }
 
 TopicsSection.propTypes = {

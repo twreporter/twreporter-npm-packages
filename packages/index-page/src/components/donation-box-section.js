@@ -125,24 +125,22 @@ const DonateInfo = (
   </span>
 )
 
-class DonationBoxSection extends React.PureComponent {
-  render() {
-    return (
-      <Container>
-        <ContentContainer>
-          <TextColumn>
-            <h3>用行動支持報導者</h3>
-            <p>
-              深度調查報導必須投入優秀記者、足夠時間與大量資源。歡迎您成為「《報導者》贊助夥伴」，一起為打造更好的社會及媒體環境努力。
-            </p>
-          </TextColumn>
-          <DonateButton>
-            <DonationLink>{DonateInfo}</DonationLink>
-          </DonateButton>
-        </ContentContainer>
-      </Container>
-    )
-  }
+const DonationBoxSection = () => {
+  return (
+    <Container>
+      <ContentContainer>
+        <TextColumn>
+          <h3>用行動支持報導者</h3>
+          <p>
+            深度調查報導必須投入優秀記者、足夠時間與大量資源。歡迎您成為「《報導者》贊助夥伴」，一起為打造更好的社會及媒體環境努力。
+          </p>
+        </TextColumn>
+        <DonateButton>
+          <DonationLink>{DonateInfo}</DonationLink>
+        </DonateButton>
+      </ContentContainer>
+    </Container>
+  )
 }
 
 export default DonationBoxSection
