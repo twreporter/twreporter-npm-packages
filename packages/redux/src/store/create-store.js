@@ -1,5 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import axios from 'axios'
+// rtk api
+import receiptApi from '../actions/receipt'
+// reducers
 import rootReducer from '../reducers'
 import { bindActionsToStore } from './bind-actions-to-store'
 
@@ -27,14 +30,17 @@ export default function createStore(
       })
 
   const store = configureStore({
-    reducer: rootReducer,
+    reducer: {
+      ...rootReducer,
+      [receiptApi.reducerPath]: receiptApi.reducer,
+    },
     preloadedState: initialState,
-    middleware: (getDefaultMiddleware) =>
+    middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
         thunk: {
           extraArgument: { httpClientWithToken },
         },
-      }),
+      }).concat(receiptApi.middleware),
     devTools: isDev,
   })
 
