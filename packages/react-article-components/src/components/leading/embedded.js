@@ -170,6 +170,11 @@ const Embedded = ({
     }
   }, [])
 
+  useEffect(() => {
+    window.addEventListener('load', handleIsLoaded, true)
+    return () => window.removeEventListener('load', handleIsLoaded, true)
+  }, [])
+
   return (
     <div>
       {isLoading ? (
@@ -183,7 +188,6 @@ const Embedded = ({
           <EmbeddedCodeComponent
             data={embeddedCode}
             showCaption={!captionText}
-            handleIsLoaded={handleIsLoaded}
           />
         </EmbeddedBlock>
       ) : null}
