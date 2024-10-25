@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.1.3...@twreporter/redux@8.2.0-rc.0) (2024-10-25)
+
+### Features
+
+- add receipt actions with rtk query ([496dcea](https://github.com/twreporter/twreporter-npm-packages/commit/496dcea1b46f16307980925694d05566b2df5556))
+
 ## [8.1.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.1.3-rc.0...@twreporter/redux@8.1.3) (2024-08-28)
 
 **Note:** Version bump only for package @twreporter/redux
