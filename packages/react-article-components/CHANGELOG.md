@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.0...@twreporter/react-article-components@2.5.2-rc.1) (2024-10-25)
+
+### Bug Fixes
+
+- set loading false when embedded script loaded ([bcda6f1](https://github.com/twreporter/twreporter-npm-packages/commit/bcda6f1ebf036a81dfc141ad884b581936e12b82))
+
 ## [2.5.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.1...@twreporter/react-article-components@2.5.2-rc.0) (2024-10-25)
 
 **Note:** Version bump only for package @twreporter/react-article-components
