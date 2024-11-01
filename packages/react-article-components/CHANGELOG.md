@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.1...@twreporter/react-article-components@2.5.2-rc.2) (2024-11-01)
+
+### Bug Fixes
+
+- add timeout before hide loading ([34e91cd](https://github.com/twreporter/twreporter-npm-packages/commit/34e91cd3407dfaae3c57fe4b8ae69bed82bb9243))
+
 ## [2.5.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.0...@twreporter/react-article-components@2.5.2-rc.1) (2024-10-25)
 
 ### Bug Fixes
