@@ -146,6 +146,7 @@ const Embedded = ({
   }
 
   const handleIsLoaded = () => {
+    // add timeout before hidding loading to prevent flashing
     window.setTimeout(() => setIsLoading(false), 500)
   }
 
