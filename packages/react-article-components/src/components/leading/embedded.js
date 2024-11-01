@@ -146,7 +146,7 @@ const Embedded = ({
   }
 
   const handleIsLoaded = () => {
-    setIsLoading(false)
+    window.setTimeout(() => setIsLoading(false), 500)
   }
 
   useEffect(() => {
