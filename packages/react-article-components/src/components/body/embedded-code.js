@@ -70,12 +70,21 @@ function dispatchWindowLoadEvent() {
   window.dispatchEvent(loadEvent)
 }
 
+const dispatchInlineScriptLoadEvent = (scriptText) => {
+  return `${scriptText}
+    // Manually trigger the load event on the script itself
+    const loadEvent = new Event('load');
+    document.currentScript.dispatchEvent(loadEvent); // Dispatches load event on this script element
+  `
+}
+
 class EmbeddedCode extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData,
     showCaption: PropTypes.bool,
     handleIsLoaded: PropTypes.func,
+    handleFinishLoaded: PropTypes.func,
   }
 
   static defaultProps = {
@@ -135,45 +144,53 @@ class EmbeddedCode extends React.PureComponent {
   executeScript = () => {
     const node = this._embedded.current
     const scripts = _.get(this.props, ['data', 'content', 0, 'scripts'])
-    if (node && Array.isArray(scripts)) {
-      const scriptsCount = scripts.length
-      let loadScriptsCount = 0
-      const scriptsFragment = new DocumentFragment() // eslint-disable-line no-undef
-      _.forEach(scripts, (script) => {
-        const scriptEle = document.createElement('script')
-        const attribs = script.attribs
-        _.forEach(attribs, (value, name) => {
-          try {
-            scriptEle.setAttribute(name, value)
-          } catch (err) {
-            console.error(
-              'Failed to set an attribute to the embbeded script.\n',
-              `embedded element id: ${_.get(this.props, 'data.id', '')}\n`,
-              `attribute name: ${name}\n`,
-              `attribute value: ${value}\n`,
-              'error:\n',
-              err
-            )
-          }
-        })
-        scriptEle.text = script.text || ''
-        // `dispatchWindowLoadEvent` is a workaround to trigger rendering of venngage infographics:
-        // The embedded venngage code (https://infograph.venngage.com/js/embed/v1/embed.js)
-        // will only initiate when `load` event on `window` is emitted.
-        // Hence, we need to emit the `load` event of `window` manually after all scripts are load.
-        const handleLoad = () => {
-          loadScriptsCount += 1
-          if (loadScriptsCount === scriptsCount) {
-            /* all scripts are load */
-            dispatchWindowLoadEvent()
-          }
-          scriptEle.removeEventListener('load', handleLoad)
-        }
-        scriptEle.addEventListener('load', handleLoad)
-        scriptsFragment.appendChild(scriptEle)
-      })
-      node.appendChild(scriptsFragment)
+    if (!node || !Array.isArray(scripts)) {
+      return
     }
+
+    const scriptsCount = scripts.length
+    let loadScriptsCount = 0
+    const scriptsFragment = new DocumentFragment() // eslint-disable-line no-undef
+    _.forEach(scripts, (script, index) => {
+      const scriptEle = document.createElement('script')
+      const { attribs } = script
+      const isInlineScript = !attribs.src
+
+      _.forEach(attribs, (value, name) => {
+        try {
+          scriptEle.setAttribute(name, value)
+        } catch (err) {
+          console.error(
+            'Failed to set an attribute to the embbeded script.\n',
+            `embedded element id: ${_.get(this.props, 'data.id', '')}\n`,
+            `attribute name: ${name}\n`,
+            `attribute value: ${value}\n`,
+            'error:\n',
+            err
+          )
+        }
+      })
+      scriptEle.text =
+        (isInlineScript
+          ? dispatchInlineScriptLoadEvent(script.text)
+          : script.text) || ''
+      // `dispatchWindowLoadEvent` is a workaround to trigger rendering of venngage infographics:
+      // The embedded venngage code (https://infograph.venngage.com/js/embed/v1/embed.js)
+      // will only initiate when `load` event on `window` is emitted.
+      // Hence, we need to emit the `load` event of `window` manually after all scripts are load.
+      const handleLoad = () => {
+        loadScriptsCount += 1
+        if (loadScriptsCount === scriptsCount) {
+          /* all scripts are load */
+          dispatchWindowLoadEvent()
+          this.props.handleFinishLoaded()
+        }
+        scriptEle.removeEventListener('load', handleLoad)
+      }
+      scriptEle.addEventListener('load', handleLoad)
+      scriptsFragment.appendChild(scriptEle)
+    })
+    node.appendChild(scriptsFragment)
   }
 
   loadEmbed = () => {
@@ -210,8 +227,7 @@ class EmbeddedCode extends React.PureComponent {
 // Serious layout shifts show up when loading bunch of infograms due to lack of heights,
 // so here we apply waypoint wrapper to load infogram dynamically to avoid layout shifts for anchors.
 // https://twreporter-org.atlassian.net/browse/TWREPORTER-60
-const WayPointWrapper = (props) => {
-  const { isScrollingToAnchor } = props
+const WayPointWrapper = ({ isScrollingToAnchor = false, ...props }) => {
   const [isInViewPort, setIsInViewPort] = useState(false)
   const embedRef = useRef(null)
 
@@ -250,15 +266,8 @@ const WayPointWrapper = (props) => {
     </Waypoint>
   )
 }
-
-WayPointWrapper.defaultProps = {
-  isScrollingToAnchor: false,
-  showCaption: true,
-}
-
 WayPointWrapper.propTypes = {
   isScrollingToAnchor: PropTypes.bool,
-  showCaption: PropTypes.bool,
 }
 
 export default WayPointWrapper
