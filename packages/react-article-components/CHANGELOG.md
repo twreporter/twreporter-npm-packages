@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.2...@twreporter/react-article-components@2.5.2-rc.3) (2024-11-04)
+
+### Bug Fixes
+
+- dispatch load event for inline script ([d124b70](https://github.com/twreporter/twreporter-npm-packages/commit/d124b70d5bc839de8087aadd0d9cbae669d0ea02))
+
 ## [2.5.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.1...@twreporter/react-article-components@2.5.2-rc.2) (2024-11-01)
 
 ### Bug Fixes
