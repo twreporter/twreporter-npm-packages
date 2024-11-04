@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.2...@twreporter/react-article-components@2.5.2-rc.3) (2024-11-04)
+
+### Bug Fixes
+
+- dispatch load event for inline script ([d124b70](https://github.com/twreporter/twreporter-npm-packages/commit/d124b70d5bc839de8087aadd0d9cbae669d0ea02))
+
+## [2.5.2-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.1...@twreporter/react-article-components@2.5.2-rc.2) (2024-11-01)
+
+### Bug Fixes
+
+- add timeout before hide loading ([34e91cd](https://github.com/twreporter/twreporter-npm-packages/commit/34e91cd3407dfaae3c57fe4b8ae69bed82bb9243))
+
+## [2.5.2-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.2-rc.0...@twreporter/react-article-components@2.5.2-rc.1) (2024-10-25)
+
+### Bug Fixes
+
+- set loading false when embedded script loaded ([bcda6f1](https://github.com/twreporter/twreporter-npm-packages/commit/bcda6f1ebf036a81dfc141ad884b581936e12b82))
+
+## [2.5.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.1...@twreporter/react-article-components@2.5.2-rc.0) (2024-10-25)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
 ## [2.5.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.1-rc.0...@twreporter/react-article-components@2.5.1) (2024-10-08)
 
 **Note:** Version bump only for package @twreporter/react-article-components

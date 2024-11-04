@@ -145,8 +145,9 @@ const Embedded = ({
     navigate.push(topicHref)
   }
 
-  const handleIsLoaded = () => {
-    setIsLoading(false)
+  const handleFinishLoaded = () => {
+    // add timeout before hidding loading to prevent content shifting
+    window.setTimeout(() => setIsLoading(false), 500)
   }
 
   useEffect(() => {
@@ -183,7 +184,7 @@ const Embedded = ({
           <EmbeddedCodeComponent
             data={embeddedCode}
             showCaption={!captionText}
-            handleIsLoaded={handleIsLoaded}
+            handleFinishLoaded={handleFinishLoaded}
           />
         </EmbeddedBlock>
       ) : null}

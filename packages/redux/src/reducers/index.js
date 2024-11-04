@@ -1,5 +1,4 @@
 import { articlesByAuthor } from './author-articles'
-import { combineReducers } from 'redux'
 import { post, posts } from './posts'
 import { searchedAuthorsList, authorsList } from './authors'
 import { topic, topics } from './topics'
@@ -22,7 +21,7 @@ import donationHistory from './donation-history'
 import postReviews from './post-reviews'
 import postFollowups from './post-followups'
 
-const rootReducer = combineReducers({
+const rootReducer = {
   [reduxStatePropKey.articlesByAuthor]: articlesByAuthor,
   [reduxStatePropKey.auth]: authReducer,
   [reduxStatePropKey.authorsList]: authorsList,
@@ -47,6 +46,6 @@ const rootReducer = combineReducers({
   [reduxStatePropKey.donationHistory]: donationHistory,
   [reduxStatePropKey.postReviews]: postReviews,
   [reduxStatePropKey.postFollowups]: postFollowups,
-})
+}
 
 export default rootReducer
