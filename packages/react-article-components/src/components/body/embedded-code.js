@@ -73,8 +73,7 @@ function dispatchWindowLoadEvent() {
 const dispatchInlineScriptLoadEvent = (scriptText) => {
   return `${scriptText}
     // Manually trigger the load event on the script itself
-    const loadEvent = new Event('load');
-    document.currentScript.dispatchEvent(loadEvent); // Dispatches load event on this script element
+    document.currentScript.dispatchEvent(new Event('load'));
   `
 }
 
@@ -91,6 +90,7 @@ class EmbeddedCode extends React.PureComponent {
     className: '',
     showCaption: true,
     handleIsLoaded: () => {},
+    handleFinishLoaded: () => {},
   }
 
   state = {
