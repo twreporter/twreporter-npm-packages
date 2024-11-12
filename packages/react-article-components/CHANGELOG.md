@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.4-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.3...@twreporter/react-article-components@2.5.4-rc.0) (2024-11-12)
+
+### Bug Fixes
+
+- update bottomOffset of embedded waypoint ([4dd36ac](https://github.com/twreporter/twreporter-npm-packages/commit/4dd36ac2d462c9e8d63b33951ca122417d396299))
+
 ## [2.5.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.3-rc.0...@twreporter/react-article-components@2.5.3) (2024-11-05)
 
 **Note:** Version bump only for package @twreporter/react-article-components
