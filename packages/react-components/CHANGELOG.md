@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.4.1...@twreporter/react-components@9.4.2-rc.0) (2024-11-19)
+
+### Bug Fixes
+
+- change merchandise link ([af19ad3](https://github.com/twreporter/twreporter-npm-packages/commit/af19ad32ae65dd815cde4bb974bd1626dd202f09))
+
 ## [9.4.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.4.1-rc.0...@twreporter/react-components@9.4.1) (2024-11-04)
 
 **Note:** Version bump only for package @twreporter/react-components
