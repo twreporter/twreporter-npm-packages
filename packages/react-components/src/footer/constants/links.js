@@ -10,7 +10,7 @@ const gtmId = {
   | XXXX         | XXXX          | XXX          |
   | XXXXX        | XXXXXX        | XX           |
 */
-export const getLinksGroups = (mainOrigin) => {
+export const getLinksGroups = mainOrigin => {
   return [
     // first column
     [
@@ -68,7 +68,7 @@ export const getLinksGroups = (mainOrigin) => {
       {
         slug: 'publication-and-merchandise',
         text: '出版品與周邊',
-        to: 'https://twreporter.backme.tw/shops/3619?locale=zh-TW',
+        to: 'https://thereporter.waca.ec/',
         target: '_blank',
       },
       {
@@ -102,7 +102,8 @@ export const getLinksGroups = (mainOrigin) => {
       {
         slug: 'install-web-app',
         text: '安裝Web App',
-        to: 'https://www.twreporter.org/a/how-to-follow-the-reporter#方法3：安裝Web App',
+        to:
+          'https://www.twreporter.org/a/how-to-follow-the-reporter#方法3：安裝Web App',
         target: '_blank',
       },
       {
