@@ -8,7 +8,7 @@ const links = {
   twitter: 'https://twitter.com/tw_reporter_org',
   youtube: 'https://www.youtube.com/c/TwreporterOrg',
   kidsReporter: 'https://kids.twreporter.org/',
-  publicationAndMerchandise: 'https://thereporter.waca.ec/',
+  publicationAndMerchandise: 'https://twreporter.waca.ec/',
 }
 
 export default links

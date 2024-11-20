@@ -68,7 +68,7 @@ export const getLinksGroups = mainOrigin => {
       {
         slug: 'publication-and-merchandise',
         text: '出版品與周邊',
-        to: 'https://thereporter.waca.ec/',
+        to: 'https://twreporter.waca.ec/',
         target: '_blank',
       },
       {
