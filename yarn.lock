@@ -3537,6 +3537,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material-symbols/svg-400@npm:^0.27.2":
+  version: 0.27.2
+  resolution: "@material-symbols/svg-400@npm:0.27.2"
+  checksum: 10c0/ab347b00cd2cb38859ada8b2e013cd334c0173588fe62039fc10d1e116b312b135a4f8c8e283f33a4295affa42dbc4df69fb781c96098e1c68f64a72c71bbd61
+  languageName: node
+  linkType: hard
+
 "@mdx-js/react@npm:^3.0.0":
   version: 3.0.1
   resolution: "@mdx-js/react@npm:3.0.1"
@@ -5525,6 +5532,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.2"
     "@babel/preset-react": "npm:^7.22.15"
     "@chromatic-com/storybook": "npm:^1"
+    "@material-symbols/svg-400": "npm:^0.27.2"
     "@reduxjs/toolkit": "npm:^2.2.5"
     "@storybook/addon-actions": "npm:^8.1.11"
     "@storybook/addon-essentials": "npm:^8.1.11"
