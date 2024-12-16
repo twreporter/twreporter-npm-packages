@@ -520,7 +520,7 @@ export default class Body extends Component {
     } = this.props
     const trackingSectionHeaderOne = {
       type: 'header-one',
-      content: ['後續與迴響'],
+      content: ['後續 / 迴響'],
     }
     let enableTOC = false
     let renderContent = null
