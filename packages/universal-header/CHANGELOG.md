@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.12-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.12-rc.0...@twreporter/universal-header@3.0.12-rc.1) (2024-12-20)
+
+### Bug Fixes
+
+- use material symbol svg on tab bar ([5f7767c](https://github.com/twreporter/twreporter-npm-packages/commit/5f7767cc17381b98d5d370b980a542930a7c5a41))
+
 ## [3.0.12-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.11...@twreporter/universal-header@3.0.12-rc.0) (2024-12-20)
 
 **Note:** Version bump only for package @twreporter/universal-header
