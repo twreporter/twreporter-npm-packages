@@ -9,8 +9,13 @@ import { selectTabBarTheme } from '../utils/theme'
 import themeConst from '../constants/theme'
 // @twreporter
 import Link from '@twreporter/react-components/lib/customized-link'
-import MaterialSymbol from '@twreporter/react-components/lib/material-icon'
 import { IconWithTextButton } from '@twreporter/react-components/lib/button'
+// material symbol
+import Home from '@material-symbols/svg-400/outlined/home.svg'
+import Clock from '@material-symbols/svg-400/outlined/schedule.svg'
+import Topic from '@material-symbols/svg-400/outlined/import_contacts.svg'
+import Star from '@material-symbols/svg-400/outlined/kid_star.svg'
+import Menu from '@material-symbols/svg-400/outlined/menu.svg'
 
 const TabBarContainer = styled.div`
   display: flex;
@@ -26,6 +31,13 @@ const TabBarContainer = styled.div`
   a:active {
     color: inherit;
     background-color: inherit;
+  }
+
+  svg {
+    background-color: transparent;
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
   }
 `
 const buttonContainerCss = css`
@@ -55,21 +67,11 @@ const TabBar = () => {
     isLinkExternal,
     releaseBranch
   )
-  const HomeIcon = (
-    <MaterialSymbol icon="home" weight={400} grade={0} size={24} />
-  )
-  const ClockIcon = (
-    <MaterialSymbol icon="schedule" weight={400} grade={0} size={24} />
-  )
-  const TopicIcon = (
-    <MaterialSymbol icon="import_contacts" weight={400} grade={0} size={24} />
-  )
-  const MyReadingIcon = (
-    <MaterialSymbol icon="kid_star" weight={400} grade={0} size={24} />
-  )
-  const HamburgerIcon = (
-    <MaterialSymbol icon="menu" weight={400} grade={0} size={24} />
-  )
+  const HomeIcon = <Home />
+  const ClockIcon = <Clock />
+  const TopicIcon = <Topic />
+  const MyReadingIcon = <Star />
+  const HamburgerIcon = <Menu />
   const { bgColor, borderColor } = selectTabBarTheme(theme)
   const isHomeActive = !isHamburgerMenuOpen && pathname === '/'
   const isLatestActive =

@@ -10,5 +10,5 @@ export default {
   periodicDonations: 'periodic-donations',
   postReviews: 'post_reviews',
   postFollowups: 'post_followups',
-  receipt: 'donations/prime/receipt',
+  donation: 'donations',
 }
