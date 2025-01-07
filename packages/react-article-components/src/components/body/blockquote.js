@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 // @twreporter
@@ -45,8 +45,11 @@ const Quote = styled.blockquote`
 
   line-height: 2.11;
   letter-spacing: 0.6px;
-  font-size: ${(props) => props.theme.fontSizeOffset + 18}px;
   font-weight: ${typography.font.weight.normal};
+  ${(props) =>
+    props.$forTrackingSection
+      ? `font-size: ${props.theme.fontSizeOffset + 16}px`
+      : `font-size: ${props.theme.fontSizeOffset + 18}px`};
   ${mq.mobileOnly`
     padding-left: 16px;
   `}
@@ -61,24 +64,20 @@ const Quote = styled.blockquote`
   `}
 `
 
-export default class Blockquote extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    data: predefinedPropTypes.elementData.isRequired,
-  }
-
-  static defaultProps = {
-    className: '',
-  }
-
-  render() {
-    const { className, data } = this.props
-    const quote = _.get(data, ['content', 0])
-    return quote ? (
-      <Quote
-        className={className}
-        dangerouslySetInnerHTML={{ __html: quote }}
-      />
-    ) : null
-  }
+const Blockquote = ({ data, forTrackingSection = false, className = '' }) => {
+  const quote = _.get(data, ['content', 0])
+  return quote ? (
+    <Quote
+      className={className}
+      dangerouslySetInnerHTML={{ __html: quote }}
+      $forTrackingSection={forTrackingSection}
+    />
+  ) : null
 }
+Blockquote.propTypes = {
+  className: PropTypes.string,
+  data: predefinedPropTypes.elementData.isRequired,
+  forTrackingSection: PropTypes.bool,
+}
+
+export default Blockquote

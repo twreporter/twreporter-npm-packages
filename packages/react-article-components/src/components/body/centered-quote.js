@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 // constants
@@ -95,22 +95,20 @@ function getQuoteContainerStyles(themeName) {
   }
 }
 
-export default class CenteredQuote extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    data: predefinedPropTypes.elementData.isRequired,
-  }
-
-  render() {
-    const { className, data } = this.props
-    const content = _.get(data, ['content', 0, 'quote'])
-    const by = _.get(data, ['content', 0, 'quoteBy'])
-    return content ? (
-      <QuoteContainer className={className}>
-        <VerticalLine />
-        <QuoteContent dangerouslySetInnerHTML={{ __html: content }} />
-        {by ? <QuoteBy dangerouslySetInnerHTML={{ __html: by }} /> : null}
-      </QuoteContainer>
-    ) : null
-  }
+const CenteredQuote = ({ data, className }) => {
+  const content = _.get(data, ['content', 0, 'quote'])
+  const by = _.get(data, ['content', 0, 'quoteBy'])
+  return content ? (
+    <QuoteContainer className={className}>
+      <VerticalLine />
+      <QuoteContent dangerouslySetInnerHTML={{ __html: content }} />
+      {by ? <QuoteBy dangerouslySetInnerHTML={{ __html: by }} /> : null}
+    </QuoteContainer>
+  ) : null
 }
+CenteredQuote.propTypes = {
+  className: PropTypes.string,
+  data: predefinedPropTypes.elementData.isRequired,
+}
+
+export default CenteredQuote

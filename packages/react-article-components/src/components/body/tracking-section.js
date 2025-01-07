@@ -100,12 +100,20 @@ const TrackingSection = ({ data }) => {
     }
     switch (data.type) {
       case 'annotation':
-        return <AnnotationParagraph key={data.id} data={data} />
+        return (
+          <AnnotationParagraph
+            key={data.id}
+            data={data}
+            forTrackingSection={true}
+          />
+        )
       case 'centered-quote':
       case 'quoteby':
         return <CenteredQuote key={data.id} data={data} />
       case 'blockquote':
-        return <Blockquote key={data.id} data={data} />
+        return (
+          <Blockquote key={data.id} data={data} forTrackingSection={true} />
+        )
       case 'unstyled':
         return <Paragraph key={data.id} data={data} forTrackingSection={true} />
       case 'small-image':
@@ -119,9 +127,21 @@ const TrackingSection = ({ data }) => {
           </InfoBoxContainer>
         )
       case 'ordered-list-item':
-        return <list.OrderedList key={data.id} data={data} />
+        return (
+          <list.OrderedList
+            key={data.id}
+            data={data}
+            forTrackingSection={true}
+          />
+        )
       case 'unordered-list-item':
-        return <list.UnorderedList key={data.id} data={data} />
+        return (
+          <list.UnorderedList
+            key={data.id}
+            data={data}
+            forTrackingSection={true}
+          />
+        )
       case 'embedded-code':
       case 'embeddedCode':
       case 'embeddedcode':
