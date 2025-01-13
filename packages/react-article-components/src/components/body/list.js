@@ -19,6 +19,10 @@ const listStyle = css`
   margin-block-end: 0;
   margin: 0 0 0 3em;
   padding: 0;
+  ${(props) =>
+    props.$forTrackingSection
+      ? `font-size: ${props.theme.fontSizeOffset + 16}px`
+      : ''};
 `
 
 const Ul = styled.ul`
@@ -44,22 +48,25 @@ const buildLi = (listItem, index) => (
 )
 
 // eslint-disable-next-line react/display-name
-const buildList = ordered => {
+const buildList = (ordered) => {
   const L = ordered ? Ol : Ul
-  const List = props => {
-    const listItems = _.get(props, ['data', 'content'])
+  const List = ({ data, forTrackingSection = false, className = '' }) => {
+    const listItems = _.get(data, 'content')
     if (!Array.isArray(listItems) || listItems.length === 0) {
       return null
     }
     return (
-      <div className={_.get(props, 'className', '')}>
-        <L>{_.map(listItems, buildLi)}</L>
+      <div className={className}>
+        <L $forTrackingSection={forTrackingSection}>
+          {_.map(listItems, buildLi)}
+        </L>
       </div>
     )
   }
   List.propTypes = {
     className: PropTypes.string,
     data: predefinedPropTypes.elementData,
+    forTrackingSection: PropTypes.bool,
   }
   return List
 }
