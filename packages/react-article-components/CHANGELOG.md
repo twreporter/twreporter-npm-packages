@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.7-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.6...@twreporter/react-article-components@2.5.7-rc.0) (2025-01-13)
+
+### Bug Fixes
+
+- font-size in tracking section should be 16px ([8ddcb27](https://github.com/twreporter/twreporter-npm-packages/commit/8ddcb273eacd65b37330fc24c88b1a69307c6d7a))
+
 ## [2.5.6](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.6-rc.2...@twreporter/react-article-components@2.5.6) (2024-12-30)
 
 **Note:** Version bump only for package @twreporter/react-article-components

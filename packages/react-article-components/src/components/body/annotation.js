@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import PropTypes from 'prop-types'
 // @twreporter
@@ -104,6 +104,10 @@ const Container = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+  ${(props) =>
+    props.$forTrackingSection
+      ? `font-size: ${props.theme.fontSizeOffset + 16}px`
+      : ''};
 `
 
 function getContainerStyles(themeName) {
@@ -160,109 +164,91 @@ function getContainerStyles(themeName) {
   }
 }
 
-class Annotation extends PureComponent {
-  static propTypes = {
-    annotation: PropTypes.string,
-    pureAnnotationText: PropTypes.string,
-    text: PropTypes.string,
-  }
-
-  static defaultProps = {
-    annotation: '',
-    pureAnnotationText: '',
-    text: '',
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      isExpanded: false,
-    }
-    this.toggleExpend = this._toggleExpend.bind(this)
-  }
-
-  _toggleExpend(e) {
+const Annotation = ({
+  annotation = '',
+  pureAnnotationText = '',
+  text = '',
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const toggleExpend = (e) => {
     e.preventDefault()
-    this.setState({
-      isExpanded: !this.state.isExpanded,
-    })
+    setIsExpanded(!isExpanded)
   }
 
-  render() {
-    const { annotation, pureAnnotationText, text } = this.props
-    const { isExpanded } = this.state
-    return (
-      <AnnotationContainer title={pureAnnotationText}>
-        <AnnotatedText onClick={this.toggleExpend}>
-          {text}
-          <Indicator $isExpanded={isExpanded} />
-        </AnnotatedText>
-        <AnnotationContent
-          dangerouslySetInnerHTML={{ __html: annotation }}
-          $isExpanded={isExpanded}
-        />
-      </AnnotationContainer>
-    )
-  }
+  return (
+    <AnnotationContainer title={pureAnnotationText}>
+      <AnnotatedText onClick={toggleExpend}>
+        {text}
+        <Indicator $isExpanded={isExpanded} />
+      </AnnotatedText>
+      <AnnotationContent
+        dangerouslySetInnerHTML={{ __html: annotation }}
+        $isExpanded={isExpanded}
+      />
+    </AnnotationContainer>
+  )
+}
+Annotation.propTypes = {
+  annotation: PropTypes.string,
+  pureAnnotationText: PropTypes.string,
+  text: PropTypes.string,
 }
 
-class AnnotationParagraph extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    data: predefinedPropTypes.elementData,
-  }
-
-  static defaultProps = {
-    className: '',
-  }
-
-  render() {
-    const { className, data } = this.props
-    let html = _.get(data, ['content', 0])
-    if (!html) return null
-    // annotation data will be in the comment with prefix __ANNOTATION__=
-    let re = /<!--__ANNOTATION__=(.+?)-->/
-    const sections = []
-    let result
-    do {
-      result = re.exec(html)
-      if (result) {
-        const fullStringMatched = result[0]
-        const annotationJsonString = result[1]
-        const textBeforeAnnotation = html.substring(0, result.index)
-        try {
-          const annotationObj = JSON.parse(annotationJsonString)
-          const currentIndex = sections.length
-          sections.push(
-            <span
-              key={currentIndex}
-              dangerouslySetInnerHTML={{ __html: textBeforeAnnotation }}
-            />,
-            <Annotation key={'annotation ' + currentIndex} {...annotationObj} />
-          )
-          html = html.substr(result.index + fullStringMatched.length)
-        } catch (e) {
-          console.warn(
-            'An error occured when parsing annotation object from content:',
-            e,
-            '\nThe annotation json string:',
-            annotationJsonString
-          ) // eslint-disable-line no-console
-        }
+const AnnotationParagraph = ({
+  data,
+  forTrackingSection = false,
+  className = '',
+}) => {
+  let html = _.get(data, ['content', 0])
+  if (!html) return null
+  // annotation data will be in the comment with prefix __ANNOTATION__=
+  let re = /<!--__ANNOTATION__=(.+?)-->/
+  const sections = []
+  let result
+  do {
+    result = re.exec(html)
+    if (result) {
+      const fullStringMatched = result[0]
+      const annotationJsonString = result[1]
+      const textBeforeAnnotation = html.substring(0, result.index)
+      try {
+        const annotationObj = JSON.parse(annotationJsonString)
+        const currentIndex = sections.length
+        sections.push(
+          <span
+            key={currentIndex}
+            dangerouslySetInnerHTML={{ __html: textBeforeAnnotation }}
+          />,
+          <Annotation key={'annotation ' + currentIndex} {...annotationObj} />
+        )
+        html = html.substr(result.index + fullStringMatched.length)
+      } catch (e) {
+        console.warn(
+          'An error occured when parsing annotation object from content:',
+          e,
+          '\nThe annotation json string:',
+          annotationJsonString
+        ) // eslint-disable-line no-console
       }
-    } while (result)
-
-    if (html) {
-      sections.push(
-        <span
-          key={sections.length}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      )
     }
+  } while (result)
 
-    return <Container className={className}>{sections}</Container>
+  if (html) {
+    sections.push(
+      <span key={sections.length} dangerouslySetInnerHTML={{ __html: html }} />
+    )
   }
+
+  return (
+    <Container className={className} $forTrackingSection={forTrackingSection}>
+      {sections}
+    </Container>
+  )
+}
+AnnotationParagraph.propTypes = {
+  className: PropTypes.string,
+  data: predefinedPropTypes.elementData,
+  forTrackingSection: PropTypes.bool,
 }
 
 export default AnnotationParagraph
