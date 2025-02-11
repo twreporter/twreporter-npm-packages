@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.24.2-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.24.1...@twreporter/core@1.24.2-rc.0) (2025-02-06)
+
+### Bug Fixes
+
+- category typo ([8a7a363](https://github.com/twreporter/twreporter-npm-packages/commit/8a7a363eabad77a735d56e2a8c874a42f27028ab))
+
 ## [1.24.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.24.1-rc.0...@twreporter/core@1.24.1) (2024-12-30)
 
 **Note:** Version bump only for package @twreporter/core

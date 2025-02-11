@@ -166,7 +166,7 @@ export const SUBCATEGORY_LABEL = {
   [subcategoryPath.mountainAndForest]: '山林',
   [subcategoryPath.animal]: '動物',
   [subcategoryPath.climateChange]: '能源與氣候變遷',
-  [subcategoryPath.pollution]: '環境污染',
+  [subcategoryPath.pollution]: '環境汙染',
   [subcategoryPath.naturalDisaster]: '自然災害',
   [subcategoryPath.economy]: '經濟',
   [subcategoryPath.energyEcon]: '能源',
