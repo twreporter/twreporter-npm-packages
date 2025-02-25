@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.5.0-rc.0...@twreporter/react-components@9.5.0-rc.1) (2025-02-25)
+
+### Bug Fixes
+
+- update footer podcast link ([278e35e](https://github.com/twreporter/twreporter-npm-packages/commit/278e35e042cb0cbf6cf48a54b828ce60a717ce02))
+
 # [9.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.4.4...@twreporter/react-components@9.5.0-rc.0) (2025-02-25)
 
 ### Features
