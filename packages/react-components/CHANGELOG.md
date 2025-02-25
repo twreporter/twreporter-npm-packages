@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.4.4...@twreporter/react-components@9.5.0-rc.0) (2025-02-25)
+
+### Features
+
+- add `Filter` icon ([9a0e2bb](https://github.com/twreporter/twreporter-npm-packages/commit/9a0e2bb3dbb8947a18d8a8d8d4e706930a666d9e))
+
 ## [9.4.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.4.4-rc.0...@twreporter/react-components@9.4.4) (2025-02-11)
 
 **Note:** Version bump only for package @twreporter/react-components
