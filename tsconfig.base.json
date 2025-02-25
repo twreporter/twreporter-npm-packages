@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "composite": true,
+    "allowJs": true,
+    "skipLibCheck": true
+  }
+}

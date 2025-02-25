@@ -2,14 +2,15 @@
   "name": "@twreporter/react-components",
   "version": "9.4.4",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
   "license": "MIT",
   "scripts": {
     "clean": "make clean",
-    "build": "make build",
+    "build": "make build && tsc --noEmit false",
     "dev": "make dev",
-    "prepublishOnly": "make build",
+    "prepublishOnly": "make build && tsc --noEmit false",
     "storybook": "storybook dev -p 3000",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --exit-zero-on-changes"
@@ -52,6 +53,7 @@
     "babel-loader": "^8.2.4",
     "chromatic": "^6.5.4",
     "react-dom": "^18.2.0",
-    "storybook": "^8.1.11"
+    "storybook": "^8.1.11",
+    "typescript": "^5.7.3"
   }
 }
