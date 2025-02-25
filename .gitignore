@@ -66,3 +66,6 @@ typings/
 
 #nx
 .nx
+
+# typescript
+tsconfig.tsbuildinfo
