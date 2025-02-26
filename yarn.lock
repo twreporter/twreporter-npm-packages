@@ -5500,7 +5500,6 @@ __metadata:
     storybook: "npm:^8.1.11"
     styled-components: "npm:^6.0.0"
     stylis: "npm:^4.0.0"
-    typescript: "npm:^5.7.3"
   languageName: unknown
   linkType: soft
 
