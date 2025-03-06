@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.24.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.24.3-rc.0...@twreporter/core@1.24.3) (2025-03-06)
+
+**Note:** Version bump only for package @twreporter/core
+
 ## [1.24.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.24.2...@twreporter/core@1.24.3-rc.0) (2025-02-25)
 
 **Note:** Version bump only for package @twreporter/core
