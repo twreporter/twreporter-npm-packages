@@ -1,15 +1,16 @@
 {
   "name": "@twreporter/core",
-  "version": "1.24.2",
+  "version": "1.24.3-rc.0",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/twreporter/twreporter-npm-packages.git",
   "author": "twreporter <developer@twreporter.org>",
   "license": "MIT",
   "scripts": {
     "clean": "make clean",
-    "build": "make build",
+    "build": "make build && tsc --noEmit false",
     "dev": "make dev",
-    "prepublishOnly": "make build"
+    "prepublishOnly": "make build && tsc --noEmit false"
   },
   "dependencies": {
     "lodash": "^4.0.0",
@@ -19,5 +20,8 @@
   },
   "files": [
     "lib"
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
 }

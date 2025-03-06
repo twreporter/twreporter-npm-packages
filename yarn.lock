@@ -5395,7 +5395,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@twreporter/core@npm:^1.24.2, @twreporter/core@workspace:packages/core":
+"@twreporter/core@npm:^1.24.3-rc.0, @twreporter/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@twreporter/core@workspace:packages/core"
   dependencies:
@@ -5403,6 +5403,7 @@ __metadata:
     prop-types: "npm:^15.0.0"
     styled-components: "npm:^6.0.0"
     stylis: "npm:^4.0.0"
+    typescript: "npm:^5.7.3"
   languageName: unknown
   linkType: soft
 
@@ -5418,8 +5419,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@twreporter/index-page@workspace:packages/index-page"
   dependencies:
-    "@twreporter/core": "npm:^1.24.2"
-    "@twreporter/react-components": "npm:^9.4.4"
+    "@twreporter/core": "npm:^1.24.3-rc.0"
+    "@twreporter/react-components": "npm:^9.5.0-rc.2"
     lodash: "npm:^4.0.0"
     prop-types: "npm:^15.0.0"
     react: "npm:^18.2.0"
@@ -5438,10 +5439,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@twreporter/react-article-components@workspace:packages/react-article-components"
   dependencies:
-    "@twreporter/core": "npm:^1.24.2"
-    "@twreporter/react-components": "npm:^9.4.4"
-    "@twreporter/redux": "npm:^8.3.1"
-    "@twreporter/universal-header": "npm:^3.0.13"
+    "@twreporter/core": "npm:^1.24.3-rc.0"
+    "@twreporter/react-components": "npm:^9.5.0-rc.2"
+    "@twreporter/redux": "npm:^8.3.2-rc.0"
+    "@twreporter/universal-header": "npm:^3.0.14-rc.2"
     babel-loader: "npm:^8.0.6"
     howler: "npm:^2.2.3"
     html-webpack-plugin: "npm:^3.2.0"
@@ -5462,7 +5463,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/react-components@npm:^9.4.4, @twreporter/react-components@workspace:packages/react-components":
+"@twreporter/react-components@npm:^9.5.0-rc.2, @twreporter/react-components@workspace:packages/react-components":
   version: 0.0.0-use.local
   resolution: "@twreporter/react-components@workspace:packages/react-components"
   dependencies:
@@ -5481,8 +5482,8 @@ __metadata:
     "@storybook/react": "npm:^8.1.11"
     "@storybook/react-webpack5": "npm:^8.1.11"
     "@storybook/test": "npm:^8.1.11"
-    "@twreporter/core": "npm:^1.24.2"
-    "@twreporter/redux": "npm:^8.3.1"
+    "@twreporter/core": "npm:^1.24.3-rc.0"
+    "@twreporter/redux": "npm:^8.3.2-rc.0"
     babel-loader: "npm:^8.2.4"
     chromatic: "npm:^6.5.4"
     fontfaceobserver-es: "npm:^3.3.3"
@@ -5502,12 +5503,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/redux@npm:^8.3.1, @twreporter/redux@workspace:packages/redux":
+"@twreporter/redux@npm:^8.3.2-rc.0, @twreporter/redux@workspace:packages/redux":
   version: 0.0.0-use.local
   resolution: "@twreporter/redux@workspace:packages/redux"
   dependencies:
     "@reduxjs/toolkit": "npm:^2.2.5"
-    "@twreporter/core": "npm:^1.24.2"
+    "@twreporter/core": "npm:^1.24.3-rc.0"
     axios: "npm:^0.19.0"
     es6-error: "npm:^4.0.2"
     humps: "npm:^0.6.0"
@@ -5524,7 +5525,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/universal-header@npm:^3.0.13, @twreporter/universal-header@workspace:packages/universal-header":
+"@twreporter/universal-header@npm:^3.0.14-rc.2, @twreporter/universal-header@workspace:packages/universal-header":
   version: 0.0.0-use.local
   resolution: "@twreporter/universal-header@workspace:packages/universal-header"
   dependencies:
@@ -5544,8 +5545,8 @@ __metadata:
     "@storybook/react": "npm:^8.1.11"
     "@storybook/react-webpack5": "npm:^8.1.11"
     "@storybook/test": "npm:^8.1.11"
-    "@twreporter/core": "npm:^1.24.2"
-    "@twreporter/react-components": "npm:^9.4.4"
+    "@twreporter/core": "npm:^1.24.3-rc.0"
+    "@twreporter/react-components": "npm:^9.5.0-rc.2"
     babel-loader: "npm:^8.2.5"
     lodash: "npm:^4.17.11"
     prop-types: "npm:^15.6.2"
@@ -22080,6 +22081,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.7.3":
+  version: 5.7.3
+  resolution: "typescript@npm:5.7.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/b7580d716cf1824736cc6e628ab4cd8b51877408ba2be0869d2866da35ef8366dd6ae9eb9d0851470a39be17cbd61df1126f9e211d8799d764ea7431d5435afa
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@npm%3A^3 || ^4#optional!builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
@@ -22087,6 +22098,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/e3333f887c6829dfe0ab6c1dbe0dd1e3e2aeb56c66460cb85c5440c566f900c833d370ca34eb47558c0c69e78ced4bfe09b8f4f98b6de7afed9b84b8d1dd06a1
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.7.3#optional!builtin<compat/typescript>":
+  version: 5.7.3
+  resolution: "typescript@patch:typescript@npm%3A5.7.3#optional!builtin<compat/typescript>::version=5.7.3&hash=379a07"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/3b56d6afa03d9f6172d0b9cdb10e6b1efc9abc1608efd7a3d2f38773d5d8cfb9bbc68dfb72f0a7de5e8db04fc847f4e4baeddcd5ad9c9feda072234f0d788896
   languageName: node
   linkType: hard
 
