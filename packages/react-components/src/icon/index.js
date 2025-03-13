@@ -79,6 +79,9 @@ export const History = getIcon('history')
 export const KidStar = getIcon('kid_star')
 export const Plurk = getIcon('plurk')
 export const Filter = getIcon('filter')
+export const Fullscreen = getIcon('fullscreen')
+export const Back = getIcon('back')
+export const More = getIcon('more')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
