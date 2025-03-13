@@ -82,6 +82,9 @@ export const Filter = getIcon('filter')
 export const Video = getIcon('video')
 export const Report = getIcon('report')
 export const Switch = getIcon('switch')
+export const Fullscreen = getIcon('fullscreen')
+export const Back = getIcon('back')
+export const More = getIcon('more')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
