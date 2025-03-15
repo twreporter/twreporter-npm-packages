@@ -79,6 +79,9 @@ export const History = getIcon('history')
 export const KidStar = getIcon('kid_star')
 export const Plurk = getIcon('plurk')
 export const Filter = getIcon('filter')
+export const Video = getIcon('video')
+export const Report = getIcon('report')
+export const Switch = getIcon('switch')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
