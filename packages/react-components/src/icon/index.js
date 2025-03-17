@@ -147,4 +147,7 @@ export default {
   KidStar,
   Plurk,
   Filter,
+  Video,
+  Report,
+  Switch,
 }
