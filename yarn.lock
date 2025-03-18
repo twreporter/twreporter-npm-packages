@@ -5395,7 +5395,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@twreporter/core@npm:^1.24.3, @twreporter/core@workspace:packages/core":
+"@twreporter/core@npm:^1.24.4-rc.0, @twreporter/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@twreporter/core@workspace:packages/core"
   dependencies:
@@ -5419,8 +5419,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@twreporter/index-page@workspace:packages/index-page"
   dependencies:
-    "@twreporter/core": "npm:^1.24.3"
-    "@twreporter/react-components": "npm:^9.5.0"
+    "@twreporter/core": "npm:^1.24.4-rc.0"
+    "@twreporter/react-components": "npm:^9.5.1-rc.0"
     lodash: "npm:^4.0.0"
     prop-types: "npm:^15.0.0"
     react: "npm:^18.2.0"
@@ -5439,10 +5439,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@twreporter/react-article-components@workspace:packages/react-article-components"
   dependencies:
-    "@twreporter/core": "npm:^1.24.3"
-    "@twreporter/react-components": "npm:^9.5.0"
-    "@twreporter/redux": "npm:^8.3.2"
-    "@twreporter/universal-header": "npm:^3.0.14"
+    "@twreporter/core": "npm:^1.24.4-rc.0"
+    "@twreporter/react-components": "npm:^9.5.1-rc.0"
+    "@twreporter/redux": "npm:^8.3.3-rc.0"
+    "@twreporter/universal-header": "npm:^3.0.15-rc.0"
     babel-loader: "npm:^8.0.6"
     howler: "npm:^2.2.3"
     html-webpack-plugin: "npm:^3.2.0"
@@ -5463,7 +5463,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/react-components@npm:^9.5.0, @twreporter/react-components@workspace:packages/react-components":
+"@twreporter/react-components@npm:^9.5.1-rc.0, @twreporter/react-components@workspace:packages/react-components":
   version: 0.0.0-use.local
   resolution: "@twreporter/react-components@workspace:packages/react-components"
   dependencies:
@@ -5482,8 +5482,8 @@ __metadata:
     "@storybook/react": "npm:^8.1.11"
     "@storybook/react-webpack5": "npm:^8.1.11"
     "@storybook/test": "npm:^8.1.11"
-    "@twreporter/core": "npm:^1.24.3"
-    "@twreporter/redux": "npm:^8.3.2"
+    "@twreporter/core": "npm:^1.24.4-rc.0"
+    "@twreporter/redux": "npm:^8.3.3-rc.0"
     babel-loader: "npm:^8.2.4"
     chromatic: "npm:^6.5.4"
     fontfaceobserver-es: "npm:^3.3.3"
@@ -5503,12 +5503,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/redux@npm:^8.3.2, @twreporter/redux@workspace:packages/redux":
+"@twreporter/redux@npm:^8.3.3-rc.0, @twreporter/redux@workspace:packages/redux":
   version: 0.0.0-use.local
   resolution: "@twreporter/redux@workspace:packages/redux"
   dependencies:
     "@reduxjs/toolkit": "npm:^2.2.5"
-    "@twreporter/core": "npm:^1.24.3"
+    "@twreporter/core": "npm:^1.24.4-rc.0"
     axios: "npm:^0.19.0"
     es6-error: "npm:^4.0.2"
     humps: "npm:^0.6.0"
@@ -5525,7 +5525,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/universal-header@npm:^3.0.14, @twreporter/universal-header@workspace:packages/universal-header":
+"@twreporter/universal-header@npm:^3.0.15-rc.0, @twreporter/universal-header@workspace:packages/universal-header":
   version: 0.0.0-use.local
   resolution: "@twreporter/universal-header@workspace:packages/universal-header"
   dependencies:
@@ -5545,8 +5545,8 @@ __metadata:
     "@storybook/react": "npm:^8.1.11"
     "@storybook/react-webpack5": "npm:^8.1.11"
     "@storybook/test": "npm:^8.1.11"
-    "@twreporter/core": "npm:^1.24.3"
-    "@twreporter/react-components": "npm:^9.5.0"
+    "@twreporter/core": "npm:^1.24.4-rc.0"
+    "@twreporter/react-components": "npm:^9.5.1-rc.0"
     babel-loader: "npm:^8.2.5"
     lodash: "npm:^4.17.11"
     prop-types: "npm:^15.6.2"
