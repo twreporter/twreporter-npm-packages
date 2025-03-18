@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.6.0-rc.0...@twreporter/react-components@9.6.0-rc.1) (2025-03-18)
+
+### Features
+
+- add `fullscreen`, `back`, `more` icons ([ca0ff23](https://github.com/twreporter/twreporter-npm-packages/commit/ca0ff23fa8aa60318384b7ad0c830b4d436d044e))
+
 # [9.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.5.1-rc.0...@twreporter/react-components@9.6.0-rc.0) (2025-03-18)
 
 ### Features
