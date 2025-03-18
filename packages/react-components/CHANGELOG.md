@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.5.1-rc.0...@twreporter/react-components@9.6.0-rc.0) (2025-03-18)
+
+### Features
+
+- add icons for congres dashboard ([99f426f](https://github.com/twreporter/twreporter-npm-packages/commit/99f426fff61dcc55811fb4198189415748ef550f))
+- export default icons ([17a89f9](https://github.com/twreporter/twreporter-npm-packages/commit/17a89f956789abe59f877da3b362e294b381bd4a))
+
 ## [9.5.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.5.0...@twreporter/react-components@9.5.1-rc.0) (2025-03-18)
 
 **Note:** Version bump only for package @twreporter/react-components
