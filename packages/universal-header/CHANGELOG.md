@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.15-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.15-rc.2...@twreporter/universal-header@3.0.15-rc.3) (2025-03-18)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+## [3.0.15-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.15-rc.1...@twreporter/universal-header@3.0.15-rc.2) (2025-03-18)
+
+### Bug Fixes
+
+- action subscribe btn wording ([670ef04](https://github.com/twreporter/twreporter-npm-packages/commit/670ef0469a3c79d8e2c24c9e94921700ca564a39))
+
+## [3.0.15-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.15-rc.0...@twreporter/universal-header@3.0.15-rc.1) (2025-03-18)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
+## [3.0.15-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.14...@twreporter/universal-header@3.0.15-rc.0) (2025-03-18)
+
+**Note:** Version bump only for package @twreporter/universal-header
+
 ## [3.0.14](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.0.14-rc.2...@twreporter/universal-header@3.0.14) (2025-03-06)
 
 **Note:** Version bump only for package @twreporter/universal-header

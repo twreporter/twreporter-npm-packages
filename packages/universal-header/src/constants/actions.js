@@ -21,7 +21,7 @@ export const ACTION_KEY = actionKeys
 export const ACTION_LABEL = {
   brief: {
     [actionKeys.support]: '贊助',
-    [actionKeys.newsLetter]: '訂閱',
+    [actionKeys.newsLetter]: '電子報',
   },
   full: {
     [actionKeys.support]: '贊助我們',
