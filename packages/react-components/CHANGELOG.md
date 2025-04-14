@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.6.0...@twreporter/react-components@9.7.0-rc.0) (2025-04-14)
+
+### Bug Fixes
+
+- storybook component ([f0289ed](https://github.com/twreporter/twreporter-npm-packages/commit/f0289edc7074b869500cd16d2e3ab5fa61eb768b))
+
+### Features
+
+- add icons for congres dashboard ([4b33a4b](https://github.com/twreporter/twreporter-npm-packages/commit/4b33a4b27091cc40169fb8541645bbe542675485))
+- add storybook for openInNew icon ([09bb81f](https://github.com/twreporter/twreporter-npm-packages/commit/09bb81fb8f06b7c9b395e537c62752996b96e8af))
+
 # [9.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.6.0-rc.1...@twreporter/react-components@9.6.0) (2025-03-25)
 
 **Note:** Version bump only for package @twreporter/react-components
