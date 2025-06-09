@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.7.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.7.0-rc.0...@twreporter/react-components@9.7.0-rc.1) (2025-06-09)
+
+### Bug Fixes
+
+- buttonOnclick typo ([df23e1c](https://github.com/twreporter/twreporter-npm-packages/commit/df23e1cced65db6c4bb6767c212d422f7955fd8a))
+
 # [9.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.6.0...@twreporter/react-components@9.7.0-rc.0) (2025-04-14)
 
 ### Bug Fixes
