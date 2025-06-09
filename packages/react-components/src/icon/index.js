@@ -85,6 +85,7 @@ export const Switch = getIcon('switch')
 export const Fullscreen = getIcon('fullscreen')
 export const Back = getIcon('back')
 export const More = getIcon('more')
+export const OpenInNew = getIcon('open_in_new')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
@@ -153,4 +154,5 @@ export default {
   Video,
   Report,
   Switch,
+  OpenInNew,
 }

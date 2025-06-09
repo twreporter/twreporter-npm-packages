@@ -5420,7 +5420,7 @@ __metadata:
   resolution: "@twreporter/index-page@workspace:packages/index-page"
   dependencies:
     "@twreporter/core": "npm:^1.24.4"
-    "@twreporter/react-components": "npm:^9.6.0"
+    "@twreporter/react-components": "npm:^9.7.0-rc.1"
     lodash: "npm:^4.0.0"
     prop-types: "npm:^15.0.0"
     react: "npm:^18.2.0"
@@ -5440,9 +5440,9 @@ __metadata:
   resolution: "@twreporter/react-article-components@workspace:packages/react-article-components"
   dependencies:
     "@twreporter/core": "npm:^1.24.4"
-    "@twreporter/react-components": "npm:^9.6.0"
+    "@twreporter/react-components": "npm:^9.7.0-rc.1"
     "@twreporter/redux": "npm:^8.3.3"
-    "@twreporter/universal-header": "npm:^3.0.15"
+    "@twreporter/universal-header": "npm:^3.0.16-rc.1"
     babel-loader: "npm:^8.0.6"
     howler: "npm:^2.2.3"
     html-webpack-plugin: "npm:^3.2.0"
@@ -5463,7 +5463,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/react-components@npm:^9.6.0, @twreporter/react-components@workspace:packages/react-components":
+"@twreporter/react-components@npm:^9.7.0-rc.1, @twreporter/react-components@workspace:packages/react-components":
   version: 0.0.0-use.local
   resolution: "@twreporter/react-components@workspace:packages/react-components"
   dependencies:
@@ -5525,7 +5525,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/universal-header@npm:^3.0.15, @twreporter/universal-header@workspace:packages/universal-header":
+"@twreporter/universal-header@npm:^3.0.16-rc.1, @twreporter/universal-header@workspace:packages/universal-header":
   version: 0.0.0-use.local
   resolution: "@twreporter/universal-header@workspace:packages/universal-header"
   dependencies:
@@ -5546,7 +5546,7 @@ __metadata:
     "@storybook/react-webpack5": "npm:^8.1.11"
     "@storybook/test": "npm:^8.1.11"
     "@twreporter/core": "npm:^1.24.4"
-    "@twreporter/react-components": "npm:^9.6.0"
+    "@twreporter/react-components": "npm:^9.7.0-rc.1"
     babel-loader: "npm:^8.2.5"
     lodash: "npm:^4.17.11"
     prop-types: "npm:^15.6.2"
