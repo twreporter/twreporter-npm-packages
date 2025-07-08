@@ -9,24 +9,15 @@ import {
 } from '@twreporter/core/lib/constants/release-branch'
 // components
 import { P1, P2 } from '../text/paragraph'
-import { PillButton } from '../button'
 import { Style } from './enums'
-import { Size } from '../shared-enum'
-import EmptyStateV2 from './empty-state-v2'
-
-const OuterContainer = styled.div`
-  width: 100%;
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
 
 const Container = styled.div`
+  width: 100%;
+  max-width: ${(props) => props.$maxWidth};
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  max-width: ${(props) => props.$maxWidth};
 `
 
 const TextContainer = styled.div`
@@ -36,11 +27,6 @@ const TextContainer = styled.div`
   align-items: center;
   text-align: center;
   color: ${colorGrayscale.gray800};
-`
-
-const ButtonContainer = styled.a`
-  margin-top: 24px;
-  text-decoration: none;
 `
 
 const GuideContainer = styled.div`
@@ -56,18 +42,21 @@ const GuideContainer = styled.div`
     transform: translateY(3px);
   }
 `
-const defaultFunc = () => {}
+
+const ButtonContainer = styled.div`
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`
+
 const EmptyState = ({
   releaseBranch = BRANCH.master,
   style = Style.DEFAULT,
-  title = '',
-  showGuide = true,
-  guide = null,
-  showButton = true,
-  buttonText = '',
-  buttonUrl = '/',
-  buttonOnClick = defaultFunc,
   maxWidth = '280px',
+  title = '',
+  guide = null,
+  buttonComponents = [],
 }) => {
   let imageUrl = ''
   let imageWidth = ''
@@ -88,41 +77,35 @@ const EmptyState = ({
       break
   }
   return (
-    <OuterContainer>
-      <Container $maxWidth={maxWidth}>
-        <img src={imageUrl} width={imageWidth} />
-        <TextContainer>
-          <P1 text={title} weight={P1.Weight.BOLD} />
-          {showGuide && (
-            <GuideContainer>
-              {typeof guide === 'string' ? <P2 text={guide} /> : guide}
-            </GuideContainer>
-          )}
-        </TextContainer>
-        {showButton && (
-          <ButtonContainer href={buttonUrl} onClick={buttonOnClick}>
-            <PillButton text={buttonText} size={Size.L} />
-          </ButtonContainer>
-        )}
-      </Container>
-    </OuterContainer>
+    <Container $maxWidth={maxWidth}>
+      <img src={imageUrl} width={imageWidth} />
+      <TextContainer>
+        <P1 text={title} weight={P1.Weight.BOLD} />
+        {guide ? (
+          <GuideContainer>
+            {typeof guide === 'string' ? <P2 text={guide} /> : guide}
+          </GuideContainer>
+        ) : null}
+      </TextContainer>
+      {buttonComponents.length > 0 ? (
+        <ButtonContainer>
+          {buttonComponents.map((button, index) => (
+            <React.Fragment key={index}>{button}</React.Fragment>
+          ))}
+        </ButtonContainer>
+      ) : null}
+    </Container>
   )
 }
 EmptyState.propTypes = {
   releaseBranch: BRANCH_PROP_TYPES,
   style: PropTypes.oneOf(Object.values(Style)),
   title: PropTypes.string,
-  showGuide: PropTypes.bool,
-  guide: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  showButton: PropTypes.bool,
-  buttonText: PropTypes.string,
-  buttonUrl: PropTypes.string,
-  buttonOnClick: PropTypes.func,
   maxWidth: PropTypes.string,
+  guide: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  buttonComponents: PropTypes.arrayOf(PropTypes.element),
 }
 
 EmptyState.Style = Style
 
 export default EmptyState
-
-export { EmptyState, EmptyStateV2 }
