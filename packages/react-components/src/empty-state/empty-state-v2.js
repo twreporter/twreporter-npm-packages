@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 // @twreporter
@@ -58,24 +58,27 @@ const EmptyState = ({
   guide = null,
   buttonComponents = [],
 }) => {
-  let imageUrl = ''
-  let imageWidth = ''
+  const { imageUrl, imageWidth } = useMemo(() => {
+    switch (style) {
+      case Style.DEFAULT:
+      default:
+        return {
+          imageUrl: `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`,
+          imageWidth: '170',
+        }
+      case Style.PENCIL:
+        return {
+          imageUrl: `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`,
+          imageWidth: '232',
+        }
+      case Style.UNDER_CONSTRUCTION:
+        return {
+          imageUrl: `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`,
+          imageWidth: '177',
+        }
+    }
+  }, [style, releaseBranch])
 
-  switch (style) {
-    case Style.DEFAULT:
-    default:
-      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/seek.png`
-      imageWidth = '170'
-      break
-    case Style.PENCIL:
-      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/pencil.png`
-      imageWidth = '232'
-      break
-    case Style.UNDER_CONSTRUCTION:
-      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`
-      imageWidth = '177'
-      break
-  }
   return (
     <Container $maxWidth={maxWidth}>
       <img src={imageUrl} width={imageWidth} />
