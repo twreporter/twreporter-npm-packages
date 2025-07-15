@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.8.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.7.0...@twreporter/react-components@9.8.0-rc.0) (2025-07-15)
+
+### Features
+
+- add download icon ([a1f1347](https://github.com/twreporter/twreporter-npm-packages/commit/a1f1347d591276ba323f0e33be07625a916d556a))
+- add empty state v2 ([43e6809](https://github.com/twreporter/twreporter-npm-packages/commit/43e6809333bebbdeb31b5d9107f2855ce1456817))
+- useMemo for imageUrl and width ([3be4e6d](https://github.com/twreporter/twreporter-npm-packages/commit/3be4e6d8dc56ef959520d493e2e939ae4d0e6ce5))
+
 # [9.7.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.7.0-rc.1...@twreporter/react-components@9.7.0) (2025-06-09)
 
 **Note:** Version bump only for package @twreporter/react-components
