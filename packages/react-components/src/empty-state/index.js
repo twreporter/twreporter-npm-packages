@@ -12,6 +12,7 @@ import { P1, P2 } from '../text/paragraph'
 import { PillButton } from '../button'
 import { Style } from './enums'
 import { Size } from '../shared-enum'
+import EmptyStateV2 from './empty-state-v2'
 
 const OuterContainer = styled.div`
   width: 100%;
@@ -123,3 +124,5 @@ EmptyState.propTypes = {
 EmptyState.Style = Style
 
 export default EmptyState
+
+export { EmptyState, EmptyStateV2 }

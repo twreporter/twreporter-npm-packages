@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.25.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.25.0-rc.0...@twreporter/core@1.25.0-rc.1) (2025-07-22)
+
+### Features
+
+- **core:** turn off offline donation ([d7b9f73](https://github.com/twreporter/twreporter-npm-packages/commit/d7b9f7390eea13cd899389aac48e360532b4da91))
+
+# [1.25.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.24.4...@twreporter/core@1.25.0-rc.0) (2025-07-22)
+
+### Features
+
+- **core:** add offline donation feature toggle ([15130f7](https://github.com/twreporter/twreporter-npm-packages/commit/15130f7a96f13587017341451b7e5f6a6ce1a0de))
+
 ## [1.24.4](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.24.4-rc.0...@twreporter/core@1.24.4) (2025-03-25)
 
 **Note:** Version bump only for package @twreporter/core
