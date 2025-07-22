@@ -1,1 +1,1 @@
-export const OFFLINE_DONATION = true
+export const OFFLINE_DONATION = false
