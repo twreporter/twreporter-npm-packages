@@ -35,6 +35,7 @@ export const mockActions = {
           agree_data_collection: true,
           read_posts_count: 5,
           read_posts_sec: 1234,
+          is_periodic_patron: true,
         },
       },
     },
@@ -87,6 +88,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 0,
     readPostsSec: 0,
+    isPeriodicPatron: false,
   },
 
   ExpStateReqwithInit: {
@@ -105,6 +107,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 0,
     readPostsSec: 0,
+    isPeriodicPatron: false,
   },
 
   ExpStateReqwithPre: {
@@ -130,6 +133,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 5,
     readPostsSec: 1234,
+    isPeriodicPatron: true,
   },
 
   ExpStateSucwithInit: {
@@ -155,6 +159,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 5,
     readPostsSec: 1234,
+    isPeriodicPatron: true,
   },
 
   ExpStateSucAfterGetUser: {
@@ -180,6 +185,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 5,
     readPostsSec: 1234,
+    isPeriodicPatron: true,
   },
 
   ExpStateSucPreIsInitAfterSetUser: {
@@ -201,6 +207,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 0,
     readPostsSec: 0,
+    isPeriodicPatron: false,
   },
 
   ExpStateSucPreIsExistAfterSetUser: {
@@ -229,6 +236,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 5,
     readPostsSec: 1234,
+    isPeriodicPatron: true,
   },
 
   ExpStateFailwithInit: {
@@ -247,6 +255,7 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 0,
     readPostsSec: 0,
+    isPeriodicPatron: false,
   },
 
   ExpStateFailwithPre: {
@@ -272,5 +281,6 @@ export const mockStates = {
     agreeDataCollection: true,
     readPostsCount: 5,
     readPostsSec: 1234,
+    isPeriodicPatron: true,
   },
 }
