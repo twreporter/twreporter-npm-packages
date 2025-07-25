@@ -25,6 +25,7 @@ const initState = {
   agreeDataCollection: true,
   readPostsCount: 0,
   readPostsSec: 0,
+  isPeriodicPatron: false,
 }
 
 export default function user(state = initState, action) {
@@ -53,6 +54,7 @@ export default function user(state = initState, action) {
       )
       const readPostsCount = _.get(payload, 'data.data.read_posts_count')
       const readPostsSec = _.get(payload, 'data.data.read_posts_sec')
+      const isPeriodicPatron = _.get(payload, 'data.data.is_periodic_patron')
       return {
         ...state,
         error: null,
@@ -70,6 +72,7 @@ export default function user(state = initState, action) {
         agreeDataCollection,
         readPostsCount,
         readPostsSec,
+        isPeriodicPatron,
       }
     }
 
