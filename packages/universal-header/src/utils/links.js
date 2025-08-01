@@ -6,6 +6,7 @@ import externalLinks from '../constants/external-links'
 // @twreporter
 import origins from '@twreporter/core/lib/constants/request-origins'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
+import { LAWMAKER } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import forEach from 'lodash/forEach'
 import reduce from 'lodash/reduce'
@@ -26,7 +27,7 @@ const originsForClient = origins.forClientSideRendering
  */
 function getOriginsByType(domain) {
   const baseURL = {}
-  _.forEach(releaseBranchConsts, branch => {
+  _.forEach(releaseBranchConsts, (branch) => {
     baseURL[branch] = originsForClient[branch][domain]
   })
   return baseURL
@@ -235,6 +236,12 @@ export function getChannelLinks(
     __getExternalLinks().kidsReporter,
     '_blank'
   )
+  if (LAWMAKER) {
+    links[CHANNEL_KEY.lawmaker] = __composeExternalLink(
+      __getExternalLinks().lawmaker,
+      '_blank'
+    )
+  }
 
   return links
 }

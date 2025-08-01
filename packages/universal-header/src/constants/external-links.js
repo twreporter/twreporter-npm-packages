@@ -9,6 +9,7 @@ const links = {
   youtube: 'https://www.youtube.com/c/TwreporterOrg',
   kidsReporter: 'https://kids.twreporter.org/',
   publicationAndMerchandise: 'https://twreporter.waca.ec/',
+  lawmaker: 'https://lawmaker.twreporter.org/',
 }
 
 export default links
