@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.4.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.3.5-rc.0...@twreporter/redux@8.4.0-rc.0) (2025-08-05)
+
+### Features
+
+- add `isPeriodicPatron` to user state & test ([96be6e9](https://github.com/twreporter/twreporter-npm-packages/commit/96be6e95390ea1ae348d826937db9621d1230633))
+
 ## [8.3.5-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.3.4...@twreporter/redux@8.3.5-rc.0) (2025-08-04)
 
 **Note:** Version bump only for package @twreporter/redux
