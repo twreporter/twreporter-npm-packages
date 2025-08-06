@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.26.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.26.0-rc.0...@twreporter/core@1.26.0-rc.1) (2025-08-06)
+
+### Features
+
+- **core:** open lawmaker flag ([67bf3d1](https://github.com/twreporter/twreporter-npm-packages/commit/67bf3d198d317ab36e03f6a582ac68c070f4bce4))
+
 # [1.26.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.25.0...@twreporter/core@1.26.0-rc.0) (2025-08-04)
 
 ### Features
