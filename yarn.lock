@@ -5442,7 +5442,7 @@ __metadata:
     "@twreporter/core": "npm:^1.26.0-rc.1"
     "@twreporter/react-components": "npm:^9.8.1-rc.2"
     "@twreporter/redux": "npm:^8.4.0-rc.1"
-    "@twreporter/universal-header": "npm:^3.1.0-rc.2"
+    "@twreporter/universal-header": "npm:^3.1.0-rc.3"
     babel-loader: "npm:^8.0.6"
     howler: "npm:^2.2.3"
     html-webpack-plugin: "npm:^3.2.0"
@@ -5525,7 +5525,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@twreporter/universal-header@npm:^3.1.0-rc.2, @twreporter/universal-header@workspace:packages/universal-header":
+"@twreporter/universal-header@npm:^3.1.0-rc.3, @twreporter/universal-header@workspace:packages/universal-header":
   version: 0.0.0-use.local
   resolution: "@twreporter/universal-header@workspace:packages/universal-header"
   dependencies:
