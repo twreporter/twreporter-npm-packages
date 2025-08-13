@@ -1,6 +1,6 @@
 {
   "name": "@twreporter/universal-header",
-  "version": "3.1.0-rc.3",
+  "version": "3.1.0-rc.4",
   "description": "Universal header of TWReporter sites",
   "main": "lib/index.js",
   "scripts": {
@@ -22,8 +22,8 @@
   "dependencies": {
     "@material-symbols/svg-400": "^0.27.2",
     "@reduxjs/toolkit": "^2.2.5",
-    "@twreporter/core": "^1.26.0-rc.1",
-    "@twreporter/react-components": "^9.8.1-rc.2",
+    "@twreporter/core": "^1.26.0-rc.2",
+    "@twreporter/react-components": "^9.8.1-rc.3",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "querystring": "^0.2.0",
