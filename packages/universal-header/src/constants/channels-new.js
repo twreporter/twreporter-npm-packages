@@ -12,6 +12,7 @@ const channelKey = {
   podcast: 'podcast',
   kidsReporter: 'kids-reporter',
   infographic: 'infographic',
+  lawmaker: 'lawmaker',
 }
 export const CHANNEL_KEY = channelKey
 
@@ -35,6 +36,7 @@ export const CHANNEL_LABEL = {
   [channelKey.podcast]: 'Podcast',
   [channelKey.kidsReporter]: '少年報導者',
   [channelKey.infographic]: '數位敘事',
+  [channelKey.lawmaker]: '報導者觀測站',
 }
 
 const channelLinkType = 'link'
@@ -54,6 +56,7 @@ export const CHANNEL_TYPE = {
   [channelKey.podcast]: channelDropDownType,
   [channelKey.kidsReporter]: channelLinkType,
   [channelKey.infographic]: channelLinkType,
+  [channelKey.lawmaker]: channelLinkType,
 }
 
 export const CHANNEL_DROPDOWN = {
@@ -80,6 +83,7 @@ export const CHANNEL_ORDER = [
   channelKey.photography,
   channelKey.podcast,
   channelKey.kidsReporter,
+  channelKey.lawmaker,
   channelKey.infographic,
   'divider',
 ]
