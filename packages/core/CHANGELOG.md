@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.26.0...@twreporter/core@1.27.0-rc.0) (2025-08-26)
+
+### Features
+
+- **core:** new fundraising text ([b71bdbe](https://github.com/twreporter/twreporter-npm-packages/commit/b71bdbe424da43b02eafd6c9777ca1a5bc56258c))
+
 # [1.26.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.26.0-rc.2...@twreporter/core@1.26.0) (2025-08-13)
 
 **Note:** Version bump only for package @twreporter/core
