@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import DOMPurify from 'isomorphic-dompurify'
 // @twreporter
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -110,7 +111,7 @@ export default class DonationBox extends PureComponent {
           return (
             <Text
               key={`donation-box-desc-${index + 1}`}
-              dangerouslySetInnerHTML={{ __html: p }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(p) }}
             />
           )
         })}
