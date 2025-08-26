@@ -1,4 +1,4 @@
-const fundraisingId = '公益勸募許可字號｜衛部救字第 1131363879 號'
+const fundraisingId = '衛部救字第 1131363879 號｜勸募期間 2025/1/1~12/31'
 
 export default fundraisingId
 export { fundraisingId }
