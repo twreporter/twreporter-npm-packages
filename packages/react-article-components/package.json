@@ -28,6 +28,7 @@
     "@twreporter/redux": "^8.4.1-rc.0",
     "@twreporter/universal-header": "^3.1.1-rc.0",
     "howler": "^2.2.3",
+    "isomorphic-dompurify": "^2.26.0",
     "lodash": "^4.17.11",
     "memoize-one": "^5.0.5",
     "prop-types": "^15.0.0",
