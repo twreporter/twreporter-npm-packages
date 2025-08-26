@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.27.0-rc.0...@twreporter/core@1.27.0-rc.1) (2025-08-26)
+
+### Features
+
+- **core:** 10 year anniversary feature flag ([90b43b3](https://github.com/twreporter/twreporter-npm-packages/commit/90b43b306805c8c9d9a42c501c6a5e0a014bd209))
+- **core:** add 10 year anniversary link ([c2ed143](https://github.com/twreporter/twreporter-npm-packages/commit/c2ed14354f4f8f5438e1c199e2f48f45f1d2ff74))
+
 # [1.27.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.26.0...@twreporter/core@1.27.0-rc.0) (2025-08-26)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.1.10-rc.0...@twreporter/index-page@2.2.0-rc.0) (2025-08-26)
+
+### Features
+
+- **index-page:** new donation box for anniversary ([1eacdc4](https://github.com/twreporter/twreporter-npm-packages/commit/1eacdc4081eb721752009309db33c1e54ed8e842))
+
 ## [2.1.10-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.1.9...@twreporter/index-page@2.1.10-rc.0) (2025-08-26)
 
 **Note:** Version bump only for package @twreporter/index-page
