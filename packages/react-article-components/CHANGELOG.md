@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.6.0-rc.0...@twreporter/react-article-components@2.6.0-rc.1) (2025-09-01)
+
+### Bug Fixes
+
+- **react-article-component:** add target blank ([13e3fa9](https://github.com/twreporter/twreporter-npm-packages/commit/13e3fa91026d2e21df28e2ae25c9963ad94412da))
+
 # [2.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.14-rc.0...@twreporter/react-article-components@2.6.0-rc.0) (2025-08-26)
 
 ### Features
