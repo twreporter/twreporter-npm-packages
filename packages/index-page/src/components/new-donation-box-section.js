@@ -80,9 +80,9 @@ const DonateButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: ${colorGrayscale.white};
+    background: ${colorBrand.heavy};
     border: none;
-    color: ${colorBrand.heavy};
+    color: ${colorGrayscale.white};
     font-size: 16px;
     cursor: pointer;
     display: table;
