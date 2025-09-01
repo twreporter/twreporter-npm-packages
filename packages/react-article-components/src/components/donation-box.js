@@ -26,7 +26,7 @@ const newContent = {
   desc: [
     '獨立的精神，是自由思想的條件。獨立的媒體，才能守護公共領域，讓自由的討論和真相浮現。',
     '在艱困的媒體環境，《報導者》堅持以非營利組織的模式投入公共領域的調查與深度報導。我們透過讀者的贊助支持來營運，不仰賴商業廣告置入，在獨立自主的前提下，穿梭在各項重要公共議題中。',
-    `今年是<a href=${externalLinks.tenYearAnniversary} target='_blank' rel="noopener noreferrer">《報導者》成立十週年</a>，請支持我們持續追蹤國內外新聞事件的真相，度過下一個十年的挑戰。`,
+    `今年是<a href="${externalLinks.tenYearAnniversary}" target="_blank" rel="noopener noreferrer">《報導者》成立十週年</a>，請支持我們持續追蹤國內外新聞事件的真相，度過下一個十年的挑戰。`,
   ],
   bt: '贊助支持',
 }
@@ -111,7 +111,9 @@ export default class DonationBox extends PureComponent {
           return (
             <Text
               key={`donation-box-desc-${index + 1}`}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(p) }}
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(p, { ADD_ATTR: ['target'] }),
+              }}
             />
           )
         })}
