@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.27.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.27.0-rc.1...@twreporter/core@1.27.0-rc.2) (2025-09-15)
+
+### Features
+
+- **core:** open lawmaker feature flag ([0796753](https://github.com/twreporter/twreporter-npm-packages/commit/0796753e7436180f538eec62fcd20c2ab07a02d1))
+
+# [1.27.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.27.0-rc.0...@twreporter/core@1.27.0-rc.1) (2025-08-26)
+
+### Features
+
+- **core:** 10 year anniversary feature flag ([90b43b3](https://github.com/twreporter/twreporter-npm-packages/commit/90b43b306805c8c9d9a42c501c6a5e0a014bd209))
+- **core:** add 10 year anniversary link ([c2ed143](https://github.com/twreporter/twreporter-npm-packages/commit/c2ed14354f4f8f5438e1c199e2f48f45f1d2ff74))
+
+# [1.27.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.26.0...@twreporter/core@1.27.0-rc.0) (2025-08-26)
+
+### Features
+
+- **core:** new fundraising text ([b71bdbe](https://github.com/twreporter/twreporter-npm-packages/commit/b71bdbe424da43b02eafd6c9777ca1a5bc56258c))
+
 # [1.26.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.26.0-rc.2...@twreporter/core@1.26.0) (2025-08-13)
 
 **Note:** Version bump only for package @twreporter/core

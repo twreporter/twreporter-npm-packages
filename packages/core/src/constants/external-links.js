@@ -11,4 +11,5 @@ export default {
   twitter: 'https://twitter.com/tw_reporter_org',
   IJMBrochureDownloadLink:
     'https://docs.google.com/forms/d/e/1FAIpQLSd0KW2gaBI0oXr1W-emtLEL6XXKQkLjB1lu1XMVmoYVbincug/viewform',
+  tenYearAnniversary: 'https://10th.twreporter.org',
 }

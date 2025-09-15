@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.2.0-rc.1...@twreporter/index-page@2.2.0-rc.2) (2025-09-15)
+
+**Note:** Version bump only for package @twreporter/index-page
+
+# [2.2.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.2.0-rc.0...@twreporter/index-page@2.2.0-rc.1) (2025-09-01)
+
+### Bug Fixes
+
+- **index-page:** donation button color ([9e04637](https://github.com/twreporter/twreporter-npm-packages/commit/9e04637b5e47315aaaff5f86e5abd65c38948401))
+
+# [2.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.1.10-rc.0...@twreporter/index-page@2.2.0-rc.0) (2025-08-26)
+
+### Features
+
+- **index-page:** new donation box for anniversary ([1eacdc4](https://github.com/twreporter/twreporter-npm-packages/commit/1eacdc4081eb721752009309db33c1e54ed8e842))
+
+## [2.1.10-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.1.9...@twreporter/index-page@2.1.10-rc.0) (2025-08-26)
+
+**Note:** Version bump only for package @twreporter/index-page
+
 ## [2.1.9](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/index-page@2.1.9-rc.3...@twreporter/index-page@2.1.9) (2025-08-13)
 
 **Note:** Version bump only for package @twreporter/index-page

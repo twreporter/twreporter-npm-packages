@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.6.0-rc.1...@twreporter/react-article-components@2.6.0-rc.2) (2025-09-15)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+# [2.6.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.6.0-rc.0...@twreporter/react-article-components@2.6.0-rc.1) (2025-09-01)
+
+### Bug Fixes
+
+- **react-article-component:** add target blank ([13e3fa9](https://github.com/twreporter/twreporter-npm-packages/commit/13e3fa91026d2e21df28e2ae25c9963ad94412da))
+
+# [2.6.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.14-rc.0...@twreporter/react-article-components@2.6.0-rc.0) (2025-08-26)
+
+### Features
+
+- **react-article-components:** new donation box for anniversary ([f3d1abe](https://github.com/twreporter/twreporter-npm-packages/commit/f3d1abee63746713bcbdd0dfdb0cf938029616bc))
+- **react-article-components:** use dompurify ([82de49f](https://github.com/twreporter/twreporter-npm-packages/commit/82de49fa730f7e0228acf36d07ce3ce1a4a1127b))
+
+## [2.5.14-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.13...@twreporter/react-article-components@2.5.14-rc.0) (2025-08-26)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
 ## [2.5.13](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.5.13-rc.4...@twreporter/react-article-components@2.5.13) (2025-08-13)
 
 **Note:** Version bump only for package @twreporter/react-article-components
