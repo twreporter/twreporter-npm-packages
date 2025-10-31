@@ -62,10 +62,17 @@ FooterLinkButton.propTypes = {
   id: PropTypes.string,
 }
 
-const FooterSocialMediaIcon = ({ releaseBranch, slug, icon, to, target }) => {
+const FooterSocialMediaIcon = ({
+  releaseBranch,
+  slug,
+  icon,
+  to,
+  target,
+  ariaLabel,
+}) => {
   const Icon = <SocialMedia mediaType={icon} releaseBranch={releaseBranch} />
   return (
-    <LinkContainer slug={slug} to={to} target={target}>
+    <LinkContainer slug={slug} to={to} target={target} aria-label={ariaLabel}>
       <IconButton iconComponent={Icon} />
     </LinkContainer>
   )
@@ -77,6 +84,7 @@ FooterSocialMediaIcon.propTypes = {
   icon: PropTypes.string,
   to: PropTypes.string,
   target: PropTypes.oneOf(['_blank', '_self']),
+  ariaLabel: PropTypes.string,
 }
 
 export const FooterLinkButtonGroups = ({

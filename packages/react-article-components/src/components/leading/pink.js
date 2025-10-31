@@ -30,14 +30,14 @@ const mockup = {
 
 const BackgroundBlock = styled.div`
   /* through ThemeProvider of styled-components */
-  background-color: ${props => props.theme.colors.primary.background};
+  background-color: ${(props) => props.theme.colors.primary.background};
 
   width: 100%;
 
   ${mq.desktopAndAbove`
     padding: 0 10px 18px 10px;
 
-    height: ${props => `calc(100vh - ${props.$paddingTop || '108px'})`};
+    height: ${(props) => `calc(100vh - ${props.$paddingTop || '108px'})`};
   `}
 `
 
@@ -73,7 +73,7 @@ const TextBlock = styled.div`
 `
 
 const TopicTextBlock = styled.div`
-  background-color: ${props => props.theme.colors.primary.support};
+  background-color: ${(props) => props.theme.colors.primary.support};
   border: solid 2px ${colorGrayscale.white};
   display: inline-block;
 
@@ -83,7 +83,7 @@ const TopicTextBlock = styled.div`
   margin-bottom: 30px;
 
   /* through ThemeProvider of styled-components */
-  color: ${props => props.theme.colors.primary.text};
+  color: ${(props) => props.theme.colors.primary.text};
   font-size: 20px;
   font-weight: ${typography.font.weight.bold};
   line-height: 1.8;
@@ -94,7 +94,7 @@ const TopicTextBlock = styled.div`
 
 const TitleTextBlock = styled.h1`
   /* through ThemeProvider of styled-components */
-  color: ${props => props.theme.colors.primary.text};
+  color: ${(props) => props.theme.colors.primary.text};
 
   font-weight: ${typography.font.weight.bold};
   font-family: ${typography.font.family.title};
@@ -102,7 +102,6 @@ const TitleTextBlock = styled.h1`
 
   /* overwrite h1 default margin*/
   margin: 0;
-
 
   ${mq.mobileOnly`
     font-size: 28px;
@@ -127,12 +126,11 @@ const TitleTextBlock = styled.h1`
       box-shadow: 10px 0 0 ${colorGrayscale.white}, -10px 0 0 ${colorGrayscale.white};
     }
   `}
-
 `
 
 const SubtitleTextBlock = styled.h2`
   /* through ThemeProvider of styled-components */
-  color: ${props => props.theme.colors.primary.text};
+  color: ${(props) => props.theme.colors.primary.text};
   display: block;
 
   font-size: 20px;
@@ -202,7 +200,7 @@ export default class LeadingBlock extends PureComponent {
           <TextBlock>
             {isTopicPublished && shortTitle ? (
               <DynamicComponentsContext.Consumer>
-                {components => {
+                {(components) => {
                   return (
                     <components.Link to={topicHref}>
                       <TopicTextBlock>{shortTitle}</TopicTextBlock>
@@ -216,7 +214,7 @@ export default class LeadingBlock extends PureComponent {
                 <span>{subtitle}</span>
               </SubtitleTextBlock>
             ) : null}
-            <TitleTextBlock>
+            <TitleTextBlock role="heading" aria-level="1">
               <span>{title}</span>
             </TitleTextBlock>
           </TextBlock>
@@ -230,6 +228,7 @@ export default class LeadingBlock extends PureComponent {
               objectPostion="center center"
               sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
               clickable={true}
+              alt={poster.alt}
             />
           </FigureBlock>
         </ContentBlock>

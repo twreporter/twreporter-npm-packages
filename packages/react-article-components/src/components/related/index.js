@@ -215,6 +215,7 @@ export default class Related extends React.PureComponent {
         ? thumbnail
         : _.get(related, 'hero_image.resized_targets.mobile'),
       title: related.title,
+      alt: _.get(related, 'og_image.description', ''),
     }
   }
 

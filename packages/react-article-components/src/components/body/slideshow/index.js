@@ -585,6 +585,7 @@ export default class Slideshow extends PureComponent {
             defaultImage={img.mobile}
             objectFit={'contain'}
             sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
+            alt={img.description}
           />
         </SlideFlexItem>
       )

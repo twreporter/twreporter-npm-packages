@@ -10,6 +10,7 @@ const card = {
   isTargetBlank: PropTypes.bool,
   thumbnail: predefinedPropTypes.imagePropType,
   title: PropTypes.string.isRequired,
+  alt: PropTypes.string,
 }
 
 export default {
