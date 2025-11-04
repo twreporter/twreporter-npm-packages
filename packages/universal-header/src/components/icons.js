@@ -98,7 +98,7 @@ const MemberIcon = ({
     )
 
   return (
-    <IconContainer key="login">
+    <IconContainer key="login" aria-label="前往個人專區">
       <LogContainer onClick={onClickIcon}>{LoginButton}</LogContainer>
     </IconContainer>
   )
@@ -139,7 +139,7 @@ const SearchIcon = () => {
   const Icon = <Search releaseBranch={releaseBranch} />
   const ref = useOutsideClick(closeSearchBox)
   return (
-    <IconContainer ref={ref} key="search">
+    <IconContainer ref={ref} key="search" aria-label="搜尋">
       <Container onClick={handleClickSearch} $isSearchOpened={isSearchOpened}>
         <IconButton iconComponent={Icon} theme={theme} />
       </Container>
@@ -161,7 +161,7 @@ const MyReadingIcon = () => {
   const Icon = <KidStar releaseBranch={releaseBranch} />
 
   return (
-    <IconContainer key="bookmark">
+    <IconContainer key="bookmark" aria-label="前往我的閱讀">
       <Link {...link}>
         <IconButton iconComponent={Icon} theme={theme} />
       </Link>

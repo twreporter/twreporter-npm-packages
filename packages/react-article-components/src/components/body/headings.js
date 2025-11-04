@@ -42,7 +42,14 @@ const H1 = (props) => {
     .split(/<strong>|<\/strong>/)
     .filter(Boolean)
     .join('')
-  return <StyledH1 className={_.get(props, 'className', '')} text={text} />
+  return (
+    <StyledH1
+      className={_.get(props, 'className', '')}
+      text={text}
+      role="heading"
+      aria-level="2"
+    />
+  )
 }
 
 const H2 = (props) => {
@@ -51,7 +58,14 @@ const H2 = (props) => {
     .split(/<strong>|<\/strong>/)
     .filter(Boolean)
     .join('')
-  return <StyledH2 className={_.get(props, 'className', '')} text={text} />
+  return (
+    <StyledH2
+      className={_.get(props, 'className', '')}
+      text={text}
+      role="heading"
+      aria-level="3"
+    />
+  )
 }
 
 export default {

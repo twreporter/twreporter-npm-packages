@@ -25,4 +25,5 @@ export const MediaType = Object.freeze({
   LINE: 'line',
   GOOGLE: 'google',
   PLURK: 'plurk',
+  THREADS: 'threads',
 })

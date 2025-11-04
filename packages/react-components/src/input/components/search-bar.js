@@ -160,12 +160,14 @@ const SearchBar = ({
           iconComponent={SearchIcon}
           theme="normal"
           onClick={onSubmit}
+          aria-label="搜尋"
         />
       </InputContainer>
       <DesktopOnlyIconButton
         iconComponent={CrossIcon}
         theme={theme}
         onClick={onClose}
+        aria-label="關閉搜尋"
       />
     </Container>
   )

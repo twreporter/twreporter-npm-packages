@@ -325,6 +325,7 @@ const HamburgerMenu = ({ ...props }) => {
             iconComponent={CloseIcon}
             theme={menuTheme}
             onClick={closeHamburgerMenu}
+            aria-label="關閉漢堡選單"
           />
         </CloseSection>
         <LogoSection>

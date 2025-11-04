@@ -94,10 +94,14 @@ export default class LayoutManager {
         mobile: _.get(post, 'hero_image.resized_targets.mobile'),
         tablet: _.get(post, 'hero_image.resized_targets.tablet'),
         desktop: _.get(post, 'hero_image.resized_targets.desktop'),
+        alt:
+          _.get(post, 'leading_image_description') ||
+          _.get(post, 'hero_image.description'),
       },
       portraitPoster: {
         tiny: _.get(post, 'leading_image_portrait.resized_targets.tiny'),
         mobile: _.get(post, 'leading_image_portrait.resized_targets.mobile'),
+        alt: _.get(post, 'leading_image_description', ''),
       },
       embedded: _.get(post, 'leading_embedded.api_data', []),
     }
