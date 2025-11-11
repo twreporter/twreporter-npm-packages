@@ -225,7 +225,12 @@ export default class NormalLeading extends React.PureComponent {
               </DynamicComponentsContext.Consumer>
             ) : null}
             {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-            <Title type={H1.Type.ARTICLE} text={title} />
+            <Title
+              type={H1.Type.ARTICLE}
+              text={title}
+              role="heading"
+              aria-level="1"
+            />
           </TextBlock>
           <Figure $css={this.getFigureCSS()}>
             <Img
@@ -234,6 +239,7 @@ export default class NormalLeading extends React.PureComponent {
               defaultImage={poster.mobile}
               sizes="(max-width: 800px) 800px, (max-width: 1200px) 1200px, 2000px"
               clickable={true}
+              alt={poster.alt}
             />
             {figureCaption ? <FigCaption>{figureCaption}</FigCaption> : null}
           </Figure>

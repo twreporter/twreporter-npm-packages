@@ -196,7 +196,12 @@ const Embedded = ({
             </TopicTitle>
           ) : null}
           {subtitle && <SubTitle text={subtitle} />}
-          <Title text={title} type={H1.Type.ARTICLE} />
+          <Title
+            text={title}
+            type={H1.Type.ARTICLE}
+            role="heading"
+            aria-level="1"
+          />
         </TitleBlock>
         {captionText ? (
           <CaptionBlock>

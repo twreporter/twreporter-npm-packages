@@ -152,7 +152,7 @@ const Footer = ({ ...props }) => {
   const socialMediaLinks = getSocialMediaLinks()
   const socialMediaJSX = socialMediaLinks ? (
     <SocialMediaSection>
-      {_.map(SOCIAL_MEDIA_ORDER, (key) => {
+      {_.map(SOCIAL_MEDIA_ORDER, ({ key, ariaLabel, alt }) => {
         const link = socialMediaLinks[key]
         if (!link) {
           return
@@ -162,7 +162,7 @@ const Footer = ({ ...props }) => {
         )
         return (
           <IconItem key={key}>
-            <Link {...link}>
+            <Link {...link} aria-label={ariaLabel}>
               <IconButton iconComponent={Icon} theme={footerTheme} />
             </Link>
           </IconItem>

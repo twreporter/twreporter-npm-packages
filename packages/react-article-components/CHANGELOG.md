@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.6.0...@twreporter/react-article-components@2.7.0-rc.0) (2025-11-04)
+
+### Features
+
+- accessibility enhancement ([5e73dd0](https://github.com/twreporter/twreporter-npm-packages/commit/5e73dd02ca313e072471c6d634945155dcfa59c1))
+
 # [2.6.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.6.0-rc.2...@twreporter/react-article-components@2.6.0) (2025-09-15)
 
 **Note:** Version bump only for package @twreporter/react-article-components

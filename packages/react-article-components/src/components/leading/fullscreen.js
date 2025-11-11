@@ -199,6 +199,7 @@ export default class FullScreenLeading extends React.PureComponent {
               objectFit="cover"
               objectPostion="center center"
               clickable={true}
+              alt={portraitPoster.alt}
             />
           </FigureBlock>
         </DisplayOnPortrait>
@@ -219,7 +220,7 @@ export default class FullScreenLeading extends React.PureComponent {
         <TextBlock>
           {isTopicPublished && shortTitle ? (
             <DynamicComponentsContext.Consumer>
-              {components => {
+              {(components) => {
                 return (
                   <components.Link to={topicHref}>
                     <Topic>
@@ -231,7 +232,9 @@ export default class FullScreenLeading extends React.PureComponent {
               }}
             </DynamicComponentsContext.Consumer>
           ) : null}
-          <Title>{title}</Title>
+          <Title role="heading" aria-level="1">
+            {title}
+          </Title>
           {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
         </TextBlock>
       </FullScreenBlock>

@@ -265,7 +265,7 @@ class Card extends React.PureComponent {
   }
 
   render() {
-    const { category, title, desc, publishedDate, thumbnail } = this.props
+    const { category, title, desc, publishedDate, thumbnail, alt } = this.props
 
     let dateStr = ''
 
@@ -291,6 +291,7 @@ class Card extends React.PureComponent {
             objectFit="cover"
             objectPosition="center center"
             noImgPlaceholder
+            alt={alt}
           />
         </Thumbnail>
         <DesktopTextBlock

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.1.1...@twreporter/universal-header@3.2.0-rc.0) (2025-11-04)
+
+### Features
+
+- accessibility enhancement ([5e73dd0](https://github.com/twreporter/twreporter-npm-packages/commit/5e73dd02ca313e072471c6d634945155dcfa59c1))
+
 ## [3.1.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/universal-header@3.1.1-rc.2...@twreporter/universal-header@3.1.1) (2025-09-15)
 
 **Note:** Version bump only for package @twreporter/universal-header

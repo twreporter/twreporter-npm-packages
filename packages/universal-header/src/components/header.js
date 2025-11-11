@@ -322,10 +322,11 @@ const Header = ({ hamburgerContext = {} }) => {
               iconComponent={HamburgerIcon}
               theme={theme}
               onClick={toggleHamburger}
+              aria-label="打開漢堡選單"
             />
           </ShowWhenNarrow>
           <LogoContainer>
-            <Link {...logoLink}>
+            <Link {...logoLink} aria-label="前往首頁">
               <LogoHeader type={logoType} releaseBranch={releaseBranch} />
             </Link>
           </LogoContainer>
