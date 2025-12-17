@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.9.0...@twreporter/react-components@9.10.0-rc.0) (2025-12-17)
+
+### Features
+
+- add `source` icon & stories ([275166d](https://github.com/twreporter/twreporter-npm-packages/commit/275166df8d8dbf5bd6ab772f2854a4cf34ed495f))
+
 # [9.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.9.0-rc.0...@twreporter/react-components@9.9.0) (2025-11-11)
 
 **Note:** Version bump only for package @twreporter/react-components
