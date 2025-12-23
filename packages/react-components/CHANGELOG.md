@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.10.0-rc.0...@twreporter/react-components@9.10.0-rc.1) (2025-12-23)
+
+### Features
+
+- **react-components:** footer social media link order ([a41082b](https://github.com/twreporter/twreporter-npm-packages/commit/a41082b3bb899d29419fa0eb9edd008321cffa4b))
+
 # [9.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.9.0...@twreporter/react-components@9.10.0-rc.0) (2025-12-17)
 
 ### Features
