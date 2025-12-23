@@ -132,6 +132,13 @@ export const getSocialMediaLinks = () => {
       ariaLabel: '前往《報導者》Instagram',
     },
     {
+      slug: 'youtube',
+      icon: 'youtube',
+      to: 'https://www.youtube.com/@TwreporterOrg',
+      target: '_blank',
+      ariaLabel: '前往《報導者》YouTube',
+    },
+    {
       slug: 'x',
       icon: 'twitter',
       to: 'https://twitter.com/tw_reporter_org',
@@ -144,13 +151,6 @@ export const getSocialMediaLinks = () => {
       to: 'https://medium.com/twreporter',
       target: '_blank',
       ariaLabel: '前往《報導者》Medium',
-    },
-    {
-      slug: 'youtube',
-      icon: 'youtube',
-      to: 'https://www.youtube.com/@TwreporterOrg',
-      target: '_blank',
-      ariaLabel: '前往《報導者》YouTube',
     },
     {
       slug: 'threads',
