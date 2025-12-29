@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.28.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.27.0...@twreporter/core@1.28.0-rc.0) (2025-12-23)
+
+### Bug Fixes
+
+- **core:** remove extra space ([17ff1dd](https://github.com/twreporter/twreporter-npm-packages/commit/17ff1dd94ee4c725969465dd1ae2449b24112da6))
+
+### Features
+
+- **core:** new fundraising text ([9c4cb7a](https://github.com/twreporter/twreporter-npm-packages/commit/9c4cb7a3a3dedef4092210914ff1fc6c54c3b167))
+
 # [1.27.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/core@1.27.0-rc.2...@twreporter/core@1.27.0) (2025-09-15)
 
 **Note:** Version bump only for package @twreporter/core

@@ -87,6 +87,7 @@ export const Back = getIcon('back')
 export const More = getIcon('more')
 export const OpenInNew = getIcon('open_in_new')
 export const Download = getIcon('download')
+export const Source = getIcon('source')
 
 export const Arrow = ({
   direction = ArrowDirection.RIGHT,
@@ -157,4 +158,5 @@ export default {
   Switch,
   OpenInNew,
   Download,
+  Source,
 }
