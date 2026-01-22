@@ -16,7 +16,7 @@ export default {
   },
 }
 
-const onSearch = keyword => window?.alert(`search keyword: ${keyword}`)
+const onSearch = (keyword) => window?.alert(`search keyword: ${keyword}`)
 const onClose = () => window?.alert('click close !')
 export const searchBar = {
   args: {
@@ -25,7 +25,6 @@ export const searchBar = {
     releaseBranch: BRANCH.master,
     onSearch,
     onClose,
-    autofocus: false,
     widthType: SearchBar.WidthType.FIT,
   },
 }

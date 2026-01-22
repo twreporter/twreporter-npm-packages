@@ -147,6 +147,7 @@ const SearchIcon = () => {
         <SearchBar
           placeholder="關鍵字搜尋"
           theme={theme}
+          autofocus={false}
           onClose={closeSearchBox}
           onSearch={onSearch}
         />
