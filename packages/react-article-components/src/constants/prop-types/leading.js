@@ -13,6 +13,7 @@ const leading = {
   shortTitle: PropTypes.string,
   topicHref: PropTypes.string,
   isTopicPublished: PropTypes.bool,
+  isHideTitleBlock: PropTypes.bool,
 }
 
 export default {

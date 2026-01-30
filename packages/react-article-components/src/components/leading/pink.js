@@ -192,32 +192,35 @@ export default class LeadingBlock extends PureComponent {
       topicHref,
       shortTitle,
       isTopicPublished,
+      isHideTitleBlock,
     } = this.props
 
     return (
       <BackgroundBlock $paddingTop={paddingTop}>
         <ContentBlock>
-          <TextBlock>
-            {isTopicPublished && shortTitle ? (
-              <DynamicComponentsContext.Consumer>
-                {(components) => {
-                  return (
-                    <components.Link to={topicHref}>
-                      <TopicTextBlock>{shortTitle}</TopicTextBlock>
-                    </components.Link>
-                  )
-                }}
-              </DynamicComponentsContext.Consumer>
-            ) : null}
-            {subtitle ? (
-              <SubtitleTextBlock>
-                <span>{subtitle}</span>
-              </SubtitleTextBlock>
-            ) : null}
-            <TitleTextBlock role="heading" aria-level="1">
-              <span>{title}</span>
-            </TitleTextBlock>
-          </TextBlock>
+          {isHideTitleBlock ? null : (
+            <TextBlock>
+              {isTopicPublished && shortTitle ? (
+                <DynamicComponentsContext.Consumer>
+                  {(components) => {
+                    return (
+                      <components.Link to={topicHref}>
+                        <TopicTextBlock>{shortTitle}</TopicTextBlock>
+                      </components.Link>
+                    )
+                  }}
+                </DynamicComponentsContext.Consumer>
+              ) : null}
+              {subtitle ? (
+                <SubtitleTextBlock>
+                  <span>{subtitle}</span>
+                </SubtitleTextBlock>
+              ) : null}
+              <TitleTextBlock role="heading" aria-level="1">
+                <span>{title}</span>
+              </TitleTextBlock>
+            </TextBlock>
+          )}
           <FigureBlock>
             <Img
               className="leading-image"
