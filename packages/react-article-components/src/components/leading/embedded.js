@@ -136,6 +136,7 @@ const Embedded = ({
   shortTitle,
   isTopicPublished,
   embedded,
+  isHideTitleBlock,
 }) => {
   const navigate = useHistory()
   const [captionText, setCaptionText] = useState('')
@@ -189,20 +190,22 @@ const Embedded = ({
         </EmbeddedBlock>
       ) : null}
       <ContentBlock>
-        <TitleBlock>
-          {isTopicPublished && shortTitle ? (
-            <TopicTitle onClick={onTopicClick}>
-              <P2 text={shortTitle} weight={P2.Weight.BOLD} />
-            </TopicTitle>
-          ) : null}
-          {subtitle && <SubTitle text={subtitle} />}
-          <Title
-            text={title}
-            type={H1.Type.ARTICLE}
-            role="heading"
-            aria-level="1"
-          />
-        </TitleBlock>
+        {isHideTitleBlock ? null : (
+          <TitleBlock>
+            {isTopicPublished && shortTitle ? (
+              <TopicTitle onClick={onTopicClick}>
+                <P2 text={shortTitle} weight={P2.Weight.BOLD} />
+              </TopicTitle>
+            ) : null}
+            {subtitle && <SubTitle text={subtitle} />}
+            <Title
+              text={title}
+              type={H1.Type.ARTICLE}
+              role="heading"
+              aria-level="1"
+            />
+          </TitleBlock>
+        )}
         {captionText ? (
           <CaptionBlock>
             <Caption text={captionText} />

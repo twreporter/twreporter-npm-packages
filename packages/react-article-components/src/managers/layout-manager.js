@@ -104,6 +104,7 @@ export default class LayoutManager {
         alt: _.get(post, 'leading_image_description', ''),
       },
       embedded: _.get(post, 'leading_embedded.api_data', []),
+      isHideTitleBlock: _.get(post, 'is_hide_title_block', false),
     }
   }
 }
