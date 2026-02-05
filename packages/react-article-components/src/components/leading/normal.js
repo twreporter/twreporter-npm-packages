@@ -207,31 +207,34 @@ export default class NormalLeading extends React.PureComponent {
       topicHref,
       shortTitle,
       isTopicPublished,
+      isHideTitleBlock,
     } = this.props
 
     return (
       <BackgroundBlock>
         <ContentBlock>
-          <TextBlock>
-            {isTopicPublished && shortTitle ? (
-              <DynamicComponentsContext.Consumer>
-                {(components) => {
-                  return (
-                    <components.Link to={topicHref}>
-                      <Topic>{shortTitle}</Topic>
-                    </components.Link>
-                  )
-                }}
-              </DynamicComponentsContext.Consumer>
-            ) : null}
-            {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-            <Title
-              type={H1.Type.ARTICLE}
-              text={title}
-              role="heading"
-              aria-level="1"
-            />
-          </TextBlock>
+          {isHideTitleBlock ? null : (
+            <TextBlock>
+              {isTopicPublished && shortTitle ? (
+                <DynamicComponentsContext.Consumer>
+                  {(components) => {
+                    return (
+                      <components.Link to={topicHref}>
+                        <Topic>{shortTitle}</Topic>
+                      </components.Link>
+                    )
+                  }}
+                </DynamicComponentsContext.Consumer>
+              ) : null}
+              {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+              <Title
+                type={H1.Type.ARTICLE}
+                text={title}
+                role="heading"
+                aria-level="1"
+              />
+            </TextBlock>
+          )}
           <Figure $css={this.getFigureCSS()}>
             <Img
               imgPlaceholderSrc={_.get(poster, 'tiny.url', '')}

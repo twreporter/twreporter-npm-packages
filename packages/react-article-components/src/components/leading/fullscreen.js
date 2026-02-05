@@ -168,6 +168,7 @@ export default class FullScreenLeading extends React.PureComponent {
       topicHref,
       shortTitle,
       isTopicPublished,
+      isHideTitleBlock,
     } = this.props
 
     let portraitPosterJSX = null
@@ -217,26 +218,28 @@ export default class FullScreenLeading extends React.PureComponent {
           posterJSX
         )}
         <FigureOverlayMask />
-        <TextBlock>
-          {isTopicPublished && shortTitle ? (
-            <DynamicComponentsContext.Consumer>
-              {(components) => {
-                return (
-                  <components.Link to={topicHref}>
-                    <Topic>
-                      {shortTitle}
-                      <RightArrow />
-                    </Topic>
-                  </components.Link>
-                )
-              }}
-            </DynamicComponentsContext.Consumer>
-          ) : null}
-          <Title role="heading" aria-level="1">
-            {title}
-          </Title>
-          {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-        </TextBlock>
+        {isHideTitleBlock ? null : (
+          <TextBlock>
+            {isTopicPublished && shortTitle ? (
+              <DynamicComponentsContext.Consumer>
+                {(components) => {
+                  return (
+                    <components.Link to={topicHref}>
+                      <Topic>
+                        {shortTitle}
+                        <RightArrow />
+                      </Topic>
+                    </components.Link>
+                  )
+                }}
+              </DynamicComponentsContext.Consumer>
+            ) : null}
+            <Title role="heading" aria-level="1">
+              {title}
+            </Title>
+            {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+          </TextBlock>
+        )}
       </FullScreenBlock>
     )
   }
