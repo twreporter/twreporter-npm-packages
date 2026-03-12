@@ -227,7 +227,7 @@ const Footer = ({ releaseBranch = releaseBranchConsts.release }) => {
             <TabletAndBelow>
               <InfoLink releaseBranch={releaseBranch} />
             </TabletAndBelow>
-            <P3Gray600 text={'Copyright © The Reporter.'} />
+            <P3Gray600 text="Copyright © The Reporter." />
           </InfoContainer>
           <IconList>
             <FooterSocialMediaIcons releaseBranch={releaseBranch} />
