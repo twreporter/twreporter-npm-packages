@@ -523,6 +523,7 @@ export default class Article extends PureComponent {
                 <License
                   license={post.copyright}
                   publishedDate={post.published_date}
+                  createdAt={post.created_at}
                   id={RELATED_POST_ANCHOR_ID} // current scroll to releated post anchor
                 />
                 <StyledSeparationCurve />

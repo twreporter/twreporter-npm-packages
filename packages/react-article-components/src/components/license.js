@@ -16,39 +16,41 @@ const Container = styled.div`
   padding: 0 24px;
 `
 
-export default class License extends React.PureComponent {
-  static defaultProps = {
-    license: 'Creative-Commons',
-    publishedDate: '',
-    id: '',
-  }
-  static propTypes = {
-    license: PropTypes.string,
-    publishedDate: PropTypes.string,
-    id: PropTypes.string,
-  }
+const License = ({
+  license = 'Creative-Commons',
+  publishedDate = '',
+  createdAt,
+  id = '',
+}) => {
+  const _extractYear = (publishedDate) => {
+    if (!publishedDate && !createdAt) return ''
 
-  _extractYear(publishedDate) {
-    const date = publishedDate ? new Date(publishedDate) : new Date()
+    const date = publishedDate ? new Date(publishedDate) : new Date(createdAt)
     return date.getFullYear()
   }
 
-  render() {
-    const { license, publishedDate, id } = this.props
-    const year = this._extractYear(publishedDate)
-    let licenseJSX = ''
+  const year = _extractYear(publishedDate)
+  let licenseJSX
 
-    if (
-      typeof license === 'string' &&
-      license.toLowerCase() === 'copyrighted'
-    ) {
-      licenseJSX = <Text>© {year} All rights Reserved</Text>
-    } else {
-      licenseJSX = (
-        <Text>本文依 CC 創用姓名標示-非商業性-禁止改作3.0台灣授權條款釋出</Text>
-      )
-    }
-
-    return <Container id={id}>{licenseJSX}</Container>
+  if (typeof license === 'string' && license.toLowerCase() === 'copyrighted') {
+    licenseJSX = <Text>© {year} All rights Reserved</Text>
+  } else {
+    licenseJSX = (
+      <Text>
+        本文僅文字內容依 CC 創用姓名標示－非商業性－禁止改作 3.0
+        台灣授權條款釋出，文中照片不在此授權範圍內。
+      </Text>
+    )
   }
+
+  return <Container id={id}>{licenseJSX}</Container>
 }
+
+License.propTypes = {
+  license: PropTypes.string,
+  publishedDate: PropTypes.string,
+  createdAt: PropTypes.string,
+  id: PropTypes.string,
+}
+
+export default License
