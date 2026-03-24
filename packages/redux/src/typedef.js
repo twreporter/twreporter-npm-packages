@@ -135,6 +135,7 @@ export default {}
  *  @property {string} leading_image_description
  *  @property {string} og_title
  *  @property {string} updated_at
+ *  @property {string} created_at
  */
 
 /**
