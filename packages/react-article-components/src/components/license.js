@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 
@@ -22,18 +22,18 @@ const License = ({
   createdAt,
   id = '',
 }) => {
-  const _extractYear = (publishedDate) => {
+  const getYear = useCallback(() => {
     if (!publishedDate && !createdAt) return ''
 
     const date = publishedDate ? new Date(publishedDate) : new Date(createdAt)
     return date.getFullYear()
-  }
+  }, [publishedDate, createdAt])
 
-  const year = _extractYear(publishedDate)
+  const year = getYear()
   let licenseJSX
 
   if (typeof license === 'string' && license.toLowerCase() === 'copyrighted') {
-    licenseJSX = <Text>© {year} All rights Reserved</Text>
+    licenseJSX = <Text>© {year} All rights reserved.</Text>
   } else {
     licenseJSX = (
       <Text>
