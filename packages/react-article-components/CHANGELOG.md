@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.8.1-rc.0...@twreporter/react-article-components@2.8.1-rc.1) (2026-03-24)
+
+### Bug Fixes
+
+- **react-article-components:** fix review comments ([65eb34c](https://github.com/twreporter/twreporter-npm-packages/commit/65eb34c1c38bee9da8fb3564dbe720c1588e1ac3))
+- update article copyright ([9adfb41](https://github.com/twreporter/twreporter-npm-packages/commit/9adfb410025b1d70a672240c2285b40cdf3f25b1))
+
 ## [2.8.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.8.0...@twreporter/react-article-components@2.8.1-rc.0) (2026-03-23)
 
 **Note:** Version bump only for package @twreporter/react-article-components

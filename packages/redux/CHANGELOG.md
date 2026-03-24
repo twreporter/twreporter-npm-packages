@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.3-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.4.2...@twreporter/redux@8.4.3-rc.0) (2026-03-24)
+
+### Bug Fixes
+
+- update article copyright ([9adfb41](https://github.com/twreporter/twreporter-npm-packages/commit/9adfb410025b1d70a672240c2285b40cdf3f25b1))
+
 ## [8.4.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.4.2-rc.0...@twreporter/redux@8.4.2) (2025-12-29)
 
 **Note:** Version bump only for package @twreporter/redux
