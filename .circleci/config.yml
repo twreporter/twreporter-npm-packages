@@ -37,6 +37,8 @@ commands:
       - run:
           name: "Authenticate with npm registry using OIDC"
           command: |
+            set -eo pipefail
+
             # Request an OIDC token from CircleCI with the npm registry audience
             OIDC_TOKEN=$(circleci run oidc get --claims '{"aud":"npm:registry.npmjs.org"}')
 
@@ -46,7 +48,7 @@ commands:
               -H "Content-Type: application/json" \
               -d "{\"oidcToken\":\"${OIDC_TOKEN}\"}" \
               "https://registry.npmjs.org/-/npm/v1/security/oidc/token" \
-              | jq -r '.token')
+              | jq -er '.token')
 
             # Configure npm auth with the short-lived token
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/repo/.npmrc
