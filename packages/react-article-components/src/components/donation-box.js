@@ -105,16 +105,14 @@ const Donate = styled.div`
 const DonationBox = () => (
   <Container>
     <Title>{_content.title}</Title>
-    {_content.desc.map((p, index) => {
-      return (
-        <Text
-          key={`donation-box-desc-${index + 1}`}
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(p, { ADD_ATTR: ['target'] }),
-          }}
-        />
-      )
-    })}
+    {_content.desc.map((p, index) => (
+      <Text
+        key={`donation-box-desc-${index + 1}`}
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(p, { ADD_ATTR: ['target'] }),
+        }}
+      />
+    ))}
     <Donate>
       <a
         href={`${externalLinks.donation}#${DONATION_LINK_ANCHOR.impact}`}
@@ -127,4 +125,4 @@ const DonationBox = () => (
   </Container>
 )
 
-export default DonationBox
+export default React.memo(DonationBox)
