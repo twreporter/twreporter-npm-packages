@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import DOMPurify from 'isomorphic-dompurify'
 // @twreporter
@@ -102,31 +102,29 @@ const Donate = styled.div`
   }
 `
 
-export default class DonationBox extends PureComponent {
-  render() {
-    return (
-      <Container>
-        <Title>{_content.title}</Title>
-        {_content.desc.map((p, index) => {
-          return (
-            <Text
-              key={`donation-box-desc-${index + 1}`}
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(p, { ADD_ATTR: ['target'] }),
-              }}
-            />
-          )
-        })}
-        <Donate>
-          <a
-            href={`${externalLinks.donation}#${DONATION_LINK_ANCHOR.impact}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <p>{_content.bt}</p>
-          </a>
-        </Donate>
-      </Container>
-    )
-  }
-}
+const DonationBox = () => (
+  <Container>
+    <Title>{_content.title}</Title>
+    {_content.desc.map((p, index) => {
+      return (
+        <Text
+          key={`donation-box-desc-${index + 1}`}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(p, { ADD_ATTR: ['target'] }),
+          }}
+        />
+      )
+    })}
+    <Donate>
+      <a
+        href={`${externalLinks.donation}#${DONATION_LINK_ANCHOR.impact}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <p>{_content.bt}</p>
+      </a>
+    </Donate>
+  </Container>
+)
+
+export default DonationBox
