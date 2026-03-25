@@ -31,30 +31,8 @@ commands:
       - run: git config --global user.email << parameters.email >>
       - run: git config --global user.name << parameters.username >>
 
-  set-npm-auth:
-    description: "Authenticate with npm registry using OIDC (trusted publishing)"
-    steps:
-      - run:
-          name: "Authenticate with npm registry using OIDC"
-          command: |
-            set -eo pipefail
-
-            # Request an OIDC token from CircleCI with the npm registry audience
-            OIDC_TOKEN=$(circleci run oidc get --claims '{"aud":"npm:registry.npmjs.org"}')
-
-            # Exchange the OIDC token for a short-lived npm publish token
-            NPM_TOKEN=$(curl --fail --silent --show-error \
-              -X POST \
-              -H "Content-Type: application/json" \
-              -d "{\"oidcToken\":\"${OIDC_TOKEN}\"}" \
-              "https://registry.npmjs.org/-/npm/v1/security/oidc/token" \
-              | jq -er '.token')
-
-            # Configure npm auth with the short-lived token
-            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/repo/.npmrc
-
   publish:
-    description: "Publish packages to NPM registry if needed"
+    description: "Publish packages to NPM registry if needed with OIDC token"
     parameters:
       prerelease:
         type: boolean
@@ -63,6 +41,11 @@ commands:
       - run:
           name: "Publish packages to NPM registry if needed"
           command: |
+            set -eo pipefail
+
+            # Get OIDC token
+            export NPM_ID_TOKEN=$(circleci run oidc get --claims '{"aud": "npm:registry.npmjs.org"}')
+
             ${NODE_BIN_DIR}/lerna publish from-package \
               <<# parameters.prerelease >> --pre-dist-tag rc<</ parameters.prerelease >> \
               --yes
