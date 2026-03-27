@@ -50,7 +50,7 @@ commands:
               <<# parameters.prerelease >> --pre-dist-tag rc<</ parameters.prerelease >> \
               --yes
 
-  publish-OIDC:
+  publish-oidc:
     description: "Publish packages to NPM registry if needed with OIDC token"
     parameters:
       prerelease:
