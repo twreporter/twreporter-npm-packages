@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1-rc.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.8.1-rc.2...@twreporter/react-article-components@2.8.1-rc.3) (2026-03-27)
+
+### Bug Fixes
+
+- **react-article-components:** add line break ([54a9376](https://github.com/twreporter/twreporter-npm-packages/commit/54a93768b8d454cd66fc370ddf10bdc229dd1ce0))
+
 ## [2.8.1-rc.2](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.8.1-rc.1...@twreporter/react-article-components@2.8.1-rc.2) (2026-03-25)
 
 ### Bug Fixes
