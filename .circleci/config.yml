@@ -30,8 +30,27 @@ commands:
     steps:
       - run: git config --global user.email << parameters.email >>
       - run: git config --global user.name << parameters.username >>
+  
+  set-npm-auth:
+    description: "Set NPM authentication"
+    steps:
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
 
   publish:
+    description: "Publish packages to NPM registry if needed"
+    parameters:
+      prerelease:
+        type: boolean
+        default: false
+    steps:
+      - run:
+          name: "Publish packages to NPM registry if needed"
+          command: |
+            ${NODE_BIN_DIR}/lerna publish from-package \
+              <<# parameters.prerelease >> --pre-dist-tag rc<</ parameters.prerelease >> \
+              --yes
+
+  publish-OIDC:
     description: "Publish packages to NPM registry if needed with OIDC token"
     parameters:
       prerelease:
@@ -174,6 +193,7 @@ jobs:
     steps:
       - checkout
       - install-deps
+      - set-npm-auth
       - publish:
           prerelease: << parameters.prerelease >>
 
