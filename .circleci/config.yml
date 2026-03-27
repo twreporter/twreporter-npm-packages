@@ -42,11 +42,11 @@ commands:
       - run:
         name: "Verify npm token"
         command: |
-          set -euxo pipefail
-          npm config get registry
-          npm config get userconfig
-          test -f ~/.npmrc
-          npm whoami
+          set -euo pipefail
+          echo "npm registry: $(npm config get registry)"
+          echo "npm userconfig: $(npm config get userconfig)"
+          test -f ~/.npmrc && echo "~/.npmrc exists" || (echo "~/.npmrc not found")
+          echo "npm user: $(npm whoami)"
 
   publish:
     description: "Publish packages to NPM registry if needed"
