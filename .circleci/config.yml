@@ -34,7 +34,19 @@ commands:
   set-npm-auth:
     description: "Set NPM authentication"
     steps:
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+
+  debug-npm-auth:
+    description: "Print debug info of npm auth"
+    steps:
+      - run:
+          name: "Verify npm token"
+          command: |
+            set -euo pipefail
+            echo "npm registry: $(npm config get registry)"
+            echo "npm userconfig: $(npm config get userconfig)"
+            test -f ~/.npmrc && echo "~/.npmrc exists" || (echo "~/.npmrc not found")
+            echo "npm user: $(npm whoami)"
 
   publish:
     description: "Publish packages to NPM registry if needed"
@@ -194,6 +206,7 @@ jobs:
       - checkout
       - install-deps
       - set-npm-auth
+      - debug-npm-auth
       - publish:
           prerelease: << parameters.prerelease >>
 
