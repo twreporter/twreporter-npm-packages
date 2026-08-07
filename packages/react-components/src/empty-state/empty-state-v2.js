@@ -76,6 +76,16 @@ const EmptyState = ({
           imageUrl: `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`,
           imageWidth: '177',
         }
+      case Style.RUN:
+        return {
+          imageUrl: `https://www.twreporter.org/assets/empty-state/${releaseBranch}/run.png`,
+          imageWidth: '145',
+        }
+      case Style.FIND:
+        return {
+          imageUrl: `https://www.twreporter.org/assets/empty-state/${releaseBranch}/find.png`,
+          imageWidth: '170',
+        }
     }
   }, [style, releaseBranch])
 
