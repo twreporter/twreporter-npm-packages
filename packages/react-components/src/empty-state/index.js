@@ -86,6 +86,14 @@ const EmptyState = ({
       imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/under_construction.png`
       imageWidth = '177'
       break
+    case Style.RUN:
+      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/run.png`
+      imageWidth = '145'
+      break
+    case Style.FIND:
+      imageUrl = `https://www.twreporter.org/assets/empty-state/${releaseBranch}/find.png`
+      imageWidth = '170'
+      break
   }
   return (
     <OuterContainer>
