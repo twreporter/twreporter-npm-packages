@@ -1,4 +1,4 @@
-import { TEN_YEAR_ANNIVERSARY } from '@twreporter/core/lib/constants/feature-flag'
+import { ACADEMY } from '@twreporter/core/lib/constants/feature-flag'
 
 import CategorySection from './components/category-section'
 import DonationBoxSection from './components/donation-box-section'
@@ -17,9 +17,7 @@ import NewDonationBoxSection from './components/new-donation-box-section'
 export default {
   components: {
     CategorySection,
-    DonationBoxSection: TEN_YEAR_ANNIVERSARY
-      ? NewDonationBoxSection
-      : DonationBoxSection,
+    DonationBoxSection: ACADEMY ? NewDonationBoxSection : DonationBoxSection,
     EditorPicks,
     InforgraphicSection,
     JuniorBoxSection,
