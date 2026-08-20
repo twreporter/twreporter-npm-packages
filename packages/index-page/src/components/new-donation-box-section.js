@@ -16,7 +16,7 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-color: '#9E7A4E';
+  background-color: #9e7a4e;
   padding-top: 30px;
   padding-bottom: 30px;
   ${mq.mobileOnly`
@@ -77,7 +77,7 @@ const DonateButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: '#9E7A4E';
+    background: #9e7a4e;
     border: none;
     color: ${colorGrayscale.white};
     font-size: 16px;
