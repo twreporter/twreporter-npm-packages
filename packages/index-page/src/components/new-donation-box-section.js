@@ -5,10 +5,7 @@ import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
-import {
-  colorGrayscale,
-  colorBrand,
-} from '@twreporter/core/lib/constants/color'
+import { colorGrayscale } from '@twreporter/core/lib/constants/color'
 import externalLinks from '@twreporter/core/lib/constants/external-links'
 
 const mockup = {
@@ -19,7 +16,7 @@ const mockup = {
 const mobileContentWidthPct = (mockup.contentWidth / mockup.defaultWidth) * 100
 
 const Container = styled.div`
-  background-color: ${colorGrayscale.black};
+  background-color: #9e7a4e;
   padding-top: 30px;
   padding-bottom: 30px;
   ${mq.mobileOnly`
@@ -80,7 +77,7 @@ const DonateButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: ${colorBrand.heavy};
+    background: #9e7a4e;
     border: none;
     color: ${colorGrayscale.white};
     font-size: 16px;
@@ -118,7 +115,7 @@ const Icon = styled.div`
 
 const DonateInfo = (
   <span>
-    看見改變
+    贊助支持
     <Icon>
       <ArrowIcon />
     </Icon>
@@ -130,9 +127,9 @@ const DonationBoxSection = () => {
     <Container>
       <ContentContainer>
         <TextColumn>
-          <h3>贊助報導者的下一個十年</h3>
+          <h3>用行動支持報導者</h3>
           <p>
-            自2015年9月，《報導者》靠社會大眾的贊助走到了今天，邀您一起見證我們走過的路，並且支持我們度過下一個十年的挑戰。
+            深度調查報導必須投入優秀記者、足夠時間與大量資源。歡迎您加入《報導者》支持方案，一起為打造更好的社會及媒體環境努力。
           </p>
         </TextColumn>
         <DonateButton>
