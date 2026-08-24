@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 // assets
-import ArrowIcon from '../static/icon-podcast-arrow-white.svg'
+import ArrowIcon from '../static/icon-donate-arrow-gold.svg'
 // @twreporter
 import { fontWeight, fontFamily } from '@twreporter/core/lib/constants/font'
 import mq from '@twreporter/core/lib/utils/media-query'
@@ -77,9 +77,9 @@ const DonateButton = styled.div`
     width: 116px;
     height: 40px;
     border-radius: 20px;
-    background: #9e7a4e;
+    background: ${colorGrayscale.white};
     border: none;
-    color: ${colorGrayscale.white};
+    color: #9e7a4e;
     font-size: 16px;
     cursor: pointer;
     display: table;
