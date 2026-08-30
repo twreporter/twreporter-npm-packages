@@ -94,7 +94,7 @@ const SearchBar = ({
   onSearch = defaultFunc,
   onClose = defaultFunc,
   handleBlur = defaultFunc,
-  autofocus = true,
+  autofocus = false,
   widthType = WidthType.FIT,
   ...props
 }) => {
