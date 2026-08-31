@@ -12,4 +12,5 @@ export default {
   IJMBrochureDownloadLink:
     'https://docs.google.com/forms/d/e/1FAIpQLSd0KW2gaBI0oXr1W-emtLEL6XXKQkLjB1lu1XMVmoYVbincug/viewform',
   tenYearAnniversary: 'https://10th.twreporter.org',
+  academy: 'https://academy.twreporter.org',
 }

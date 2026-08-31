@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Freact-article-components%402.10.0-rc.0...%40twreporter%2Freact-article-components%402.10.0-rc.1) (2026-08-24)
+
+### Bug Fixes
+
+- **react-article-component:** donation box text ([41fa814](https://github.com/twreporter/twreporter-npm-packages/commit/41fa814891b92327a263da81bc8102814142a0ec))
+
+# [2.10.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.9.1-rc.1...@twreporter/react-article-components@2.10.0-rc.0) (2026-08-20)
+
+### Features
+
+- academy feature flag and index page ([b8dd117](https://github.com/twreporter/twreporter-npm-packages/commit/b8dd1175acd225f5c798b39a712bfeafb89acc9e))
+
+## [2.9.1-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.9.1-rc.0...@twreporter/react-article-components@2.9.1-rc.1) (2026-08-11)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
+## [2.9.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.9.0...@twreporter/react-article-components@2.9.1-rc.0) (2026-06-18)
+
+**Note:** Version bump only for package @twreporter/react-article-components
+
 # [2.9.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-article-components@2.9.0-rc.0...@twreporter/react-article-components@2.9.0) (2026-04-13)
 
 **Note:** Version bump only for package @twreporter/react-article-components

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.4-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.4.4-rc.0...@twreporter/redux@8.4.4-rc.1) (2026-08-20)
+
+**Note:** Version bump only for package @twreporter/redux
+
+## [8.4.4-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.4.3...@twreporter/redux@8.4.4-rc.0) (2026-06-18)
+
+### Bug Fixes
+
+- **redux:** declare test runner dependencies ([06bb3ba](https://github.com/twreporter/twreporter-npm-packages/commit/06bb3ba59d9ae699f84d18a7fc190e7eb6df470b))
+- **redux:** run jest tests serially ([28af7ac](https://github.com/twreporter/twreporter-npm-packages/commit/28af7aca181444f3d61406f73711b670227880f7))
+
 ## [8.4.3](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/redux@8.4.3-rc.0...@twreporter/redux@8.4.3) (2026-03-31)
 
 **Note:** Version bump only for package @twreporter/redux

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.12.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.12.0-rc.0...@twreporter/react-components@9.12.0-rc.1) (2026-08-20)
+
+**Note:** Version bump only for package @twreporter/react-components
+
+# [9.12.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.11.1-rc.0...@twreporter/react-components@9.12.0-rc.0) (2026-08-11)
+
+### Features
+
+- **react-components:** new style for empty state ([88ca5e9](https://github.com/twreporter/twreporter-npm-packages/commit/88ca5e9344cb2c4d0654a7b13bee564242a42334))
+
+## [9.11.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.11.0...@twreporter/react-components@9.11.1-rc.0) (2026-06-18)
+
+**Note:** Version bump only for package @twreporter/react-components
+
 # [9.11.0](https://github.com/twreporter/twreporter-npm-packages/compare/@twreporter/react-components@9.11.0-rc.1...@twreporter/react-components@9.11.0) (2026-03-31)
 
 **Note:** Version bump only for package @twreporter/react-components

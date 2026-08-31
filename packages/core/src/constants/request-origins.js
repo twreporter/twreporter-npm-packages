@@ -33,7 +33,7 @@ const forServerSideRendering = {
   },
   [releaseBranch.dev]: {
     accounts: 'https://dev-accounts.twreporter.org',
-    api: 'https://staging-go-api.twreporter.org',
+    api: 'https://dev-go-api.twreporter.org',
     main: 'https://dev.twreporter.org',
     support: 'https://dev-support.twreporter.org',
   },
