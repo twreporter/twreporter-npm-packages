@@ -10,6 +10,7 @@ const links = {
   kidsReporter: 'https://kids.twreporter.org/',
   publicationAndMerchandise: 'https://twreporter.waca.ec/',
   lawmaker: 'https://lawmaker.twreporter.org/',
+  academy: 'https://academy.twreporter.org/',
 }
 
 export default links
