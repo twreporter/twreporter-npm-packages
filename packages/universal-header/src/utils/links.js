@@ -1,14 +1,11 @@
 import { ACTION_KEY } from '../constants/actions'
 import { FOOTER_KEY, FOOTER_PATH, MEMBER_ORDER } from '../constants/footer'
 import { SOCIAL_MEDIA_KEY } from '../constants/social-media'
-// import { CHANNEL_KEY, CHANNEL_PATH } from '../constants/channels'
-import channels from '../constants/channels'
-import newChannels from '../constants/channels-new'
+import { CHANNEL_KEY, CHANNEL_PATH } from '../constants/channels'
 import externalLinks from '../constants/external-links'
 // @twreporter
 import origins from '@twreporter/core/lib/constants/request-origins'
 import releaseBranchConsts from '@twreporter/core/lib/constants/release-branch'
-import { LAWMAKER } from '@twreporter/core/lib/constants/feature-flag'
 // lodash
 import forEach from 'lodash/forEach'
 import reduce from 'lodash/reduce'
@@ -20,8 +17,6 @@ const _ = {
   split,
   indexOf,
 }
-
-const { CHANNEL_KEY, CHANNEL_PATH } = LAWMAKER ? newChannels : channels
 
 const originsForClient = origins.forClientSideRendering
 
@@ -240,12 +235,14 @@ export function getChannelLinks(
     __getExternalLinks().kidsReporter,
     '_blank'
   )
-  if (LAWMAKER) {
-    links[CHANNEL_KEY.lawmaker] = __composeExternalLink(
-      __getExternalLinks().lawmaker,
-      '_blank'
-    )
-  }
+  links[CHANNEL_KEY.lawmaker] = __composeExternalLink(
+    __getExternalLinks().lawmaker,
+    '_blank'
+  )
+  links[CHANNEL_KEY.academy] = __composeExternalLink(
+    __getExternalLinks().academy,
+    '_blank'
+  )
 
   return links
 }
