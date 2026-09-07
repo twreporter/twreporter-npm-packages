@@ -12,16 +12,14 @@ import {
 } from '../utils/links'
 import { selectLogoType, selectHamburgerMenuTheme } from '../utils/theme'
 // constants
-// import {
-//   CHANNEL_KEY,
-//   CHANNEL_ORDER,
-//   CHANNEL_TYPE,
-//   CHANNEL_LABEL,
-//   CHANNEL_LINK_TYPE,
-//   CHANNEL_DROPDOWN,
-// } from '../constants/channels'
-import channels from '../constants/channels'
-import channelsNew from '../constants/channels-new'
+import {
+  CHANNEL_KEY,
+  CHANNEL_ORDER,
+  CHANNEL_TYPE,
+  CHANNEL_LABEL,
+  CHANNEL_LINK_TYPE,
+  CHANNEL_DROPDOWN,
+} from '../constants/channels'
 import { MENU_WIDTH } from '../constants/hamburger-menu'
 // components
 import {
@@ -54,7 +52,6 @@ import {
   TabletAndAbove,
   MobileOnly,
 } from '@twreporter/react-components/lib/rwd'
-import { LAWMAKER } from '@twreporter/core/lib/constants/feature-flag'
 // Footer
 import Footer from './hamburger-footer'
 // lodash
@@ -62,15 +59,6 @@ import map from 'lodash/map'
 const _ = {
   map,
 }
-
-const {
-  CHANNEL_KEY,
-  CHANNEL_ORDER,
-  CHANNEL_TYPE,
-  CHANNEL_LABEL,
-  CHANNEL_LINK_TYPE,
-  CHANNEL_DROPDOWN,
-} = LAWMAKER ? channelsNew : channels
 
 // global var
 const reserveHeightForIos15 = 48
