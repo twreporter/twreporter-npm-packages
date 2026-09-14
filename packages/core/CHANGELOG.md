@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.29.1-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Fcore%401.29.0...%40twreporter%2Fcore%401.29.1-rc.0) (2026-09-10)
+
+### Bug Fixes
+
+- **core:** add academy related roles ([ec3f553](https://github.com/twreporter/twreporter-npm-packages/commit/ec3f5534525f94d8d7a1b90d4cc843865ded9274))
+
 # [1.29.0](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Fcore%401.29.0-rc.0...%40twreporter%2Fcore%401.29.0) (2026-08-31)
 
 **Note:** Version bump only for package @twreporter/core
