@@ -1,4 +1,4 @@
-import { getAccessToken } from './auth'
+import { getAccessToken, getJaiAbTestGroup } from './auth'
 import { fetchAuthorCollectionIfNeeded } from './author-articles'
 import { fetchAuthorDetails } from './author-details'
 import { searchAuthorsIfNeeded } from './authors'
@@ -46,6 +46,7 @@ export default {
   fetchTopics,
   fetchLatestTags,
   getAccessToken,
+  getJaiAbTestGroup,
   getMultipleBookmarks,
   getSingleBookmark,
   searchAuthorsIfNeeded,

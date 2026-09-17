@@ -1,6 +1,7 @@
 import { formURL } from '../utils/url'
 import actionTypes from '../constants/action-types'
 import apiConfig from '../constants/api-config'
+import apiEndpoints from '../constants/api-endpoints'
 import axios from 'axios'
 import errorActionCreators from './error-action-creators'
 import stateFieldNames from '../constants/redux-state-field-names'
@@ -42,7 +43,7 @@ export function getAccessToken(cookieList) {
       withCredentials: true,
     }
 
-    const interceptor = axios.interceptors.request.use(config => {
+    const interceptor = axios.interceptors.request.use((config) => {
       const { method, url, headers, data, withCredentials, timeout } = config
       dispatch({
         type: actionTypes.REQUEST_AUTH,
@@ -63,7 +64,7 @@ export function getAccessToken(cookieList) {
 
     return axios
       .post(url, null, options)
-      .then(axiosRes => {
+      .then((axiosRes) => {
         const successAction = {
           type: actionTypes.AUTH_SUCCESS,
           payload: {
@@ -75,7 +76,7 @@ export function getAccessToken(cookieList) {
         dispatch(successAction)
         return successAction
       })
-      .catch(err => {
+      .catch((err) => {
         const failAction = errorActionCreators.axios(
           err,
           actionTypes.AUTH_FAILURE
@@ -86,6 +87,55 @@ export function getAccessToken(cookieList) {
   }
 }
 
+/**
+ * Fetch the JAI A/B test group for authenticated or anonymous visitors.
+ * Call on target-page entry after authentication settles, and refetch if auth changes.
+ * @param {string} [cookieList] - Forwarded request cookies for server-side use.
+ * Browsers send cookies automatically via withCredentials.
+ * Responses from a previous auth revision or during authentication are ignored.
+ * @return {Function} Redux thunk resolving with success or rejecting with failure.
+ */
+export function getJaiAbTestGroup(cookieList) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const apiOrigin = _.get(state, [stateFieldNames.origins, 'api'])
+    const url = formURL(apiOrigin, `/v3/${apiEndpoints.jaiAbTestGroup}`)
+    const headers = {}
+    const accessToken = _.get(state, [stateFieldNames.auth, 'accessToken'])
+    const authRevision = _.get(state, [stateFieldNames.auth, 'authRevision'], 0)
+
+    if (_.get(state, [stateFieldNames.auth, 'isAuthed']) && accessToken) {
+      headers.Authorization = `Bearer ${accessToken}`
+    }
+    if (cookieList) {
+      headers.Cookie = cookieList
+    }
+
+    dispatch({ type: actionTypes.jaiAbTestGroup.read.request, url })
+
+    return axios
+      .get(url, { timeout, headers, withCredentials: true })
+      .then((res) => {
+        const successAction = {
+          type: actionTypes.jaiAbTestGroup.read.success,
+          payload: { data: res.data, statusCode: res.status },
+          meta: { authRevision },
+        }
+        dispatch(successAction)
+        return successAction
+      })
+      .catch((err) => {
+        const failAction = errorActionCreators.axios(
+          err,
+          actionTypes.jaiAbTestGroup.read.failure
+        )
+        dispatch(failAction)
+        return Promise.reject(failAction)
+      })
+  }
+}
+
 export default {
   getAccessToken,
+  getJaiAbTestGroup,
 }
