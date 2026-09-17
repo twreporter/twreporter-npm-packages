@@ -5,6 +5,15 @@ export default {
   AUTH_FAILURE: 'grant_authorization_failure',
   AUTH_CLEAR: 'clear_authorization',
 
+  // jai ab test
+  jaiAbTestGroup: {
+    read: {
+      request: 'request to fetch jai ab test group',
+      success: 'success to fetch jai ab test group',
+      failure: 'fail to fetch jai ab test group',
+    },
+  },
+
   /**
    * @deprecated
    * keep these three action types here for backward compatibility.
