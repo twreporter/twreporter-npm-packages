@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Fredux%408.5.0-rc.0...%40twreporter%2Fredux%408.5.0-rc.1) (2026-09-20)
+
+### Bug Fixes
+
+- update data shape of jai_ab_test_group ([efe39cb](https://github.com/twreporter/twreporter-npm-packages/commit/efe39cb8c7d6cbdb28dfb28cdc29e8eddd6484c4))
+
 # [8.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Fredux%408.4.5...%40twreporter%2Fredux%408.5.0-rc.0) (2026-09-17)
 
 ### Bug Fixes
