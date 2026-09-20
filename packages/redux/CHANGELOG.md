@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0-rc.1](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Fredux%408.5.0-rc.0...%40twreporter%2Fredux%408.5.0-rc.1) (2026-09-20)
+
+### Bug Fixes
+
+- update data shape of jai_ab_test_group ([efe39cb](https://github.com/twreporter/twreporter-npm-packages/commit/efe39cb8c7d6cbdb28dfb28cdc29e8eddd6484c4))
+
+# [8.5.0-rc.0](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Fredux%408.4.5...%40twreporter%2Fredux%408.5.0-rc.0) (2026-09-17)
+
+### Bug Fixes
+
+- **redux:** address review comment ([77e2c94](https://github.com/twreporter/twreporter-npm-packages/commit/77e2c94b45b776b81e532c29e5a71b9061577b3f))
+- **redux:** ci test failed ([a246edd](https://github.com/twreporter/twreporter-npm-packages/commit/a246edd43ca2bbb88ae9e4f7b35da8fd1873947c))
+
+### Features
+
+- **redux:** add getJaiAbTestGroup ([e50d96f](https://github.com/twreporter/twreporter-npm-packages/commit/e50d96f18867f2efd5e26362afb18d520a925e1e))
+
 ## [8.4.5](https://github.com/twreporter/twreporter-npm-packages/compare/%40twreporter%2Fredux%408.4.5-rc.0...%40twreporter%2Fredux%408.4.5) (2026-09-14)
 
 **Note:** Version bump only for package @twreporter/redux

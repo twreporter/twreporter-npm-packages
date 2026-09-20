@@ -1,4 +1,5 @@
 export default {
+  jaiAbTestGroup: 'jai-ab-test-group',
   topics: 'topics',
   indexPage: 'index_page',
   indexPageCategories: 'index_page_categories',
