@@ -50,10 +50,7 @@ export default function auth(state = initState, action) {
         ...state,
         userInfo: {
           ...state.userInfo,
-          jai_ab_test_group: _.get(
-            action,
-            'payload.data.data.jai_ab_test_group'
-          ),
+          jai_ab_test_group: _.get(action, 'payload.data.jai_ab_test_group'),
         },
       }
     }

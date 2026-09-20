@@ -33,7 +33,7 @@ describe('getJaiAbTestGroup', () => {
   test.each(['A', 'B', 'none'])(
     'requests and stores group %s while preserving authenticated user data',
     async (group) => {
-      const data = { data: { jai_ab_test_group: group } }
+      const data = { jai_ab_test_group: group }
       const get = jest
         .spyOn(axios, 'get')
         .mockResolvedValue({ data, status: 200 })
@@ -75,7 +75,7 @@ describe('getJaiAbTestGroup', () => {
 
   test('enables browser credentials without authorization for anonymous visitors', async () => {
     const get = jest.spyOn(axios, 'get').mockResolvedValue({
-      data: { data: { jai_ab_test_group: 'B' } },
+      data: { jai_ab_test_group: 'B' },
       status: 200,
     })
     const initialAuth = { ...auth(undefined, {}), accessToken: 'stale-token' }
@@ -121,7 +121,7 @@ describe('getJaiAbTestGroup', () => {
       store.dispatch({ type, payload: { data: { jwt: tokenFor(456) } } })
       const changedAuth = store.getState().auth
       resolveRequest({
-        data: { data: { jai_ab_test_group: 'A' } },
+        data: { jai_ab_test_group: 'A' },
         status: 200,
       })
       await request
@@ -145,7 +145,7 @@ describe('getJaiAbTestGroup', () => {
             })
         )
         .mockResolvedValue({
-          data: { data: { jai_ab_test_group: 'B' } },
+          data: { jai_ab_test_group: 'B' },
           status: 200,
         })
       const store = createStore()
@@ -154,7 +154,7 @@ describe('getJaiAbTestGroup', () => {
         store.getState
       )
       const oldResponse = {
-        data: { data: { jai_ab_test_group: 'A' } },
+        data: { jai_ab_test_group: 'A' },
         status: 200,
       }
       if (order === 'before') {
@@ -187,7 +187,7 @@ describe('getJaiAbTestGroup', () => {
 
   test('only fetches the anonymous group when explicitly called after auth failure', async () => {
     const get = jest.spyOn(axios, 'get').mockResolvedValue({
-      data: { data: { jai_ab_test_group: 'none' } },
+      data: { jai_ab_test_group: 'none' },
       status: 200,
     })
     nock(apiOrigin).post('/v2/auth/token').reply(401)
